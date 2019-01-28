@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on [yilianwu]</title>
-    <link>https://yilianwu.github.io/posts/</link>
-    <description>Recent content in Posts on [yilianwu]</description>
+    <title>Abouts on [yilianwu]</title>
+    <link>https://yilianwu.github.io/about/</link>
+    <description>Recent content in Abouts on [yilianwu]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Mon, 28 Jan 2019 00:40:17 +0800</lastBuildDate>
     
-	<atom:link href="https://yilianwu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yilianwu.github.io/about/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My First Post</title>
-      <link>https://yilianwu.github.io/posts/my-first-post/</link>
+      <link>https://yilianwu.github.io/about/my-first-post/</link>
       <pubDate>Mon, 28 Jan 2019 00:40:17 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/my-first-post/</guid>
+      <guid>https://yilianwu.github.io/about/my-first-post/</guid>
       <description></description>
     </item>
     

@@ -3,8 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yilianwu.github.io/about/my-first-post/</loc>
+    <lastmod>2019-01-28T00:40:17+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yilianwu.github.io/posts/my-first-post/</loc>
     <lastmod>2019-01-28T00:40:17+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yilianwu.github.io/about/</loc>
+    <lastmod>2019-01-28T00:40:17+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
