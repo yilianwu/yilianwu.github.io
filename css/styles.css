@@ -1,0 +1,189 @@
+:root {
+	--color: #113a79; /*grape*/
+	--color-dark: #49274A; /*eggplant*/
+	--color-light: #ccc; /*sand*/
+	--color-lite: #F9F9F9;
+}
+
+body {
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+#space {
+	flex: auto;
+}
+
+blockquote {
+	font-style: oblique;
+	background: #f9f9f9;
+	border-left: 10px solid #ccc;
+	margin: 1.5em 10px;
+	padding: 0.5em 10px;
+}
+
+/***** Header and Footer *****/
+header,
+footer {
+	width:100%;
+}
+
+header {
+	background: var(--color);
+}
+
+footer {
+	font-size: .8rem;
+	text-align: center;
+	padding: 8px 0px;
+}
+
+.breadcrumb {
+	display: flex;
+	line-height: 2;
+	padding: 0px 16px;
+}
+
+.breadcrumb a {
+	color: var(--color-lite);
+	margin-left: 16px;
+	margin-top: auto;
+}
+
+.breadcrumb h4 {
+	margin: unset;
+	text-indent: -1rem;
+}
+
+/****************************/
+
+/**** Background color by class name ****/
+
+.grape {
+	background: var(--color);
+	color: var(--color-light);
+}
+
+.sand {
+	background: var(--color-light);
+	color: var(--color-dark);
+}
+
+.white {
+	background: var(--color-lite);
+	color: var(--color-dark);
+}
+
+/***************************************/
+
+/**** Position and size elements ****/
+
+main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+#about,
+#post,
+#posts,
+#recent-posts,
+#collections {
+	flex: auto;
+	display: flex;
+}
+
+#about,
+#collections {
+	text-align: center;
+}
+
+.container {
+	margin: 32px auto;
+	width: 72%;
+}
+
+.avatar {
+	margin: 32px auto 0;
+	width: 160px;
+}
+
+.avatar > img {
+	border-radius: 50%;
+	width: 100%
+}
+
+/***********************************/
+/**** Posts div styling ****/
+
+#posts li p {
+	font-size: .90em;
+	margin-top: .25rem;
+	margin-bottom: 0rem;
+}
+
+#posts li a {
+	font-size: 1.2em;
+}
+
+/*********************************/
+
+.grape li,
+.sand li {
+	margin-top: 1.25rem;
+}
+
+#groups {
+	display: flex;
+}
+
+#groups li {
+	margin: 1rem;
+}
+
+a {
+	text-decoration: none;
+}
+
+.grape a {
+	color: var(--color-lite);
+}
+
+.grape a:hover {
+	color: var(--color-light);
+}
+
+.sand a {
+	color: var(--color-dark);
+	font-weight: bold;
+}
+
+.sand a:hover {
+	color: var(--color);
+}
+/****************************/
+
+/***** Content Styling *****/
+
+#title {
+	text-align: center;
+	padding-bottom: 16px;
+}
+
+#title time {
+	color: var(--color);
+}
+
+#title h1 {
+	margin: 0px;
+}
+
+.white a {
+	color: #30B200; /*Green*/
+}
+
+.white a:hover {
+	color: var(--color);
+}
