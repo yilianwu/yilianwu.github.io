@@ -8,6 +8,12 @@
   </url>
   
   <url>
+    <loc>https://yilianwu.github.io/</loc>
+    <lastmod>2019-01-28T00:40:17+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yilianwu.github.io/categories/</loc>
     <priority>0</priority>
   </url>
@@ -20,12 +26,6 @@
   
   <url>
     <loc>https://yilianwu.github.io/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yilianwu.github.io/</loc>
-    <lastmod>2019-01-28T00:40:17+08:00</lastmod>
     <priority>0</priority>
   </url>
   
