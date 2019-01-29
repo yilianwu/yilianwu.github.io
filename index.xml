@@ -20,7 +20,6 @@
       <description>我個人是使用Mac OS 大概可以分成三個部分 - 建立GitHub repo - terminal Hugo 設定 - 將Hugo部署至GitHub Page
 Step1:建立GitHub repo 如果已經有github帳號的，可以直接新建一個repo repo的名稱要叫&amp;lt;username&amp;gt;.github.io //這裡的username請自行帶入你的帳號名稱 或是直接拿任何一個repo
 創建好了之後到repo設定，將GitHub Page的功能打開～ 舉例來說，我的username是yilianwu 之後我的網址就會是 https://yilianwu.github.io 如果有自己的domain name也可以直接在這邊改好哦
-{width=50%}
 Step2:打開Terminal終端機 1.安裝Homebrew /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  2.安裝Hugo brew install hugo  3.建立Hugo網站 #創一個資料夾 他的路徑是 ~/site-hugo hugo new site site-hugo #進到資料夾中 cd site-hugo  這裡的site-hugo可以是任意名稱
 4.新增Hugo Site Theme(主題) 點我挑選主題
 這邊以Hugo Grapes舉例

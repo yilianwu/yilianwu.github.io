@@ -41,6 +41,11 @@ footer {
 	padding: 8px 0px;
 }
 
+img[alt="imgur"] { 
+  max-width:  400px; 
+  display: block;
+}
+
 .breadcrumb {
 	display: flex;
 	line-height: 2;
