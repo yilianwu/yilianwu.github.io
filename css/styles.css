@@ -72,15 +72,12 @@ footer {
 	position: relative;
 	background: var(--color-light);
 	color: var(--color-dark);
-	margin-top: -0px;
-	margin-bottom: 0px;
 }
 
 .white {
 	position: relative;
 	background: var(--color-lite);
 	color: var(--color-dark);
-	margin-bottom: 20px;
 }
 
 /***************************************/
@@ -93,11 +90,11 @@ main {
 	flex-direction: column;
 }
 
-#about,#recent-posts{
+#about,#recent-posts,#post{
 	flex: auto;
 	display: flex;
 }
-#post,
+
 #posts,
 #collections {
 	flex: auto;
