@@ -2,7 +2,7 @@
 <html lang="zh-tw"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>My First Post - [yilianwu]</title>
+    <title>用GitHub Page搭配Hugo建立靜態網站 - [yilianwu]</title>
     <link rel="shortcut icon" href="img/favicon.ico">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
@@ -28,12 +28,99 @@
     <div id="post" class="white">
 	<div class="container">
 	    <div id="title">
-                <h1>My First Post</h1>
+                <h1>用GitHub Page搭配Hugo建立靜態網站</h1>
                 <time datetime="2019-01-28T00:40:17&#43;0800">2019-01-28</time>
 
 	    </div>
             <section class="post-content">
-                <p>Hello World</p>
+                
+
+<p>我個人是使用Mac OS
+大概可以分成三個部分
+  - 建立GitHub repo
+  - terminal Hugo 設定
+  - 將Hugo部署至GitHub Page</p>
+
+<h1 id="step1-建立github-repo">Step1:建立GitHub repo</h1>
+
+<p>如果已經有<a href="https://github.com/">github</a>帳號的，可以直接新建一個repo
+repo的名稱要叫<code>&lt;username&gt;.github.io</code> //這裡的username請自行帶入你的帳號名稱
+或是直接拿任何一個repo</p>
+
+<p>創建好了之後到repo設定，將GitHub Page的功能打開～
+舉例來說，我的username是yilianwu
+之後我的網址就會是 <a href="https://yilianwu.github.io">https://yilianwu.github.io</a>
+如果有自己的domain name也可以直接在這邊改好哦</p>
+
+<p><img src="https://i.imgur.com/fo5aLoK.png" alt="Imgur" /></p>
+
+<h1 id="step2-打開terminal終端機">Step2:打開Terminal終端機</h1>
+
+<h2 id="1-安裝homebrew">1.安裝Homebrew</h2>
+
+<pre><code class="language-bash">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+
+<h2 id="2-安裝hugo">2.安裝Hugo</h2>
+
+<pre><code class="language-bash">brew install hugo
+</code></pre>
+
+<h2 id="3-建立hugo網站">3.建立Hugo網站</h2>
+
+<pre><code class="language-bash">#創一個資料夾 他的路徑是 ~/site-hugo
+hugo new site site-hugo
+
+#進到資料夾中
+cd site-hugo
+</code></pre>
+
+<p>這裡的<strong>site-hugo</strong>可以是任意名稱</p>
+
+<h2 id="4-新增hugo-site-theme-主題">4.新增Hugo Site Theme(主題)</h2>
+
+<p><strong><a href="https://themes.gohugo.io/">點我挑選主題</a></strong></p>
+
+<p>這邊以<a href="https://themes.gohugo.io/hugo-grapes/">Hugo Grapes</a>舉例</p>
+
+<ol>
+<li>新創一個資料夾themes</li>
+</ol>
+
+<pre><code class="language-bash">  mkdir themes
+
+  #進到themes資料夾中
+  cd themes
+
+  #將github上的hugo grapes給clone下來你的themes資料夾
+  git clone git@github.com:shankar/hugo-grapes.git hugo-grapes
+</code></pre>
+
+<ol>
+<li>將<code>/themes/hugo-grapes</code>中的<code>/static</code>、<code>/layouts</code>、<code>/content</code>、<code>config.toml</code>複製到<code>site-hugo</code>中
+原本的檔案會被覆蓋掉</li>
+</ol>
+
+<h2 id="5-建立新文章">5.建立新文章</h2>
+
+<p>再打開terminal
+輸入以下指令</p>
+
+<pre><code class="language-bash">hugo new posts/my-first-post.md
+</code></pre>
+
+<p>此指令會在 <code>/content/posts</code> 資料夾中建立<code>my-first-post.md</code>。
+使用任意文字編輯器打開<code>my-first-post.md</code>，<strong>將 draft 的true 改成 false</strong> //將草稿的功能關掉 才發布的出去
+內容任意，以後如果要編輯文章(MarkDown文件)的話可以用<a href="https://atom.io/">Atom</a></p>
+
+<h2 id="6-編輯-config-toml-檔">6.編輯<code>config.toml</code>檔</h2>
+
+<p>用文字編輯器打開<code>config.toml</code></p>
+
+<pre><code>baseURL = &quot;https://&lt;username&gt;.github.io&quot;    #&lt;username&gt;改成你的GitHub帳號名稱
+languageCode = &quot;zh-tw&quot;
+title = &quot;No Title Needed&quot;    #自由命名
+</code></pre>
 
             </section>
 	</div>
