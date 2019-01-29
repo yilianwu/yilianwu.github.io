@@ -63,8 +63,10 @@ footer {
 /**** Background color by class name ****/
 
 .grape {
+
 	background: var(--color);
 	color: var(--color-light);
+	padding-bottom: 100px;
 }
 
 .sand {
