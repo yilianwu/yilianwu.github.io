@@ -72,14 +72,15 @@ footer {
 	position: relative;
 	background: var(--color-light);
 	color: var(--color-dark);
-
+	margin-top: -0px;
+	margin-bottom: 0px;
 }
 
 .white {
 	position: relative;
 	background: var(--color-lite);
 	color: var(--color-dark);
-
+	margin-bottom: 20px;
 }
 
 /***************************************/
