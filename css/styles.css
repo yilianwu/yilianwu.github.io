@@ -70,7 +70,7 @@ footer {
 .sand {
 	background: var(--color-light);
 	color: var(--color-dark);
-	padding-top: -100px;
+	padding-top: -50px;
 }
 
 .white {
