@@ -93,12 +93,12 @@ main {
 	flex-direction: column;
 }
 
-#about{
+#about,#recent-posts{
 	flex: auto;
 	display: flex;
 }
 #post,
-#posts,#recent-posts,
+#posts,
 #collections {
 	flex: auto;
 	display: flex;
