@@ -68,15 +68,17 @@ footer {
 }
 
 .sand {
+	position: relative;
 	background: var(--color-light);
 	color: var(--color-dark);
 	padding-top: -50px;
 }
 
 .white {
+	position: relative;
 	background: var(--color-lite);
 	color: var(--color-dark);
-	padding-bottom: 100px;
+	padding-bottom: 50px;
 }
 
 /***************************************/
