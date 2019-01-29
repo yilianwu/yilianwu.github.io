@@ -72,15 +72,14 @@ footer {
 	position: relative;
 	background: var(--color-light);
 	color: var(--color-dark);
-	margin-top: -0px;
-	margin-bottom: 0px;
+
 }
 
 .white {
 	position: relative;
 	background: var(--color-lite);
 	color: var(--color-dark);
-	margin-bottom: 20px;
+
 }
 
 /***************************************/
@@ -95,17 +94,13 @@ main {
 
 #about,
 #post,
-#posts,
+#posts,#recent-posts,
 #collections {
 	flex: auto;
 	display: flex;
+	height: 100vh;
 }
 
-#recent-posts{
-	flex: auto;
-	display: flex;
-	padding-bottom: 50px;
-}
 
 #about,
 #collections {
@@ -113,6 +108,7 @@ main {
 }
 
 .container {
+	padding-bottom: 50px;
 	margin: 32px auto;
 	width: 72%;
 }
