@@ -73,6 +73,7 @@ footer {
 	background: var(--color-light);
 	color: var(--color-dark);
 	margin-top: -0px;
+	margin-bottom: 0px;
 }
 
 .white {
