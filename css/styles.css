@@ -42,7 +42,7 @@ footer {
 }
 
 img[alt="Imgur"] { 
-  max-width:  50vw; 
+  max-width:  60vw; 
   display: block;
 }
 
@@ -196,7 +196,7 @@ a {
 }
 
 .white a {
-	color: #30B200; /*Green*/
+	color: #266fe8; /*urlBlue*/
 }
 
 .white a:hover {

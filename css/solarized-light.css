@@ -9,7 +9,7 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   overflow-x: auto;
   padding: 0.5em;
   background: #fdf6e3;
-  color: #657b83;
+  color: #715736;
 }
 
 .hljs-comment,
@@ -50,7 +50,7 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .hljs-template-variable,
 .hljs-class .hljs-title,
 .hljs-type {
-  color: #b58900;
+  color: #6d248c;
 }
 
 /* Solarized Orange */
@@ -68,7 +68,7 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 /* Solarized Red */
 .hljs-built_in,
 .hljs-deletion {
-  color: #dc322f;
+  color: #de310b;
 }
 
 .hljs-formula {
