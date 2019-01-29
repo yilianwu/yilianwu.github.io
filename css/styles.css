@@ -41,8 +41,8 @@ footer {
 	padding: 8px 0px;
 }
 
-img[alt="imgur"] { 
-  max-width:  400px; 
+img[alt="Imgur"] { 
+  max-width:  50vw; 
   display: block;
 }
 
