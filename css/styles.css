@@ -78,7 +78,6 @@ footer {
 .white {
 	background: var(--color-lite);
 	color: var(--color-dark);
-	height: 150px;
 	padding-bottom: 100px;
 }
 
