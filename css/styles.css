@@ -66,7 +66,7 @@ footer {
 	background: var(--color);
 	color: var(--color-light);
 	margin-bottom: 0;
-	}
+}
 
 .sand {
 	position: relative;
@@ -96,10 +96,15 @@ main {
 #about,
 #post,
 #posts,
-#recent-posts,
 #collections {
 	flex: auto;
 	display: flex;
+}
+
+#recent-posts{
+	flex: auto;
+	display: flex;
+	padding-bottom: 50px;
 }
 
 #about,
