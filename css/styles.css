@@ -103,7 +103,7 @@ main {
 #posts,
 #collections {
 	flex: auto;
-	display: flex;
+	display: table;
 	height: 100vh;
 }
 
