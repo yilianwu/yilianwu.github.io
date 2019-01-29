@@ -65,20 +65,21 @@ footer {
 .grape {
 	background: var(--color);
 	color: var(--color-light);
+	height: 100%;
 }
 
 .sand {
 	position: relative;
 	background: var(--color-light);
 	color: var(--color-dark);
-	padding-top: -50px;
+	padding-top: -20px;
 }
 
 .white {
 	position: relative;
 	background: var(--color-lite);
 	color: var(--color-dark);
-	padding-bottom: 50px;
+	padding-bottom: 20px;
 }
 
 /***************************************/
