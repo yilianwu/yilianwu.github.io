@@ -79,7 +79,7 @@ footer {
 	position: relative;
 	background: var(--color-lite);
 	color: var(--color-dark);
-	padding-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 /***************************************/
