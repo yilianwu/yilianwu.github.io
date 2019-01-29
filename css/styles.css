@@ -70,7 +70,6 @@ img[alt="Imgur"] {
 .grape {
 	background: var(--color);
 	color: var(--color-light);
-	margin-bottom: 0;
 }
 
 .sand {
