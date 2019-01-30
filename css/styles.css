@@ -142,6 +142,16 @@ main {
 	font-size: 1.2em;
 }
 
+#posts ul p{
+	display:block;
+   	max-width:72vw;
+   	overflow:hidden;
+   	text-overflow: ellipsis;
+  	display: -webkit-box;
+ 	-webkit-box-orient: vertical;
+   	-webkit-line-clamp: 3
+}
+
 /*********************************/
 
 .grape li,
