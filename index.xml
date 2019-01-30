@@ -17,9 +17,29 @@
       <pubDate>Mon, 28 Jan 2019 00:40:17 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/my-first-post/</guid>
-      <description>我個人是使用Mac OS 大概可以分成三個部分 * 建立GitHub repo * terminal Hugo 設定 * 將Hugo部署至GitHub Page  Step1:建立GitHub repo Step2:打開Terminal終端機  1.安裝Homebrew 2.安裝Hugo 3.建立Hugo網站 4.新增Hugo Site Theme(主題) 5.建立新文章 6.編輯config.toml檔 7.偷看一下  Step3:將Hugo部署到GitHub  Step1:建立GitHub repo 如果已經有github帳號的，可以直接新建一個repo repo的名稱要叫&amp;lt;username&amp;gt;.github.io //這裡的username請自行帶入你的帳號名稱 或是直接拿任何一個repo
+      <description>我個人是使用Mac OS 大概可以分成三個部分 * 建立GitHub repo * terminal Hugo 設定 * 將Hugo部署至GitHub Page
+ Step1:建立GitHub repo
+ Step2:打開Terminal終端機
+ 1.安裝Homebrew
+ 2.安裝Hugo
+ 3.建立Hugo網站
+ 4.新增Hugo Site Theme(主題)
+ 5.建立新文章
+ 6.編輯config.toml檔
+ 7.偷看一下
+  Step3:將Hugo部署到GitHub
+  Step1:建立GitHub repo 如果已經有github帳號的，可以直接新建一個repo repo的名稱要叫&amp;lt;username&amp;gt;.github.io //這裡的username請自行帶入你的帳號名稱 或是直接拿任何一個repo
 創建好了之後到repo設定，將GitHub Page的功能打開～ 舉例來說，我的username是yilianwu 之後我的網址就會是 https://yilianwu.github.io 如果有自己的domain name也可以直接在這邊改好哦
 Step2:打開Terminal終端機 1.安裝Homebrew /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  2.安裝Hugo brew install hugo  3.建立Hugo網站 #創一個資料夾 他的路徑是 ~/site-hugo hugo new site site-hugo #進到資料夾中 cd site-hugo  這裡的site-hugo可以是任意名稱</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://yilianwu.github.io/posts%5Cmy-first-post/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts%5Cmy-first-post/</guid>
+      <description>.anim-fade-in{-webkit-animation-name:fade-in;animation-name:fade-in;-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out}.anim-fade-in.fast{-webkit-animation-duration:300ms;animation-duration:300ms}@-webkit-keyframes fade-in{0%{opacity:0}100%{opacity:1}}@keyframes fade-in{0%{opacity:0}100%{opacity:1}}.anim-fade-up{opacity:0;-webkit-animation-name:fade-up;animation-name:fade-up;-webkit-animation-duration:0.3s;animation-duration:0.3s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;-webkit-animation-delay:1s;animation-delay:1s}@-webkit-keyframes fade-up{0%{opacity:0.8;-webkit-transform:translateY(100%);transform:translateY(100%)}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes fade-up{0%{opacity:0.8;-webkit-transform:translateY(100%);transform:translateY(100%)}100%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}.anim-fade-down{-webkit-animation-name:fade-down;animation-name:fade-down;-webkit-animation-duration:0.3s;animation-duration:0.3s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-timing-function:ease-in;animation-timing-function:ease-in}@-webkit-keyframes fade-down{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}100%{opacity:0.5;-webkit-transform:translateY(100%);transform:translateY(100%)}}@keyframes fade-down{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}100%{opacity:0.5;-webkit-transform:translateY(100%);transform:translateY(100%)}}.anim-grow-x{width:0%;-webkit-animation-name:grow-x;animation-name:grow-x;-webkit-animation-duration:0.3s;animation-duration:0.3s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-timing-function:ease;animation-timing-function:ease;-webkit-animation-delay:0.5s;animation-delay:0.5s}@-webkit-keyframes grow-x{to{width:100%}}@keyframes grow-x{to{width:100%}}.anim-shrink-x{-webkit-animation-name:shrink-x;animation-name:shrink-x;-webkit-animation-duration:0.3s;animation-duration:0.3s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-timing-function:ease-in-out;animation-timing-function:ease-in-out;-webkit-animation-delay:0.5s;animation-delay:0.5s}@-webkit-keyframes shrink-x{to{width:0%}}@keyframes shrink-x{to{width:0%}}.anim-scale-in{-webkit-animation-name:scale-in;animation-name:scale-in;-webkit-animation-duration:0.15s;animation-duration:0.15s;-webkit-animation-timing-function:cubic-bezier(0.2, 0, 0.13, 1.5);animation-timing-function:cubic-bezier(0.2, 0, 0.13, 1.5)}@-webkit-keyframes scale-in{0%{opacity:0;-webkit-transform:scale(0.5);transform:scale(0.5)}100%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}@keyframes scale-in{0%{opacity:0;-webkit-transform:scale(0.5);transform:scale(0.5)}100%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}.anim-pulse{-webkit-animation-name:pulse;animation-name:pulse;-webkit-animation-duration:2s;animation-duration:2s;-webkit-animation-timing-function:linear;animation-timing-function:linear;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}@-webkit-keyframes pulse{0%{opacity:0.3}10%{opacity:1}100%{opacity:0.3}}@keyframes pulse{0%{opacity:0.3}10%{opacity:1}100%{opacity:0.3}}.anim-pulse-in{-webkit-animation-name:pulse-in;animation-name:pulse-in;-webkit-animation-duration:0.5s;animation-duration:0.5s}@-webkit-keyframes pulse-in{0%{-webkit-transform:scale3d(1, 1, 1);transform:scale3d(1, 1, 1)}50%{-webkit-transform:scale3d(1.1, 1.1, 1.1);transform:scale3d(1.1, 1.1, 1.1)}100%{-webkit-transform:scale3d(1, 1, 1);transform:scale3d(1, 1, 1)}}@keyframes pulse-in{0%{-webkit-transform:scale3d(1, 1, 1);transform:scale3d(1, 1, 1)}50%{-webkit-transform:scale3d(1.1, 1.1, 1.1);transform:scale3d(1.1, 1.1, 1.1)}100%{-webkit-transform:scale3d(1, 1, 1);transform:scale3d(1, 1, 1)}}.border{border:1px #e1e4e8 solid !important}.border-top{border-top:1px #e1e4e8 solid !important}.border-right{border-right:1px #e1e4e8 solid !important}.border-bottom{border-bottom:1px #e1e4e8 solid !important}.border-left{border-left:1px #e1e4e8 solid !important}.border-y{border-top:1px #e1e4e8 solid !important;border-bottom:1px #e1e4e8 solid !important}.border-dashed{border-style:dashed !important}.border-blue{border-color:#0366d6 !</description>
     </item>
     
   </channel>
