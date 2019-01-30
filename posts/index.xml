@@ -17,8 +17,7 @@
       <pubDate>Mon, 28 Jan 2019 00:40:17 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/my-first-post/</guid>
-      <description>我個人是使用Mac OS 大概可以分成三個部分 * 建立GitHub repo * terminal Hugo 設定 * 將Hugo部署至GitHub Page
- Step1:建立GitHub repo
+      <description>我個人是使用Mac OS 大概可以分成三個部分 * 建立GitHub repo * terminal Hugo 設定 * 將Hugo部署至GitHub Page  Step1:建立GitHub repo
  Step2:打開Terminal終端機
  1.安裝Homebrew
  2.安裝Hugo
