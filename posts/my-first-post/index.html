@@ -37,9 +37,28 @@
 
 <p>我個人是使用Mac OS
 大概可以分成三個部分
-  * 建立GitHub repo
-  * terminal Hugo 設定
-  * 將Hugo部署至GitHub Page</p>
+* 建立GitHub repo
+* terminal Hugo 設定
+* 將Hugo部署至GitHub Page
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 --></p>
+
+<ul>
+<li><a href="#step1建立github-repo">Step1:建立GitHub repo</a></li>
+<li><a href="#step2打開terminal終端機">Step2:打開Terminal終端機</a>
+
+<ul>
+<li><a href="#1安裝homebrew">1.安裝Homebrew</a></li>
+<li><a href="#2安裝hugo">2.安裝Hugo</a></li>
+<li><a href="#3建立hugo網站">3.建立Hugo網站</a></li>
+<li><a href="#4新增hugo-site-theme主題">4.新增Hugo Site Theme(主題)</a></li>
+<li><a href="#5建立新文章">5.建立新文章</a></li>
+<li><a href="#6編輯configtoml檔">6.編輯<code>config.toml</code>檔</a></li>
+<li><a href="#7偷看一下">7.偷看一下</a></li>
+</ul></li>
+<li><a href="#step3將hugo部署到github">Step3:將Hugo部署到GitHub</a></li>
+</ul>
+
+<!-- /TOC -->
 
 <h1 id="step1-建立github-repo">Step1:建立GitHub repo</h1>
 
@@ -68,11 +87,11 @@ repo的名稱要叫<code>&lt;username&gt;.github.io</code> //這裡的username�
 
 <h2 id="3-建立hugo網站">3.建立Hugo網站</h2>
 
-<pre><code class="language-bash">#創一個資料夾 他的路徑是 ~/site-hugo
-hugo new site site-hugo
+<pre><code class="language-bash">  #創一個資料夾 他的路徑是 ~/site-hugo
+  hugo new site site-hugo
 
-#進到資料夾中
-cd site-hugo
+  #進到資料夾中
+  cd site-hugo
 </code></pre>
 
 <p>這裡的<strong>site-hugo</strong>可以是任意名稱</p>
@@ -97,7 +116,8 @@ cd site-hugo
 </code></pre>
 
 <ol>
-<li>將<code>/themes/hugo-grapes</code>中的<code>/static</code>、<code>/layouts</code>、<code>/content</code>、<code>config.toml</code>複製到<code>site-hugo</code>中
+<li>將<code>/themes/hugo-grapes</code>中的<code>/static</code>、<code>/layouts</code>、<code>/content</code>
+與<code>config.toml</code>複製到<code>site-hugo</code>中
 原本的檔案會被覆蓋掉</li>
 </ol>
 
@@ -117,11 +137,11 @@ cd site-hugo
 
 <p>用文字編輯器打開<code>config.toml</code>修改：</p>
 
-<pre><code class="language-bash">#&lt;username&gt;改成你的GitHub帳號名稱
-URL = &quot;https://&lt;username&gt;.github.io&quot;    
-languageCode = &quot;zh-tw&quot;
-#自由命名
-title = &quot;No Title Needed&quot;
+<pre><code class="language-bash">  #&lt;username&gt;改成你的GitHub帳號名稱
+  URL = &quot;https://&lt;username&gt;.github.io&quot;    
+  languageCode = &quot;zh-tw&quot;
+  #自由命名
+  title = &quot;No Title Needed&quot;
 </code></pre>
 
 <h2 id="7-偷看一下">7.偷看一下</h2>
