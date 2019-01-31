@@ -32,8 +32,7 @@ footer {
 }
 
 header {
-	font-family: HelveticaNeue
-	font-style:italic;
+	font-family: 'Oswald', sans-serif;
 	font-size:20px;
 	background: var(--color);
 }
