@@ -10,7 +10,7 @@ body {
 	/*height: 100vh;*/
 	display: flex;
 	flex-direction: column;
-	
+
 }
 
 #space {
@@ -32,6 +32,7 @@ footer {
 }
 
 header {
+	font-family: Ubuntu Mono derivative Powerline;
 	background: var(--color);
 }
 
@@ -41,8 +42,8 @@ footer {
 	padding: 8px 0px;
 }
 
-img[alt="Imgur"] { 
-  max-width:  60vw; 
+img[alt="Imgur"] {
+  max-width:  60vw;
   display: block;
 }
 
@@ -80,7 +81,7 @@ img[alt="Imgur"] {
 
 .white {
 	position: relative;
-	background: var(--color-lite);
+	background: var(--color-light);
 	color: var(--color-dark);
 }
 
