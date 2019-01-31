@@ -32,7 +32,9 @@ footer {
 }
 
 header {
-	font-family: Ubuntu Mono derivative Powerline;
+	font-family: HelveticaNeue
+	font-style:italic;
+	font-size:20px;
 	background: var(--color);
 }
 
