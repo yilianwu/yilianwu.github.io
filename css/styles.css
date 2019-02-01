@@ -97,7 +97,17 @@ main {
 	flex-direction: column;
 }
 main .cursor{
-	webkit-animation: 1s blink step-end infinite;
+		animation: 1s blink step-end infinite;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: step-end;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+		webkit-animation: 1s blink step-end infinite;
+
 }
 
 #about,#recent-posts,#post{
