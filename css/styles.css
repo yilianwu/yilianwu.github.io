@@ -37,6 +37,7 @@ header {
 	background: var(--color);
 }
 
+
 footer {
 	font-size: .6rem;
 	text-align: center;
@@ -94,6 +95,18 @@ main {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
+}
+main .cursor{
+	webkit-animation: 1s blink step-end infinite;
+	animation: 1s blink step-end infinite;
+	animation-name: blink;
+	animation-duration: 1s;
+	animation-timing-function: step-end;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	animation-fill-mode: none;
+	animation-play-state: running;
 }
 
 #about,#recent-posts,#post{
