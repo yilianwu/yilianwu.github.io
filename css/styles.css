@@ -90,6 +90,35 @@ img[alt="Imgur"] {
 /***************************************/
 
 /**** Position and size elements ****/
+@keyframes blink{
+  0%{opacity: 1;}
+  100%{opacity: 0;}
+}
+@-webkit-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+
+}
+@-moz-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-o-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
 
 main {
 	flex: 1;
@@ -97,8 +126,12 @@ main {
 	flex-direction: column;
 }
 main .cursor{
-	webkit-animation: 1s blink step-end infinite;
-	animation: 1s blink step-end infinite;
+	animation: blink 1s linear infinite;
+    /* 其它浏览器兼容性前缀 */
+  -webkit-animation: blink 1s linear infinite;
+  -moz-animation: blink 1s linear infinite;
+  -ms-animation: blink 1s linear infinite;
+  -o-animation: blink 1s linear infinite;
 
 }
 
