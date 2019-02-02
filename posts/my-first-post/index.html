@@ -152,7 +152,7 @@ hugo #此指令會產生一個 /public 資料夾 就是網站發佈出去的樣�
 <p>接著，進到<code>/public</code> 建立git連結</p>
 
 <pre><code class="language-bash">cd public
-git initial
+git init
 git remote add origin https://&lt;username&gt;.github.io.git
 </code></pre>
 
@@ -166,9 +166,7 @@ git remote add origin https://&lt;username&gt;.github.io.git
 
 <h2 id="2-部署">2.部署</h2>
 
-<pre><code class="language-bash">hugo  #生成hugo靜態網頁
-cd public
-# push 上 GitHub
+<pre><code class="language-bash"># push 上 GitHub
 git add .
 git commit -m &quot;&lt;msg&gt;&quot; #&lt;msg&gt;可以填你要commit的東西
 git push -u origin master
@@ -200,6 +198,7 @@ touch deploy.sh
 <pre><code class="language-bash">  #!/bin/sh
   echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
   #生成靜態網頁至 public
+  cd site-hugo
   hugo
   #部署至github
   cd public
@@ -213,6 +212,13 @@ touch deploy.sh
 <p>之後只要執行</p>
 
 <pre><code class="language-bash">  ./deploy.sh  
+</code></pre>
+
+<p>如果出現Error:bash Permission denied
+  到表你沒有權限執行這個檔案
+  這時候可以透過，來得到權限</p>
+
+<pre><code class="language-bash">  chmod u+x deploy.sh
 </code></pre>
 
 <p><img src="https://i.imgur.com/wcSo6bM.png" alt="Imgur" /></p>
