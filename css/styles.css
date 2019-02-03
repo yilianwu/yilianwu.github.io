@@ -52,13 +52,11 @@ img[alt="thumbnail"]{
 	max-width: 20vw;
 	display: block;
 }
+
 .box p{
   float: left;
 	max-width: 20vw;
   margin: 1em;
-}
-.elem{
-
 }
 
 .breadcrumb {
