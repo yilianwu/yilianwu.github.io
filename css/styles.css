@@ -41,7 +41,7 @@ header {
 footer {
 	font-size: .6rem;
 	text-align: center;
-	padding: 8px 0px;
+	padding: 20px 0px;
 }
 
 img[alt="Imgur"] {
@@ -144,7 +144,7 @@ main .cursor{
 #collections {
 	flex: auto;
 	display:table;
-	height: 100vh;
+	height: fit-content;
 	min-width: 100%;
 }
 
