@@ -145,7 +145,7 @@ main .cursor{
 	flex: auto;
 	display:table;
 	height: 100vh;
-	min-width: 100vw;
+	min-width: 100%;
 }
 
 
