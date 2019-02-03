@@ -48,7 +48,7 @@ img[alt="Imgur"] {
   max-width:  60vw;
   display: block;
 }
-.box {
+.box p{
   float: left;
 	max-width: 20vw;
   margin: 1em;
