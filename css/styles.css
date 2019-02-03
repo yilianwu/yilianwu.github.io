@@ -143,7 +143,6 @@ main .cursor{
 #posts,
 #collections {
 	flex: auto;
-	display: table;
 	height: 100vh;
 }
 
