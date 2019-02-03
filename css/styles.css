@@ -64,9 +64,9 @@ img[alt="thumbnail"]{
     padding: 3px 0 0 3px;
 }
 .label, .endlabel {
-    position: absolute;
-    background-color: #6AC5AC;
-    color: #414142;
+    position: relative;
+    background-color:var(--color-light);
+    color: var(--color-dark);
     line-height: 1em;
 }
 
