@@ -53,7 +53,7 @@ img[alt="thumbnail"]{
 	display: block;
 }
 
-.box p{
+.box {
   float: left;
 	max-width: 20vw;
   margin: 1em;
