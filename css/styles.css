@@ -48,6 +48,10 @@ img[alt="Imgur"] {
   max-width:  60vw;
   display: block;
 }
+img[alt="thumbnail"]{
+	max-width: 20vw;
+	display: block;
+}
 .box p{
   float: left;
 	max-width: 20vw;
