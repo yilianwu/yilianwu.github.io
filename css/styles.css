@@ -166,7 +166,8 @@ main .cursor{
 }
 
 .container {
-	padding-bottom: 30px;
+	padding-top: 5vh;
+	/*****padding-bottom: 30px;******/
 	margin: 32px auto;
 	width: 72%;
 }
