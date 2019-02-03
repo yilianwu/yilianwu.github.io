@@ -48,6 +48,14 @@ img[alt="Imgur"] {
   max-width:  60vw;
   display: block;
 }
+.box {
+  float: left;
+	max-width: 20vw;
+  margin: 1em;
+}
+.elem{
+
+}
 
 .breadcrumb {
 	display: flex;
