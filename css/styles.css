@@ -13,12 +13,8 @@ body {
 
 }
 
-table {
-    display: table;
-		border:1px;
-    border-collapse: separate;
-    border-spacing: 2px;
-    border-color: grey;
+table, th, td {
+  border: 1px solid black;
 }
 
 #space {
