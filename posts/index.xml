@@ -26,6 +26,21 @@ Markdown 常用語法 • 標題 # 一級標題 ## 二級標題 ### 三級標題
     
     <item>
       <title>用GitHub Page搭配Hugo建立靜態網站</title>
+      <link>https://yilianwu.github.io/posts/github-hugo/</link>
+      <pubDate>Mon, 28 Jan 2019 00:40:17 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/github-hugo/</guid>
+      <description>我個人是使用Mac OS 大概可以分成三個部分 * 建立GitHub repo * terminal Hugo 設定 * 將Hugo部署至GitHub Page
+Step1:建立GitHub repo 如果已經有github帳號的，可以直接新建一個repo repo的名稱要叫&amp;lt;username&amp;gt;.github.io //這裡的username請自行帶入你的帳號名稱 或是直接拿任何一個repo
+創建好了之後到repo設定，將GitHub Page的功能打開～ 舉例來說，我的username是yilianwu 之後我的網址就會是 https://yilianwu.github.io 如果有自己的domain name也可以直接在這邊改好哦
+Step2:打開Terminal終端機 1.安裝Homebrew /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  2.安裝Hugo brew install hugo  3.建立Hugo網站 #創一個資料夾 他的路徑是 ~/site-hugo hugo new site site-hugo #進到資料夾中 cd site-hugo  這裡的site-hugo可以是任意名稱
+4.新增Hugo Site Theme(主題) 點我挑選主題
+這邊以Hugo Grapes舉例
+ 新創一個資料夾themes  mkdir themes #進到themes資料夾中 cd themes #將github上的hugo grapes給clone下來你的themes資料夾 git clone git@github.</description>
+    </item>
+    
+    <item>
+      <title>用GitHub Page搭配Hugo建立靜態網站</title>
       <link>https://yilianwu.github.io/posts/my-first-post/</link>
       <pubDate>Mon, 28 Jan 2019 00:40:17 +0800</pubDate>
       
