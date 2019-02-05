@@ -207,16 +207,20 @@ width: 100%
 
 /***********************************/
 /**** Posts div styling ****/
+#posts li{
+list-style-type:none;
+}
 
 #posts li p {
 height: 100%;
-font-size: .90em;
+font-size: .80em;
 margin-top: .25rem;
 margin-bottom: 0rem;
 }
 
 #posts li a {
-font-size: 1.2em;
+font-weight:bold;
+font-size: 1.5em;
 }
 
 #posts ul p{
