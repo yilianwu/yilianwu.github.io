@@ -57,7 +57,7 @@ padding: 20px 0px;
 }
 
 img[alt="Imgur"] {
-max-width: 40vw;
+max-width: 80%;
 display: block;
 }
 img[alt="thumbnail"]{
