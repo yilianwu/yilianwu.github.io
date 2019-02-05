@@ -19,9 +19,23 @@
       <guid>https://yilianwu.github.io/posts/markdown-intro/</guid>
       <description>最近發現用Markdown來做筆記超好用的！ 如果是平常用pages、word或記事本，常會因為寫完沒好好整理導致忘了什麼東西寫在哪，又或是整理起來很花時間，到最後又懶得整理了XDD
 Markdown常見於Github的readme.md檔 他的語法不會像HTML那樣繁雜，相反的他可以用很簡單很簡單的語法就能表現各個樣式的文字～
-Markdown 常用語法 • 標題 # 一級標題 ## 二級標題 ### 三級標題 #### 四級標題 ##### 五級標題 ###### 六級標題  一級標題 二級標題 三級標題 四級標題 五級標題 六級標題 • 列表 - 無順序列表 - 無順序列表 - 無順序列表  或是
-* 無順序列表 * 無順序列表 * 無順序列表  又或是
-+ 無順序列表 + 無順序列表 + 無順序列表   無順序列表 無順序列表 無順序列表  1. 有順序列表 1. 有順序列表 1. 有順序列表   有順序列表 有順序列表 有順序列表  • 待辦清單 To-Do-List - [x] @mentions, #refs, [links](), **formatting**, and &amp;lt;del&amp;gt;tags&amp;lt;/del&amp;gt; supported - [x] list syntax required (any unordered or ordered list supported) - [x] this is a complete item - [ ] this is an incomplete item  @mentions, #refs, [links](), formatting, and tags supported list syntax required (any unordered or ordered list supported) this is a complete item this is an incomplete item  • 引用文字 &amp;gt; Four has four letters   Four has four letters</description>
+ Markdown 常用語法
+ • 標題
+  一級標題
+ 二級標題
+ 三級標題
+ 四級標題
+ 五級標題
+ 六級標題
+    • 列表
+ • 待辦清單 To-Do-List
+ • 引用文字
+ • Hightlight 字元
+ • 插入圖片
+ • 插入連結
+ • 插入程式碼
+ • 表格
+   Markdown 常用語法 • 標題 # 一級標題 ## 二級標題 ### 三級標題 #### 四級標題 ##### 五級標題 ###### 六級標題  一級標題 二級標題 三級標題 四級標題 五級標題 六級標題 • 列表 - 無順序列表 - 無順序列表 - 無順序列表  或是</description>
     </item>
     
     <item>
