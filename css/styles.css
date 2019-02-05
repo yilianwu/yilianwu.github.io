@@ -57,7 +57,7 @@ padding: 20px 0px;
 }
 
 img[alt="Imgur"] {
-max-width: 60vw;
+max-width: 40vw;
 display: block;
 }
 img[alt="thumbnail"]{
@@ -189,13 +189,15 @@ text-align: center;
 }
 
 .container {
-padding-top: 5vh;
-/*****padding-bottom: 30px;******/
-padding-left: 20px;
-padding-right: 20px;
-margin: 32px auto;
-max-width: 720px;
-width: 100%;
+  padding-top: 5vh;
+  /*****padding-bottom: 30px;******/
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+  max-width: 720px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .avatar {
