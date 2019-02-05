@@ -192,7 +192,8 @@ text-align: center;
 padding-top: 5vh;
 /*****padding-bottom: 30px;******/
 margin: 32px auto;
-width: 72%;
+max-width: 720px;
+width: 100%;
 }
 
 .avatar {
