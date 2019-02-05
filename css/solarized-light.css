@@ -2,83 +2,85 @@
 
 Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com>
 
-*/
+  */
 
-.hljs {
+  .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
   background: #1d1f21;
   color: #c5c8c6;
-}
+  box-shadow: 0 2px 2px rgba(0,0,0,0.125);
+  border:0px;
+  }
 
-.hljs-comment,
-.hljs-quote {
+  .hljs-comment,
+  .hljs-quote {
   color: #646767;
-}
+  }
 
-/* Solarized Green */
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-addition {
+  /* Solarized Green */
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-addition {
   color: #A8FF60;
-}
+  }
 
-/* Solarized Cyan */
-.hljs-number,
-.hljs-string,
-.hljs-meta .hljs-meta-string,
-.hljs-literal,
-.hljs-doctag,
-.hljs-regexp {
+  /* Solarized Cyan */
+  .hljs-number,
+  .hljs-string,
+  .hljs-meta .hljs-meta-string,
+  .hljs-literal,
+  .hljs-doctag,
+  .hljs-regexp {
   color: #A8FF60;
-}
+  }
 
-/* Solarized Blue */
-.hljs-title,
-.hljs-section,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class {
+  /* Solarized Blue */
+  .hljs-title,
+  .hljs-section,
+  .hljs-name,
+  .hljs-selector-id,
+  .hljs-selector-class {
   color: #FF73FD;
-}
+  }
 
-/* Solarized Yellow */
-.hljs-attribute,
-.hljs-attr,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-class .hljs-title,
-.hljs-type {
+  /* Solarized Yellow */
+  .hljs-attribute,
+  .hljs-attr,
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-class .hljs-title,
+  .hljs-type {
   color: #DAD085;
-}
+  }
 
-/* Solarized Orange */
-.hljs-symbol,
-.hljs-bullet,
-.hljs-subst,
-.hljs-meta,
-.hljs-meta .hljs-keyword,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-link {
+  /* Solarized Orange */
+  .hljs-symbol,
+  .hljs-bullet,
+  .hljs-subst,
+  .hljs-meta,
+  .hljs-meta .hljs-keyword,
+  .hljs-selector-attr,
+  .hljs-selector-pseudo,
+  .hljs-link {
   color: #f58b40;
-}
+  }
 
-/* Solarized Red */
-.hljs-built_in,
-.hljs-deletion {
+  /* Solarized Red */
+  .hljs-built_in,
+  .hljs-deletion {
   color: #96CBFE;
-}
+  }
 
-.hljs-formula {
+  .hljs-formula {
   background: #1d1f21;
-}
+  }
 
-.hljs-emphasis {
+  .hljs-emphasis {
   font-style: italic;
-}
+  }
 
-.hljs-strong {
+  .hljs-strong {
   font-weight: bold;
-}
+  }

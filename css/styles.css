@@ -18,13 +18,12 @@ border: 1px solid black;
 }
 
 code {
-display: block;
-overflow-x: auto;
-padding: 0.5em;
-background: #1d1f21;
-color: #c5c8c6;
-/***border: 1px solid #4183c4!important;***/
-box-shadow: 0 2px 2px rgba(0,0,0,0.125);
+  overflow-x: auto;
+  margin:0;
+  padding:0;
+  border-radius:3px;
+  background-color:#f8f8f8;
+  border: 1px solid #ddd
 }
 
 #space {
