@@ -18,12 +18,12 @@ border: 1px solid black;
 }
 
 code {
-  overflow-x: auto;
-  margin:0;
-  padding:0;
-  border-radius:3px;
-  background-color:#f8f8f8;
-  border: 1px solid #ddd
+overflow-x: auto;
+margin:0;
+padding:0;
+border-radius:3px;
+background-color:#f8f8f8;
+border: 1px solid #ddd
 }
 
 #space {
@@ -67,11 +67,11 @@ display: block;
 }
 
 .box {
-  float: left;
-  padding-right:40px;
-  padding-bottom:20px;
-  max-width: 200px;
-  margin: 1em;
+float: left;
+padding-right:40px;
+padding-bottom:20px;
+max-width: 200px;
+margin: 1em;
 }
 .endlabel {
 right: 0;
@@ -79,7 +79,7 @@ bottom: 0;
 padding: 3px 0 0 3px;
 }
 .label, .endlabel {
-  font-size: 0.6em;
+font-size: 0.6em;
 position: relative;
 background-color:var(--color-light);
 color: var(--color-dark);
@@ -193,25 +193,25 @@ text-align: center;
 }
 
 .container {
-  padding-top: 5vh;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 0 auto;
-  max-width: 720px;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+padding-top: 5vh;
+padding-bottom: 20px;
+padding-left: 20px;
+padding-right: 20px;
+margin: 0 auto;
+max-width: 720px;
+width: 100%;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
 }
 .boxContainer {
-  padding-top: 5vh;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 0 auto;
-  max-width: 960px;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+padding-top: 5vh;
+padding-left: 20px;
+padding-right: 20px;
+margin: 0 auto;
+max-width: 960px;
+width: 100%;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
 }
 
 .avatar {
@@ -305,7 +305,8 @@ margin: 0px;
 }
 
 .white a {
-color: #266fe8; /*urlBlue*/
+color: var(--color-dark);
+border-bottom: dotted 1.5px var(--color-dark);
 }
 
 .white a:hover {
