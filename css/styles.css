@@ -22,12 +22,20 @@ border: 1px solid black;
 }
 
 code {
-overflow-x: auto;
+/*overflow-x: auto;
 margin:0;
 padding:0;
 border-radius:3px;
 background-color:#f8f8f8;
-border: 1px solid #ddd
+border: 1px solid #ddd*/
+
+display: inline-block;
+padding: 0 4px;
+margin: 0 4px;
+font-size: 90%;
+color: #c7254e;
+background-color: #f9f2f4;
+border-radius: 4px;
 }
 
 #space {
