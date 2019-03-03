@@ -5,9 +5,13 @@
 --color-lite: #F9F9F9;
 }
 
+html {
+    height: 100%;
+}
+
 body {
 margin: 0;
-height: 100vh;
+min-height: 100%;
 display: flex;
 flex-direction: column;
 
