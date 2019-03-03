@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>Mac Commandlines</title>
+      <title>我常用的Mac指令</title>
       <link>https://yilianwu.github.io/posts/mac-commandlines/</link>
       <pubDate>Sun, 03 Mar 2019 21:59:58 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/mac-commandlines/</guid>
-      <description> 我常用的Mac指令 Mac Terminal Command Lines Seirra叫出所有來源 sudo spctl --master-disable  製作重灌隨身碟 sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/目標磁碟名稱 --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction  建立加密的 Zip 壓縮檔，讓機密資料加上密碼保護 zip -e archivename.zip filetoprotect.txt  壓縮資料夾
+      <description> Seirra叫出所有來源 sudo spctl --master-disable  製作重灌隨身碟 (El Caption) sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/目標磁碟名稱 --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction  建立加密的 Zip 壓縮檔，讓機密資料加上密碼保護 zip -e archivename.zip filetoprotect.txt  壓縮資料夾
 zip -er ~/Desktop/encrypted.zip ~/Documents/Confidential/  Finder顯示隱藏檔 defaults write com.apple.finder AppleShowAllFiles -bool true  重啟Finder
 killall Finder  Terminal Star Wars 從終端機看星際大戰 telnet towel.blinkenlights.nl  </description>
     </item>
