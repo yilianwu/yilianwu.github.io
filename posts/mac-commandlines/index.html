@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-tw"><head>
-	<meta name="generator" content="Hugo 0.53" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>[ yilianwu ]</title>
@@ -27,56 +26,56 @@
     </nav>
 </header>
 
-<main id="home">
-    <div id="about" class="grape">
-        <div class="container">
-	    <div class="avatar">
-		
-		<img src="img/profile.png" alt="Avatar">
-		
+<main id="single">
+    <div id="post" class="white">
+	<div class="container">
+	    <div id="title">
+                <h1>Mac Commandlines</h1>
+                <time datetime="2019-03-03T21:59:58&#43;0800">2019-03-03</time>
 
 	    </div>
-            <div id="content">
+            <section class="post-content">
                 
-                <h2 id="wu-yi-lian">WU YI LIAN</h2>
-                <span>What is F times 5? It&rsquo;s Fleventy-five.</span>
-                <span class="cursor">_</span>
 
-            </div>
-        </div>
-    </div>
+<h1 id="我常用的mac指令-mac-terminal-command-lines">我常用的Mac指令 Mac Terminal Command Lines</h1>
 
-    <div id="recent-posts" class="sand">
-	<div class="container">
-            <h2>Recent Posts</h2>
-            <ul>
-                
-                    <li>
-                        <span><time datetime="2019-03-03T21:59:58&#43;0800">2019-03-03</time>
-</span>
-                        <a href="/posts/mac-commandlines/">Mac Commandlines</a>
-                    </li>
-                
-                    <li>
-                        <span><time datetime="2019-02-05T15:39:41&#43;0800">2019-02-05</time>
-</span>
-                        <a href="/posts/iterm-intro/">如何用 iTerm 美化你的終端機</a>
-                    </li>
-                
-                    <li>
-                        <span><time datetime="2019-02-03T20:42:27&#43;0800">2019-02-03</time>
-</span>
-                        <a href="/posts/markdown-intro/">Intro to Markdown</a>
-                    </li>
-                
-                    <li>
-                        <span><time datetime="2019-01-28T00:40:17&#43;0800">2019-01-28</time>
-</span>
-                        <a href="/posts/my-first-post/">用GitHub Page搭配Hugo建立靜態網站</a>
-                    </li>
-                
-            </ul>
-        </div>
+<h2 id="seirra叫出-所有來源">Seirra叫出<strong>所有來源</strong></h2>
+
+<pre><code>sudo spctl --master-disable  
+</code></pre>
+
+<h2 id="製作重灌隨身碟">製作重灌隨身碟</h2>
+
+<pre><code>sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/目標磁碟名稱 --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction
+</code></pre>
+
+<h2 id="建立加密的-zip-壓縮檔-讓機密資料加上密碼保護">建立加密的 Zip 壓縮檔，讓機密資料加上密碼保護</h2>
+
+<pre><code>zip -e archivename.zip filetoprotect.txt
+</code></pre>
+
+<p>壓縮資料夾</p>
+
+<pre><code>zip -er ~/Desktop/encrypted.zip ~/Documents/Confidential/
+</code></pre>
+
+<h2 id="finder顯示隱藏檔">Finder顯示隱藏檔</h2>
+
+<pre><code>defaults write com.apple.finder AppleShowAllFiles -bool true
+</code></pre>
+
+<p>重啟Finder</p>
+
+<pre><code>killall Finder
+</code></pre>
+
+<h2 id="terminal-star-wars-從終端機看星際大戰">Terminal Star Wars 從終端機看星際大戰</h2>
+
+<pre><code>telnet towel.blinkenlights.nl
+</code></pre>
+
+            </section>
+	</div>
     </div>
 </main>
 <footer class="sand">
