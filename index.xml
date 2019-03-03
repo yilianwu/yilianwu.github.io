@@ -17,9 +17,8 @@
       <pubDate>Sun, 03 Mar 2019 21:59:58 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/mac-commandlines/</guid>
-      <description> Seirra叫出所有來源 sudo spctl --master-disable  製作重灌隨身碟 (El Caption) sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/目標磁碟名稱 --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction  建立加密的 Zip 壓縮檔，讓機密資料加上密碼保護 zip -e archivename.zip filetoprotect.txt  壓縮資料夾
-zip -er ~/Desktop/encrypted.zip ~/Documents/Confidential/  Finder顯示隱藏檔 defaults write com.apple.finder AppleShowAllFiles -bool true  重啟Finder
-killall Finder  Terminal Star Wars 從終端機看星際大戰 telnet towel.blinkenlights.nl  </description>
+      <description>Command Line Basics 一些基本ㄉ操作 ~ –&amp;gt;最上層根目錄，通常是/Users/username ls -&amp;gt; 可看所有的內容 cd空格 資料夾名稱 –&amp;gt;進入某資料夾 cd空格 .. –&amp;gt;直接回到最上層根目錄 mkdir空格 資料夾 –&amp;gt;新增資料夾 touch空格 filename.txt –&amp;gt;新增一個filename.txt檔案 rm空格 filename.txt –&amp;gt;刪除檔案 rm空格 -r空格 dirname/ –&amp;gt;刪除一整個資料夾 command+上方向鍵 –&amp;gt;切換最近輸入的指令 mv空格 fileone.txt filetwo.jpg dirname/ –&amp;gt; 移動fileone.txt及filetwo.jpg 到dirname資料夾 mv空格 yo.html hey.html –&amp;gt;重新命名yo.html成hey.html cp空格 hello.html test/ –&amp;gt; 複製hello.html到test資料夾
+Seirra叫出所有來源 sudo spctl --master-disable  製作重灌隨身碟 (El Caption) sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/目標磁碟名稱 --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction  建立加密的 Zip 壓縮檔，讓機密資料加上密碼保護 zip -e archivename.</description>
     </item>
     
     <item>
