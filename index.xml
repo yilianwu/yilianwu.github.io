@@ -29,7 +29,8 @@ command+上方向鍵 –&amp;gt;切換最近輸入的指令
 mv空格 fileone.txt filetwo.jpg dirname/ –&amp;gt; 移動fileone.txt及filetwo.jpg 到dirname資料夾
 mv空格 yo.html hey.html –&amp;gt;重新命名yo.html成hey.html
 cp空格 hello.html test/ –&amp;gt; 複製hello.html到test資料夾
-建立加密的 Zip 壓縮檔，讓機密資料加上密碼保護 zip -e archivename.zip filetoprotect.txt  壓縮資料夾
+建立加密的 Zip 壓縮檔 讓機密資料加上密碼保護!
+zip -e archivename.zip filetoprotect.txt  壓縮資料夾
 zip -er ~/Desktop/encrypted.zip ~/Documents/Confidential/  For特殊用途 Seirra叫出所有來源 sudo spctl --master-disable  製作重灌隨身碟 (El Caption) sudo /Applications/Install\ OS\ X\ El\ Capitan.</description>
     </item>
     
@@ -73,7 +74,10 @@ Markdown 常用語法 • 標題 # 一級標題 ## 二級標題 ### 三級標題
       <pubDate>Mon, 28 Jan 2019 00:40:17 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/my-first-post/</guid>
-      <description>我個人是使用Mac OS 大概可以分成三個部分： 1.建立GitHub repo 2.terminal Hugo 設定 3.將Hugo部署至GitHub Page
+      <description>我個人是使用Mac OS 大概可以分成三個部分：
+1.建立GitHub repo
+2.terminal Hugo 設定
+3.將Hugo部署至GitHub Page
 Step1:建立GitHub repo 如果已經有github帳號的，可以直接新建一個repo repo的名稱要叫&amp;lt;username&amp;gt;.github.io //這裡的username請自行帶入你的帳號名稱 或是直接拿任何一個repo
 創建好了之後到repo設定，將GitHub Page的功能打開～ 舉例來說，我的username是yilianwu 之後我的網址就會是 https://yilianwu.github.io 如果有自己的domain name也可以直接在這邊改好哦
 Step2:打開Terminal終端機 1.安裝Homebrew /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  2.安裝Hugo brew install hugo  3.建立Hugo網站 #創一個資料夾 他的路徑是 ~/site-hugo hugo new site site-hugo #進到資料夾中 cd site-hugo  這裡的site-hugo可以是任意名稱
