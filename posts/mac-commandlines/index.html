@@ -35,8 +35,70 @@
 
 	    </div>
             <section class="post-content">
-              Page(/posts/mac-commandlines.md)
-                
+              
+
+<h3 id="command-line-basics-一些基本ㄉ操作">Command Line Basics 一些基本ㄉ操作&nbsp;<a class="anchor" href="#command-line-basics-一些基本ㄉ操作"><i class="small linkify icon"></i></a> </h3>
+
+<p><code>~</code> –&gt;最上層根目錄，通常是/Users/username</p>
+
+<p><code>ls</code> -&gt; 可看所有的內容</p>
+
+<p><code>cd空格 資料夾名稱</code> –&gt;進入某資料夾</p>
+
+<p><code>cd空格 ..</code> –&gt;直接回到最上層根目錄</p>
+
+<p><code>mkdir空格 資料夾</code> –&gt;新增資料夾</p>
+
+<p><code>touch空格 filename.txt</code> –&gt;新增一個filename.txt檔案</p>
+
+<p><code>rm空格 filename.txt</code> –&gt;刪除檔案</p>
+
+<p><code>rm空格 -r空格 dirname/</code> –&gt;刪除一整個資料夾</p>
+
+<p><code>command+上方向鍵</code> –&gt;切換最近輸入的指令</p>
+
+<p><code>mv空格 fileone.txt filetwo.jpg dirname/</code> –&gt; 移動fileone.txt及filetwo.jpg 到dirname資料夾</p>
+
+<p><code>mv空格 yo.html hey.html</code> –&gt;重新命名yo.html成hey.html</p>
+
+<p><code>cp空格 hello.html test/</code> –&gt; 複製hello.html到test資料夾</p>
+
+<h3 id="seirra叫出-所有來源">Seirra叫出<strong>所有來源</strong>&nbsp;<a class="anchor" href="#seirra叫出-所有來源"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>sudo spctl --master-disable  
+</code></pre>
+
+<h3 id="製作重灌隨身碟-el-caption">製作重灌隨身碟 (El Caption)&nbsp;<a class="anchor" href="#製作重灌隨身碟-el-caption"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/目標磁碟名稱 --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction
+</code></pre>
+
+<h3 id="建立加密的-zip-壓縮檔-讓機密資料加上密碼保護">建立加密的 Zip 壓縮檔，讓機密資料加上密碼保護&nbsp;<a class="anchor" href="#建立加密的-zip-壓縮檔-讓機密資料加上密碼保護"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>zip -e archivename.zip filetoprotect.txt
+</code></pre>
+
+<p>壓縮資料夾</p>
+
+<pre><code>zip -er ~/Desktop/encrypted.zip ~/Documents/Confidential/
+</code></pre>
+
+<h3 id="finder顯示隱藏檔">Finder顯示隱藏檔&nbsp;<a class="anchor" href="#finder顯示隱藏檔"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>defaults write com.apple.finder AppleShowAllFiles -bool true
+</code></pre>
+
+<p>重啟Finder</p>
+
+<pre><code>killall Finder
+</code></pre>
+
+<h3 id="terminal-star-wars-從終端機看星際大戰">Terminal Star Wars 從終端機看星際大戰&nbsp;<a class="anchor" href="#terminal-star-wars-從終端機看星際大戰"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>telnet towel.blinkenlights.nl
+</code></pre>
+
+              
             </section>
 	</div>
     </div>
