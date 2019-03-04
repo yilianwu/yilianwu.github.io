@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
+</head>
+<body><header>
+    <nav class="breadcrumb grape">
+	<h4><a href="/">[ yilianwu ]</a></h4>
+	<div id="space"></div>
+        
+        <a href="/">Home</a>
+        
+        <a href="/about">About</a>
+        
+        <a href="/posts">Posts</a>
+        
+        <a href="/works">Works</a>
+        
+    </nav>
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+	      <div id="title">
+                <h1>在雲端物聯網上建立微系統</h1>
+                <time datetime="2019-02-19T15:45:54&#43;0800">2019-02-19</time>
+
+	      </div>
+        <section class="post-content">
+          
+
+<h1 id="platform">Platform&nbsp;<a class="anchor" href="#platform"><i class="small linkify icon"></i></a> </h1>
+
+<ul>
+<li>Raspberry Pi</li>
+<li><a href="https://aws.amazon.com/tw/">Amazon AWS</a></li>
+<li><a href="https://cloud.google.com/">Google Cloud</a></li>
+<li><a href="https://azure.microsoft.com/zh-tw/">Microsoft Azure</a></li>
+<li><a href="https://tw.alibabacloud.com/">Alibaba</a></li>
+<li>其他
+
+<ul>
+<li>嵌入式系統</li>
+<li>LG WebOS</li>
+<li>基地台</li>
+<li>三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反向三角定位</li>
+<li>Google Machine Learning</li>
+<li><a href="https://www.tensorflow.org/">TensorFlow</a></li>
+</ul></li>
+</ul>
+
+<h2 id="aws">AWS&nbsp;<a class="anchor" href="#aws"><i class="small linkify icon"></i></a> </h2>
+
+<p><a href="https://aws.amazon.com/">https://aws.amazon.com/</a></p>
+
+<h3 id="註冊一個帳號">註冊一個帳號&nbsp;<a class="anchor" href="#註冊一個帳號"><i class="small linkify icon"></i></a> </h3>
+
+<p><img src="https://i.imgur.com/ExmnQIf.png" alt="Imgur" /></p>
+
+<h3 id="登入console">登入Console&nbsp;<a class="anchor" href="#登入console"><i class="small linkify icon"></i></a> </h3>
+
+<p>服務&gt;運算&gt;EC2
+選擇EC2
+<img src="https://i.imgur.com/mN9FFoU.png" alt="Imgur" /></p>
+
+<h3 id="launch-instance">Launch Instance&nbsp;<a class="anchor" href="#launch-instance"><i class="small linkify icon"></i></a> </h3>
+
+<p>創立一個Instance
+<img src="https://i.imgur.com/Sq4pDb9.png" alt="Imgur" /></p>
+
+<h4 id="step-1-選擇ami">Step 1: 選擇AMI&nbsp;<a class="anchor" href="#step-1-選擇ami"><i class="small linkify icon"></i></a> </h4>
+
+<p>請選擇Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-07ad4b1c3af1ea214
+<img src="https://i.imgur.com/tNGFH4f.png" alt="Imgur" /></p>
+
+<h4 id="step-2-choose-an-instance-type">Step 2: Choose an Instance Type&nbsp;<a class="anchor" href="#step-2-choose-an-instance-type"><i class="small linkify icon"></i></a> </h4>
+
+<p>選擇免費方案！
+<img src="https://i.imgur.com/j2QIAtX.png" alt="Imgur" /></p>
+
+<h4 id="step-3-review-and-launch">Step 3: Review and Launch&nbsp;<a class="anchor" href="#step-3-review-and-launch"><i class="small linkify icon"></i></a> </h4>
+
+<p>準備發佈，不用害怕
+<img src="https://i.imgur.com/eedYvN5.png" alt="Imgur" /></p>
+
+<h4 id="step-4-launch再給他按下去">Step 4: Launch再給他按下去&nbsp;<a class="anchor" href="#step-4-launch再給他按下去"><i class="small linkify icon"></i></a> </h4>
+
+<p>檢查無誤就可以發布囉
+<img src="https://i.imgur.com/ILABWJZ.png" alt="Imgur" /></p>
+
+<h4 id="step-5-創建key-pair">Step 5: 創建Key Pair&nbsp;<a class="anchor" href="#step-5-創建key-pair"><i class="small linkify icon"></i></a> </h4>
+
+<p><img src="https://i.imgur.com/75eUM0U.png" alt="Imgur" />
+創建好按Download
+<code>.pem</code>檔會存在你的下載資料夾</p>
+
+<h2 id="終端機打開">終端機打開&nbsp;<a class="anchor" href="#終端機打開"><i class="small linkify icon"></i></a> </h2>
+
+<h3 id="一些設定">一些設定&nbsp;<a class="anchor" href="#一些設定"><i class="small linkify icon"></i></a> </h3>
+
+<ol>
+<li><code>cd ~/Downloads/</code></li>
+<li><code>chmod 400 檔名.pem</code>
+將權限打開</li>
+<li><code>ls -al 檔名.pem</code>
+若出現<code>-r</code>就代表成功了哦</li>
+<li><code>cat 檔名.pem</code>
+<img src="https://i.imgur.com/JCfo4Tg.png" alt="Imgur" /></li>
+</ol>
+
+<h3 id="登入你的系統">登入你的系統&nbsp;<a class="anchor" href="#登入你的系統"><i class="small linkify icon"></i></a> </h3>
+
+<p><code>ssh -i &quot;檔名.pem&quot; ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com</code>
+ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com是我的Public DNS (IPv4)</p>
+
+<p>可以從這裡看～
+<img src="https://i.imgur.com/0BlGwIb.png" alt="Imgur" />
+若出現綠色ubuntu@ip-xxx-xx-xx-xx
+就代表成功登入ㄌ！
+<img src="https://i.imgur.com/wL5z1b7.png" alt="Imgur" /></p>
+
+        </section>
+        <div class="post-toc" id="post-toc" style="position: fixed; top: 20px;">
+          <h2 class="post-toc-title">Contents</h2>
+          <nav id="TableOfContents">
+<ul>
+<li><a href="#platform">Platform</a>
+<ul>
+<li><a href="#aws">AWS</a>
+<ul>
+<li><a href="#註冊一個帳號">註冊一個帳號</a></li>
+<li><a href="#登入console">登入Console</a></li>
+<li><a href="#launch-instance">Launch Instance</a>
+<ul>
+<li><a href="#step-1-選擇ami">Step 1: 選擇AMI</a></li>
+<li><a href="#step-2-choose-an-instance-type">Step 2: Choose an Instance Type</a></li>
+<li><a href="#step-3-review-and-launch">Step 3: Review and Launch</a></li>
+<li><a href="#step-4-launch再給他按下去">Step 4: Launch再給他按下去</a></li>
+<li><a href="#step-5-創建key-pair">Step 5: 創建Key Pair</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#終端機打開">終端機打開</a>
+<ul>
+<li><a href="#一些設定">一些設定</a></li>
+<li><a href="#登入你的系統">登入你的系統</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+	   </div>
+
+
+
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	<a href="https://www.youtube.com/channel/UCoX_ahsZ27IJh_WQK4CpGJw" target="_blank"><img src="https://i.imgur.com/pZI2aGT.png" height="30" width="30"></a>
+	<a href="https://github.com/yilianwu"><img src="https://i.imgur.com/BIgEqmF.png" target="_blank" height="30" width="30"></a>
+
+
+    <span style="display:block" class="footer-text">&copy 2019 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<link rel="stylesheet" href="https://yilianwu.github.io/css/solarized-light.css"/>
+<script src="https://yilianwu.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
