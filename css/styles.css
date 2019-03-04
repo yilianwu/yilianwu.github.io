@@ -40,7 +40,7 @@ margin: 0 10px;
 font-weight: 800;
 text-transform: uppercase;
 }
-nav{
+#TableOfContents{
   position: -webkit-sticky!important;
   position: sticky!important;
   padding-top: 1.rem;
@@ -50,14 +50,14 @@ nav{
   margin-left: 15px;
 }
 
-nav ul {
+#TableOfContents ul {
   color:#ffffffed;
   list-style: circle;
   margin-left: 1rem;
   padding-left: 0;
 }
 
-nav li,nav ul{
+#TableOfContents li,#TableOfContents ul{
    margin:5px;
 }
 
