@@ -46,6 +46,8 @@ nav{
   padding-top: 1.rem;
   padding-bottom: 1.5rem;
   font-size: .875rem;
+  margin-top: 10px;
+  margin-left: 15px;
 }
 
 nav ul {
@@ -148,6 +150,7 @@ line-height: 1em;
 .breadcrumb {
 display: flex;
 line-height: 2;
+margin-top: 0px;
 padding: 0px 16px;
 }
 
