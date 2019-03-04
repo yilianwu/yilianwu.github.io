@@ -30,6 +30,14 @@ flex-direction: column;
     word-wrap: break-word;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+
+
+}
+.post-toc-title {
+margin: 0 10px;
+font-size: .875rem;
+font-weight: 400;
+text-transform: uppercase;
 }
 nav{
   position: -webkit-sticky!important;
