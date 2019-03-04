@@ -34,9 +34,10 @@ flex-direction: column;
 
 }
 .post-toc-title {
+color:white;
+font-size: .95rem;
 margin: 0 10px;
-font-size: .875rem;
-font-weight: 400;
+font-weight: 800;
 text-transform: uppercase;
 }
 nav{

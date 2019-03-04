@@ -38,7 +38,7 @@
         <section class="post-content">
           
 
-<h3 id="command-line-basics-一些基本ㄉ操作">Command Line Basics 一些基本ㄉ操作&nbsp;<a class="anchor" href="#command-line-basics-一些基本ㄉ操作"><i class="small linkify icon"></i></a> </h3>
+<h1 id="command-line-basics-一些基本ㄉ操作">Command Line Basics 一些基本ㄉ操作&nbsp;<a class="anchor" href="#command-line-basics-一些基本ㄉ操作"><i class="small linkify icon"></i></a> </h1>
 
 <p><code>~</code> –&gt;最上層根目錄，通常是/Users/username</p>
 
@@ -64,17 +64,7 @@
 
 <p><code>cp空格 hello.html test/</code> –&gt; 複製hello.html到test資料夾</p>
 
-<h3 id="seirra叫出-所有來源">Seirra叫出<strong>所有來源</strong>&nbsp;<a class="anchor" href="#seirra叫出-所有來源"><i class="small linkify icon"></i></a> </h3>
-
-<pre><code>sudo spctl --master-disable  
-</code></pre>
-
-<h3 id="製作重灌隨身碟-el-caption">製作重灌隨身碟 (El Caption)&nbsp;<a class="anchor" href="#製作重灌隨身碟-el-caption"><i class="small linkify icon"></i></a> </h3>
-
-<pre><code>sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/目標磁碟名稱 --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction
-</code></pre>
-
-<h3 id="建立加密的-zip-壓縮檔-讓機密資料加上密碼保護">建立加密的 Zip 壓縮檔，讓機密資料加上密碼保護&nbsp;<a class="anchor" href="#建立加密的-zip-壓縮檔-讓機密資料加上密碼保護"><i class="small linkify icon"></i></a> </h3>
+<h2 id="建立加密的-zip-壓縮檔-讓機密資料加上密碼保護">建立加密的 Zip 壓縮檔，讓機密資料加上密碼保護&nbsp;<a class="anchor" href="#建立加密的-zip-壓縮檔-讓機密資料加上密碼保護"><i class="small linkify icon"></i></a> </h2>
 
 <pre><code>zip -e archivename.zip filetoprotect.txt
 </code></pre>
@@ -84,7 +74,19 @@
 <pre><code>zip -er ~/Desktop/encrypted.zip ~/Documents/Confidential/
 </code></pre>
 
-<h3 id="finder顯示隱藏檔">Finder顯示隱藏檔&nbsp;<a class="anchor" href="#finder顯示隱藏檔"><i class="small linkify icon"></i></a> </h3>
+<h1 id="for特殊用途">For特殊用途&nbsp;<a class="anchor" href="#for特殊用途"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="seirra叫出-所有來源">Seirra叫出<strong>所有來源</strong>&nbsp;<a class="anchor" href="#seirra叫出-所有來源"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>sudo spctl --master-disable  
+</code></pre>
+
+<h2 id="製作重灌隨身碟-el-caption">製作重灌隨身碟 (El Caption)&nbsp;<a class="anchor" href="#製作重灌隨身碟-el-caption"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/目標磁碟名稱 --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction
+</code></pre>
+
+<h2 id="finder顯示隱藏檔">Finder顯示隱藏檔&nbsp;<a class="anchor" href="#finder顯示隱藏檔"><i class="small linkify icon"></i></a> </h2>
 
 <pre><code>defaults write com.apple.finder AppleShowAllFiles -bool true
 </code></pre>
@@ -94,7 +96,9 @@
 <pre><code>killall Finder
 </code></pre>
 
-<h3 id="terminal-star-wars-從終端機看星際大戰">Terminal Star Wars 從終端機看星際大戰&nbsp;<a class="anchor" href="#terminal-star-wars-從終端機看星際大戰"><i class="small linkify icon"></i></a> </h3>
+<h1 id="隱藏彩蛋">隱藏彩蛋&nbsp;<a class="anchor" href="#隱藏彩蛋"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="terminal-star-wars-從終端機看星際大戰">Terminal Star Wars 從終端機看星際大戰&nbsp;<a class="anchor" href="#terminal-star-wars-從終端機看星際大戰"><i class="small linkify icon"></i></a> </h2>
 
 <pre><code>telnet towel.blinkenlights.nl
 </code></pre>
@@ -104,17 +108,19 @@
           <h2 class="post-toc-title">Contents</h2>
           <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#command-line-basics-一些基本ㄉ操作">Command Line Basics 一些基本ㄉ操作</a>
 <ul>
-<li>
+<li><a href="#建立加密的-zip-壓縮檔-讓機密資料加上密碼保護">建立加密的 Zip 壓縮檔，讓機密資料加上密碼保護</a></li>
+</ul></li>
+<li><a href="#for特殊用途">For特殊用途</a>
 <ul>
-<li><a href="#command-line-basics-一些基本ㄉ操作">Command Line Basics 一些基本ㄉ操作</a></li>
 <li><a href="#seirra叫出-所有來源">Seirra叫出<strong>所有來源</strong></a></li>
 <li><a href="#製作重灌隨身碟-el-caption">製作重灌隨身碟 (El Caption)</a></li>
-<li><a href="#建立加密的-zip-壓縮檔-讓機密資料加上密碼保護">建立加密的 Zip 壓縮檔，讓機密資料加上密碼保護</a></li>
 <li><a href="#finder顯示隱藏檔">Finder顯示隱藏檔</a></li>
-<li><a href="#terminal-star-wars-從終端機看星際大戰">Terminal Star Wars 從終端機看星際大戰</a></li>
 </ul></li>
+<li><a href="#隱藏彩蛋">隱藏彩蛋</a>
+<ul>
+<li><a href="#terminal-star-wars-從終端機看星際大戰">Terminal Star Wars 從終端機看星際大戰</a></li>
 </ul></li>
 </ul>
 </nav>
