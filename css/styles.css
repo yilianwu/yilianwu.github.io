@@ -119,6 +119,7 @@ footer {
 font-size: .6rem;
 text-align: center;
 padding: 20px 0px;
+z-index: 0;
 }
 
 img[alt="Imgur"] {
