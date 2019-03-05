@@ -12,16 +12,16 @@
     
     
     <item>
-      <title>Ssh Intro</title>
+      <title>SSH Intro</title>
       <link>https://yilianwu.github.io/posts/ssh-intro/</link>
       <pubDate>Tue, 05 Mar 2019 22:09:56 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/ssh-intro/</guid>
       <description>什麼是RPI?
-先來談談Microcontrollers(MCU) 有聽過
-- [Raspberry Pi]()
+先來談談 Microcontrollers ( MCU ) 有聽過
+- Raspberry Pi
 - BeagleBoard
-[Arduino]()  開源 =&amp;gt; 普及
+Arduino  開源 =&amp;gt; 普及
  燒錄方法便簡易(翻譯成組合語言給晶片)
  ATMEL被Microchip買下
  處理運算速度慢
@@ -39,9 +39,7 @@ ARM CPU - FPGA的分支  intel AMD兩大廠牌
    作業系統 Linux  MS-DOS
 純文字介面
  Windows PowerShell
- GoPro
- 即時作業系統rtos
-  linux.</description>
+ GoPro</description>
     </item>
     
     <item>
