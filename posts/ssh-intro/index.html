@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	<h4><a href="/">[ yilianwu ]</a></h4>
+	<div id="space"></div>
+        
+        <a href="/">Home</a>
+        
+        <a href="/about">About</a>
+        
+        <a href="/posts">Posts</a>
+        
+        <a href="/works">Works</a>
+        
+    </nav>
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+	      <div id="title">
+                <h1>Ssh Intro</h1>
+                <time datetime="2019-03-05T22:09:56&#43;0800">2019-03-05</time>
+
+	      </div>
+        <section class="post-content">
+          
+
+<h1 id="什麼是rpi">什麼是RPI?&nbsp;<a class="anchor" href="#什麼是rpi"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="先來談談microcontrollers-mcu">先來談談Microcontrollers(MCU)&nbsp;<a class="anchor" href="#先來談談microcontrollers-mcu"><i class="small linkify icon"></i></a> </h2>
+
+<p>有聽過- [Raspberry Pi]()- <a href="https://beagleboard.org">BeagleBoard</a></p>
+
+<h3 id="arduino">[Arduino]()&nbsp;<a class="anchor" href="#arduino"><i class="small linkify icon"></i></a> </h3>
+
+<ul>
+<li>開源 =&gt; 普及</li>
+<li>燒錄方法便簡易(翻譯成組合語言給晶片)</li>
+<li>ATMEL被Microchip買下</li>
+<li>處理運算速度慢</li>
+</ul>
+
+<h2 id="cpld-複雜可程式邏輯裝置">CPLD 複雜可程式邏輯裝置&nbsp;<a class="anchor" href="#cpld-複雜可程式邏輯裝置"><i class="small linkify icon"></i></a> </h2>
+
+<h3 id="verilog">Verilog&nbsp;<a class="anchor" href="#verilog"><i class="small linkify icon"></i></a> </h3>
+
+<p><img src="http://www.seattlerobotics.org/encoder/200006/glb.gif" alt="Imgur" />電晶體的排列方法的程式語言加法器數位邏輯</p>
+
+<p>9013電晶體 in Arduino  <img src="http://gc.digitw.com/KITs/VC-LED/CS9013.jpg" alt="Imgur" /></p>
+
+<h2 id="fpga-可程式化邏輯閘陣列">FPGA 可程式化邏輯閘陣列&nbsp;<a class="anchor" href="#fpga-可程式化邏輯閘陣列"><i class="small linkify icon"></i></a> </h2>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Altera_Flex_EPF10K20_20000_cell_FPGA.jpg/300px-Altera_Flex_EPF10K20_20000_cell_FPGA.jpg" alt="" />處理速度快，好幾千跟腳位平行運算- 顯示卡- ＨＤＭＩ- ＶＩＶＥ</p>
+
+<h2 id="arm-cpu-fpga的分支">ARM CPU - FPGA的分支&nbsp;<a class="anchor" href="#arm-cpu-fpga的分支"><i class="small linkify icon"></i></a> </h2>
+
+<ul>
+<li>intel AMD兩大廠牌
+<ul>
+<li>晶片擺法與組合 怎樣才會速率好</li>
+<li>intel Apple都在用</li>
+<li>電子訊號速度接近光速</li>
+</ul></li>
+</ul>
+
+<h2 id="作業系統-linux">作業系統 Linux&nbsp;<a class="anchor" href="#作業系統-linux"><i class="small linkify icon"></i></a> </h2>
+
+<ul>
+<li>MS-DOS純文字介面</li>
+<li>Windows PowerShell</li>
+<li>GoPro
+<ul>
+<li>即時作業系統rtos</li>
+</ul></li>
+<li>linux.vbird.org</li>
+</ul>
+
+<h2 id="ssh">SSH&nbsp;<a class="anchor" href="#ssh"><i class="small linkify icon"></i></a> </h2>
+
+<p>//<a href="https://yilianwu.github.io/posts/mac-commandlines">一些Mac SSH指令</a></p>
+
+<h3 id="利用ssh連結server">利用SSH連結Server&nbsp;<a class="anchor" href="#利用ssh連結server"><i class="small linkify icon"></i></a> </h3>
+
+<p>E.g. 登入學校老師ㄉ電腦需要幾樣東西1. 欲登入的伺服器的使用者名稱與密碼2. 伺服器的ip<img src="https://i.imgur.com/tHNJDFw.png" alt="Imgur" /></p>
+
+<p>終端機打以下指令<code>ssh username@ipaddress</code>輸入正確密碼後就進去囉！</p>
+
+<p>#一些上課提到ㄉ指令<code>sudo reboot</code> //重開機<code>tail -f /var/log/wifi.log</code> //查看連同網域wifi的server有哪些<code>man tail</code>manual //叫出說明書<code>pwd</code> //所在位置<code>vim 1.txt</code> //利用vim編寫檔案</p>
+
+<h2 id="題外話">題外話&nbsp;<a class="anchor" href="#題外話"><i class="small linkify icon"></i></a> </h2>
+
+<p>Aircrack-ngnmap</p>
+
+        </section>
+        <div class="post-toc" id="post-toc">
+          <h2 class="post-toc-title">Contents</h2>
+          <nav id="TableOfContents">
+<ul>
+<li><a href="#什麼是rpi">什麼是RPI?</a>
+<ul>
+<li><a href="#先來談談microcontrollers-mcu">先來談談Microcontrollers(MCU)</a>
+<ul>
+<li><a href="#arduino">[Arduino]()</a></li>
+</ul></li>
+<li><a href="#cpld-複雜可程式邏輯裝置">CPLD 複雜可程式邏輯裝置</a>
+<ul>
+<li><a href="#verilog">Verilog</a></li>
+</ul></li>
+<li><a href="#fpga-可程式化邏輯閘陣列">FPGA 可程式化邏輯閘陣列</a></li>
+<li><a href="#arm-cpu-fpga的分支">ARM CPU - FPGA的分支</a></li>
+<li><a href="#作業系統-linux">作業系統 Linux</a></li>
+<li><a href="#ssh">SSH</a>
+<ul>
+<li><a href="#利用ssh連結server">利用SSH連結Server</a></li>
+</ul></li>
+<li><a href="#題外話">題外話</a></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+	   </div>
+
+
+
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	<a href="https://www.youtube.com/channel/UCoX_ahsZ27IJh_WQK4CpGJw" target="_blank"><img src="https://i.imgur.com/pZI2aGT.png" height="30" width="30"></a>
+	<a href="https://github.com/yilianwu"><img src="https://i.imgur.com/BIgEqmF.png" target="_blank" height="30" width="30"></a>
+
+
+    <span style="display:block" class="footer-text">&copy 2019 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<link rel="stylesheet" href="https://yilianwu.github.io/css/solarized-light.css"/>
+<script src="https://yilianwu.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

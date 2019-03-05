@@ -6,10 +6,24 @@
     <description>Recent content in Posts on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 03 Mar 2019 21:59:58 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 05 Mar 2019 22:09:56 +0800</lastBuildDate>
     
 	<atom:link href="https://yilianwu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ssh Intro</title>
+      <link>https://yilianwu.github.io/posts/ssh-intro/</link>
+      <pubDate>Tue, 05 Mar 2019 22:09:56 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/ssh-intro/</guid>
+      <description>什麼是RPI? 先來談談Microcontrollers(MCU) 有聽過- [Raspberry Pi]()- BeagleBoard
+[Arduino]()  開源 =&amp;gt; 普及 燒錄方法便簡易(翻譯成組合語言給晶片) ATMEL被Microchip買下 處理運算速度慢  CPLD 複雜可程式邏輯裝置 Verilog 電晶體的排列方法的程式語言加法器數位邏輯
+9013電晶體 in Arduino FPGA 可程式化邏輯閘陣列 處理速度快，好幾千跟腳位平行運算- 顯示卡- ＨＤＭＩ- ＶＩＶＥ
+ARM CPU - FPGA的分支  intel AMD兩大廠牌  晶片擺法與組合 怎樣才會速率好 intel Apple都在用 電子訊號速度接近光速   作業系統 Linux  MS-DOS純文字介面 Windows PowerShell GoPro  即時作業系統rtos  linux.vbird.org  SSH //一些Mac SSH指令
+利用SSH連結Server E.g. 登入學校老師ㄉ電腦需要幾樣東西1. 欲登入的伺服器的使用者名稱與密碼2. 伺服器的ip終端機打以下指令ssh username@ipaddress輸入正確密碼後就進去囉！
+#一些上課提到ㄉ指令sudo reboot //重開機tail -f /var/log/wifi.log //查看連同網域wifi的server有哪些man tailmanual //叫出說明書pwd //所在位置vim 1.</description>
+    </item>
     
     <item>
       <title>我常用的Mac指令</title>
