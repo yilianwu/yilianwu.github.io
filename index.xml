@@ -25,7 +25,7 @@ Arduino  開源 =&amp;gt; 普及
  燒錄方法便簡易(翻譯成組合語言給晶片)
  ATMEL被Microchip買下
  處理運算速度慢
-  CPLD 複雜可程式邏輯裝置 Verilog 電晶體的排列方法的程式語言
+  一些歷史的演變 CPLD 複雜可程式邏輯裝置 Verilog 電晶體的排列方法的程式語言
 加法器數位邏輯
 9013電晶體 in Arduino
 FPGA 可程式化邏輯閘陣列 處理速度快，好幾千跟腳位平行運算
@@ -38,8 +38,7 @@ ARM CPU - FPGA的分支  intel AMD兩大廠牌
  電子訊號速度接近光速
    作業系統 Linux  MS-DOS
 純文字介面
- Windows PowerShell
- GoPro</description>
+ Windows PowerShell</description>
     </item>
     
     <item>
