@@ -38,16 +38,11 @@
         <section class="post-content">
           
 
-<p>電腦開著終端機在打程式很帥
-但是面對螢幕上一行行密密麻麻的程式碼，
-你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？</p>
+<p>電腦開著終端機在打程式很帥但是面對螢幕上一行行密密麻麻的程式碼，你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？</p>
 
 <p>你需要iTerm來拯救你的終端機！！！</p>
 
-<p>不囉唆，我就直接上圖了
-<img src="https://i.imgur.com/AReKyUb.png" alt="Imgur" />
-雖然Terminal可以設定顏色字體但iTerm可以做得更多
-以下將介紹iTerm如何搭配zsh主題&hellip;</p>
+<p>不囉唆，我就直接上圖了<img src="https://i.imgur.com/AReKyUb.png" alt="Imgur" />雖然Terminal可以設定顏色字體但iTerm可以做得更多以下將介紹iTerm如何搭配zsh主題&hellip;</p>
 
 <h1 id="安裝iterm2">安裝iTerm2&nbsp;<a class="anchor" href="#安裝iterm2"><i class="small linkify icon"></i></a> </h1>
 
@@ -60,13 +55,9 @@
 <pre><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
 </code></pre>
 
-<p>oh-my-zsh是一套zsh shell的管理工具，會將Terminal從Mac shell原本的bash改成zsh，還可以透過這套工具來安裝各種plugin或theme。
-若出現這個畫面就代表oh-my-zsh安裝成功ㄌ
-<img src="https://cdn-images-1.medium.com/max/1600/1*tGgFvJOLKfOR08bxP2Y76w.png" alt="Imgur" /></p>
+<p>oh-my-zsh是一套zsh shell的管理工具，會將Terminal從Mac shell原本的bash改成zsh，還可以透過這套工具來安裝各種plugin或theme。若出現這個畫面就代表oh-my-zsh安裝成功ㄌ<img src="https://cdn-images-1.medium.com/max/1600/1*tGgFvJOLKfOR08bxP2Y76w.png" alt="Imgur" /></p>
 
-<p>執行完後會在 <code>~</code> 目錄下看見 <code>.oh-my-zsh</code>資料夾以及 <code>.zshrc</code>檔案
-將<code>.zshrc</code>開啟會看到 <strong>ZSH_THEME=”robbyrussell&rdquo;</strong>
-ZSH_THEME就是zsh主題，預設值是robbyrussell。</p>
+<p>執行完後會在 <code>~</code> 目錄下看見 <code>.oh-my-zsh</code>資料夾以及 <code>.zshrc</code>檔案將<code>.zshrc</code>開啟會看到 <strong>ZSH_THEME=”robbyrussell&rdquo;</strong>ZSH_THEME就是zsh主題，預設值是robbyrussell。</p>
 
 <p>找不到檔案嗎？</p>
 
@@ -74,8 +65,7 @@ ZSH_THEME就是zsh主題，預設值是robbyrussell。</p>
 
 <h1 id="安裝-設定主題">安裝、設定主題&nbsp;<a class="anchor" href="#安裝-設定主題"><i class="small linkify icon"></i></a> </h1>
 
-<p>這邊以<strong>Cobalt2</strong>為例
-至<a href="https://github.com/wesbos/Cobalt2-iterm">https://github.com/wesbos/Cobalt2-iterm</a></p>
+<p>這邊以<strong>Cobalt2</strong>為例至<a href="https://github.com/wesbos/Cobalt2-iterm">https://github.com/wesbos/Cobalt2-iterm</a></p>
 
 <ol>
 <li><p>將<code>cobalt2.zsh-theme</code>下載下來並丟到<code>~/.oh-my-zsh/themes/</code></p></li>
@@ -104,15 +94,11 @@ ZSH_THEME就是zsh主題，預設值是robbyrussell。</p>
   ./install.sh
 </code></pre>
 
-<p>更改iTerm偏好設定
-<code>Preference -&gt; Profiles tab -&gt; Colors tab</code>
-將github上的<code>cobalt2.itermcolors</code>下載下來import到color presets後就會看到cobalt2的選項，把他選起來</p>
+<p>更改iTerm偏好設定<code>Preference -&gt; Profiles tab -&gt; Colors tab</code>將github上的<code>cobalt2.itermcolors</code>下載下來import到color presets後就會看到cobalt2的選項，把他選起來</p>
 
-<p>再到<code>Colors tab</code>左邊的<code>Text tab</code>
-將字體改成<code>Inconsolata for Powerline</code>中體</p>
+<p>再到<code>Colors tab</code>左邊的<code>Text tab</code>將字體改成<code>Inconsolata for Powerline</code>中體</p>
 
-<p>重開一次iTerm
-或終端機打</p>
+<p>重開一次iTerm或終端機打</p>
 
 <pre><code>source .zshrc
 </code></pre>
