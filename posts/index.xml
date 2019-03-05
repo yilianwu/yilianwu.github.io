@@ -18,12 +18,30 @@
       
       <guid>https://yilianwu.github.io/posts/ssh-intro/</guid>
       <description>什麼是RPI?
-先來談談Microcontrollers(MCU) 有聽過- [Raspberry Pi]()- BeagleBoard
-[Arduino]()  開源 =&amp;gt; 普及 燒錄方法便簡易(翻譯成組合語言給晶片) ATMEL被Microchip買下 處理運算速度慢  CPLD 複雜可程式邏輯裝置 Verilog 電晶體的排列方法的程式語言加法器數位邏輯
-9013電晶體 in Arduino FPGA 可程式化邏輯閘陣列 處理速度快，好幾千跟腳位平行運算- 顯示卡- ＨＤＭＩ- ＶＩＶＥ
-ARM CPU - FPGA的分支  intel AMD兩大廠牌  晶片擺法與組合 怎樣才會速率好 intel Apple都在用 電子訊號速度接近光速   作業系統 Linux  MS-DOS純文字介面 Windows PowerShell GoPro  即時作業系統rtos  linux.vbird.org  SSH //一些Mac SSH指令
-利用SSH連結Server E.g. 登入學校老師ㄉ電腦需要幾樣東西1. 欲登入的伺服器的使用者名稱與密碼2. 伺服器的ip終端機打以下指令ssh username@ipaddress輸入正確密碼後就進去囉！
-#一些上課提到ㄉ指令sudo reboot //重開機tail -f /var/log/wifi.log //查看連同網域wifi的server有哪些man tailmanual //叫出說明書pwd //所在位置vim 1.</description>
+先來談談Microcontrollers(MCU) 有聽過
+- [Raspberry Pi]()
+- BeagleBoard
+[Arduino]()  開源 =&amp;gt; 普及
+ 燒錄方法便簡易(翻譯成組合語言給晶片)
+ ATMEL被Microchip買下
+ 處理運算速度慢
+  CPLD 複雜可程式邏輯裝置 Verilog 電晶體的排列方法的程式語言
+加法器數位邏輯
+9013電晶體 in Arduino
+FPGA 可程式化邏輯閘陣列 處理速度快，好幾千跟腳位平行運算
+- 顯示卡
+- ＨＤＭＩ
+- ＶＩＶＥ
+ARM CPU - FPGA的分支  intel AMD兩大廠牌
+ 晶片擺法與組合 怎樣才會速率好
+ intel Apple都在用
+ 電子訊號速度接近光速
+   作業系統 Linux  MS-DOS
+純文字介面
+ Windows PowerShell
+ GoPro
+ 即時作業系統rtos
+  linux.</description>
     </item>
     
     <item>
@@ -55,9 +73,25 @@ zip -er ~/Desktop/encrypted.zip ~/Documents/Confidential/  For特殊用途 Seirr
       <pubDate>Tue, 19 Feb 2019 15:45:54 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/microsys/</guid>
-      <description>Platform  Raspberry Pi Amazon AWS Google Cloud Microsoft Azure Alibaba 其他  嵌入式系統 LG WebOS 基地台 三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反向三角定位 Google Machine Learning TensorFlow   AWS https://aws.amazon.com/
-註冊一個帳號 登入Console 服務&amp;gt;運算&amp;gt;EC2選擇EC2Launch Instance 創立一個InstanceStep 1: 選擇AMI 請選擇Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-07ad4b1c3af1ea214Step 2: Choose an Instance Type 選擇免費方案！Step 3: Review and Launch 準備發佈，不用害怕Step 4: Launch再給他按下去 檢查無誤就可以發布囉Step 5: 創建Key Pair 創建好按Download.pem檔會存在你的下載資料夾
-終端機打開 一些設定  cd ~/Downloads/ chmod 400 檔名.</description>
+      <description>Platform  Raspberry Pi
+ Amazon AWS
+ Google Cloud
+ Microsoft Azure
+ Alibaba
+ 其他
+ 嵌入式系統
+ LG WebOS
+ 基地台
+ 三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反向三角定位
+ Google Machine Learning
+ TensorFlow
+   AWS https://aws.amazon.com/
+註冊一個帳號 登入Console 服務&amp;gt;運算&amp;gt;EC2
+選擇EC2
+Launch Instance 創立一個Instance
+Step 1: 選擇AMI 請選擇Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-07ad4b1c3af1ea214
+Step 2: Choose an Instance Type 選擇免費方案！
+Step 3: Review and Launch 準備發佈，不用害怕</description>
     </item>
     
     <item>
@@ -66,20 +100,30 @@ zip -er ~/Desktop/encrypted.zip ~/Documents/Confidential/  For特殊用途 Seirr
       <pubDate>Tue, 05 Feb 2019 15:39:41 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/iterm-intro/</guid>
-      <description>電腦開著終端機在打程式很帥但是面對螢幕上一行行密密麻麻的程式碼，你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？
+      <description>電腦開著終端機在打程式很帥
+但是面對螢幕上一行行密密麻麻的程式碼，
+你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？
 你需要iTerm來拯救你的終端機！！！
-不囉唆，我就直接上圖了雖然Terminal可以設定顏色字體但iTerm可以做得更多以下將介紹iTerm如何搭配zsh主題&amp;hellip;
+不囉唆，我就直接上圖了
+雖然Terminal可以設定顏色字體但iTerm可以做得更多
+以下將介紹iTerm如何搭配zsh主題&amp;hellip;
 安裝iTerm2 iTerm2是一個open source的Terminal，算是Mac原生Terminal的強化版，官網可直接下載。配合oh-my-zsh和其他plugin後，即可客製化出一個帶有個人風格外觀和功能的Terminal。
 安裝oh-my-zsh 終端機執行下列程式碼
-sh -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;quot;  oh-my-zsh是一套zsh shell的管理工具，會將Terminal從Mac shell原本的bash改成zsh，還可以透過這套工具來安裝各種plugin或theme。若出現這個畫面就代表oh-my-zsh安裝成功ㄌ執行完後會在 ~ 目錄下看見 .oh-my-zsh資料夾以及 .zshrc檔案將.zshrc開啟會看到 ZSH_THEME=”robbyrussell&amp;rdquo;ZSH_THEME就是zsh主題，預設值是robbyrussell。
+sh -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;quot;  oh-my-zsh是一套zsh shell的管理工具，會將Terminal從Mac shell原本的bash改成zsh，還可以透過這套工具來安裝各種plugin或theme。
+若出現這個畫面就代表oh-my-zsh安裝成功ㄌ
+執行完後會在 ~ 目錄下看見 .oh-my-zsh資料夾以及 .zshrc檔案
+將.zshrc開啟會看到 ZSH_THEME=”robbyrussell&amp;raquo;
+ZSH_THEME就是zsh主題，預設值是robbyrussell。
 找不到檔案嗎？
 如何顯現Finder中的隱藏檔
-安裝、設定主題 這邊以Cobalt2為例至https://github.com/wesbos/Cobalt2-iterm
+安裝、設定主題 這邊以Cobalt2為例
+至https://github.com/wesbos/Cobalt2-iterm
  將cobalt2.zsh-theme下載下來並丟到~/.oh-my-zsh/themes/
- 打開./zshrc檔，將ZSH_THEME=”robbyrussell&amp;rdquo;改成ZSH_THEME=cobalt2
+ 打開./zshrc檔，將ZSH_THEME=”robbyrussell&amp;raquo;改成ZSH_THEME=cobalt2
   因為主題字型支援問題，需安裝Powerline
- 安裝Python相關工具pip3   easy_install pip3   安裝字型   pip3 install --user powerline-status   git clone https://github.com/powerline/fonts cd fonts ./install.sh  更改iTerm偏好設定Preference -&amp;gt; Profiles tab -&amp;gt; Colors tab將github上的cobalt2.itermcolors下載下來import到color presets後就會看到cobalt2的選項，把他選起來
-再到Colors tab左邊的Text tab將字體改成Inconsolata for Powerline中體</description>
+ 安裝Python相關工具pip3
+   easy_install pip3   安裝字型
+   pip3 install --user powerline-status   git clone https://github.com/powerline/fonts cd fonts ./install.sh  更改iTerm偏好設定</description>
     </item>
     
     <item>
@@ -88,11 +132,16 @@ sh -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-m
       <pubDate>Sun, 03 Feb 2019 20:42:27 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/markdown-intro/</guid>
-      <description>最近發現用Markdown來做筆記超好用的！如果是平常用pages、word或記事本，常會因為寫完沒好好整理導致忘了什麼東西寫在哪，又或是整理起來很花時間，到最後又懶得整理了XDD
-Markdown常見於Github的readme.md檔他的語法不會像HTML那樣繁雜，相反的他可以用很簡單很簡單的語法就能表現各個樣式的文字～
+      <description>最近發現用Markdown來做筆記超好用的！
+如果是平常用pages、word或記事本，常會因為寫完沒好好整理導致忘了什麼東西寫在哪，又或是整理起來很花時間，到最後又懶得整理了XDD
+Markdown常見於Github的readme.md檔
+他的語法不會像HTML那樣繁雜，相反的他可以用很簡單很簡單的語法就能表現各個樣式的文字～
 Markdown 常用語法 • 標題 # 一級標題 ## 二級標題 ### 三級標題 #### 四級標題 ##### 五級標題 ###### 六級標題  一級標題 二級標題 三級標題 四級標題 五級標題 六級標題 • 列表 - 無順序列表 - 無順序列表 - 無順序列表  或是
 * 無順序列表 * 無順序列表 * 無順序列表  又或是
-+ 無順序列表 + 無順序列表 + 無順序列表   無順序列表 無順序列表 無順序列表  1. 有順序列表 1. 有順序列表 1. 有順序列表   有順序列表 有順序列表 有順序列表  • 待辦清單 To-Do-List - [x] @mentions, #refs, [links](), **formatting**, and &amp;lt;del&amp;gt;tags&amp;lt;/del&amp;gt; supported - [x] list syntax required (any unordered or ordered list supported) - [x] this is a complete item - [ ] this is an incomplete item  @mentions, #refs, [links](), formatting, and tags supported list syntax required (any unordered or ordered list supported) this is a complete item this is an incomplete item  • 引用文字 &amp;gt; Four has four letters   Four has four letters</description>
++ 無順序列表 + 無順序列表 + 無順序列表   無順序列表
+ 無順序列表
+ 無順序列表
+  1. 有順序列表 1. 有順序列表 1. 有順序列表   有順序列表</description>
     </item>
     
     <item>
@@ -101,16 +150,23 @@ Markdown 常用語法 • 標題 # 一級標題 ## 二級標題 ### 三級標題
       <pubDate>Mon, 28 Jan 2019 00:40:17 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/my-first-post/</guid>
-      <description>我個人是使用Mac OS大概可以分成三個部分：
+      <description>我個人是使用Mac OS
+大概可以分成三個部分：
 1.建立GitHub repo
 2.terminal Hugo 設定
 3.將Hugo部署至GitHub Page
-Step1:建立GitHub repo 如果已經有github帳號的，可以直接新建一個reporepo的名稱要叫&amp;lt;username&amp;gt;.github.io //這裡的username請自行帶入你的帳號名稱或是直接拿任何一個repo
-創建好了之後到repo設定，將GitHub Page的功能打開～舉例來說，我的username是yilianwu之後我的網址就會是 https://yilianwu.github.io如果有自己的domain name也可以直接在這邊改好哦
+Step1:建立GitHub repo 如果已經有github帳號的，可以直接新建一個repo
+repo的名稱要叫&amp;lt;username&amp;gt;.github.io //這裡的username請自行帶入你的帳號名稱
+或是直接拿任何一個repo
+創建好了之後到repo設定，將GitHub Page的功能打開～
+舉例來說，我的username是yilianwu
+之後我的網址就會是 https://yilianwu.github.io
+如果有自己的domain name也可以直接在這邊改好哦
 Step2:打開Terminal終端機 1.安裝Homebrew /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  2.安裝Hugo brew install hugo  3.建立Hugo網站 #創一個資料夾 他的路徑是 ~/site-hugo hugo new site site-hugo #進到資料夾中 cd site-hugo  這裡的site-hugo可以是任意名稱
 4.新增Hugo Site Theme(主題) 點我挑選主題
 這邊以Hugo Grapes舉例
- 新創一個資料夾themes  mkdir themes #進到themes資料夾中 cd themes #將github上的hugo grapes給clone下來你的themes資料夾 git clone git@github.com:shankar/hugo-grapes.git hugo-grapes   將/themes/hugo-grapes中的/static、/layouts、/content與config.toml複製到site-hugo中原本的檔案會被覆蓋掉  5.建立新文章 再打開terminal輸入以下指令</description>
+ 新創一個資料夾themes
+  mkdir themes #進到themes資料夾中 cd themes #將github上的hugo grapes給clone下來你的themes資料夾 git clone git@github.com:shankar/hugo-grapes.git hugo-grapes   將/themes/hugo-grapes中的/static、/layouts、/content</description>
     </item>
     
   </channel>

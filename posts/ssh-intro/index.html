@@ -42,52 +42,66 @@
 
 <h2 id="先來談談microcontrollers-mcu">先來談談Microcontrollers(MCU)&nbsp;<a class="anchor" href="#先來談談microcontrollers-mcu"><i class="small linkify icon"></i></a> </h2>
 
-<p>有聽過- [Raspberry Pi]()- <a href="https://beagleboard.org">BeagleBoard</a></p>
+<p>有聽過<br />
+- [Raspberry Pi]()<br />
+- <a href="https://beagleboard.org">BeagleBoard</a></p>
 
 <h3 id="arduino">[Arduino]()&nbsp;<a class="anchor" href="#arduino"><i class="small linkify icon"></i></a> </h3>
 
 <ul>
-<li>開源 =&gt; 普及</li>
-<li>燒錄方法便簡易(翻譯成組合語言給晶片)</li>
-<li>ATMEL被Microchip買下</li>
-<li>處理運算速度慢</li>
+<li>開源 =&gt; 普及<br /></li>
+<li>燒錄方法便簡易(翻譯成組合語言給晶片)<br /></li>
+<li>ATMEL被Microchip買下<br /></li>
+<li>處理運算速度慢<br />
+<br /></li>
 </ul>
 
 <h2 id="cpld-複雜可程式邏輯裝置">CPLD 複雜可程式邏輯裝置&nbsp;<a class="anchor" href="#cpld-複雜可程式邏輯裝置"><i class="small linkify icon"></i></a> </h2>
 
 <h3 id="verilog">Verilog&nbsp;<a class="anchor" href="#verilog"><i class="small linkify icon"></i></a> </h3>
 
-<p><img src="http://www.seattlerobotics.org/encoder/200006/glb.gif" alt="Imgur" />電晶體的排列方法的程式語言加法器數位邏輯</p>
+<p><img src="http://www.seattlerobotics.org/encoder/200006/glb.gif" alt="Imgur" /><br />
+電晶體的排列方法的程式語言<br />
+加法器數位邏輯</p>
 
-<p>9013電晶體 in Arduino  <img src="http://gc.digitw.com/KITs/VC-LED/CS9013.jpg" alt="Imgur" /></p>
+<p>9013電晶體 in Arduino<br />
+  <img src="http://gc.digitw.com/KITs/VC-LED/CS9013.jpg" alt="Imgur" /></p>
 
 <h2 id="fpga-可程式化邏輯閘陣列">FPGA 可程式化邏輯閘陣列&nbsp;<a class="anchor" href="#fpga-可程式化邏輯閘陣列"><i class="small linkify icon"></i></a> </h2>
 
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Altera_Flex_EPF10K20_20000_cell_FPGA.jpg/300px-Altera_Flex_EPF10K20_20000_cell_FPGA.jpg" alt="" /></p>
 
-<p>處理速度快，好幾千跟腳位平行運算- 顯示卡- ＨＤＭＩ- ＶＩＶＥ</p>
+<p>處理速度快，好幾千跟腳位平行運算<br />
+- 顯示卡<br />
+- ＨＤＭＩ<br />
+- ＶＩＶＥ</p>
 
 <h2 id="arm-cpu-fpga的分支">ARM CPU - FPGA的分支&nbsp;<a class="anchor" href="#arm-cpu-fpga的分支"><i class="small linkify icon"></i></a> </h2>
 
 <ul>
-<li>intel AMD兩大廠牌
+<li>intel AMD兩大廠牌<br />
+
 <ul>
-<li>晶片擺法與組合 怎樣才會速率好</li>
-<li>intel Apple都在用</li>
-<li>電子訊號速度接近光速</li>
+<li>晶片擺法與組合 怎樣才會速率好<br /></li>
+<li>intel Apple都在用<br /></li>
+<li>電子訊號速度接近光速<br />
+<br /></li>
 </ul></li>
 </ul>
 
 <h2 id="作業系統-linux">作業系統 Linux&nbsp;<a class="anchor" href="#作業系統-linux"><i class="small linkify icon"></i></a> </h2>
 
 <ul>
-<li>MS-DOS純文字介面</li>
-<li>Windows PowerShell</li>
-<li>GoPro
+<li>MS-DOS<br />
+純文字介面<br /></li>
+<li>Windows PowerShell<br /></li>
+<li>GoPro<br />
+
 <ul>
-<li>即時作業系統rtos</li>
+<li>即時作業系統rtos<br /></li>
 </ul></li>
-<li>linux.vbird.org</li>
+<li>linux.vbird.org<br />
+<br /></li>
 </ul>
 
 <h2 id="ssh">SSH&nbsp;<a class="anchor" href="#ssh"><i class="small linkify icon"></i></a> </h2>
@@ -96,15 +110,27 @@
 
 <h3 id="利用ssh連結server">利用SSH連結Server&nbsp;<a class="anchor" href="#利用ssh連結server"><i class="small linkify icon"></i></a> </h3>
 
-<p>E.g. 登入學校老師ㄉ電腦需要幾樣東西1. 欲登入的伺服器的使用者名稱與密碼2. 伺服器的ip<img src="https://i.imgur.com/tHNJDFw.png" alt="Imgur" /></p>
+<p>E.g. 登入學校老師ㄉ電腦<br />
+需要幾樣東西<br />
+1. 欲登入的伺服器的使用者名稱與密碼<br />
+2. 伺服器的ip<br />
+<img src="https://i.imgur.com/tHNJDFw.png" alt="Imgur" /></p>
 
-<p>終端機打以下指令<code>ssh username@ipaddress</code>輸入正確密碼後就進去囉！</p>
+<p>終端機打以下指令<br />
+<code>ssh username@ipaddress</code><br />
+輸入正確密碼後就進去囉！</p>
 
-<p>#一些上課提到ㄉ指令<code>sudo reboot</code> //重開機<code>tail -f /var/log/wifi.log</code> //查看連同網域wifi的server有哪些<code>man tail</code>manual //叫出說明書<code>pwd</code> //所在位置<code>vim 1.txt</code> //利用vim編寫檔案</p>
+<p>#一些上課提到ㄉ指令<br />
+<code>sudo reboot</code> //重開機<br />
+<code>tail -f /var/log/wifi.log</code> //查看連同網域wifi的server有哪些<br />
+<code>man tail</code>manual //叫出說明書<br />
+<code>pwd</code> //所在位置<br />
+<code>vim 1.txt</code> //利用vim編寫檔案</p>
 
 <h2 id="題外話">題外話&nbsp;<a class="anchor" href="#題外話"><i class="small linkify icon"></i></a> </h2>
 
-<p>Aircrack-ngnmap</p>
+<p>Aircrack-ng<br />
+nmap</p>
 
         </section>
         <div class="post-toc" id="post-toc">

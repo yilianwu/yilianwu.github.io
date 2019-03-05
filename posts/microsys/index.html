@@ -41,19 +41,21 @@
 <h1 id="platform">Platform&nbsp;<a class="anchor" href="#platform"><i class="small linkify icon"></i></a> </h1>
 
 <ul>
-<li>Raspberry Pi</li>
-<li><a href="https://aws.amazon.com/tw/">Amazon AWS</a></li>
-<li><a href="https://cloud.google.com/">Google Cloud</a></li>
-<li><a href="https://azure.microsoft.com/zh-tw/">Microsoft Azure</a></li>
-<li><a href="https://tw.alibabacloud.com/">Alibaba</a></li>
-<li>其他
+<li>Raspberry Pi<br /></li>
+<li><a href="https://aws.amazon.com/tw/">Amazon AWS</a><br /></li>
+<li><a href="https://cloud.google.com/">Google Cloud</a><br /></li>
+<li><a href="https://azure.microsoft.com/zh-tw/">Microsoft Azure</a><br /></li>
+<li><a href="https://tw.alibabacloud.com/">Alibaba</a><br /></li>
+<li>其他<br />
+
 <ul>
-<li>嵌入式系統</li>
-<li>LG WebOS</li>
-<li>基地台</li>
-<li>三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反向三角定位</li>
-<li>Google Machine Learning</li>
-<li><a href="https://www.tensorflow.org/">TensorFlow</a></li>
+<li>嵌入式系統<br /></li>
+<li>LG WebOS<br /></li>
+<li>基地台<br /></li>
+<li>三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反向三角定位<br /></li>
+<li>Google Machine Learning<br /></li>
+<li><a href="https://www.tensorflow.org/">TensorFlow</a><br />
+<br /></li>
 </ul></li>
 </ul>
 
@@ -67,48 +69,66 @@
 
 <h3 id="登入console">登入Console&nbsp;<a class="anchor" href="#登入console"><i class="small linkify icon"></i></a> </h3>
 
-<p>服務&gt;運算&gt;EC2選擇EC2<img src="https://i.imgur.com/mN9FFoU.png" alt="Imgur" /></p>
+<p>服務&gt;運算&gt;EC2<br />
+選擇EC2<br />
+<img src="https://i.imgur.com/mN9FFoU.png" alt="Imgur" /></p>
 
 <h3 id="launch-instance">Launch Instance&nbsp;<a class="anchor" href="#launch-instance"><i class="small linkify icon"></i></a> </h3>
 
-<p>創立一個Instance<img src="https://i.imgur.com/Sq4pDb9.png" alt="Imgur" /></p>
+<p>創立一個Instance<br />
+<img src="https://i.imgur.com/Sq4pDb9.png" alt="Imgur" /></p>
 
 <h4 id="step-1-選擇ami">Step 1: 選擇AMI&nbsp;<a class="anchor" href="#step-1-選擇ami"><i class="small linkify icon"></i></a> </h4>
 
-<p>請選擇Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-07ad4b1c3af1ea214<img src="https://i.imgur.com/tNGFH4f.png" alt="Imgur" /></p>
+<p>請選擇Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-07ad4b1c3af1ea214<br />
+<img src="https://i.imgur.com/tNGFH4f.png" alt="Imgur" /></p>
 
 <h4 id="step-2-choose-an-instance-type">Step 2: Choose an Instance Type&nbsp;<a class="anchor" href="#step-2-choose-an-instance-type"><i class="small linkify icon"></i></a> </h4>
 
-<p>選擇免費方案！<img src="https://i.imgur.com/j2QIAtX.png" alt="Imgur" /></p>
+<p>選擇免費方案！<br />
+<img src="https://i.imgur.com/j2QIAtX.png" alt="Imgur" /></p>
 
 <h4 id="step-3-review-and-launch">Step 3: Review and Launch&nbsp;<a class="anchor" href="#step-3-review-and-launch"><i class="small linkify icon"></i></a> </h4>
 
-<p>準備發佈，不用害怕<img src="https://i.imgur.com/eedYvN5.png" alt="Imgur" /></p>
+<p>準備發佈，不用害怕<br />
+<img src="https://i.imgur.com/eedYvN5.png" alt="Imgur" /></p>
 
 <h4 id="step-4-launch再給他按下去">Step 4: Launch再給他按下去&nbsp;<a class="anchor" href="#step-4-launch再給他按下去"><i class="small linkify icon"></i></a> </h4>
 
-<p>檢查無誤就可以發布囉<img src="https://i.imgur.com/ILABWJZ.png" alt="Imgur" /></p>
+<p>檢查無誤就可以發布囉<br />
+<img src="https://i.imgur.com/ILABWJZ.png" alt="Imgur" /></p>
 
 <h4 id="step-5-創建key-pair">Step 5: 創建Key Pair&nbsp;<a class="anchor" href="#step-5-創建key-pair"><i class="small linkify icon"></i></a> </h4>
 
-<p><img src="https://i.imgur.com/75eUM0U.png" alt="Imgur" />創建好按Download<code>.pem</code>檔會存在你的下載資料夾</p>
+<p><img src="https://i.imgur.com/75eUM0U.png" alt="Imgur" /><br />
+創建好按Download<br />
+<code>.pem</code>檔會存在你的下載資料夾</p>
 
 <h2 id="終端機打開">終端機打開&nbsp;<a class="anchor" href="#終端機打開"><i class="small linkify icon"></i></a> </h2>
 
 <h3 id="一些設定">一些設定&nbsp;<a class="anchor" href="#一些設定"><i class="small linkify icon"></i></a> </h3>
 
 <ol>
-<li><code>cd ~/Downloads/</code></li>
-<li><code>chmod 400 檔名.pem</code>將權限打開</li>
-<li><code>ls -al 檔名.pem</code>若出現<code>-r</code>就代表成功了哦</li>
-<li><code>cat 檔名.pem</code><img src="https://i.imgur.com/JCfo4Tg.png" alt="Imgur" /></li>
+<li><code>cd ~/Downloads/</code><br /></li>
+<li><code>chmod 400 檔名.pem</code><br />
+將權限打開<br /></li>
+<li><code>ls -al 檔名.pem</code><br />
+若出現<code>-r</code>就代表成功了哦<br /></li>
+<li><code>cat 檔名.pem</code><br />
+<img src="https://i.imgur.com/JCfo4Tg.png" alt="Imgur" /><br />
+<br /></li>
 </ol>
 
 <h3 id="登入你的系統">登入你的系統&nbsp;<a class="anchor" href="#登入你的系統"><i class="small linkify icon"></i></a> </h3>
 
-<p><code>ssh -i &quot;檔名.pem&quot; ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com</code>ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com是我的Public DNS (IPv4)</p>
+<p><code>ssh -i &quot;檔名.pem&quot; ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com</code><br />
+ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com是我的Public DNS (IPv4)</p>
 
-<p>可以從這裡看～<img src="https://i.imgur.com/0BlGwIb.png" alt="Imgur" />若出現綠色ubuntu@ip-xxx-xx-xx-xx就代表成功登入ㄌ！<img src="https://i.imgur.com/wL5z1b7.png" alt="Imgur" /></p>
+<p>可以從這裡看～<br />
+<img src="https://i.imgur.com/0BlGwIb.png" alt="Imgur" /><br />
+若出現綠色ubuntu@ip-xxx-xx-xx-xx<br />
+就代表成功登入ㄌ！<br />
+<img src="https://i.imgur.com/wL5z1b7.png" alt="Imgur" /></p>
 
         </section>
         <div class="post-toc" id="post-toc">
