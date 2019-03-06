@@ -141,9 +141,14 @@ line-height: 1em;
 
 .breadcrumb {
 display: flex;
-line-height: 2;
-margin-top: 0px;
-padding: 0px 16px;
+line-height: 2.4;
+padding-left: 20px;
+padding-right: 20px;
+margin: 0 auto;
+max-width: 800px;
+width: 100%;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
 }
 
 .breadcrumb a {
