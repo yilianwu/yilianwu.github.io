@@ -263,6 +263,10 @@ width: 100%;
 -webkit-box-sizing: border-box;
 box-sizing: border-box;
 }
+.paperbg{
+  padding: 4em 0 1px;
+  background: white;
+}
 .boxContainer {
 padding-top: 5vh;
 padding-left: 20px;
