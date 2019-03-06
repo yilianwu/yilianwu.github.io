@@ -151,10 +151,11 @@ box-sizing: border-box;
 }
 
 .breadcrumb a {
-color: var(--color-lite);
-font-size:1.0rem;
-margin-left: 16px;
-margin-top: auto;
+  color: var(--color-lite);
+  font-size:1.0rem;
+  margin-left: 16px;
+  margin-top: auto;
+  padding-left:.2rem;
 }
 
 .breadcrumb h4 {
@@ -252,7 +253,7 @@ text-align: center;
 }
 
 .container {
-  padding: 2em 0 1px;
+  padding: 2em 20px 1px;
   margin: 0 auto;
   max-width: 800px;
   width: 100%;
