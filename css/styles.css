@@ -154,7 +154,7 @@ box-sizing: border-box;
 
 .breadcrumb a {
   color: var(--color-lite);
-  font-size:1.0rem;
+  font-size:.9rem;
   margin-left: 16px;
   margin-top: auto;
   padding-left:.2rem;
