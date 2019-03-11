@@ -33,7 +33,7 @@
   </url>
   
   <url>
-    <loc>https://yilianwu.github.io/categories/</loc>
+    <loc>https://yilianwu.github.io/</loc>
     <priority>0</priority>
   </url>
   
@@ -45,16 +45,6 @@
   <url>
     <loc>https://yilianwu.github.io/posts/</loc>
     <lastmod>2019-03-05T22:09:56+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yilianwu.github.io/series/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yilianwu.github.io/tags/</loc>
     <priority>0</priority>
   </url>
   
