@@ -132,6 +132,127 @@ ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com是我的Public DNS (IPv4)
 就代表成功登入ㄌ！<br />
 <img src="https://i.imgur.com/wL5z1b7.png" alt="Imgur" /></p>
 
+<h4 id="安裝mosh">安裝Mosh&nbsp;<a class="anchor" href="#安裝mosh"><i class="small linkify icon"></i></a> </h4>
+
+<p>如果覺得ubuntu跑很慢可以安裝<br />
+Mosh<br />
+<img src="https://i.imgur.com/htAaAeh.png" alt="Imgur" /></p>
+
+<p><img src="https://i.imgur.com/BxTznvR.png" alt="Imgur" /></p>
+
+<h4 id="把本機的公鑰加入ubuntu">把本機的公鑰加入ubuntu&nbsp;<a class="anchor" href="#把本機的公鑰加入ubuntu"><i class="small linkify icon"></i></a> </h4>
+
+<p>另開一個終端機視窗(本機) cmd+t<br />
+複製本機的public key</p>
+
+<pre><code>cat ~/.ssh/id_rsa.pub
+</code></pre>
+
+<p>cmd+1<br />
+再回去ubuntu貼上本機公鑰</p>
+
+<pre><code>vim ~/.ssh/authorized_keys
+</code></pre>
+
+<h4 id="安裝lamp-server">安裝LAMP Server&nbsp;<a class="anchor" href="#安裝lamp-server"><i class="small linkify icon"></i></a> </h4>
+
+<pre><code>sudo apt-get install tasksel
+</code></pre>
+
+<pre><code>sudo tasksel 
+</code></pre>
+
+<p>法一：<br />
+<img src="https://i.imgur.com/x333iYj.png" alt="Imgur" /><br />
+[ * ] LAMP server 用空白鍵選擇 再按Tab 選擇<OK><br />
+<img src="https://i.imgur.com/pu4GTYO.png" alt="Imgur" /></p>
+
+<p>法二：<br />
+終端機直接輸入安裝指令</p>
+
+<pre><code>sudo tasksel install lamp-server
+</code></pre>
+
+<h4 id="查看連線狀況">查看連線狀況&nbsp;<a class="anchor" href="#查看連線狀況"><i class="small linkify icon"></i></a> </h4>
+
+<pre><code>netstat -tnal
+</code></pre>
+
+<p><img src="https://i.imgur.com/jDclyKw.png" alt="Imgur" /></p>
+
+<h5 id="回到aws">回到aws&nbsp;<a class="anchor" href="#回到aws"><i class="small linkify icon"></i></a> </h5>
+
+<ol>
+<li>選擇launch-wizard-4<br />
+<img src="https://i.imgur.com/Q8ksnqO.png" alt="Imgur" /><br /></li>
+<li>找到Inbound 編輯<br />
+<img src="https://i.imgur.com/ik7xjL3.png" alt="Imgur" /><br /></li>
+<li>新增HTTP、HTTPS與Custom UDP，如下：<br />
+<img src="https://i.imgur.com/tpvrpT5.png" alt="Imgur" /><br /></li>
+
+<li><p>輸入網址 搭拉！<br />
+<img src="https://i.imgur.com/TNrAgSJ.png" alt="Imgur" /></p>
+
+<h4 id="查看目錄">查看目錄&nbsp;<a class="anchor" href="#查看目錄"><i class="small linkify icon"></i></a> </h4>
+
+<pre><code>cd /var/ //再按兩下tab
+</code></pre>
+
+<p><img src="https://i.imgur.com/Jk4JHtH.png" alt="Imgur" /><br />
+<code>/var/www/html/</code> 中的 <code>index.html</code> 就是網頁的html</p>
+
+<pre><code>ls -al
+</code></pre>
+
+<p>查看權限<br />
+<img src="https://i.imgur.com/mnVi3Bx.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/I2f7wjW.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/XRTkxnQ.png" alt="Imgur" /></p>
+
+<pre><code>sudo chmod 777 html/
+</code></pre>
+
+<p><img src="https://i.imgur.com/NDqKEAS.png" alt="Imgur" /></p>
+
+<pre><code>sudo chmod -R 777 html/
+</code></pre>
+
+<p><img src="https://i.imgur.com/E9ti5Ly.png" alt="Imgur" /></p></li>
+</ol>
+
+<h4 id="開啟sublime-text">開啟Sublime Text&nbsp;<a class="anchor" href="#開啟sublime-text"><i class="small linkify icon"></i></a> </h4>
+
+<p><img src="https://i.imgur.com/jtJXz8J.png" alt="Imgur" /><br />
+1. cmd + shift + P 輸入install 選擇<br />
+Package Control: Install Package<br />
+<img src="https://i.imgur.com/xczrWHu.png" alt="Imgur" /><br />
+2. 安裝sftp<br />
+<img src="https://i.imgur.com/gcCeFxb.png" alt="Imgur" /><br />
+3. Browse Server<br />
+<img src="https://i.imgur.com/aKX2LCQ.png" alt="Imgur" /><br />
+4. 新增Server<br />
+<img src="https://i.imgur.com/egHg2iQ.png" alt="Imgur" /><br />
+5. 修改sftp訊息</p>
+
+<pre><code>&quot;host&quot;: &quot;yourwebsite.domain&quot;
+&quot;user&quot;: &quot;ubuntu&quot;
+&quot;remote_path&quot;: &quot;/var/www/html/&quot;
+</code></pre>
+
+<p><img src="https://i.imgur.com/pVUNSqR.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/x6rDKma.png" alt="Imgur" /><br />
+6. 另存新檔<br />
+<img src="https://i.imgur.com/IAZtPy8.png" alt="Imgur" /><br />
+7. 選擇你的sftp<br />
+<img src="https://i.imgur.com/gXbZ9NC.png" alt="Imgur" /><br />
+8. 選擇index.html<br />
+<img src="https://i.imgur.com/yKANTgd.png" alt="Imgur" /><br />
+9. 編輯<br />
+<img src="https://i.imgur.com/6KWCYUP.png" alt="Imgur" /><br />
+10. Save 上傳<br />
+<img src="https://i.imgur.com/SLQg46L.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/BFhfk3z.png" alt="Imgur" /></p>
+
         </section>
         <div class="post-toc" id="post-toc">
           <h2 class="post-toc-title">Contents</h2>
@@ -155,7 +276,18 @@ ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com是我的Public DNS (IPv4)
 <li><a href="#終端機打開">終端機打開</a>
 <ul>
 <li><a href="#一些設定">一些設定</a></li>
-<li><a href="#登入你的系統">登入你的系統</a></li>
+<li><a href="#登入你的系統">登入你的系統</a>
+<ul>
+<li><a href="#安裝mosh">安裝Mosh</a></li>
+<li><a href="#把本機的公鑰加入ubuntu">把本機的公鑰加入ubuntu</a></li>
+<li><a href="#安裝lamp-server">安裝LAMP Server</a></li>
+<li><a href="#查看連線狀況">查看連線狀況</a>
+<ul>
+<li><a href="#回到aws">回到aws</a></li>
+</ul></li>
+<li><a href="#查看目錄">查看目錄</a></li>
+<li><a href="#開啟sublime-text">開啟Sublime Text</a></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>
