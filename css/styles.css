@@ -16,9 +16,11 @@ body {
     flex-direction: column;
 }
 .post-toc {
+    overflow: scroll;
     position: fixed;
     top:20px;
     width: 180px;
+    height: 60%;
     margin-top:50px;
     margin-left: 800px;
     z-index: 1;
