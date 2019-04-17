@@ -253,6 +253,49 @@ Package Control: Install Package<br />
 <img src="https://i.imgur.com/SLQg46L.png" alt="Imgur" /><br />
 <img src="https://i.imgur.com/BFhfk3z.png" alt="Imgur" /></p>
 
+<h3 id="查看網站的連線狀況">查看網站的連線狀況&nbsp;<a class="anchor" href="#查看網站的連線狀況"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>traceroute yilianwu.ga 
+</code></pre>
+
+<p><img src="https://i.imgur.com/MqoIRWa.png" alt="Imgur" /></p>
+
+<h3 id="ssh-reverse-tunnel">SSH Reverse Tunnel&nbsp;<a class="anchor" href="#ssh-reverse-tunnel"><i class="small linkify icon"></i></a> </h3>
+
+<p>俗稱的VPN翻牆原理<br />
+<img src="https://i.imgur.com/GvYvCpr.png" alt="Imgur" /><br />
+原本我的IP在台灣<br />
+現在我想把它改成我在aws的日本主機～～</p>
+
+<p><a href="https://www.ez2o.com/App/Net/IP">https://www.ez2o.com/App/Net/IP</a><br />
+可以到這查看ip位置<br />
+<img src="https://i.imgur.com/fkpRrLr.png" alt="Imgur" /></p>
+
+<ol>
+<li>登入aws<br />
+<br /></li>
+</ol>
+
+<pre><code>ssh -p 22 -D 8080 ubuntu@yilianwu.ga
+</code></pre>
+
+<p><img src="https://i.imgur.com/yP8gmvD.png" alt="Imgur" /></p>
+
+<ol>
+<li><p>下載proxy 擴充程式<br />
+<img src="https://i.imgur.com/Pkfy3Tt.png" alt="Imgur" /></p></li>
+
+<li><p>SwitchyOmega設定<br />
+<img src="https://i.imgur.com/EKGc5ts.png" alt="Imgur" /></p></li>
+
+<li><p>選擇你的模式<br />
+<img src="https://i.imgur.com/oY4uU9I.png" alt="Imgur" /></p></li>
+
+<li><p>重整<br />
+媽！ 我在日本了！<br />
+<img src="https://i.imgur.com/VFiTuJP.png" alt="Imgur" /></p></li>
+</ol>
+
         </section>
         <div class="post-toc" id="post-toc">
           <h2 class="post-toc-title">Contents</h2>
@@ -288,6 +331,8 @@ Package Control: Install Package<br />
 <li><a href="#查看目錄">查看目錄</a></li>
 <li><a href="#開啟sublime-text">開啟Sublime Text</a></li>
 </ul></li>
+<li><a href="#查看網站的連線狀況">查看網站的連線狀況</a></li>
+<li><a href="#ssh-reverse-tunnel">SSH Reverse Tunnel</a></li>
 </ul></li>
 </ul></li>
 </ul>
