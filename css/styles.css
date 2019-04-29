@@ -150,6 +150,7 @@ padding-left: 20px;
 padding-right: 20px;
 margin: 0 auto;
 width: 100%;
+-webkit-box-sizing: border-box;
 box-sizing: border-box;
 }
 
@@ -227,7 +228,7 @@ flex-direction: column;
 }
 main .cursor{
 animation: blink 1s linear infinite;
-/* 瀏覽器相容 */
+/* 其它浏览器兼容性前缀 */
 -webkit-animation: blink 1s linear infinite;
 -moz-animation: blink 1s linear infinite;
 -ms-animation: blink 1s linear infinite;
@@ -266,6 +267,7 @@ text-align:right;
   margin: 0 auto;
   max-width: 800px;
   width: 100%;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 .paperbg{
