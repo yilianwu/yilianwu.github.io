@@ -292,6 +292,13 @@ width: 160px;
 border-radius: 50%;
 width: 100%
 }
+.aboutsImg {
+    position:relative;
+    padding: 2em 20px 1px;
+    margin: 0 auto;
+    width: 60%; 
+    text-align:right;
+  }
 
 /***********************************/
 /**** Posts div styling ****/
