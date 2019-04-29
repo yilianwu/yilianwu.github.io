@@ -16,7 +16,8 @@ body {
     flex-direction: column;
 }
 .post-toc {
-    overflow: scroll;
+    overflow: hidden;
+    overflow-y: scroll;
     position: fixed;
     top:20px;
     width: 180px;
@@ -33,7 +34,7 @@ body {
 .post-toc-title {
     color:#2c5090;
     font-size: .95rem;
-    margin: 0 10px;
+    margin: 0 .25remrem;
     font-weight: 800;
     text-transform: uppercase;
 }
@@ -51,12 +52,12 @@ body {
 #TableOfContents ul {
     color:#2c5090;
     list-style: circle;
-    margin-left: 1rem;
-    padding-left: 0;
+    margin: 0;
+    padding: 0;
 }
-
-#TableOfContents li,#TableOfContents ul{
-    margin:5px;
+#TableOfContents li{
+    margin-left:.4rem;
+    padding-bottom:5px;
 }
 
 .white .post-toc a{
