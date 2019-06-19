@@ -102,37 +102,134 @@
 
 <h4 id="step-5-創建key-pair">Step 5: 創建Key Pair&nbsp;<a class="anchor" href="#step-5-創建key-pair"><i class="small linkify icon"></i></a> </h4>
 
-<p><img src="https://i.imgur.com/75eUM0U.png" alt="Imgur" /><br />
+<p>這個key很重要！！<br />
+沒有他你就沒辦法從你的電腦登入你在AWS的Ubuntu<br />
+<img src="https://i.imgur.com/75eUM0U.png" alt="Imgur" /><br />
 創建好按Download<br />
-<code>.pem</code>檔會存在你的下載資料夾</p>
+<code>.pem</code>檔會存在你的下載資料夾 <code>~/Downloads</code></p>
 
-<h2 id="終端機打開">終端機打開&nbsp;<a class="anchor" href="#終端機打開"><i class="small linkify icon"></i></a> </h2>
+<h2 id="本機終端機的一些設定">本機終端機的一些設定&nbsp;<a class="anchor" href="#本機終端機的一些設定"><i class="small linkify icon"></i></a> </h2>
 
-<h3 id="一些設定">一些設定&nbsp;<a class="anchor" href="#一些設定"><i class="small linkify icon"></i></a> </h3>
+<p>打開你電腦的Terminal<br />
+1.</p>
 
-<ol>
-<li><code>cd ~/Downloads/</code><br /></li>
-<li><code>chmod 400 檔名.pem</code><br />
-將權限打開<br /></li>
-<li><code>ls -al 檔名.pem</code><br />
-若出現<code>-r</code>就代表成功了哦<br /></li>
-<li><code>cat 檔名.pem</code><br />
-<img src="https://i.imgur.com/JCfo4Tg.png" alt="Imgur" /><br />
-<br /></li>
-</ol>
+<pre><code>cd ~/Downloads/
+</code></pre>
 
-<h3 id="登入你的系統">登入你的系統&nbsp;<a class="anchor" href="#登入你的系統"><i class="small linkify icon"></i></a> </h3>
+<p>進去下載項目的資料夾，因為你剛剛把pem檔放在這<br />
+2.</p>
 
-<p><code>ssh -i &quot;檔名.pem&quot; ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com</code><br />
-ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com是我的Public DNS (IPv4)</p>
+<pre><code>chmod 400 檔名.pem
+</code></pre>
 
-<p>可以從這裡看～<br />
+<p>將pem檔的權限打開<br />
+3.</p>
+
+<pre><code>ls -al 檔名.pem
+</code></pre>
+
+<p>檢查一下：<br />
+若出現<code>-r</code>就代表成功了哦<br />
+4.</p>
+
+<pre><code>cat 檔名.pem
+</code></pre>
+
+<p><img src="https://i.imgur.com/JCfo4Tg.png" alt="Imgur" />  可以看一下你的pem裡面有什麼內容：<br />
+RSA PRIVATE KEY<br />
+就是你的Ubuntu的私鑰<br />
+要收好！不能落入壞人的手裡<br />
+就像你家們鑰匙不能隨便亂丟的道理一樣</p>
+
+<h2 id="登入你的ubuntu">登入你的Ubuntu&nbsp;<a class="anchor" href="#登入你的ubuntu"><i class="small linkify icon"></i></a> </h2>
+
+<p>從本機的終端機登入你的AWS Ubuntu<br />
+第一次登入需執行：</p>
+
+<pre><code>ssh -i &quot;檔名.pem&quot; ubuntu@ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com
+</code></pre>
+
+<p>其中</p>
+
+<p>ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com<br />
+是我的Public DNS (IPv4)</p>
+
+<p>可以從AWS Instance的這裡看到～<br />
 <img src="https://i.imgur.com/0BlGwIb.png" alt="Imgur" /><br />
 若出現綠色ubuntu@ip-xxx-xx-xx-xx<br />
 就代表成功登入ㄌ！<br />
 <img src="https://i.imgur.com/wL5z1b7.png" alt="Imgur" /></p>
 
-<h4 id="安裝mosh">安裝Mosh&nbsp;<a class="anchor" href="#安裝mosh"><i class="small linkify icon"></i></a> </h4>
+<h3 id="ubuntu的一些設定">Ubuntu的一些設定&nbsp;<a class="anchor" href="#ubuntu的一些設定"><i class="small linkify icon"></i></a> </h3>
+
+<ol>
+<li>更新 apt-get 套件<br />
+<code>
+sudo apt-get update
+</code><br /></li>
+<li>安裝好用的vim文字編輯器<br />
+<code>
+sudo apt-get install vim
+</code><br /></li>
+
+<li><p>拷貝本機的公鑰<br />
+要把本機的公鑰加入ubuntu</p>
+
+<ul>
+<li>另開一個終端機視窗(本機) cmd+t<br /></li>
+<li>顯示你本機的公鑰：<br />
+<code>
+cat ~/.ssh/id_rsa.pub
+</code><br /></li>
+
+<li><p>直接選取複製</p></li>
+
+<li><p>再回去ubuntu的分頁<br />
+cmd+1</p></li>
+
+<li><p>打開<code>authorized_keys</code>這個檔編輯</p>
+
+<pre><code>vim ~/.ssh/authorized_keys
+</code></pre></li>
+
+<li><p>按<code>i</code>插入字串進入編輯模式<br />
+直接貼上你剛剛複製好的本機公鑰</p></li>
+
+<li><p>按<code>esc</code>結束編輯模式</p></li>
+
+<li><p><code>:wq</code>寫入並退出</p></li>
+</ul>
+
+<ol>
+<li>之後就都可以用<br />
+<code>
+ssh ubuntu@你的Public IP
+</code><br />
+登入Ubuntu<br />
+<br /></li>
+</ol></li>
+</ol>
+
+<h3 id="新增客製的domain-name">新增客製的Domain Name&nbsp;<a class="anchor" href="#新增客製的domain-name"><i class="small linkify icon"></i></a> </h3>
+
+<ol>
+<li>註冊一個可以免費試用1年的Domain Name<br />
+<a href="https://my.freenom.com/">https://my.freenom.com/</a><br />
+<img src="https://i.imgur.com/IkaApUd.png" alt="Imgur" /><br /></li>
+<li>進到管理頁面<br />
+<img src="https://i.imgur.com/qxDAMIy.png" alt="Imgur" /><br /></li>
+<li>再進到DNS管理頁面<br />
+Target就填上你的Public IP<br />
+<img src="https://i.imgur.com/SM13Ioq.png" alt="Imgur" /><br />
+<br /></li>
+</ol>
+
+<p>之後登入也可以在終端機下指令：</p>
+
+<pre><code>ssh ubuntu@你的網址
+</code></pre>
+
+<h3 id="安裝mosh-可以跳過此步驟">安裝Mosh(可以跳過此步驟)&nbsp;<a class="anchor" href="#安裝mosh-可以跳過此步驟"><i class="small linkify icon"></i></a> </h3>
 
 <p>如果覺得ubuntu跑很慢可以安裝<br />
 Mosh<br />
@@ -140,21 +237,11 @@ Mosh<br />
 
 <p><img src="https://i.imgur.com/BxTznvR.png" alt="Imgur" /></p>
 
-<h4 id="把本機的公鑰加入ubuntu">把本機的公鑰加入ubuntu&nbsp;<a class="anchor" href="#把本機的公鑰加入ubuntu"><i class="small linkify icon"></i></a> </h4>
+<h3 id="安裝lamp-server">安裝LAMP server&nbsp;<a class="anchor" href="#安裝lamp-server"><i class="small linkify icon"></i></a> </h3>
 
-<p>另開一個終端機視窗(本機) cmd+t<br />
-複製本機的public key</p>
+<p>網頁伺服器快速建置入門</p>
 
-<pre><code>cat ~/.ssh/id_rsa.pub
-</code></pre>
-
-<p>cmd+1<br />
-再回去ubuntu貼上本機公鑰</p>
-
-<pre><code>vim ~/.ssh/authorized_keys
-</code></pre>
-
-<h4 id="安裝lamp-server">安裝LAMP Server&nbsp;<a class="anchor" href="#安裝lamp-server"><i class="small linkify icon"></i></a> </h4>
+<h4 id="在ubuntu下指令">在Ubuntu下指令：&nbsp;<a class="anchor" href="#在ubuntu下指令"><i class="small linkify icon"></i></a> </h4>
 
 <pre><code>sudo apt-get install tasksel
 </code></pre>
@@ -180,7 +267,7 @@ Mosh<br />
 
 <p><img src="https://i.imgur.com/jDclyKw.png" alt="Imgur" /></p>
 
-<h5 id="回到aws">回到aws&nbsp;<a class="anchor" href="#回到aws"><i class="small linkify icon"></i></a> </h5>
+<h4 id="回到aws">回到AWS&nbsp;<a class="anchor" href="#回到aws"><i class="small linkify icon"></i></a> </h4>
 
 <ol>
 <li>選擇launch-wizard-4<br />
@@ -189,9 +276,13 @@ Mosh<br />
 <img src="https://i.imgur.com/ik7xjL3.png" alt="Imgur" /><br /></li>
 <li>新增HTTP、HTTPS與Custom UDP，如下：<br />
 <img src="https://i.imgur.com/tpvrpT5.png" alt="Imgur" /><br /></li>
+<li>輸入網址 搭拉！<br />
+<img src="https://i.imgur.com/TNrAgSJ.png" alt="Imgur" /><br />
+<br />
+<br /></li>
+</ol>
 
-<li><p>輸入網址 搭拉！<br />
-<img src="https://i.imgur.com/TNrAgSJ.png" alt="Imgur" /></p>
+<h3 id="網頁的設置">網頁的設置&nbsp;<a class="anchor" href="#網頁的設置"><i class="small linkify icon"></i></a> </h3>
 
 <h4 id="查看目錄">查看目錄&nbsp;<a class="anchor" href="#查看目錄"><i class="small linkify icon"></i></a> </h4>
 
@@ -204,20 +295,21 @@ Mosh<br />
 <pre><code>ls -al
 </code></pre>
 
-<p>查看權限<br />
+<ol>
+<li>查看權限<br />
 <img src="https://i.imgur.com/mnVi3Bx.png" alt="Imgur" /><br />
 <img src="https://i.imgur.com/I2f7wjW.png" alt="Imgur" /><br />
-<img src="https://i.imgur.com/XRTkxnQ.png" alt="Imgur" /></p>
-
-<pre><code>sudo chmod 777 html/
-</code></pre>
-
-<p><img src="https://i.imgur.com/NDqKEAS.png" alt="Imgur" /></p>
-
-<pre><code>sudo chmod -R 777 html/
-</code></pre>
-
-<p><img src="https://i.imgur.com/E9ti5Ly.png" alt="Imgur" /></p></li>
+<img src="https://i.imgur.com/XRTkxnQ.png" alt="Imgur" /><br /></li>
+<li>新增權限給<code>/html</code>資料夾<br />
+<code>
+sudo chmod 777 html/
+</code><br />
+<img src="https://i.imgur.com/NDqKEAS.png" alt="Imgur" /><br />
+<code>
+sudo chmod -R 777 html/
+</code><br />
+<img src="https://i.imgur.com/E9ti5Ly.png" alt="Imgur" /><br />
+<br /></li>
 </ol>
 
 <h4 id="開啟sublime-text">開啟Sublime Text&nbsp;<a class="anchor" href="#開啟sublime-text"><i class="small linkify icon"></i></a> </h4>
@@ -260,50 +352,6 @@ Package Control: Install Package<br />
 
 <p><img src="https://i.imgur.com/MqoIRWa.png" alt="Imgur" /></p>
 
-<h3 id="ssh-reverse-tunnel">SSH Reverse Tunnel&nbsp;<a class="anchor" href="#ssh-reverse-tunnel"><i class="small linkify icon"></i></a> </h3>
-
-<p>俗稱的VPN翻牆原理<br />
-<img src="https://i.imgur.com/GvYvCpr.png" alt="Imgur" /><br />
-原本我的IP在台灣<br />
-現在我想把它改成我在aws的日本主機～～</p>
-
-<p><a href="https://www.ez2o.com/App/Net/IP">https://www.ez2o.com/App/Net/IP</a><br />
-可以到這查看ip位置<br />
-<img src="https://i.imgur.com/fkpRrLr.png" alt="Imgur" /></p>
-
-<ol>
-<li>登入aws<br />
-<br /></li>
-</ol>
-
-<pre><code>ssh -p 22 -D 8080 ubuntu@yilianwu.ga
-</code></pre>
-
-<p><img src="https://i.imgur.com/yP8gmvD.png" alt="Imgur" /></p>
-
-<ol>
-<li><p>下載proxy 擴充程式<br />
-<img src="https://i.imgur.com/Pkfy3Tt.png" alt="Imgur" /></p></li>
-
-<li><p>SwitchyOmega設定<br />
-<img src="https://i.imgur.com/EKGc5ts.png" alt="Imgur" /></p></li>
-
-<li><p>選擇你的模式<br />
-<img src="https://i.imgur.com/oY4uU9I.png" alt="Imgur" /></p></li>
-
-<li><p>重整<br />
-媽！ 我在日本了！<br />
-<img src="https://i.imgur.com/VFiTuJP.png" alt="Imgur" /></p></li>
-</ol>
-
-<h3 id="更改網頁資訊">更改網頁資訊&nbsp;<a class="anchor" href="#更改網頁資訊"><i class="small linkify icon"></i></a> </h3>
-
-<p>新增權限給ubuntu<br />
-<img src="https://i.imgur.com/Qpf5pvN.png" alt="Imgur" /><br />
-<img src="https://i.imgur.com/pkdqQV9.png" alt="Imgur" /><br />
-<img src="https://i.imgur.com/idtCWLo.png" alt="Imgur" /><br />
-<img src="https://i.imgur.com/TXZ5x4e.png" alt="Imgur" /></p>
-
         </section>
         <div class="post-toc" id="post-toc">
           <h2 class="post-toc-title">Contents</h2>
@@ -324,24 +372,24 @@ Package Control: Install Package<br />
 <li><a href="#step-5-創建key-pair">Step 5: 創建Key Pair</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#終端機打開">終端機打開</a>
+<li><a href="#本機終端機的一些設定">本機終端機的一些設定</a></li>
+<li><a href="#登入你的ubuntu">登入你的Ubuntu</a>
 <ul>
-<li><a href="#一些設定">一些設定</a></li>
-<li><a href="#登入你的系統">登入你的系統</a>
+<li><a href="#ubuntu的一些設定">Ubuntu的一些設定</a></li>
+<li><a href="#新增客製的domain-name">新增客製的Domain Name</a></li>
+<li><a href="#安裝mosh-可以跳過此步驟">安裝Mosh(可以跳過此步驟)</a></li>
+<li><a href="#安裝lamp-server">安裝LAMP server</a>
 <ul>
-<li><a href="#安裝mosh">安裝Mosh</a></li>
-<li><a href="#把本機的公鑰加入ubuntu">把本機的公鑰加入ubuntu</a></li>
-<li><a href="#安裝lamp-server">安裝LAMP Server</a></li>
-<li><a href="#查看連線狀況">查看連線狀況</a>
-<ul>
-<li><a href="#回到aws">回到aws</a></li>
+<li><a href="#在ubuntu下指令">在Ubuntu下指令：</a></li>
+<li><a href="#查看連線狀況">查看連線狀況</a></li>
+<li><a href="#回到aws">回到AWS</a></li>
 </ul></li>
+<li><a href="#網頁的設置">網頁的設置</a>
+<ul>
 <li><a href="#查看目錄">查看目錄</a></li>
 <li><a href="#開啟sublime-text">開啟Sublime Text</a></li>
 </ul></li>
 <li><a href="#查看網站的連線狀況">查看網站的連線狀況</a></li>
-<li><a href="#ssh-reverse-tunnel">SSH Reverse Tunnel</a></li>
-<li><a href="#更改網頁資訊">更改網頁資訊</a></li>
 </ul></li>
 </ul></li>
 </ul>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="/">[ yilianwu ]</a></h4>
+	       <div id="space"></div>
+            
+            <a href="/">Home</a>
+            
+            <a href="/about">About</a>
+            
+            <a href="/posts">Posts</a>
+            
+            <a href="/works">Works</a>
+            
+    </nav>
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+       <div class="paperbg">
+	      <div id="title">
+                <h1>Vpn Reverse Tunnel</h1>
+                <time datetime="2019-06-19T11:22:31&#43;0800">2019-06-19</time>
+
+	      </div>
+
+        <section class="post-content">
+          
+
+<h1 id="ssh-reverse-tunnel">SSH Reverse Tunnel&nbsp;<a class="anchor" href="#ssh-reverse-tunnel"><i class="small linkify icon"></i></a> </h1>
+
+<p>俗稱的VPN翻牆原理<br />
+示意圖：<br />
+<img src="https://i.imgur.com/GvYvCpr.png" alt="Imgur" /><br />
+原本我的IP在台灣<br />
+現在我想把它改成我在aws的日本主機～～</p>
+
+<p><a href="https://www.ez2o.com/App/Net/IP">https://www.ez2o.com/App/Net/IP</a><br />
+可以到這查看ip位置<br />
+<img src="https://i.imgur.com/fkpRrLr.png" alt="Imgur" /></p>
+
+<ol>
+<li>登入aws<br />
+<br /></li>
+</ol>
+
+<pre><code>ssh -p 22 -D 8080 ubuntu@yilianwu.ga
+</code></pre>
+
+<p><img src="https://i.imgur.com/yP8gmvD.png" alt="Imgur" /></p>
+
+<ol>
+<li><p>下載proxy 擴充程式<br />
+<img src="https://i.imgur.com/Pkfy3Tt.png" alt="Imgur" /></p></li>
+
+<li><p>SwitchyOmega設定<br />
+<img src="https://i.imgur.com/EKGc5ts.png" alt="Imgur" /></p></li>
+
+<li><p>選擇你的模式<br />
+<img src="https://i.imgur.com/oY4uU9I.png" alt="Imgur" /></p></li>
+
+<li><p>重整<br />
+媽！ 我在日本了！<br />
+<img src="https://i.imgur.com/VFiTuJP.png" alt="Imgur" /></p></li>
+</ol>
+
+<h3 id="更改網頁資訊">更改網頁資訊&nbsp;<a class="anchor" href="#更改網頁資訊"><i class="small linkify icon"></i></a> </h3>
+
+<p>新增權限給ubuntu<br />
+<img src="https://i.imgur.com/Qpf5pvN.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/pkdqQV9.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/idtCWLo.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/TXZ5x4e.png" alt="Imgur" /></p>
+
+        </section>
+        <div class="post-toc" id="post-toc">
+          <h2 class="post-toc-title">Contents</h2>
+          <nav id="TableOfContents">
+<ul>
+<li><a href="#ssh-reverse-tunnel">SSH Reverse Tunnel</a>
+<ul>
+<li>
+<ul>
+<li><a href="#更改網頁資訊">更改網頁資訊</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+        </div>
+	   </div>
+
+
+
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	<a href="https://www.youtube.com/channel/UCoX_ahsZ27IJh_WQK4CpGJw" target="_blank"><img src="https://i.imgur.com/pZI2aGT.png" height="30" width="30"></a>
+	<a href="https://github.com/yilianwu"><img src="https://i.imgur.com/BIgEqmF.png" target="_blank" height="30" width="30"></a>
+
+
+    <span style="display:block" class="footer-text">&copy 2019 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<link rel="stylesheet" href="https://yilianwu.github.io/css/solarized-light.css"/>
+<script src="https://yilianwu.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

@@ -6,10 +6,31 @@
     <description>Recent content in Posts on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 05 Mar 2019 22:09:56 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 19 Jun 2019 11:22:31 +0800</lastBuildDate>
     
 	<atom:link href="https://yilianwu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vpn Reverse Tunnel</title>
+      <link>https://yilianwu.github.io/posts/vpn-reverse-tunnel/</link>
+      <pubDate>Wed, 19 Jun 2019 11:22:31 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/vpn-reverse-tunnel/</guid>
+      <description>SSH Reverse Tunnel 俗稱的VPN翻牆原理
+示意圖：
+原本我的IP在台灣
+現在我想把它改成我在aws的日本主機～～
+https://www.ez2o.com/App/Net/IP
+可以到這查看ip位置
+ 登入aws
+  ssh -p 22 -D 8080 ubuntu@yilianwu.ga   下載proxy 擴充程式
+ SwitchyOmega設定
+ 選擇你的模式
+ 重整
+媽！ 我在日本了！
+  更改網頁資訊 新增權限給ubuntu</description>
+    </item>
     
     <item>
       <title>SSH Intro</title>
