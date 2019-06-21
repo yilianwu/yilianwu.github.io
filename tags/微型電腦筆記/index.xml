@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>微型電腦筆記 on [ yilianwu ]</title>
+    <link>https://yilianwu.github.io/tags/%E5%BE%AE%E5%9E%8B%E9%9B%BB%E8%85%A6%E7%AD%86%E8%A8%98/</link>
+    <description>Recent content in 微型電腦筆記 on [ yilianwu ]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Tue, 05 Mar 2019 22:09:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://yilianwu.github.io/tags/%E5%BE%AE%E5%9E%8B%E9%9B%BB%E8%85%A6%E7%AD%86%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SSH Intro</title>
+      <link>https://yilianwu.github.io/posts/ssh-intro/</link>
+      <pubDate>Tue, 05 Mar 2019 22:09:56 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/ssh-intro/</guid>
+      <description>什麼是RPI?
+先來談談 Microcontrollers ( MCU ) 有聽過
+- Raspberry Pi
+- BeagleBoard
+Arduino  開源 =&amp;gt; 普及
+ 燒錄方法便簡易(翻譯成組合語言給晶片)
+ ATMEL被Microchip買下
+ 處理運算速度慢
+  一些歷史的演變 CPLD 複雜可程式邏輯裝置 Verilog 電晶體的排列方法的程式語言
+加法器數位邏輯
+9013電晶體 in Arduino
+FPGA 可程式化邏輯閘陣列 處理速度快，好幾千跟腳位平行運算
+- 顯示卡
+- ＨＤＭＩ
+- ＶＩＶＥ
+ARM CPU - FPGA的分支  intel AMD兩大廠牌
+ 晶片擺法與組合 怎樣才會速率好
+ intel Apple都在用
+ 電子訊號速度接近光速
+   作業系統 Linux  MS-DOS
+純文字介面
+ Windows PowerShell</description>
+    </item>
+    
+  </channel>
+</rss>
