@@ -418,3 +418,17 @@ border-bottom: dotted 1.5px var(--color-dark);
           color: $theme-color;
           transform: scale(1.1);
         } */
+
+.post-tag{
+    margin:10px 0px;
+}
+.tag-link{
+    padding: 2px 5px;
+    margin-right: 10px;
+    font-size: 90%;
+    background-color: #ccc;
+    border-radius: 4px;
+}
+a.tag-link {
+    border-bottom:none;
+}
