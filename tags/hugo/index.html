@@ -27,57 +27,37 @@
     </nav>
 </header>
 
-    
-
-  <main id="terms">
-    <div id="collections" class="grape">
-        <div class="container">
-	    
-			
-			<h1>Tags</h1>
-				<div class="terms-tags">
-				  <a class="terms-link" href="/tags/terminal/">
-					  terminal
-					  <span class="terms-count">4</span>
-					</a>
-				  <a class="terms-link" href="/tags/%E5%BE%AE%E5%9E%8B%E9%9B%BB%E8%85%A6%E7%AD%86%E8%A8%98/">
-					  微型電腦筆記
-					  <span class="terms-count">3</span>
-					</a>
-				  <a class="terms-link" href="/tags/aws/">
-					  aws
-					  <span class="terms-count">2</span>
-					</a>
-				  <a class="terms-link" href="/tags/mac/">
-					  mac
-					  <span class="terms-count">2</span>
-					</a>
-				  <a class="terms-link" href="/tags/github/">
-					  github
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/hugo/">
-					  hugo
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/iterm/">
-					  iterm
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/markdown/">
-					  markdown
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/ubuntu/">
-					  ubuntu
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/vpn/">
-					  vpn
-					  <span class="terms-count">1</span>
-					</a>
-				  </div>
-	</div>
+<main id="list">
+    <div id="posts" class="grape">
+	<div class="container">
+            <h1>Hugo</h1>
+            <ul>
+                
+                <li>
+                    <a href="/posts/my-first-post/">用GitHub Page搭配Hugo建立靜態網站</a>
+                    <p><time datetime="2019-01-28T00:40:17&#43;0800">2019-01-28</time>
+</p>
+		                <p>我個人是使用Mac OS
+大概可以分成三個部分：
+1.建立GitHub repo
+2.terminal Hugo 設定
+3.將Hugo部署至GitHub Page
+Step1:建立GitHub repo 如果已經有github帳號的，可以直接新建一個repo
+repo的名稱要叫&lt;username&gt;.github.io //這裡的username請自行帶入你的帳號名稱
+或是直接拿任何一個repo
+創建好了之後到repo設定，將GitHub Page的功能打開～
+舉例來說，我的username是yilianwu
+之後我的網址就會是 https://yilianwu.github.io
+如果有自己的domain name也可以直接在這邊改好哦
+Step2:打開Terminal終端機 1.安裝Homebrew /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;  2.安裝Hugo brew install hugo  3.建立Hugo網站 #創一個資料夾 他的路徑是 ~/site-hugo hugo new site site-hugo #進到資料夾中 cd site-hugo  這裡的site-hugo可以是任意名稱
+4.新增Hugo Site Theme(主題) 點我挑選主題
+這邊以Hugo Grapes舉例
+ 新創一個資料夾themes
+  mkdir themes #進到themes資料夾中 cd themes #將github上的hugo grapes給clone下來你的themes資料夾 git clone git@github.com:shankar/hugo-grapes.git hugo-grapes   將/themes/hugo-grapes中的/static、/layouts、/content...</p>
+                </li>
+                
+            </ul>
+        </div>
     </div>
 </main>
 <footer class="sand">
