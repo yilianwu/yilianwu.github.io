@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Microsoft Defrag (MSDOS) - Now on your browser!</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/dosstyle.css">
+
+  
+</head>
+
+<body>
+
+  <div class="screen">
+  <div class="menu-top">
+    <div>Optimize</div>
+    <div class="help">F1=Help</div>
+  </div>
+  
+  <div class="surface off">
+  </div>
+  
+  <div class="info off">
+    <fieldset>
+      <legend>Status</legend>
+      <p class="sb">
+        <span>Cluster <var class="currentcluster"></var></span>
+        <span><var class="percent">0</var>%</span>
+      </p>
+      <div class="progress">
+        <div class="fill"></div>
+      </div>
+      <p class="center">Elapsed Time: <time class="elapsedtime">00:00:00</time></p>
+      <div class="center">Full Optimization</div>
+    </fieldset>
+    
+    <fieldset>
+      <legend>Legend</legend>
+      <div class="grid2x2">
+        <div><span class="block used"></span> - Used</div>
+        <div><span class="block unused"></span> - Unused</div>
+        <div><span class="block reading"></span> - Reading</div>
+        <div><span class="block writing"></span> - Writing</div>
+        <div><span class="block bad"></span> - Bad</div>
+        <div><span class="block unmovable"></span> - Unmovable</div>
+      </div>
+      <p>Drive C:    1 block = <var class="clustersperblock"></var> clusters</p>      
+    </fieldset>
+  </div>
+  
+  <div class="menu-bottom">
+    <div><span>Press</span> Alt <span>or</span> F10 <span>to activate menu</span></div>
+    <div>| <span>Microsoft Defrag</span></div>
+  </div>  
+
+  <section class="modals">
+    <div class="testing dialog">
+      <p>Testing system memory...</p>
+    </div>
+
+    <div class="reading dialog" hidden>
+      <p>Reading disk information...</p>
+    </div>
+
+    <div class="analyzing dialog" hidden>
+      <p>Analyzing disk information...</p>
+      <p class="folders center">GAMES</p>
+    </div>
+    
+    <div class="finished dialog" hidden>
+      <p class="center">Optimization for Drive C: Complete</p>
+      <div>
+        <p class="center">You may optimize another drive or reconfigure optimization for the current drive.</p>
+      </div>
+      <div>
+        <a href="https://twitter.com/Manz/status/1130789484726038529" target="_blank">More info</a>
+        <a href="/" target="_blank">Exit DEFRAG</a>
+      </div>
+    </div>    
+  </section>
+</div>
+  
+  
+
+    <script  src="js/script.js"></script>
+
+
+
+
+</body>
+
+</html>
