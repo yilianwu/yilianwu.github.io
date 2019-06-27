@@ -67,7 +67,7 @@
 /* Surface */
 
 .surface {
-  max-width: 60%;
+  max-width: 95%;
   margin: 1em auto;
   display: flex;
   flex-wrap: wrap;
@@ -131,6 +131,7 @@ p {
 
 .info {
   display: flex;
+  margin: auto 20px;
 }
 
 .info fieldset {
