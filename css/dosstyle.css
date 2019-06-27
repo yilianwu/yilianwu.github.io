@@ -131,7 +131,7 @@ p {
 
 .info {
   display: flex;
-  margin: auto 20px;
+  margin: 40px 20px;
 }
 
 .info fieldset {

@@ -1,6 +1,6 @@
 // Constants
 const TOTAL_BLOCKS = 1300;
-const TOTALCLUSTERS = 12600 + ~~(Math.random() * 4250);
+const TOTALCLUSTERS = 12800 + ~~(Math.random() * 4250);
 const CLUSTERSPERBLOCK = ~~(TOTALCLUSTERS / TOTAL_BLOCKS);
 
 // DOM
