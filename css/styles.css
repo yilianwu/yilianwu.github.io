@@ -76,7 +76,7 @@ code {
     margin: 0 4px;
     font-size: 90%;
     color: #2c5090;
-    background-color: #6083b926;
+    background-color: #b6dafda8;
     border-radius: 4px;
 }
 
@@ -102,8 +102,7 @@ header {
     top:0px;
     z-index: 1;
     font-size:3.vmin;
-    /* background: var(--color); */
-    background: #aaaaaa;
+    background: var(--color);
 }
 
 
@@ -157,8 +156,7 @@ box-sizing: border-box;
 }
 
 .breadcrumb a {
-  /* color: var(--color-lite); */
-  color:var(--color-dark);
+  color: var(--color-lite);
   font-size:.9rem;
   margin-left: 16px;
   margin-top: auto;
@@ -433,4 +431,4 @@ border-bottom: dotted 1.5px var(--color-dark);
 }
 a.tag-link {
     border-bottom:none;
-}
+ }
