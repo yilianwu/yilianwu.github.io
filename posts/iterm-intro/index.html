@@ -25,30 +25,8 @@
             
             <a href="/works">Works</a>
             
-            <div onload=display_ct();>
-              <span id='ct' ></span>
-            </div>
+
             <script type="text/javascript">
-
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
             function display_c(){
             var refresh=1000; 
             mytime=setTimeout('display_ct()',refresh)
@@ -60,20 +38,11 @@
             document.getElementById('ct').innerHTML = x1;
             display_c();
             }
-
-
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
             </script>
+            <body onload=display_ct();>
+              <span id='ct' ></span>
+              
+              </body>
     </nav>
 </header>
 
