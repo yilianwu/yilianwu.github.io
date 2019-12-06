@@ -26,24 +26,36 @@
             
             <a href="/works">Works</a>
             
-            <div id="clock"></div>
+            <div onload=display_ct(); id="ct"></div>
             <script type="text/javascript">
 
-            var clockElement = document.getElementById( "clock" );
+            
 
-            function updateClock ( clock ) {
-            clock.innerHTML = new Date(),
-            minutes = clock.getMinutes().toString().length == 1 ? '0'+clock.getMinutes() : clock.getMinutes(),
-            hours = clock.getHours().toString().length == 1 ? '0'+clock.getHours() : clock.getHours(),
-            ampm = clock.getHours() >= 12 ? 'pm' : 'am',
-            months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-            days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-            return days[clock.getDay()]+' '+months[clock.getMonth()]+' '+clock.getDate()+' '+clock.getFullYear()+' '+hours+':'+minutes+ampm; 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+            
+
+            function display_ct() {
+            var x = new Date()
+            var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getYear(); 
+            x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds();
+            document.getElementById('ct').innerHTML = x1;
+            display_c();
             }
-
-            setInterval(function () {
-            updateClock( clockElement );
-            }, 1000);
 
 
             
