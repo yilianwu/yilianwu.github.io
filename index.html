@@ -27,7 +27,19 @@
             <a href="/works">Works</a>
             
             <div id="para1"></div>
-            <script type="text/javascript" src="../js/para1.js"></script>
+            <script type="text/javascript">
+              document.getElementById("para1").innerHTML = formatAMPM();
+
+              function formatAMPM() {
+              var d = new Date(),
+              minutes = d.getMinutes().toString().length == 1 ? '0'+d.getMinutes() : d.getMinutes(),
+              hours = d.getHours().toString().length == 1 ? '0'+d.getHours() : d.getHours(),
+              ampm = d.getHours() >= 12 ? 'pm' : 'am',
+              months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+             days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+            return days[d.getDay()]+' '+months[d.getMonth()]+' '+d.getDate()+' '+d.getFullYear()+' '+hours+':'+minutes+ampm;
+            }
+            </script>
     </nav>
 </header>
 
