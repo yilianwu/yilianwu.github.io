@@ -16,7 +16,7 @@
 <body><header>
     <nav class="breadcrumb" id="breadcrumb">
 	     <h4><a href="/">[ yilianwu ]</a></h4>
-	       <div id="space"></div>
+	       
             
             <a href="/">Home</a>
             
@@ -26,29 +26,32 @@
             
             <a href="/works">Works</a>
             
-
-            <script type="text/javascript">
-            window.onload=display_ct;
-            function display_c(){
-            var refresh=1000; 
-            mytime=setTimeout('display_ct()',refresh)
-            }
-            function display_ct() {
-            var x = new Date()
-            minutes = x.getMinutes().toString().length == 1 ? '0'+x.getMinutes() : x.getMinutes(),
-            hours = x.getHours().toString().length == 1 ? '0'+x.getHours() : x.getHours(),
-            ampm = x.getHours() >= 12 ? 'PM' : 'AM',
-            days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-            var x1=days[x.getDay()];
-            var x2=hours + " : " + minutes + ampm; 
-            document.getElementById('cd').innerHTML = x1;
-            document.getElementById('ct').innerHTML = x2;
-            display_c();
-            }
-            </script>
-            <a id='cd' ></a>
-            <a id='ct' ></a>
     </nav>
+    <script type="text/javascript">
+      window.onload=display_ct;
+      function display_c(){
+      var refresh=1000; 
+      mytime=setTimeout('display_ct()',refresh)
+      }
+      function display_ct() {
+      var x = new Date()
+      minutes = x.getMinutes().toString().length == 1 ? '0'+x.getMinutes() : x.getMinutes(),
+      hours = x.getHours().toString().length == 1 ? '0'+x.getHours() : x.getHours(),
+      ampm = x.getHours() >= 12 ? 'PM' : 'AM',
+      days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      var x1=days[x.getDay()];
+      var x2=hours + " : " + minutes + ampm; 
+      document.getElementById('cd').innerHTML = x1;
+      document.getElementById('ct').innerHTML = x2;
+      display_c();
+      }
+    </script>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+    </div>
+            
+    
 </header>
 
 <main id="home">
