@@ -26,7 +26,9 @@
             
             <a href="/works">Works</a>
             
-            <div onload=display_ct(); id="ct"></div>
+            <div onload=display_ct();>
+              <span id='ct' ></span>
+            </div>
             <script type="text/javascript">
 
             
@@ -48,7 +50,10 @@
             
             
             
-
+            function display_c(){
+            var refresh=1000; 
+            mytime=setTimeout('display_ct()',refresh)
+            }
             function display_ct() {
             var x = new Date()
             var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getYear(); 
