@@ -28,22 +28,21 @@
             
 
             <script type="text/javascript">
+            window.onload=display_ct;
             function display_c(){
             var refresh=1000; 
             mytime=setTimeout('display_ct()',refresh)
             }
             function display_ct() {
             var x = new Date()
-            var x1=x.getMonth() + 1+ "/" + x.getDate() + "/" + x.getYear(); 
-            x1 = x1 + " - " +  x.getHours( )+ ":" +  x.getMinutes() + ":" +  x.getSeconds();
+            months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+            var x1=months[x.getMonth()] + " " + x.getDate() + " " + days[x.getDay()] + x.getHours( )+ ":" +  x.getMinutes(); 
             document.getElementById('ct').innerHTML = x1;
             display_c();
             }
             </script>
-            <body onload=display_ct();>
-              <span id='ct' ></span>
-              
-              </body>
+            <span id='ct' ></span>
     </nav>
 </header>
 
