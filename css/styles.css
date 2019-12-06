@@ -157,7 +157,7 @@ line-height: 1em;
 .breadcrumb a {
     color: var(--color-lite);
     font-size:1.0rem;
-    margin-left: 16px;
+    margin-left: 1rem;
     margin-top: auto;
     padding-left:.2rem;
 }
