@@ -1,74 +1,119 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script src="../js/custom_script_1.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
+	<head>
+		<title>梅問題教學網範例展示「Booststrap導覽列側邊展開」</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- HTML5 shim 和 Respond.js 讓IE8支援HTML5元素和媒體查詢 -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<style type="text/css">
+      body{padding-top: 70px;}
+      @media screen and (max-width: 768px) {
+          /*left*/
+          .side-collapse-container-left{
+              position:relative;
+              left:0;
+              transition:left .4s;
+          }
+          .side-collapse-container-left.out{
+              left:70%;
+          }
+          .side-collapse-left {
+              top:50px;
+              bottom:0;
+              left:0;
+              width:70%;
+              position:fixed;
+              overflow:hidden;
+              transition:width .4s;
+          }
+          .side-collapse-left.in {
+              width:0;
+          }
 
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          /*right*/
+          .side-collapse-container-right{
+              position:relative;
+              right:0;
+              transition:right .4s;
+          }
+          .side-collapse-container-right.out{
+              right:70%;
+          }
+
+          .side-collapse-right {
+              top:50px;
+              bottom:0;
+              right:0;
+              width:70%;
+              position:fixed;
+              overflow:hidden;
+              transition:width .4s;
+          }
+          .side-collapse-right.in {
+              width:0;
+          }
+      }
+
+		</style>
+	</head>
+	<body>
+	<nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button data-toggle="collapse-side" data-target-sidebar=".side-collapse-right" data-target-content=".side-collapse-container-right" type="button" class="navbar-toggle pull-rihgt">
+          	<span class="icon-bar"></span>
+          	<span class="icon-bar"></span>
+          	<span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">梅問題教學網</a>
+        </div>
+        <div class="navbar-inverse side-collapse-right in">
+          <nav role="navigation" class="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">選單1</a></li>
+              <li><a href="#">選單2</a></li>
+              <li><a href="＃">選單3</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+   </nav>
     
-</head>
-
-<body>
-    <nav class="navbar navbar-fixed-top navbar-inverse">
-		<div class="container">
-		<div class="navbar-header">
-		<button data-toggle="collapse-side" data-target-sidebar=".side-collapse-right" data-target-content=".side-collapse-container-right" type="button" class="navbar-toggle pull-rihgt">
-		　 <span class="icon-bar"></span>
-		　 <span class="icon-bar"></span>
-		　 <span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" href="#">梅問題教學網</a>
-		</div>
-		<div class="navbar-inverse side-collapse-right in">
-		　 <nav role="navigation" class="navbar-collapse">
-		　 　 <ul class="nav navbar-nav navbar-right">
-		　 　 　 <li><a href="#">選單1</a></li>
-		　 　 　 <li><a href="#">選單2</a></li>
-		　 　 　 <li><a href="＃">選單3</a></li>
-		　 　 </ul>
-		　 </nav>
-		</div>
-		</div>
-		</nav>
-		<div class="container side-collapse-container-right">
-		……
-		</div>
-    <div class="menu-overlay"></div>
-    <div class="col-md-12">
-        <br>
-        <br><br>
-        <h1>Resize the window to see the result </h1>
-        <!--<h1>It may not work in Bootsnipp window... in browser it will work</h1>-->
+    <div class="container side-collapse-container-right">
+      <div class="row">
+      	<div class="col-md-12">
+        <h1>MAC下最佳影像壓縮工具Squash，支援RAW、PSD無損轉換成JPG</h1>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum sem, et sodales massa. Proin quis velit vel nisl imperdiet rhoncus vitae id tortor. Praesent blandit tellus in enim sollicitudin rutrum. Integer ullamcorper, augue ut tristique ultrices, augue magna placerat ex, ac varius mauris ante sed dui. Fusce ullamcorper vulputate magna, a malesuada nunc pellentesque sit amet. Donec posuere placerat erat, sed ornare enim aliquam vitae. Nullam pellentesque auctor augue, vel commodo dolor porta ac. Sed libero eros, fringilla ac lorem in, blandit scelerisque lorem. Suspendisse iaculis justo velit, sit amet fringilla velit ornare a. Sed consectetur quam eget ipsum luctus bibendum. Ut nisi lectus, viverra vitae ipsum sit amet, condimentum condimentum neque. In maximus suscipit eros ut eleifend. Donec venenatis mauris nulla, ac bibendum metus bibendum vel.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum sem, et sodales massa. Proin quis velit vel nisl imperdiet rhoncus vitae id tortor. Praesent blandit tellus in enim sollicitudin rutrum. Integer ullamcorper, augue ut tristique ultrices, augue magna placerat ex, ac varius mauris ante sed dui. Fusce ullamcorper vulputate magna, a malesuada nunc pellentesque sit amet. Donec posuere placerat erat, sed ornare enim aliquam vitae. Nullam pellentesque auctor augue, vel commodo dolor porta ac. Sed libero eros, fringilla ac lorem in, blandit scelerisque lorem. Suspendisse iaculis justo velit, sit amet fringilla velit ornare a. Sed consectetur quam eget ipsum luctus bibendum. Ut nisi lectus, viverra vitae ipsum sit amet, condimentum condimentum neque. In maximus suscipit eros ut eleifend. Donec venenatis mauris nulla, ac bibendum metus bibendum vel.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum sem, et sodales massa. Proin quis velit vel nisl imperdiet rhoncus vitae id tortor. Praesent blandit tellus in enim sollicitudin rutrum. Integer ullamcorper, augue ut tristique ultrices, augue magna placerat ex, ac varius mauris ante sed dui. Fusce ullamcorper vulputate magna, a malesuada nunc pellentesque sit amet. Donec posuere placerat erat, sed ornare enim aliquam vitae. Nullam pellentesque auctor augue, vel commodo dolor porta ac. Sed libero eros, fringilla ac lorem in, blandit scelerisque lorem. Suspendisse iaculis justo velit, sit amet fringilla velit ornare a. Sed consectetur quam eget ipsum luctus bibendum. Ut nisi lectus, viverra vitae ipsum sit amet, condimentum condimentum neque. In maximus suscipit eros ut eleifend. Donec venenatis mauris nulla, ac bibendum metus bibendum vel.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum sem, et sodales massa. Proin quis velit vel nisl imperdiet rhoncus vitae id tortor. Praesent blandit tellus in enim sollicitudin rutrum. Integer ullamcorper, augue ut tristique ultrices, augue magna placerat ex, ac varius mauris ante sed dui. Fusce ullamcorper vulputate magna, a malesuada nunc pellentesque sit amet. Donec posuere placerat erat, sed ornare enim aliquam vitae. Nullam pellentesque auctor augue, vel commodo dolor porta ac. Sed libero eros, fringilla ac lorem in, blandit scelerisque lorem. Suspendisse iaculis justo velit, sit amet fringilla velit ornare a. Sed consectetur quam eget ipsum luctus bibendum. Ut nisi lectus, viverra vitae ipsum sit amet, condimentum condimentum neque. In maximus suscipit eros ut eleifend. Donec venenatis mauris nulla, ac bibendum metus bibendum vel.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum sem, et sodales massa. Proin quis velit vel nisl imperdiet rhoncus vitae id tortor. Praesent blandit tellus in enim sollicitudin rutrum. Integer ullamcorper, augue ut tristique ultrices, augue magna placerat ex, ac varius mauris ante sed dui. Fusce ullamcorper vulputate magna, a malesuada nunc pellentesque sit amet. Donec posuere placerat erat, sed ornare enim aliquam vitae. Nullam pellentesque auctor augue, vel commodo dolor porta ac. Sed libero eros, fringilla ac lorem in, blandit scelerisque lorem. Suspendisse iaculis justo velit, sit amet fringilla velit ornare a. Sed consectetur quam eget ipsum luctus bibendum. Ut nisi lectus, viverra vitae ipsum sit amet, condimentum condimentum neque. In maximus suscipit eros ut eleifend. Donec venenatis mauris nulla, ac bibendum metus bibendum vel.
-        </p>
+        	<img src="https://ds.minwt.com.tw/img/Content/mac/squash-psd-raw-to-jpg/squash-psd-raw-to-jpg_00.jpg" alt=""　class="img-responsive"><br>
+        	有許多朋友習慣拍攝RAW檔，當拍攝回來後，要分享給好友時，就得先將照片轉成jpg才能進行傳送，這時不是透過Lightroom、Capture One，或其它的影像工具來進行轉換，但無論開啟那一套軟體，都需要花點時間，才能照片轉出，而現在有一個更棒的工具，可以快速的將RAW檔，或是平常所使用Photoshop後製的PSD檔，都能透過Squash這套小工具，來將圖檔轉換成JPG格式。
+				<br><br> 
+　　甚至還可以調整壓縮比例，讓轉出的照片不失真，雖然Squash不是免費的軟體，但卻無試用期限與張數限制，而是在轉檔過程中，會出現一段購買的訊息，因此有需要的朋友，現在也一塊來看看，若覺得不錯用，也可以支援一下囉！</p>
+        </div>
+      </div>
     </div>
-	
-		
-</body>
+		<hr>
+    <div class="container"><a href="http://www.minwt.com">>回梅問題教學網</a></div>
 
-</html>
-
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script>
+			$(function(){
+				 var sideslider = $('[data-toggle=collapse-side]');
+            var get_sidebar = sideslider.attr('data-target-sidebar');
+            var get_content = sideslider.attr('data-target-content');
+            sideslider.click(function(event){
+                $(get_sidebar).toggleClass('in');
+                $(get_content).toggleClass('out');
+            });
+			});
+		</script>
+	</body>
+	</html>
