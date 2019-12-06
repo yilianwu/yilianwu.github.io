@@ -35,11 +35,14 @@
             function display_ct() {
             var x = new Date()
             days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-            var x1=days[x.getDay()] + '\t' + x.getHours( )+ " : " +  x.getMinutes(); 
-            document.getElementById('ct').innerHTML = x1;
+            var x1=days[x.getDay()];
+            var x2=x.getHours( )+ " : " +  x.getMinutes(); 
+            document.getElementById('cd').innerHTML = x1;
+            document.getElementById('ct').innerHTML = x2;
             display_c();
             }
             </script>
+            <a id='cd' ></a>
             <a id='ct' ></a>
     </nav>
 </header>
