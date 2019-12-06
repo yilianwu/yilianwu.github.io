@@ -1,6 +1,7 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="custom_script_1.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <!DOCTYPE html>
@@ -106,94 +107,7 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non bibendum sem, et sodales massa. Proin quis velit vel nisl imperdiet rhoncus vitae id tortor. Praesent blandit tellus in enim sollicitudin rutrum. Integer ullamcorper, augue ut tristique ultrices, augue magna placerat ex, ac varius mauris ante sed dui. Fusce ullamcorper vulputate magna, a malesuada nunc pellentesque sit amet. Donec posuere placerat erat, sed ornare enim aliquam vitae. Nullam pellentesque auctor augue, vel commodo dolor porta ac. Sed libero eros, fringilla ac lorem in, blandit scelerisque lorem. Suspendisse iaculis justo velit, sit amet fringilla velit ornare a. Sed consectetur quam eget ipsum luctus bibendum. Ut nisi lectus, viverra vitae ipsum sit amet, condimentum condimentum neque. In maximus suscipit eros ut eleifend. Donec venenatis mauris nulla, ac bibendum metus bibendum vel.
         </p>
     </div>
-	$('[data-toggle="slide-collapse"]').on('click', function() {
-		$navMenuCont = $($(this).data('target'));
-		$navMenuCont.animate({
-			'width': 'toggle'
-		}, 350);
-		$(".menu-overlay").fadeIn(500);
-	});
 	
-	$(".menu-overlay").click(function(event) {
-		$(".navbar-toggle").trigger("click");
-		$(".menu-overlay").fadeOut(500);
-	});
-	
-	// if ($(window).width() >= 767) {
-	//     $('ul.nav li.dropdown').hover(function() {
-	//         $(this).find('>.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-	//     }, function() {
-	//         $(this).find('>.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-	//     });
-	
-	//     $('ul.nav li.dropdown-submenu').hover(function() {
-	//         $(this).find('>.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-	//     }, function() {
-	//         $(this).find('>.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-	//     });
-	
-	
-	//     $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
-	//         event.preventDefault();
-	//         event.stopPropagation();
-	//         $(this).parent().siblings().removeClass('open');
-	//         $(this).parent().toggleClass('open');
-	//         $('b', this).toggleClass("caret caret-up");
-	//     });
-	// }
-	
-	// $(window).resize(function() {
-	//     if( $(this).width() >= 767) {
-	//         $('ul.nav li.dropdown').hover(function() {
-	//             $(this).find('>.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-	//         }, function() {
-	//             $(this).find('>.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-	//         });
-	//     }
-	// });
-	
-	var windowWidth = $(window).width();
-	if (windowWidth > 767) {
-		// $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
-		//     event.preventDefault();
-		//     event.stopPropagation();
-		//     $(this).parent().siblings().removeClass('open');
-		//     $(this).parent().toggleClass('open');
-		//     $('b', this).toggleClass("caret caret-up");
-		// });
-	
-		$('ul.nav li.dropdown').hover(function() {
-			$(this).find('>.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-		}, function() {
-			$(this).find('>.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-		});
-	
-		$('ul.nav li.dropdown-submenu').hover(function() {
-			$(this).find('>.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-		}, function() {
-			$(this).find('>.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-		});
-	
-	
-		$('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
-			event.preventDefault();
-			event.stopPropagation();
-			$(this).parent().siblings().removeClass('open');
-			$(this).parent().toggleClass('open');
-			// $('b', this).toggleClass("caret caret-up");
-		});
-	}
-	if (windowWidth < 767) {
-		$('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
-			event.preventDefault();
-			event.stopPropagation();
-			$(this).parent().siblings().removeClass('open');
-			$(this).parent().toggleClass('open');
-			// $('b', this).toggleClass("caret caret-up");
-		});
-	}
-	
-	// $('.dropdown a').append('Some text');
 		
 </body>
 
