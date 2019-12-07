@@ -469,7 +469,10 @@ border-bottom: dotted 1.5px var(--color-dark);
 a.tag-link {
     border-bottom:none;
  }
- .sublime {
+#aboutpic{
+    width: 80%; 
+}
+.sublime {
     position: relative;
     width: 80%;
     margin: 25px auto;
@@ -483,7 +486,7 @@ a.tag-link {
     font-weight: 200;
     font-size: 1.1em;
     /* Colors */
-  }
+}
   
   .sublime li {
     min-height: 25px;
