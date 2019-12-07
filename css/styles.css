@@ -475,6 +475,17 @@ img.aboutpic{
  .lst{
     display:contents;
   }
+.sublime4wks{
+    position: relative;
+    padding: 0px 0px;
+    margin-top: 5%;
+    list-style: none;
+    border-top: 25px solid #d1d1d1;
+    border-radius: 10px;
+    background: #ededed;
+    /* color: var(--color); */
+    text-align:center;
+}
 .sublime4lst {
     position: relative;
     width: 90%;
@@ -513,7 +524,7 @@ img.aboutpic{
     line-height: 25px;
   }
   
-  .sublime .buttons , .sublime4lst .buttons{
+  .sublime .buttons , .sublime4lst .buttons , .sublime4wks .buttons{
     min-height: 0;
     position: absolute;
     left:10px;
@@ -525,7 +536,7 @@ img.aboutpic{
     border: 1px solid #e64344;
   }
   
-  .sublime .buttons:before , .sublime4lst .buttons:before {
+  .sublime .buttons:before , .sublime4lst .buttons:before , .sublime4wks .buttons:before {
     left: 20px;
     border: 1px solid #e3a041;
     background-color: #ffbc4c;
@@ -537,7 +548,7 @@ img.aboutpic{
     top: -1px;
   }
   
-  .sublime .buttons:after , .sublime4lst .buttons:after {
+  .sublime .buttons:after , .sublime4lst .buttons:after , .sublime4wks .buttons:after {
     left: 40px;
     border: 1px solid #13ad46;
     background-color: #00c956;
