@@ -285,7 +285,7 @@ width: 60%;
 text-align:right;
   }
 .container {
-  padding: 2em 20px 1px;
+  padding: 1em 1.5em 1em;
   margin: 0 auto;
   max-width: 800px;
   width: 100%;
@@ -293,12 +293,12 @@ text-align:right;
   box-sizing: border-box;
 }
 .paperbg{
-padding-top:40px;
-padding-bottom:60px;
-padding-left: 40px;
-padding-right: 40px;
+padding-top:2em;
+padding-bottom:2em;
+padding-left: 1.5em;
+padding-right: 1.5em;
 background: #f9f9f9db;
-border-radius:4px;
+border-radius:5px;
 }
 .boxContainer {
 padding: 2em 20px 1px;
