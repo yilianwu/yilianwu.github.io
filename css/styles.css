@@ -483,7 +483,7 @@ img.aboutpic{
     border-top: 25px solid #d1d1d1;
     border-radius: 10px;
     background: #ededed;
-    color: #f1f1f1; 
+    color: var(--color); 
     font-family: 'Source Code Pro';
     font-weight: 200;
     font-size: 1.1em;
@@ -512,7 +512,7 @@ img.aboutpic{
     line-height: 25px;
   }
   
-  .buttons {
+  .sublime .buttons , .sublime4lst .buttons{
     min-height: 0;
     position: absolute;
     left:10px;
@@ -524,7 +524,10 @@ img.aboutpic{
     border: 1px solid #e64344;
   }
   
-  .buttons:before, .buttons:after {
+  .sublime .buttons:before , .sublime4lst .buttons:before {
+    left: 20px;
+    border: 1px solid #e3a041;
+    background-color: #ffbc4c;
     position: absolute;
     content: "";
     width: 13px;
@@ -533,16 +536,16 @@ img.aboutpic{
     top: -1px;
   }
   
-  .buttons:before {
-    left: 20px;
-    border: 1px solid #e3a041;
-    background-color: #ffbc4c;
-  }
-  
-  .buttons:after {
+  .sublime .buttons:after , .sublime4lst .buttons:after {
     left: 40px;
     border: 1px solid #13ad46;
     background-color: #00c956;
+    position: absolute;
+    content: "";
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    top: -1px;
   }
   
   .sublime .tab {
