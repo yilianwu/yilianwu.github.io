@@ -1,3 +1,4 @@
+@import 'window';
 :root {
     --color: #213456; /*mainBlue*/
     --color-dark: #1f2f52; /*darkBlue*/
