@@ -471,6 +471,9 @@ a.tag-link {
 img.aboutpic{
     width: 100%;
 }
+.lst{
+    display:contents;
+  }
 .sublime4lst {
     position: relative;
     width: 90%;
@@ -480,7 +483,7 @@ img.aboutpic{
     border-top: 25px solid #b4b4b4;
     border-radius: 10px;
     background: #262728;
-    color: #f1f1f1;
+    color: #f1f1f1; 
     font-family: 'Source Code Pro';
     font-weight: 200;
     font-size: 1.1em;
@@ -506,7 +509,7 @@ img.aboutpic{
     line-height: 25px;
   }
   
-  .sublime .buttons {
+ .buttons {
     min-height: 0;
     position: absolute;
     left:10px;
@@ -518,7 +521,7 @@ img.aboutpic{
     border: 1px solid #e64344;
   }
   
-  .sublime .buttons:before, .sublime .buttons:after {
+.buttons:before,.buttons:after {
     position: absolute;
     content: "";
     width: 13px;
@@ -527,52 +530,52 @@ img.aboutpic{
     top: -1px;
   }
   
-  .sublime .buttons:before {
+.buttons:before {
     left: 20px;
     border: 1px solid #e3a041;
     background-color: #ffbc4c;
   }
   
-  .sublime .buttons:after {
+.buttons:after {
     left: 40px;
     border: 1px solid #13ad46;
     background-color: #00c956;
   }
   
-  .sublime .tab {
+.tab {
     margin-left: 2%;
     list-style: none;
   }
   
-  .sublime .blue {
+.blue {
     color: #66d9ef;
   }
   
-  .sublime .purple {
+.purple {
     color: #8a7bff;
   }
   
-  .sublime .red {
+.red {
     color: #e92772;
   }
   
-  .sublime .green {
+ .green {
     color: #a6e22d;
   }
   
-  .sublime .orange {
+ .orange {
     color: #fd9720;
   }
   
-  .sublime .yellow {
+.yellow {
     color: #e6db74;
   }
   
-  .sublime .gray {
+ .gray {
     color: #8f908a;
   }
   
-  .sublime .cursor:before {
+ .cursor:before {
     opacity: 0;
     content: "|";
     color: #f1f1f1;
