@@ -469,8 +469,10 @@ border-bottom: dotted 1.5px var(--color-dark);
 a.tag-link {
     border-bottom:none;
  }
-#aboutpic{
-    width: 80%; 
+img.aboutpic{
+    width: 80%;
+    /* max-width: 768px; */
+
 }
 .sublime {
     position: relative;
