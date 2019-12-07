@@ -469,3 +469,131 @@ border-bottom: dotted 1.5px var(--color-dark);
 a.tag-link {
     border-bottom:none;
  }
+ .sublime {
+    position: relative;
+    width: 80%;
+    margin: 25px auto;
+    padding: 2%;
+    list-style: none;
+    border-top: 25px solid #b4b4b4;
+    border-radius: 10px;
+    background: #262728;
+    color: #f1f1f1;
+    font-family: 'Source Code Pro';
+    font-weight: 200;
+    font-size: 1.1em;
+    /* Colors */
+  }
+  
+  .sublime li {
+    min-height: 25px;
+    line-height: 25px;
+  }
+  
+  .sublime .buttons {
+    min-height: 0;
+    position: absolute;
+    top: -40px;
+    border-radius: 100%;
+    width: 13px;
+    height: 13px;
+    background-color: #ff5d5b;
+    border: 1px solid #e64344;
+  }
+  
+  .sublime .buttons:before, .sublime .buttons:after {
+    position: absolute;
+    content: "";
+    width: 13px;
+    height: 13px;
+    border-radius: 100%;
+    top: -1px;
+  }
+  
+  .sublime .buttons:before {
+    left: 20px;
+    border: 1px solid #e3a041;
+    background-color: #ffbc4c;
+  }
+  
+  .sublime .buttons:after {
+    left: 40px;
+    border: 1px solid #13ad46;
+    background-color: #00c956;
+  }
+  
+  .sublime .tab {
+    margin-left: 2%;
+    list-style: none;
+  }
+  
+  .sublime .blue {
+    color: #66d9ef;
+  }
+  
+  .sublime .purple {
+    color: #8a7bff;
+  }
+  
+  .sublime .red {
+    color: #e92772;
+  }
+  
+  .sublime .green {
+    color: #a6e22d;
+  }
+  
+  .sublime .orange {
+    color: #fd9720;
+  }
+  
+  .sublime .yellow {
+    color: #e6db74;
+  }
+  
+  .sublime .gray {
+    color: #8f908a;
+  }
+  
+  .sublime .cursor:before {
+    opacity: 0;
+    content: "|";
+    color: #f1f1f1;
+    -webkit-animation: blink 0.8s infinite;
+            animation: blink 0.8s infinite;
+  }
+  
+  @-webkit-keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  /* Demo */
+  .demo {
+    font-size: 1.2em;
+    text-align: center;
+    font-family: 'Old Standard TT', serif;
+  }
+  
+  a {
+    color: inherit;
+  }
