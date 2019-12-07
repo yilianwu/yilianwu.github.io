@@ -593,5 +593,6 @@ img.aboutpic{
     color: #8f908a;
   }
   iframe{
-      width: 80%;
+      width: 100%;
+      max-width: 768px;
   }
