@@ -33,7 +33,9 @@
       function display_ct() {
       var x = new Date()
       minutes = x.getMinutes().toString().length == 1 ? '0'+x.getMinutes() : x.getMinutes(),
-      hours = x.getHours().toString().length == 1 ? '0'+x.getHours() : x.getHours(),
+      h=x.getHours(),
+      hour=h%12+12*(h%12==0),
+      hours = hour.toString().length == 1 ? '0'+hour : hour,
       ampm = x.getHours() >= 12 ? 'PM' : 'AM',
       days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
       var x1=days[x.getDay()];
