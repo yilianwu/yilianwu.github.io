@@ -471,7 +471,7 @@ a.tag-link {
 img.aboutpic{
     width: 100%;
 }
-.lst{
+ .lst{
     display:contents;
   }
 .sublime4lst {
@@ -509,7 +509,7 @@ img.aboutpic{
     line-height: 25px;
   }
   
- .buttons {
+  .sublime .buttons {
     min-height: 0;
     position: absolute;
     left:10px;
@@ -521,7 +521,7 @@ img.aboutpic{
     border: 1px solid #e64344;
   }
   
-.buttons:before,.buttons:after {
+  .sublime .buttons:before, .sublime .buttons:after {
     position: absolute;
     content: "";
     width: 13px;
@@ -530,52 +530,52 @@ img.aboutpic{
     top: -1px;
   }
   
-.buttons:before {
+  .sublime .buttons:before {
     left: 20px;
     border: 1px solid #e3a041;
     background-color: #ffbc4c;
   }
   
-.buttons:after {
+  .sublime .buttons:after {
     left: 40px;
     border: 1px solid #13ad46;
     background-color: #00c956;
   }
   
-.tab {
+  .sublime .tab {
     margin-left: 2%;
     list-style: none;
   }
   
-.blue {
+  .sublime .blue {
     color: #66d9ef;
   }
   
-.purple {
+  .sublime .purple {
     color: #8a7bff;
   }
   
-.red {
+  .sublime .red {
     color: #e92772;
   }
   
- .green {
+  .sublime .green {
     color: #a6e22d;
   }
   
- .orange {
+  .sublime .orange {
     color: #fd9720;
   }
   
-.yellow {
+  .sublime .yellow {
     color: #e6db74;
   }
   
- .gray {
+  .sublime .gray {
     color: #8f908a;
   }
   
- .cursor:before {
+  .sublime .cursor:before {
     opacity: 0;
     content: "|";
     color: #f1f1f1;
