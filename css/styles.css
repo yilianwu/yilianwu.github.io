@@ -471,6 +471,21 @@ a.tag-link {
 img.aboutpic{
     width: 100%;
 }
+.sublime4lst {
+    position: relative;
+    width: 90%;
+    padding: 0px 0px;
+    margin-top: 5%;
+    list-style: none;
+    border-top: 25px solid #b4b4b4;
+    border-radius: 10px;
+    background: #262728;
+    color: #f1f1f1;
+    font-family: 'Source Code Pro';
+    font-weight: 200;
+    font-size: 1.1em;
+    /* Colors */
+}
 .sublime {
     position: relative;
     width: 60%;
