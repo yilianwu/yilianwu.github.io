@@ -581,3 +581,6 @@ img.aboutpic{
   .sublime .gray {
     color: #8f908a;
   }
+  iframe{
+      width: 80%;
+  }
