@@ -124,7 +124,7 @@ img[alt="Imgur"] {
 }
 img[alt="thumbnail"]{
     width: 100%;
-    max-width: 200px;
+    /* max-width: 200px; */
     display: block;
 }
 
@@ -132,8 +132,8 @@ img[alt="thumbnail"]{
 float: left;
 padding-right:20px;
 padding-bottom:20px;
-max-width: 200px;
-margin: 1em;
+/* max-width: 200px; */
+/* margin: 1em; */
 }
 .endlabel {
 right: 0;
@@ -263,8 +263,7 @@ flex: auto;
 display: flex;
 }
 
-#posts,
-#collections {
+#posts,#collections {
 flex: auto;
 display:table;
 height: fit-content;
@@ -272,8 +271,7 @@ min-width: 100%;
 }
 
 
-#about,
-#collections {
+#about,#collections {
 font-family: 'PT Serif', serif;
 text-align: center;
 }
@@ -559,7 +557,18 @@ img.aboutpic{
     border-radius: 100%;
     top: -1px;
   }
-  
+  .sublime4wks .buttons:wname {
+    left: 60px;
+    /* border: 1px solid #13ad46;
+    background-color: #00c956; */
+    position: absolute;
+    content: "Reincubate_";
+    color: black;
+    /* width: 13px;
+    height: 13px;
+    border-radius: 100%; */
+    top: -1px;
+  } 
   .sublime .tab {
     margin-left: 2%;
     list-style: none;
