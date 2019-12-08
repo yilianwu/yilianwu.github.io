@@ -557,18 +557,7 @@ img.aboutpic{
     border-radius: 100%;
     top: -1px;
   }
-  .sublime4wks .buttons:wname {
-    left: 60px;
-    /* border: 1px solid #13ad46;
-    background-color: #00c956; */
-    position: absolute;
-    content: "Reincubate_";
-    color: black;
-    /* width: 13px;
-    height: 13px;
-    border-radius: 100%; */
-    top: -1px;
-  } 
+
   .sublime .tab {
     margin-left: 2%;
     list-style: none;
