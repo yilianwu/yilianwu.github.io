@@ -17,7 +17,7 @@ body {
 }
 .post-toc {
     position: fixed;
-    overflow: hidden;
+    overflow: scroll;
     z-index: 1;
     margin-left: 768px;
     margin-right:1.5em;
