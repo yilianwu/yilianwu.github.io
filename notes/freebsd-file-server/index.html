@@ -49,9 +49,10 @@
 <li><a href="#create-admin-user">Create admin user</a></li>
 <li><a href="#pure-ftpd-conf">pure-ftpd.conf</a></li>
 <li><a href="#create-ftp-users">Create ftp users</a></li>
+<li><a href="#ssl簽證">ssl簽證</a></li>
 <li><a href="#launch-the-server">Launch the server&hellip;</a></li>
 <li><a href="#test-in-file-zilla">Test in File Zilla</a></li>
-<li><a href="#權限">權限</a></li>
+<li><a href="#權限設定">權限設定</a></li>
 </ul></li>
 <li><a href="#zfs-on-home-ftp">ZFS on <code>/home/ftp</code></a>
 <ul>
@@ -85,8 +86,8 @@
 <h1 id="file-server">File Server&nbsp;<a class="anchor" href="#file-server"><i class="small linkify icon"></i></a> </h1>
 
 <p>Overview:<br />
-❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to<br />
-❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed</p>
+    ❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to<br />
+    ❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed</p>
 
 <h2 id="ftp-server">FTP Server&nbsp;<a class="anchor" href="#ftp-server"><i class="small linkify icon"></i></a> </h2>
 
@@ -176,25 +177,29 @@ Create two virtual users “ftp-vip1”, “ftp-vip2”<br />
 ❑ Can only delete files in /home/ftp/upload which are created by themselves.<br />
 ❑ Other permissions are same as sysadm.</p>
 
-<p>1) Add a real account</p>
+<p>i. Add a real account<br />
+    <code>
+    pw group virtualgroup
+</code><br />
+    <code>pw useradd ftpuser1 -g virtualgroup \  
+    -c &quot;FTP virtual user1&quot; -d /home/ftp \  
+    -S /sbin/nologin
+</code></p>
 
-<pre><code>pw group virtualgroup
-</code></pre>
-
-<pre><code class="language-pw">-c &quot;FTP virtual user1&quot; -d /home/ftp \  
--S /sbin/nologin
-</code></pre>
-
-<p>2) Map a virtual account to a real account</p>
-
-<pre><code>pure-pw useradd ftp-vip1 -u ftpuser1 -g virtualgroup \  
--d /home/ftp -m
-</code></pre></li>
+<p>ii. Map a virtual account to a real account<br />
+    <code>
+    pure-pw useradd ftp-vip1 -u ftpuser1 -g virtualgroup \  
+    -d /home/ftp -m
+</code></p></li>
 
 <li><p>看 user info</p>
 
 <pre><code>pure-pw show ftp-vip1
-</code></pre></li>
+</code></pre>
+
+<h3 id="ssl簽證">ssl簽證&nbsp;<a class="anchor" href="#ssl簽證"><i class="small linkify icon"></i></a> </h3>
+
+<p><img src="https://i.imgur.com/W6tarUL.png" alt="Imgur" /></p></li>
 </ol>
 
 <h3 id="launch-the-server">Launch the server&hellip;&nbsp;<a class="anchor" href="#launch-the-server"><i class="small linkify icon"></i></a> </h3>
@@ -226,7 +231,7 @@ service pure-ftpd restart
 passwd：&lt; ******** &gt;<br />
 port：21</p>
 
-<h3 id="權限">權限&nbsp;<a class="anchor" href="#權限"><i class="small linkify icon"></i></a> </h3>
+<h3 id="權限設定">權限設定&nbsp;<a class="anchor" href="#權限設定"><i class="small linkify icon"></i></a> </h3>
 
 <pre><code>sudo chown sysadm:virtualgroup /home/ftp/upload
 sudo chmod 1777 /home/ftp/upload
