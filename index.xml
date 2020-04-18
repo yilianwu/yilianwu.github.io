@@ -6,10 +6,25 @@
     <description>Recent content in Home on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 24 Nov 2019 00:44:25 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 18 Apr 2020 16:28:10 +0800</lastBuildDate>
     
 	<atom:link href="https://yilianwu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>FreeBSD File Server</title>
+      <link>https://yilianwu.github.io/notes/freebsd-file-server/</link>
+      <pubDate>Sat, 18 Apr 2020 16:28:10 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/notes/freebsd-file-server/</guid>
+      <description>File Server Overview:
+❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to
+❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed
+FTP Server Install pure-ftpd Install with pkg
+pkg install pure-ftpd  Or install with port
+port install pure-ftpd  記得要
+[x]UPLOADSCRIPT</description>
+    </item>
     
     <item>
       <title>如何在我的行事曆中新增 Facebook 活動？</title>

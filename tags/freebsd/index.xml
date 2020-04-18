@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Freebsd on [ yilianwu ]</title>
+    <link>https://yilianwu.github.io/tags/freebsd/</link>
+    <description>Recent content in Freebsd on [ yilianwu ]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sat, 18 Apr 2020 16:28:10 +0800</lastBuildDate>
+    
+	<atom:link href="https://yilianwu.github.io/tags/freebsd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>FreeBSD File Server</title>
+      <link>https://yilianwu.github.io/notes/freebsd-file-server/</link>
+      <pubDate>Sat, 18 Apr 2020 16:28:10 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/notes/freebsd-file-server/</guid>
+      <description>File Server Overview:
+❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to
+❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed
+FTP Server Install pure-ftpd Install with pkg
+pkg install pure-ftpd  Or install with port
+port install pure-ftpd  記得要
+[x]UPLOADSCRIPT</description>
+    </item>
+    
+  </channel>
+</rss>
