@@ -160,35 +160,41 @@ TLS 1
 ❑ Can’t delete any files &amp; directories<br />
 ❑ Can’t list /home/ftp/hidden but can enter hidden/treasure and show<br />
 hidden/treasure/secret<br />
-<code>
-pw groupadd ftpuser
-</code><br />
-<code>
-pw useradd ftp -g ftpuser -d /home/ftp
-</code><br /></li>
-<li>Virtual users<br />
+<br /></li>
+</ol>
+
+<pre><code>pw groupadd ftpuser
+</code></pre>
+
+<pre><code>pw useradd ftp -g ftpuser -d /home/ftp
+</code></pre>
+
+<ol>
+<li><p>Virtual users<br />
 Create two virtual users “ftp-vip1”, “ftp-vip2”<br />
 ❑ Password is your student ID<br />
 ❑ Can only delete files in /home/ftp/upload which are created by themselves.<br />
-❑ Other permissions are same as sysadm.<br />
-1) Add a real account<br />
-<code>
-pw group virtualgroup
-</code><br />
-<code>pw useradd ftpuser1 -g virtualgroup \  
--c &quot;FTP virtual user1&quot; -d /home/ftp \  
+❑ Other permissions are same as sysadm.</p>
+
+<p>1) Add a real account</p>
+
+<pre><code>pw group virtualgroup
+</code></pre>
+
+<pre><code class="language-pw">-c &quot;FTP virtual user1&quot; -d /home/ftp \  
 -S /sbin/nologin
-</code><br />
-2) Map a virtual account to a real account<br />
-<code>
-pure-pw useradd ftp-vip1 -u ftpuser1 -g virtualgroup \  
+</code></pre>
+
+<p>2) Map a virtual account to a real account</p>
+
+<pre><code>pure-pw useradd ftp-vip1 -u ftpuser1 -g virtualgroup \  
 -d /home/ftp -m
-</code><br /></li>
-<li>看 user info<br />
-<code>
-pure-pw show ftp-vip1
-</code><br />
-<br /></li>
+</code></pre></li>
+
+<li><p>看 user info</p>
+
+<pre><code>pure-pw show ftp-vip1
+</code></pre></li>
 </ol>
 
 <h3 id="launch-the-server">Launch the server&hellip;&nbsp;<a class="anchor" href="#launch-the-server"><i class="small linkify icon"></i></a> </h3>
