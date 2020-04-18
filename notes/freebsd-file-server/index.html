@@ -118,10 +118,7 @@
 
 <h3 id="create-admin-user">Create admin user&nbsp;<a class="anchor" href="#create-admin-user"><i class="small linkify icon"></i></a> </h3>
 
-<p>Create a system user “sysadm”<br />
-❑ Can login by SSH<br />
-❑ Password is your student ID<br />
-❑ Full access to /home/ftp and subdirectories under “ftp”</p>
+<p>Create a system user “sysadm”</p>
 
 <pre><code>adduser
 </code></pre>
@@ -140,57 +137,56 @@ ssh enable
 
 <p>In pure-ftpd.conf:</p>
 
-<pre><code>ChrootEveryone  yes  
+<pre><code>ChrootEveryone  yes
+    
 AnonymousOnly   no  
+  
 NoAnonymous     no  
+  
 PureDB /usr/local/etc/pureftpd.pdb  
+   
 AnonymousCanCreateDirs  no  
+  
 AntiWarez   no  
 //yes -&gt; Disallow downloads of files owned by the ftp system user  
+  
 Umask   133:022  
+  
 AnonymousCantUpload no  
+  
 CallUploadScript    yes  
+  
 TLS 1  
 </code></pre>
 
 <h3 id="create-ftp-users">Create ftp users&nbsp;<a class="anchor" href="#create-ftp-users"><i class="small linkify icon"></i></a> </h3>
 
 <ol>
-<li>Anonymous<br />
-❑ Can’t create any directories<br />
-❑ Can’t delete any files &amp; directories<br />
-❑ Can’t list /home/ftp/hidden but can enter hidden/treasure and show<br />
-hidden/treasure/secret<br />
-<br /></li>
-</ol>
+<li><p>Anonymous</p>
 
 <pre><code>pw groupadd ftpuser
 </code></pre>
 
 <pre><code>pw useradd ftp -g ftpuser -d /home/ftp
-</code></pre>
+</code></pre></li>
 
-<ol>
 <li><p>Virtual users<br />
 Create two virtual users “ftp-vip1”, “ftp-vip2”<br />
-❑ Password is your student ID<br />
-❑ Can only delete files in /home/ftp/upload which are created by themselves.<br />
-❑ Other permissions are same as sysadm.</p>
+i. Add a real account</p>
 
-<p>i. Add a real account<br />
-    <code>
-    pw group virtualgroup
-</code><br />
-    <code>pw useradd ftpuser1 -g virtualgroup \  
-    -c &quot;FTP virtual user1&quot; -d /home/ftp \  
-    -S /sbin/nologin
-</code></p>
+<pre><code>pw group virtualgroup
+</code></pre>
 
-<p>ii. Map a virtual account to a real account<br />
-    <code>
-    pure-pw useradd ftp-vip1 -u ftpuser1 -g virtualgroup \  
-    -d /home/ftp -m
-</code></p></li>
+<pre><code>pw useradd ftpuser1 -g virtualgroup \  
+-c &quot;FTP virtual user1&quot; -d /home/ftp \  
+-S /sbin/nologin
+</code></pre>
+
+<p>ii. Map a virtual account to a real account</p>
+
+<pre><code>pure-pw useradd ftp-vip1 -u ftpuser1 -g virtualgroup \  
+-d /home/ftp -m
+</code></pre></li>
 
 <li><p>看 user info</p>
 
