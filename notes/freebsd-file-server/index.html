@@ -171,27 +171,25 @@ Create two virtual users “ftp-vip1”, “ftp-vip2”<br />
 ❑ Password is your student ID<br />
 ❑ Can only delete files in /home/ftp/upload which are created by themselves.<br />
 ❑ Other permissions are same as sysadm.<br />
-
-<ol>
-<li>Add a real account<br />
+1) Add a real account<br />
 <code>
 pw group virtualgroup
 </code><br />
 <code>pw useradd ftpuser1 -g virtualgroup \  
 -c &quot;FTP virtual user1&quot; -d /home/ftp \  
 -S /sbin/nologin
-</code><br /></li>
-<li>Map a virtual account to a real account<br />
+</code><br />
+2) Map a virtual account to a real account<br />
 <code>
 pure-pw useradd ftp-vip1 -u ftpuser1 -g virtualgroup \  
 -d /home/ftp -m
 </code><br /></li>
-</ol></li>
-
-<li><p>看 user info</p>
-
-<pre><code>pure-pw show ftp-vip1
-</code></pre>
+<li>看 user info<br />
+<code>
+pure-pw show ftp-vip1
+</code><br />
+<br /></li>
+</ol>
 
 <h3 id="launch-the-server">Launch the server&hellip;&nbsp;<a class="anchor" href="#launch-the-server"><i class="small linkify icon"></i></a> </h3>
 
@@ -290,17 +288,12 @@ check history</p>
 <h3 id="automatic-snapshot-script">Automatic snapshot script&nbsp;<a class="anchor" href="#automatic-snapshot-script"><i class="small linkify icon"></i></a> </h3>
 
 <p>Write a script: <code>zbackup</code><br />
-Usage:</p>
-
-<ul>
-<li>Create: <code>zbackup DATASET [ROTATION_CNT]</code><br /></li>
-<li>List: <code>zbackup -l|--list [DATASET|ID|DATASET ID]</code><br /></li>
-<li>Delete: <code>zbackup -d|--delete [DATASET|ID|DATASET ID]</code><br /></li>
-<li>Export: <code>zbackup -e|--export [DATASET|ID|DATASET ID]</code><br /></li>
-<li>Import: <code>zbackup -i|--import FILENAME DATASET</code><br />
-<br /></li>
-</ul></li>
-</ol>
+Usage:<br />
+    - Create: <code>zbackup DATASET [ROTATION_CNT]</code><br />
+    - List: <code>zbackup -l|--list [DATASET|ID|DATASET ID]</code><br />
+    - Delete: <code>zbackup -d|--delete [DATASET|ID|DATASET ID]</code><br />
+    - Export: <code>zbackup -e|--export [DATASET|ID|DATASET ID]</code><br />
+    - Import: <code>zbackup -i|--import FILENAME DATASET</code></p>
 
 <p><code>$PATH</code>下的filename可以當command執行<br />
 我的$PATH是 <code>/home/c0846101/bin</code><br />
