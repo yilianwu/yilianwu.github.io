@@ -340,39 +340,37 @@ server {
     <code>
     pkg install php73 php73-mysqli
 </code><br />
-2. 建立 php.ini<br />
+1. 建立 php.ini<br />
     建立php.ini-production 的 soft-link 給 php.ini<br />
     <code>
     cd /usr/local/etc
     sudo cp php.ini-production php.ini
 </code><br />
-3. Enable PHP<br />
+1. Enable PHP<br />
     <code>
     sudo sysrc php_fpm_enable=yes
     sudo service php-fpm start
 </code><br />
-4. Configure <code>nginx.conf</code><br />
-    ```<br />
-    upstream php-handler {<br />
-        server 127.0.0.1:9000;<br />
-        #server unix:/var/run/php/php7.2-fpm.sock;<br />
-    }<br />
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
-    # Using domain name<br />
-    server {<br />
-        location ~ .php$ {<br />
-            root           /usr/local/www/nginx;<br />
-            fastcgi_pass   127.0.0.1:9000;<br />
-            fastcgi_index  index.php;<br />
-            #fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;<br />
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;<br />
-            include        fastcgi_params;<br />
-        }<br />
-    }</p>
+1. Configure <code>nginx.conf</code></p>
 
-<pre><code>```
+<pre><code>upstream php-handler {
+	server 127.0.0.1:9000;
+	#server unix:/var/run/php/php7.2-fpm.sock;
+}
+...................................
+...................................
+...................................    
+# Using domain name
+server {
+    location ~ \.php$ {
+        root           /usr/local/www/nginx;
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        #fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+}
 </code></pre>
 
 <ol>
