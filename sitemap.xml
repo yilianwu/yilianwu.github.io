@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yilianwu.github.io/notes/freebsd-web-server/</loc>
+    <lastmod>2020-04-19T02:16:59+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yilianwu.github.io/notes/freebsd-file-server/</loc>
     <lastmod>2020-04-18T16:28:10+08:00</lastmod>
   </url>
@@ -61,7 +66,7 @@
   
   <url>
     <loc>https://yilianwu.github.io/tags/freebsd/</loc>
-    <lastmod>2020-04-18T16:28:10+08:00</lastmod>
+    <lastmod>2020-04-19T02:16:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -79,7 +84,7 @@
   
   <url>
     <loc>https://yilianwu.github.io/</loc>
-    <lastmod>2020-04-18T16:28:10+08:00</lastmod>
+    <lastmod>2020-04-19T02:16:59+08:00</lastmod>
   </url>
   
   <url>
@@ -108,7 +113,7 @@
   
   <url>
     <loc>https://yilianwu.github.io/notes/</loc>
-    <lastmod>2020-04-18T16:28:10+08:00</lastmod>
+    <lastmod>2020-04-19T02:16:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/dosstyle.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="/info">INFO</a>
+            
+            <a href="/posts">POSTS</a>
+            
+            <a href="/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="../js/menutime.js"></script>
+    </div>
+            
+    
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+        <div class="post-toc" id="post-toc">
+            <h2 class="post-toc-title">Contents</h2>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#web-server">Web Server</a>
+<ul>
+<li><a href="#network">Network</a></li>
+<li><a href="#http-server">HTTP Server</a>
+<ul>
+<li><a href="#nginx">Nginx</a></li>
+<li><a href="#configures">Configures</a>
+<ul>
+<li><a href="#virtual-host">Virtual Host</a></li>
+</ul></li>
+<li><a href="#php-php-fpm">PHP/PHP-FPM</a></li>
+</ul></li>
+<li><a href="#mysql">MySQL</a>
+<ul>
+<li><a href="#install-mysql">Install MySQL</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#start-mysql-daemon">Start MySQL daemon</a></li>
+<li><a href="#login">Login</a></li>
+<li><a href="#create-database-user">Create Database, User</a></li>
+</ul></li>
+<li><a href="#http-applications">HTTP Applications</a>
+<ul>
+<li><a href="#basic-app-router">Basic App Router</a></li>
+<li><a href="#websocket">WebSocket</a></li>
+<li><a href="#nextcloud">Nextcloud</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+       <div class="paperbg">
+            <div id="title">
+                <h1>Freebsd Web Server</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2020-04-19 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="/tags/freebsd/"> FreeBSD </a>
+                    </div>
+
+                <section class="post-content">
+                
+
+<h1 id="web-server">Web Server&nbsp;<a class="anchor" href="#web-server"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="network">Network&nbsp;<a class="anchor" href="#network"><i class="small linkify icon"></i></a> </h2>
+
+<ul>
+<li><p>Intranet<br />
+A VM with a host-only adapter connecting to the same network of the original machine</p>
+
+<ol>
+<li>創立Host網卡<br />
+<img src="https://i.imgur.com/ED3z5LF.png" alt="Thumbnail" /><br />
+Create &gt; enable DHCP server<br /></li>
+<li>將網卡加到VM<br />
+VM Settings &gt; Network<br />
+Adapter 2 選Host-only Adapter<br />
+<img src="https://i.imgur.com/D4YZNRz.png" alt="Thumbnail" /><br /></li>
+<li>FreeBSD <code>/etc/rc.conf</code>新增網卡<br />
+<code>
+ifconfig_em1=&quot;DHCP&quot;
+</code><br />
+<code>
+reboot -n //重開機
+ifconfig  //查看網路設定
+</code><br />
+會看到新的網卡<code>em1 192.168.56.101</code><br />
+<br /></li>
+</ol></li>
+
+<li><p>Public<br />
+The Wireguard VPN (10.113.0.0/16)</p></li>
+</ul>
+
+<h2 id="http-server">HTTP Server&nbsp;<a class="anchor" href="#http-server"><i class="small linkify icon"></i></a> </h2>
+
+<h3 id="nginx">Nginx&nbsp;<a class="anchor" href="#nginx"><i class="small linkify icon"></i></a> </h3>
+
+<p>Install Nginx</p>
+
+<pre><code>pkg install nginx
+</code></pre>
+
+<p>Enable Nginx when reboot</p>
+
+<pre><code>sudo sysrc nginx_enable=yes
+</code></pre>
+
+<p>啟動nginx</p>
+
+<pre><code>service nginx start
+</code></pre>
+
+<p>在本機browser輸入ip後會看到這個頁面<br />
+(如果要用外網ip 本機要記得先連上VPN)<br />
+<img src="https://i.imgur.com/mMEFdSn.png" alt="Imgur" /></p>
+
+<h3 id="configures">Configures&nbsp;<a class="anchor" href="#configures"><i class="small linkify icon"></i></a> </h3>
+
+<h4 id="virtual-host">Virtual Host&nbsp;<a class="anchor" href="#virtual-host"><i class="small linkify icon"></i></a> </h4>
+
+<p>❑ Setup a name-based virtual host<br />
+❑ Show different content when connecting using domain<br />
+name/IP<br />
+1. Get a domain name<br />
+    <img src="https://i.imgur.com/5zge2Nt.png" alt="Imgur" /><br />
+2. 自簽 SSL<br />
+    <code>
+    mkdir /usr/local/etc/nginx/ssl
+</code><br />
+    <code>
+    sudo openssl req -x509 -nodes -day 365 \  
+    -newkey rsa:2048 -key out /usr/local/etc/nginx \
+    /ssl/nginx.key -out /usr/local/etc/nginx/ssl/nginx.crt
+</code><br />
+2. <code>/usr/local/etc/nginx/nginx.conf</code>設定<br />
+    <code>location /</code>是ip會看到的頁面<br />
+    ```<br />
+    http {<br />
+        &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
+        &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
+        &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
+        # Hide the server version in header<br />
+        server_tokens off;</p>
+
+<pre><code>    # SSL認證 
+    ssl_certificate /usr/local/etc/nginx/ssl/nginx.crt;
+    ssl_certificate_key /usr/local/etc/nginx/ssl/nginx.key;
+
+    # Using IP
+    server {
+        # web聽port 80
+        listen 80;  
+
+        # https聽port 443、enable SSL &amp; HTTP2
+        listen 443 ssl http2;  
+
+        # public vpn ip
+        server_name 10.113.0.98;  
+
+        location / {
+            # Base on nakedhtml這個資料夾
+            root    /usr/local/www/nginx/nakedhtml;  
+
+            # 首頁是資料夾nakedhtml中的index.html
+            index  index.html;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+            location = /50x.html {
+            root   /usr/local/www/nginx-dist;
+        }
+    }
+
+    # Using domain name
+    server {
+        listen  443 ssl http2;
+
+        #server_name  localhost;
+        # Domain name as name-based virtual host
+        server_name weelian.nctu.me; 
+
+        # SSL認證
+        ssl_certificate /usr/local/etc/nginx/ssl/nginx.crt;
+        ssl_certificate_key /usr/local/etc/nginx/ssl/nginx.key;
+        #charset koi8-r;
+        #access_log  logs/host.access.log  main;
+        add_header Referrer-Policy &quot;no-referrer&quot; always;
+        add_header X-Content-Type-Options &quot;nosniff&quot; always;
+        add_header X-Download-Options &quot;noopen&quot; always;
+        add_header X-Frame-Options &quot;SAMEORIGIN&quot; always;
+        add_header X-Permitted-Cross-Domain-Policies &quot;none&quot; always;
+        add_header X-Robots-Tag &quot;none&quot; always;
+        add_header X-XSS-Protection &quot;1; mode=block&quot; always;
+
+        # Remove X-Powered-By, which is an information leak
+        fastcgi_hide_header X-Powered-By;
+
+        index index.html index.php;
+        root    /usr/local/www/nginx;
+
+        # domain name root index
+        location / {
+            index  index.html index.htm;
+        }
+        ...................................
+        ...................................
+        ...................................
+    }
+    ...................................
+    ...................................
+    ...................................
+}
+```
+</code></pre>
+
+<ol>
+<li><p>啟用HTTPS<br />
+Enable HSTS(HTTP Strict Transport Security): 放在domain name server<br />
+Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
+
+<pre><code>http {
+    ...................................    
+    ...................................
+    ...................................
+    # Using domain name
+    server {
+        listen  443 ssl http2;
+
+        # Enable HSTS  
+        add_header Strict-Transport-Security &quot;max-age=31536000;
+        includeSubDomains&quot; always;
+        ...................................
+        ...................................
+    }        
+    ...................................
+    ...................................
+    ...................................
+    server {
+        listen 80;
+        server_name weelian.nctu.me;
+        return 301 https://weelian.nctu.me$request_uri;
+    }
+}
+</code></pre></li>
+
+<li><p>Webpage <code>/private</code></p>
+
+<ul>
+<li>When accessing from intranet, it must show after passing<br />
+Basic Auth authentication with username admin and password {your-student-ID}<br />
+<img src="https://i.imgur.com/FxQ6myC.png" alt="Thumbnail" /><br /></li>
+<li>Access from public network should be denied (return 403)<br />
+<br /></li>
+</ul>
+
+<p>Auth Basic<br />
+設定帳號密碼</p>
+
+<pre><code>sudo sh -c &quot;echo -n 'admin:' &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
+</code></pre>
+
+<pre><code>sudo sh -c &quot;openssl passwd -apr1 &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
+</code></pre>
+
+<p>設定<code>/usr/local/www/nginx/.htpasswd</code>權限<br />
+！正確！</p>
+
+<pre><code>-rw-r-----  www www .htpasswd
+</code></pre>
+
+<p>如果是原本的</p>
+
+<pre><code>-rw-r-----  root    wheel   .htpasswd
+</code></pre>
+
+<p>外網 -&gt; 403 Forbidden<br />
+內網輸入帳密後 -&gt; An error occured</p>
+
+<p>nginx.conf</p>
+
+<pre><code>...................................
+...................................
+...................................    
+# Using domain name
+server {
+    ...................................        
+    ................................... 
+    # domain name root index
+    location / {
+        index  index.html index.htm;
+    }
+    location /private {
+        # allow Intranet
+        allow 10.113.0.98;
+        allow 192.168.56.101;
+
+        # deny Internet
+        deny all;
+        auth_basic &quot;Authorization Required&quot;;
+        auth_basic_user_file /usr/local/www/nginx/.htpasswd;
+        alias /usr/local/www/nginx/secret;
+        index index.html index.htm;
+    }
+    ...................................
+    ...................................
+    ...................................
+</code></pre>
+
+<h3 id="php-php-fpm">PHP/PHP-FPM&nbsp;<a class="anchor" href="#php-php-fpm"><i class="small linkify icon"></i></a> </h3>
+
+<p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()</p></li>
+
+<li><p>Install php ver 7.3.0</p>
+
+<pre><code>pkg install php73 php73-mysqli
+</code></pre></li>
+
+<li><p>建立 php.ini<br />
+建立php.ini-production 的 soft-link 給 php.ini</p>
+
+<pre><code>cd /usr/local/etc
+sudo cp php.ini-production php.ini
+</code></pre></li>
+
+<li><p>Enable PHP</p>
+
+<pre><code>sudo sysrc php_fpm_enable=yes
+sudo service php-fpm start
+</code></pre></li>
+
+<li><p>Configure <code>nginx.conf</code></p>
+
+<pre><code>upstream php-handler {
+    server 127.0.0.1:9000;
+    #server unix:/var/run/php/php7.2-fpm.sock;
+}
+...................................
+...................................
+...................................    
+# Using domain name
+server {
+    location ~ \.php$ {
+        root           /usr/local/www/nginx;
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        #fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+}
+    
+</code></pre></li>
+
+<li><p>定義SCRIPT_FILENAME<br />
+預設安裝的 Nginx FastCGI 參數檔裡面沒有定義 SCRIPT_FILENAME 這個變數<br />
+因此我們要把他加進去</p>
+
+<pre><code>sudo vim /usr/local/etc/nginx/fastcgi_params
+</code></pre>
+
+<p>找到SCRIPT_FILENAME</p>
+
+<pre><code>fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+</code></pre></li>
+
+<li><p><code>info.php</code></p>
+
+<pre><code>&lt;?php
+    phpinfo();
+?&gt;
+</code></pre></li>
+
+<li><p>改檔名</p>
+
+<pre><code>cd /usr/local/www/nginx-dist
+sudo mv info.php info-W081001.php
+</code></pre>
+
+<p>這樣去 <a href="https://weelian.nctu.me/info-W081001.php">https://weelian.nctu.me/info-W081001.php</a><br />
+就會看到phpinfo()<br />
+<img src="https://i.imgur.com/npxqTQR.png" alt="Imgur" /></p></li>
+
+<li><p>Hide PHP version in response header<br />
+<code>/usr/local/etc/php.ini</code></p>
+
+<pre><code>expose.php=off
+</code></pre>
+
+<h2 id="mysql">MySQL&nbsp;<a class="anchor" href="#mysql"><i class="small linkify icon"></i></a> </h2>
+
+<p>Prepare for NextCloud</p></li>
+</ol>
+
+<h3 id="install-mysql">Install MySQL&nbsp;<a class="anchor" href="#install-mysql"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>portsnap fetch update
+</code></pre>
+
+<pre><code>cd /usr/ports/databases/mysql57-server
+sudo make WITH_CHARSET=utf8 install clean
+</code></pre>
+
+<h3 id="configuration">Configuration&nbsp;<a class="anchor" href="#configuration"><i class="small linkify icon"></i></a> </h3>
+
+<p><code>/usr/local/etc/my.conf</code></p>
+
+<h3 id="start-mysql-daemon">Start MySQL daemon&nbsp;<a class="anchor" href="#start-mysql-daemon"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>sudo /usr/local/etc/rc.d/mysql-server start
+</code></pre>
+
+<h3 id="login">Login&nbsp;<a class="anchor" href="#login"><i class="small linkify icon"></i></a> </h3>
+
+<p>login mysql as root with passwd</p>
+
+<pre><code>mysql -u root mysql -p
+</code></pre>
+
+<h3 id="create-database-user">Create Database, User&nbsp;<a class="anchor" href="#create-database-user"><i class="small linkify icon"></i></a> </h3>
+
+<p>Create a MySQL user named ‘nc’ and a database named ‘nextcloud’, which satisfies:<br />
+• The password of the user is your student ID<br />
+• This user can only login from localhost<br />
+• This user only have full privileges on database ‘nextcloud’</p>
+
+<pre><code>&gt; create DATABASE nextcloud;
+&gt; show database;
+&gt; GRANT ALL ON nextcloud.* TO nc@localhost IDENTIFIED BY 'W081001';
+&gt; quit
+</code></pre>
+
+<p>Login as nc</p>
+
+<pre><code>mysql -u nc nextcloud -p
+</code></pre>
+
+<p>Set the transaction isolation levels to READ-COMMITED</p>
+
+<pre><code>&gt; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITED;
+&gt; SELECT @@TX_ISOLATION;
+</code></pre>
+
+<h2 id="http-applications">HTTP Applications&nbsp;<a class="anchor" href="#http-applications"><i class="small linkify icon"></i></a> </h2>
+
+<h3 id="basic-app-router">Basic App Router&nbsp;<a class="anchor" href="#basic-app-router"><i class="small linkify icon"></i></a> </h3>
+
+<p>There are three path displaying different contents:<br />
+- https://{your-domain}/app<br />
+    Display route: /<br />
+- https://{your-domain}/app/{A}+{B} (A, B are integers)<br />
+    Display result: {value of A+B}<br />
+- https://{your-domain}/app?name={string}<br />
+    Display Hello, {string}</p>
+
+<ol>
+<li><p><code>app/index.php</code></p>
+
+<pre><code>&lt;?php
+    $input = $_SERVER[&quot;QUERY_STRING&quot;];
+    if(strlen($input)&gt;0){
+        $ars = explode(&quot;=&quot;,$input);
+
+        if(strlen($ars[1])&gt;0){
+            echo &quot;Hello, $ars[1]&quot;;
+        }
+
+        else{
+            $arr = explode(&quot;+&quot;,$input);
+            $sum = (int)$arr[0]+(int)$arr[1];
+            echo &quot;result: $sum&quot;;
+        }
+    }
+    else{
+        echo 'route: /';
+    }
+?&gt;
+</code></pre></li>
+
+<li><p><code>nginx.conf</code></p>
+
+<pre><code>location /app {
+    alias /usr/local/www/nginx/app;
+    index index.php;
+    try_files $uri $uri/ @test;
+}
+
+location @test {
+            rewrite ^/app/(.*)\+(\w+)\.?.*$ /app?$1+$2; 
+}
+</code></pre>
+
+<h3 id="websocket">WebSocket&nbsp;<a class="anchor" href="#websocket"><i class="small linkify icon"></i></a> </h3>
+
+<p><a href="https://medium.com/@cn007b/super-simple-php-websocket-example-ea2cd5893575">A sample program</a></p></li>
+
+<li><p>This program crashes at client refresh, so just use it for test or demo</p></li>
+
+<li><p>You don’t need to support HTTP2 for WebSocket connection</p></li>
+
+<li><p>Configure your HTTP server such the program run appropriately that when accessing http(s)://{your- domain}/wsdemo</p></li>
+
+<li><p>Let it be connected on port 443(wss://)</p></li>
+</ol>
+
+<p>Original: WebSocket is on port 12345<br />
+<img src="https://i.imgur.com/une8KL3.png" alt="Imgur" /></p>
+
+<p>Goal: connect websocket on port 443<br />
+<img src="https://i.imgur.com/2nkbXbD.png" alt="Imgur" /></p>
+
+<p>In <code>nginx.conf</code></p>
+
+<pre><code>...................................
+...................................
+...................................  
+upstream websocket {
+	server 0.0.0.0:12345;
+}
+
+# Using domain name
+server {
+    location /wsdemo {
+    	alias /usr/local/www/nginx/wsdemo;
+    	index websockets.html;
+    	# proxy_pass http://websocket;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        # WebSocket support
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &quot;upgrade&quot;;
+    }
+
+    location /public {
+    	proxy_pass http://websocket;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        # WebSocket support
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &quot;upgrade&quot;;
+    }
+}
+</code></pre>
+
+<p>In <code>wsdemo/websockets.html</code></p>
+
+<pre><code>&lt;html&gt;
+&lt;body&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;script&gt;
+        # var host = 'ws://0.0.0.0:12345/websockets.php';
+        var host = 'wss://weelian.nctu.me/public';
+        var socket = new WebSocket(host);
+        socket.onmessage = function(e) {
+            document.getElementById('root').innerHTML = e.data;
+        };
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>In <code>wsdemo/websockets.php</code></p>
+
+<pre><code>&lt;?php
+
+$address = '0.0.0.0';
+$port = 12345;
+
+// Create WebSocket.
+$server = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+socket_set_option($server, SOL_SOCKET, SO_REUSEADDR, 1);
+socket_bind($server, $address, $port);
+socket_listen($server);
+$client = socket_accept($server);
+
+// Send WebSocket handshake headers.
+$request = socket_read($client, 5000);
+preg_match('#Sec-WebSocket-Key: (.*)\r\n#', $request, $matches);
+$key = base64_encode(pack(
+    'H*',
+    sha1($matches[1] . '258EAFA5-E914-47DA-95CA-C5AB0DC85B11')
+));
+$headers = &quot;HTTP/1.1 101 Switching Protocols\r\n&quot;;
+$headers .= &quot;Upgrade: websocket\r\n&quot;;
+$headers .= &quot;Connection: Upgrade\r\n&quot;;
+$headers .= &quot;Sec-WebSocket-Version: 13\r\n&quot;;
+$headers .= &quot;Sec-WebSocket-Accept: $key\r\n\r\n&quot;;
+socket_write($client, $headers, strlen($headers));
+
+// Send messages into WebSocket in a loop.
+while (true) {
+    sleep(1);
+    $content = 'Now: ' . time();
+    $response = chr(129) . chr(strlen($content)) . $content;
+    socket_write($client, $response);
+}
+</code></pre>
+
+<p>我一開始在執行socket的時候 出現Error</p>
+
+<pre><code>PHP Fatal Error: Uncaught Error: Call to undefined function socket_create() in....
+</code></pre>
+
+<p>後來發現是因為沒裝Socket Extension</p>
+
+<pre><code>cd /usr/ports/lang/php73-extensions
+make config install clean
+</code></pre>
+
+<p>[x]socket</p>
+
+<h3 id="nextcloud">Nextcloud&nbsp;<a class="anchor" href="#nextcloud"><i class="small linkify icon"></i></a> </h3>
+
+<p>要在{domain}/nextcloud<br />
+1. Install<br />
+    要先用pkg install 才會有完整的php-fmp<br />
+    <code>
+    pkg search nextcloud
+    pkg install nextcloud-php-73
+</code><br />
+    pkg裝好的nextcloud 會在<code>/usr/local/www</code><br />
+    再把它刪掉 用本來的zip替換<br />
+    改權限<br />
+    <code>
+    sudo chown -R www:www nextcloud
+</code></p>
+
+<ol>
+<li><p>Configuration in <code>nginx.conf</code><br />
+Google: Nextcloud in a subdir of nginx<br />
+copy &amp; paste in <code>nginx.conf</code></p>
+
+<p>如果開{domain}/nextcloud 出現An error occured<br />
+-&gt; 重開php-fpm</p>
+
+<pre><code>sudo service php-fpm restart
+</code></pre>
+
+<p>or<br />
+-&gt; kill PID</p>
+
+<pre><code>ps aux | grep php
+sudo kill {php pid}
+sudo service php-fpm start
+</code></pre>
+
+<p><strong>在一開始 Create user時 記得要選MySQL DB</strong></p></li>
+
+<li><p>Personal Webpage</p>
+
+<ul>
+<li>Each user in Nextcloud can put static(PHP is not needed) contents(img, html, css, js, etc.) in the public_html directory under their home<br /></li>
+<li>When accessing https://{your-domain}/sites/~{username}/ , it should show whatever {username} put in his public_html, with index index.html<br />
+<br /></li>
+</ul>
+
+<pre><code>location /sites {
+    try_files $uri $uri/ @ncsites;
+}
+location @ncsites {
+    rewrite ^/sites/\~(.*) /nextcloud/data/$1/files/public_html/index.html;
+}
+</code></pre></li>
+</ol>
+
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	<a href="https://www.youtube.com/channel/UCoX_ahsZ27IJh_WQK4CpGJw" target="_blank"><img src="https://i.imgur.com/pZI2aGT.png" height="30" width="30"></a>
+	<a href="https://github.com/yilianwu"><img src="https://i.imgur.com/BIgEqmF.png" target="_blank" height="30" width="30"></a>
+
+
+    <span style="display:block" class="footer-text">&copy 2019 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<link rel="stylesheet" href="https://yilianwu.github.io/css/solarized-light.css"/>
+<script src="https://yilianwu.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

@@ -6,10 +6,33 @@
     <description>Recent content in Notes on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 18 Apr 2020 16:28:10 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2020 02:16:59 +0800</lastBuildDate>
     
 	<atom:link href="https://yilianwu.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Freebsd Web Server</title>
+      <link>https://yilianwu.github.io/notes/freebsd-web-server/</link>
+      <pubDate>Sun, 19 Apr 2020 02:16:59 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/notes/freebsd-web-server/</guid>
+      <description>Web Server Network  Intranet
+A VM with a host-only adapter connecting to the same network of the original machine
+ 創立Host網卡
+Create &amp;gt; enable DHCP server
+ 將網卡加到VM
+VM Settings &amp;gt; Network
+Adapter 2 選Host-only Adapter
+ FreeBSD /etc/rc.conf新增網卡
+ ifconfig_em1=&amp;quot;DHCP&amp;quot; 
+ reboot -n //重開機 ifconfig //查看網路設定 
+會看到新的網卡em1 192.168.56.101
+  Public
+The Wireguard VPN (10.113.0.0/16)
+  HTTP Server Nginx Install Nginx
+pkg install nginx  Enable Nginx when reboot</description>
+    </item>
     
     <item>
       <title>FreeBSD File Server</title>

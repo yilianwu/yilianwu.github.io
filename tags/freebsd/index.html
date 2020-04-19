@@ -42,6 +42,30 @@
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
+                        <a href="/notes/freebsd-web-server/">Freebsd Web Server</a>
+                        <p><time datetime="2020-04-19T02:16:59&#43;0800">2020-04-19</time>
+</p>
+		                <p>Web Server Network  Intranet
+A VM with a host-only adapter connecting to the same network of the original machine
+ 創立Host網卡
+Create &gt; enable DHCP server
+ 將網卡加到VM
+VM Settings &gt; Network
+Adapter 2 選Host-only Adapter
+ FreeBSD /etc/rc.conf新增網卡
+ ifconfig_em1=&quot;DHCP&quot; 
+ reboot -n //重開機 ifconfig //查看網路設定 
+會看到新的網卡em1 192.168.56.101
+  Public
+The Wireguard VPN (10.113.0.0/16)
+  HTTP Server Nginx Install Nginx
+pkg install nginx  Enable Nginx when reboot...</p><span class="cursor">|</span>
+                    </li>
+                </ul>
+                
+                <ul class="sublime4lst">
+                    <li class="buttons"></li>
+                    <li style="padding:10px 20px 40px;">
                         <a href="/notes/freebsd-file-server/">FreeBSD File Server</a>
                         <p><time datetime="2020-04-18T16:28:10&#43;0800">2020-04-18</time>
 </p>
