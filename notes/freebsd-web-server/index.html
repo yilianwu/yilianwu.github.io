@@ -277,85 +277,90 @@ Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
 
 <h4 id="webpage-private">Webpage <code>/private</code>&nbsp;<a class="anchor" href="#webpage-private"><i class="small linkify icon"></i></a> </h4>
 
-<pre><code>- When accessing from intranet, it must show after passing
-Basic Auth authentication with username admin and password {your-student-ID}
-![Imgur](https://i.imgur.com/FxQ6myC.png)
-- Access from public network should be denied (return 403) 
+<pre><code>- When accessing from intranet, it must show after passing Basic Auth authentication with username admin and password {your-student-ID}  
 
-Auth Basic   
-設定帳號密碼  
-```
-sudo sh -c &quot;echo -n 'admin:' &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
-```
-```
-sudo sh -c &quot;openssl passwd -apr1 &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
-```
-設定`/usr/local/www/nginx/.htpasswd`權限  
-！正確！  
-```
--rw-r-----  www www .htpasswd
-```
-如果是原本的  
-```
--rw-r-----  root    wheel   .htpasswd
-```
-外網 -&gt; 403 Forbidden  
-內網輸入帳密後 -&gt; An error occured  
+![Imgur](https://i.imgur.com/FxQ6myC.png)  
+- Access from public network should be denied (return 403)  
 
-nginx.conf
-```
-...................................
-...................................
-...................................    
-# Using domain name
-server {
-    ...................................        
-    ................................... 
-    # domain name root index
-    location / {
-        index  index.html index.htm;
-    }
-    location /private {
-        # allow Intranet
-        allow 10.113.0.98;
-        allow 192.168.56.101;
+1. Auth Basic   
+    設定帳號密碼  
+    ```
+    sudo sh -c &quot;echo -n 'admin:' &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
+    ```
+    ```
+    sudo sh -c &quot;openssl passwd -apr1 &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
+    ```
+2. 設定`/usr/local/www/nginx/.htpasswd`權限   
+    ！正確！  
+    ```
+    -rw-r-----  www www .htpasswd
+    ```
+    如果是原本的  
+    ```
+    -rw-r-----  root    wheel   .htpasswd
+    ```
+    外網 -&gt; 403 Forbidden  
+    內網輸入帳密後 -&gt; An error occured  
 
-        # deny Internet
-        deny all;
-        auth_basic &quot;Authorization Required&quot;;
-        auth_basic_user_file /usr/local/www/nginx/.htpasswd;
-        alias /usr/local/www/nginx/secret;
-        index index.html index.htm;
-    }
+3. nginx.conf  
+    ```
     ...................................
     ...................................
-    ...................................
-```  
+    ...................................    
+    # Using domain name
+    server {
+        ...................................        
+        ................................... 
+        # domain name root index
+        location / {
+            index  index.html index.htm;
+        }
+        location /private {
+            # allow Intranet
+            allow 10.113.0.98;
+            allow 192.168.56.101;
+
+            # deny Internet
+            deny all;
+            auth_basic &quot;Authorization Required&quot;;
+            auth_basic_user_file /usr/local/www/nginx/.htpasswd;
+            alias /usr/local/www/nginx/secret;
+            index index.html index.htm;
+        }
+        ...................................
+        ...................................
+        ...................................
+    ```  
 </code></pre>
 
 <h3 id="php-php-fpm">PHP/PHP-FPM&nbsp;<a class="anchor" href="#php-php-fpm"><i class="small linkify icon"></i></a> </h3>
 
-<p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()<br />
-1. Install php ver 7.3.0<br />
-    <code>
-    pkg install php73 php73-mysqli
-</code><br />
-1. 建立 php.ini<br />
-    建立php.ini-production 的 soft-link 給 php.ini<br />
-    <code>
-    cd /usr/local/etc
-    sudo cp php.ini-production php.ini
-</code><br />
-1. Enable PHP<br />
-    <code>
-    sudo sysrc php_fpm_enable=yes
-    sudo service php-fpm start
-</code><br />
-1. Configure <code>nginx.conf</code></p>
+<p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()</p>
+
+<ol>
+<li><p>Install php ver 7.3.0</p>
+
+<pre><code>pkg install php73 php73-mysqli
+</code></pre></li>
+
+<li><p>建立 php.ini<br />
+建立php.ini-production 的 soft-link 給 php.ini</p>
+
+<pre><code>cd /usr/local/etc
+sudo cp php.ini-production php.ini
+</code></pre></li>
+
+<li><p>Enable PHP</p>
+
+<pre><code>sudo sysrc php_fpm_enable=yes
+sudo service php-fpm start
+</code></pre></li>
+
+<li><p>Configure <code>nginx.conf</code></p>
 
 <pre><code>upstream php-handler {
-	server 127.0.0.1:9000;
-	#server unix:/var/run/php/php7.2-fpm.sock;
+    server 127.0.0.1:9000;
+    #server unix:/var/run/php/php7.2-fpm.sock;
 }
 ...................................
 ...................................
@@ -371,39 +376,42 @@ server {
         include        fastcgi_params;
     }
 }
+</code></pre></li>
+
+<li><p>定義SCRIPT_FILENAME<br />
+預設安裝的 Nginx FastCGI 參數檔裡面沒有定義 SCRIPT_FILENAME 這個變數<br />
+因此我們要把他加進去</p>
+
+<pre><code>sudo vim /usr/local/etc/nginx/fastcgi_params
 </code></pre>
 
-<ol>
-<li>定義SCRIPT_FILENAME<br />
-預設安裝的 Nginx FastCGI 參數檔裡面沒有定義 SCRIPT_FILENAME 這個變數<br />
-因此我們要把他加進去<br />
-<code>
-sudo vim /usr/local/etc/nginx/fastcgi_params
-</code><br />
-找到SCRIPT_FILENAME<br />
-<code>
-fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-</code><br /></li>
-<li><code>info.php</code><br />
-<code>
-&lt;?php
+<p>找到SCRIPT_FILENAME</p>
+
+<pre><code>fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+</code></pre></li>
+
+<li><p><code>info.php</code></p>
+
+<pre><code>&lt;?php
     phpinfo();
 ?&gt;
-</code><br /></li>
-<li>改檔名<br />
-<code>
-cd /usr/local/www/nginx-dist
+</code></pre></li>
+
+<li><p>改檔名</p>
+
+<pre><code>cd /usr/local/www/nginx-dist
 sudo mv info.php info-W081001.php
-</code><br />
-這樣去 <a href="https://weelian.nctu.me/info-W081001.php">https://weelian.nctu.me/info-W081001.php</a><br />
+</code></pre>
+
+<p>這樣去 <a href="https://weelian.nctu.me/info-W081001.php">https://weelian.nctu.me/info-W081001.php</a><br />
 就會看到phpinfo()<br />
-<img src="https://i.imgur.com/npxqTQR.png" alt="Imgur" /><br /></li>
-<li>Hide PHP version in response header<br />
-<code>/usr/local/etc/php.ini</code><br />
-<code>
-expose.php=off
-</code><br />
-<br /></li>
+<img src="https://i.imgur.com/npxqTQR.png" alt="Imgur" /></p></li>
+
+<li><p>Hide PHP version in response header<br />
+<code>/usr/local/etc/php.ini</code></p>
+
+<pre><code>expose.php=off
+</code></pre></li>
 </ol>
 
 <h2 id="mysql">MySQL&nbsp;<a class="anchor" href="#mysql"><i class="small linkify icon"></i></a> </h2>
