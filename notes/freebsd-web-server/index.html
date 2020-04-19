@@ -280,8 +280,9 @@ Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
 <ul>
 <li>When accessing from intranet, it must show after passing Basic Auth authentication with username admin and password {your-student-ID}<br />
 <img src="https://i.imgur.com/FxQ6myC.png" alt="Imgur" /><br /></li>
-
-<li><p>Access from public network should be denied (return 403)</p>
+<li>Access from public network should be denied (return 403)<br />
+<br /></li>
+</ul>
 
 <ol>
 <li>Auth Basic<br />
@@ -335,13 +336,12 @@ server {
     ...................................
     ...................................
     ...................................
-</code></pre>
+</code></pre></li>
+</ol>
 
 <h3 id="php-php-fpm">PHP/PHP-FPM&nbsp;<a class="anchor" href="#php-php-fpm"><i class="small linkify icon"></i></a> </h3>
 
-<p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()</p></li>
-</ol></li>
-</ul>
+<p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()</p>
 
 <ol>
 <li><p>Install php ver 7.3.0</p>
