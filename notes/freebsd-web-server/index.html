@@ -49,6 +49,8 @@
 <li><a href="#configures">Configures</a>
 <ul>
 <li><a href="#virtual-host">Virtual Host</a></li>
+<li><a href="#啟用https">啟用HTTPS</a></li>
+<li><a href="#webpage-private">Webpage <code>/private</code></a></li>
 </ul></li>
 <li><a href="#php-php-fpm">PHP/PHP-FPM</a></li>
 </ul></li>
@@ -72,7 +74,7 @@
         </div>
        <div class="paperbg">
             <div id="title">
-                <h1>Freebsd Web Server</h1>
+                <h1>FreeBSD Web Server</h1>
                 
 	          </div>
             <div class="post-meta">
@@ -241,20 +243,22 @@ name/IP<br />
     ...................................
 }
 </code></pre></li>
+</ol>
 
-<li><p>啟用HTTPS<br />
-Enable HSTS(HTTP Strict Transport Security): 放在domain name server<br />
+<h4 id="啟用https">啟用HTTPS&nbsp;<a class="anchor" href="#啟用https"><i class="small linkify icon"></i></a> </h4>
+
+<p>Enable HSTS(HTTP Strict Transport Security): 放在domain name server<br />
 Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
 
 <pre><code>http {
-   ...................................    
-   ...................................
-   ...................................
-   # Using domain name
-   server {
-	       listen	443 ssl http2;
+    ...................................    
+    ...................................
+    ...................................
+    # Using domain name
+    server {
+	    listen	443 ssl http2;
 
-       # Enable HSTS  
+        # Enable HSTS  
         add_header Strict-Transport-Security &quot;max-age=31536000;
         includeSubDomains&quot; always;
         ...................................
@@ -264,49 +268,43 @@ Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
     ...................................
     ...................................
     server {
-	        listen 80;
-	        server_name weelian.nctu.me;
-	        return 301 https://weelian.nctu.me$request_uri;
+	    listen 80;
+	    server_name weelian.nctu.me;
+	    return 301 https://weelian.nctu.me$request_uri;
     }
 }
-</code></pre></li>
-
-<li><p>Webpage <code>/private</code></p>
-
-<ul>
-<li>When accessing from intranet, it must show after passing<br />
-Basic Auth authentication with username admin and password {your-student-ID}<br />
-<img src="https://i.imgur.com/FxQ6myC.png" alt="Imgur" /><br /></li>
-<li>Access from public network should be denied (return 403)<br />
-<br /></li>
-</ul>
-
-<p>Auth Basic<br />
-設定帳號密碼</p>
-
-<pre><code>sudo sh -c &quot;echo -n 'admin:' &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
 </code></pre>
 
-<pre><code>sudo sh -c &quot;openssl passwd -apr1 &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
-</code></pre>
+<h4 id="webpage-private">Webpage <code>/private</code>&nbsp;<a class="anchor" href="#webpage-private"><i class="small linkify icon"></i></a> </h4>
 
-<p>設定<code>/usr/local/www/nginx/.htpasswd</code>權限<br />
-！正確！</p>
+<pre><code>- When accessing from intranet, it must show after passing
+Basic Auth authentication with username admin and password {your-student-ID}
+![Imgur](https://i.imgur.com/FxQ6myC.png)
+- Access from public network should be denied (return 403) 
 
-<pre><code>-rw-r-----  www www .htpasswd
-</code></pre>
+Auth Basic   
+設定帳號密碼  
+```
+sudo sh -c &quot;echo -n 'admin:' &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
+```
+```
+sudo sh -c &quot;openssl passwd -apr1 &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
+```
+設定`/usr/local/www/nginx/.htpasswd`權限  
+！正確！  
+```
+-rw-r-----  www www .htpasswd
+```
+如果是原本的  
+```
+-rw-r-----  root    wheel   .htpasswd
+```
+外網 -&gt; 403 Forbidden  
+內網輸入帳密後 -&gt; An error occured  
 
-<p>如果是原本的</p>
-
-<pre><code>-rw-r-----  root    wheel   .htpasswd
-</code></pre>
-
-<p>外網 -&gt; 403 Forbidden<br />
-內網輸入帳密後 -&gt; An error occured</p>
-
-<p>nginx.conf</p>
-
-<pre><code>...................................
+nginx.conf
+```
+...................................
 ...................................
 ...................................    
 # Using domain name
@@ -317,23 +315,23 @@ server {
     location / {
         index  index.html index.htm;
     }
-	location /private {
+    location /private {
         # allow Intranet
-		allow 10.113.0.98;
-		allow 192.168.56.101;
+        allow 10.113.0.98;
+        allow 192.168.56.101;
 
         # deny Internet
-		deny all;
-		auth_basic &quot;Authorization Required&quot;;
-		auth_basic_user_file /usr/local/www/nginx/.htpasswd;
-		alias /usr/local/www/nginx/secret;
-		index index.html index.htm;
-	}
+        deny all;
+        auth_basic &quot;Authorization Required&quot;;
+        auth_basic_user_file /usr/local/www/nginx/.htpasswd;
+        alias /usr/local/www/nginx/secret;
+        index index.html index.htm;
+    }
     ...................................
     ...................................
     ...................................
-</code></pre></li>
-</ol>
+```  
+</code></pre>
 
 <h3 id="php-php-fpm">PHP/PHP-FPM&nbsp;<a class="anchor" href="#php-php-fpm"><i class="small linkify icon"></i></a> </h3>
 
@@ -356,9 +354,9 @@ server {
 4. Configure <code>nginx.conf</code><br />
     ```<br />
     upstream php-handler {<br />
-    	server 127.0.0.1:9000;<br />
-    	#server unix:/var/run/php/php7.2-fpm.sock;<br />
-	}<br />
+        server 127.0.0.1:9000;<br />
+        #server unix:/var/run/php/php7.2-fpm.sock;<br />
+    }<br />
     &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
     &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
     &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
@@ -479,23 +477,23 @@ sudo make WITH_CHARSET=utf8 install clean
 <li><p><code>app/index.php</code></p>
 
 <pre><code>&lt;?php
-	$input = $_SERVER[&quot;QUERY_STRING&quot;];
-	if(strlen($input)&gt;0){
-		$ars = explode(&quot;=&quot;,$input);
+    $input = $_SERVER[&quot;QUERY_STRING&quot;];
+    if(strlen($input)&gt;0){
+        $ars = explode(&quot;=&quot;,$input);
 
-		if(strlen($ars[1])&gt;0){
-			echo &quot;Hello, $ars[1]&quot;;
-		}
+        if(strlen($ars[1])&gt;0){
+            echo &quot;Hello, $ars[1]&quot;;
+        }
 
-		else{
-			$arr = explode(&quot;+&quot;,$input);
-			$sum = (int)$arr[0]+(int)$arr[1];
-			echo &quot;result: $sum&quot;;
-		}
-	}
-	else{
-		echo 'route: /';
-	}
+        else{
+            $arr = explode(&quot;+&quot;,$input);
+            $sum = (int)$arr[0]+(int)$arr[1];
+            echo &quot;result: $sum&quot;;
+        }
+    }
+    else{
+        echo 'route: /';
+    }
 ?&gt;
 </code></pre></li>
 
@@ -503,12 +501,12 @@ sudo make WITH_CHARSET=utf8 install clean
 
 <pre><code>location /app {
     alias /usr/local/www/nginx/app;
-	index index.php;
-	try_files $uri $uri/ @test;
+    index index.php;
+    try_files $uri $uri/ @test;
 }
 
 location @test {
-    		rewrite ^/app/(.*)\+(\w+)\.?.*$ /app?$1+$2; 
+            rewrite ^/app/(.*)\+(\w+)\.?.*$ /app?$1+$2; 
 }
 </code></pre>
 
@@ -537,15 +535,15 @@ location @test {
 ...................................
 ...................................  
 upstream websocket {
-    server 0.0.0.0:12345;
+	server 0.0.0.0:12345;
 }
 
 # Using domain name
 server {
     location /wsdemo {
-        alias /usr/local/www/nginx/wsdemo;
-        index websockets.html;
-        # proxy_pass http://websocket;
+    	alias /usr/local/www/nginx/wsdemo;
+    	index websockets.html;
+    	# proxy_pass http://websocket;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -557,7 +555,7 @@ server {
     }
 
     location /public {
-        proxy_pass http://websocket;
+    	proxy_pass http://websocket;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
