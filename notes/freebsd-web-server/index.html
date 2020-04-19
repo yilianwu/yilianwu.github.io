@@ -154,14 +154,12 @@ name/IP<br />
 2. 自簽 SSL<br />
     <code>
     mkdir /usr/local/etc/nginx/ssl
+</code><br />
+    <code>
+    sudo openssl req -x509 -nodes -day 365 \  
+    -newkey rsa:2048 -key out /usr/local/etc/nginx \
+    /ssl/nginx.key -out /usr/local/etc/nginx/ssl/nginx.crt
 </code></p>
-
-<pre><code>```
-sudo openssl req -x509 -nodes -day 365 \  
--newkey rsa:2048 -key out /usr/local/etc/nginx \
-/ssl/nginx.key -out /usr/local/etc/nginx/ssl/nginx.crt
-```  
-</code></pre>
 
 <ol>
 <li><p><code>/usr/local/etc/nginx/nginx.conf</code>設定<br />
