@@ -520,20 +520,16 @@ sudo make WITH_CHARSET=utf8 install clean
 location @test {
             rewrite ^/app/(.*)\+(\w+)\.?.*$ /app?$1+$2; 
 }
-</code></pre>
+</code></pre></li>
+</ol>
 
 <h3 id="websocket">WebSocket&nbsp;<a class="anchor" href="#websocket"><i class="small linkify icon"></i></a> </h3>
 
-<p><a href="https://medium.com/@cn007b/super-simple-php-websocket-example-ea2cd5893575">A sample program</a></p></li>
-
-<li><p>This program crashes at client refresh, so just use it for test or demo</p></li>
-
-<li><p>You don’t need to support HTTP2 for WebSocket connection</p></li>
-
-<li><p>Configure your HTTP server such the program run appropriately that when accessing http(s)://{your- domain}/wsdemo</p></li>
-
-<li><p>Let it be connected on port 443(wss://)</p></li>
-</ol>
+<p><a href="https://medium.com/@cn007b/super-simple-php-websocket-example-ea2cd5893575">A sample program</a><br />
+- This program crashes at client refresh, so just use it for test or demo<br />
+- You don’t need to support HTTP2 for WebSocket connection<br />
+- Configure your HTTP server such the program run appropriately that when accessing http(s)://{your- domain}/wsdemo<br />
+- Let it be connected on port 443(wss://)</p>
 
 <p>Original: WebSocket is on port 12345<br />
 <img src="https://i.imgur.com/une8KL3.png" alt="Imgur" /></p>
