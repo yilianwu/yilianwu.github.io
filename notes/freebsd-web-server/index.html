@@ -238,7 +238,7 @@ name/IP<br />
     ...................................
     ...................................
 }
-```
+```  
 </code></pre>
 
 <ol>
@@ -276,7 +276,7 @@ Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
 <ul>
 <li>When accessing from intranet, it must show after passing<br />
 Basic Auth authentication with username admin and password {your-student-ID}<br />
-<img src="https://i.imgur.com/FxQ6myC.png" alt="Thumbnail" /><br /></li>
+<img src="https://i.imgur.com/FxQ6myC.png" alt="Imgur" /><br /></li>
 <li>Access from public network should be denied (return 403)<br />
 <br /></li>
 </ul>
@@ -332,81 +332,76 @@ server {
     ...................................
     ...................................
     ...................................
-</code></pre>
+</code></pre></li>
+</ol>
 
 <h3 id="php-php-fpm">PHP/PHP-FPM&nbsp;<a class="anchor" href="#php-php-fpm"><i class="small linkify icon"></i></a> </h3>
 
-<p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()</p></li>
+<p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()<br />
+1. Install php ver 7.3.0<br />
+    <code>
+    pkg install php73 php73-mysqli
+</code><br />
+2. 建立 php.ini<br />
+    建立php.ini-production 的 soft-link 給 php.ini<br />
+    <code>
+    cd /usr/local/etc
+    sudo cp php.ini-production php.ini
+</code><br />
+3. Enable PHP<br />
+    <code>
+    sudo sysrc php_fpm_enable=yes
+    sudo service php-fpm start
+</code><br />
+4. Configure <code>nginx.conf</code><br />
+    ```<br />
+    upstream php-handler {<br />
+        server 127.0.0.1:9000;<br />
+        #server unix:/var/run/php/php7.2-fpm.sock;<br />
+    }<br />
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
+    # Using domain name<br />
+    server {<br />
+        location ~ .php$ {<br />
+            root           /usr/local/www/nginx;<br />
+            fastcgi_pass   127.0.0.1:9000;<br />
+            fastcgi_index  index.php;<br />
+            #fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;<br />
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;<br />
+            include        fastcgi_params;<br />
+        }<br />
+    }</p>
 
-<li><p>Install php ver 7.3.0</p>
-
-<pre><code>pkg install php73 php73-mysqli
-</code></pre></li>
-
-<li><p>建立 php.ini<br />
-建立php.ini-production 的 soft-link 給 php.ini</p>
-
-<pre><code>cd /usr/local/etc
-sudo cp php.ini-production php.ini
-</code></pre></li>
-
-<li><p>Enable PHP</p>
-
-<pre><code>sudo sysrc php_fpm_enable=yes
-sudo service php-fpm start
-</code></pre></li>
-
-<li><p>Configure <code>nginx.conf</code></p>
-
-<pre><code>upstream php-handler {
-    server 127.0.0.1:9000;
-    #server unix:/var/run/php/php7.2-fpm.sock;
-}
-...................................
-...................................
-...................................    
-# Using domain name
-server {
-    location ~ \.php$ {
-        root           /usr/local/www/nginx;
-        fastcgi_pass   127.0.0.1:9000;
-        fastcgi_index  index.php;
-        #fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include        fastcgi_params;
-    }
-}
-    
-</code></pre></li>
-
-<li><p>定義SCRIPT_FILENAME<br />
-預設安裝的 Nginx FastCGI 參數檔裡面沒有定義 SCRIPT_FILENAME 這個變數<br />
-因此我們要把他加進去</p>
-
-<pre><code>sudo vim /usr/local/etc/nginx/fastcgi_params
+<pre><code>```
 </code></pre>
 
-<p>找到SCRIPT_FILENAME</p>
-
-<pre><code>fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-</code></pre></li>
-
-<li><p><code>info.php</code></p>
-
-<pre><code>&lt;?php
+<ol>
+<li>定義SCRIPT_FILENAME<br />
+預設安裝的 Nginx FastCGI 參數檔裡面沒有定義 SCRIPT_FILENAME 這個變數<br />
+因此我們要把他加進去<br />
+<code>
+sudo vim /usr/local/etc/nginx/fastcgi_params
+</code><br />
+找到SCRIPT_FILENAME<br />
+<code>
+fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+</code><br /></li>
+<li><code>info.php</code><br />
+<code>
+&lt;?php
     phpinfo();
 ?&gt;
-</code></pre></li>
-
-<li><p>改檔名</p>
-
-<pre><code>cd /usr/local/www/nginx-dist
+</code><br /></li>
+<li>改檔名<br />
+<code>
+cd /usr/local/www/nginx-dist
 sudo mv info.php info-W081001.php
-</code></pre>
-
-<p>這樣去 <a href="https://weelian.nctu.me/info-W081001.php">https://weelian.nctu.me/info-W081001.php</a><br />
+</code><br />
+這樣去 <a href="https://weelian.nctu.me/info-W081001.php">https://weelian.nctu.me/info-W081001.php</a><br />
 就會看到phpinfo()<br />
-<img src="https://i.imgur.com/npxqTQR.png" alt="Imgur" /></p></li>
+<img src="https://i.imgur.com/npxqTQR.png" alt="Imgur" /><br /></li>
 
 <li><p>Hide PHP version in response header<br />
 <code>/usr/local/etc/php.ini</code></p>
