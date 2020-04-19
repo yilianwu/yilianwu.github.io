@@ -153,14 +153,16 @@ The Wireguard VPN (10.113.0.0/16)</p></li>
 name/IP<br />
 1. Get a domain name<br />
     <img src="https://i.imgur.com/5zge2Nt.png" alt="Imgur" /><br />
-2. 自簽 SSL</p>
+2. 自簽SSL</p>
 
-<pre><code>mkdir /usr/local/etc/nginx/ssl
-</code></pre>
-
-<pre><code>sudo openssl req -x509 -nodes -day 365 \  
+<pre><code>```
+mkdir /usr/local/etc/nginx/ssl
+```
+```
+sudo openssl req -x509 -nodes -day 365 \  
 -newkey rsa:2048 -key out /usr/local/etc/nginx \
 /ssl/nginx.key -out /usr/local/etc/nginx/ssl/nginx.crt
+```  
 </code></pre>
 
 <ol>
