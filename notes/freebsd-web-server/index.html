@@ -645,21 +645,23 @@ make config install clean
 
 <h3 id="nextcloud">Nextcloud&nbsp;<a class="anchor" href="#nextcloud"><i class="small linkify icon"></i></a> </h3>
 
-<p>要在{domain}/nextcloud<br />
-1. Install<br />
-    要先用pkg install 才會有完整的php-fmp<br />
-    <code>
-    pkg search nextcloud
-    pkg install nextcloud-php-73
-</code><br />
-    pkg裝好的nextcloud 會在<code>/usr/local/www</code><br />
-    再把它刪掉 用本來的zip替換<br />
-    改權限<br />
-    <code>
-    sudo chown -R www:www nextcloud
-</code></p>
+<p>要在{domain}/nextcloud</p>
 
 <ol>
+<li><p>Install<br />
+要先用pkg install 才會有完整的php-fmp</p>
+
+<pre><code>pkg search nextcloud
+pkg install nextcloud-php-73
+</code></pre>
+
+<p>pkg裝好的nextcloud 會在<code>/usr/local/www</code><br />
+再把它刪掉 用本來的zip替換<br />
+改權限</p>
+
+<pre><code>sudo chown -R www:www nextcloud
+</code></pre></li>
+
 <li><p>Configuration in <code>nginx.conf</code><br />
 Google: Nextcloud in a subdir of nginx<br />
 copy &amp; paste in <code>nginx.conf</code></p>
