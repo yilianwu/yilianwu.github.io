@@ -53,9 +53,7 @@ Create &gt; enable DHCP server
 VM Settings &gt; Network
 Adapter 2 選Host-only Adapter
  FreeBSD /etc/rc.conf新增網卡
- ifconfig_em1=&quot;DHCP&quot; 
- reboot -n //重開機 ifconfig //查看網路設定 
-會看到新的網卡em1 192.168.56.101
+ifconfig_em1=&quot;DHCP&quot;  reboot -n //重開機 ifconfig //查看網路設定  會看到新的網卡em1 192.168.56.101
   Public
 The Wireguard VPN (10.113.0.0/16)
   HTTP Server Nginx Install Nginx

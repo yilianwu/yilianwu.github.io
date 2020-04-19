@@ -94,23 +94,25 @@
 A VM with a host-only adapter connecting to the same network of the original machine</p>
 
 <ol>
-<li>創立Host網卡<br />
-<img src="https://i.imgur.com/ED3z5LF.png" alt="Thumbnail" /><br />
-Create &gt; enable DHCP server<br /></li>
-<li>將網卡加到VM<br />
+<li><p>創立Host網卡<br />
+<img src="https://i.imgur.com/ED3z5LF.png" alt="Imgur" /><br />
+Create &gt; enable DHCP server</p></li>
+
+<li><p>將網卡加到VM<br />
 VM Settings &gt; Network<br />
 Adapter 2 選Host-only Adapter<br />
-<img src="https://i.imgur.com/D4YZNRz.png" alt="Thumbnail" /><br /></li>
-<li>FreeBSD <code>/etc/rc.conf</code>新增網卡<br />
-<code>
-ifconfig_em1=&quot;DHCP&quot;
-</code><br />
-<code>
-reboot -n //重開機
+<img src="https://i.imgur.com/D4YZNRz.png" alt="Imgur" /></p></li>
+
+<li><p>FreeBSD <code>/etc/rc.conf</code>新增網卡</p>
+
+<pre><code>ifconfig_em1=&quot;DHCP&quot;
+</code></pre>
+
+<pre><code>reboot -n //重開機
 ifconfig  //查看網路設定
-</code><br />
-會看到新的網卡<code>em1 192.168.56.101</code><br />
-<br /></li>
+</code></pre>
+
+<p>會看到新的網卡<code>em1 192.168.56.101</code></p></li>
 </ol></li>
 
 <li><p>Public<br />
@@ -158,7 +160,7 @@ name/IP<br />
     -newkey rsa:2048 -key out /usr/local/etc/nginx \
     /ssl/nginx.key -out /usr/local/etc/nginx/ssl/nginx.crt
 </code><br />
-2. <code>/usr/local/etc/nginx/nginx.conf</code>設定<br />
+3. <code>/usr/local/etc/nginx/nginx.conf</code>設定<br />
     <code>location /</code>是ip會看到的頁面<br />
     ```<br />
     http {<br />
