@@ -154,23 +154,27 @@ name/IP<br />
 2. 自簽 SSL<br />
     <code>
     mkdir /usr/local/etc/nginx/ssl
-</code><br />
-    <code>
-    sudo openssl req -x509 -nodes -day 365 \  
-    -newkey rsa:2048 -key out /usr/local/etc/nginx \
-    /ssl/nginx.key -out /usr/local/etc/nginx/ssl/nginx.crt
-</code><br />
-3. <code>/usr/local/etc/nginx/nginx.conf</code>設定<br />
-    <code>location /</code>是ip會看到的頁面<br />
-    ```<br />
-    http {<br />
-        &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
-        &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
-        &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
-        # Hide the server version in header<br />
-        server_tokens off;</p>
+</code></p>
 
-<pre><code>    # SSL認證 
+<pre><code>```
+sudo openssl req -x509 -nodes -day 365 \  
+-newkey rsa:2048 -key out /usr/local/etc/nginx \
+/ssl/nginx.key -out /usr/local/etc/nginx/ssl/nginx.crt
+```  
+</code></pre>
+
+<ol>
+<li><p><code>/usr/local/etc/nginx/nginx.conf</code>設定<br />
+<code>location /</code>是ip會看到的頁面</p>
+
+<pre><code>http {
+    ...................................
+    ...................................
+    ...................................
+    # Hide the server version in header
+    server_tokens off;
+
+    # SSL認證 
     ssl_certificate /usr/local/etc/nginx/ssl/nginx.crt;
     ssl_certificate_key /usr/local/etc/nginx/ssl/nginx.key;
 
@@ -219,7 +223,7 @@ name/IP<br />
         add_header X-Permitted-Cross-Domain-Policies &quot;none&quot; always;
         add_header X-Robots-Tag &quot;none&quot; always;
         add_header X-XSS-Protection &quot;1; mode=block&quot; always;
-
+    
         # Remove X-Powered-By, which is an information leak
         fastcgi_hide_header X-Powered-By;
 
@@ -238,23 +242,21 @@ name/IP<br />
     ...................................
     ...................................
 }
-```  
-</code></pre>
+</code></pre></li>
 
-<ol>
 <li><p>啟用HTTPS<br />
 Enable HSTS(HTTP Strict Transport Security): 放在domain name server<br />
 Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
 
 <pre><code>http {
-    ...................................    
-    ...................................
-    ...................................
-    # Using domain name
-    server {
-        listen  443 ssl http2;
+   ...................................    
+   ...................................
+   ...................................
+   # Using domain name
+   server {
+	       listen	443 ssl http2;
 
-        # Enable HSTS  
+       # Enable HSTS  
         add_header Strict-Transport-Security &quot;max-age=31536000;
         includeSubDomains&quot; always;
         ...................................
@@ -264,9 +266,9 @@ Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
     ...................................
     ...................................
     server {
-        listen 80;
-        server_name weelian.nctu.me;
-        return 301 https://weelian.nctu.me$request_uri;
+	        listen 80;
+	        server_name weelian.nctu.me;
+	        return 301 https://weelian.nctu.me$request_uri;
     }
 }
 </code></pre></li>
@@ -317,18 +319,18 @@ server {
     location / {
         index  index.html index.htm;
     }
-    location /private {
+	location /private {
         # allow Intranet
-        allow 10.113.0.98;
-        allow 192.168.56.101;
+		allow 10.113.0.98;
+		allow 192.168.56.101;
 
         # deny Internet
-        deny all;
-        auth_basic &quot;Authorization Required&quot;;
-        auth_basic_user_file /usr/local/www/nginx/.htpasswd;
-        alias /usr/local/www/nginx/secret;
-        index index.html index.htm;
-    }
+		deny all;
+		auth_basic &quot;Authorization Required&quot;;
+		auth_basic_user_file /usr/local/www/nginx/.htpasswd;
+		alias /usr/local/www/nginx/secret;
+		index index.html index.htm;
+	}
     ...................................
     ...................................
     ...................................
@@ -356,9 +358,9 @@ server {
 4. Configure <code>nginx.conf</code><br />
     ```<br />
     upstream php-handler {<br />
-        server 127.0.0.1:9000;<br />
-        #server unix:/var/run/php/php7.2-fpm.sock;<br />
-    }<br />
+    	server 127.0.0.1:9000;<br />
+    	#server unix:/var/run/php/php7.2-fpm.sock;<br />
+	}<br />
     &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
     &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
     &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..<br />
@@ -479,23 +481,23 @@ sudo make WITH_CHARSET=utf8 install clean
 <li><p><code>app/index.php</code></p>
 
 <pre><code>&lt;?php
-    $input = $_SERVER[&quot;QUERY_STRING&quot;];
-    if(strlen($input)&gt;0){
-        $ars = explode(&quot;=&quot;,$input);
+	$input = $_SERVER[&quot;QUERY_STRING&quot;];
+	if(strlen($input)&gt;0){
+		$ars = explode(&quot;=&quot;,$input);
 
-        if(strlen($ars[1])&gt;0){
-            echo &quot;Hello, $ars[1]&quot;;
-        }
+		if(strlen($ars[1])&gt;0){
+			echo &quot;Hello, $ars[1]&quot;;
+		}
 
-        else{
-            $arr = explode(&quot;+&quot;,$input);
-            $sum = (int)$arr[0]+(int)$arr[1];
-            echo &quot;result: $sum&quot;;
-        }
-    }
-    else{
-        echo 'route: /';
-    }
+		else{
+			$arr = explode(&quot;+&quot;,$input);
+			$sum = (int)$arr[0]+(int)$arr[1];
+			echo &quot;result: $sum&quot;;
+		}
+	}
+	else{
+		echo 'route: /';
+	}
 ?&gt;
 </code></pre></li>
 
@@ -503,12 +505,12 @@ sudo make WITH_CHARSET=utf8 install clean
 
 <pre><code>location /app {
     alias /usr/local/www/nginx/app;
-    index index.php;
-    try_files $uri $uri/ @test;
+	index index.php;
+	try_files $uri $uri/ @test;
 }
 
 location @test {
-            rewrite ^/app/(.*)\+(\w+)\.?.*$ /app?$1+$2; 
+    		rewrite ^/app/(.*)\+(\w+)\.?.*$ /app?$1+$2; 
 }
 </code></pre>
 
@@ -537,15 +539,15 @@ location @test {
 ...................................
 ...................................  
 upstream websocket {
-	server 0.0.0.0:12345;
+    server 0.0.0.0:12345;
 }
 
 # Using domain name
 server {
     location /wsdemo {
-    	alias /usr/local/www/nginx/wsdemo;
-    	index websockets.html;
-    	# proxy_pass http://websocket;
+        alias /usr/local/www/nginx/wsdemo;
+        index websockets.html;
+        # proxy_pass http://websocket;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -557,7 +559,7 @@ server {
     }
 
     location /public {
-    	proxy_pass http://websocket;
+        proxy_pass http://websocket;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
