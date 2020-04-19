@@ -277,65 +277,71 @@ Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
 
 <h4 id="webpage-private">Webpage <code>/private</code>&nbsp;<a class="anchor" href="#webpage-private"><i class="small linkify icon"></i></a> </h4>
 
-<pre><code>- When accessing from intranet, it must show after passing Basic Auth authentication with username admin and password {your-student-ID}  
+<ul>
+<li>When accessing from intranet, it must show after passing Basic Auth authentication with username admin and password {your-student-ID}<br />
+<img src="https://i.imgur.com/FxQ6myC.png" alt="Imgur" /><br /></li>
 
-![Imgur](https://i.imgur.com/FxQ6myC.png)  
-- Access from public network should be denied (return 403)  
+<li><p>Access from public network should be denied (return 403)</p>
 
-1. Auth Basic   
-    設定帳號密碼  
-    ```
-    sudo sh -c &quot;echo -n 'admin:' &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
-    ```
-    ```
-    sudo sh -c &quot;openssl passwd -apr1 &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
-    ```
-2. 設定`/usr/local/www/nginx/.htpasswd`權限   
-    ！正確！  
-    ```
-    -rw-r-----  www www .htpasswd
-    ```
-    如果是原本的  
-    ```
-    -rw-r-----  root    wheel   .htpasswd
-    ```
-    外網 -&gt; 403 Forbidden  
-    內網輸入帳密後 -&gt; An error occured  
+<ol>
+<li>Auth Basic<br />
+設定帳號密碼<br />
+<code>
+sudo sh -c &quot;echo -n 'admin:' &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
+</code><br />
+<code>
+sudo sh -c &quot;openssl passwd -apr1 &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
+</code><br /></li>
 
-3. nginx.conf  
-    ```
+<li><p>設定<code>/usr/local/www/nginx/.htpasswd</code>權限<br />
+！正確！</p>
+
+<pre><code>-rw-r-----  www www .htpasswd
+</code></pre>
+
+<p>如果是原本的</p>
+
+<pre><code>-rw-r-----  root    wheel   .htpasswd
+</code></pre>
+
+<p>外網 -&gt; 403 Forbidden<br />
+內網輸入帳密後 -&gt; An error occured</p></li>
+
+<li><p>nginx.conf</p>
+
+<pre><code>...................................
+...................................
+...................................    
+# Using domain name
+server {
+    ...................................        
+    ................................... 
+    # domain name root index
+    location / {
+        index  index.html index.htm;
+    }
+    location /private {
+        # allow Intranet
+        allow 10.113.0.98;
+        allow 192.168.56.101;
+
+        # deny Internet
+        deny all;
+        auth_basic &quot;Authorization Required&quot;;
+        auth_basic_user_file /usr/local/www/nginx/.htpasswd;
+        alias /usr/local/www/nginx/secret;
+        index index.html index.htm;
+    }
     ...................................
     ...................................
-    ...................................    
-    # Using domain name
-    server {
-        ...................................        
-        ................................... 
-        # domain name root index
-        location / {
-            index  index.html index.htm;
-        }
-        location /private {
-            # allow Intranet
-            allow 10.113.0.98;
-            allow 192.168.56.101;
-
-            # deny Internet
-            deny all;
-            auth_basic &quot;Authorization Required&quot;;
-            auth_basic_user_file /usr/local/www/nginx/.htpasswd;
-            alias /usr/local/www/nginx/secret;
-            index index.html index.htm;
-        }
-        ...................................
-        ...................................
-        ...................................
-    ```  
+    ...................................
 </code></pre>
 
 <h3 id="php-php-fpm">PHP/PHP-FPM&nbsp;<a class="anchor" href="#php-php-fpm"><i class="small linkify icon"></i></a> </h3>
 
-<p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()</p>
+<p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()</p></li>
+</ol></li>
+</ul>
 
 <ol>
 <li><p>Install php ver 7.3.0</p>
