@@ -119,18 +119,20 @@ nis_client_flags=&quot;-s -m -S savpn.nctu.me,nis server&quot;
 
 <h2 id="conf-of-accounts-and-groups">Conf of Accounts and Groups&nbsp;<a class="anchor" href="#conf-of-accounts-and-groups"><i class="small linkify icon"></i></a> </h2>
 
-<p>NIS user can login to your server<br />
-1. User account information<br />
-    <code>
-    vipw
-</code><br />
-    到<code>/etc/master.passwd</code><br />
-    加在最後一行<br />
-    <code>
-    +::::::::::
-</code></p>
+<p>NIS user can login to your server</p>
 
 <ol>
+<li><p>User account information</p>
+
+<pre><code>vipw
+</code></pre>
+
+<p>到<code>/etc/master.passwd</code><br />
+加在最後一行</p>
+
+<pre><code>+::::::::::
+</code></pre></li>
+
 <li><p>UNIX group definitions</p>
 
 <pre><code>vigr
@@ -142,8 +144,9 @@ nis_client_flags=&quot;-s -m -S savpn.nctu.me,nis server&quot;
 <pre><code>+:*::
 </code></pre></li>
 
-<li><p>排優先順序<br />
-When an user with an identical name in both NIS and local, then query NIS first.<br />
+<li><p>排優先順序</p>
+
+<p>When an user with an identical name in both NIS and local, then query NIS first.<br />
 <code>/etc/nsswitch.conf</code></p>
 
 <pre><code>group: nis files
