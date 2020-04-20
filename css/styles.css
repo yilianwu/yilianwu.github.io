@@ -79,13 +79,14 @@ table, th, td {
 }
 
 code {
-    display: inline-block;
+    /* display: inline-block; */
     padding: 0 4px;
     margin: 0 4px;
     font-size: 90%;
     color: #2c5090;
     background-color: #b6dafda8;
     border-radius: 4px;
+    white-space:pre-wrap;
 }
 
 #space {
