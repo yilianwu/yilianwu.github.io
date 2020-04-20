@@ -26,7 +26,7 @@
 - passwd同username
 - home directory要在/net/home/&amp;lt;username&amp;gt;
 - share: hosts, passwd, group, netgroup, ypservers
-Conf of Accounts and Groups NIS user can login to your server</description>
+Accounts and Groups NIS user can login to your server</description>
     </item>
     
     <item>
