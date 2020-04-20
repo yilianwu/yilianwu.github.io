@@ -6,10 +6,28 @@
     <description>Recent content in Notes on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 19 Apr 2020 02:16:59 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2020 03:45:16 +0800</lastBuildDate>
     
 	<atom:link href="https://yilianwu.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>FreeBSD NIS &#43; NFS &#43; Firewall</title>
+      <link>https://yilianwu.github.io/notes/freebsd-nis-and-nfs/</link>
+      <pubDate>Mon, 20 Apr 2020 03:45:16 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/notes/freebsd-nis-and-nfs/</guid>
+      <description>NIS Client Configurations in rc.conf nisdomainname=&amp;quot;savpn.nctu.me&amp;quot; # NIS domain name ≠ DNS domain name nis_client_enable=&amp;quot;YES&amp;quot; nis_client_flags=&amp;quot;-s -m -S savpn.nctu.me,nis server&amp;quot;  Maps between IP and hostname Configure in /etc/hosts
+# 140.113.17.155 nisserver 10.113.0.254 nisserver # 連wg vpn  NIS Users 在NIS Server(savpn.nctu.me)中有三個users
+- nisuser1
+- nisuser2
+- nisuser3
+要注意的地方：
+- passwd同username
+- home directory要在/net/home/&amp;lt;username&amp;gt;
+- share: hosts, passwd, group, netgroup, ypservers
+Conf of Accounts and Groups NIS user can login to your server</description>
+    </item>
     
     <item>
       <title>FreeBSD Web Server</title>

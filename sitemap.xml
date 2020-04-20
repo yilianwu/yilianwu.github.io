@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yilianwu.github.io/notes/freebsd-nis-and-nfs/</loc>
+    <lastmod>2020-04-20T03:45:16+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yilianwu.github.io/notes/freebsd-web-server/</loc>
     <lastmod>2020-04-19T02:16:59+08:00</lastmod>
   </url>
@@ -59,6 +64,12 @@
   </url>
   
   <url>
+    <loc>https://yilianwu.github.io/tags/blacklistd/</loc>
+    <lastmod>2020-04-20T03:45:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yilianwu.github.io/tags/facebook/</loc>
     <lastmod>2019-11-24T00:44:25+08:00</lastmod>
     <priority>0</priority>
@@ -66,7 +77,7 @@
   
   <url>
     <loc>https://yilianwu.github.io/tags/freebsd/</loc>
-    <lastmod>2020-04-19T02:16:59+08:00</lastmod>
+    <lastmod>2020-04-20T03:45:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -84,7 +95,7 @@
   
   <url>
     <loc>https://yilianwu.github.io/</loc>
-    <lastmod>2020-04-19T02:16:59+08:00</lastmod>
+    <lastmod>2020-04-20T03:45:16+08:00</lastmod>
   </url>
   
   <url>
@@ -112,8 +123,26 @@
   </url>
   
   <url>
+    <loc>https://yilianwu.github.io/tags/nfs/</loc>
+    <lastmod>2020-04-20T03:45:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yilianwu.github.io/tags/nis/</loc>
+    <lastmod>2020-04-20T03:45:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yilianwu.github.io/notes/</loc>
-    <lastmod>2020-04-19T02:16:59+08:00</lastmod>
+    <lastmod>2020-04-20T03:45:16+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yilianwu.github.io/tags/pf/</loc>
+    <lastmod>2020-04-20T03:45:16+08:00</lastmod>
     <priority>0</priority>
   </url>
   

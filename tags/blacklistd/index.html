@@ -33,85 +33,33 @@
     
 </header>
 
-    
-
-  <main id="terms">
-    <div id="collections" class="grape">
-        <div class="container">
-	    
-			
-			<h1>Tags</h1>
-				<div class="terms-tags">
-				  <a class="terms-link" href="/tags/terminal/">
-					  terminal
-					  <span class="terms-count">4</span>
-					</a>
-				  <a class="terms-link" href="/tags/freebsd/">
-					  freebsd
-					  <span class="terms-count">3</span>
-					</a>
-				  <a class="terms-link" href="/tags/mac/">
-					  mac
-					  <span class="terms-count">3</span>
-					</a>
-				  <a class="terms-link" href="/tags/%E5%BE%AE%E5%9E%8B%E9%9B%BB%E8%85%A6%E7%AD%86%E8%A8%98/">
-					  微型電腦筆記
-					  <span class="terms-count">3</span>
-					</a>
-				  <a class="terms-link" href="/tags/aws/">
-					  aws
-					  <span class="terms-count">2</span>
-					</a>
-				  <a class="terms-link" href="/tags/blacklistd/">
-					  blacklistd
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/facebook/">
-					  facebook
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/ftp/">
-					  ftp
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/github/">
-					  github
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/hugo/">
-					  hugo
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/iterm/">
-					  iterm
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/markdown/">
-					  markdown
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/nfs/">
-					  nfs
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/nis/">
-					  nis
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/pf/">
-					  pf
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/ubuntu/">
-					  ubuntu
-					  <span class="terms-count">1</span>
-					</a>
-				  <a class="terms-link" href="/tags/vpn/">
-					  vpn
-					  <span class="terms-count">1</span>
-					</a>
-				  </div>
-	</div>
+<main id="list">
+    <div id="posts" class="grape">
+	<div class="container">
+            <h1>Blacklistd</h1>
+            
+                
+                <ul class="sublime4lst">
+                    <li class="buttons"></li>
+                    <li style="padding:10px 20px 40px;">
+                        <a href="/notes/freebsd-nis-and-nfs/">FreeBSD NIS &#43; NFS &#43; Firewall</a>
+                        <p><time datetime="2020-04-20T03:45:16&#43;0800">2020-04-20</time>
+</p>
+		                <p>NIS Client Configurations in rc.conf nisdomainname=&quot;savpn.nctu.me&quot; # NIS domain name ≠ DNS domain name nis_client_enable=&quot;YES&quot; nis_client_flags=&quot;-s -m -S savpn.nctu.me,nis server&quot;  Maps between IP and hostname Configure in /etc/hosts
+# 140.113.17.155 nisserver 10.113.0.254 nisserver # 連wg vpn  NIS Users 在NIS Server(savpn.nctu.me)中有三個users
+- nisuser1
+- nisuser2
+- nisuser3
+要注意的地方：
+- passwd同username
+- home directory要在/net/home/&lt;username&gt;
+- share: hosts, passwd, group, netgroup, ypservers
+Conf of Accounts and Groups NIS user can login to your server...</p><span class="cursor">|</span>
+                    </li>
+                </ul>
+                
+            
+        </div>
     </div>
 </main>
 <footer class="sand">
