@@ -14,6 +14,10 @@ body {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    line-height: 1.7;
+}
+ul{
+    padding-inline-start: 20px;
 }
 .post-toc {
     position: fixed;
@@ -22,7 +26,7 @@ body {
     margin-left: 768px;
     margin-right:1.5em;
     line-height: 1.5;
-    height: 60%;
+    /* height: 60%; */
     padding: 0px 1em;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -293,8 +297,8 @@ text-align:right;
 .paperbg{
 padding-top:2em;
 padding-bottom:2em;
-padding-left: 1.5em;
-padding-right: 1.5em;
+padding-left: 20px;
+padding-right: .5em;
 background: #f9f9f9db;
 border-radius:5px;
 }
