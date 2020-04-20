@@ -291,7 +291,7 @@ text-align:right;
   padding: 1em 1.5em 1em;
   margin: 0 auto;
   max-width: 800px;
-  width: 100%;
+  /* width: 100%; */
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
