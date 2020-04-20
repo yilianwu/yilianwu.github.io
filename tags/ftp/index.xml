@@ -13,10 +13,10 @@
     
     <item>
       <title>FreeBSD File Server</title>
-      <link>https://yilianwu.github.io/notes/freebsd-file-server/</link>
+      <link>https://yilianwu.github.io/posts/freebsd-file-server/</link>
       <pubDate>Sat, 18 Apr 2020 16:28:10 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/notes/freebsd-file-server/</guid>
+      <guid>https://yilianwu.github.io/posts/freebsd-file-server/</guid>
       <description>File Server Overview:
 ❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to
 ❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed

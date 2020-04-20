@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/dosstyle.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="/info">INFO</a>
+            
+            <a href="/posts">POSTS</a>
+            
+            <a href="/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="../js/menutime.js"></script>
+    </div>
+            
+    
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+        <div class="post-toc" id="post-toc">
+            <h2 class="post-toc-title">Contents</h2>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#file-server">File Server</a>
+<ul>
+<li><a href="#ftp-server">FTP Server</a>
+<ul>
+<li><a href="#install-pure-ftpd">Install pure-ftpd</a></li>
+<li><a href="#create-3-directories-under-home-ftp">Create 3 directories under <code>/home/ftp</code></a></li>
+<li><a href="#create-admin-user">Create admin user</a></li>
+<li><a href="#pure-ftpd-conf">pure-ftpd.conf</a></li>
+<li><a href="#create-ftp-users">Create ftp users</a></li>
+<li><a href="#ssl簽證">ssl簽證</a></li>
+<li><a href="#launch-the-server">Launch the server&hellip;</a></li>
+<li><a href="#test-in-file-zilla">Test in File Zilla</a></li>
+<li><a href="#權限設定">權限設定</a></li>
+</ul></li>
+<li><a href="#zfs-on-home-ftp">ZFS on <code>/home/ftp</code></a>
+<ul>
+<li><a href="#enable-zfs-service">enable ZFS service</a></li>
+<li><a href="#add-new-hard-disks">Add new hard disks</a></li>
+<li><a href="#create-mypool">Create mypool</a></li>
+<li><a href="#mount">Mount</a></li>
+<li><a href="#automatic-snapshot-script">Automatic snapshot script</a></li>
+</ul></li>
+<li><a href="#ftp-watchd">ftp-watchd</a></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+       <div class="paperbg">
+            <div id="title">
+                <h1>FreeBSD File Server</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2020-04-18 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="/tags/freebsd/"> FreeBSD </a>
+                    <a class="tag-link" href="/tags/ftp/"> FTP </a>
+                    </div>
+
+                <section class="post-content">
+                
+
+<h1 id="file-server">File Server&nbsp;<a class="anchor" href="#file-server"><i class="small linkify icon"></i></a> </h1>
+
+<p>Overview:<br />
+    ❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to<br />
+    ❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed</p>
+
+<h2 id="ftp-server">FTP Server&nbsp;<a class="anchor" href="#ftp-server"><i class="small linkify icon"></i></a> </h2>
+
+<h3 id="install-pure-ftpd">Install pure-ftpd&nbsp;<a class="anchor" href="#install-pure-ftpd"><i class="small linkify icon"></i></a> </h3>
+
+<p>Install with pkg</p>
+
+<pre><code>pkg install pure-ftpd
+</code></pre>
+
+<p>Or install with port</p>
+
+<pre><code>port install pure-ftpd
+</code></pre>
+
+<p>記得要<br />
+[x]UPLOADSCRIPT</p>
+
+<p>enable pure-ftpd</p>
+
+<pre><code>cat pureftpd_enable=&quot;YES&quot; &gt; /etc/rc.conf
+</code></pre>
+
+<h3 id="create-3-directories-under-home-ftp">Create 3 directories under <code>/home/ftp</code>&nbsp;<a class="anchor" href="#create-3-directories-under-home-ftp"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>mkdir -p /home/ftp/public /home/ftp/upload /home/ftp/hidden
+</code></pre>
+
+<h3 id="create-admin-user">Create admin user&nbsp;<a class="anchor" href="#create-admin-user"><i class="small linkify icon"></i></a> </h3>
+
+<p>Create a system user “sysadm”</p>
+
+<pre><code>adduser
+</code></pre>
+
+<pre><code>user:sysadm  
+passwd:W081001  
+group:sysadm,wheel  
+ssh enable
+</code></pre>
+
+<h3 id="pure-ftpd-conf">pure-ftpd.conf&nbsp;<a class="anchor" href="#pure-ftpd-conf"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>cp /usr/local/share/doc/pure-ftpd/pure-ftpd.conf \  
+/usr/local/etc/pure-ftpd.conf
+</code></pre>
+
+<p>In pure-ftpd.conf:</p>
+
+<pre><code>ChrootEveryone  yes
+    
+AnonymousOnly   no  
+  
+NoAnonymous     no  
+  
+PureDB /usr/local/etc/pureftpd.pdb  
+   
+AnonymousCanCreateDirs  no  
+  
+AntiWarez   no  
+//yes -&gt; Disallow downloads of files owned by the ftp system user  
+  
+Umask   133:022  
+  
+AnonymousCantUpload no  
+  
+CallUploadScript    yes  
+  
+TLS 1  
+</code></pre>
+
+<h3 id="create-ftp-users">Create ftp users&nbsp;<a class="anchor" href="#create-ftp-users"><i class="small linkify icon"></i></a> </h3>
+
+<ol>
+<li><p>Anonymous</p>
+
+<pre><code>pw groupadd ftpuser
+</code></pre>
+
+<pre><code>pw useradd ftp -g ftpuser -d /home/ftp
+</code></pre></li>
+
+<li><p>Virtual users<br />
+Create two virtual users “ftp-vip1”, “ftp-vip2”<br />
+i. Add a real account</p>
+
+<pre><code>pw group virtualgroup
+</code></pre>
+
+<pre><code>pw useradd ftpuser1 -g virtualgroup \  
+-c &quot;FTP virtual user1&quot; -d /home/ftp \  
+-S /sbin/nologin
+</code></pre>
+
+<p>ii. Map a virtual account to a real account</p>
+
+<pre><code>pure-pw useradd ftp-vip1 -u ftpuser1 -g virtualgroup \  
+-d /home/ftp -m
+</code></pre></li>
+
+<li><p>看 user info</p>
+
+<pre><code>pure-pw show ftp-vip1
+</code></pre></li>
+</ol>
+
+<h3 id="ssl簽證">ssl簽證&nbsp;<a class="anchor" href="#ssl簽證"><i class="small linkify icon"></i></a> </h3>
+
+<p><img src="https://i.imgur.com/W6tarUL.png" alt="Imgur" /></p>
+
+<h3 id="launch-the-server">Launch the server&hellip;&nbsp;<a class="anchor" href="#launch-the-server"><i class="small linkify icon"></i></a> </h3>
+
+<p>For testing the server</p>
+
+<pre><code>/usr/local/sbin/pure-ftpd &amp;
+</code></pre>
+
+<pre><code>ftp localhost
+</code></pre>
+
+<p>Automatically run the server when the system boots<br />
+add <code>/usr/local/sbin/pure-ftpd &amp;</code> to <code>/etc/rc.d/rc.local</code> or <code>/etc/rc.d/boot.local</code><br />
+Service</p>
+
+<pre><code>service pure-ftpd start  
+service pure-ftpd stop   
+service pure-ftpd restart
+</code></pre>
+
+<p>Service conf location<br />
+<code>/usr/local/etc/rc.d</code> or <code>/etc/rc.d</code></p>
+
+<h3 id="test-in-file-zilla">Test in File Zilla&nbsp;<a class="anchor" href="#test-in-file-zilla"><i class="small linkify icon"></i></a> </h3>
+
+<p>主機：&lt; your ip address &gt;<br />
+使用者名稱：&lt; username &gt;<br />
+passwd：&lt; ******** &gt;<br />
+port：21</p>
+
+<h3 id="權限設定">權限設定&nbsp;<a class="anchor" href="#權限設定"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>sudo chown sysadm:virtualgroup /home/ftp/upload
+sudo chmod 1777 /home/ftp/upload
+</code></pre>
+
+<pre><code>sudo chown sysadm:virtualgroup /home/ftp/public
+sudo chmod 777 /home/ftp/public
+</code></pre>
+
+<pre><code>sudo chmod 771 /home/ftp/hidden
+sudo mkdir /home/ftp/hidden/treasure
+sudo touch /home/ftp/hidden/treasure/secret
+</code></pre>
+
+<p>It would look like this</p>
+
+<pre><code>drwxrwx--x  2   root    wheel           hidden  
+drwxrwxrwx  2   sysadm  virtualgroup    public  
+drwxrwxrwt  2   sysadm  virtualgroup    upload  
+</code></pre>
+
+<p>upload的t 表示只有owner/root 才可以刪除檔案/資料夾</p>
+
+<h2 id="zfs-on-home-ftp">ZFS on <code>/home/ftp</code>&nbsp;<a class="anchor" href="#zfs-on-home-ftp"><i class="small linkify icon"></i></a> </h2>
+
+<h3 id="enable-zfs-service">enable ZFS service&nbsp;<a class="anchor" href="#enable-zfs-service"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>cat zfs_enable=&quot;YES&quot; &gt; /etc/rc.conf
+</code></pre>
+
+<pre><code>sudo service zfs start
+</code></pre>
+
+<h3 id="add-new-hard-disks">Add new hard disks&nbsp;<a class="anchor" href="#add-new-hard-disks"><i class="small linkify icon"></i></a> </h3>
+
+<p>VM settings &gt; Storages &gt; add 2 hard disks: ada1 ada2</p>
+
+<h3 id="create-mypool">Create mypool&nbsp;<a class="anchor" href="#create-mypool"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>sudo zpool create mypoool mirror /dev/ada1 /dev/ada2
+</code></pre>
+
+<p>檢查</p>
+
+<pre><code>zpool status
+</code></pre>
+
+<h3 id="mount">Mount&nbsp;<a class="anchor" href="#mount"><i class="small linkify icon"></i></a> </h3>
+
+<pre><code>zfs set mountpoint=/home/ftp mypool
+</code></pre>
+
+<pre><code>zfs set compression=lz4 mypool
+</code></pre>
+
+<pre><code>zfs set atime=off mypool
+</code></pre>
+
+<p>重複上述指令給 <code>mypool/public</code>、<code>mypool/upload</code>、<code>mypool/hidden</code><br />
+check history</p>
+
+<pre><code>sudo zpool history
+</code></pre>
+
+<h3 id="automatic-snapshot-script">Automatic snapshot script&nbsp;<a class="anchor" href="#automatic-snapshot-script"><i class="small linkify icon"></i></a> </h3>
+
+<p>Write a script: <code>zbackup</code><br />
+Usage:<br />
+    - Create: <code>zbackup DATASET [ROTATION_CNT]</code><br />
+    - List: <code>zbackup -l|--list [DATASET|ID|DATASET ID]</code><br />
+    - Delete: <code>zbackup -d|--delete [DATASET|ID|DATASET ID]</code><br />
+    - Export: <code>zbackup -e|--export [DATASET|ID|DATASET ID]</code><br />
+    - Import: <code>zbackup -i|--import FILENAME DATASET</code></p>
+
+<p><code>$PATH</code>下的filename可以當command執行<br />
+我的$PATH是 <code>/home/c0846101/bin</code><br />
+<a href="https://github.com/yilianwu/NCTUSA-hw/blob/master/hw3/zbackup">zbackup</a></p>
+
+<h2 id="ftp-watchd">ftp-watchd&nbsp;<a class="anchor" href="#ftp-watchd"><i class="small linkify icon"></i></a> </h2>
+
+<p>Create ftp-watchd service</p>
+
+<pre><code>cd /usr/local/etc/rc.d  
+sudo vim ftp-watchd  
+</code></pre>
+
+<p><a href="https://github.com/yilianwu/NCTUSA-hw/blob/master/hw3/rc.d/ftp-watchd">ftp-watchd</a></p>
+
+<pre><code>sudo vim /tmp/uploadscript.sh
+</code></pre>
+
+<p><a href="https://github.com/yilianwu/NCTUSA-hw/blob/master/hw3/tmp/uploadscript.sh">uploadscript.sh</a></p>
+
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	<a href="https://www.youtube.com/channel/UCoX_ahsZ27IJh_WQK4CpGJw" target="_blank"><img src="https://i.imgur.com/pZI2aGT.png" height="30" width="30"></a>
+	<a href="https://github.com/yilianwu"><img src="https://i.imgur.com/BIgEqmF.png" target="_blank" height="30" width="30"></a>
+
+
+    <span style="display:block" class="footer-text">&copy 2019 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<link rel="stylesheet" href="https://yilianwu.github.io/css/solarized-light.css"/>
+<script src="https://yilianwu.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
