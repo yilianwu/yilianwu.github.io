@@ -285,12 +285,12 @@ Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
 </ul>
 
 <ol>
-<li>Auth Basic<br />
-設定帳號密碼<br />
-<code>
-sudo sh -c &quot;echo -n 'admin:' &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
+<li><p>Auth Basic<br />
+設定帳號密碼</p>
+
+<pre><code>sudo sh -c &quot;echo -n 'admin:' &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
 sudo sh -c &quot;openssl passwd -apr1 &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
-</code><br /></li>
+</code></pre></li>
 
 <li><p>設定<code>/usr/local/www/nginx/.htpasswd</code>權限<br />
 ！正確！</p>
