@@ -456,7 +456,9 @@ pfctl -a blacklistd/22 -t port22 -T delete $1
 <code>/net/admin/ssh/badguy.log</code><br />
 <img src="https://i.imgur.com/WeAU4sN.png" alt="Imgur" /></p>
 
-<p>Use newsyslog for log rotation</p>
+<p>Use newsyslog for log rotation<br />
+- Separated by day, store 10 days.<br />
+- Compressed to ‘.xz’.</p>
 
 <pre><code># logfilename               [owner:group]   mode    count   size    when    flags [/pid_file] [sig_num]
 /net/admin/ssh/badguy.log                   640     10      *       @T00    X

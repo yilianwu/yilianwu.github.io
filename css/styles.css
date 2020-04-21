@@ -86,7 +86,7 @@ code {
     color: #2c5090;
     background-color: #b6dafda8;
     border-radius: 4px;
-    white-space:pre-wrap;
+    word-wrap:break-word; 
 }
 
 #space {
