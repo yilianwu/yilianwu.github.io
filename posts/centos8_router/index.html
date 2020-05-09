@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/dosstyle.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="/info">INFO</a>
+            
+            <a href="/posts">POSTS</a>
+            
+            <a href="/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="../js/menutime.js"></script>
+    </div>
+            
+    
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+        <div class="post-toc" id="post-toc">
+            <h2 class="post-toc-title">Contents</h2>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#router-basic-settings">Router Basic Settings</a>
+<ul>
+<li><a href="#開兩張網卡">開兩張網卡</a></li>
+<li><a href="#設定內部網卡">設定內部網卡</a></li>
+</ul></li>
+<li><a href="#wireguard">Wireguard</a>
+<ul>
+<li><a href="#install-wireguard-on-centos-8">Install Wireguard on CentOS 8</a></li>
+<li><a href="#client-configurations">Client Configurations</a></li>
+<li><a href="#啟動">啟動</a></li>
+</ul></li>
+<li><a href="#dhcp-server">DHCP Server</a>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#server-configurations">Server Configurations</a></li>
+<li><a href="#start-service">Start Service</a></li>
+</ul></li>
+<li><a href="#routing-nat-iptables">Routing - NAT &amp; iptables</a>
+<ul>
+<li><a href="#install-iptables">Install iptables</a></li>
+<li><a href="#nat-configuration-in-iptables">NAT Configuration in iptables</a></li>
+<li><a href="#firewall">Firewall</a></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+       <div class="paperbg">
+            <div id="title">
+                <h1>Make a CentOS 8 Router</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2020-05-08 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="/tags/centos/"> CentOS </a>
+                    <a class="tag-link" href="/tags/router/"> router </a>
+                    <a class="tag-link" href="/tags/nat/"> nat </a>
+                    <a class="tag-link" href="/tags/dhcp/"> dhcp </a>
+                    <a class="tag-link" href="/tags/iptables/"> iptables </a>
+                    </div>
+
+                <section class="post-content">
+                
+
+<p>Topology</p>
+
+<p><img src="https://i.imgur.com/YXbtu5W.png" alt="Imgur" /></p>
+
+<h1 id="router-basic-settings">Router Basic Settings&nbsp;<a class="anchor" href="#router-basic-settings"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="開兩張網卡">開兩張網卡&nbsp;<a class="anchor" href="#開兩張網卡"><i class="small linkify icon"></i></a> </h2>
+
+<p>一張對外(enp0s3)<br />
+<img src="https://i.imgur.com/p3JtjFa.png" alt="Imgur" /><br />
+一張對內(enp0s8)<br />
+<img src="https://i.imgur.com/8j7taF3.png" alt="Imgur" /></p>
+
+<p>安裝net-tools</p>
+
+<pre><code>dnf install net-tools
+</code></pre>
+
+<p>看網卡資訊</p>
+
+<pre><code>ifconfig
+</code></pre>
+
+<p><img src="https://i.imgur.com/DhymTCe.png" alt="Imgur" /><br />
+因為enp0s3是NAT模式 IP固定是預設的10.0.2.15</p>
+
+<h2 id="設定內部網卡">設定內部網卡&nbsp;<a class="anchor" href="#設定內部網卡"><i class="small linkify icon"></i></a> </h2>
+
+<p>我的對內網卡是enp0s8</p>
+
+<pre><code>vim /etc/sysconfig/network-scripts/ifcfg-enp0s8
+</code></pre>
+
+<pre><code>DEVICE=enp0s8
+ONBOOT=yes
+IPADDR=10.113.25.254
+NETMASK=255.255.255.0
+</code></pre>
+
+<p>重新啟動網卡</p>
+
+<pre><code>ifdown enp0s8
+</code></pre>
+
+<pre><code>ifup enp0s8
+</code></pre>
+
+<h1 id="wireguard">Wireguard&nbsp;<a class="anchor" href="#wireguard"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="install-wireguard-on-centos-8">Install Wireguard on CentOS 8&nbsp;<a class="anchor" href="#install-wireguard-on-centos-8"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>sudo yum install elrepo-release epel-release
+sudo yum install kmod-wireguard wireguard-tools
+</code></pre>
+
+<p>建立client網卡 wg0</p>
+
+<pre><code>mkdir -v /etc/wireguard
+sh -c 'umask 077'; touch /etc/wirehuard/wg0.conf
+</code></pre>
+
+<h2 id="client-configurations">Client Configurations&nbsp;<a class="anchor" href="#client-configurations"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>vim /etc/wireguard/wg0.conf
+</code></pre>
+
+<pre><code>[Interface]
+Address=10.113.0.25/32
+PrivateKey=[CLIENT PRIVATE KEY]
+
+[Peer]
+PublicKey=[SERVER PUBLIC KEY]
+AllowedIPs=10.113.0.0/16
+Endpoint=[SERVER ENDPOINT]:51820
+PersistentKeepalive=25
+</code></pre>
+
+<h2 id="啟動">啟動&nbsp;<a class="anchor" href="#啟動"><i class="small linkify icon"></i></a> </h2>
+
+<p>start</p>
+
+<pre><code>wg-quick up wg0
+</code></pre>
+
+<p>stop</p>
+
+<pre><code>wg-quick down wg0
+</code></pre>
+
+<p>enable</p>
+
+<pre><code>systemctl enable wg-quick@wg0
+</code></pre>
+
+<h1 id="dhcp-server">DHCP Server&nbsp;<a class="anchor" href="#dhcp-server"><i class="small linkify icon"></i></a> </h1>
+
+<h2 id="installation">Installation&nbsp;<a class="anchor" href="#installation"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>dnf install dhcp-server
+</code></pre>
+
+<h2 id="server-configurations">Server Configurations&nbsp;<a class="anchor" href="#server-configurations"><i class="small linkify icon"></i></a> </h2>
+
+<p>example dhcpd.conf: <code>/usr/share/doc/dhcp-derver/dhcpd.conf.example</code></p>
+
+<pre><code>vim /etc/dhcp/dhcpd.conf
+</code></pre>
+
+<pre><code>option domain-name &quot;0846101.nasa&quot;;
+option domain-name-servers 8.8.8.8;
+authoritative;
+default-lease-time 600;
+max-lease-time 7200;
+host fixed-ip-agent{
+        hardware ethernet 08:00:27:ca:aa:fa; //agent的MAC address
+        fixed-address 10.113.25.129;
+}
+
+subnet 10.113.25.0 netmask 255.255.255.0 {
+  range 10.113.25.100 10.113.25.200;
+  option routers 10.113.25.254;
+}
+</code></pre>
+
+<h2 id="start-service">Start Service&nbsp;<a class="anchor" href="#start-service"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>systemctl start dhcpd
+systemctl enable --now dhcpd
+</code></pre>
+
+<p>Firewall設定</p>
+
+<pre><code>firewall-cmd --zone=public --permanent --add-service=dhcp
+firewall-cmd --reload
+</code></pre>
+
+<h1 id="routing-nat-iptables">Routing - NAT &amp; iptables&nbsp;<a class="anchor" href="#routing-nat-iptables"><i class="small linkify icon"></i></a> </h1>
+
+<p>如果要設定NAT就要一起設定防火牆<br />
+在CentOS 8中 我使用iptables</p>
+
+<h2 id="install-iptables">Install iptables&nbsp;<a class="anchor" href="#install-iptables"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>dnf install iptables-services iptables-utils -y
+</code></pre>
+
+<p>若要啟動iptables 要先把預設的firewalld關閉 避免衝突</p>
+
+<pre><code>systemctl stop firewalld
+</code></pre>
+
+<pre><code>systemctl disable firewalld
+</code></pre>
+
+<p>Enable iptables</p>
+
+<pre><code>systemctl enable iptables
+systemctl start iptables
+</code></pre>
+
+<h2 id="nat-configuration-in-iptables">NAT Configuration in iptables&nbsp;<a class="anchor" href="#nat-configuration-in-iptables"><i class="small linkify icon"></i></a> </h2>
+
+<p>設定router forwarding功能</p>
+
+<p>先看一下有沒有NAT設定</p>
+
+<pre><code>iptables -t nat -nvL
+</code></pre>
+
+<p>不會看到任何東西 因為我們還沒設定</p>
+
+<p>設定對外網卡是enp0s3</p>
+
+<pre><code>iptables -t nat -A POSTROUTING -o enp0s3 -j MASQERADE
+</code></pre>
+
+<p>再執行一次</p>
+
+<pre><code>iptables -t nat -nvL
+</code></pre>
+
+<p>會看到<br />
+<img src="https://i.imgur.com/LIzjXXC.png" alt="Imgur" /></p>
+
+<p>儲存設定</p>
+
+<pre><code>iptables-save
+</code></pre>
+
+<p>切換成root</p>
+
+<pre><code>iptables-save &gt; /etc/sysconfig/iptables
+</code></pre>
+
+<p>編輯iptables</p>
+
+<pre><code>vim /etc/sysconfig/iptables
+</code></pre>
+
+<pre><code>*filter
+
+-A FORWARD -i enp0s3 -o enp0s8 -j ACCEPT
+-A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT
+-A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+</code></pre>
+
+<p>Restart iptables</p>
+
+<pre><code>systemctl restart iptables
+</code></pre>
+
+<pre><code>ls /etc/sysctl.d
+</code></pre>
+
+<p><img src="https://i.imgur.com/VgG2kIm.png" alt="Imgur" /></p>
+
+<pre><code>vim /etc/sysctl.d/99.sysctl.d
+</code></pre>
+
+<pre><code>net.ipv4.ip_forward = 1
+</code></pre>
+
+<pre><code>sysctl -p
+</code></pre>
+
+<h2 id="firewall">Firewall&nbsp;<a class="anchor" href="#firewall"><i class="small linkify icon"></i></a> </h2>
+
+<ul>
+<li><p>By default, all connections from outside (include Intranet) to your subnet should be rejected.</p></li>
+
+<li><p>By default, all services only trust the connections from your subnet (For example, you cannot SSH to “Router” from your test IP (10.113.254.ID) directly. Therefore, you may need to create a VM to help you &laquo;jump&raquo; into your subnet.)</p></li>
+
+<li><p>SSH connections from anywhere to “Agent” are allowed.</p></li>
+
+<li><p>ICMP connections from anywhere to anywhere are allowed.</p></li>
+</ul>
+
+<pre><code>*filter
+:INPUT DROP [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [650:94130]
+
+-P INPUT DROP
+-A INPUT -i lo -j ACCEPT
+-A INPUT -p all -s 192.168.56.1 -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -d 10.113.25.129 -p tcp --dport 22 -j ACCEPT
+-A INPUT -s 10.113.25.0/24 -j ACCEPT
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+-P FORWARD DROP
+-A FORWARD -p icmp -j ACCEPT
+-A FORWARD -d 10.113.25.129 -p tcp --dport 22 -j ACCEPT
+-A FORWARD -s 10.113.25.0/24 -j ACCEPT
+-A FORWARD -i enp0s3 -o enp0s8 -j ACCEPT
+-A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT
+-A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+COMMIT
+</code></pre>
+
+<p>Restart iptables</p>
+
+<pre><code>systemctl restart iptables
+</code></pre>
+
+<p>run this to check</p>
+
+<pre><code>iptables -t filter --list
+</code></pre>
+
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	<a href="https://www.youtube.com/channel/UCoX_ahsZ27IJh_WQK4CpGJw" target="_blank"><img src="https://i.imgur.com/pZI2aGT.png" height="30" width="30"></a>
+	<a href="https://github.com/yilianwu"><img src="https://i.imgur.com/BIgEqmF.png" target="_blank" height="30" width="30"></a>
+
+
+    <span style="display:block" class="footer-text">&copy 2019-2020 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<link rel="stylesheet" href="https://yilianwu.github.io/css/solarized-light.css"/>
+<script src="https://yilianwu.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-tw"><head>
-	<meta name="generator" content="Hugo 0.53" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
@@ -34,63 +33,44 @@
     
 </header>
 
-<main id="home">
-    <div id="about" class="grape">
-        <div class="container">
-	    <div class="avatar">
-		
-		<img src="img/profile.png" alt="Avatar">
-		
-	    </div>
+<main id="list">
+    <div id="posts" class="grape">
+	<div class="container">
+            <h1>Centos</h1>
             
                 
-            <div id="name">
-                <h2 id="wu-yi-lian">WU YI LIAN</h2>
-                <div id="slogan">
-                    <span>Enter Password</span>
-                    <span class="cursor">_</span>
-                </div>
-            </div>    
-            
-        </div>
-    </div>
-
-    <div id="recent-posts" class="sand">
-	<div class="recent-posts-container">
-            <h2>Recent Posts</h2>
-            <ul>
-                
-                    <li>
-                        <span><time datetime="2020-05-08T00:51:07&#43;0800">2020-05-08</time>
-</span>
+                <ul class="sublime4lst">
+                    <li class="buttons"></li>
+                    <li style="padding:10px 20px 40px;">
                         <a href="/posts/centos8_dns/">Setting Up DNS Server On CentOS 8</a>
+                        <p><time datetime="2020-05-08T00:51:07&#43;0800">2020-05-08</time>
+</p>
+		                <p>Topology
+Scenario Router Hostname : router.0846101.nasa IP Address : 10.113.25.254/24  Primary (Master) DNS Server Hostname : ns1.0846101.nasa IP Address : 10.113.25.1/24  Secondary (Slave) DNS Server Hostname : ns2.0846101.nasa IP Address : 10.113.25.2/24  Agent Hostname : agent.0846101.nasa IP Address : 10.113.25.129/24  ClientPC (proxy) Hostname : client-pc.0846101.nasa IP Address : 10.113.25.119/24  Router Hostname 跟hostname有關的兩個檔案： /etc/sysconfig/network and /etc/hosts
+vim /etc/sysconfig/network  # Created by anaconda HOSTNAME=router.0846101.nasa //localhost.localdomain  vim /etc/hosts  加在最後一行...</p><span class="cursor">|</span>
                     </li>
+                </ul>
                 
-                    <li>
-                        <span><time datetime="2020-05-08T00:50:47&#43;0800">2020-05-08</time>
-</span>
+                <ul class="sublime4lst">
+                    <li class="buttons"></li>
+                    <li style="padding:10px 20px 40px;">
                         <a href="/posts/centos8_router/">Make a CentOS 8 Router</a>
+                        <p><time datetime="2020-05-08T00:50:47&#43;0800">2020-05-08</time>
+</p>
+		                <p>Topology
+Router Basic Settings 開兩張網卡 一張對外(enp0s3)
+一張對內(enp0s8)
+安裝net-tools
+dnf install net-tools  看網卡資訊
+ifconfig  因為enp0s3是NAT模式 IP固定是預設的10.0.2.15
+設定內部網卡 我的對內網卡是enp0s8
+vim /etc/sysconfig/network-scripts/ifcfg-enp0s8  DEVICE=enp0s8 ONBOOT=yes IPADDR=10.113.25.254 NETMASK=255.255.255.0  重新啟動網卡
+ifdown enp0s8  ifup enp0s8  Wireguard Install Wireguard on CentOS 8 sudo yum install elrepo-release epel-release sudo yum install kmod-wireguard wireguard-tools  建立client網卡 wg0
+mkdir -v /etc/wireguard sh -c 'umask 077'; touch /etc/wirehuard/wg0.conf  Client Configurations vim /etc/wireguard/wg0.conf  [Interface] Address=10....</p><span class="cursor">|</span>
                     </li>
+                </ul>
                 
-                    <li>
-                        <span><time datetime="2020-04-20T03:45:16&#43;0800">2020-04-20</time>
-</span>
-                        <a href="/posts/freebsd-nis-nfs-firewall/">FreeBSD NIS &#43; NFS &#43; Firewall</a>
-                    </li>
-                
-                    <li>
-                        <span><time datetime="2020-04-19T02:16:59&#43;0800">2020-04-19</time>
-</span>
-                        <a href="/posts/freebsd-web-server/">FreeBSD Web Server</a>
-                    </li>
-                
-                    <li>
-                        <span><time datetime="2020-04-18T16:28:10&#43;0800">2020-04-18</time>
-</span>
-                        <a href="/posts/freebsd-file-server/">FreeBSD File Server</a>
-                    </li>
-                
-            </ul>
+            
         </div>
     </div>
 </main>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Iptables on [ yilianwu ]</title>
+    <link>https://yilianwu.github.io/tags/iptables/</link>
+    <description>Recent content in Iptables on [ yilianwu ]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 08 May 2020 00:50:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://yilianwu.github.io/tags/iptables/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Make a CentOS 8 Router</title>
+      <link>https://yilianwu.github.io/posts/centos8_router/</link>
+      <pubDate>Fri, 08 May 2020 00:50:47 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/centos8_router/</guid>
+      <description>Topology
+Router Basic Settings 開兩張網卡 一張對外(enp0s3)
+一張對內(enp0s8)
+安裝net-tools
+dnf install net-tools  看網卡資訊
+ifconfig  因為enp0s3是NAT模式 IP固定是預設的10.0.2.15
+設定內部網卡 我的對內網卡是enp0s8
+vim /etc/sysconfig/network-scripts/ifcfg-enp0s8  DEVICE=enp0s8 ONBOOT=yes IPADDR=10.113.25.254 NETMASK=255.255.255.0  重新啟動網卡
+ifdown enp0s8  ifup enp0s8  Wireguard Install Wireguard on CentOS 8 sudo yum install elrepo-release epel-release sudo yum install kmod-wireguard wireguard-tools  建立client網卡 wg0
+mkdir -v /etc/wireguard sh -c &#39;umask 077&#39;; touch /etc/wirehuard/wg0.conf  Client Configurations vim /etc/wireguard/wg0.conf  [Interface] Address=10.</description>
+    </item>
+    
+  </channel>
+</rss>
