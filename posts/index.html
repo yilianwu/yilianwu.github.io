@@ -42,7 +42,31 @@
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
-                        <a href="/posts/centos8_dns/">Setting Up DNS Server On CentOS 8</a>
+                        <a href="/posts/haproxy-centos8/">HAProxy Load Balancer on CentOS 8</a>
+                        <p><time datetime="2020-05-10T17:17:38&#43;0800">2020-05-10</time>
+</p>
+		                <p>Topology
+我把Proxy建在我的client-pc
+Proxy (Client-PC)
+Hostname : 0846101.nasa IP Address : 10.113.25.119/24  Agent
+Hostname : agent.0846101.nasa IP Address : 10.113.25.129/24  Goals Reverseproxy
+- Make a reverse proxy under http://0846101.nasa/reverse/
+- Round-robin
+- 10.113.ID.129:8001
+- 10.113.ID.129:8002
+- Make a reverse proxy under http://0846101.nasa/ip/
+- 10.113.ID.129:8003
+- Pass non-standard HTTP headers to the backend.
+- “X-Forwarded-For”
+- “X-Real-IP”: The real client IP.
+Install HAProxy dnf install haproxy  systemctl start haproxy  systemctl enable haproxy  設定 Log Configure rsyslog so that it stores all HAProxy statistics,...</p><span class="cursor">|</span>
+                    </li>
+                </ul>
+                
+                <ul class="sublime4lst">
+                    <li class="buttons"></li>
+                    <li style="padding:10px 20px 40px;">
+                        <a href="/posts/dns-centos8/">Setting Up DNS Server On CentOS 8</a>
                         <p><time datetime="2020-05-08T00:51:07&#43;0800">2020-05-08</time>
 </p>
 		                <p>Topology
@@ -54,7 +78,7 @@ vim /etc/sysconfig/network  # Created by anaconda HOSTNAME=router.0846101.nasa /
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
-                        <a href="/posts/centos8_router/">Make a CentOS 8 Router</a>
+                        <a href="/posts/router-centos8/">Make a CentOS 8 Router</a>
                         <p><time datetime="2020-05-08T00:50:47&#43;0800">2020-05-08</time>
 </p>
 		                <p>Topology

@@ -13,10 +13,10 @@
     
     <item>
       <title>Make a CentOS 8 Router</title>
-      <link>https://yilianwu.github.io/posts/centos8_router/</link>
+      <link>https://yilianwu.github.io/posts/router-centos8/</link>
       <pubDate>Fri, 08 May 2020 00:50:47 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/centos8_router/</guid>
+      <guid>https://yilianwu.github.io/posts/router-centos8/</guid>
       <description>Topology
 Router Basic Settings 開兩張網卡 一張對外(enp0s3)
 一張對內(enp0s8)

@@ -13,10 +13,10 @@
     
     <item>
       <title>Setting Up DNS Server On CentOS 8</title>
-      <link>https://yilianwu.github.io/posts/centos8_dns/</link>
+      <link>https://yilianwu.github.io/posts/dns-centos8/</link>
       <pubDate>Fri, 08 May 2020 00:51:07 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/centos8_dns/</guid>
+      <guid>https://yilianwu.github.io/posts/dns-centos8/</guid>
       <description>Topology
 Scenario Router Hostname : router.0846101.nasa IP Address : 10.113.25.254/24  Primary (Master) DNS Server Hostname : ns1.0846101.nasa IP Address : 10.113.25.1/24  Secondary (Slave) DNS Server Hostname : ns2.0846101.nasa IP Address : 10.113.25.2/24  Agent Hostname : agent.0846101.nasa IP Address : 10.113.25.129/24  ClientPC (proxy) Hostname : client-pc.0846101.nasa IP Address : 10.113.25.119/24  Router Hostname 跟hostname有關的兩個檔案： /etc/sysconfig/network and /etc/hosts
 vim /etc/sysconfig/network  # Created by anaconda HOSTNAME=router.0846101.nasa //localhost.localdomain  vim /etc/hosts  加在最後一行</description>
