@@ -84,16 +84,28 @@ IP Address           : 10.113.25.129/24
 
 <h1 id="goals">Goals&nbsp;<a class="anchor" href="#goals"><i class="small linkify icon"></i></a> </h1>
 
-<p>Reverseproxy<br />
-- Make a reverse proxy under <a href="http://0846101.nasa/reverse/">http://0846101.nasa/reverse/</a><br />
-    - Round-robin<br />
-        - 10.113.ID.129:8001<br />
-        - 10.113.ID.129:8002<br />
-- Make a reverse proxy under <a href="http://0846101.nasa/ip/">http://0846101.nasa/ip/</a><br />
-  - 10.113.ID.129:8003<br />
-  - Pass non-standard HTTP headers to the backend.<br />
-    - “X-Forwarded-For”<br />
-    - “X-Real-IP”: The real client IP.</p>
+<p>Reverseproxy</p>
+
+<ul>
+<li><p>Make a reverse proxy under <a href="http://0846101.nasa/reverse/">http://0846101.nasa/reverse/</a></p>
+
+<ul>
+<li>Round-robin<br /></li>
+<li>10.113.ID.129:8001<br /></li>
+<li>10.113.ID.129:8002<br />
+<br /></li>
+</ul></li>
+
+<li><p>Make a reverse proxy under <a href="http://0846101.nasa/ip/">http://0846101.nasa/ip/</a></p>
+
+<ul>
+<li>10.113.ID.129:8003<br /></li>
+<li>Pass non-standard HTTP headers to the backend.<br /></li>
+<li>“X-Forwarded-For”<br /></li>
+<li>“X-Real-IP”: The real client IP.<br />
+<br /></li>
+</ul></li>
+</ul>
 
 <h1 id="install-haproxy">Install HAProxy&nbsp;<a class="anchor" href="#install-haproxy"><i class="small linkify icon"></i></a> </h1>
 

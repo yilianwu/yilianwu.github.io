@@ -50,16 +50,16 @@
 Proxy (Client-PC)
 Hostname : 0846101.nasa IP Address : 10.113.25.119/24  Agent
 Hostname : agent.0846101.nasa IP Address : 10.113.25.129/24  Goals Reverseproxy
-- Make a reverse proxy under http://0846101.nasa/reverse/
-- Round-robin
-- 10.113.ID.129:8001
-- 10.113.ID.129:8002
-- Make a reverse proxy under http://0846101.nasa/ip/
-- 10.113.ID.129:8003
-- Pass non-standard HTTP headers to the backend.
-- “X-Forwarded-For”
-- “X-Real-IP”: The real client IP.
-Install HAProxy dnf install haproxy  systemctl start haproxy  systemctl enable haproxy  設定 Log Configure rsyslog so that it stores all HAProxy statistics,...</p><span class="cursor">|</span>
+ Make a reverse proxy under http://0846101.nasa/reverse/
+ Round-robin
+ 10.113.ID.129:8001
+ 10.113.ID.129:8002
+  Make a reverse proxy under http://0846101.nasa/ip/
+ 10.113.ID.129:8003
+ Pass non-standard HTTP headers to the backend.
+ “X-Forwarded-For”
+ “X-Real-IP”: The real client IP.
+   Install HAProxy dnf install haproxy  systemctl start haproxy  systemctl enable haproxy  設定 Log Configure rsyslog so that it stores all HAProxy statistics,...</p><span class="cursor">|</span>
                     </li>
                 </ul>
                 
