@@ -6,10 +6,47 @@
     <description>Recent content in Home on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 10 May 2020 17:17:38 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2020 22:37:06 +0800</lastBuildDate>
     
 	<atom:link href="https://yilianwu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SSD的種類</title>
+      <link>https://yilianwu.github.io/posts/ssd-intro/</link>
+      <pubDate>Sun, 10 May 2020 22:37:06 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/ssd-intro/</guid>
+      <description>SSD (Solid State Drive)
+固態硬碟
+現在市面上的SSD價格比起以前便宜了許多 成為現在電腦的主流配備
+實惠的價格也讓很多人選擇將自己的電腦加裝SSD 來改善電腦的流暢度
+但市面上的SSD這麼多種 還是先搞清楚才能選擇最適合自己的SSD
+SSD分成 三種介面(Interface)
+- SATA
+- PCIe
+- M.2
+SATA SATA的前身是
+Parallel ATA (排線)
+Parallel ATA cable
+俗稱IDE (Integrated Drive Electronics) 整合裝置電路
+SATA interface SATA cable
+Serial ATA (Serial Advanced Technology Attachment)
+ATA電腦匯流排
+支援熱插拔
+市面上常見的2.5吋 SATA SSD
+接孔現在主要分
+- SATA2
+- SATA3
+兩種接孔的形狀是一樣的
+SATA3向下兼容SATA2
+效能 主要差在傳輸速度
+實際速度：
+SATA3 &amp;ndash;&amp;gt; 500MB/s
+SATA2 &amp;ndash;&amp;gt; 200MB/s （大約為傳統HDD的2倍快)
+PCIe PCI Express
+PCIe Interface 個體間的差異在於「通道數」</description>
+    </item>
     
     <item>
       <title>HAProxy Load Balancer on CentOS 8</title>
