@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ubuntu on [ yilianwu ]</title>
-    <link>https://yilianwu.github.io/tags/ubuntu/</link>
-    <description>Recent content in Ubuntu on [ yilianwu ]</description>
+    <title>Raspberry Pi on [ yilianwu ]</title>
+    <link>https://yilianwu.github.io/tags/raspberry-pi/</link>
+    <description>Recent content in Raspberry Pi on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Thu, 14 May 2020 23:00:14 +0800</lastBuildDate>
     
-	<atom:link href="https://yilianwu.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yilianwu.github.io/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -24,33 +24,6 @@ https://ubuntu.com/download/raspberry-pi
 打開終端機
 diskutil list  查看microSD的位址
 /dev/disk0 (internal, physical): #: TYPE NAME SIZE IDENTIFIER 0: GUID_partition_scheme *251.0 GB disk0 1: EFI EFI 209.7 MB disk0s1 2: Apple_APFS Container disk1 250.8 GB disk0s2 /dev/disk1 (synthesized): #: TYPE NAME SIZE IDENTIFIER 0: APFS Container Scheme - +250.8 GB disk1 Physical Store disk0s2 1: APFS Volume Macintosh HD 204.</description>
-    </item>
-    
-    <item>
-      <title>在雲端物聯網上建立微系統</title>
-      <link>https://yilianwu.github.io/posts/microsys/</link>
-      <pubDate>Tue, 19 Feb 2019 15:45:54 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/microsys/</guid>
-      <description>Platform  Raspberry Pi
- Amazon AWS
- Google Cloud
- Microsoft Azure
- Alibaba
- 其他
- 嵌入式系統
- LG WebOS
- 基地台
- 三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反向三角定位
- Google Machine Learning
- TensorFlow
-   AWS https://aws.amazon.com/
-註冊一個帳號 登入Console 服務&amp;gt;運算&amp;gt;EC2
-選擇EC2
-Launch Instance 創立一個Instance
-Step 1: 選擇AMI 請選擇Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-07ad4b1c3af1ea214
-Step 2: Choose an Instance Type 選擇免費方案！
-Step 3: Review and Launch 準備發佈，不用害怕</description>
     </item>
     
   </channel>

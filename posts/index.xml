@@ -6,10 +6,25 @@
     <description>Recent content in Posts on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 10 May 2020 22:37:06 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2020 23:00:14 +0800</lastBuildDate>
     
 	<atom:link href="https://yilianwu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Install Ubuntu 20.04 On Raspberry Pi 4 Full Ubuntu Desktop</title>
+      <link>https://yilianwu.github.io/posts/ubuntu-2004-for-rpi4/</link>
+      <pubDate>Thu, 14 May 2020 23:00:14 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/ubuntu-2004-for-rpi4/</guid>
+      <description>Ubuntu 20.04 LST 到官網下載 Ubuntu Server image檔
+https://ubuntu.com/download/raspberry-pi
+Create a Bootable microSD card 以下在MacOS上做示範
+把剛剛下載好的Ubuntu image放在 ~/Downloads
+打開終端機
+diskutil list  查看microSD的位址
+/dev/disk0 (internal, physical): #: TYPE NAME SIZE IDENTIFIER 0: GUID_partition_scheme *251.0 GB disk0 1: EFI EFI 209.7 MB disk0s1 2: Apple_APFS Container disk1 250.8 GB disk0s2 /dev/disk1 (synthesized): #: TYPE NAME SIZE IDENTIFIER 0: APFS Container Scheme - +250.8 GB disk1 Physical Store disk0s2 1: APFS Volume Macintosh HD 204.</description>
+    </item>
     
     <item>
       <title>SSD的種類</title>
