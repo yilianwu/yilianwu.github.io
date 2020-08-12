@@ -78,7 +78,12 @@
 </ul></li>
 <li><a href="#spf-1">SPF</a></li>
 <li><a href="#null-user-check">Null User check</a></li>
-<li><a href="#debug">Debug</a></li>
+<li><a href="#debug">Debug</a>
+<ul>
+<li><a href="#greylist沒反應">greylist沒反應</a></li>
+<li><a href="#filter-virus-failed">Filter: Virus FAILED</a></li>
+<li><a href="#dmarc-1">DMARC</a></li>
+</ul></li>
 </ul>
 </nav>
         </div>
@@ -650,105 +655,90 @@ policyd-spf_time_limit = 3600
 
 <h1 id="debug">Debug&nbsp;<a class="anchor" href="#debug"><i class="small linkify icon"></i></a> </h1>
 
-<ol>
-<li><p>greylist沒反應</p>
+<h2 id="greylist沒反應">greylist沒反應&nbsp;<a class="anchor" href="#greylist沒反應"><i class="small linkify icon"></i></a> </h2>
 
-<pre><code>讓greylist開log 開debug  
-</code></pre></li>
-</ol>
+<p>讓greylist開log 開debug</p>
 
-<pre><code>        sudo vim /etc/rspamd/local.d/logging.inc
+<pre><code>sudo vim /etc/rspamd/local.d/logging.inc
 </code></pre>
 
-<pre><code>        debug_modules = [&quot;greylist&quot;];
+<pre><code>debug_modules = [&quot;greylist&quot;];
 </code></pre>
 
-<pre><code>    看log發現  
+<p>看log發現</p>
+
+<pre><code>2020-06-09 19:52:04 #1736(normal) &lt;3o7zxy&gt;; lua; lua_redis.lua:1199: cannot upload script to 127.0.0.1:6379: Connection refused; registered from: /usr/share/rspamd/plugins/ratelimit.lua:206
 </code></pre>
 
-<pre><code>        2020-06-09 19:52:04 #1736(normal) &lt;3o7zxy&gt;; lua; lua_redis.lua:1199: cannot upload script to 127.0.0.1:6379: Connection refused; registered from: /usr/share/rspamd/plugins/ratelimit.lua:206
+<p>-&gt; Rspamd的資料庫 : Redis 好像沒作用</p>
+
+<pre><code>sudoedit /etc/rspamd/local.d/redis.conf
 </code></pre>
 
-<pre><code>    Rspamd的資料庫 Redis 好像沒作用  
+<p>把<code>localhost</code>改成<code>127.0.0.1</code> 就好了</p>
+
+<pre><code>write_servers = &quot;127.0.0.1&quot;;
+read_servers = &quot;127.0.0.1&quot;;
 </code></pre>
 
-<pre><code>        sudoedit /etc/rspamd/local.d/redis.conf
+<h2 id="filter-virus-failed">Filter: Virus FAILED&nbsp;<a class="anchor" href="#filter-virus-failed"><i class="small linkify icon"></i></a> </h2>
+
+<p>看clamav的檔案權限</p>
+
+<pre><code>sudo ls -al /run/clamd.scan/
 </code></pre>
 
-<pre><code>    把`localhost`改成`127.0.0.1` 就好了   
+<pre><code>total 0
+drwx--x---.  2 clamscan virusgroup  60 Jun 10 18:42 .
+drwxr-xr-x. 28 root     root       780 Jun 10 18:42 ..
+srw-rw-rw-.  1 clamscan clamscan     0 Jun 10 18:42 clamd.sock
 </code></pre>
 
-<pre><code>        write_servers = &quot;127.0.0.1&quot;;
-        read_servers = &quot;127.0.0.1&quot;;
+<p>現在要把rspamd加入virusgroup</p>
+
+<p>看一下rspamd的username叫什麼？</p>
+
+<pre><code>sudo cat /etc/passwd
 </code></pre>
 
-<ol>
-<li><p>Filter: Virus FAILED</p>
+<p>rspamd的username叫 <code>_rspamd</code></p>
 
-<pre><code>看clamav的檔案權限  
-</code></pre></li>
-</ol>
-
-<pre><code>        sudo ls -al /run/clamd.scan/
+<pre><code>sudo gpasswd -a _rspamd virusgroup
 </code></pre>
 
-<pre><code>        total 0
-        drwx--x---.  2 clamscan virusgroup  60 Jun 10 18:42 .
-        drwxr-xr-x. 28 root     root       780 Jun 10 18:42 ..
-        srw-rw-rw-.  1 clamscan clamscan     0 Jun 10 18:42 clamd.sock
+<p>Restart rspamd</p>
+
+<pre><code>sudo systemctl restart rspamd
 </code></pre>
 
-<pre><code>    現在要把rspamd加入virusgroup  
+<h2 id="dmarc-1">DMARC&nbsp;<a class="anchor" href="#dmarc-1"><i class="small linkify icon"></i></a> </h2>
 
-    看rspamd的username  
+<p>DMARC: Check policy 會寄送郵件至伺服器的郵件若無法通過 DMARC 時是否會正確的拒絕（550 5.7.1）</p>
+
+<p>但我的<code>/var/log/maillog</code>卻是顯示 550 5.7.23</p>
+
+<pre><code>Jun  9 00:59:11 mail policyd-spf[1637]: 550 5.7.23 Message rejected due to: SPF fail - not authorized. Please see http://www.openspf.net/Why?s=mfrom;id=plain@0756125.nasa;ip=10.113.54.7;r=&lt;UNKNOWN&gt;
+Jun  9 00:59:11 mail postfix/smtpd[1551]: NOQUEUE: reject: RCPT from unknown[10.113.54.7]: 550 5.7.23 &lt;TA@0846101.nasa&gt;: Recipient address rejected: Message rejected due to: SPF fail - not authorized. Please
+see http://www.openspf.net/Why?s=mfrom;id=plain@0756125.nasa;ip=10.113.54.7;r=&lt;UNKNOWN&gt;; from=&lt;plain@0756125.nasa&gt; to=&lt;TA@0846101.nasa&gt; proto=ESMTP helo=&lt;judge-fake&gt;
 </code></pre>
 
-<pre><code>        sudo cat /etc/passwd
+<pre><code>sudo vim /etc/python-policyd-spf/policyd-spf.conf
 </code></pre>
 
-<pre><code>    叫_rspamd  
-</code></pre>
+<p>把pypolicyd的SPF Enhanced關掉</p>
 
-<pre><code>        sudo gpasswd -a _rspamd virusgroup
-</code></pre>
+<pre><code>#  For a fully commented sample config file see policyd-spf.conf.commented
+SPF_Enhanced_Status_Codes = No
+debugLevel = 1
+TestOnly = 1
 
-<pre><code>    Restart rspamd  
-</code></pre>
+HELO_reject = Fail
+Mail_From_reject = Fail
 
-<pre><code>        sudo systemctl restart rspamd
-</code></pre>
+PermError_reject = False
+TempError_Defer = False
 
-<ol>
-<li><p>DMARC</p>
-
-<pre><code>DMARC: Check policy 會寄送郵件至伺服器的郵件若無法通過 DMARC 時是否會正確的拒絕（550 5.7.1）  
-但我的`/var/log/maillog`是顯示 550 5.7.23  
-</code></pre></li>
-</ol>
-
-<pre><code>        Jun  9 00:59:11 mail policyd-spf[1637]: 550 5.7.23 Message rejected due to: SPF fail - not authorized. Please see http://www.openspf.net/Why?s=mfrom;id=plain@0756125.nasa;ip=10.113.54.7;r=&lt;UNKNOWN&gt;
-        Jun  9 00:59:11 mail postfix/smtpd[1551]: NOQUEUE: reject: RCPT from unknown[10.113.54.7]: 550 5.7.23 &lt;TA@0846101.nasa&gt;: Recipient address rejected: Message rejected due to: SPF fail - not authorized. Please
-        see http://www.openspf.net/Why?s=mfrom;id=plain@0756125.nasa;ip=10.113.54.7;r=&lt;UNKNOWN&gt;; from=&lt;plain@0756125.nasa&gt; to=&lt;TA@0846101.nasa&gt; proto=ESMTP helo=&lt;judge-fake&gt;
-</code></pre>
-
-<pre><code>        sudo vim /etc/python-policyd-spf/policyd-spf.conf
-</code></pre>
-
-<pre><code>    把pypolicyd的SPF Enhanced關掉  
-</code></pre>
-
-<pre><code>        #  For a fully commented sample config file see policyd-spf.conf.commented
-        SPF_Enhanced_Status_Codes = No
-        debugLevel = 1
-        TestOnly = 1
-
-        HELO_reject = Fail
-        Mail_From_reject = Fail
-
-        PermError_reject = False
-        TempError_Defer = False
-
-        skip_addresses = 127.0.0.0/8,::ffff:127.0.0.0/104,::1
+skip_addresses = 127.0.0.0/8,::ffff:127.0.0.0/104,::1
 </code></pre>
 
                 </section>
