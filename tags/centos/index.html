@@ -42,7 +42,18 @@
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
-                        <a href="/posts/haproxy-centos8/">HAProxy Load Balancer on CentOS 8</a>
+                        <a href="/posts/na-mailserver-centos8/">Mail Server on CentOS 8</a>
+                        <p><time datetime="2020-06-08T00:44:06&#43;0800">2020-06-08</time>
+</p>
+		                <p>Mail Server Info
+Hostname : mail.0846101.nasa IP Address : 10.113.25.25/24  Install Postfix sudo dnf install postfix  vim /etc/postfix/main.cf  # General Settings myhostname = mail.0846101.nasa # The default of &quot;mydomain&quot; is to use $myhostname minus the first component #mydomain = 0846101.nasa myorigin = $mydomain # RECEIVING MAIL inet_interfaces = all inet_protocols = all mydestination = $myhostname, 0846101.nasa, localhost.$mydomain, localhost # TRUST AND RELAY CONTROL mynetworks = 10.113.25.0/24, 127....</p><span class="cursor">|</span>
+                    </li>
+                </ul>
+                
+                <ul class="sublime4lst">
+                    <li class="buttons"></li>
+                    <li style="padding:10px 20px 40px;">
+                        <a href="/posts/na-haproxy-centos8/">HAProxy Load Balancer on CentOS 8</a>
                         <p><time datetime="2020-05-10T17:17:38&#43;0800">2020-05-10</time>
 </p>
 		                <p>Topology
@@ -66,7 +77,7 @@ Hostname : agent.0846101.nasa IP Address : 10.113.25.129/24  Goals Reverseproxy
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
-                        <a href="/posts/dns-centos8/">Setting Up DNS Server On CentOS 8</a>
+                        <a href="/posts/na-dns-centos8/">Setting Up DNS Server On CentOS 8</a>
                         <p><time datetime="2020-05-08T00:51:07&#43;0800">2020-05-08</time>
 </p>
 		                <p>Topology
@@ -78,7 +89,7 @@ vim /etc/sysconfig/network  # Created by anaconda HOSTNAME=router.0846101.nasa /
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
-                        <a href="/posts/router-centos8/">Make a CentOS 8 Router</a>
+                        <a href="/posts/na-router-centos8/">Make a CentOS 8 Router</a>
                         <p><time datetime="2020-05-08T00:50:47&#43;0800">2020-05-08</time>
 </p>
 		                <p>Topology

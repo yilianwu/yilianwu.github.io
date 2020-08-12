@@ -42,6 +42,32 @@
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
+                        <a href="/posts/na-ldap-ubuntu/">LDAP &amp; SNMP on Ubuntu 18.04</a>
+                        <p><time datetime="2020-06-14T09:40:37&#43;0800">2020-06-14</time>
+</p>
+		                <p>VM Host-Only Adapter Ubuntu 好像要手動開interface
+ls /etc/netplan  file 50-cloud-init.yaml
+sudo vim /etc/netplan/50-cloud-init.yaml  把網卡enp0s8加上去
+network: ethernets: enp0s3: dhcp4: true enp0s8: dhcp4: true version: 2  sudo netplan generate sudo netplan apply  NameServer Setting sudo vim /etc/netplan/50-cloud-init.yaml  enp0s3加上nameservers
+network: ethernets: enp0s3: dhcp4: true nameservers: search: [ 0846101.nasa ] enp0s8: dhcp4: true version: 2  netplan try  確認無誤按enter
+systemd-resolve --status  DNS Domain: 0846101.nasa &lt;-- Check this value  Debug resolv....</p><span class="cursor">|</span>
+                    </li>
+                </ul>
+                
+                <ul class="sublime4lst">
+                    <li class="buttons"></li>
+                    <li style="padding:10px 20px 40px;">
+                        <a href="/posts/na-mailserver-centos8/">Mail Server on CentOS 8</a>
+                        <p><time datetime="2020-06-08T00:44:06&#43;0800">2020-06-08</time>
+</p>
+		                <p>Mail Server Info
+Hostname : mail.0846101.nasa IP Address : 10.113.25.25/24  Install Postfix sudo dnf install postfix  vim /etc/postfix/main.cf  # General Settings myhostname = mail.0846101.nasa # The default of &quot;mydomain&quot; is to use $myhostname minus the first component #mydomain = 0846101.nasa myorigin = $mydomain # RECEIVING MAIL inet_interfaces = all inet_protocols = all mydestination = $myhostname, 0846101.nasa, localhost.$mydomain, localhost # TRUST AND RELAY CONTROL mynetworks = 10.113.25.0/24, 127....</p><span class="cursor">|</span>
+                    </li>
+                </ul>
+                
+                <ul class="sublime4lst">
+                    <li class="buttons"></li>
+                    <li style="padding:10px 20px 40px;">
                         <a href="/posts/ubuntu-2004-for-rpi4/">Install Ubuntu 20.04 On Raspberry Pi 4 Full Ubuntu Desktop</a>
                         <p><time datetime="2020-05-14T23:00:14&#43;0800">2020-05-14</time>
 </p>
@@ -95,7 +121,7 @@ PCIe PCI Express...</p><span class="cursor">|</span>
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
-                        <a href="/posts/haproxy-centos8/">HAProxy Load Balancer on CentOS 8</a>
+                        <a href="/posts/na-haproxy-centos8/">HAProxy Load Balancer on CentOS 8</a>
                         <p><time datetime="2020-05-10T17:17:38&#43;0800">2020-05-10</time>
 </p>
 		                <p>Topology
@@ -119,7 +145,7 @@ Hostname : agent.0846101.nasa IP Address : 10.113.25.129/24  Goals Reverseproxy
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
-                        <a href="/posts/dns-centos8/">Setting Up DNS Server On CentOS 8</a>
+                        <a href="/posts/na-dns-centos8/">Setting Up DNS Server On CentOS 8</a>
                         <p><time datetime="2020-05-08T00:51:07&#43;0800">2020-05-08</time>
 </p>
 		                <p>Topology
@@ -131,7 +157,7 @@ vim /etc/sysconfig/network  # Created by anaconda HOSTNAME=router.0846101.nasa /
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
-                        <a href="/posts/router-centos8/">Make a CentOS 8 Router</a>
+                        <a href="/posts/na-router-centos8/">Make a CentOS 8 Router</a>
                         <p><time datetime="2020-05-08T00:50:47&#43;0800">2020-05-08</time>
 </p>
 		                <p>Topology
@@ -150,7 +176,7 @@ mkdir -v /etc/wireguard sh -c 'umask 077'; touch /etc/wirehuard/wg0.conf  Client
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
-                        <a href="/posts/freebsd-nis-nfs-firewall/">FreeBSD NIS &#43; NFS &#43; Firewall</a>
+                        <a href="/posts/sa-nis-nfs-firewall-freebsd/">FreeBSD NIS &#43; NFS &#43; Firewall</a>
                         <p><time datetime="2020-04-20T03:45:16&#43;0800">2020-04-20</time>
 </p>
 		                <p>NIS Client Configurations in rc.conf nisdomainname=&quot;savpn.nctu.me&quot; # NIS domain name ≠ DNS domain name nis_client_enable=&quot;YES&quot; nis_client_flags=&quot;-s -m -S savpn.nctu.me,nis server&quot;  Maps between IP and hostname Configure in /etc/hosts
@@ -169,7 +195,7 @@ Accounts and Groups NIS user can login to your server...</p><span class="cursor"
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
-                        <a href="/posts/freebsd-web-server/">FreeBSD Web Server</a>
+                        <a href="/posts/sa-web-server-freebsd/">FreeBSD Web Server</a>
                         <p><time datetime="2020-04-19T02:16:59&#43;0800">2020-04-19</time>
 </p>
 		                <p>Web Server Network  Intranet
@@ -191,7 +217,7 @@ pkg install nginx  Enable Nginx when reboot...</p><span class="cursor">|</span>
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
-                        <a href="/posts/freebsd-file-server/">FreeBSD File Server</a>
+                        <a href="/posts/sa-file-server-freebsd/">FreeBSD File Server</a>
                         <p><time datetime="2020-04-18T16:28:10&#43;0800">2020-04-18</time>
 </p>
 		                <p>File Server Overview:

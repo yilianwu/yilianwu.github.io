@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Snmp on [ yilianwu ]</title>
+    <link>https://yilianwu.github.io/tags/snmp/</link>
+    <description>Recent content in Snmp on [ yilianwu ]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 14 Jun 2020 09:40:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://yilianwu.github.io/tags/snmp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LDAP &amp; SNMP on Ubuntu 18.04</title>
+      <link>https://yilianwu.github.io/posts/na-ldap-ubuntu/</link>
+      <pubDate>Sun, 14 Jun 2020 09:40:37 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/na-ldap-ubuntu/</guid>
+      <description>VM Host-Only Adapter Ubuntu 好像要手動開interface
+ls /etc/netplan  file 50-cloud-init.yaml
+sudo vim /etc/netplan/50-cloud-init.yaml  把網卡enp0s8加上去
+network: ethernets: enp0s3: dhcp4: true enp0s8: dhcp4: true version: 2  sudo netplan generate sudo netplan apply  NameServer Setting sudo vim /etc/netplan/50-cloud-init.yaml  enp0s3加上nameservers
+network: ethernets: enp0s3: dhcp4: true nameservers: search: [ 0846101.nasa ] enp0s8: dhcp4: true version: 2  netplan try  確認無誤按enter
+systemd-resolve --status  DNS Domain: 0846101.nasa &amp;lt;-- Check this value  Debug resolv.</description>
+    </item>
+    
+  </channel>
+</rss>

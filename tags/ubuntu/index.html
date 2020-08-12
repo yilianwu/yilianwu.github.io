@@ -42,6 +42,21 @@
                 <ul class="sublime4lst">
                     <li class="buttons"></li>
                     <li style="padding:10px 20px 40px;">
+                        <a href="/posts/na-ldap-ubuntu/">LDAP &amp; SNMP on Ubuntu 18.04</a>
+                        <p><time datetime="2020-06-14T09:40:37&#43;0800">2020-06-14</time>
+</p>
+		                <p>VM Host-Only Adapter Ubuntu 好像要手動開interface
+ls /etc/netplan  file 50-cloud-init.yaml
+sudo vim /etc/netplan/50-cloud-init.yaml  把網卡enp0s8加上去
+network: ethernets: enp0s3: dhcp4: true enp0s8: dhcp4: true version: 2  sudo netplan generate sudo netplan apply  NameServer Setting sudo vim /etc/netplan/50-cloud-init.yaml  enp0s3加上nameservers
+network: ethernets: enp0s3: dhcp4: true nameservers: search: [ 0846101.nasa ] enp0s8: dhcp4: true version: 2  netplan try  確認無誤按enter
+systemd-resolve --status  DNS Domain: 0846101.nasa &lt;-- Check this value  Debug resolv....</p><span class="cursor">|</span>
+                    </li>
+                </ul>
+                
+                <ul class="sublime4lst">
+                    <li class="buttons"></li>
+                    <li style="padding:10px 20px 40px;">
                         <a href="/posts/ubuntu-2004-for-rpi4/">Install Ubuntu 20.04 On Raspberry Pi 4 Full Ubuntu Desktop</a>
                         <p><time datetime="2020-05-14T23:00:14&#43;0800">2020-05-14</time>
 </p>

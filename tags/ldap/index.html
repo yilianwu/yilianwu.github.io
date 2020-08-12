@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/dosstyle.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="/info">INFO</a>
+            
+            <a href="/posts">POSTS</a>
+            
+            <a href="/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="../js/menutime.js"></script>
+    </div>
+            
+    
+</header>
+
+<main id="list">
+    <div id="posts" class="grape">
+	<div class="container">
+            <h1>Ldap</h1>
+            
+                
+                <ul class="sublime4lst">
+                    <li class="buttons"></li>
+                    <li style="padding:10px 20px 40px;">
+                        <a href="/posts/na-ldap-ubuntu/">LDAP &amp; SNMP on Ubuntu 18.04</a>
+                        <p><time datetime="2020-06-14T09:40:37&#43;0800">2020-06-14</time>
+</p>
+		                <p>VM Host-Only Adapter Ubuntu 好像要手動開interface
+ls /etc/netplan  file 50-cloud-init.yaml
+sudo vim /etc/netplan/50-cloud-init.yaml  把網卡enp0s8加上去
+network: ethernets: enp0s3: dhcp4: true enp0s8: dhcp4: true version: 2  sudo netplan generate sudo netplan apply  NameServer Setting sudo vim /etc/netplan/50-cloud-init.yaml  enp0s3加上nameservers
+network: ethernets: enp0s3: dhcp4: true nameservers: search: [ 0846101.nasa ] enp0s8: dhcp4: true version: 2  netplan try  確認無誤按enter
+systemd-resolve --status  DNS Domain: 0846101.nasa &lt;-- Check this value  Debug resolv....</p><span class="cursor">|</span>
+                    </li>
+                </ul>
+                
+            
+        </div>
+    </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	<a href="https://www.youtube.com/channel/UCoX_ahsZ27IJh_WQK4CpGJw" target="_blank"><img src="https://i.imgur.com/pZI2aGT.png" height="30" width="30"></a>
+	<a href="https://github.com/yilianwu"><img src="https://i.imgur.com/BIgEqmF.png" target="_blank" height="30" width="30"></a>
+
+
+    <span style="display:block" class="footer-text">&copy 2019-2020 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<link rel="stylesheet" href="https://yilianwu.github.io/css/solarized-light.css"/>
+<script src="https://yilianwu.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/dosstyle.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="/info">INFO</a>
+            
+            <a href="/posts">POSTS</a>
+            
+            <a href="/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="../js/menutime.js"></script>
+    </div>
+            
+    
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+        <div class="post-toc" id="post-toc">
+            <h2 class="post-toc-title">Contents</h2>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#goals">Goals</a></li>
+<li><a href="#install-haproxy">Install HAProxy</a></li>
+<li><a href="#設定-log">設定 Log</a></li>
+<li><a href="#firewall">Firewall</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#test">Test</a></li>
+<li><a href="#add-record">Add Record</a></li>
+</ul>
+</nav>
+        </div>
+       <div class="paperbg">
+            <div id="title">
+                <h1>HAProxy Load Balancer on CentOS 8</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2020-05-10 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="/tags/centos/"> CentOS </a>
+                    <a class="tag-link" href="/tags/haproxy/"> haproxy </a>
+                    </div>
+
+                <section class="post-content">
+                
+
+<p>Topology<br />
+<img src="https://i.imgur.com/OroDRaQ.png" alt="Imgur" /><br />
+我把Proxy建在我的client-pc</p>
+
+<p>Proxy (Client-PC)</p>
+
+<pre><code>Hostname             : 0846101.nasa
+IP Address           : 10.113.25.119/24
+</code></pre>
+
+<p>Agent</p>
+
+<pre><code>Hostname             : agent.0846101.nasa
+IP Address           : 10.113.25.129/24
+</code></pre>
+
+<h1 id="goals">Goals&nbsp;<a class="anchor" href="#goals"><i class="small linkify icon"></i></a> </h1>
+
+<p>Reverseproxy</p>
+
+<ul>
+<li><p>Make a reverse proxy under <a href="http://0846101.nasa/reverse/">http://0846101.nasa/reverse/</a></p>
+
+<ul>
+<li>Round-robin<br /></li>
+<li>10.113.ID.129:8001<br /></li>
+<li>10.113.ID.129:8002<br />
+<br /></li>
+</ul></li>
+
+<li><p>Make a reverse proxy under <a href="http://0846101.nasa/ip/">http://0846101.nasa/ip/</a></p>
+
+<ul>
+<li>10.113.ID.129:8003<br /></li>
+<li>Pass non-standard HTTP headers to the backend.<br /></li>
+<li>“X-Forwarded-For”<br /></li>
+<li>“X-Real-IP”: The real client IP.<br />
+<br /></li>
+</ul></li>
+</ul>
+
+<h1 id="install-haproxy">Install HAProxy&nbsp;<a class="anchor" href="#install-haproxy"><i class="small linkify icon"></i></a> </h1>
+
+<pre><code>dnf install haproxy
+</code></pre>
+
+<pre><code>systemctl start haproxy
+</code></pre>
+
+<pre><code>systemctl enable haproxy
+</code></pre>
+
+<h1 id="設定-log">設定 Log&nbsp;<a class="anchor" href="#設定-log"><i class="small linkify icon"></i></a> </h1>
+
+<p>Configure rsyslog so that it stores all HAProxy statistics,<br />
+edit rsyslog config file “/etc/rsyslog.conf” and uncomment line 19 and 20,</p>
+
+<pre><code>vim /etc/rsyslog.conf
+</code></pre>
+
+<pre><code>……
+module(load=&quot;imudp&quot;)
+input(type=&quot;imudp&quot; port=&quot;514&quot;)
+……
+</code></pre>
+
+<p>create haproxy.conf file for rsyslog , paste the following lines,<br />
+and create separate log files according to the level of messages</p>
+
+<pre><code>vim /etc/rsyslog.d/haproxy.conf
+</code></pre>
+
+<pre><code>local2.*        /var/log/haproxy.log
+local2.=info    /var/log/haproxy-access.log
+local2.notice   /var/log/haproxy-info.log
+</code></pre>
+
+<p>Restart and enable rsyslog service so that it will be available across the reboots</p>
+
+<pre><code>systemctl restart rsyslog
+systemctl enable rsyslog
+</code></pre>
+
+<p>CentOS 預設有很多安全機制 ，要手動關掉<br />
+set the following selinux rule,</p>
+
+<pre><code>setsebool -P haproxy_connect_any 1
+</code></pre>
+
+<p>or</p>
+
+<pre><code>vim /etc/selinux/config
+</code></pre>
+
+<pre><code>SELINUX= ̶e̶n̶f̶o̶r̶c̶i̶n̶g̶ disabled
+</code></pre>
+
+<h1 id="firewall">Firewall&nbsp;<a class="anchor" href="#firewall"><i class="small linkify icon"></i></a> </h1>
+
+<p>開啟Proxy的port 80</p>
+
+<pre><code>firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --reload
+</code></pre>
+
+<p>Router的iptables</p>
+
+<pre><code>vim /etc/sysconfig/iptables
+</code></pre>
+
+<pre><code>-A INPUT -p tcp --dport 80 -j ACCEPT
+-A FORWARD -p tcp --dport 80 -j ACCEPT
+</code></pre>
+
+<h1 id="configuration">Configuration&nbsp;<a class="anchor" href="#configuration"><i class="small linkify icon"></i></a> </h1>
+
+<pre><code>vim /etc/haproxy/haproxy.cfg
+</code></pre>
+
+<pre><code>defaults
+    mode                    http
+    log                     global
+    option                  httplog
+    option                  dontlognull
+    option http-server-close
+    option forwardfor       except 127.0.0.0/8
+    option                  redispatch
+    retries                 3
+#       http request timeout 5s
+    timeout http-request    5s
+    timeout queue           1m
+    timeout connect         5s
+    timeout client          5s
+#
+    timeout server          1m
+    timeout http-keep-alive 10s
+    timeout check           10s
+    maxconn                 3000
+backend ten_connection
+#
+        stick-table type ip size 100k expire 10s store conn_cur,conn_rate(10s)
+
+backend http_conn
+#       20 http request timeout 5s
+        stick-table type ip size 100k expire 5s store http_req_rate(5s)
+
+backend jail_list
+        stick-table type ip size 100k expire 10s store gpc0
+
+frontend clientpc
+        bind *:80
+#       boolean
+        acl banned sc2_get_gpc0 gt 0
+        tcp-request connection track-sc2 src table jail_list
+#       gpc0 of sc2 will increase if banned
+        tcp-request connection sc-inc-gpc0(2) if banned
+#       track
+        tcp-request connection track-sc0 src table ten_connection
+#       current connection greater than 10
+        tcp-request connection reject if { sc0_conn_cur gt 10 }
+#       connection rate greater than 30
+        tcp-request connection reject if { sc0_conn_rate gt 30 }
+
+        http-request track-sc1 src table http_conn
+        http-request track-sc2 src table jail_list
+#       gpc0 of sc2 will increase if banned
+        http-request sc-inc-gpc0(2) if banned
+#       gpc0 of sc2 will increase if request gt 20
+        http-request sc-inc-gpc0(2) if { sc1_http_req_rate gt 20 }
+#
+        tcp-request connection reject if banned
+#       Return 403 for any new request from this user.
+        http-request deny deny_status 403 if banned
+#       option http-server-close
+#       find real rource
+        option  forwardfor
+        http-request set-header X-Real-IP %[src]
+#       2 tabs
+        acl url_rv      path_beg        -i /reverse
+        acl url_ip      path_beg        -i /ip
+        use_backend rv          if url_rv
+        use_backend ip          if url_ip
+        default_backend         rv
+
+backend rv
+        mode    http
+        balance roundrobin
+        #option httpchk HEAD / HTTP/1.1\r\nHost:\ localhost
+        server  loadbalancer1   10.113.25.129:8001 check
+        server  loadbalancer2   10.113.25.129:8002 check
+
+backend ip
+        server  showreal        10.113.25.129:8003 check
+</code></pre>
+
+<pre><code>systemctl restart haprxoy
+</code></pre>
+
+<h1 id="test">Test&nbsp;<a class="anchor" href="#test"><i class="small linkify icon"></i></a> </h1>
+
+<p>設定 HAProxy 之前：<br />
+Agent的 port 8001是Load Balancer 1<br />
+<img src="https://i.imgur.com/hKrwYO5.png" alt="Imgur" /><br />
+Agent的 port 8002是Load Balancer 2<br />
+<img src="https://i.imgur.com/guiPgQr.png" alt="Imgur" /><br />
+Agent的 port 8003<br />
+<img src="https://i.imgur.com/LKJulye.png" alt="Imgur" /></p>
+
+<p>設定 HAProxy 之後：</p>
+
+<pre><code>curl 10.113.25.119/reverse
+</code></pre>
+
+<p>Load Balancer做Round Robin<br />
+<img src="https://i.imgur.com/XUwwUm4.png" alt="Imgur" /></p>
+
+<pre><code>curl 10.113.25.119/ip
+</code></pre>
+
+<p>查看原始IP<br />
+<img src="https://i.imgur.com/N8qWLsD.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/f2Rg7h5.png" alt="Imgur" /></p>
+
+<h1 id="add-record">Add Record&nbsp;<a class="anchor" href="#add-record"><i class="small linkify icon"></i></a> </h1>
+
+<p>ns1<code>/var/named/named.0846101.nasa*</code></p>
+
+<pre><code>0846101.nasa.           IN      A       10.113.25.119
+</code></pre>
+
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	<a href="https://www.youtube.com/channel/UCoX_ahsZ27IJh_WQK4CpGJw" target="_blank"><img src="https://i.imgur.com/pZI2aGT.png" height="30" width="30"></a>
+	<a href="https://github.com/yilianwu"><img src="https://i.imgur.com/BIgEqmF.png" target="_blank" height="30" width="30"></a>
+
+
+    <span style="display:block" class="footer-text">&copy 2019-2020 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<link rel="stylesheet" href="https://yilianwu.github.io/css/solarized-light.css"/>
+<script src="https://yilianwu.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
