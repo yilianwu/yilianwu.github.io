@@ -654,22 +654,29 @@ policyd-spf_time_limit = 3600
 <li><p>greylist沒反應</p>
 
 <pre><code>讓greylist開log 開debug  
+
 ```
 sudo vim /etc/rspamd/local.d/logging.inc
 ```
+
 ```
 debug_modules = [&quot;greylist&quot;];
 ```
+
 看log發現  
+
 ```
 2020-06-09 19:52:04 #1736(normal) &lt;3o7zxy&gt;; lua; lua_redis.lua:1199: cannot upload script to 127.0.0.1:6379: Connection refused; registered from: /usr/share/rspamd/plugins/ratelimit.lua:206
 ```
+
 Rspamd的資料庫 Redis 好像沒作用  
 
 ```
 sudoedit /etc/rspamd/local.d/redis.conf
 ```
+
 把`localhost`改成`127.0.0.1` 就好了   
+
 ```
 write_servers = &quot;127.0.0.1&quot;;
 read_servers = &quot;127.0.0.1&quot;;
@@ -679,26 +686,34 @@ read_servers = &quot;127.0.0.1&quot;;
 <li><p>Filter: Virus FAILED</p>
 
 <pre><code>看clamav的檔案權限  
+
 ```
 sudo ls -al /run/clamd.scan/
 ```
+
 ```
 total 0
 drwx--x---.  2 clamscan virusgroup  60 Jun 10 18:42 .
 drwxr-xr-x. 28 root     root       780 Jun 10 18:42 ..
 srw-rw-rw-.  1 clamscan clamscan     0 Jun 10 18:42 clamd.sock
 ```
+
 現在要把rspamd加入virusgroup  
 
 看rspamd的username  
+
 ```
 sudo cat /etc/passwd
 ```
+
 叫_rspamd  
+
 ```
 sudo gpasswd -a _rspamd virusgroup
 ```
+
 Restart rspamd  
+
 ```
 sudo systemctl restart rspamd
 ```
@@ -708,14 +723,17 @@ sudo systemctl restart rspamd
 
 <pre><code>DMARC: Check policy 會寄送郵件至伺服器的郵件若無法通過 DMARC 時是否會正確的拒絕（550 5.7.1）  
 但我的`/var/log/maillog`是顯示 550 5.7.23  
+
 ```
 Jun  9 00:59:11 mail policyd-spf[1637]: 550 5.7.23 Message rejected due to: SPF fail - not authorized. Please see http://www.openspf.net/Why?s=mfrom;id=plain@0756125.nasa;ip=10.113.54.7;r=&lt;UNKNOWN&gt;
 Jun  9 00:59:11 mail postfix/smtpd[1551]: NOQUEUE: reject: RCPT from unknown[10.113.54.7]: 550 5.7.23 &lt;TA@0846101.nasa&gt;: Recipient address rejected: Message rejected due to: SPF fail - not authorized. Please
 see http://www.openspf.net/Why?s=mfrom;id=plain@0756125.nasa;ip=10.113.54.7;r=&lt;UNKNOWN&gt;; from=&lt;plain@0756125.nasa&gt; to=&lt;TA@0846101.nasa&gt; proto=ESMTP helo=&lt;judge-fake&gt;
 ```
+
 ```
 sudo vim /etc/python-policyd-spf/policyd-spf.conf
 ```
+
 把pypolicyd的SPF Enhanced關掉  
 
 ```
