@@ -681,19 +681,21 @@ policyd-spf_time_limit = 3600
 
 <ol>
 <li>Filter: Virus FAILED<br />
-看clamav的檔案權限<br />
-<code>
-sudo ls -al /run/clamd.scan/
-</code><br />
-<code>
-total 0
-drwx--x---.  2 clamscan virusgroup  60 Jun 10 18:42 .
-drwxr-xr-x. 28 root     root       780 Jun 10 18:42 ..
-srw-rw-rw-.  1 clamscan clamscan     0 Jun 10 18:42 clamd.sock
-</code><br />
-現在要把rspamd加入virusgroup<br />
 <br /></li>
 </ol>
+
+<p>看clamav的檔案權限</p>
+
+<pre><code>   sudo ls -al /run/clamd.scan/
+</code></pre>
+
+<pre><code>   total 0
+   drwx--x---.  2 clamscan virusgroup  60 Jun 10 18:42 .
+   drwxr-xr-x. 28 root     root       780 Jun 10 18:42 ..
+   srw-rw-rw-.  1 clamscan clamscan     0 Jun 10 18:42 clamd.sock
+</code></pre>
+
+<p>現在要把rspamd加入virusgroup</p>
 
 <p>看rspamd的username</p>
 
@@ -711,19 +713,22 @@ srw-rw-rw-.  1 clamscan clamscan     0 Jun 10 18:42 clamd.sock
 </code></pre>
 
 <ol>
-<li>DMARC<br />
-DMARC: Check policy 會寄送郵件至伺服器的郵件若無法通過 DMARC 時是否會正確的拒絕（550 5.7.1）<br />
-但我的<code>/var/log/maillog</code>是顯示 550 5.7.23<br />
-<code>
-Jun  9 00:59:11 mail policyd-spf[1637]: 550 5.7.23 Message rejected due to: SPF fail - not authorized. Please see http://www.openspf.net/Why?s=mfrom;id=plain@0756125.nasa;ip=10.113.54.7;r=&lt;UNKNOWN&gt;
+<li><p>DMARC</p>
+
+<pre><code>DMARC: Check policy 會寄送郵件至伺服器的郵件若無法通過 DMARC 時是否會正確的拒絕（550 5.7.1）  
+</code></pre>
+
+<p>但我的<code>/var/log/maillog</code>是顯示 550 5.7.23</p>
+
+<pre><code>Jun  9 00:59:11 mail policyd-spf[1637]: 550 5.7.23 Message rejected due to: SPF fail - not authorized. Please see http://www.openspf.net/Why?s=mfrom;id=plain@0756125.nasa;ip=10.113.54.7;r=&lt;UNKNOWN&gt;
 Jun  9 00:59:11 mail postfix/smtpd[1551]: NOQUEUE: reject: RCPT from unknown[10.113.54.7]: 550 5.7.23 &lt;TA@0846101.nasa&gt;: Recipient address rejected: Message rejected due to: SPF fail - not authorized. Please
 see http://www.openspf.net/Why?s=mfrom;id=plain@0756125.nasa;ip=10.113.54.7;r=&lt;UNKNOWN&gt;; from=&lt;plain@0756125.nasa&gt; to=&lt;TA@0846101.nasa&gt; proto=ESMTP helo=&lt;judge-fake&gt;
-</code><br />
-<code>
-sudo vim /etc/python-policyd-spf/policyd-spf.conf
-</code><br />
-把pypolicyd的SPF Enhanced關掉<br />
-<br /></li>
+</code></pre>
+
+<pre><code>sudo vim /etc/python-policyd-spf/policyd-spf.conf
+</code></pre>
+
+<p>把pypolicyd的SPF Enhanced關掉</p></li>
 </ol>
 
 <pre><code>   #  For a fully commented sample config file see policyd-spf.conf.commented
