@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/dosstyle.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="/info">INFO</a>
+            
+            <a href="/posts">POSTS</a>
+            
+            <a href="/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="../js/menutime.js"></script>
+    </div>
+            
+    
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+        <div class="post-toc" id="post-toc">
+            <h2 class="post-toc-title">Contents</h2>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#第一個生命">第一個生命</a></li>
+<li><a href="#培養皿的動態">培養皿的動態</a></li>
+</ul>
+</nav>
+        </div>
+       <div class="paperbg">
+            <div id="title">
+                <h1>複域共生 Reincubate 過程紀錄</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2020-08-12 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="/tags/arduino/"> Arduino </a>
+                    </div>
+
+                <section class="post-content">
+                
+
+<p>複域共生是我在北藝新媒4年來，發展期最長久的一件作品</p>
+
+<p>這件作品最早要追朔到我們105級大三下學期的期末專題<br />
+當時新媒系正在籌劃一年一度的關渡光藝術節(當時預計辦在2019/11月)<br />
+由於我大三下的期中專題被組員雷，期中評圖一結束我們就解散了<br />
+在一天晚上，我與當時算是最要好的朋友，鄭晴之<br />
+在吃完晚飯回宿舍的路上，我們倆決定要一組<br />
+做出一個我們都發自內心會喜歡的一個作品&hellip;</p>
+
+<p>一直以來，要無中生有的發想一個作品，對不才的我來說無非是一項艱鉅的挑戰<br />
+我們腦力激盪了快好幾個小時，過程中去過了哪些地點我記不得了<br />
+但我記得最後在我腦中蹦出這個點子的地點是在，圖書館的馬水龍教授紀念會議室</p>
+
+<h1 id="第一個生命">第一個生命&nbsp;<a class="anchor" href="#第一個生命"><i class="small linkify icon"></i></a> </h1>
+
+<p>2019/05/29<br />
+簡單的用手機的光照實驗<br />
+<img src="https://i.imgur.com/0HGCdfV.jpg" alt="Imgur" /><br />
+水溶液在光的折射後會呈現像細胞的樣貌</p>
+
+<h1 id="培養皿的動態">培養皿的動態&nbsp;<a class="anchor" href="#培養皿的動態"><i class="small linkify icon"></i></a> </h1>
+
+<p>理想上，我們希望這些細胞能以一種優雅緩慢的姿態自由流動<br />
+這時，就必須確保培養皿的動態是緩和、和諧的</p>
+
+<p>馬達選用MG996R舵機<br />
+他的舵翼角度範圍是 0-180°<br />
+其中，0°是最低點 180°是最高點 兩點的差距是33mm<br />
+<img src="https://i.imgur.com/srRMkUh.jpg" alt="Imgur" /></p>
+
+<p>一組有3個MG996R 每120°設一個吊掛點<br />
+培養皿的圓直徑R1 = 500mm<br />
+三吊掛點最大差距 = 舵翼長度 = 33mm</p>
+
+<p><img src="https://i.imgur.com/TQz2fJW.png" alt="Imgur" /><br />
+可求出培養皿最多可被吊高 44mm<br />
+設此時的培養皿的傾斜角度為 θ<br />
+sin θ = 44/500 = 0.088<br />
+θ = 5.04855896° (MAX)</p>
+
+<p>傾斜的培養皿(藍圓) 投影出軌跡(黑圓)<br />
+<img src="https://i.imgur.com/IW2AFLl.png" alt="Imgur" /><br />
+設軌跡的圓直徑為R2<br />
+則，R2 = cos θ • R1<br />
+半徑 r2 = cos θ • r1<br />
+兩圓交點為 P ( r2 • cos (t) , r2 • sin (t) ) ， t隨時間改變</p>
+
+<p>做L為過點P之圓切線<br />
+L的直線方程式:<br />
+$$(\frac{\cos(t)}{\sin(t)}){x}+y-(\frac{r2}{\sin(t)})=0$$</p>
+
+<p>$$\vec{aA}與\vec{aA&rsquo;} 同時垂直於兩圓的圓切線直線L$$<br />
+兩向量的夾角 = 兩面的夾角 = θ<br />
+$$\vec{bB}與\vec{bB&rsquo;}、\vec{cC}與\vec{cC&rsquo;}同理$$</p>
+
+<p>所求<br />
+$$\overline{AA&rsquo;}=tanθ \cdot \overline{aA&rsquo;}$$<br />
+$$\overline{BB&rsquo;}=tanθ \cdot \overline{bB&rsquo;}$$<br />
+$$\overline{CC&rsquo;}=tanθ \cdot \overline{cC&rsquo;}$$</p>
+
+<p>$$\overline{aA&rsquo;} 、 \overline{aA&rsquo;} 、 \overline{aA&rsquo;} 為A&rsquo;、B&rsquo;、C&rsquo;三點分別到直線L的距離$$</p>
+
+<p>$$\overline{AA&rsquo;} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(2 \pi) + r2 \cdot sin(2 \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
+
+<p>$$\overline{BB&rsquo;} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(\frac{2}{3} \pi) + r2 \cdot sin(\frac{2}{3} \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
+
+<p>$$\overline{CC&rsquo;} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(\frac{4}{3} \pi) + r2 \cdot sin(\frac{4}{3} \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
+
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	
+	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
+	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
+
+    <span style="display:block" class="footer-text">&copy 2019-2020 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<link rel="stylesheet" href="https://yilianwu.github.io/css/solarized-light.css"/>
+<script src="https://yilianwu.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
