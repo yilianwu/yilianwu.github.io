@@ -431,6 +431,7 @@ margin: 0px;
 .white a {
 color: var(--color-dark);
 border-bottom: dotted 1.5px var(--color-dark);
+overflow-wrap:break-word;
 }
 
 .white a:hover {
@@ -606,4 +607,8 @@ img.aboutpic{
   iframe{
       width: 100%;
       max-width: 768px;
+  }
+
+  .MathJax_Display {
+      overflow-x: scroll;
   }
