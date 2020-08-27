@@ -29,8 +29,6 @@
       <a id='ct' ></a>
       <script type="text/javascript" src="/js/menutime.js"></script>
     </div>
-            
-    
 </header>
 
 <main id="single">
@@ -71,12 +69,12 @@
                 <section class="post-content">
                 
 
-<h1 id="ubuntu-20-04-lst">Ubuntu 20.04 LST&nbsp;<a href="#ubuntu-20-04-lst" class="anchor icon-link">§ </a> </h1>
+<h1 id="ubuntu-20-04-lst">Ubuntu 20.04 LST&nbsp;<a href="#ubuntu-20-04-lst" class="anchor">§ </a> </h1>
 
 <p>到官網下載 Ubuntu Server image檔<br />
 <a href="https://ubuntu.com/download/raspberry-pi">https://ubuntu.com/download/raspberry-pi</a></p>
 
-<h1 id="create-a-bootable-microsd-card">Create a Bootable microSD card&nbsp;<a href="#create-a-bootable-microsd-card" class="anchor icon-link">§ </a> </h1>
+<h1 id="create-a-bootable-microsd-card">Create a Bootable microSD card&nbsp;<a href="#create-a-bootable-microsd-card" class="anchor">§ </a> </h1>
 
 <p>以下在MacOS上做示範</p>
 
@@ -134,7 +132,7 @@
 3899999744 bytes transferred in 642.512167 secs (6069924 bytes/sec)
 </code></pre>
 
-<h1 id="configuration-before-boot">Configuration Before Boot&nbsp;<a href="#configuration-before-boot" class="anchor icon-link">§ </a> </h1>
+<h1 id="configuration-before-boot">Configuration Before Boot&nbsp;<a href="#configuration-before-boot" class="anchor">§ </a> </h1>
 
 <p>編輯<code>config.txt</code><br />
 官方文獻：
@@ -162,7 +160,7 @@ config_hdmi_boost=4
 <p>退出microSD 放到rpi裡面<br />
 確定接上HDMI cable再啟動電源</p>
 
-<h1 id="first-boot">First Boot&nbsp;<a href="#first-boot" class="anchor icon-link">§ </a> </h1>
+<h1 id="first-boot">First Boot&nbsp;<a href="#first-boot" class="anchor">§ </a> </h1>
 
 <p>開機前 把乙太網路插好 可以省下設定無線網路卡的麻煩<br />
 第一次開機後的登入帳號密碼為 : <code>ubuntu/ubuntu</code> 登入後會要求立即變更密碼</p>
@@ -176,7 +174,7 @@ logout後, 使用新帳號登入
 sudo userdel -r ubuntu
 </code></pre>
 
-<h2 id="更新系統">更新系統&nbsp;<a href="#更新系統" class="anchor icon-link">§ </a> </h2>
+<h2 id="更新系統">更新系統&nbsp;<a href="#更新系統" class="anchor">§ </a> </h2>
 
 <pre><code>sudo apt-get update
 sudo apt-get upgrade
@@ -191,7 +189,7 @@ sudo apt-get dist-upgrade
 <p>到目前為止 Ubuntu Server版本已安裝完成<br />
 只有文字介面</p>
 
-<h2 id="install-ubuntu-desktop">Install Ubuntu Desktop&nbsp;<a href="#install-ubuntu-desktop" class="anchor icon-link">§ </a> </h2>
+<h2 id="install-ubuntu-desktop">Install Ubuntu Desktop&nbsp;<a href="#install-ubuntu-desktop" class="anchor">§ </a> </h2>
 
 <p>若想當成desktop來使用的話 就必需再安裝桌面程式 目前可用的桌面程式有<br />
 ubuntu-desktop, kubuntu-desktop, lubuntu-desktop, xubuntu-desktop, ubuntu-mate-desktop</p>
@@ -204,7 +202,7 @@ xubuntu跟lubuntu是輕量級的版本 但韌體比較舊</p>
 <pre><code>sudo apt-get install ubuntu-desktop
 </code></pre>
 
-<h1 id="bluetooth">Bluetooth&nbsp;<a href="#bluetooth" class="anchor icon-link">§ </a> </h1>
+<h1 id="bluetooth">Bluetooth&nbsp;<a href="#bluetooth" class="anchor">§ </a> </h1>
 
 <p>Raspberry Pi 4 B Ubuntu Bluetooth not working / detected</p>
 
@@ -244,14 +242,14 @@ include btcfg.txt
 <pre><code>sudo apt-get install pi-bluetooth
 </code></pre>
 
-<h1 id="exfat">exFAT&nbsp;<a href="#exfat" class="anchor icon-link">§ </a> </h1>
+<h1 id="exfat">exFAT&nbsp;<a href="#exfat" class="anchor">§ </a> </h1>
 
 <p>Problem mounting exFAT disk on Ubuntu</p>
 
 <pre><code>sudo apt install exfat-fuse exfat-utils
 </code></pre>
 
-<h1 id="su-authentication-failure">su: Authentication failure&nbsp;<a href="#su-authentication-failure" class="anchor icon-link">§ </a> </h1>
+<h1 id="su-authentication-failure">su: Authentication failure&nbsp;<a href="#su-authentication-failure" class="anchor">§ </a> </h1>
 
 <pre><code>sudo passwd root
 Enter new UNIX password: 
@@ -259,7 +257,7 @@ Retype new UNIX password:
 passwd: password updated successfully
 </code></pre>
 
-<h1 id="實測結果">實測結果&nbsp;<a href="#實測結果" class="anchor icon-link">§ </a> </h1>
+<h1 id="實測結果">實測結果&nbsp;<a href="#實測結果" class="anchor">§ </a> </h1>
 
 <p>果然2000多塊錢的電腦是無法取代普通PC的<br />
 開瀏覽器看YouTube的影片720p就有些吃力了 有fps跑不順的狀況<br />

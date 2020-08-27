@@ -29,8 +29,6 @@
       <a id='ct' ></a>
       <script type="text/javascript" src="/js/menutime.js"></script>
     </div>
-            
-    
 </header>
 
 <main id="single">
@@ -83,15 +81,15 @@
                 <section class="post-content">
                 
 
-<h1 id="file-server">File Server&nbsp;<a href="#file-server" class="anchor icon-link">§ </a> </h1>
+<h1 id="file-server">File Server&nbsp;<a href="#file-server" class="anchor">§ </a> </h1>
 
 <p>Overview:<br />
     ❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to<br />
     ❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed</p>
 
-<h2 id="ftp-server">FTP Server&nbsp;<a href="#ftp-server" class="anchor icon-link">§ </a> </h2>
+<h2 id="ftp-server">FTP Server&nbsp;<a href="#ftp-server" class="anchor">§ </a> </h2>
 
-<h3 id="install-pure-ftpd">Install pure-ftpd&nbsp;<a href="#install-pure-ftpd" class="anchor icon-link">§ </a> </h3>
+<h3 id="install-pure-ftpd">Install pure-ftpd&nbsp;<a href="#install-pure-ftpd" class="anchor">§ </a> </h3>
 
 <p>Install with pkg</p>
 
@@ -111,12 +109,12 @@
 <pre><code>cat pureftpd_enable=&quot;YES&quot; &gt; /etc/rc.conf
 </code></pre>
 
-<h3 id="create-3-directories-under-home-ftp">Create 3 directories under <code>/home/ftp</code>&nbsp;<a href="#create-3-directories-under-home-ftp" class="anchor icon-link">§ </a> </h3>
+<h3 id="create-3-directories-under-home-ftp">Create 3 directories under <code>/home/ftp</code>&nbsp;<a href="#create-3-directories-under-home-ftp" class="anchor">§ </a> </h3>
 
 <pre><code>mkdir -p /home/ftp/public /home/ftp/upload /home/ftp/hidden
 </code></pre>
 
-<h3 id="create-admin-user">Create admin user&nbsp;<a href="#create-admin-user" class="anchor icon-link">§ </a> </h3>
+<h3 id="create-admin-user">Create admin user&nbsp;<a href="#create-admin-user" class="anchor">§ </a> </h3>
 
 <p>Create a system user “sysadm”</p>
 
@@ -129,7 +127,7 @@ group:sysadm,wheel
 ssh enable
 </code></pre>
 
-<h3 id="pure-ftpd-conf">pure-ftpd.conf&nbsp;<a href="#pure-ftpd-conf" class="anchor icon-link">§ </a> </h3>
+<h3 id="pure-ftpd-conf">pure-ftpd.conf&nbsp;<a href="#pure-ftpd-conf" class="anchor">§ </a> </h3>
 
 <pre><code>cp /usr/local/share/doc/pure-ftpd/pure-ftpd.conf \  
 /usr/local/etc/pure-ftpd.conf
@@ -159,7 +157,7 @@ CallUploadScript    yes
 TLS 1  
 </code></pre>
 
-<h3 id="create-ftp-users">Create ftp users&nbsp;<a href="#create-ftp-users" class="anchor icon-link">§ </a> </h3>
+<h3 id="create-ftp-users">Create ftp users&nbsp;<a href="#create-ftp-users" class="anchor">§ </a> </h3>
 
 <ol>
 <li><p>Anonymous</p>
@@ -194,11 +192,11 @@ i. Add a real account</p>
 </code></pre></li>
 </ol>
 
-<h3 id="ssl簽證">ssl簽證&nbsp;<a href="#ssl簽證" class="anchor icon-link">§ </a> </h3>
+<h3 id="ssl簽證">ssl簽證&nbsp;<a href="#ssl簽證" class="anchor">§ </a> </h3>
 
 <p><img src="https://i.imgur.com/W6tarUL.png" alt="Imgur" /></p>
 
-<h3 id="launch-the-server">Launch the server&hellip;&nbsp;<a href="#launch-the-server" class="anchor icon-link">§ </a> </h3>
+<h3 id="launch-the-server">Launch the server&hellip;&nbsp;<a href="#launch-the-server" class="anchor">§ </a> </h3>
 
 <p>For testing the server</p>
 
@@ -220,14 +218,14 @@ service pure-ftpd restart
 <p>Service conf location<br />
 <code>/usr/local/etc/rc.d</code> or <code>/etc/rc.d</code></p>
 
-<h3 id="test-in-file-zilla">Test in File Zilla&nbsp;<a href="#test-in-file-zilla" class="anchor icon-link">§ </a> </h3>
+<h3 id="test-in-file-zilla">Test in File Zilla&nbsp;<a href="#test-in-file-zilla" class="anchor">§ </a> </h3>
 
 <p>主機：&lt; your ip address &gt;<br />
 使用者名稱：&lt; username &gt;<br />
 passwd：&lt; ******** &gt;<br />
 port：21</p>
 
-<h3 id="權限設定">權限設定&nbsp;<a href="#權限設定" class="anchor icon-link">§ </a> </h3>
+<h3 id="權限設定">權限設定&nbsp;<a href="#權限設定" class="anchor">§ </a> </h3>
 
 <pre><code>sudo chown sysadm:virtualgroup /home/ftp/upload
 sudo chmod 1777 /home/ftp/upload
@@ -251,9 +249,9 @@ drwxrwxrwt  2   sysadm  virtualgroup    upload
 
 <p>upload的t 表示只有owner/root 才可以刪除檔案/資料夾</p>
 
-<h2 id="zfs-on-home-ftp">ZFS on <code>/home/ftp</code>&nbsp;<a href="#zfs-on-home-ftp" class="anchor icon-link">§ </a> </h2>
+<h2 id="zfs-on-home-ftp">ZFS on <code>/home/ftp</code>&nbsp;<a href="#zfs-on-home-ftp" class="anchor">§ </a> </h2>
 
-<h3 id="enable-zfs-service">enable ZFS service&nbsp;<a href="#enable-zfs-service" class="anchor icon-link">§ </a> </h3>
+<h3 id="enable-zfs-service">enable ZFS service&nbsp;<a href="#enable-zfs-service" class="anchor">§ </a> </h3>
 
 <pre><code>cat zfs_enable=&quot;YES&quot; &gt; /etc/rc.conf
 </code></pre>
@@ -261,11 +259,11 @@ drwxrwxrwt  2   sysadm  virtualgroup    upload
 <pre><code>sudo service zfs start
 </code></pre>
 
-<h3 id="add-new-hard-disks">Add new hard disks&nbsp;<a href="#add-new-hard-disks" class="anchor icon-link">§ </a> </h3>
+<h3 id="add-new-hard-disks">Add new hard disks&nbsp;<a href="#add-new-hard-disks" class="anchor">§ </a> </h3>
 
 <p>VM settings &gt; Storages &gt; add 2 hard disks: ada1 ada2</p>
 
-<h3 id="create-mypool">Create mypool&nbsp;<a href="#create-mypool" class="anchor icon-link">§ </a> </h3>
+<h3 id="create-mypool">Create mypool&nbsp;<a href="#create-mypool" class="anchor">§ </a> </h3>
 
 <pre><code>sudo zpool create mypoool mirror /dev/ada1 /dev/ada2
 </code></pre>
@@ -275,7 +273,7 @@ drwxrwxrwt  2   sysadm  virtualgroup    upload
 <pre><code>zpool status
 </code></pre>
 
-<h3 id="mount">Mount&nbsp;<a href="#mount" class="anchor icon-link">§ </a> </h3>
+<h3 id="mount">Mount&nbsp;<a href="#mount" class="anchor">§ </a> </h3>
 
 <pre><code>zfs set mountpoint=/home/ftp mypool
 </code></pre>
@@ -292,7 +290,7 @@ check history</p>
 <pre><code>sudo zpool history
 </code></pre>
 
-<h3 id="automatic-snapshot-script">Automatic snapshot script&nbsp;<a href="#automatic-snapshot-script" class="anchor icon-link">§ </a> </h3>
+<h3 id="automatic-snapshot-script">Automatic snapshot script&nbsp;<a href="#automatic-snapshot-script" class="anchor">§ </a> </h3>
 
 <p>Write a script: <code>zbackup</code><br />
 Usage:<br />
@@ -306,7 +304,7 @@ Usage:<br />
 我的$PATH是 <code>/home/c0846101/bin</code><br />
 <a href="https://github.com/yilianwu/NCTUSA-hw/blob/master/hw3/zbackup">zbackup</a></p>
 
-<h2 id="ftp-watchd">ftp-watchd&nbsp;<a href="#ftp-watchd" class="anchor icon-link">§ </a> </h2>
+<h2 id="ftp-watchd">ftp-watchd&nbsp;<a href="#ftp-watchd" class="anchor">§ </a> </h2>
 
 <p>Create ftp-watchd service</p>
 

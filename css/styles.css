@@ -20,7 +20,7 @@ ul{
     padding-inline-start: 20px;
 }
 
-.anchor { font-size: 100%;  color:silver;}
+.anchor { font-size: 100%;  padding-right: 10px;}
 .post-content h2 a, h3 a, h4 a { float:left; visibility:hidden}
 .post-content h1 a {float:left; visibility:visible; border-bottom: none;}
 .post-content h1{

@@ -29,8 +29,6 @@
       <a id='ct' ></a>
       <script type="text/javascript" src="/js/menutime.js"></script>
     </div>
-            
-    
 </header>
 
 <main id="single">
@@ -117,41 +115,41 @@
 <p>Topology<br />
 <img src="https://i.imgur.com/J4rJp6N.png" alt="Imgur" /></p>
 
-<h1 id="scenario">Scenario&nbsp;<a href="#scenario" class="anchor icon-link">§ </a> </h1>
+<h1 id="scenario">Scenario&nbsp;<a href="#scenario" class="anchor">§ </a> </h1>
 
-<h2 id="router">Router&nbsp;<a href="#router" class="anchor icon-link">§ </a> </h2>
+<h2 id="router">Router&nbsp;<a href="#router" class="anchor">§ </a> </h2>
 
 <pre><code>Hostname             : router.0846101.nasa
 IP Address           : 10.113.25.254/24
 </code></pre>
 
-<h2 id="primary-master-dns-server">Primary (Master) DNS Server&nbsp;<a href="#primary-master-dns-server" class="anchor icon-link">§ </a> </h2>
+<h2 id="primary-master-dns-server">Primary (Master) DNS Server&nbsp;<a href="#primary-master-dns-server" class="anchor">§ </a> </h2>
 
 <pre><code>Hostname             : ns1.0846101.nasa
 IP Address           : 10.113.25.1/24
 </code></pre>
 
-<h2 id="secondary-slave-dns-server">Secondary (Slave) DNS Server&nbsp;<a href="#secondary-slave-dns-server" class="anchor icon-link">§ </a> </h2>
+<h2 id="secondary-slave-dns-server">Secondary (Slave) DNS Server&nbsp;<a href="#secondary-slave-dns-server" class="anchor">§ </a> </h2>
 
 <pre><code>Hostname             : ns2.0846101.nasa
 IP Address           : 10.113.25.2/24
 </code></pre>
 
-<h2 id="agent">Agent&nbsp;<a href="#agent" class="anchor icon-link">§ </a> </h2>
+<h2 id="agent">Agent&nbsp;<a href="#agent" class="anchor">§ </a> </h2>
 
 <pre><code>Hostname             : agent.0846101.nasa
 IP Address           : 10.113.25.129/24
 </code></pre>
 
-<h2 id="clientpc-proxy">ClientPC (proxy)&nbsp;<a href="#clientpc-proxy" class="anchor icon-link">§ </a> </h2>
+<h2 id="clientpc-proxy">ClientPC (proxy)&nbsp;<a href="#clientpc-proxy" class="anchor">§ </a> </h2>
 
 <pre><code>Hostname             : client-pc.0846101.nasa
 IP Address           : 10.113.25.119/24
 </code></pre>
 
-<h1 id="router-1">Router&nbsp;<a href="#router-1" class="anchor icon-link">§ </a> </h1>
+<h1 id="router-1">Router&nbsp;<a href="#router-1" class="anchor">§ </a> </h1>
 
-<h2 id="hostname">Hostname&nbsp;<a href="#hostname" class="anchor icon-link">§ </a> </h2>
+<h2 id="hostname">Hostname&nbsp;<a href="#hostname" class="anchor">§ </a> </h2>
 
 <p>跟hostname有關的兩個檔案： <code>/etc/sysconfig/network</code> and <code>/etc/hosts</code></p>
 
@@ -181,7 +179,7 @@ HOSTNAME=router.0846101.nasa //localhost.localdomain
 <pre><code>hostnamectl set-hostname router.0846101.nasa
 </code></pre>
 
-<h2 id="dhcp-server">DHCP Server&nbsp;<a href="#dhcp-server" class="anchor icon-link">§ </a> </h2>
+<h2 id="dhcp-server">DHCP Server&nbsp;<a href="#dhcp-server" class="anchor">§ </a> </h2>
 
 <pre><code># Add ns1 and ns2 to dns
 option domain-name-servers 10.113.25.1, 10.113.25.2, 8.8.8.8;
@@ -205,7 +203,7 @@ host client-pc {
 }
 </code></pre>
 
-<h2 id="setting-router-as-a-dns-client">Setting Router As a DNS Client&nbsp;<a href="#setting-router-as-a-dns-client" class="anchor icon-link">§ </a> </h2>
+<h2 id="setting-router-as-a-dns-client">Setting Router As a DNS Client&nbsp;<a href="#setting-router-as-a-dns-client" class="anchor">§ </a> </h2>
 
 <p>一般name servers會在<code>/etc/resolv.conf</code>設定<br />
 但重開機會被NetworkManager覆寫</p>
@@ -237,7 +235,7 @@ nameserver 8.8.8.8
 <pre><code>hosts:      dns files myhostname
 </code></pre>
 
-<h1 id="master-dns-server">Master DNS Server&nbsp;<a href="#master-dns-server" class="anchor icon-link">§ </a> </h1>
+<h1 id="master-dns-server">Master DNS Server&nbsp;<a href="#master-dns-server" class="anchor">§ </a> </h1>
 
 <p>Install Bind</p>
 
@@ -249,7 +247,7 @@ nameserver 8.8.8.8
 <pre><code>dnf install bind-utils
 </code></pre>
 
-<h2 id="configure-dns-server">Configure DNS Server&nbsp;<a href="#configure-dns-server" class="anchor icon-link">§ </a> </h2>
+<h2 id="configure-dns-server">Configure DNS Server&nbsp;<a href="#configure-dns-server" class="anchor">§ </a> </h2>
 
 <pre><code>vim /etc/named.conf
 </code></pre>
@@ -391,7 +389,7 @@ view &quot;viewothers&quot; {
 
 </code></pre>
 
-<h2 id="create-zone-files">Create Zone Files&nbsp;<a href="#create-zone-files" class="anchor icon-link">§ </a> </h2>
+<h2 id="create-zone-files">Create Zone Files&nbsp;<a href="#create-zone-files" class="anchor">§ </a> </h2>
 
 <p>放在<code>/var/named</code></p>
 
@@ -429,7 +427,7 @@ view &quot;viewothers&quot; {
 </tbody>
 </table>
 
-<h3 id="create-forward-zone">Create Forward Zone&nbsp;<a href="#create-forward-zone" class="anchor icon-link">§ </a> </h3>
+<h3 id="create-forward-zone">Create Forward Zone&nbsp;<a href="#create-forward-zone" class="anchor">§ </a> </h3>
 
 <p>通用的正查檔</p>
 
@@ -496,7 +494,7 @@ nasa            IN      CNAME   nasa.cs.nctu.edu.tw.
 
 </code></pre>
 
-<h3 id="create-reverse-zone">Create Reverse Zone&nbsp;<a href="#create-reverse-zone" class="anchor icon-link">§ </a> </h3>
+<h3 id="create-reverse-zone">Create Reverse Zone&nbsp;<a href="#create-reverse-zone" class="anchor">§ </a> </h3>
 
 <p>通用的反查檔</p>
 
@@ -541,7 +539,7 @@ $ORIGIN 235.113.140.in-addr.arpa.
 151     IN      PTR     view.0846101.nasa.
 </code></pre>
 
-<h3 id="confuse-your-bind-version-number">Confuse your BIND version number&nbsp;<a href="#confuse-your-bind-version-number" class="anchor icon-link">§ </a> </h3>
+<h3 id="confuse-your-bind-version-number">Confuse your BIND version number&nbsp;<a href="#confuse-your-bind-version-number" class="anchor">§ </a> </h3>
 
 <p>For ns1, use “Name Server 1”.<br />
 For ns2, use “Name Server 2”.<br />
@@ -586,13 +584,13 @@ view &quot;chaosrefuse&quot; CH {
 version             CH  TXT &quot;Name Server 1&quot;
 </code></pre>
 
-<h3 id="sshfp-record">SSHFP Record&nbsp;<a href="#sshfp-record" class="anchor icon-link">§ </a> </h3>
+<h3 id="sshfp-record">SSHFP Record&nbsp;<a href="#sshfp-record" class="anchor">§ </a> </h3>
 
 <p>Add SSHFP record of your machines’ ssh key fingerprint.<br />
 The algorithm ECDSA and ED25519 should be implement.<br />
 The hash type SHA-256 should be implement.</p>
 
-<h4 id="generate-sshfp-records-remotely">Generate SSHFP Records Remotely&nbsp;<a href="#generate-sshfp-records-remotely" class="anchor icon-link">§ </a> </h4>
+<h4 id="generate-sshfp-records-remotely">Generate SSHFP Records Remotely&nbsp;<a href="#generate-sshfp-records-remotely" class="anchor">§ </a> </h4>
 
 <p>Download the script and make it executable</p>
 
@@ -626,7 +624,7 @@ The hash type SHA-256 should be implement.</p>
 2   -   SHA-256
 </code></pre>
 
-<h4 id="add-records-to-zone-files">Add records to zone files&nbsp;<a href="#add-records-to-zone-files" class="anchor icon-link">§ </a> </h4>
+<h4 id="add-records-to-zone-files">Add records to zone files&nbsp;<a href="#add-records-to-zone-files" class="anchor">§ </a> </h4>
 
 <p>加到<code>/var/named/named.0846101.nasa*</code></p>
 
@@ -649,7 +647,7 @@ agent           IN      SSHFP   4 2 e1c0088d8ed2f4ed27c990b46a9f75dad7ad0f7fb453
 <pre><code>dig router.0846101.nasa sshfp
 </code></pre>
 
-<h2 id="dnssec">DNSSEC&nbsp;<a href="#dnssec" class="anchor icon-link">§ </a> </h2>
+<h2 id="dnssec">DNSSEC&nbsp;<a href="#dnssec" class="anchor">§ </a> </h2>
 
 <p>Domain Name System SECurity Extensions<br />
 傳統的DNS沒有安全機制，容易遭受攻擊<br />
@@ -661,7 +659,7 @@ agent           IN      SSHFP   4 2 e1c0088d8ed2f4ed27c990b46a9f75dad7ad0f7fb453
 當遇到DNS請求時，會先回上層取得DNSKEY來做認證比對<br />
 確保解析網域名稱的過程是安全的，才能進行或回應下一步驟的DNS請求</p>
 
-<h3 id="based-on">Based on&nbsp;<a href="#based-on" class="anchor icon-link">§ </a> </h3>
+<h3 id="based-on">Based on&nbsp;<a href="#based-on" class="anchor">§ </a> </h3>
 
 <ul>
 <li>PKI (Public Key Infrastructure) Public Key / Private Key<br /></li>
@@ -669,7 +667,7 @@ agent           IN      SSHFP   4 2 e1c0088d8ed2f4ed27c990b46a9f75dad7ad0f7fb453
 <li>Signature (數位簽章)<br /></li>
 </ul>
 
-<h3 id="三大保證">三大保證&nbsp;<a href="#三大保證" class="anchor icon-link">§ </a> </h3>
+<h3 id="三大保證">三大保證&nbsp;<a href="#三大保證" class="anchor">§ </a> </h3>
 
 <ol>
 <li>來源驗證性 (Origin Authentication)<br /></li>
@@ -677,9 +675,9 @@ agent           IN      SSHFP   4 2 e1c0088d8ed2f4ed27c990b46a9f75dad7ad0f7fb453
 <li>受驗證的不存在性 (Authenticated Denial of Existence)<br /></li>
 </ol>
 
-<h3 id="resource-record-ds-rrsi">Resource Record : DS &amp; RRSI&nbsp;<a href="#resource-record-ds-rrsi" class="anchor icon-link">§ </a> </h3>
+<h3 id="resource-record-ds-rrsi">Resource Record : DS &amp; RRSI&nbsp;<a href="#resource-record-ds-rrsi" class="anchor">§ </a> </h3>
 
-<h3 id="generate-ksk">Generate KSK&nbsp;<a href="#generate-ksk" class="anchor icon-link">§ </a> </h3>
+<h3 id="generate-ksk">Generate KSK&nbsp;<a href="#generate-ksk" class="anchor">§ </a> </h3>
 
 <p>Key Signing Key</p>
 
@@ -692,7 +690,7 @@ agent           IN      SSHFP   4 2 e1c0088d8ed2f4ed27c990b46a9f75dad7ad0f7fb453
 K0846101.nasa.+008+29014.private    //private key
 </code></pre>
 
-<h3 id="generate-zsk">Generate ZSK&nbsp;<a href="#generate-zsk" class="anchor icon-link">§ </a> </h3>
+<h3 id="generate-zsk">Generate ZSK&nbsp;<a href="#generate-zsk" class="anchor">§ </a> </h3>
 
 <p>Zone Signing Key</p>
 
@@ -707,7 +705,7 @@ K0846101.nasa.+008+00945.private    //private key
 
 <p>我把這四個key放在<code>/var/named/keys</code></p>
 
-<h3 id="signing-a-zone">Signing a Zone&nbsp;<a href="#signing-a-zone" class="anchor icon-link">§ </a> </h3>
+<h3 id="signing-a-zone">Signing a Zone&nbsp;<a href="#signing-a-zone" class="anchor">§ </a> </h3>
 
 <p>Include keys in zone files <code>/var/named/named.0846101.nasa.one</code>, <code>/var/named/named.0846101.nasa.mysub</code> ,and <code>/var/named/named.0846101.nasa</code></p>
 
@@ -768,7 +766,7 @@ Signatures per second:                 891.736
 Runtime in seconds:                      0.040
 </code></pre>
 
-<h3 id="create-trust-chain">Create Trust Chain&nbsp;<a href="#create-trust-chain" class="anchor icon-link">§ </a> </h3>
+<h3 id="create-trust-chain">Create Trust Chain&nbsp;<a href="#create-trust-chain" class="anchor">§ </a> </h3>
 
 <pre><code>dnssec-dsfromkey /etc/named/keys/K0846101.nasa.+008+29014.key   //KSK
 </code></pre>
@@ -778,7 +776,7 @@ Upload DS Record to <code>nasa.</code><br />
 我選擇第二個<br />
 <img src="https://i.imgur.com/yjCP8zr.png" alt="Imgur" /></p>
 
-<h3 id="configuration">Configuration&nbsp;<a href="#configuration" class="anchor icon-link">§ </a> </h3>
+<h3 id="configuration">Configuration&nbsp;<a href="#configuration" class="anchor">§ </a> </h3>
 
 <p>只列出要新增或修改的地方<br />
 把<code>.signed</code>的zone files替換上去</p>
@@ -820,7 +818,7 @@ view &quot;viewothers&quot; {
 };
 </code></pre>
 
-<h3 id="維護domain">維護Domain&nbsp;<a href="#維護domain" class="anchor icon-link">§ </a> </h3>
+<h3 id="維護domain">維護Domain&nbsp;<a href="#維護domain" class="anchor">§ </a> </h3>
 
 <ul>
 <li>RR修改<br />
@@ -838,7 +836,7 @@ view &quot;viewothers&quot; {
 </ul></li>
 </ul>
 
-<h2 id="start-the-dns-service">Start the DNS service&nbsp;<a href="#start-the-dns-service" class="anchor icon-link">§ </a> </h2>
+<h2 id="start-the-dns-service">Start the DNS service&nbsp;<a href="#start-the-dns-service" class="anchor">§ </a> </h2>
 
 <p>Enable and start DNS service:</p>
 
@@ -846,7 +844,7 @@ view &quot;viewothers&quot; {
 systemctl start named
 </code></pre>
 
-<h2 id="firewall-configuration">Firewall Configuration&nbsp;<a href="#firewall-configuration" class="anchor icon-link">§ </a> </h2>
+<h2 id="firewall-configuration">Firewall Configuration&nbsp;<a href="#firewall-configuration" class="anchor">§ </a> </h2>
 
 <p>Firewall預設是關的<br />
 將DNS的 TCP, UDP port 53打開</p>
@@ -869,7 +867,7 @@ firewall-cmd --reload
 -A FORWARD -p udp --dport 53 -j ACCEPT
 </code></pre>
 
-<h2 id="test-dns">Test DNS&nbsp;<a href="#test-dns" class="anchor icon-link">§ </a> </h2>
+<h2 id="test-dns">Test DNS&nbsp;<a href="#test-dns" class="anchor">§ </a> </h2>
 
 <p>Restart BIND before testing</p>
 
@@ -896,9 +894,9 @@ firewall-cmd --reload
 <pre><code>dig -t soa router.0846101.nasa
 </code></pre>
 
-<h1 id="slave-dns-server">Slave DNS Server&nbsp;<a href="#slave-dns-server" class="anchor icon-link">§ </a> </h1>
+<h1 id="slave-dns-server">Slave DNS Server&nbsp;<a href="#slave-dns-server" class="anchor">§ </a> </h1>
 
-<h2 id="general-configuration">General Configuration&nbsp;<a href="#general-configuration" class="anchor icon-link">§ </a> </h2>
+<h2 id="general-configuration">General Configuration&nbsp;<a href="#general-configuration" class="anchor">§ </a> </h2>
 
 <p><code>/etc/named.conf</code></p>
 
@@ -923,7 +921,7 @@ firewall-cmd --reload
 };
 </code></pre>
 
-<h2 id="多個-view-同步到-slave">多個 View 同步到 Slave&nbsp;<a href="#多個-view-同步到-slave" class="anchor icon-link">§ </a> </h2>
+<h2 id="多個-view-同步到-slave">多個 View 同步到 Slave&nbsp;<a href="#多個-view-同步到-slave" class="anchor">§ </a> </h2>
 
 <p>VIEW<br />
 - Add A record for view.{your_domain}.<br />
@@ -938,7 +936,7 @@ firewall-cmd --reload
   1. TSIG<br />
   2. 給 Slave 多個IP</p>
 
-<h3 id="tsig">TSIG&nbsp;<a href="#tsig" class="anchor icon-link">§ </a> </h3>
+<h3 id="tsig">TSIG&nbsp;<a href="#tsig" class="anchor">§ </a> </h3>
 
 <p>Transaction Signature<br />
 Generate 3 keys in Master DNS</p>
@@ -1143,7 +1141,7 @@ view &quot;viewothers&quot; {
 };
 </code></pre>
 
-<h3 id="給-slave-多個ip">給 Slave 多個IP&nbsp;<a href="#給-slave-多個ip" class="anchor icon-link">§ </a> </h3>
+<h3 id="給-slave-多個ip">給 Slave 多個IP&nbsp;<a href="#給-slave-多個ip" class="anchor">§ </a> </h3>
 
 <p>分配IP</p>
 
@@ -1271,7 +1269,7 @@ view &quot;viewothers&quot; {
 };
 </code></pre>
 
-<h2 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor icon-link">§ </a> </h2>
+<h2 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor">§ </a> </h2>
 
 <p>Firewall預設是關的<br />
 將DNS的 TCP, UDP port 53打開</p>
@@ -1281,7 +1279,7 @@ firewall-cmd --permanent --add-port=53/udp
 firewall-cmd --reload
 </code></pre>
 
-<h2 id="同步">同步&nbsp;<a href="#同步" class="anchor icon-link">§ </a> </h2>
+<h2 id="同步">同步&nbsp;<a href="#同步" class="anchor">§ </a> </h2>
 
 <p>一般只要Master的zone files有更動<br />
 更新好serial 就會自動同步到Slave</p>

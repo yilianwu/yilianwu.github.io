@@ -29,8 +29,6 @@
       <a id='ct' ></a>
       <script type="text/javascript" src="/js/menutime.js"></script>
     </div>
-            
-    
 </header>
 
 <main id="single">
@@ -87,9 +85,9 @@
                 <section class="post-content">
                 
 
-<h1 id="web-server">Web Server&nbsp;<a href="#web-server" class="anchor icon-link">§ </a> </h1>
+<h1 id="web-server">Web Server&nbsp;<a href="#web-server" class="anchor">§ </a> </h1>
 
-<h2 id="network">Network&nbsp;<a href="#network" class="anchor icon-link">§ </a> </h2>
+<h2 id="network">Network&nbsp;<a href="#network" class="anchor">§ </a> </h2>
 
 <ul>
 <li><p>Intranet<br />
@@ -121,9 +119,9 @@ ifconfig  //查看網路設定
 The Wireguard VPN (10.113.0.0/16)</p></li>
 </ul>
 
-<h2 id="http-server">HTTP Server&nbsp;<a href="#http-server" class="anchor icon-link">§ </a> </h2>
+<h2 id="http-server">HTTP Server&nbsp;<a href="#http-server" class="anchor">§ </a> </h2>
 
-<h3 id="nginx">Nginx&nbsp;<a href="#nginx" class="anchor icon-link">§ </a> </h3>
+<h3 id="nginx">Nginx&nbsp;<a href="#nginx" class="anchor">§ </a> </h3>
 
 <p>Install Nginx</p>
 
@@ -144,9 +142,9 @@ The Wireguard VPN (10.113.0.0/16)</p></li>
 (如果要用外網ip 本機要記得先連上VPN)<br />
 <img src="https://i.imgur.com/mMEFdSn.png" alt="Imgur" /></p>
 
-<h3 id="configures">Configures&nbsp;<a href="#configures" class="anchor icon-link">§ </a> </h3>
+<h3 id="configures">Configures&nbsp;<a href="#configures" class="anchor">§ </a> </h3>
 
-<h4 id="virtual-host">Virtual Host&nbsp;<a href="#virtual-host" class="anchor icon-link">§ </a> </h4>
+<h4 id="virtual-host">Virtual Host&nbsp;<a href="#virtual-host" class="anchor">§ </a> </h4>
 
 <p>❑ Setup a name-based virtual host<br />
 ❑ Show different content when connecting using domain
@@ -248,7 +246,7 @@ sudo openssl req -x509 -nodes -day 365 \
 </code></pre></li>
 </ol>
 
-<h4 id="啟用https">啟用HTTPS&nbsp;<a href="#啟用https" class="anchor icon-link">§ </a> </h4>
+<h4 id="啟用https">啟用HTTPS&nbsp;<a href="#啟用https" class="anchor">§ </a> </h4>
 
 <p>Enable HSTS(HTTP Strict Transport Security): 放在domain name server<br />
 Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
@@ -278,7 +276,7 @@ Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
 }
 </code></pre>
 
-<h4 id="webpage-private">Webpage <code>/private</code>&nbsp;<a href="#webpage-private" class="anchor icon-link">§ </a> </h4>
+<h4 id="webpage-private">Webpage <code>/private</code>&nbsp;<a href="#webpage-private" class="anchor">§ </a> </h4>
 
 <ul>
 <li>When accessing from intranet, it must show after passing Basic Auth authentication with username admin and password {your-student-ID}<br />
@@ -339,7 +337,7 @@ server {
 </code></pre></li>
 </ol>
 
-<h3 id="php-php-fpm">PHP/PHP-FPM&nbsp;<a href="#php-php-fpm" class="anchor icon-link">§ </a> </h3>
+<h3 id="php-php-fpm">PHP/PHP-FPM&nbsp;<a href="#php-php-fpm" class="anchor">§ </a> </h3>
 
 <p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()</p>
 
@@ -420,11 +418,11 @@ sudo mv info.php info-W081001.php
 </code></pre></li>
 </ol>
 
-<h2 id="mysql">MySQL&nbsp;<a href="#mysql" class="anchor icon-link">§ </a> </h2>
+<h2 id="mysql">MySQL&nbsp;<a href="#mysql" class="anchor">§ </a> </h2>
 
 <p>Prepare for NextCloud</p>
 
-<h3 id="install-mysql">Install MySQL&nbsp;<a href="#install-mysql" class="anchor icon-link">§ </a> </h3>
+<h3 id="install-mysql">Install MySQL&nbsp;<a href="#install-mysql" class="anchor">§ </a> </h3>
 
 <pre><code>portsnap fetch update
 </code></pre>
@@ -433,23 +431,23 @@ sudo mv info.php info-W081001.php
 sudo make WITH_CHARSET=utf8 install clean
 </code></pre>
 
-<h3 id="configuration">Configuration&nbsp;<a href="#configuration" class="anchor icon-link">§ </a> </h3>
+<h3 id="configuration">Configuration&nbsp;<a href="#configuration" class="anchor">§ </a> </h3>
 
 <p><code>/usr/local/etc/my.conf</code></p>
 
-<h3 id="start-mysql-daemon">Start MySQL daemon&nbsp;<a href="#start-mysql-daemon" class="anchor icon-link">§ </a> </h3>
+<h3 id="start-mysql-daemon">Start MySQL daemon&nbsp;<a href="#start-mysql-daemon" class="anchor">§ </a> </h3>
 
 <pre><code>sudo /usr/local/etc/rc.d/mysql-server start
 </code></pre>
 
-<h3 id="login">Login&nbsp;<a href="#login" class="anchor icon-link">§ </a> </h3>
+<h3 id="login">Login&nbsp;<a href="#login" class="anchor">§ </a> </h3>
 
 <p>login mysql as root with passwd</p>
 
 <pre><code>mysql -u root mysql -p
 </code></pre>
 
-<h3 id="create-database-user">Create Database, User&nbsp;<a href="#create-database-user" class="anchor icon-link">§ </a> </h3>
+<h3 id="create-database-user">Create Database, User&nbsp;<a href="#create-database-user" class="anchor">§ </a> </h3>
 
 <p>Create a MySQL user named ‘nc’ and a database named ‘nextcloud’, which satisfies:<br />
 • The password of the user is your student ID<br />
@@ -473,9 +471,9 @@ sudo make WITH_CHARSET=utf8 install clean
 &gt; SELECT @@TX_ISOLATION;
 </code></pre>
 
-<h2 id="http-applications">HTTP Applications&nbsp;<a href="#http-applications" class="anchor icon-link">§ </a> </h2>
+<h2 id="http-applications">HTTP Applications&nbsp;<a href="#http-applications" class="anchor">§ </a> </h2>
 
-<h3 id="basic-app-router">Basic App Router&nbsp;<a href="#basic-app-router" class="anchor icon-link">§ </a> </h3>
+<h3 id="basic-app-router">Basic App Router&nbsp;<a href="#basic-app-router" class="anchor">§ </a> </h3>
 
 <p>There are three path displaying different contents:<br />
 - https://{your-domain}/app<br />
@@ -523,7 +521,7 @@ location @test {
 </code></pre></li>
 </ol>
 
-<h3 id="websocket">WebSocket&nbsp;<a href="#websocket" class="anchor icon-link">§ </a> </h3>
+<h3 id="websocket">WebSocket&nbsp;<a href="#websocket" class="anchor">§ </a> </h3>
 
 <p><a href="https://medium.com/@cn007b/super-simple-php-websocket-example-ea2cd5893575">A sample program</a><br />
 - This program crashes at client refresh, so just use it for test or demo
@@ -643,7 +641,7 @@ make config install clean
 
 <p>[x]socket</p>
 
-<h3 id="nextcloud">Nextcloud&nbsp;<a href="#nextcloud" class="anchor icon-link">§ </a> </h3>
+<h3 id="nextcloud">Nextcloud&nbsp;<a href="#nextcloud" class="anchor">§ </a> </h3>
 
 <p>要在{domain}/nextcloud</p>
 

@@ -53,7 +53,12 @@
       <pubDate>Sun, 10 May 2020 22:37:06 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/ssd-intro/</guid>
-      <description>SSD (Solid State Drive) 固態硬碟 現在市面上的SSD價格比起以前便宜了許多 成為現在電腦的主流配備 實惠的價格也讓很多人選</description>
+      <description>&lt;p&gt;SSD (Solid State Drive)&lt;br /&gt;
+固態硬碟&lt;/p&gt;
+
+&lt;p&gt;現在市面上的SSD價格比起以前便宜了許多 成為現在電腦的主流配備&lt;br /&gt;
+實惠的價格也讓很多人選擇將自己的電腦加裝SSD 來改善電腦的流暢度&lt;br /&gt;
+但市面上的SSD這麼多種 還是先搞清楚才能選擇最適合自己的SSD&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -116,7 +121,9 @@
       <pubDate>Sun, 24 Nov 2019 00:44:25 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/facebook-events-on-icalendar/</guid>
-      <description>現在有很多的活動都會在Facebook建立活動頁面 我是個懶人，很依靠Facebook會給我活動提醒 但</description>
+      <description>&lt;p&gt;現在有很多的活動都會在Facebook建立活動頁面&lt;br /&gt;
+我是個懶人，很依靠Facebook會給我活動提醒&lt;br /&gt;
+但自從Mac更新某個版本後，iCloud除了Mail帳號外，不能連結第三方應用程式帳號了&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -143,7 +150,7 @@
       <pubDate>Sun, 03 Mar 2019 21:59:58 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/mac-commandlines/</guid>
-      <description>Command Line Basics 一些基本ㄉ操作 ~ –&amp;gt;最上層根目錄，通常是/Users/username ls -&amp;gt; 可看所有的內容</description>
+      <description>&lt;p&gt;一些常用到的指令筆記&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -152,7 +159,7 @@
       <pubDate>Tue, 19 Feb 2019 15:45:54 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/microsys/</guid>
-      <description>Platform Raspberry Pi Amazon AWS Google Cloud Microsoft Azure Alibaba 其他 嵌入式系統 LG WebOS 基地台 三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反</description>
+      <description>&lt;p&gt;初次使用AWS的一些操作筆記&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -161,7 +168,9 @@
       <pubDate>Tue, 05 Feb 2019 15:39:41 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/iterm-intro/</guid>
-      <description>電腦開著終端機在打程式很帥 但是面對螢幕上一行行密密麻麻的程式碼， 你是否曾經覺得眼花撩亂、困擾、甚至因</description>
+      <description>&lt;p&gt;電腦開著終端機在打程式很帥&lt;br /&gt;
+但是面對螢幕上一行行密密麻麻的程式碼，&lt;br /&gt;
+你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -170,7 +179,8 @@
       <pubDate>Sun, 03 Feb 2019 20:42:27 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/markdown-intro/</guid>
-      <description>最近發現用Markdown來做筆記超好用的！ 如果是平常用pages、word或記事本，常會因為寫完沒</description>
+      <description>&lt;p&gt;最近發現用Markdown來做筆記超好用的！&lt;br /&gt;
+如果是平常用pages、word或記事本，常會因為寫完沒好好整理導致忘了什麼東西寫在哪，又或是整理起來很花時間，到最後又懶得整理了XDD&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -179,7 +189,7 @@
       <pubDate>Mon, 28 Jan 2019 00:40:17 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/my-first-post/</guid>
-      <description>我個人是使用Mac OS 大概可以分成三個部分： 1.建立GitHub repo 2.terminal Hugo 設定 3.將Hugo部署至GitH</description>
+      <description>&lt;p&gt;紀錄這個site的創建過程&lt;/p&gt;</description>
     </item>
     
   </channel>

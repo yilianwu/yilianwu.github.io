@@ -17,7 +17,7 @@
       <pubDate>Sun, 03 Mar 2019 21:59:58 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/mac-commandlines/</guid>
-      <description>Command Line Basics 一些基本ㄉ操作 ~ –&amp;gt;最上層根目錄，通常是/Users/username ls -&amp;gt; 可看所有的內容</description>
+      <description>&lt;p&gt;一些常用到的指令筆記&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Tue, 19 Feb 2019 15:45:54 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/microsys/</guid>
-      <description>Platform Raspberry Pi Amazon AWS Google Cloud Microsoft Azure Alibaba 其他 嵌入式系統 LG WebOS 基地台 三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反</description>
+      <description>&lt;p&gt;初次使用AWS的一些操作筆記&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -35,7 +35,9 @@
       <pubDate>Tue, 05 Feb 2019 15:39:41 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/iterm-intro/</guid>
-      <description>電腦開著終端機在打程式很帥 但是面對螢幕上一行行密密麻麻的程式碼， 你是否曾經覺得眼花撩亂、困擾、甚至因</description>
+      <description>&lt;p&gt;電腦開著終端機在打程式很帥&lt;br /&gt;
+但是面對螢幕上一行行密密麻麻的程式碼，&lt;br /&gt;
+你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -44,7 +46,7 @@
       <pubDate>Mon, 28 Jan 2019 00:40:17 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/my-first-post/</guid>
-      <description>我個人是使用Mac OS 大概可以分成三個部分： 1.建立GitHub repo 2.terminal Hugo 設定 3.將Hugo部署至GitH</description>
+      <description>&lt;p&gt;紀錄這個site的創建過程&lt;/p&gt;</description>
     </item>
     
   </channel>
