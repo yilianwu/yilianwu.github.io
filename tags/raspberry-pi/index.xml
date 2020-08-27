@@ -17,13 +17,7 @@
       <pubDate>Thu, 14 May 2020 23:00:14 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/ubuntu-2004-for-rpi4/</guid>
-      <description>Ubuntu 20.04 LST 到官網下載 Ubuntu Server image檔
-https://ubuntu.com/download/raspberry-pi
-Create a Bootable microSD card 以下在MacOS上做示範
-把剛剛下載好的Ubuntu image放在 ~/Downloads
-打開終端機
-diskutil list  查看microSD的位址
-/dev/disk0 (internal, physical): #: TYPE NAME SIZE IDENTIFIER 0: GUID_partition_scheme *251.0 GB disk0 1: EFI EFI 209.7 MB disk0s1 2: Apple_APFS Container disk1 250.8 GB disk0s2 /dev/disk1 (synthesized): #: TYPE NAME SIZE IDENTIFIER 0: APFS Container Scheme - +250.8 GB disk1 Physical Store disk0s2 1: APFS Volume Macintosh HD 204.</description>
+      <description>Ubuntu 20.04 LST 到官網下載 Ubuntu Server image檔 https://ubuntu.com/download/raspberry-pi Create a Bootable microSD card 以下在MacOS上做示範 把剛剛下載好的Ubuntu ima</description>
     </item>
     
   </channel>

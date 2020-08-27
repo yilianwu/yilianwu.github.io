@@ -45,28 +45,7 @@
                         <a href="/posts/facebook-events-on-icalendar/">如何在我的行事曆中新增 Facebook 活動？</a>
                         <p><time datetime="2019-11-24T00:44:25&#43;0800">2019-11-24</time>
 </p>
-		                <p>現在有很多的活動都會在Facebook建立活動頁面
-我是個懶人，很依靠Facebook會給我活動提醒
-但自從Mac更新某個版本後，iCloud除了Mail帳號外，不能連結第三方應用程式帳號了
-行事曆的行程全部都要自己手動新增好麻煩QQ
-後來發現了一個方法可以訂閱Facebook的活動，而且還會自動更新喔！！
-進到Facebook的活動頁 點我進入
-找到這個欄位 先別急著點按！
-在近期活動右鍵選擇 複製連結網址
-到Mac的行事曆Calendar 檔案&gt;新增行事曆訂閱
-或option+cmd+s
-將剛剛複製的網址貼上&gt;訂閱
-依照喜好設定一下～～
-就訂閱成功了！！
-之後在FB按什麼活動「有興趣」、「參加」
-都會顯示詳細的活動資訊在行事曆中呦！
-同一個iCloud帳號的iPhone上也會同步顯示訂閱的日曆
-是不是很方便呢
-在Google日曆訂閱Facebook活動 進到Google日曆頁面
-選擇左下角的其他日曆&gt;＋
-選擇 加入日曆網址
-將網址貼上後，按新增日曆
-就大功告成囉！...</p><span class="cursor">|</span>
+		                <p>現在有很多的活動都會在Facebook建立活動頁面 我是個懶人，很依靠Facebook會給我活動提醒 但...</p><span class="cursor">|</span>
                     </li>
                 </ul>
                 
@@ -76,21 +55,7 @@
                         <a href="/posts/mac-commandlines/">我常用的Mac指令</a>
                         <p><time datetime="2019-03-03T21:59:58&#43;0800">2019-03-03</time>
 </p>
-		                <p>Command Line Basics 一些基本ㄉ操作 ~ –&gt;最上層根目錄，通常是/Users/username
-ls -&gt; 可看所有的內容
-cd空格 資料夾名稱 –&gt;進入某資料夾
-cd空格 .. –&gt;直接回到最上層根目錄
-mkdir空格 資料夾 –&gt;新增資料夾
-touch空格 filename.txt –&gt;新增一個filename.txt檔案
-rm空格 filename.txt –&gt;刪除檔案
-rm空格 -r空格 dirname/ –&gt;刪除一整個資料夾
-command+上方向鍵 –&gt;切換最近輸入的指令
-mv空格 fileone.txt filetwo.jpg dirname/ –&gt; 移動fileone.txt及filetwo.jpg 到dirname資料夾
-mv空格 yo.html hey.html –&gt;重新命名yo.html成hey.html
-cp空格 hello.html test/ –&gt; 複製hello.html到test資料夾
-建立加密的 Zip 壓縮檔 讓機密資料加上密碼保護!
-zip -e archivename.zip filetoprotect.txt  壓縮資料夾
-zip -er ~/Desktop/encrypted.zip ~/Documents/Confidential/  For特殊用途 Seirra叫出所有來源 sudo spctl --master-disable  製作重灌隨身碟 El Capitan sudo /Applications/Install\ OS\ X\ El\ Capitan....</p><span class="cursor">|</span>
+		                <p>Command Line Basics 一些基本ㄉ操作 ~ –&gt;最上層根目錄，通常是/Users/username ls -&gt; 可看所有的內容...</p><span class="cursor">|</span>
                     </li>
                 </ul>
                 
@@ -100,30 +65,7 @@ zip -er ~/Desktop/encrypted.zip ~/Documents/Confidential/  For特殊用途 Seirr
                         <a href="/posts/iterm-intro/">如何用 iTerm 美化你的終端機</a>
                         <p><time datetime="2019-02-05T15:39:41&#43;0800">2019-02-05</time>
 </p>
-		                <p>電腦開著終端機在打程式很帥
-但是面對螢幕上一行行密密麻麻的程式碼，
-你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？
-你需要iTerm來拯救你的終端機！！！
-不囉唆，我就直接上圖了
-雖然Terminal可以設定顏色字體但iTerm可以做得更多
-以下將介紹iTerm如何搭配zsh主題&hellip;
-安裝iTerm2 iTerm2是一個open source的Terminal，算是Mac原生Terminal的強化版，官網可直接下載。配合oh-my-zsh和其他plugin後，即可客製化出一個帶有個人風格外觀和功能的Terminal。
-安裝oh-my-zsh 終端機執行下列程式碼
-sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;  oh-my-zsh是一套zsh shell的管理工具，會將Terminal從Mac shell原本的bash改成zsh，還可以透過這套工具來安裝各種plugin或theme。
-若出現這個畫面就代表oh-my-zsh安裝成功ㄌ
-執行完後會在 ~ 目錄下看見 .oh-my-zsh資料夾以及 .zshrc檔案
-將.zshrc開啟會看到 ZSH_THEME=”robbyrussell&raquo;
-ZSH_THEME就是zsh主題，預設值是robbyrussell。
-找不到檔案嗎？
-如何顯現Finder中的隱藏檔
-安裝、設定主題 這邊以Cobalt2為例
-至https://github.com/wesbos/Cobalt2-iterm
- 將cobalt2.zsh-theme下載下來並丟到~/.oh-my-zsh/themes/
- 打開./zshrc檔，將ZSH_THEME=”robbyrussell&raquo;改成ZSH_THEME=cobalt2
-  因為主題字型支援問題，需安裝Powerline
- 安裝Python相關工具pip3
-   easy_install pip3   安裝字型
-   pip3 install --user powerline-status   git clone https://github.com/powerline/fonts cd fonts ./install.sh  更改iTerm偏好設定...</p><span class="cursor">|</span>
+		                <p>電腦開著終端機在打程式很帥 但是面對螢幕上一行行密密麻麻的程式碼， 你是否曾經覺得眼花撩亂、困擾、甚至因...</p><span class="cursor">|</span>
                     </li>
                 </ul>
                 

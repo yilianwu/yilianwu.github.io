@@ -17,16 +17,7 @@
       <pubDate>Mon, 20 Apr 2020 03:45:16 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/sa-nis-nfs-firewall-freebsd/</guid>
-      <description>NIS Client Configurations in rc.conf nisdomainname=&amp;quot;savpn.nctu.me&amp;quot; # NIS domain name ≠ DNS domain name nis_client_enable=&amp;quot;YES&amp;quot; nis_client_flags=&amp;quot;-s -m -S savpn.nctu.me,nis server&amp;quot;  Maps between IP and hostname Configure in /etc/hosts
-# 140.113.17.155 nisserver 10.113.0.254 nisserver # 連wg vpn  NIS Users 在NIS Server(savpn.nctu.me)中有三個users
-- nisuser1
-- nisuser2
-- nisuser3
-要注意的地方：
-- passwd同username
-- home directory要在/net/home/&amp;lt;username&amp;gt;
-- share: hosts, passwd, group, netgroup, ypservers
-Accounts and Groups NIS user can login to your server</description>
+      <description>NIS Client Configurations in rc.conf nisdomainname=&amp;quot;savpn.nctu.me&amp;quot; # NIS domain name ≠ DNS domain name nis_client_enable=&amp;quot;YES&amp;quot; nis_client_flags=&amp;quot;-s -m -S savpn.nctu.me,nis server&amp;quot; Maps between IP and hostname Configure in /etc/hosts # 140.113.17.155 nisserver 10.113.0.254 nisserver # 連wg vpn NIS Users 在NIS Server</description>
     </item>
     
     <item>
@@ -35,19 +26,7 @@ Accounts and Groups NIS user can login to your server</description>
       <pubDate>Sun, 19 Apr 2020 02:16:59 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/sa-web-server-freebsd/</guid>
-      <description>Web Server Network  Intranet
-A VM with a host-only adapter connecting to the same network of the original machine
- 創立Host網卡
-Create &amp;gt; enable DHCP server
- 將網卡加到VM
-VM Settings &amp;gt; Network
-Adapter 2 選Host-only Adapter
- FreeBSD /etc/rc.conf新增網卡
-ifconfig_em1=&amp;quot;DHCP&amp;quot;  reboot -n //重開機 ifconfig //查看網路設定  會看到新的網卡em1 192.168.56.101
-  Public
-The Wireguard VPN (10.113.0.0/16)
-  HTTP Server Nginx Install Nginx
-pkg install nginx  Enable Nginx when reboot</description>
+      <description>Web Server Network Intranet A VM with a host-only adapter connecting to the same network of the original machine 創立Host網卡 Create &amp;gt; enable DHCP server 將網卡加到VM VM Settings &amp;gt; Network Adapter 2 選Host</description>
     </item>
     
     <item>
@@ -56,13 +35,7 @@ pkg install nginx  Enable Nginx when reboot</description>
       <pubDate>Sat, 18 Apr 2020 16:28:10 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/sa-file-server-freebsd/</guid>
-      <description>File Server Overview:
-❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to
-❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed
-FTP Server Install pure-ftpd Install with pkg
-pkg install pure-ftpd  Or install with port
-port install pure-ftpd  記得要
-[x]UPLOADSCRIPT</description>
+      <description>File Server Overview: ❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to ❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed FTP Server</description>
     </item>
     
   </channel>

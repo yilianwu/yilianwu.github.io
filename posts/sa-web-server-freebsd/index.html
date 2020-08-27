@@ -97,7 +97,7 @@ A VM with a host-only adapter connecting to the same network of the original mac
 
 <ol>
 <li><p>創立Host網卡<br />
-<img src="https://i.imgur.com/ED3z5LF.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/ED3z5LF.png" alt="Imgur" />
 Create &gt; enable DHCP server</p></li>
 
 <li><p>將網卡加到VM<br />
@@ -149,12 +149,12 @@ The Wireguard VPN (10.113.0.0/16)</p></li>
 <h4 id="virtual-host">Virtual Host&nbsp;<a class="anchor" href="#virtual-host"><i class="small linkify icon"></i></a> </h4>
 
 <p>❑ Setup a name-based virtual host<br />
-❑ Show different content when connecting using domain<br />
+❑ Show different content when connecting using domain
 name/IP</p>
 
 <ol>
 <li>Get a domain name<br />
-<img src="https://i.imgur.com/5zge2Nt.png" alt="Imgur" /><br /></li>
+<img src="https://i.imgur.com/5zge2Nt.png" alt="Imgur" /></li>
 
 <li><p>自簽SSL</p>
 
@@ -283,8 +283,7 @@ Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
 <ul>
 <li>When accessing from intranet, it must show after passing Basic Auth authentication with username admin and password {your-student-ID}<br />
 <img src="https://i.imgur.com/FxQ6myC.png" alt="Imgur" /><br /></li>
-<li>Access from public network should be denied (return 403)<br />
-<br /></li>
+<li>Access from public network should be denied (return 403)<br /></li>
 </ul>
 
 <ol>
@@ -527,15 +526,15 @@ location @test {
 <h3 id="websocket">WebSocket&nbsp;<a class="anchor" href="#websocket"><i class="small linkify icon"></i></a> </h3>
 
 <p><a href="https://medium.com/@cn007b/super-simple-php-websocket-example-ea2cd5893575">A sample program</a><br />
-- This program crashes at client refresh, so just use it for test or demo<br />
+- This program crashes at client refresh, so just use it for test or demo
 - You don’t need to support HTTP2 for WebSocket connection<br />
 - Configure your HTTP server such the program run appropriately that when accessing http(s)://{your- domain}/wsdemo<br />
 - Let it be connected on port 443(wss://)</p>
 
-<p>Original: WebSocket is on port 12345<br />
+<p>Original: WebSocket is on port 12345
 <img src="https://i.imgur.com/une8KL3.png" alt="Imgur" /></p>
 
-<p>Goal: connect websocket on port 443<br />
+<p>Goal: connect websocket on port 443
 <img src="https://i.imgur.com/2nkbXbD.png" alt="Imgur" /></p>
 
 <p>In <code>nginx.conf</code></p>
@@ -687,8 +686,7 @@ sudo service php-fpm start
 
 <ul>
 <li>Each user in Nextcloud can put static(PHP is not needed) contents(img, html, css, js, etc.) in the public_html directory under their home<br /></li>
-<li>When accessing https://{your-domain}/sites/~{username}/ , it should show whatever {username} put in his public_html, with index index.html<br />
-<br /></li>
+<li>When accessing https://{your-domain}/sites/~{username}/ , it should show whatever {username} put in his public_html, with index index.html<br /></li>
 </ul>
 
 <pre><code>location /sites {

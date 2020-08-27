@@ -666,8 +666,7 @@ agent           IN      SSHFP   4 2 e1c0088d8ed2f4ed27c990b46a9f75dad7ad0f7fb453
 <ul>
 <li>PKI (Public Key Infrastructure) Public Key / Private Key<br /></li>
 <li>Hashing<br /></li>
-<li>Signature (數位簽章)<br />
-<br /></li>
+<li>Signature (數位簽章)<br /></li>
 </ul>
 
 <h3 id="三大保證">三大保證&nbsp;<a class="anchor" href="#三大保證"><i class="small linkify icon"></i></a> </h3>
@@ -675,8 +674,7 @@ agent           IN      SSHFP   4 2 e1c0088d8ed2f4ed27c990b46a9f75dad7ad0f7fb453
 <ol>
 <li>來源驗證性 (Origin Authentication)<br /></li>
 <li>資料完整性 (Data Integrity)<br /></li>
-<li>受驗證的不存在性 (Authenticated Denial of Existence)<br />
-<br /></li>
+<li>受驗證的不存在性 (Authenticated Denial of Existence)<br /></li>
 </ol>
 
 <h3 id="resource-record-ds-rrsi">Resource Record : DS &amp; RRSI&nbsp;<a class="anchor" href="#resource-record-ds-rrsi"><i class="small linkify icon"></i></a> </h3>
@@ -775,7 +773,7 @@ Runtime in seconds:                      0.040
 <pre><code>dnssec-dsfromkey /etc/named/keys/K0846101.nasa.+008+29014.key   //KSK
 </code></pre>
 
-<p><img src="https://i.imgur.com/XhxQY1U.png" alt="Imgur" /><br />
+<p><img src="https://i.imgur.com/XhxQY1U.png" alt="Imgur" />
 Upload DS Record to <code>nasa.</code><br />
 我選擇第二個<br />
 <img src="https://i.imgur.com/yjCP8zr.png" alt="Imgur" /></p>
@@ -836,9 +834,7 @@ view &quot;viewothers&quot; {
 <li>退回DNS<br />
 
 <ul>
-<li>要求上層拿掉DS record<br />
-<br />
-<br /></li>
+<li>要求上層拿掉DS record<br /></li>
 </ul></li>
 </ul>
 
@@ -938,7 +934,7 @@ firewall-cmd --reload
   - For other queries<br />
     - Answer 10.113.ID.87</p>
 
-<p>兩個方法<br />
+<p>兩個方法
   1. TSIG<br />
   2. 給 Slave 多個IP</p>
 

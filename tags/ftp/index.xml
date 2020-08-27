@@ -17,13 +17,7 @@
       <pubDate>Sat, 18 Apr 2020 16:28:10 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/sa-file-server-freebsd/</guid>
-      <description>File Server Overview:
-❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to
-❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed
-FTP Server Install pure-ftpd Install with pkg
-pkg install pure-ftpd  Or install with port
-port install pure-ftpd  記得要
-[x]UPLOADSCRIPT</description>
+      <description>File Server Overview: ❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to ❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed FTP Server</description>
     </item>
     
   </channel>

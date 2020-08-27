@@ -114,7 +114,7 @@ nis_client_flags=&quot;-s -m -S savpn.nctu.me,nis server&quot;
 
 <p>要注意的地方：<br />
 - passwd同username<br />
-- home directory要在<code>/net/home/&lt;username&gt;</code><br />
+- home directory要在<code>/net/home/&lt;username&gt;</code>
 - share: hosts, passwd, group, netgroup, ypservers</p>
 
 <h2 id="accounts-and-groups">Accounts and Groups&nbsp;<a class="anchor" href="#accounts-and-groups"><i class="small linkify icon"></i></a> </h2>
@@ -145,7 +145,7 @@ vipw
 <pre><code>+:*::
 </code></pre></li>
 
-<li><p>排優先順序<br />
+<li><p>排優先順序
 When an user with an identical name in both NIS and local, then query NIS first.<br />
 <code>/etc/nsswitch.conf</code></p>
 
@@ -264,7 +264,7 @@ autofs才會檢查那台server有無存在？能不能掛載？</p>
 
 <h1 id="nfs-server">NFS Server&nbsp;<a class="anchor" href="#nfs-server"><i class="small linkify icon"></i></a> </h1>
 
-<p>Exports<br />
+<p>Exports
 - /net/alpha (access as their own UID GID)<br />
 - /net/share (UID=user, GID=users)<br />
 - /net/admin (read-only)</p>
@@ -393,7 +393,7 @@ ftp             stream  *       *               *       5       24h
 #*              stream  tcp     *               =       =       =
 </code></pre>
 
-<p>被擋下來的log在<br />
+<p>被擋下來的log在
 <code>/var/log/auth.log</code></p>
 
 <p>寫一個<code>/usr/local/bin/badguy</code><br />

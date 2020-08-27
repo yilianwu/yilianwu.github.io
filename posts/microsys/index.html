@@ -99,21 +99,20 @@
 <h1 id="platform">Platform&nbsp;<a class="anchor" href="#platform"><i class="small linkify icon"></i></a> </h1>
 
 <ul>
-<li>Raspberry Pi<br /></li>
-<li><a href="https://aws.amazon.com/tw/">Amazon AWS</a><br /></li>
-<li><a href="https://cloud.google.com/">Google Cloud</a><br /></li>
-<li><a href="https://azure.microsoft.com/zh-tw/">Microsoft Azure</a><br /></li>
-<li><a href="https://tw.alibabacloud.com/">Alibaba</a><br /></li>
-<li>其他<br />
+<li>Raspberry Pi</li>
+<li><a href="https://aws.amazon.com/tw/">Amazon AWS</a></li>
+<li><a href="https://cloud.google.com/">Google Cloud</a></li>
+<li><a href="https://azure.microsoft.com/zh-tw/">Microsoft Azure</a></li>
+<li><a href="https://tw.alibabacloud.com/">Alibaba</a></li>
+<li>其他
 
 <ul>
-<li>嵌入式系統<br /></li>
-<li>LG WebOS<br /></li>
-<li>基地台<br /></li>
-<li>三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反向三角定位<br /></li>
-<li>Google Machine Learning<br /></li>
-<li><a href="https://www.tensorflow.org/">TensorFlow</a><br />
-<br /></li>
+<li>嵌入式系統</li>
+<li>LG WebOS</li>
+<li>基地台</li>
+<li>三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反向三角定位</li>
+<li>Google Machine Learning</li>
+<li><a href="https://www.tensorflow.org/">TensorFlow</a></li>
 </ul></li>
 </ul>
 
@@ -127,41 +126,41 @@
 
 <h3 id="登入console">登入Console&nbsp;<a class="anchor" href="#登入console"><i class="small linkify icon"></i></a> </h3>
 
-<p>服務&gt;運算&gt;EC2<br />
-選擇EC2<br />
+<p>服務&gt;運算&gt;EC2
+選擇EC2
 <img src="https://i.imgur.com/mN9FFoU.png" alt="Imgur" /></p>
 
 <h3 id="launch-instance">Launch Instance&nbsp;<a class="anchor" href="#launch-instance"><i class="small linkify icon"></i></a> </h3>
 
-<p>創立一個Instance<br />
+<p>創立一個Instance
 <img src="https://i.imgur.com/Sq4pDb9.png" alt="Imgur" /></p>
 
 <h4 id="step-1-選擇ami">Step 1: 選擇AMI&nbsp;<a class="anchor" href="#step-1-選擇ami"><i class="small linkify icon"></i></a> </h4>
 
-<p>請選擇Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-07ad4b1c3af1ea214<br />
+<p>請選擇Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-07ad4b1c3af1ea214
 <img src="https://i.imgur.com/tNGFH4f.png" alt="Imgur" /></p>
 
 <h4 id="step-2-choose-an-instance-type">Step 2: Choose an Instance Type&nbsp;<a class="anchor" href="#step-2-choose-an-instance-type"><i class="small linkify icon"></i></a> </h4>
 
-<p>選擇免費方案！<br />
+<p>選擇免費方案！
 <img src="https://i.imgur.com/j2QIAtX.png" alt="Imgur" /></p>
 
 <h4 id="step-3-review-and-launch">Step 3: Review and Launch&nbsp;<a class="anchor" href="#step-3-review-and-launch"><i class="small linkify icon"></i></a> </h4>
 
-<p>準備發佈，不用害怕<br />
+<p>準備發佈，不用害怕
 <img src="https://i.imgur.com/eedYvN5.png" alt="Imgur" /></p>
 
 <h4 id="step-4-launch再給他按下去">Step 4: Launch再給他按下去&nbsp;<a class="anchor" href="#step-4-launch再給他按下去"><i class="small linkify icon"></i></a> </h4>
 
-<p>檢查無誤就可以發布囉<br />
+<p>檢查無誤就可以發布囉
 <img src="https://i.imgur.com/ILABWJZ.png" alt="Imgur" /></p>
 
 <h4 id="step-5-創建key-pair">Step 5: 創建Key Pair&nbsp;<a class="anchor" href="#step-5-創建key-pair"><i class="small linkify icon"></i></a> </h4>
 
 <p>這個key很重要！！<br />
 沒有他你就沒辦法從你的電腦登入你在AWS的Ubuntu<br />
-<img src="https://i.imgur.com/75eUM0U.png" alt="Imgur" /><br />
-創建好按Download<br />
+<img src="https://i.imgur.com/75eUM0U.png" alt="Imgur" />
+創建好按Download
 <code>.pem</code>檔會存在你的下載資料夾 <code>~/Downloads</code></p>
 
 <h2 id="本機終端機的一些設定">本機終端機的一些設定&nbsp;<a class="anchor" href="#本機終端機的一些設定"><i class="small linkify icon"></i></a> </h2>
@@ -185,7 +184,7 @@
 </code></pre>
 
 <p>檢查一下：<br />
-若出現<code>-r</code>就代表成功了哦<br />
+若出現<code>-r</code>就代表成功了哦
 4.</p>
 
 <pre><code>cat 檔名.pem
@@ -210,33 +209,33 @@
 <p>ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com<br />
 是我的Public DNS (IPv4)</p>
 
-<p>可以從AWS Instance的這裡看到～<br />
-<img src="https://i.imgur.com/0BlGwIb.png" alt="Imgur" /><br />
+<p>可以從AWS Instance的這裡看到～
+<img src="https://i.imgur.com/0BlGwIb.png" alt="Imgur" />
 若出現綠色ubuntu@ip-xxx-xx-xx-xx<br />
-就代表成功登入ㄌ！<br />
+就代表成功登入ㄌ！
 <img src="https://i.imgur.com/wL5z1b7.png" alt="Imgur" /></p>
 
 <h3 id="ubuntu的一些設定">Ubuntu的一些設定&nbsp;<a class="anchor" href="#ubuntu的一些設定"><i class="small linkify icon"></i></a> </h3>
 
 <ol>
-<li>更新 apt-get 套件<br />
+<li>更新 apt-get 套件
 <code>
 sudo apt-get update
-</code><br /></li>
-<li>安裝好用的vim文字編輯器<br />
+</code></li>
+<li>安裝好用的vim文字編輯器
 <code>
 sudo apt-get install vim
-</code><br /></li>
+</code></li>
 
 <li><p>拷貝本機的公鑰<br />
 要把本機的公鑰加入ubuntu</p>
 
 <ul>
-<li>另開一個終端機視窗(本機) cmd+t<br /></li>
-<li>顯示你本機的公鑰：<br />
+<li>另開一個終端機視窗(本機) cmd+t</li>
+<li>顯示你本機的公鑰：
 <code>
 cat ~/.ssh/id_rsa.pub
-</code><br /></li>
+</code></li>
 
 <li><p>直接選取複製</p></li>
 
@@ -248,7 +247,7 @@ cmd+1</p></li>
 <pre><code>vim ~/.ssh/authorized_keys
 </code></pre></li>
 
-<li><p>按<code>i</code>插入字串進入編輯模式<br />
+<li><p>按<code>i</code>插入字串進入編輯模式
 直接貼上你剛剛複製好的本機公鑰</p></li>
 
 <li><p>按<code>esc</code>結束編輯模式</p></li>
@@ -260,24 +259,22 @@ cmd+1</p></li>
 <li>之後就都可以用<br />
 <code>
 ssh ubuntu@你的Public IP
-</code><br />
-登入Ubuntu<br />
-<br /></li>
+</code>
+登入Ubuntu<br /></li>
 </ol></li>
 </ol>
 
 <h3 id="新增客製的domain-name">新增客製的Domain Name&nbsp;<a class="anchor" href="#新增客製的domain-name"><i class="small linkify icon"></i></a> </h3>
 
 <ol>
-<li>註冊一個可以免費試用1年的Domain Name<br />
+<li>註冊一個可以免費試用1年的Domain Name
 <a href="https://my.freenom.com/">https://my.freenom.com/</a><br />
-<img src="https://i.imgur.com/IkaApUd.png" alt="Imgur" /><br /></li>
-<li>進到管理頁面<br />
-<img src="https://i.imgur.com/qxDAMIy.png" alt="Imgur" /><br /></li>
+<img src="https://i.imgur.com/IkaApUd.png" alt="Imgur" /></li>
+<li>進到管理頁面
+<img src="https://i.imgur.com/qxDAMIy.png" alt="Imgur" /></li>
 <li>再進到DNS管理頁面<br />
 Target就填上你的Public IP<br />
-<img src="https://i.imgur.com/SM13Ioq.png" alt="Imgur" /><br />
-<br /></li>
+<img src="https://i.imgur.com/SM13Ioq.png" alt="Imgur" /></li>
 </ol>
 
 <p>之後登入也可以在終端機下指令：</p>
@@ -288,7 +285,7 @@ Target就填上你的Public IP<br />
 <h3 id="安裝mosh-可以跳過此步驟">安裝Mosh(可以跳過此步驟)&nbsp;<a class="anchor" href="#安裝mosh-可以跳過此步驟"><i class="small linkify icon"></i></a> </h3>
 
 <p>如果覺得ubuntu跑很慢可以安裝<br />
-Mosh<br />
+Mosh
 <img src="https://i.imgur.com/htAaAeh.png" alt="Imgur" /></p>
 
 <p><img src="https://i.imgur.com/BxTznvR.png" alt="Imgur" /></p>
@@ -306,8 +303,8 @@ Mosh<br />
 </code></pre>
 
 <p>法一：<br />
-<img src="https://i.imgur.com/x333iYj.png" alt="Imgur" /><br />
-[ * ] LAMP server 用空白鍵選擇 再按Tab 選擇<OK><br />
+<img src="https://i.imgur.com/x333iYj.png" alt="Imgur" />
+[ * ] LAMP server 用空白鍵選擇 再按Tab 選擇<OK>
 <img src="https://i.imgur.com/pu4GTYO.png" alt="Imgur" /></p>
 
 <p>法二：<br />
@@ -327,15 +324,13 @@ Mosh<br />
 
 <ol>
 <li>選擇launch-wizard-4<br />
-<img src="https://i.imgur.com/Q8ksnqO.png" alt="Imgur" /><br /></li>
-<li>找到Inbound 編輯<br />
-<img src="https://i.imgur.com/ik7xjL3.png" alt="Imgur" /><br /></li>
+<img src="https://i.imgur.com/Q8ksnqO.png" alt="Imgur" /></li>
+<li>找到Inbound 編輯
+<img src="https://i.imgur.com/ik7xjL3.png" alt="Imgur" /></li>
 <li>新增HTTP、HTTPS與Custom UDP，如下：<br />
-<img src="https://i.imgur.com/tpvrpT5.png" alt="Imgur" /><br /></li>
-<li>輸入網址 搭拉！<br />
-<img src="https://i.imgur.com/TNrAgSJ.png" alt="Imgur" /><br />
-<br />
-<br /></li>
+<img src="https://i.imgur.com/tpvrpT5.png" alt="Imgur" /></li>
+<li>輸入網址 搭拉！
+<img src="https://i.imgur.com/TNrAgSJ.png" alt="Imgur" /></li>
 </ol>
 
 <h3 id="網頁的設置">網頁的設置&nbsp;<a class="anchor" href="#網頁的設置"><i class="small linkify icon"></i></a> </h3>
@@ -345,41 +340,40 @@ Mosh<br />
 <pre><code>cd /var/ //再按兩下tab
 </code></pre>
 
-<p><img src="https://i.imgur.com/Jk4JHtH.png" alt="Imgur" /><br />
+<p><img src="https://i.imgur.com/Jk4JHtH.png" alt="Imgur" />
 <code>/var/www/html/</code> 中的 <code>index.html</code> 就是網頁的html</p>
 
 <pre><code>ls -al
 </code></pre>
 
 <ol>
-<li>查看權限<br />
-<img src="https://i.imgur.com/mnVi3Bx.png" alt="Imgur" /><br />
-<img src="https://i.imgur.com/I2f7wjW.png" alt="Imgur" /><br />
-<img src="https://i.imgur.com/XRTkxnQ.png" alt="Imgur" /><br /></li>
-<li>新增權限給<code>/html</code>資料夾<br />
+<li>查看權限
+<img src="https://i.imgur.com/mnVi3Bx.png" alt="Imgur" />
+<img src="https://i.imgur.com/I2f7wjW.png" alt="Imgur" />
+<img src="https://i.imgur.com/XRTkxnQ.png" alt="Imgur" /></li>
+<li>新增權限給<code>/html</code>資料夾
 <code>
 sudo chmod 777 html/
-</code><br />
-<img src="https://i.imgur.com/NDqKEAS.png" alt="Imgur" /><br />
+</code>
+<img src="https://i.imgur.com/NDqKEAS.png" alt="Imgur" />
 <code>
 sudo chmod -R 777 html/
-</code><br />
-<img src="https://i.imgur.com/E9ti5Ly.png" alt="Imgur" /><br />
-<br /></li>
+</code>
+<img src="https://i.imgur.com/E9ti5Ly.png" alt="Imgur" /></li>
 </ol>
 
 <h4 id="開啟sublime-text">開啟Sublime Text&nbsp;<a class="anchor" href="#開啟sublime-text"><i class="small linkify icon"></i></a> </h4>
 
-<p><img src="https://i.imgur.com/jtJXz8J.png" alt="thumbnail" /><br />
+<p><img src="https://i.imgur.com/jtJXz8J.png" alt="thumbnail" />
 1. cmd + shift + P 輸入install 選擇<br />
-Package Control: Install Package<br />
-<img src="https://i.imgur.com/xczrWHu.png" alt="Imgur" /><br />
-2. 安裝sftp<br />
-<img src="https://i.imgur.com/gcCeFxb.png" alt="Imgur" /><br />
-3. Browse Server<br />
-<img src="https://i.imgur.com/aKX2LCQ.png" alt="Imgur" /><br />
-4. 新增Server<br />
-<img src="https://i.imgur.com/egHg2iQ.png" alt="Imgur" /><br />
+Package Control: Install Package
+<img src="https://i.imgur.com/xczrWHu.png" alt="Imgur" />
+2. 安裝sftp
+<img src="https://i.imgur.com/gcCeFxb.png" alt="Imgur" />
+3. Browse Server
+<img src="https://i.imgur.com/aKX2LCQ.png" alt="Imgur" />
+4. 新增Server
+<img src="https://i.imgur.com/egHg2iQ.png" alt="Imgur" />
 5. 修改sftp訊息</p>
 
 <pre><code>&quot;host&quot;: &quot;yourwebsite.domain&quot;
@@ -387,18 +381,18 @@ Package Control: Install Package<br />
 &quot;remote_path&quot;: &quot;/var/www/html/&quot;
 </code></pre>
 
-<p><img src="https://i.imgur.com/pVUNSqR.png" alt="Imgur" /><br />
-<img src="https://i.imgur.com/x6rDKma.png" alt="Imgur" /><br />
-6. 另存新檔<br />
-<img src="https://i.imgur.com/IAZtPy8.png" alt="Imgur" /><br />
-7. 選擇你的sftp<br />
-<img src="https://i.imgur.com/gXbZ9NC.png" alt="Imgur" /><br />
-8. 選擇index.html<br />
-<img src="https://i.imgur.com/yKANTgd.png" alt="Imgur" /><br />
-9. 編輯<br />
-<img src="https://i.imgur.com/6KWCYUP.png" alt="Imgur" /><br />
-10. Save 上傳<br />
-<img src="https://i.imgur.com/SLQg46L.png" alt="Imgur" /><br />
+<p><img src="https://i.imgur.com/pVUNSqR.png" alt="Imgur" />
+<img src="https://i.imgur.com/x6rDKma.png" alt="Imgur" />
+6. 另存新檔
+<img src="https://i.imgur.com/IAZtPy8.png" alt="Imgur" />
+7. 選擇你的sftp
+<img src="https://i.imgur.com/gXbZ9NC.png" alt="Imgur" />
+8. 選擇index.html
+<img src="https://i.imgur.com/yKANTgd.png" alt="Imgur" />
+9. 編輯
+<img src="https://i.imgur.com/6KWCYUP.png" alt="Imgur" />
+10. Save 上傳
+<img src="https://i.imgur.com/SLQg46L.png" alt="Imgur" />
 <img src="https://i.imgur.com/BFhfk3z.png" alt="Imgur" /></p>
 
 <h3 id="查看網站的連線狀況">查看網站的連線狀況&nbsp;<a class="anchor" href="#查看網站的連線狀況"><i class="small linkify icon"></i></a> </h3>

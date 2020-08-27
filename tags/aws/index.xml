@@ -17,19 +17,7 @@
       <pubDate>Wed, 19 Jun 2019 11:22:31 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/vpn-reverse-tunnel/</guid>
-      <description>SSH Reverse Tunnel 俗稱的VPN翻牆原理
-示意圖：
-原本我的IP在台灣
-現在我想把它改成我在aws的日本主機～～
-https://www.ez2o.com/App/Net/IP
-可以到這查看ip位置
- 登入aws
-  ssh -p 22 -D 8080 ubuntu@yilianwu.ga   下載proxy 擴充程式
- SwitchyOmega設定
- 選擇你的模式
- 重整
-媽！ 我在日本了！
-  更改網頁資訊 新增權限給ubuntu</description>
+      <description>SSH Reverse Tunnel 俗稱的VPN翻牆原理 示意圖： 原本我的IP在台灣 現在我想把它改成我在aws的日本主機～～ https://www.ez2o.com/App/Net/IP 可以到</description>
     </item>
     
     <item>
@@ -38,25 +26,7 @@ https://www.ez2o.com/App/Net/IP
       <pubDate>Tue, 19 Feb 2019 15:45:54 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/microsys/</guid>
-      <description>Platform  Raspberry Pi
- Amazon AWS
- Google Cloud
- Microsoft Azure
- Alibaba
- 其他
- 嵌入式系統
- LG WebOS
- 基地台
- 三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反向三角定位
- Google Machine Learning
- TensorFlow
-   AWS https://aws.amazon.com/
-註冊一個帳號 登入Console 服務&amp;gt;運算&amp;gt;EC2
-選擇EC2
-Launch Instance 創立一個Instance
-Step 1: 選擇AMI 請選擇Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-07ad4b1c3af1ea214
-Step 2: Choose an Instance Type 選擇免費方案！
-Step 3: Review and Launch 準備發佈，不用害怕</description>
+      <description>Platform Raspberry Pi Amazon AWS Google Cloud Microsoft Azure Alibaba 其他 嵌入式系統 LG WebOS 基地台 三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反</description>
     </item>
     
   </channel>

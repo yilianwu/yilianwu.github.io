@@ -395,9 +395,8 @@ sender_canonical_maps = hash:/etc/postfix/sender-canonical
 
 <ul>
 <li>Only send emails with authenticated username@<br /></li>
-<li>Avoid to fake other users on envelop from<br /></li>
-<li>No Open Relay<br />
-<br /></li>
+<li>Avoid to fake other users on envelop from</li>
+<li>No Open Relay<br /></li>
 </ul>
 
 <pre><code>smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated reject_unauth_destination
@@ -455,7 +454,7 @@ yum install rspamd
 <pre><code>sudo rspamadm configwizard
 </code></pre>
 
-<p><img src="https://i.imgur.com/dHwbNZC.png" alt="Imgur" /><br />
+<p><img src="https://i.imgur.com/dHwbNZC.png" alt="Imgur" />
 看到greylist等等的功能都還是disable -&gt; 要先裝、啟動redis</p>
 
 <h3 id="redis">redis&nbsp;<a class="anchor" href="#redis"><i class="small linkify icon"></i></a> </h3>
@@ -553,7 +552,7 @@ sudo systemctl enable clamd@scan
 }
 </code></pre>
 
-<p>Reject mails whose subject contains keyword &laquo;肺炎&raquo; or &laquo;wuhan&raquo;</p>
+<p>Reject mails whose subject contains keyword &ldquo;肺炎&rdquo; or &ldquo;wuhan&rdquo;</p>
 
 <pre><code>sudo vim /etc/rspamd/local.d/regexp.conf
 </code></pre>
@@ -586,7 +585,7 @@ sudo systemctl enable clamd@scan
 <pre><code>sudo vim /etc/postfix/main.cf
 </code></pre>
 
-<p>SMTP milter加上<br />
+<p>SMTP milter加上
 rspamd的port 11332</p>
 
 <pre><code>smtpd_milters = inet:localhost:8891, inet:localhost:11332

@@ -453,12 +453,12 @@ SSLCertificateKeyFile /etc/apache2/ssl/apache.key
 <h2 id="create-users">Create Users&nbsp;<a class="anchor" href="#create-users"><i class="small linkify icon"></i></a> </h2>
 
 <p>創ou=People<br />
-<img src="https://i.imgur.com/9QsYgyN.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/9QsYgyN.png" alt="Imgur" />
 <img src="https://i.imgur.com/jaZ0tYS.png" alt="Imgur" /></p>
 
 <p>創建ou=People下面的User之前，要先創group，名稱隨便<br />
 ou=Group<br />
-<img src="https://i.imgur.com/9QsYgyN.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/9QsYgyN.png" alt="Imgur" />
 <img src="https://i.imgur.com/GHFrR8c.png" alt="Imgur" /></p>
 
 <p>ou=Group下面再創一個posixGroup<br />
@@ -466,7 +466,7 @@ cn=ldap<br />
 <img src="https://i.imgur.com/WkLpT3H.png" alt="Imgur" /></p>
 
 <p>就可以在ou=People下面創建Users了<br />
-<img src="https://i.imgur.com/nmEV4Jr.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/nmEV4Jr.png" alt="Imgur" />
 <img src="https://i.imgur.com/0GEUJb8.png" alt="Imgur" /></p>
 
 <h2 id="openldap-configuration-layout">OpenLDAP Configuration Layout&nbsp;<a class="anchor" href="#openldap-configuration-layout"><i class="small linkify icon"></i></a> </h2>
@@ -614,15 +614,15 @@ olcObjectClasses: ( 1.1.2.2.2
 
 <h4 id="ludou-1">ludou&nbsp;<a class="anchor" href="#ludou-1"><i class="small linkify icon"></i></a> </h4>
 
-<p><img src="https://i.imgur.com/TTWThjn.png" alt="Imgur" /><br />
+<p><img src="https://i.imgur.com/TTWThjn.png" alt="Imgur" />
 100<br />
 <img src="https://i.imgur.com/Qwxvlpy.png" alt="Imgur" /></p>
 
 <h4 id="publickey-1">publicKey&nbsp;<a class="anchor" href="#publickey-1"><i class="small linkify icon"></i></a> </h4>
 
-<p><img src="https://i.imgur.com/xOdc1Hp.png" alt="Imgur" /><br />
+<p><img src="https://i.imgur.com/xOdc1Hp.png" alt="Imgur" />
 Add new attribute<br />
-<img src="https://i.imgur.com/uKa0Nj4.png" alt="Imgur" /><br />
+<img src="https://i.imgur.com/uKa0Nj4.png" alt="Imgur" />
 <img src="https://i.imgur.com/0BiqUZH.png" alt="Imgur" /></p>
 
 <h1 id="starttls">STARTTLS&nbsp;<a class="anchor" href="#starttls"><i class="small linkify icon"></i></a> </h1>
@@ -773,7 +773,7 @@ olcTLSCertificateKeyFile: /etc/ssl/private/ldap_server.key
 <pre><code>sudo update-ca-certificates
 </code></pre>
 
-<p><a href="https://www.server-world.info/en/note?os=Ubuntu_18.04&amp;p=openldap&amp;f=3">https://www.server-world.info/en/note?os=Ubuntu_18.04&amp;p=openldap&amp;f=3</a><br />
+<p><a href="https://www.server-world.info/en/note?os=Ubuntu_18.04&amp;p=openldap&amp;f=3">https://www.server-world.info/en/note?os=Ubuntu_18.04&amp;p=openldap&amp;f=3</a>
 <a href="https://www.tecmint.com/configure-ldap-client-to-connect-external-authentication/">https://www.tecmint.com/configure-ldap-client-to-connect-external-authentication/</a></p>
 
 <pre><code>sudo apt install -y libnss-ldapd ldap-utils nslcd
@@ -856,11 +856,11 @@ sudo systemctl enable nslcd
 <ul>
 <li><p>If some users’ ludoucredit &gt; 0, they can login via SSH.</p></li>
 
-<li><p>If some users’ ludoucredit == 0, they can’t login via SSH<br />
-with TA’s private key, but their account still exist on the<br />
+<li><p>If some users’ ludoucredit == 0, they can’t login via SSH
+with TA’s private key, but their account still exist on the
 system.</p></li>
 
-<li><p>If some users’ ludoucredit &lt; 0, they can’t login via SSH<br />
+<li><p>If some users’ ludoucredit &lt; 0, they can’t login via SSH
 and their account will be disappeared on the LDAP master and Workstation. (i.e. id: user: no such user)</p></li>
 </ul>
 
@@ -997,10 +997,10 @@ make
 
 <h2 id="configure-module-totp">Configure Module TOTP&nbsp;<a class="anchor" href="#configure-module-totp"><i class="small linkify icon"></i></a> </h2>
 
-<p>創user cn=totp,ou=People<br />
+<p>創user cn=totp,ou=People
 passwd先空白</p>
 
-<p>userPassword: &laquo;{TOTP1}<code>printf ${WG_KEY} | base32</code>&laquo;</p>
+<p>userPassword: &ldquo;{TOTP1}<code>printf ${WG_KEY} | base32</code>&ldquo;</p>
 
 <pre><code>echo -n 'UBZQOTHSmqy4Tn+6kuMGfKY00GwG+24MBIKiIqKzkW4=' | base32
 </code></pre>
@@ -1066,19 +1066,19 @@ snmp &ndash;&gt; client</p>
 agentAddress udp:161,udp6:[::1]:161
 </code></pre>
 
-<p>Community &laquo;public&raquo;</p>
+<p>Community &ldquo;public&rdquo;</p>
 
 <pre><code>rocommunity public 10.113.0.0/16
 rocommunity public 127.0.0.0/8
 </code></pre>
 
-<p>Community &laquo;private&raquo;</p>
+<p>Community &ldquo;private&rdquo;</p>
 
 <pre><code>rwcommunity private 10.113.25.0/24
 rwcommunity private 127.0.0.0/8
 </code></pre>
 
-<p>Write an extend named &laquo;servicecheck&raquo;<br />
+<p>Write an extend named &ldquo;servicecheck&rdquo;<br />
 - Check the connection to tcp:10.113.25.129:5566<br />
 - If connected, nsExtendResult should be 0<br />
 - If not connected, nsExtendResult should not be 0</p>
