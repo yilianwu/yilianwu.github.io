@@ -19,6 +19,13 @@ body {
 ul{
     padding-inline-start: 20px;
 }
+
+.anchor { font-size: 100%;  color:silver;}
+.post-content h2 a, h3 a, h4 a { float:left; visibility:hidden}
+.post-content h1 a {float:left; visibility:visible; border-bottom: none;}
+.post-content h1{
+    border-bottom: 0.1px solid #b7ccf1;
+}
 .post-toc {
     position: fixed;
     overflow-y: scroll;
@@ -168,6 +175,7 @@ line-height: 1em;
     margin-left: .875rem;
     margin-top: auto;
     padding-left:.2rem;
+    visibility: visible;
 }
     
 .breadcrumb h4 {
@@ -208,7 +216,7 @@ color: var(--color-dark);
 
 .white {
 position: relative;
-background: var(--color-light);
+background: #f9f9f9db;
 color: var(--color-dark);
 }
 
@@ -306,8 +314,7 @@ text-align:right;
 .paperbg{
 padding-top:2em;
 padding-bottom:2em;
-padding-left: 20px;
-padding-right: .5em;
+padding: 20px;
 background: #f9f9f9db;
 border-radius:5px;
 }
@@ -612,3 +619,4 @@ img.aboutpic{
   .MathJax_Display {
       overflow-x: scroll;
   }
+

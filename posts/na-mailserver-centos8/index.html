@@ -109,7 +109,7 @@
 IP Address           : 10.113.25.25/24
 </code></pre>
 
-<h1 id="install-postfix">Install Postfix&nbsp;<a class="anchor" href="#install-postfix"><i class="small linkify icon"></i></a> </h1>
+<h1 id="install-postfix">Install Postfix&nbsp;<a href="#install-postfix" class="anchor icon-link">§ </a> </h1>
 
 <pre><code>sudo dnf install postfix
 </code></pre>
@@ -136,7 +136,7 @@ mynetworks = 10.113.25.0/24, 127.0.0.0/8
 sudo systemctl restart postfix
 </code></pre>
 
-<h1 id="sasl">SASL&nbsp;<a class="anchor" href="#sasl"><i class="small linkify icon"></i></a> </h1>
+<h1 id="sasl">SASL&nbsp;<a href="#sasl" class="anchor icon-link">§ </a> </h1>
 
 <p>假若你有流動的用戶想在總部以外的地方運用郵件伺服器，我們需要一個機制來驗證他們是獲信任的用戶，好讓他們能透過郵件伺服器發放電郵。</p>
 
@@ -153,7 +153,7 @@ smtpd_sasl_path = private/auth
 smtpd_sasl_security_options = noanonymous
 </code></pre>
 
-<h2 id="install-dovecot">Install Dovecot&nbsp;<a class="anchor" href="#install-dovecot"><i class="small linkify icon"></i></a> </h2>
+<h2 id="install-dovecot">Install Dovecot&nbsp;<a href="#install-dovecot" class="anchor icon-link">§ </a> </h2>
 
 <pre><code>sudo dnf install dovecot
 </code></pre>
@@ -193,7 +193,7 @@ mode = 0666
 ssl_key = &lt;/etc/pki/dovecot/private/dovecot.pem
 </code></pre>
 
-<h1 id="dns-record">DNS Record&nbsp;<a class="anchor" href="#dns-record"><i class="small linkify icon"></i></a> </h1>
+<h1 id="dns-record">DNS Record&nbsp;<a href="#dns-record" class="anchor icon-link">§ </a> </h1>
 
 <pre><code>/var/named/named.0846101.nasa
 /var/named/named.0846101.nasa.one
@@ -209,7 +209,7 @@ mail            IN      A       10.113.25.25
 
 <p><img src="https://i.imgur.com/TAHKNLY.png" alt="Imgur" /></p>
 
-<h2 id="spf">SPF&nbsp;<a class="anchor" href="#spf"><i class="small linkify icon"></i></a> </h2>
+<h2 id="spf">SPF&nbsp;<a href="#spf" class="anchor icon-link">§ </a> </h2>
 
 <p>Sender Policy Framework<br />
 SPF 用來規範在選定的郵件發送服務器位址，可以用來發送寄件人的網域郵件。這樣機制可以避免垃圾信濫發業者，偽裝網域發送假冒郵件。SPF 的設定裡面，列出明確許可的郵件發信機網域名稱，郵件收信服務器透過檢查發信人網域的 SPF，就知道這封電子郵件是否來自被允許的發信機位址。</p>
@@ -219,12 +219,12 @@ SPF 用來規範在選定的郵件發送服務器位址，可以用來發送寄�
 
 <p>-all 表示除了有條列出來的主機允許其他都拒絕</p>
 
-<h2 id="dkim">DKIM&nbsp;<a class="anchor" href="#dkim"><i class="small linkify icon"></i></a> </h2>
+<h2 id="dkim">DKIM&nbsp;<a href="#dkim" class="anchor icon-link">§ </a> </h2>
 
 <p>DomainKeys Identified Mail<br />
 DKIM 是一種電腦數位簽章，採用公鑰與私鑰這種加密驗證法進行。在發送郵件時由發信服務器對郵件以私鑰進行簽章，而在郵件接收服務器上，會透過 DNS 到發信者的網域查詢 DKIM 紀錄，擷取上面記載的公鑰資料，然後對這封郵件做簽章解碼，如果公鑰與私鑰能配對成功，代表郵件確實為原始發信機所發出。</p>
 
-<h3 id="install-opendkim">Install OpenDKIM&nbsp;<a class="anchor" href="#install-opendkim"><i class="small linkify icon"></i></a> </h3>
+<h3 id="install-opendkim">Install OpenDKIM&nbsp;<a href="#install-opendkim" class="anchor icon-link">§ </a> </h3>
 
 <pre><code>sudo dnf install epel-release
 sudo dnf install opendkim
@@ -252,7 +252,7 @@ Selector        default
 KeyFile /etc/opendkim/keys/default.private
 </code></pre>
 
-<h3 id="generate-keys">Generate Keys&nbsp;<a class="anchor" href="#generate-keys"><i class="small linkify icon"></i></a> </h3>
+<h3 id="generate-keys">Generate Keys&nbsp;<a href="#generate-keys" class="anchor icon-link">§ </a> </h3>
 
 <p>要先安裝</p>
 
@@ -283,14 +283,14 @@ chown opendkim:opendkim *
 	  &quot;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCmgi999nm4zsmTgvKIWL/RexLSfTtadHkkAL+k5ng3t6jSPHv00ctMKBr+ateRjdGAjnS6V4K/91dKEeG4+Duqozii4uaQnFnkX2KoNn6l05xwrx8clyz8HQaF/MpPvCYLJekjwM6FCJxdAffiJ0FUyfkC0YkTDPSMrlV0F4c6fwIDAQAB&quot; )  ; ----- DKIM key default for 0846101.nasa
 </code></pre>
 
-<h3 id="nsec3">NSEC3&nbsp;<a class="anchor" href="#nsec3"><i class="small linkify icon"></i></a> </h3>
+<h3 id="nsec3">NSEC3&nbsp;<a href="#nsec3" class="anchor icon-link">§ </a> </h3>
 
 <p>改好zone files要再sign一次</p>
 
 <pre><code>sudo dnssec-signzone -3 55844b7f -H 100 -u -o 0846101.nasa -t -k /etc/named/keys/K0846101.nasa.+008+29014.key /var/named/{zone_files_name} /etc/named/keys/K0846101.nasa.+008+00945.key
 </code></pre>
 
-<h3 id="在postfix設定">在Postfix設定&nbsp;<a class="anchor" href="#在postfix設定"><i class="small linkify icon"></i></a> </h3>
+<h3 id="在postfix設定">在Postfix設定&nbsp;<a href="#在postfix設定" class="anchor icon-link">§ </a> </h3>
 
 <pre><code>vim /etc/postfix/main.cf
 </code></pre>
@@ -302,7 +302,7 @@ non_smtpd_milters = $smtpd_milters
 milter_default_action = accept
 </code></pre>
 
-<h2 id="dmarc">DMARC&nbsp;<a class="anchor" href="#dmarc"><i class="small linkify icon"></i></a> </h2>
+<h2 id="dmarc">DMARC&nbsp;<a href="#dmarc" class="anchor icon-link">§ </a> </h2>
 
 <p>用來讓發信端網域通知收件端郵件服務器，當遇到 SPF 與 DKIM 的設定檢查不過時，進行的處理方式。最知名的案例就是 Yahoo 在2014年，宣布 DMARC 設為「拒絕」，也就是說所有不是從 Yahoo 郵件服務器發出的郵件，寄信人都不能用 Yahoo 郵件地址。</p>
 
@@ -315,7 +315,7 @@ milter_default_action = accept
 v 通訊協定版本<br />
 p 定義您的網域對可疑郵件的處理方式： none (無)：不對郵件採取任何處置，僅將可疑郵件記錄於每日報告中。 quarantine (隔離)：將郵件標示為垃圾郵件，並移至收件者的 Gmail 垃圾郵件資料夾中。收件者可以在 Gmail 中查看自己的垃圾郵件。 reject (拒絕)：要求收件伺服器拒絕郵件。在這種情況下，收件伺服器應將退回的郵件傳送至寄件伺服器。</p>
 
-<h1 id="create-users">Create Users&nbsp;<a class="anchor" href="#create-users"><i class="small linkify icon"></i></a> </h1>
+<h1 id="create-users">Create Users&nbsp;<a href="#create-users" class="anchor icon-link">§ </a> </h1>
 
 <p>Create ta</p>
 
@@ -333,7 +333,7 @@ p 定義您的網域對可疑郵件的處理方式： none (無)：不對郵件�
 passwd tu
 </code></pre>
 
-<h2 id="virtual-alias">Virtual Alias&nbsp;<a class="anchor" href="#virtual-alias"><i class="small linkify icon"></i></a> </h2>
+<h2 id="virtual-alias">Virtual Alias&nbsp;<a href="#virtual-alias" class="anchor icon-link">§ </a> </h2>
 
 <pre><code>sudo vim /etc/postfix/main.cf
 </code></pre>
@@ -367,7 +367,7 @@ e.g. i-am-a|TA@ send to TA@</p>
 <pre><code>sudo postmap /etc/postfix/virtual.regexp
 </code></pre>
 
-<h2 id="rewrite-sender">Rewrite Sender&nbsp;<a class="anchor" href="#rewrite-sender"><i class="small linkify icon"></i></a> </h2>
+<h2 id="rewrite-sender">Rewrite Sender&nbsp;<a href="#rewrite-sender" class="anchor icon-link">§ </a> </h2>
 
 <pre><code>sudo vim /etc/postfix/main.cf
 </code></pre>
@@ -391,7 +391,7 @@ sender_canonical_maps = hash:/etc/postfix/sender-canonical
 <pre><code>sudo postmap /etc/postfix/sender-canonical
 </code></pre>
 
-<h2 id="user-authentication-on-imap-smtp">User Authentication on IMAP/SMTP&nbsp;<a class="anchor" href="#user-authentication-on-imap-smtp"><i class="small linkify icon"></i></a> </h2>
+<h2 id="user-authentication-on-imap-smtp">User Authentication on IMAP/SMTP&nbsp;<a href="#user-authentication-on-imap-smtp" class="anchor icon-link">§ </a> </h2>
 
 <ul>
 <li>Only send emails with authenticated username@<br /></li>
@@ -414,7 +414,7 @@ smtpd_sender_restrictions = reject_non_fqdn_sender reject_sender_login_mismatch
 <pre><code>sudo postmap /etc/postfix/login-maps
 </code></pre>
 
-<h1 id="firewall">Firewall&nbsp;<a class="anchor" href="#firewall"><i class="small linkify icon"></i></a> </h1>
+<h1 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor icon-link">§ </a> </h1>
 
 <p>Turn off firewalld on Mail Server</p>
 
@@ -431,12 +431,12 @@ sudo systemctl disable firewalld
 -A FORWARD -p tcp --dport 143 -j ACCEPT
 </code></pre>
 
-<h1 id="rspamd">Rspamd&nbsp;<a class="anchor" href="#rspamd"><i class="small linkify icon"></i></a> </h1>
+<h1 id="rspamd">Rspamd&nbsp;<a href="#rspamd" class="anchor icon-link">§ </a> </h1>
 
 <p>Greylist<br />
 DMARC</p>
 
-<h2 id="install-rspamd">Install Rspamd&nbsp;<a class="anchor" href="#install-rspamd"><i class="small linkify icon"></i></a> </h2>
+<h2 id="install-rspamd">Install Rspamd&nbsp;<a href="#install-rspamd" class="anchor icon-link">§ </a> </h2>
 
 <p>安裝要先切換為root</p>
 
@@ -449,7 +449,7 @@ yum update
 yum install rspamd
 </code></pre>
 
-<h2 id="啟動rspamd設定精靈">啟動rspamd設定精靈&nbsp;<a class="anchor" href="#啟動rspamd設定精靈"><i class="small linkify icon"></i></a> </h2>
+<h2 id="啟動rspamd設定精靈">啟動rspamd設定精靈&nbsp;<a href="#啟動rspamd設定精靈" class="anchor icon-link">§ </a> </h2>
 
 <pre><code>sudo rspamadm configwizard
 </code></pre>
@@ -457,7 +457,7 @@ yum install rspamd
 <p><img src="https://i.imgur.com/dHwbNZC.png" alt="Imgur" />
 看到greylist等等的功能都還是disable -&gt; 要先裝、啟動redis</p>
 
-<h3 id="redis">redis&nbsp;<a class="anchor" href="#redis"><i class="small linkify icon"></i></a> </h3>
+<h3 id="redis">redis&nbsp;<a href="#redis" class="anchor icon-link">§ </a> </h3>
 
 <p>Install redis</p>
 
@@ -472,7 +472,7 @@ sudo systemctl enable redis
 
 <p><img src="https://i.imgur.com/4ejsvrf.png" alt="Imgur" /></p>
 
-<h2 id="greylist">Greylist&nbsp;<a class="anchor" href="#greylist"><i class="small linkify icon"></i></a> </h2>
+<h2 id="greylist">Greylist&nbsp;<a href="#greylist" class="anchor icon-link">§ </a> </h2>
 
 <p>Greylist Settings</p>
 
@@ -510,7 +510,7 @@ subject = &quot;*** SPAM *** %s&quot;;
 enable_test_patterns = true;
 </code></pre>
 
-<h2 id="clamav">Clamav&nbsp;<a class="anchor" href="#clamav"><i class="small linkify icon"></i></a> </h2>
+<h2 id="clamav">Clamav&nbsp;<a href="#clamav" class="anchor icon-link">§ </a> </h2>
 
 <p>掃毒軟體</p>
 
@@ -580,7 +580,7 @@ sudo systemctl enable clamd@scan
 <pre><code>sudo systemctl restart rspamd
 </code></pre>
 
-<h2 id="rspamd-integrates-with-postfix">Rspamd integrates with Postfix&nbsp;<a class="anchor" href="#rspamd-integrates-with-postfix"><i class="small linkify icon"></i></a> </h2>
+<h2 id="rspamd-integrates-with-postfix">Rspamd integrates with Postfix&nbsp;<a href="#rspamd-integrates-with-postfix" class="anchor icon-link">§ </a> </h2>
 
 <pre><code>sudo vim /etc/postfix/main.cf
 </code></pre>
@@ -591,7 +591,7 @@ rspamd的port 11332</p>
 <pre><code>smtpd_milters = inet:localhost:8891, inet:localhost:11332
 </code></pre>
 
-<h2 id="rspamd-milter-support">Rspamd Milter support&nbsp;<a class="anchor" href="#rspamd-milter-support"><i class="small linkify icon"></i></a> </h2>
+<h2 id="rspamd-milter-support">Rspamd Milter support&nbsp;<a href="#rspamd-milter-support" class="anchor icon-link">§ </a> </h2>
 
 <p>打開Rspamd proxy worker的self-scan mode</p>
 
@@ -603,7 +603,7 @@ rspamd的port 11332</p>
 }
 </code></pre>
 
-<h1 id="spf-1">SPF&nbsp;<a class="anchor" href="#spf-1"><i class="small linkify icon"></i></a> </h1>
+<h1 id="spf-1">SPF&nbsp;<a href="#spf-1" class="anchor icon-link">§ </a> </h1>
 
 <p>Configuring SPF Policy Agent</p>
 
@@ -632,7 +632,7 @@ rspamd的port 11332</p>
 policyd-spf_time_limit = 3600
 </code></pre>
 
-<h1 id="null-user-check">Null User check&nbsp;<a class="anchor" href="#null-user-check"><i class="small linkify icon"></i></a> </h1>
+<h1 id="null-user-check">Null User check&nbsp;<a href="#null-user-check" class="anchor icon-link">§ </a> </h1>
 
 <pre><code>sudo vim /etc/postfix/main.cf
 </code></pre>
@@ -652,9 +652,9 @@ policyd-spf_time_limit = 3600
 <pre><code>sudo systemctl restart postfix
 </code></pre>
 
-<h1 id="debug">Debug&nbsp;<a class="anchor" href="#debug"><i class="small linkify icon"></i></a> </h1>
+<h1 id="debug">Debug&nbsp;<a href="#debug" class="anchor icon-link">§ </a> </h1>
 
-<h2 id="greylist沒反應">greylist沒反應&nbsp;<a class="anchor" href="#greylist沒反應"><i class="small linkify icon"></i></a> </h2>
+<h2 id="greylist沒反應">greylist沒反應&nbsp;<a href="#greylist沒反應" class="anchor icon-link">§ </a> </h2>
 
 <p>讓greylist開log 開debug</p>
 
@@ -680,7 +680,7 @@ policyd-spf_time_limit = 3600
 read_servers = &quot;127.0.0.1&quot;;
 </code></pre>
 
-<h2 id="filter-virus-failed">Filter: Virus FAILED&nbsp;<a class="anchor" href="#filter-virus-failed"><i class="small linkify icon"></i></a> </h2>
+<h2 id="filter-virus-failed">Filter: Virus FAILED&nbsp;<a href="#filter-virus-failed" class="anchor icon-link">§ </a> </h2>
 
 <p>看clamav的檔案權限</p>
 
@@ -710,7 +710,7 @@ srw-rw-rw-.  1 clamscan clamscan     0 Jun 10 18:42 clamd.sock
 <pre><code>sudo systemctl restart rspamd
 </code></pre>
 
-<h2 id="dmarc-1">DMARC&nbsp;<a class="anchor" href="#dmarc-1"><i class="small linkify icon"></i></a> </h2>
+<h2 id="dmarc-1">DMARC&nbsp;<a href="#dmarc-1" class="anchor icon-link">§ </a> </h2>
 
 <p>DMARC: Check policy 會寄送郵件至伺服器的郵件若無法通過 DMARC 時是否會正確的拒絕（550 5.7.1）</p>
 

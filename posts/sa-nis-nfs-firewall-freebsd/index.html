@@ -85,9 +85,9 @@
                 <section class="post-content">
                 
 
-<h1 id="nis-client">NIS Client&nbsp;<a class="anchor" href="#nis-client"><i class="small linkify icon"></i></a> </h1>
+<h1 id="nis-client">NIS Client&nbsp;<a href="#nis-client" class="anchor icon-link">§ </a> </h1>
 
-<h2 id="configurations-in-rc-conf">Configurations in <code>rc.conf</code>&nbsp;<a class="anchor" href="#configurations-in-rc-conf"><i class="small linkify icon"></i></a> </h2>
+<h2 id="configurations-in-rc-conf">Configurations in <code>rc.conf</code>&nbsp;<a href="#configurations-in-rc-conf" class="anchor icon-link">§ </a> </h2>
 
 <pre><code>nisdomainname=&quot;savpn.nctu.me&quot;
 # NIS domain name ≠ DNS domain name
@@ -96,7 +96,7 @@ nis_client_enable=&quot;YES&quot;
 nis_client_flags=&quot;-s -m -S savpn.nctu.me,nis server&quot;
 </code></pre>
 
-<h2 id="maps-between-ip-and-hostname">Maps between IP and hostname&nbsp;<a class="anchor" href="#maps-between-ip-and-hostname"><i class="small linkify icon"></i></a> </h2>
+<h2 id="maps-between-ip-and-hostname">Maps between IP and hostname&nbsp;<a href="#maps-between-ip-and-hostname" class="anchor icon-link">§ </a> </h2>
 
 <p>Configure in <code>/etc/hosts</code></p>
 
@@ -105,7 +105,7 @@ nis_client_flags=&quot;-s -m -S savpn.nctu.me,nis server&quot;
 # 連wg vpn
 </code></pre>
 
-<h2 id="nis-users">NIS Users&nbsp;<a class="anchor" href="#nis-users"><i class="small linkify icon"></i></a> </h2>
+<h2 id="nis-users">NIS Users&nbsp;<a href="#nis-users" class="anchor icon-link">§ </a> </h2>
 
 <p>在NIS Server(savpn.nctu.me)中有三個users<br />
 - nisuser1<br />
@@ -117,7 +117,7 @@ nis_client_flags=&quot;-s -m -S savpn.nctu.me,nis server&quot;
 - home directory要在<code>/net/home/&lt;username&gt;</code>
 - share: hosts, passwd, group, netgroup, ypservers</p>
 
-<h2 id="accounts-and-groups">Accounts and Groups&nbsp;<a class="anchor" href="#accounts-and-groups"><i class="small linkify icon"></i></a> </h2>
+<h2 id="accounts-and-groups">Accounts and Groups&nbsp;<a href="#accounts-and-groups" class="anchor icon-link">§ </a> </h2>
 
 <p>NIS user can login to your server<br />
 1. User account information</p>
@@ -155,7 +155,7 @@ passwd: nis files
 </code></pre></li>
 </ol>
 
-<h2 id="restart-ypbind-daemon">Restart ypbind  daemon&nbsp;<a class="anchor" href="#restart-ypbind-daemon"><i class="small linkify icon"></i></a> </h2>
+<h2 id="restart-ypbind-daemon">Restart ypbind  daemon&nbsp;<a href="#restart-ypbind-daemon" class="anchor icon-link">§ </a> </h2>
 
 <pre><code>sudo service ypbind restart
 </code></pre>
@@ -168,11 +168,11 @@ passwd: nis files
 <pre><code>sudo ypcat master.passwd
 </code></pre>
 
-<h1 id="nfs-client">NFS Client&nbsp;<a class="anchor" href="#nfs-client"><i class="small linkify icon"></i></a> </h1>
+<h1 id="nfs-client">NFS Client&nbsp;<a href="#nfs-client" class="anchor icon-link">§ </a> </h1>
 
 <p>要當NFS Client之前，自己要先是NFS Server</p>
 
-<h2 id="server-configurations-in-etc-rc-conf">Server configurations in <code>/etc/rc.conf</code>&nbsp;<a class="anchor" href="#server-configurations-in-etc-rc-conf"><i class="small linkify icon"></i></a> </h2>
+<h2 id="server-configurations-in-etc-rc-conf">Server configurations in <code>/etc/rc.conf</code>&nbsp;<a href="#server-configurations-in-etc-rc-conf" class="anchor icon-link">§ </a> </h2>
 
 <pre><code># enable
 nfs_server_enable=&quot;YES&quot;
@@ -198,13 +198,13 @@ mountd_flags=&quot;-r&quot;
 nfs_reserved_port_only=&quot;YES&quot;
 </code></pre>
 
-<h2 id="client-configurations-in-etc-rc-conf">Client configurations in <code>/etc/rc.conf</code>&nbsp;<a class="anchor" href="#client-configurations-in-etc-rc-conf"><i class="small linkify icon"></i></a> </h2>
+<h2 id="client-configurations-in-etc-rc-conf">Client configurations in <code>/etc/rc.conf</code>&nbsp;<a href="#client-configurations-in-etc-rc-conf" class="anchor icon-link">§ </a> </h2>
 
 <pre><code># enable
 nfs_client_enable=&quot;YES&quot;
 </code></pre>
 
-<h2 id="mount">Mount&nbsp;<a class="anchor" href="#mount"><i class="small linkify icon"></i></a> </h2>
+<h2 id="mount">Mount&nbsp;<a href="#mount" class="anchor icon-link">§ </a> </h2>
 
 <p>Mount file from savpn.nctu.me</p>
 
@@ -226,7 +226,7 @@ mount 10.113.0.254:/net/home /net/home
 
 <p>Do NOT allow setuid or setgid bits to take effect</p>
 
-<h3 id="auto-mount-autofs">Auto Mount (autofs)&nbsp;<a class="anchor" href="#auto-mount-autofs"><i class="small linkify icon"></i></a> </h3>
+<h3 id="auto-mount-autofs">Auto Mount (autofs)&nbsp;<a href="#auto-mount-autofs" class="anchor icon-link">§ </a> </h3>
 
 <p>Will be mounted automatically when needed<br />
 開機的時候不掛載他，而是直到我存取他(cd)的瞬間<br />
@@ -262,7 +262,7 @@ autofs才會檢查那台server有無存在？能不能掛載？</p>
 /net/data   -ro 10.113.0.254:/net/data
 </code></pre>
 
-<h1 id="nfs-server">NFS Server&nbsp;<a class="anchor" href="#nfs-server"><i class="small linkify icon"></i></a> </h1>
+<h1 id="nfs-server">NFS Server&nbsp;<a href="#nfs-server" class="anchor icon-link">§ </a> </h1>
 
 <p>Exports
 - /net/alpha (access as their own UID GID)<br />
@@ -298,9 +298,9 @@ sudo add user
 /net/alpha  -maproot=nobody
 </code></pre>
 
-<h1 id="firewall">Firewall&nbsp;<a class="anchor" href="#firewall"><i class="small linkify icon"></i></a> </h1>
+<h1 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor icon-link">§ </a> </h1>
 
-<h2 id="packet-filter-pf">Packet Filter (PF)&nbsp;<a class="anchor" href="#packet-filter-pf"><i class="small linkify icon"></i></a> </h2>
+<h2 id="packet-filter-pf">Packet Filter (PF)&nbsp;<a href="#packet-filter-pf" class="anchor icon-link">§ </a> </h2>
 
 <p>啟用<br />
 <code>/etc/rc.conf</code></p>
@@ -354,7 +354,7 @@ block return proto { tcp,udp } from &lt;BadGuy&gt; to any
 block drop in proto tcp from &lt;BadGuy&gt; to any port {21,22}
 </code></pre>
 
-<h2 id="blacklistd">Blacklistd&nbsp;<a class="anchor" href="#blacklistd"><i class="small linkify icon"></i></a> </h2>
+<h2 id="blacklistd">Blacklistd&nbsp;<a href="#blacklistd" class="anchor icon-link">§ </a> </h2>
 
 <p>To find who is the bad guy?</p>
 
