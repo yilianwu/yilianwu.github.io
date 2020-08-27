@@ -36,7 +36,57 @@
 <main id="single">
   <div id="post" class="white">
 	   <div class="container">
-        
+        <div class="post-toc" id="post-toc">
+            <h2 class="post-toc-title">Contents</h2>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#install-postfix">Install Postfix</a></li>
+<li><a href="#sasl">SASL</a>
+<ul>
+<li><a href="#install-dovecot">Install Dovecot</a></li>
+</ul></li>
+<li><a href="#dns-record">DNS Record</a>
+<ul>
+<li><a href="#spf">SPF</a></li>
+<li><a href="#dkim">DKIM</a>
+<ul>
+<li><a href="#install-opendkim">Install OpenDKIM</a></li>
+<li><a href="#generate-keys">Generate Keys</a></li>
+<li><a href="#nsec3">NSEC3</a></li>
+<li><a href="#在postfix設定">在Postfix設定</a></li>
+</ul></li>
+<li><a href="#dmarc">DMARC</a></li>
+</ul></li>
+<li><a href="#create-users">Create Users</a>
+<ul>
+<li><a href="#virtual-alias">Virtual Alias</a></li>
+<li><a href="#rewrite-sender">Rewrite Sender</a></li>
+<li><a href="#user-authentication-on-imap-smtp">User Authentication on IMAP/SMTP</a></li>
+</ul></li>
+<li><a href="#firewall">Firewall</a></li>
+<li><a href="#rspamd">Rspamd</a>
+<ul>
+<li><a href="#install-rspamd">Install Rspamd</a></li>
+<li><a href="#啟動rspamd設定精靈">啟動rspamd設定精靈</a>
+<ul>
+<li><a href="#redis">redis</a></li>
+</ul></li>
+<li><a href="#greylist">Greylist</a></li>
+<li><a href="#clamav">Clamav</a></li>
+<li><a href="#rspamd-integrates-with-postfix">Rspamd integrates with Postfix</a></li>
+<li><a href="#rspamd-milter-support">Rspamd Milter support</a></li>
+</ul></li>
+<li><a href="#spf-1">SPF</a></li>
+<li><a href="#null-user-check">Null User check</a></li>
+<li><a href="#debug">Debug</a>
+<ul>
+<li><a href="#greylist沒反應">greylist沒反應</a></li>
+<li><a href="#filter-virus-failed">Filter: Virus FAILED</a></li>
+<li><a href="#dmarc-1">DMARC</a></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
        <div class="paperbg">
             <div id="title">
                 <h1>Mail Server on CentOS 8</h1>

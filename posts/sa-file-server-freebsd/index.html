@@ -36,7 +36,37 @@
 <main id="single">
   <div id="post" class="white">
 	   <div class="container">
-        
+        <div class="post-toc" id="post-toc">
+            <h2 class="post-toc-title">Contents</h2>
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#file-server">File Server</a>
+<ul>
+<li><a href="#ftp-server">FTP Server</a>
+<ul>
+<li><a href="#install-pure-ftpd">Install pure-ftpd</a></li>
+<li><a href="#create-3-directories-under-home-ftp">Create 3 directories under <code>/home/ftp</code></a></li>
+<li><a href="#create-admin-user">Create admin user</a></li>
+<li><a href="#pure-ftpd-conf">pure-ftpd.conf</a></li>
+<li><a href="#create-ftp-users">Create ftp users</a></li>
+<li><a href="#ssl簽證">ssl簽證</a></li>
+<li><a href="#launch-the-server">Launch the server&hellip;</a></li>
+<li><a href="#test-in-file-zilla">Test in File Zilla</a></li>
+<li><a href="#權限設定">權限設定</a></li>
+</ul></li>
+<li><a href="#zfs-on-home-ftp">ZFS on <code>/home/ftp</code></a>
+<ul>
+<li><a href="#enable-zfs-service">enable ZFS service</a></li>
+<li><a href="#add-new-hard-disks">Add new hard disks</a></li>
+<li><a href="#create-mypool">Create mypool</a></li>
+<li><a href="#mount">Mount</a></li>
+<li><a href="#automatic-snapshot-script">Automatic snapshot script</a></li>
+</ul></li>
+<li><a href="#ftp-watchd">ftp-watchd</a></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
        <div class="paperbg">
             <div id="title">
                 <h1>FreeBSD File Server</h1>
