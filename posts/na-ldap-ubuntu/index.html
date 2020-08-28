@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
     <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
-    <link rel="stylesheet" href="https://yilianwu.github.io/css/dosstyle.css">
 </head>
 <body><header>
     <nav class="breadcrumb" id="breadcrumb">
@@ -120,10 +119,11 @@
                     <a class="tag-link" href="/tags/snmp/"> SNMP </a>
                     </div>
 
+
                 <section class="post-content">
                 
 
-<h1 id="vm-host-only-adapter">VM Host-Only Adapter&nbsp;<a href="#vm-host-only-adapter" class="anchor">§ </a> </h1>
+<h1 id="vm-host-only-adapter">VM Host-Only Adapter&nbsp;<a href="#vm-host-only-adapter" class="anchor"></a> </h1>
 
 <p>Ubuntu 好像要手動開interface</p>
 
@@ -150,7 +150,7 @@
 sudo netplan apply
 </code></pre>
 
-<h1 id="nameserver-setting">NameServer Setting&nbsp;<a href="#nameserver-setting" class="anchor">§ </a> </h1>
+<h1 id="nameserver-setting">NameServer Setting&nbsp;<a href="#nameserver-setting" class="anchor"></a> </h1>
 
 <pre><code>sudo vim /etc/netplan/50-cloud-init.yaml
 </code></pre>
@@ -179,7 +179,7 @@ sudo netplan apply
 <pre><code>DNS Domain: 0846101.nasa &lt;-- Check this value
 </code></pre>
 
-<h2 id="debug">Debug&nbsp;<a href="#debug" class="anchor">§ </a> </h2>
+<h2 id="debug">Debug&nbsp;<a href="#debug" class="anchor"></a> </h2>
 
 <p><code>resolv.conf</code> 再重新開機後會一直reset成<code>127.0.0.53</code></p>
 
@@ -190,7 +190,7 @@ sudo netplan apply
 
 <p><a href="https://askubuntu.com/questions/1128536/how-to-make-persistent-changes-to-etc-resolv-conf-ubuntu-18-10">https://askubuntu.com/questions/1128536/how-to-make-persistent-changes-to-etc-resolv-conf-ubuntu-18-10</a></p>
 
-<h1 id="slapd">Slapd&nbsp;<a href="#slapd" class="anchor">§ </a> </h1>
+<h1 id="slapd">Slapd&nbsp;<a href="#slapd" class="anchor"></a> </h1>
 
 <pre><code>sudo apt install slapd ldap-utils
 </code></pre>
@@ -219,11 +219,11 @@ sudo netplan apply
 
 <p><a href="https://magiclen.org/ubuntu-server-ldap/">https://magiclen.org/ubuntu-server-ldap/</a></p>
 
-<h1 id="phpldapadmin">phpLDAPadmin&nbsp;<a href="#phpldapadmin" class="anchor">§ </a> </h1>
+<h1 id="phpldapadmin">phpLDAPadmin&nbsp;<a href="#phpldapadmin" class="anchor"></a> </h1>
 
 <p>安裝方便管理LDAP的好用工具</p>
 
-<h2 id="install-phpldapadmin">Install phpLDAPadmin&nbsp;<a href="#install-phpldapadmin" class="anchor">§ </a> </h2>
+<h2 id="install-phpldapadmin">Install phpLDAPadmin&nbsp;<a href="#install-phpldapadmin" class="anchor"></a> </h2>
 
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-openldap-and-phpldapadmin-on-an-ubuntu-14-04-server">https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-openldap-and-phpldapadmin-on-an-ubuntu-14-04-server</a></p>
 
@@ -264,9 +264,9 @@ server domain name or IP</p>
 $config-&gt;custom-&gt;appearance['hide_template_warning'] = true;
 </code></pre>
 
-<h2 id="apache">Apache&nbsp;<a href="#apache" class="anchor">§ </a> </h2>
+<h2 id="apache">Apache&nbsp;<a href="#apache" class="anchor"></a> </h2>
 
-<h3 id="create-ssl-certificate">Create SSL Certificate&nbsp;<a href="#create-ssl-certificate" class="anchor">§ </a> </h3>
+<h3 id="create-ssl-certificate">Create SSL Certificate&nbsp;<a href="#create-ssl-certificate" class="anchor"></a> </h3>
 
 <p>To secure the external connection to our browser when we connect<br />
 We just need to set up a self-signed SSL certificate that our server can use. This will not help us validate the identity of the server, but it will allow us to encrypt our messages</p>
@@ -281,7 +281,7 @@ We just need to set up a self-signed SSL certificate that our server can use. Th
 <pre><code>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
 </code></pre>
 
-<h3 id="create-a-password-authentication-file">Create a Password Authentication File&nbsp;<a href="#create-a-password-authentication-file" class="anchor">§ </a> </h3>
+<h3 id="create-a-password-authentication-file">Create a Password Authentication File&nbsp;<a href="#create-a-password-authentication-file" class="anchor"></a> </h3>
 
 <p>Even though phpLDAPadmin has password authentication, we also want to password protect our phpLDAPadmin location which will provide an extra level of protection</p>
 
@@ -293,7 +293,7 @@ We just need to set up a self-signed SSL certificate that our server can use. Th
 <pre><code>sudo htpasswd -c /etc/apache2/htpasswd c0846101
 </code></pre>
 
-<h3 id="secure-apache">Secure Apache&nbsp;<a href="#secure-apache" class="anchor">§ </a> </h3>
+<h3 id="secure-apache">Secure Apache&nbsp;<a href="#secure-apache" class="anchor"></a> </h3>
 
 <p>Enable the SSL module in Apache</p>
 
@@ -304,7 +304,7 @@ We just need to set up a self-signed SSL certificate that our server can use. Th
 
 <p>When we redirect traffic to use our SSL certificates, we’ll also implement the password file to authenticate users. While we’re modifying things, we’ll also change the location of the phpLDAPadmin interface itself to minimize targeted attacks.</p>
 
-<h3 id="modify-the-phpldapadmin-apache-configuration">Modify the phpLDAPadmin Apache Configuration&nbsp;<a href="#modify-the-phpldapadmin-apache-configuration" class="anchor">§ </a> </h3>
+<h3 id="modify-the-phpldapadmin-apache-configuration">Modify the phpLDAPadmin Apache Configuration&nbsp;<a href="#modify-the-phpldapadmin-apache-configuration" class="anchor"></a> </h3>
 
 <p>The default URL is ldap1.0846101.nasa/phpldapadmin (10.113.25.10/phpldapadmin)</p>
 
@@ -319,7 +319,7 @@ We just need to set up a self-signed SSL certificate that our server can use. Th
 &lt;/IfModule&gt;
 </code></pre>
 
-<h3 id="configure-the-http-virtual-host">Configure the HTTP Virtual Host&nbsp;<a href="#configure-the-http-virtual-host" class="anchor">§ </a> </h3>
+<h3 id="configure-the-http-virtual-host">Configure the HTTP Virtual Host&nbsp;<a href="#configure-the-http-virtual-host" class="anchor"></a> </h3>
 
 <pre><code>sudo vim /etc/apache2/sites-enabled/000-default.conf
 </code></pre>
@@ -333,7 +333,7 @@ We just need to set up a self-signed SSL certificate that our server can use. Th
 &lt;/VirtualHost&gt;
 </code></pre>
 
-<h3 id="configure-the-https-virtual-host-file">Configure the HTTPS Virtual Host File&nbsp;<a href="#configure-the-https-virtual-host-file" class="anchor">§ </a> </h3>
+<h3 id="configure-the-https-virtual-host-file">Configure the HTTPS Virtual Host File&nbsp;<a href="#configure-the-https-virtual-host-file" class="anchor"></a> </h3>
 
 <p>Apache includes a default SSL Virtual Host file.<br />
 However, it is not enabled by default.</p>
@@ -374,7 +374,7 @@ SSLCertificateKeyFile /etc/apache2/ssl/apache.key
 <pre><code>sudo systemctl restart apache2
 </code></pre>
 
-<h2 id="debug-1">Debug&nbsp;<a href="#debug-1" class="anchor">§ </a> </h2>
+<h2 id="debug-1">Debug&nbsp;<a href="#debug-1" class="anchor"></a> </h2>
 
 <p>Unrecognized error number: 8192: Function create_function() is deprecated</p>
 
@@ -441,14 +441,14 @@ SSLCertificateKeyFile /etc/apache2/ssl/apache.key
 <pre><code>sudo systemctl restart apache2
 </code></pre>
 
-<h2 id="log-into-the-phpldapadmin-web-interface">Log into the phpLDAPadmin Web Interface&nbsp;<a href="#log-into-the-phpldapadmin-web-interface" class="anchor">§ </a> </h2>
+<h2 id="log-into-the-phpldapadmin-web-interface">Log into the phpLDAPadmin Web Interface&nbsp;<a href="#log-into-the-phpldapadmin-web-interface" class="anchor"></a> </h2>
 
 <p><img src="https://i.imgur.com/M0IzFLO.png" alt="Imgur" /></p>
 
 <p>login with <code>cn=admin,dc=0846101,dc=nasa</code><br />
 <img src="https://i.imgur.com/AMEosGm.png" alt="Imgur" /></p>
 
-<h2 id="create-users">Create Users&nbsp;<a href="#create-users" class="anchor">§ </a> </h2>
+<h2 id="create-users">Create Users&nbsp;<a href="#create-users" class="anchor"></a> </h2>
 
 <p>創ou=People<br />
 <img src="https://i.imgur.com/9QsYgyN.png" alt="Imgur" />
@@ -467,7 +467,7 @@ cn=ldap<br />
 <img src="https://i.imgur.com/nmEV4Jr.png" alt="Imgur" />
 <img src="https://i.imgur.com/0GEUJb8.png" alt="Imgur" /></p>
 
-<h2 id="openldap-configuration-layout">OpenLDAP Configuration Layout&nbsp;<a href="#openldap-configuration-layout" class="anchor">§ </a> </h2>
+<h2 id="openldap-configuration-layout">OpenLDAP Configuration Layout&nbsp;<a href="#openldap-configuration-layout" class="anchor"></a> </h2>
 
 <p><a href="https://www.openldap.org/doc/admin24/slapdconf2.html">https://www.openldap.org/doc/admin24/slapdconf2.html</a></p>
 
@@ -484,7 +484,7 @@ Additional settings are contained in separate child entries.</p>
 要開啟這個欄位<br />
 <img src="https://i.imgur.com/xk2wfvM.png" alt="Imgur" /></p>
 
-<h3 id="add-olcrootdn">Add olcRootDN&nbsp;<a href="#add-olcrootdn" class="anchor">§ </a> </h3>
+<h3 id="add-olcrootdn">Add olcRootDN&nbsp;<a href="#add-olcrootdn" class="anchor"></a> </h3>
 
 <p>This directive specifies the DN that is not subject to access control or administrative limit restrictions for operations on this database.<br />
 The DN need not refer to an entry in this database or even in the directory. The DN may refer to a SASL identity.</p>
@@ -534,11 +534,11 @@ olcRootPW: {SSHA}MxvXZI4FDupYfJc6LBRMuPintCuI967N
 <pre><code>$servers-&gt;setValue('login','bind_id','cn=admin,cn=config');
 </code></pre>
 
-<h2 id="extending-schema">Extending Schema&nbsp;<a href="#extending-schema" class="anchor">§ </a> </h2>
+<h2 id="extending-schema">Extending Schema&nbsp;<a href="#extending-schema" class="anchor"></a> </h2>
 
 <p><a href="https://www.openldap.org/doc/admin24/schema.html">https://www.openldap.org/doc/admin24/schema.html</a></p>
 
-<h3 id="ludou">ludou&nbsp;<a href="#ludou" class="anchor">§ </a> </h3>
+<h3 id="ludou">ludou&nbsp;<a href="#ludou" class="anchor"></a> </h3>
 
 <pre><code>sudo vim ludou.ldif
 </code></pre>
@@ -567,7 +567,7 @@ ldapreplace &ndash;&gt; 修改已存在的</p>
 <pre><code>sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ludou.ldif
 </code></pre>
 
-<h3 id="publickey">publicKey&nbsp;<a href="#publickey" class="anchor">§ </a> </h3>
+<h3 id="publickey">publicKey&nbsp;<a href="#publickey" class="anchor"></a> </h3>
 
 <pre><code>sudo vim publickey.ldif
 </code></pre>
@@ -590,11 +590,11 @@ olcObjectClasses: ( 1.1.2.2.2
 <pre><code>sudo ldapadd -Y EXTERNAL -H ldapi:/// -f publickey.ldif
 </code></pre>
 
-<h2 id="back-to-phpldapadmin">Back to phpLDAPadmin&nbsp;<a href="#back-to-phpldapadmin" class="anchor">§ </a> </h2>
+<h2 id="back-to-phpldapadmin">Back to phpLDAPadmin&nbsp;<a href="#back-to-phpldapadmin" class="anchor"></a> </h2>
 
 <p><img src="https://i.imgur.com/m2kQsay.png" alt="Imgur" /></p>
 
-<h3 id="olcaccess">olcAccess&nbsp;<a href="#olcaccess" class="anchor">§ </a> </h3>
+<h3 id="olcaccess">olcAccess&nbsp;<a href="#olcaccess" class="anchor"></a> </h3>
 
 <pre><code>{0}to attrs=userPassword by self write by dn=cn=admin,cn=config manage by anonymous auth by * none
 
@@ -605,43 +605,43 @@ olcObjectClasses: ( 1.1.2.2.2
 {3}to * by dn=cn=admin,cn=config manage by * read
 </code></pre>
 
-<h3 id="new-objectclass">New objectClass&nbsp;<a href="#new-objectclass" class="anchor">§ </a> </h3>
+<h3 id="new-objectclass">New objectClass&nbsp;<a href="#new-objectclass" class="anchor"></a> </h3>
 
 <p>objectClass &gt; add value<br />
 <img src="https://i.imgur.com/AA5008g.png" alt="Imgur" /></p>
 
-<h4 id="ludou-1">ludou&nbsp;<a href="#ludou-1" class="anchor">§ </a> </h4>
+<h4 id="ludou-1">ludou&nbsp;<a href="#ludou-1" class="anchor"></a> </h4>
 
 <p><img src="https://i.imgur.com/TTWThjn.png" alt="Imgur" />
 100<br />
 <img src="https://i.imgur.com/Qwxvlpy.png" alt="Imgur" /></p>
 
-<h4 id="publickey-1">publicKey&nbsp;<a href="#publickey-1" class="anchor">§ </a> </h4>
+<h4 id="publickey-1">publicKey&nbsp;<a href="#publickey-1" class="anchor"></a> </h4>
 
 <p><img src="https://i.imgur.com/xOdc1Hp.png" alt="Imgur" />
 Add new attribute<br />
 <img src="https://i.imgur.com/uKa0Nj4.png" alt="Imgur" />
 <img src="https://i.imgur.com/0BiqUZH.png" alt="Imgur" /></p>
 
-<h1 id="starttls">STARTTLS&nbsp;<a href="#starttls" class="anchor">§ </a> </h1>
+<h1 id="starttls">STARTTLS&nbsp;<a href="#starttls" class="anchor"></a> </h1>
 
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-encrypt-openldap-connections-using-starttls">https://www.digitalocean.com/community/tutorials/how-to-encrypt-openldap-connections-using-starttls</a></p>
 
-<h2 id="server-settings">Server Settings&nbsp;<a href="#server-settings" class="anchor">§ </a> </h2>
+<h2 id="server-settings">Server Settings&nbsp;<a href="#server-settings" class="anchor"></a> </h2>
 
-<h3 id="install-the-ssl-components">Install the SSL Components&nbsp;<a href="#install-the-ssl-components" class="anchor">§ </a> </h3>
+<h3 id="install-the-ssl-components">Install the SSL Components&nbsp;<a href="#install-the-ssl-components" class="anchor"></a> </h3>
 
 <pre><code>sudo apt-get install gnutls-bin ssl-cert
 </code></pre>
 
-<h3 id="create-the-certificate-templates">Create the Certificate Templates&nbsp;<a href="#create-the-certificate-templates" class="anchor">§ </a> </h3>
+<h3 id="create-the-certificate-templates">Create the Certificate Templates&nbsp;<a href="#create-the-certificate-templates" class="anchor"></a> </h3>
 
 <p>Make a directory to store the template files</p>
 
 <pre><code>sudo mkdir /etc/ssl/templates
 </code></pre>
 
-<h3 id="create-the-ca-template">Create the CA Template&nbsp;<a href="#create-the-ca-template" class="anchor">§ </a> </h3>
+<h3 id="create-the-ca-template">Create the CA Template&nbsp;<a href="#create-the-ca-template" class="anchor"></a> </h3>
 
 <pre><code>sudo vim /etc/ssl/templates/ca_server.conf
 </code></pre>
@@ -651,7 +651,7 @@ ca
 cert_signing_key
 </code></pre>
 
-<h3 id="create-the-ldap-service-template">Create the LDAP Service Template&nbsp;<a href="#create-the-ldap-service-template" class="anchor">§ </a> </h3>
+<h3 id="create-the-ldap-service-template">Create the LDAP Service Template&nbsp;<a href="#create-the-ldap-service-template" class="anchor"></a> </h3>
 
 <pre><code>sudo vim /etc/ssl/templates/ldap_server.conf
 </code></pre>
@@ -666,7 +666,7 @@ expiration_days = 3652
 
 <p>expiration days are 10 yrs</p>
 
-<h3 id="create-ca-key-and-certificate">Create CA Key and Certificate&nbsp;<a href="#create-ca-key-and-certificate" class="anchor">§ </a> </h3>
+<h3 id="create-ca-key-and-certificate">Create CA Key and Certificate&nbsp;<a href="#create-ca-key-and-certificate" class="anchor"></a> </h3>
 
 <p>Use the certtool utility to generate a private key</p>
 
@@ -702,7 +702,7 @@ expiration_days = 3652
 
 <p><strong>Client(ws1.0846101.nasa)也要做CA憑證</strong></p>
 
-<h3 id="create-ldap-service-key-and-certificate">Create LDAP Service Key and Certificate&nbsp;<a href="#create-ldap-service-key-and-certificate" class="anchor">§ </a> </h3>
+<h3 id="create-ldap-service-key-and-certificate">Create LDAP Service Key and Certificate&nbsp;<a href="#create-ldap-service-key-and-certificate" class="anchor"></a> </h3>
 
 <pre><code>sudo certtool -p --sec-param high --outfile /etc/ssl/private/ldap_server.key
 </code></pre>
@@ -715,7 +715,7 @@ expiration_days = 3652
 <pre><code>openssl x509 -in /etc/ssl/certs/ldap_server.pem -text
 </code></pre>
 
-<h3 id="give-openldap-access-to-the-ldap-server-key">Give OpenLDAP Access to the LDAP Server Key&nbsp;<a href="#give-openldap-access-to-the-ldap-server-key" class="anchor">§ </a> </h3>
+<h3 id="give-openldap-access-to-the-ldap-server-key">Give OpenLDAP Access to the LDAP Server Key&nbsp;<a href="#give-openldap-access-to-the-ldap-server-key" class="anchor"></a> </h3>
 
 <p>A group called ssl-cert already exists as the group-owner of the /etc/ssl/private directory. We can add the user our OpenLDAP process runs under (openldap) to this group</p>
 
@@ -730,7 +730,7 @@ expiration_days = 3652
 <pre><code>sudo chmod 640 /etc/ssl/private/ldap_server.key
 </code></pre>
 
-<h3 id="configure-openldap-to-use-the-certificate-and-keys">Configure OpenLDAP to Use the Certificate and Keys&nbsp;<a href="#configure-openldap-to-use-the-certificate-and-keys" class="anchor">§ </a> </h3>
+<h3 id="configure-openldap-to-use-the-certificate-and-keys">Configure OpenLDAP to Use the Certificate and Keys&nbsp;<a href="#configure-openldap-to-use-the-certificate-and-keys" class="anchor"></a> </h3>
 
 <pre><code>vim addcerts.ldif
 </code></pre>
@@ -750,7 +750,7 @@ olcTLSCertificateKeyFile: /etc/ssl/private/ldap_server.key
 <pre><code>sudo ldapmodify -H ldapi:// -Y EXTERNAL -f addcerts.ldif
 </code></pre>
 
-<h2 id="client-settings">Client Settings&nbsp;<a href="#client-settings" class="anchor">§ </a> </h2>
+<h2 id="client-settings">Client Settings&nbsp;<a href="#client-settings" class="anchor"></a> </h2>
 
 <p>ws1也要有CA憑證</p>
 
@@ -812,7 +812,7 @@ sudo systemctl enable nslcd
 <pre><code>ldapwhoami -H ldap://ldap1.0846101.nasa -x -ZZ
 </code></pre>
 
-<h2 id="dns-txt-record">DNS TXT Record&nbsp;<a href="#dns-txt-record" class="anchor">§ </a> </h2>
+<h2 id="dns-txt-record">DNS TXT Record&nbsp;<a href="#dns-txt-record" class="anchor"></a> </h2>
 
 <pre><code>cat ca_server.pem | base64 | sed -n 's/\(.*\)/&quot;\1&quot;/p'
 </code></pre>
@@ -849,7 +849,7 @@ sudo systemctl enable nslcd
 
 <p>DNSSEC要記得重簽</p>
 
-<h1 id="specs-of-ludoucredit-about-user-account-and-ssh-login">Specs of ludouCredit about User Account and SSH Login:&nbsp;<a href="#specs-of-ludoucredit-about-user-account-and-ssh-login" class="anchor">§ </a> </h1>
+<h1 id="specs-of-ludoucredit-about-user-account-and-ssh-login">Specs of ludouCredit about User Account and SSH Login:&nbsp;<a href="#specs-of-ludoucredit-about-user-account-and-ssh-login" class="anchor"></a> </h1>
 
 <ul>
 <li><p>If some users’ ludoucredit &gt; 0, they can login via SSH.</p></li>
@@ -912,7 +912,7 @@ AuthorizedKeysCommandUser nobody
 <pre><code>getent passwd
 </code></pre>
 
-<h1 id="totp">TOTP&nbsp;<a href="#totp" class="anchor">§ </a> </h1>
+<h1 id="totp">TOTP&nbsp;<a href="#totp" class="anchor"></a> </h1>
 
 <p><a href="https://blog.irontec.com/openldap-y-passwords-temporales-otp/">https://blog.irontec.com/openldap-y-passwords-temporales-otp/</a></p>
 
@@ -993,7 +993,7 @@ make
 <pre><code>sudo cp -P pw-totp.so* /usr/lib/ldap/
 </code></pre>
 
-<h2 id="configure-module-totp">Configure Module TOTP&nbsp;<a href="#configure-module-totp" class="anchor">§ </a> </h2>
+<h2 id="configure-module-totp">Configure Module TOTP&nbsp;<a href="#configure-module-totp" class="anchor"></a> </h2>
 
 <p>創user cn=totp,ou=People
 passwd先空白</p>
@@ -1047,7 +1047,7 @@ olcModuleLoad: pw-totp
 <pre><code>oathtool --totp -b &quot;$(echo -n &quot;UBZQOTHSmqy4Tn+6kuMGfKY00GwG+24MBIKiIqKzkW4=&quot; | base32)&quot;
 </code></pre>
 
-<h1 id="snmp">SNMP&nbsp;<a href="#snmp" class="anchor">§ </a> </h1>
+<h1 id="snmp">SNMP&nbsp;<a href="#snmp" class="anchor"></a> </h1>
 
 <pre><code>sudo apt-get install snmpd snmp snmp-mibs-downloader
 </code></pre>
@@ -1096,7 +1096,7 @@ rwcommunity private 127.0.0.0/8
 <pre><code>snmpget -v2c -c public -Oqv localhost 'NET-SNMP-EXTEND-MIB::nsExtendResult.&quot;servicecheck&quot;'
 </code></pre>
 
-<h1 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor">§ </a> </h1>
+<h1 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor"></a> </h1>
 
 <p>在<code>router.0846101.nasa</code></p>
 
@@ -1134,6 +1134,10 @@ rwcommunity private 127.0.0.0/8
 
     <span style="display:block" class="footer-text">&copy 2019-2020 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$('.post-content h1').prepend("§ ");
+</script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left"

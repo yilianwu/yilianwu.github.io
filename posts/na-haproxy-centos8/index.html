@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
     <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
-    <link rel="stylesheet" href="https://yilianwu.github.io/css/dosstyle.css">
 </head>
 <body><header>
     <nav class="breadcrumb" id="breadcrumb">
@@ -61,6 +60,7 @@
                     <a class="tag-link" href="/tags/haproxy/"> haproxy </a>
                     </div>
 
+
                 <section class="post-content">
                 
 
@@ -80,7 +80,7 @@ IP Address           : 10.113.25.119/24
 IP Address           : 10.113.25.129/24
 </code></pre>
 
-<h1 id="goals">Goals&nbsp;<a href="#goals" class="anchor">§ </a> </h1>
+<h1 id="goals">Goals&nbsp;<a href="#goals" class="anchor"></a> </h1>
 
 <p>Reverseproxy</p>
 
@@ -103,7 +103,7 @@ IP Address           : 10.113.25.129/24
 </ul></li>
 </ul>
 
-<h1 id="install-haproxy">Install HAProxy&nbsp;<a href="#install-haproxy" class="anchor">§ </a> </h1>
+<h1 id="install-haproxy">Install HAProxy&nbsp;<a href="#install-haproxy" class="anchor"></a> </h1>
 
 <pre><code>dnf install haproxy
 </code></pre>
@@ -114,7 +114,7 @@ IP Address           : 10.113.25.129/24
 <pre><code>systemctl enable haproxy
 </code></pre>
 
-<h1 id="設定-log">設定 Log&nbsp;<a href="#設定-log" class="anchor">§ </a> </h1>
+<h1 id="設定-log">設定 Log&nbsp;<a href="#設定-log" class="anchor"></a> </h1>
 
 <p>Configure rsyslog so that it stores all HAProxy statistics,<br />
 edit rsyslog config file “/etc/rsyslog.conf” and uncomment line 19 and 20,</p>
@@ -159,7 +159,7 @@ set the following selinux rule,</p>
 <pre><code>SELINUX= ̶e̶n̶f̶o̶r̶c̶i̶n̶g̶ disabled
 </code></pre>
 
-<h1 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor">§ </a> </h1>
+<h1 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor"></a> </h1>
 
 <p>開啟Proxy的port 80</p>
 
@@ -176,7 +176,7 @@ firewall-cmd --reload
 -A FORWARD -p tcp --dport 80 -j ACCEPT
 </code></pre>
 
-<h1 id="configuration">Configuration&nbsp;<a href="#configuration" class="anchor">§ </a> </h1>
+<h1 id="configuration">Configuration&nbsp;<a href="#configuration" class="anchor"></a> </h1>
 
 <pre><code>vim /etc/haproxy/haproxy.cfg
 </code></pre>
@@ -260,7 +260,7 @@ backend ip
 <pre><code>systemctl restart haprxoy
 </code></pre>
 
-<h1 id="test">Test&nbsp;<a href="#test" class="anchor">§ </a> </h1>
+<h1 id="test">Test&nbsp;<a href="#test" class="anchor"></a> </h1>
 
 <p>設定 HAProxy 之前：<br />
 Agent的 port 8001是Load Balancer 1<br />
@@ -285,7 +285,7 @@ Agent的 port 8003<br />
 <img src="https://i.imgur.com/N8qWLsD.png" alt="Imgur" /><br />
 <img src="https://i.imgur.com/f2Rg7h5.png" alt="Imgur" /></p>
 
-<h1 id="add-record">Add Record&nbsp;<a href="#add-record" class="anchor">§ </a> </h1>
+<h1 id="add-record">Add Record&nbsp;<a href="#add-record" class="anchor"></a> </h1>
 
 <p>ns1<code>/var/named/named.0846101.nasa*</code></p>
 
@@ -313,6 +313,10 @@ Agent的 port 8003<br />
 
     <span style="display:block" class="footer-text">&copy 2019-2020 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$('.post-content h1').prepend("§ ");
+</script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left"

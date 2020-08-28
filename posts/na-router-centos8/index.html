@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
     <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
-    <link rel="stylesheet" href="https://yilianwu.github.io/css/dosstyle.css">
 </head>
 <body><header>
     <nav class="breadcrumb" id="breadcrumb">
@@ -80,6 +79,7 @@
                     <a class="tag-link" href="/tags/iptables/"> iptables </a>
                     </div>
 
+
                 <section class="post-content">
                 
 
@@ -87,9 +87,9 @@
 
 <p><img src="https://i.imgur.com/YXbtu5W.png" alt="Imgur" /></p>
 
-<h1 id="router-basic-settings">Router Basic Settings&nbsp;<a href="#router-basic-settings" class="anchor">§ </a> </h1>
+<h1 id="router-basic-settings">Router Basic Settings&nbsp;<a href="#router-basic-settings" class="anchor"></a> </h1>
 
-<h2 id="開兩張網卡">開兩張網卡&nbsp;<a href="#開兩張網卡" class="anchor">§ </a> </h2>
+<h2 id="開兩張網卡">開兩張網卡&nbsp;<a href="#開兩張網卡" class="anchor"></a> </h2>
 
 <p>一張對外(enp0s3)<br />
 <img src="https://i.imgur.com/p3JtjFa.png" alt="Imgur" />
@@ -109,7 +109,7 @@
 <p><img src="https://i.imgur.com/DhymTCe.png" alt="Imgur" />
 因為enp0s3是NAT模式 IP固定是預設的10.0.2.15</p>
 
-<h2 id="設定內部網卡">設定內部網卡&nbsp;<a href="#設定內部網卡" class="anchor">§ </a> </h2>
+<h2 id="設定內部網卡">設定內部網卡&nbsp;<a href="#設定內部網卡" class="anchor"></a> </h2>
 
 <p>我的對內網卡是enp0s8</p>
 
@@ -130,9 +130,9 @@ NETMASK=255.255.255.0
 <pre><code>ifup enp0s8
 </code></pre>
 
-<h1 id="wireguard">Wireguard&nbsp;<a href="#wireguard" class="anchor">§ </a> </h1>
+<h1 id="wireguard">Wireguard&nbsp;<a href="#wireguard" class="anchor"></a> </h1>
 
-<h2 id="install-wireguard-on-centos-8">Install Wireguard on CentOS 8&nbsp;<a href="#install-wireguard-on-centos-8" class="anchor">§ </a> </h2>
+<h2 id="install-wireguard-on-centos-8">Install Wireguard on CentOS 8&nbsp;<a href="#install-wireguard-on-centos-8" class="anchor"></a> </h2>
 
 <pre><code>sudo yum install elrepo-release epel-release
 sudo yum install kmod-wireguard wireguard-tools
@@ -144,7 +144,7 @@ sudo yum install kmod-wireguard wireguard-tools
 sh -c 'umask 077'; touch /etc/wirehuard/wg0.conf
 </code></pre>
 
-<h2 id="client-configurations">Client Configurations&nbsp;<a href="#client-configurations" class="anchor">§ </a> </h2>
+<h2 id="client-configurations">Client Configurations&nbsp;<a href="#client-configurations" class="anchor"></a> </h2>
 
 <pre><code>vim /etc/wireguard/wg0.conf
 </code></pre>
@@ -160,7 +160,7 @@ Endpoint=[SERVER ENDPOINT]:51820
 PersistentKeepalive=25
 </code></pre>
 
-<h2 id="啟動">啟動&nbsp;<a href="#啟動" class="anchor">§ </a> </h2>
+<h2 id="啟動">啟動&nbsp;<a href="#啟動" class="anchor"></a> </h2>
 
 <p>start</p>
 
@@ -177,14 +177,14 @@ PersistentKeepalive=25
 <pre><code>systemctl enable wg-quick@wg0
 </code></pre>
 
-<h1 id="dhcp-server">DHCP Server&nbsp;<a href="#dhcp-server" class="anchor">§ </a> </h1>
+<h1 id="dhcp-server">DHCP Server&nbsp;<a href="#dhcp-server" class="anchor"></a> </h1>
 
-<h2 id="installation">Installation&nbsp;<a href="#installation" class="anchor">§ </a> </h2>
+<h2 id="installation">Installation&nbsp;<a href="#installation" class="anchor"></a> </h2>
 
 <pre><code>dnf install dhcp-server
 </code></pre>
 
-<h2 id="server-configurations">Server Configurations&nbsp;<a href="#server-configurations" class="anchor">§ </a> </h2>
+<h2 id="server-configurations">Server Configurations&nbsp;<a href="#server-configurations" class="anchor"></a> </h2>
 
 <p>example dhcpd.conf: <code>/usr/share/doc/dhcp-derver/dhcpd.conf.example</code></p>
 
@@ -207,7 +207,7 @@ subnet 10.113.25.0 netmask 255.255.255.0 {
 }
 </code></pre>
 
-<h2 id="start-service">Start Service&nbsp;<a href="#start-service" class="anchor">§ </a> </h2>
+<h2 id="start-service">Start Service&nbsp;<a href="#start-service" class="anchor"></a> </h2>
 
 <pre><code>systemctl start dhcpd
 systemctl enable --now dhcpd
@@ -219,12 +219,12 @@ systemctl enable --now dhcpd
 firewall-cmd --reload
 </code></pre>
 
-<h1 id="routing-nat-iptables">Routing - NAT &amp; iptables&nbsp;<a href="#routing-nat-iptables" class="anchor">§ </a> </h1>
+<h1 id="routing-nat-iptables">Routing - NAT &amp; iptables&nbsp;<a href="#routing-nat-iptables" class="anchor"></a> </h1>
 
 <p>如果要設定NAT就要一起設定防火牆<br />
 在CentOS 8中 我使用iptables</p>
 
-<h2 id="install-iptables">Install iptables&nbsp;<a href="#install-iptables" class="anchor">§ </a> </h2>
+<h2 id="install-iptables">Install iptables&nbsp;<a href="#install-iptables" class="anchor"></a> </h2>
 
 <pre><code>dnf install iptables-services iptables-utils -y
 </code></pre>
@@ -243,7 +243,7 @@ firewall-cmd --reload
 systemctl start iptables
 </code></pre>
 
-<h2 id="nat-configuration-in-iptables">NAT Configuration in iptables&nbsp;<a href="#nat-configuration-in-iptables" class="anchor">§ </a> </h2>
+<h2 id="nat-configuration-in-iptables">NAT Configuration in iptables&nbsp;<a href="#nat-configuration-in-iptables" class="anchor"></a> </h2>
 
 <p>設定router forwarding功能</p>
 
@@ -308,7 +308,7 @@ systemctl start iptables
 <pre><code>sysctl -p
 </code></pre>
 
-<h2 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor">§ </a> </h2>
+<h2 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor"></a> </h2>
 
 <ul>
 <li><p>By default, all connections from outside (include Intranet) to your subnet should be rejected.</p></li>
@@ -374,6 +374,10 @@ COMMIT
 
     <span style="display:block" class="footer-text">&copy 2019-2020 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$('.post-content h1').prepend("§ ");
+</script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left"

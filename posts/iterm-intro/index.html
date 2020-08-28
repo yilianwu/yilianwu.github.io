@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
     <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
-    <link rel="stylesheet" href="https://yilianwu.github.io/css/dosstyle.css">
 </head>
 <body><header>
     <nav class="breadcrumb" id="breadcrumb">
@@ -58,6 +57,7 @@
                     <a class="tag-link" href="/tags/iterm/"> iTerm </a>
                     </div>
 
+
                 <section class="post-content">
                 <p>電腦開著終端機在打程式很帥<br />
 但是面對螢幕上一行行密密麻麻的程式碼，<br />
@@ -70,12 +70,12 @@
 雖然Terminal可以設定顏色字體但iTerm可以做得更多<br />
 以下將介紹iTerm如何搭配zsh主題&hellip;</p>
 
-<h1 id="安裝iterm2">安裝iTerm2&nbsp;<a href="#安裝iterm2" class="anchor">§ </a> </h1>
+<h1 id="安裝iterm2">安裝iTerm2&nbsp;<a href="#安裝iterm2" class="anchor"></a> </h1>
 
 <p>iTerm2是一個open source的Terminal，算是Mac原生Terminal的強化版，<a href="https://www.iterm2.com/index.html">官網</a>可直接下載。<br />
 配合oh-my-zsh和其他plugin後，即可客製化出一個帶有個人風格外觀和功能的Terminal。</p>
 
-<h1 id="安裝oh-my-zsh">安裝oh-my-zsh&nbsp;<a href="#安裝oh-my-zsh" class="anchor">§ </a> </h1>
+<h1 id="安裝oh-my-zsh">安裝oh-my-zsh&nbsp;<a href="#安裝oh-my-zsh" class="anchor"></a> </h1>
 
 <p>終端機執行下列程式碼</p>
 
@@ -95,7 +95,7 @@ ZSH_THEME就是zsh主題，預設值是robbyrussell。</p>
 
 <p><a href="https://www.macuknow.com/node/76787">如何顯現Finder中的隱藏檔</a></p>
 
-<h1 id="安裝-設定主題">安裝、設定主題&nbsp;<a href="#安裝-設定主題" class="anchor">§ </a> </h1>
+<h1 id="安裝-設定主題">安裝、設定主題&nbsp;<a href="#安裝-設定主題" class="anchor"></a> </h1>
 
 <p>這邊以<strong>Cobalt2</strong>為例<br />
 至<a href="https://github.com/wesbos/Cobalt2-iterm">https://github.com/wesbos/Cobalt2-iterm</a></p>
@@ -163,6 +163,10 @@ ZSH_THEME就是zsh主題，預設值是robbyrussell。</p>
 
     <span style="display:block" class="footer-text">&copy 2019-2020 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$('.post-content h1').prepend("§ ");
+</script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left"
