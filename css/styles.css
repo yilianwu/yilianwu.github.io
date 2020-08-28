@@ -496,13 +496,13 @@ img.aboutpic{
   }
 .sublime4wks{
     position: relative;
+    width: 90%;
     padding: 0px 0px;
     margin-top: 5%;
     list-style: none;
     border-top: 25px solid #d1d1d1;
     border-radius: 10px;
     background: #ededed;
-    /* color: var(--color); */
     text-align:center;
 }
 .sublime4lst {
@@ -518,7 +518,6 @@ img.aboutpic{
     font-family: 'Source Code Pro';
     font-weight: 200;
     font-size: 1.1em;
-    /* Colors */
 }
 .sublime4lst a{
     color: black;
@@ -535,7 +534,6 @@ img.aboutpic{
     font-family: 'Source Code Pro';
     font-weight: 200;
     font-size: 1.1em;
-    /* Colors */
 }
   
   .sublime li {
