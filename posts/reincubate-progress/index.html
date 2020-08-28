@@ -88,37 +88,38 @@
 
 <p>一組有3個MG996R 每120°設一個吊掛點<br />
 培養皿的圓直徑R1 = 500mm<br />
-三吊掛點最大差距 = 舵翼長度 = 33mm</p>
+<code>delta_m</code> = 三吊掛點最大差距 = 舵翼長度 = 33mm</p>
 
 <p><img src="https://i.imgur.com/TQz2fJW.png" alt="Imgur" />
-可求出培養皿最多可被吊高 44mm<br />
+可求出培養皿最多可被吊高 <code>delta_p</code> = (<sup>4</sup>&frasl;<sub>3</sub>) * <code>delta_m</code> = 44mm<br />
 設此時的培養皿的傾斜角度為 θ<br />
-sin θ = <sup>44</sup>&frasl;<sub>500</sub> = 0.088<br />
+sin θ = 44 / 500 = 0.088<br />
 θ = 5.04855896° (MAX)</p>
 
-<p>傾斜的培養皿(藍圓) 投影出軌跡(黑圓)<br />
+<p>傾斜的培養皿(藍圓) 向下投影出軌跡(黑圓)<br />
 <img src="https://i.imgur.com/IW2AFLl.png" alt="Imgur" />
 設軌跡的圓直徑為R2
 則，R2 = cos θ • R1<br />
 半徑 r2 = cos θ • r1<br />
 兩圓交點為 P ( r2 • cos (t) , r2 • sin (t) ) ， t隨時間改變</p>
 
-<p>做L為過點P之圓切線<br />
+<p>做L 為過點P之圓切線<br />
 L的直線方程式:
 $$(\frac{\cos(t)}{\sin(t)}){x}+y-(\frac{r2}{\sin(t)})=0$$</p>
 
 <p>$$\vec{aA}與\vec{aA&rsquo;} 同時垂直於兩圓的圓切線直線L$$<br />
-兩向量的夾角 = 兩面的夾角 = θ<br />
+此時，兩向量的夾角 = 兩面的夾角 = θ<br />
 $$\vec{bB}與\vec{bB&rsquo;}、\vec{cC}與\vec{cC&rsquo;}同理$$</p>
 
-<p>所求<br />
+<p>所求(三線變化範圍)：<br />
 $$\overline{AA&rsquo;}=tanθ \cdot \overline{aA&rsquo;}$$<br />
 $$\overline{BB&rsquo;}=tanθ \cdot \overline{bB&rsquo;}$$<br />
 $$\overline{CC&rsquo;}=tanθ \cdot \overline{cC&rsquo;}$$</p>
 
-<p>$$\overline{aA&rsquo;} 、 \overline{aA&rsquo;} 、 \overline{aA&rsquo;} 為A&rsquo;、B&rsquo;、C&rsquo;三點分別到直線L的距離$$</p>
+<p>$$\overline{aA&rsquo;} 、 \overline{bB&rsquo;} 、 \overline{cC&rsquo;} 為A&rsquo;、B&rsquo;、C&rsquo;三點分別至直線 L 的距離$$</p>
 
-<p>$$\overline{AA&rsquo;} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(2 \pi) + r2 \cdot sin(2 \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
+<p>代入線外一點到直線方程式的公式<br />
+$$\overline{AA&rsquo;} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(2 \pi) + r2 \cdot sin(2 \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
 
 <p>$$\overline{BB&rsquo;} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(\frac{2}{3} \pi) + r2 \cdot sin(\frac{2}{3} \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
 

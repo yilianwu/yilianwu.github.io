@@ -610,3 +610,6 @@ img.aboutpic{
       overflow-y: hidden;
   }
 
+  .instagram-media{
+      max-width: 100% !important;
+  }
