@@ -59,6 +59,7 @@ ul{
     font-weight: 800;
     text-transform: uppercase;
 }
+
 #TableOfContents{
     position: -webkit-sticky!important;
     position: sticky!important;
@@ -82,7 +83,7 @@ ul{
 }
 
 .white .post-toc a{
-    font-size:0.1rem;
+    font-size:10;
     color:#2c5090;
     border-bottom:none;
 }
@@ -606,5 +607,6 @@ img.aboutpic{
   .MathJax_Display {
       height: 100%;
       overflow-x: scroll;
+      overflow-y: hidden;
   }
 
