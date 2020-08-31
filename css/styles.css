@@ -122,6 +122,7 @@ header,footer {
 header {
     font-family: 'Oswald', sans-serif;
     position:sticky;
+    position: -webkit-sticky;
     top:0px;
     z-index: 1;
     font-size:3.vmin;
