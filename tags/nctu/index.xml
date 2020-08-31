@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on [ yilianwu ]</title>
-    <link>https://yilianwu.github.io/posts/</link>
-    <description>Recent content in Posts on [ yilianwu ]</description>
+    <title>Nctu on [ yilianwu ]</title>
+    <link>https://yilianwu.github.io/tags/nctu/</link>
+    <description>Recent content in Nctu on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <lastBuildDate>Mon, 31 Aug 2020 14:10:14 +0800</lastBuildDate>
     
-	<atom:link href="https://yilianwu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yilianwu.github.io/tags/nctu/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,16 +19,6 @@
       <guid>https://yilianwu.github.io/posts/wifi-sign-circuit/</guid>
       <description>&lt;p&gt;在交大修了一門通識課 - 跨領域應用電學 Applied Electricity&lt;br /&gt;
 期末專題需要應用在這堂課所習得的知識，設計並做出自己的電路&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>複域共生 Reincubate 過程紀錄</title>
-      <link>https://yilianwu.github.io/posts/reincubate-progress/</link>
-      <pubDate>Wed, 12 Aug 2020 15:36:36 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/reincubate-progress/</guid>
-      <description>&lt;p&gt;複域共生&lt;br /&gt;
-是我在北藝新媒4年來，發展期最長久的一件作品&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -47,29 +37,6 @@
       
       <guid>https://yilianwu.github.io/posts/na-mailserver-centos8/</guid>
       <description>Mail Server Info Hostname : mail.0846101.nasa IP Address : 10.113.25.25/24 Install Postfix sudo dnf install postfix vim /etc/postfix/main.cf # General Settings myhostname = mail.0846101.nasa # The default of &amp;quot;mydomain&amp;quot; is to use $myhostname minus the first component #mydomain = 0846101.nasa myorigin = $mydomain # RECEIVING MAIL inet_interfaces = all inet_protocols</description>
-    </item>
-    
-    <item>
-      <title>Install Ubuntu 20.04 On Raspberry Pi 4 Full Ubuntu Desktop</title>
-      <link>https://yilianwu.github.io/posts/ubuntu-2004-for-rpi4/</link>
-      <pubDate>Thu, 14 May 2020 23:00:14 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/ubuntu-2004-for-rpi4/</guid>
-      <description>Ubuntu 20.04 LST 到官網下載 Ubuntu Server image檔 https://ubuntu.com/download/raspberry-pi Create a Bootable microSD card 以下在MacOS上做示範 把剛剛下載好的Ubuntu ima</description>
-    </item>
-    
-    <item>
-      <title>SSD的種類</title>
-      <link>https://yilianwu.github.io/posts/ssd-intro/</link>
-      <pubDate>Sun, 10 May 2020 22:37:06 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/ssd-intro/</guid>
-      <description>&lt;p&gt;SSD (Solid State Drive)&lt;br /&gt;
-固態硬碟&lt;/p&gt;
-
-&lt;p&gt;現在市面上的SSD價格比起以前便宜了許多 成為現在電腦的主流配備&lt;br /&gt;
-實惠的價格也讓很多人選擇將自己的電腦加裝SSD 來改善電腦的流暢度&lt;br /&gt;
-但市面上的SSD這麼多種 還是先搞清楚才能選擇最適合自己的SSD&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -124,83 +91,6 @@
       
       <guid>https://yilianwu.github.io/posts/sa-file-server-freebsd/</guid>
       <description>File Server Overview: ❑ Image that you are a TA of a course, the professor wants you to build a file server that students can submit their homework to ❑ To prevent your colleagues from accidentally deleting files on the server, the snapshot and rollback features are needed FTP Server</description>
-    </item>
-    
-    <item>
-      <title>如何在我的行事曆中新增 Facebook 活動？</title>
-      <link>https://yilianwu.github.io/posts/facebook-events-on-icalendar/</link>
-      <pubDate>Sun, 24 Nov 2019 00:44:25 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/facebook-events-on-icalendar/</guid>
-      <description>&lt;p&gt;現在有很多的活動都會在Facebook建立活動頁面&lt;br /&gt;
-我是個懶人，很依靠Facebook會給我活動提醒&lt;br /&gt;
-但自從Mac更新某個版本後，iCloud除了Mail帳號外，不能連結第三方應用程式帳號了&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>VPN Reverse Tunnel</title>
-      <link>https://yilianwu.github.io/posts/vpn-reverse-tunnel/</link>
-      <pubDate>Wed, 19 Jun 2019 11:22:31 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/vpn-reverse-tunnel/</guid>
-      <description>SSH Reverse Tunnel 俗稱的VPN翻牆原理 示意圖： 原本我的IP在台灣 現在我想把它改成我在aws的日本主機～～ https://www.ez2o.com/App/Net/IP 可以到</description>
-    </item>
-    
-    <item>
-      <title>SSH Intro</title>
-      <link>https://yilianwu.github.io/posts/ssh-intro/</link>
-      <pubDate>Tue, 05 Mar 2019 22:09:56 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/ssh-intro/</guid>
-      <description>什麼是RPI? 先來談談 Microcontrollers ( MCU ) 有聽過 - Raspberry Pi - BeagleBoard Arduino 開源 =&amp;gt; 普及 燒錄方法便簡易(翻譯成組合語言給晶片) AT</description>
-    </item>
-    
-    <item>
-      <title>我常用的Mac指令</title>
-      <link>https://yilianwu.github.io/posts/mac-commandlines/</link>
-      <pubDate>Sun, 03 Mar 2019 21:59:58 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/mac-commandlines/</guid>
-      <description>&lt;p&gt;一些常用到的指令筆記&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>在雲端物聯網上建立微系統</title>
-      <link>https://yilianwu.github.io/posts/microsys/</link>
-      <pubDate>Tue, 19 Feb 2019 15:45:54 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/microsys/</guid>
-      <description>&lt;p&gt;初次使用AWS的一些操作筆記&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>如何用 iTerm 美化你的終端機</title>
-      <link>https://yilianwu.github.io/posts/iterm-intro/</link>
-      <pubDate>Tue, 05 Feb 2019 15:39:41 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/iterm-intro/</guid>
-      <description>&lt;p&gt;電腦開著終端機在打程式很帥&lt;br /&gt;
-但是面對螢幕上一行行密密麻麻的程式碼，&lt;br /&gt;
-你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Intro to Markdown</title>
-      <link>https://yilianwu.github.io/posts/markdown-intro/</link>
-      <pubDate>Sun, 03 Feb 2019 20:42:27 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/markdown-intro/</guid>
-      <description>&lt;p&gt;最近發現用Markdown來做筆記超好用的！&lt;br /&gt;
-如果是平常用pages、word或記事本，常會因為寫完沒好好整理導致忘了什麼東西寫在哪，又或是整理起來很花時間，到最後又懶得整理了XDD&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>用GitHub Page搭配Hugo建立靜態網站</title>
-      <link>https://yilianwu.github.io/posts/my-first-post/</link>
-      <pubDate>Mon, 28 Jan 2019 00:40:17 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/posts/my-first-post/</guid>
-      <description>&lt;p&gt;紀錄這個site的創建過程&lt;/p&gt;</description>
     </item>
     
   </channel>

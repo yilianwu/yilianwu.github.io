@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nginx on [ yilianwu ]</title>
+    <link>https://yilianwu.github.io/tags/nginx/</link>
+    <description>Recent content in Nginx on [ yilianwu ]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 19 Apr 2020 02:16:59 +0800</lastBuildDate>
+    
+	<atom:link href="https://yilianwu.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>FreeBSD Web Server</title>
+      <link>https://yilianwu.github.io/posts/sa-web-server-freebsd/</link>
+      <pubDate>Sun, 19 Apr 2020 02:16:59 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/sa-web-server-freebsd/</guid>
+      <description>Web Server Network Intranet A VM with a host-only adapter connecting to the same network of the original machine 創立Host網卡 Create &amp;gt; enable DHCP server 將網卡加到VM VM Settings &amp;gt; Network Adapter 2 選Host</description>
+    </item>
+    
+  </channel>
+</rss>
