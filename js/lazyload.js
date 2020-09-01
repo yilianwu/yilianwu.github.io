@@ -1,7 +1,7 @@
 const images = document.querySelectorAll("[data-src]");
 
 function preloadImage(img){
-    const src = img.getAttribute("date-src");
+    const src = img.dataset.src;
     if(!src) {
         return;
     }
@@ -18,7 +18,7 @@ const imgObserver = new IntersectionObserver((entries,
     imgObserver) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
-                return;
+              return;
             } else {
                  preloadImage(entry.target);
                  imgObserver.unobserve(entry.target);
