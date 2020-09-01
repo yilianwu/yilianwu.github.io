@@ -162,26 +162,30 @@ line-height: 1em;
 }
 
 .breadcrumb {
-    display: inline-flex;
-    line-height: 2.4;
-    padding-left: .875rem;
-    margin: 0 auto;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+    display: inline-flex !important;
+    line-height: 2.4 !important;
+    padding: 0px 0px 0px 0.875rem !important; 
+    margin: 0 auto !important;
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    background: var(--color)  !important;
 }
     
 .breadcrumb a {
-    color: var(--color-lite);
-    font-size:1.0rem;
-    margin-left: .875rem;
-    margin-top: auto;
-    padding-left:.2rem;
-    visibility: visible;
+    color: var(--color-lite) !important;
+    font-size:1.0rem !important;
+    margin-left: .875rem !important;
+    margin-top: auto !important;
+    padding-left:.2rem !important;
+    visibility: visible !important;
 }
     
 .breadcrumb h4 {
-    margin: unset;
-    text-indent: -1rem;
+    margin: unset !important;
+    text-indent: -1rem !important;
+    font-size: 1rem !important; 
+    line-height: 2.4 !important; 
+    font-weight: bold !important; 
 }
 .menutime{
     display: inline-flex;
@@ -193,7 +197,7 @@ line-height: 1em;
     float:right;
 }
 .menutime a{
-    color: var(--color-lite);
+    color: var(--color-lite) !important;
     font-size:1.0rem;
     margin-left: .5em;
     margin-top: auto;
@@ -400,7 +404,8 @@ color: var(--color-lite);
 }
 
 .grape a:hover {
-color: var(--color-light);
+color: var(--color-light) !important;
+text-decoration: none !important;
 }
 
 .sand a {
