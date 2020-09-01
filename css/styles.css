@@ -137,6 +137,12 @@ footer {
     z-index: 0;
 }
 
+img{
+    min-width: 50px;
+    min-height: 50px;
+    border: 1px solid palegoldenrod;
+}
+
 img[alt="Imgur"] {
     width: auto;
     max-width: 80%;
