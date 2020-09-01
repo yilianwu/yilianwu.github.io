@@ -9,7 +9,8 @@
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <base href="https://yilianwu.github.io/">
-  <script src="https://yilianwu.github.io/js/lazyload.js"></script>
+  <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="lazyload.min.js"></script>
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/font.css">
 </head>
@@ -41,7 +42,7 @@
     <div id="posts" class="grape">
       <div class="container">
         <h1>Works</h1>
-        <img data-src="img/works/reincubate.jpg" alt="">
+        <img class="lazyload" src="https://miro.medium.com/max/882/1*9EBHIOzhE1XfMYoKz1JcsQ.gif" data-src="img/works/reincubate.jpg" />
           <ul class="sublime4wks">
             <li class="buttons"></li>
               <a href="/works/reincubate.html">
@@ -127,6 +128,9 @@
   <script src="/js/highlight.pack.js"></script>
   <script>
     hljs.initHighlightingOnLoad();
+  </script>
+  <script type="text/javascript">    
+    $("img.lazyload").lazyload();
   </script>
 </body>
 
