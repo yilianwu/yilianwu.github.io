@@ -513,7 +513,7 @@ img.aboutpic{
     width: 100%;
     opacity: 0;
     transition: .5s ease;
-    background-color: #0000004d;
+    background-color: #0000007a;
   }
   
 .sublime4wks:hover .overlay {
@@ -522,7 +522,7 @@ img.aboutpic{
   
 .wks-name {
     color: white;
-    font-size: 20px;
+    font-size: 1.5em;
     position: absolute;
     top: 50%;
     left: 50%;
