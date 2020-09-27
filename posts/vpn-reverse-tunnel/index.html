@@ -36,12 +36,9 @@
         <div class="post-toc" id="post-toc">
             <h2 class="post-toc-title">Contents</h2>
             <nav id="TableOfContents">
-<ul>
-<li><a href="#ssh-reverse-tunnel">SSH Reverse Tunnel</a>
-<ul>
-<li><a href="#更改網頁資訊">更改網頁資訊</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#更改網頁資訊">更改網頁資訊</a></li>
+  </ul>
 </nav>
         </div>
        <div class="paperbg">
@@ -60,51 +57,45 @@
 
 
                 <section class="post-content">
-                
-
-<h1 id="ssh-reverse-tunnel">SSH Reverse Tunnel&nbsp;<a href="#ssh-reverse-tunnel" class="anchor"></a> </h1>
-
-<p>俗稱的VPN翻牆原理<br />
-示意圖：<br />
-<img src="https://i.imgur.com/GvYvCpr.png" alt="Imgur" />
-原本我的IP在台灣<br />
+                <h1 id="ssh-reverse-tunnel">SSH Reverse Tunnel&nbsp;<a href="#ssh-reverse-tunnel" class="anchor"></a> </h1>
+<p>俗稱的VPN翻牆原理<br>
+示意圖：<br>
+<img src="https://i.imgur.com/GvYvCpr.png" alt="Imgur">
+原本我的IP在台灣<br>
 現在我想把它改成我在aws的日本主機～～</p>
-
 <p><a href="https://www.ez2o.com/App/Net/IP">https://www.ez2o.com/App/Net/IP</a>
-可以到這查看ip位置<br />
-<img src="https://i.imgur.com/fkpRrLr.png" alt="Imgur" /></p>
-
+可以到這查看ip位置<br>
+<img src="https://i.imgur.com/fkpRrLr.png" alt="Imgur"></p>
 <ol>
-<li>登入aws<br /></li>
+<li>登入aws</li>
 </ol>
-
 <pre><code>ssh -p 22 -D 8080 ubuntu@yilianwu.ga
-</code></pre>
-
-<p><img src="https://i.imgur.com/yP8gmvD.png" alt="Imgur" /></p>
-
-<ol>
-<li><p>下載proxy 擴充程式<br />
-<img src="https://i.imgur.com/Pkfy3Tt.png" alt="Imgur" /></p></li>
-
-<li><p>SwitchyOmega設定<br />
-<img src="https://i.imgur.com/EKGc5ts.png" alt="Imgur" /></p></li>
-
-<li><p>選擇你的模式<br />
-<img src="https://i.imgur.com/oY4uU9I.png" alt="Imgur" /></p></li>
-
-<li><p>重整<br />
-媽！ 我在日本了！<br />
-<img src="https://i.imgur.com/VFiTuJP.png" alt="Imgur" /></p></li>
+</code></pre><p><img src="https://i.imgur.com/yP8gmvD.png" alt="Imgur"></p>
+<ol start="2">
+<li>
+<p>下載proxy 擴充程式<br>
+<img src="https://i.imgur.com/Pkfy3Tt.png" alt="Imgur"></p>
+</li>
+<li>
+<p>SwitchyOmega設定<br>
+<img src="https://i.imgur.com/EKGc5ts.png" alt="Imgur"></p>
+</li>
+<li>
+<p>選擇你的模式<br>
+<img src="https://i.imgur.com/oY4uU9I.png" alt="Imgur"></p>
+</li>
+<li>
+<p>重整<br>
+媽！ 我在日本了！<br>
+<img src="https://i.imgur.com/VFiTuJP.png" alt="Imgur"></p>
+</li>
 </ol>
-
 <h2 id="更改網頁資訊">更改網頁資訊&nbsp;<a href="#更改網頁資訊" class="anchor"></a> </h2>
-
 <p>新增權限給ubuntu
-<img src="https://i.imgur.com/Qpf5pvN.png" alt="Imgur" />
-<img src="https://i.imgur.com/pkdqQV9.png" alt="Imgur" />
-<img src="https://i.imgur.com/idtCWLo.png" alt="Imgur" />
-<img src="https://i.imgur.com/TXZ5x4e.png" alt="Imgur" /></p>
+<img src="https://i.imgur.com/Qpf5pvN.png" alt="Imgur">
+<img src="https://i.imgur.com/pkdqQV9.png" alt="Imgur">
+<img src="https://i.imgur.com/idtCWLo.png" alt="Imgur">
+<img src="https://i.imgur.com/TXZ5x4e.png" alt="Imgur"></p>
 
                 </section>
         

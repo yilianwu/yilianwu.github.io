@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Aws on [ yilianwu ]</title>
+    <title>AWS on [ yilianwu ]</title>
     <link>https://yilianwu.github.io/tags/aws/</link>
-    <description>Recent content in Aws on [ yilianwu ]</description>
+    <description>Recent content in AWS on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 19 Jun 2019 11:22:31 +0800</lastBuildDate>
-    
-	<atom:link href="https://yilianwu.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 19 Jun 2019 11:22:31 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VPN Reverse Tunnel</title>
       <link>https://yilianwu.github.io/posts/vpn-reverse-tunnel/</link>

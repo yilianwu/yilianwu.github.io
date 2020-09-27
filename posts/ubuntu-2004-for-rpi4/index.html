@@ -36,20 +36,10 @@
         <div class="post-toc" id="post-toc">
             <h2 class="post-toc-title">Contents</h2>
             <nav id="TableOfContents">
-<ul>
-<li><a href="#ubuntu-20-04-lst">Ubuntu 20.04 LST</a></li>
-<li><a href="#create-a-bootable-microsd-card">Create a Bootable microSD card</a></li>
-<li><a href="#configuration-before-boot">Configuration Before Boot</a></li>
-<li><a href="#first-boot">First Boot</a>
-<ul>
-<li><a href="#更新系統">更新系統</a></li>
-<li><a href="#install-ubuntu-desktop">Install Ubuntu Desktop</a></li>
-</ul></li>
-<li><a href="#bluetooth">Bluetooth</a></li>
-<li><a href="#exfat">exFAT</a></li>
-<li><a href="#su-authentication-failure">su: Authentication failure</a></li>
-<li><a href="#實測結果">實測結果</a></li>
-</ul>
+  <ul>
+    <li><a href="#更新系統">更新系統</a></li>
+    <li><a href="#install-ubuntu-desktop">Install Ubuntu Desktop</a></li>
+  </ul>
 </nav>
         </div>
        <div class="paperbg">
@@ -67,26 +57,15 @@
 
 
                 <section class="post-content">
-                
-
-<h1 id="ubuntu-20-04-lst">Ubuntu 20.04 LST&nbsp;<a href="#ubuntu-20-04-lst" class="anchor"></a> </h1>
-
-<p>到官網下載 Ubuntu Server image檔<br />
+                <h1 id="ubuntu-2004-lst">Ubuntu 20.04 LST&nbsp;<a href="#ubuntu-2004-lst" class="anchor"></a> </h1>
+<p>到官網下載 Ubuntu Server image檔<br>
 <a href="https://ubuntu.com/download/raspberry-pi">https://ubuntu.com/download/raspberry-pi</a></p>
-
 <h1 id="create-a-bootable-microsd-card">Create a Bootable microSD card&nbsp;<a href="#create-a-bootable-microsd-card" class="anchor"></a> </h1>
-
 <p>以下在MacOS上做示範</p>
-
 <p>把剛剛下載好的Ubuntu image放在 <code>~/Downloads</code></p>
-
 <p>打開終端機</p>
-
 <pre><code>diskutil list
-</code></pre>
-
-<p>查看microSD的位址</p>
-
+</code></pre><p>查看microSD的位址</p>
 <pre><code>/dev/disk0 (internal, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      GUID_partition_scheme                        *251.0 GB   disk0
@@ -106,166 +85,88 @@
 #:     TYPE NAME                       SIZE         IDENTIFIER
 0:     FDisk_partition_scheme         *31.9 GB          disk2
 1:     DOS_FAT_32 NO NAME              31.9 GB          disk2s1
-</code></pre>
-
-<p>所以<code>/dev/disk2</code>是我的microSD card</p>
-
+</code></pre><p>所以<code>/dev/disk2</code>是我的microSD card</p>
 <p>Unmount the microSD card</p>
-
 <pre><code>diskutil umountDisk /dev/disk2
-</code></pre>
-
-<p>You will see</p>
-
+</code></pre><p>You will see</p>
 <pre><code>Umount of all volumes on /dev/disk2 was successful
-</code></pre>
-
-<p>Copy the image to the microSD card</p>
-
+</code></pre><p>Copy the image to the microSD card</p>
 <pre><code>sudo sh -c 'gunzip -c ~/Downloads/ubuntu-20.04-preinstalled-server-arm64+raspi.img.xz | sudo dd of=/dev/disk2 bs=32m'
-</code></pre>
-
-<p>When finalised you will see</p>
-
+</code></pre><p>When finalised you will see</p>
 <pre><code>3719+1 records in
 3719+1 records out
 3899999744 bytes transferred in 642.512167 secs (6069924 bytes/sec)
-</code></pre>
-
-<h1 id="configuration-before-boot">Configuration Before Boot&nbsp;<a href="#configuration-before-boot" class="anchor"></a> </h1>
-
-<p>編輯<code>config.txt</code><br />
+</code></pre><h1 id="configuration-before-boot">Configuration Before Boot&nbsp;<a href="#configuration-before-boot" class="anchor"></a> </h1>
+<p>編輯<code>config.txt</code><br>
 官方文獻：
 <a href="https://www.raspberrypi.org/documentation/configuration/config-txt/">https://www.raspberrypi.org/documentation/configuration/config-txt/</a></p>
-
 <p>設定overclock 讓rpi可以充分發揮它的效能</p>
-
 <pre><code>over_voltage=4
 arm_freq=2000
 gpu_freq=650
-</code></pre>
-
-<p>HDMI輸出設定</p>
-
+</code></pre><p>HDMI輸出設定</p>
 <pre><code>hdmi_force_hotplug=1
 hdmi_ignore_edid=0xa5000080
 config_hdmi_boost=4
-</code></pre>
-
-<p>讓audio ouput不要從HDMI出來 而是從3.5mm</p>
-
+</code></pre><p>讓audio ouput不要從HDMI出來 而是從3.5mm</p>
 <pre><code>hdmi_ignore_edid_audio=1
-</code></pre>
-
-<p>退出microSD 放到rpi裡面<br />
+</code></pre><p>退出microSD 放到rpi裡面<br>
 確定接上HDMI cable再啟動電源</p>
-
 <h1 id="first-boot">First Boot&nbsp;<a href="#first-boot" class="anchor"></a> </h1>
-
-<p>開機前 把乙太網路插好 可以省下設定無線網路卡的麻煩<br />
+<p>開機前 把乙太網路插好 可以省下設定無線網路卡的麻煩<br>
 第一次開機後的登入帳號密碼為 : <code>ubuntu/ubuntu</code> 登入後會要求立即變更密碼</p>
-
 <p>然後依下面方式新增帳號, 並將原本的ubuntu帳號刪除</p>
-
 <pre><code>sudo useradd -m -s /bin/bash youraccount
 sudo passwd youraccount
 sudo adduser youraccount sudo
 logout後, 使用新帳號登入
 sudo userdel -r ubuntu
-</code></pre>
-
-<h2 id="更新系統">更新系統&nbsp;<a href="#更新系統" class="anchor"></a> </h2>
-
+</code></pre><h2 id="更新系統">更新系統&nbsp;<a href="#更新系統" class="anchor"></a> </h2>
 <pre><code>sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
-</code></pre>
-
-<p>下載網路時間伺服器</p>
-
+</code></pre><p>下載網路時間伺服器</p>
 <pre><code>sudo apt-get install ntp
-</code></pre>
-
-<p>到目前為止 Ubuntu Server版本已安裝完成<br />
+</code></pre><p>到目前為止 Ubuntu Server版本已安裝完成<br>
 只有文字介面</p>
-
 <h2 id="install-ubuntu-desktop">Install Ubuntu Desktop&nbsp;<a href="#install-ubuntu-desktop" class="anchor"></a> </h2>
-
-<p>若想當成desktop來使用的話 就必需再安裝桌面程式 目前可用的桌面程式有<br />
+<p>若想當成desktop來使用的話 就必需再安裝桌面程式 目前可用的桌面程式有<br>
 ubuntu-desktop, kubuntu-desktop, lubuntu-desktop, xubuntu-desktop, ubuntu-mate-desktop</p>
-
-<p>kubuntu跑不太動 不建議安裝<br />
+<p>kubuntu跑不太動 不建議安裝<br>
 xubuntu跟lubuntu是輕量級的版本 但韌體比較舊</p>
-
 <p>我自己是裝 ubuntu-desktop</p>
-
 <pre><code>sudo apt-get install ubuntu-desktop
-</code></pre>
-
-<h1 id="bluetooth">Bluetooth&nbsp;<a href="#bluetooth" class="anchor"></a> </h1>
-
+</code></pre><h1 id="bluetooth">Bluetooth&nbsp;<a href="#bluetooth" class="anchor"></a> </h1>
 <p>Raspberry Pi 4 B Ubuntu Bluetooth not working / detected</p>
-
 <p>Method 0:</p>
-
 <pre><code>hcitool dev
-</code></pre>
-
-<pre><code>sudo systemctl restart bluetooth
-</code></pre>
-
-<pre><code>systemctl status bluetooth
-</code></pre>
-
-<pre><code>sudo add-apt-repository ppa:bluetooth/bluez
-</code></pre>
-
-<pre><code>sudo apt install bluez
-</code></pre>
-
-<p>Method 1:</p>
-
+</code></pre><pre><code>sudo systemctl restart bluetooth
+</code></pre><pre><code>systemctl status bluetooth
+</code></pre><pre><code>sudo add-apt-repository ppa:bluetooth/bluez
+</code></pre><pre><code>sudo apt install bluez
+</code></pre><p>Method 1:</p>
 <pre><code>sudo apt install unity-control-center
-</code></pre>
-
-<p>Method 2:</p>
-
+</code></pre><p>Method 2:</p>
 <pre><code>sudo vim /boot/firmware/syscfg.txt
-</code></pre>
-
-<pre><code># include nobtcfg.txt
+</code></pre><pre><code># include nobtcfg.txt
 include btcfg.txt
-</code></pre>
-
-<p>Install pi-bluetooth</p>
-
+</code></pre><p>Install pi-bluetooth</p>
 <pre><code>sudo apt-get install pi-bluetooth
-</code></pre>
-
-<h1 id="exfat">exFAT&nbsp;<a href="#exfat" class="anchor"></a> </h1>
-
+</code></pre><h1 id="exfat">exFAT&nbsp;<a href="#exfat" class="anchor"></a> </h1>
 <p>Problem mounting exFAT disk on Ubuntu</p>
-
 <pre><code>sudo apt install exfat-fuse exfat-utils
-</code></pre>
-
-<h1 id="su-authentication-failure">su: Authentication failure&nbsp;<a href="#su-authentication-failure" class="anchor"></a> </h1>
-
+</code></pre><h1 id="su-authentication-failure">su: Authentication failure&nbsp;<a href="#su-authentication-failure" class="anchor"></a> </h1>
 <pre><code>sudo passwd root
 Enter new UNIX password: 
 Retype new UNIX password: 
 passwd: password updated successfully
-</code></pre>
-
-<h1 id="實測結果">實測結果&nbsp;<a href="#實測結果" class="anchor"></a> </h1>
-
-<p>果然2000多塊錢的電腦是無法取代普通PC的<br />
-開瀏覽器看YouTube的影片720p就有些吃力了 有fps跑不順的狀況<br />
+</code></pre><h1 id="實測結果">實測結果&nbsp;<a href="#實測結果" class="anchor"></a> </h1>
+<p>果然2000多塊錢的電腦是無法取代普通PC的<br>
+開瀏覽器看YouTube的影片720p就有些吃力了 有fps跑不順的狀況<br>
 我沒有裝Raspbian比較過 但xubuntu-desktop跑起來會比ubuntu-desktop來得順很多</p>
-
-<p>還有另一個問題是輸出的畫面有時候暗掉 會變一格一格的像素<br />
-滑鼠游標移過去的地方才會再顯現 :&lsquo;(<br />
-<img src="https://media.giphy.com/media/kdW0DcTOXZEAXrLplh/giphy.gif" alt="Imgur" /></p>
+<p>還有另一個問題是輸出的畫面有時候暗掉 會變一格一格的像素<br>
+滑鼠游標移過去的地方才會再顯現 :'(<br>
+<img src="https://media.giphy.com/media/kdW0DcTOXZEAXrLplh/giphy.gif" alt="Imgur"></p>
 
                 </section>
         

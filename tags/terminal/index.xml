@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Terminal on [ yilianwu ]</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Terminal on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 03 Mar 2019 21:59:58 +0800</lastBuildDate>
-    
-	<atom:link href="https://yilianwu.github.io/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 03 Mar 2019 21:59:58 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>我常用的Mac指令</title>
       <link>https://yilianwu.github.io/posts/mac-commandlines/</link>
@@ -35,8 +31,8 @@
       <pubDate>Tue, 05 Feb 2019 15:39:41 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/iterm-intro/</guid>
-      <description>&lt;p&gt;電腦開著終端機在打程式很帥&lt;br /&gt;
-但是面對螢幕上一行行密密麻麻的程式碼，&lt;br /&gt;
+      <description>&lt;p&gt;電腦開著終端機在打程式很帥&lt;br&gt;
+但是面對螢幕上一行行密密麻麻的程式碼，&lt;br&gt;
 你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？&lt;/p&gt;</description>
     </item>
     

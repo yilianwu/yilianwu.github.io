@@ -36,31 +36,29 @@
         <div class="post-toc" id="post-toc">
             <h2 class="post-toc-title">Contents</h2>
             <nav id="TableOfContents">
-<ul>
-<li><a href="#預期的效果">預期的效果</a></li>
-<li><a href="#設計組合電路">設計組合電路</a>
-<ul>
-<li><a href="#loading-mode">Loading Mode</a>
-<ul>
-<li><a href="#truth-table">Truth Table</a></li>
-<li><a href="#karnaugh-map">Karnaugh Map</a></li>
-<li><a href="#logic-circuit">Logic Circuit</a></li>
-</ul></li>
-<li><a href="#connected-mode">Connected Mode</a>
-<ul>
-<li><a href="#truth-table-1">Truth Table</a></li>
-<li><a href="#karnaugh-map-1">Karnaugh Map</a></li>
-<li><a href="#logic-circuit-1">Logic Circuit</a></li>
-</ul></li>
-<li><a href="#mode-switch">Mode Switch</a>
-<ul>
-<li><a href="#truth-table-2">Truth Table</a></li>
-<li><a href="#karnaugh-map-2">Karnaugh Map</a></li>
-<li><a href="#logic-circuit-2">Logic Circuit</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#完成品">完成品</a></li>
-</ul>
+  <ul>
+    <li><a href="#loading-mode">Loading Mode</a>
+      <ul>
+        <li><a href="#truth-table">Truth Table</a></li>
+        <li><a href="#karnaugh-map">Karnaugh Map</a></li>
+        <li><a href="#logic-circuit">Logic Circuit</a></li>
+      </ul>
+    </li>
+    <li><a href="#connected-mode">Connected Mode</a>
+      <ul>
+        <li><a href="#truth-table-1">Truth Table</a></li>
+        <li><a href="#karnaugh-map-1">Karnaugh Map</a></li>
+        <li><a href="#logic-circuit-1">Logic Circuit</a></li>
+      </ul>
+    </li>
+    <li><a href="#mode-switch">Mode Switch</a>
+      <ul>
+        <li><a href="#truth-table-2">Truth Table</a></li>
+        <li><a href="#karnaugh-map-2">Karnaugh Map</a></li>
+        <li><a href="#logic-circuit-2">Logic Circuit</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
         </div>
        <div class="paperbg">
@@ -78,144 +76,100 @@
 
 
                 <section class="post-content">
-                <p>在交大修了一門通識課 - 跨領域應用電學 Applied Electricity<br />
+                <p>在交大修了一門通識課 - 跨領域應用電學 Applied Electricity<br>
 期末專題需要應用在這堂課所習得的知識，設計並做出自己的電路</p>
-
-<p>這學期的主題是「悶」&hellip;<br />
-在與組員發想要做什麼的時候，剛好我電腦的Wi-Fi要連不連的一直跳掉<br />
+<p>這學期的主題是「悶」&hellip;<br>
+在與組員發想要做什麼的時候，剛好我電腦的Wi-Fi要連不連的一直跳掉<br>
 就讓我有了想法💡</p>
-
 <blockquote>
-<p>當人在等待一件事情完成的過程中，那種明已知道最後會發生什麼結果，<br />
+<p>當人在等待一件事情完成的過程中，那種明已知道最後會發生什麼結果，<br>
 卻被迫等待、觀看漫長的經過，又無法行使任何作為來加速，會讓人有種鬱悶的「悶」感。</p>
 </blockquote>
-
 <p>所以我們決定做一個Wi-Fi符號！</p>
-
 <h1 id="預期的效果">預期的效果&nbsp;<a href="#預期的效果" class="anchor"></a> </h1>
-
-<p>製作一個模擬Wi-Fi連線時的動態的燈箱<br />
-當手指點按開關後，會觸發LED燈模擬Wi-Fi正在連線中的閃爍動態<br />
+<p>製作一個模擬Wi-Fi連線時的動態的燈箱<br>
+當手指點按開關後，會觸發LED燈模擬Wi-Fi正在連線中的閃爍動態<br>
 利用漫長的等待氛圍，來製造「悶」的感覺</p>
-
 <p>LED燈的動態有兩種模式，如下圖所示：
-<img src="https://i.imgur.com/LKl9CDo.png" alt="Imgur" /></p>
-
+<img src="https://i.imgur.com/LKl9CDo.png" alt="Imgur"></p>
 <h1 id="設計組合電路">設計組合電路&nbsp;<a href="#設計組合電路" class="anchor"></a> </h1>
-
 <p>列出需求→繪真值表→寫出布林代數式→繪出電路圖</p>
-
-<p>Wi-Fi符號的LED總共分成四個部分：<br />
-<img src="https://i.imgur.com/NU8rnMp.png" alt="Imgur" /></p>
-
-<p>準備：<br />
-NE555   振盪器<br />
-74LS90N 計數器<br />
-<img src="https://i.imgur.com/427DNy6.png" alt="Imgur" /></p>
-
+<p>Wi-Fi符號的LED總共分成四個部分：<br>
+<img src="https://i.imgur.com/NU8rnMp.png" alt="Imgur"></p>
+<p>準備：<br>
+NE555   振盪器<br>
+74LS90N 計數器<br>
+<img src="https://i.imgur.com/427DNy6.png" alt="Imgur"></p>
 <h2 id="loading-mode">Loading Mode&nbsp;<a href="#loading-mode" class="anchor"></a> </h2>
-
 <h3 id="truth-table">Truth Table&nbsp;<a href="#truth-table" class="anchor"></a> </h3>
-
-<p><img src="https://i.imgur.com/BFGiOW6.png" alt="Imgur" />
-註：QD=1時，循環Reset<br />
+<p><img src="https://i.imgur.com/BFGiOW6.png" alt="Imgur">
+註：QD=1時，循環Reset<br>
 74LS90N (QD) - (R0/2)</p>
-
 <h3 id="karnaugh-map">Karnaugh Map&nbsp;<a href="#karnaugh-map" class="anchor"></a> </h3>
-
-<p><strong>LED D</strong><br />
-<img src="https://i.imgur.com/aOfxrD7.png" alt="Imgur" />
+<p><strong>LED D</strong><br>
+<img src="https://i.imgur.com/aOfxrD7.png" alt="Imgur">
 $$D=QC \cdot \overline{QB} \cdot \overline{QA}$$</p>
-
-<p><strong>LED C</strong><br />
-<img src="https://i.imgur.com/9JKDanj.png" alt="Imgur" />
+<p><strong>LED C</strong><br>
+<img src="https://i.imgur.com/9JKDanj.png" alt="Imgur">
 $$C=QC \cdot \overline{QB} \cdot QA + \overline{QC} \cdot QB \cdot QA $$
-$$ =QA \cdot (QB \oplus QC)$$<br />
+$$ =QA \cdot (QB \oplus QC)$$<br>
 (XOR)</p>
-
 <p><strong>LED B</strong>
-<img src="https://i.imgur.com/HDQ3M0S.png" alt="Imgur" />
+<img src="https://i.imgur.com/HDQ3M0S.png" alt="Imgur">
 $$B=QB \cdot \overline{QA}$$</p>
-
-<p><strong>LED A</strong><br />
-<img src="https://i.imgur.com/k0DuUDu.png" alt="Imgur" />
-$$A=\overline{QC} \cdot \overline{QB} \cdot QA + QC \cdot QB \cdot QA$$<br />
+<p><strong>LED A</strong><br>
+<img src="https://i.imgur.com/k0DuUDu.png" alt="Imgur">
+$$A=\overline{QC} \cdot \overline{QB} \cdot QA + QC \cdot QB \cdot QA$$<br>
 $$ =QA \cdot \overline{QB \oplus QC}$$
 (XNOR)</p>
-
 <h3 id="logic-circuit">Logic Circuit&nbsp;<a href="#logic-circuit" class="anchor"></a> </h3>
-
-<p><img src="https://i.imgur.com/3rJ9sSG.png" alt="Imgur" /></p>
-
+<p><img src="https://i.imgur.com/3rJ9sSG.png" alt="Imgur"></p>
 <h2 id="connected-mode">Connected Mode&nbsp;<a href="#connected-mode" class="anchor"></a> </h2>
-
 <h3 id="truth-table-1">Truth Table&nbsp;<a href="#truth-table-1" class="anchor"></a> </h3>
-
-<p><img src="https://i.imgur.com/5z87DDz.png" alt="Imgur" />
- 當QC=1時，維持現狀不再變動(7490 Clock A stop)</p>
-
+<p><img src="https://i.imgur.com/5z87DDz.png" alt="Imgur">
+當QC=1時，維持現狀不再變動(7490 Clock A stop)</p>
 <h3 id="karnaugh-map-1">Karnaugh Map&nbsp;<a href="#karnaugh-map-1" class="anchor"></a> </h3>
-
-<p><strong>LED D</strong><br />
-<img src="https://i.imgur.com/mdBlzGk.png" alt="Imgur" />
+<p><strong>LED D</strong><br>
+<img src="https://i.imgur.com/mdBlzGk.png" alt="Imgur">
 $$D=QC$$</p>
-
-<p><strong>LED C</strong><br />
-<img src="https://i.imgur.com/YBiKROP.png" alt="Imgur" />
+<p><strong>LED C</strong><br>
+<img src="https://i.imgur.com/YBiKROP.png" alt="Imgur">
 $$C=QA \cdot QB + QC$$</p>
-
-<p><strong>LED B</strong><br />
-<img src="https://i.imgur.com/vJZUOQX.png" alt="Imgur" />
+<p><strong>LED B</strong><br>
+<img src="https://i.imgur.com/vJZUOQX.png" alt="Imgur">
 $$B=QB+QC$$</p>
-
-<p><strong>LED A</strong><br />
-<img src="https://i.imgur.com/8YaldHq.png" alt="Imgur" />
+<p><strong>LED A</strong><br>
+<img src="https://i.imgur.com/8YaldHq.png" alt="Imgur">
 $$A=\overline{\overline{QC} \cdot \overline{QB} \cdot \overline{QA}}$$
 $$=QA+QB+QC$$</p>
-
 <h3 id="logic-circuit-1">Logic Circuit&nbsp;<a href="#logic-circuit-1" class="anchor"></a> </h3>
-
-<p><img src="https://i.imgur.com/Ku2MbbU.png" alt="Imgur" /></p>
-
+<p><img src="https://i.imgur.com/Ku2MbbU.png" alt="Imgur"></p>
 <h2 id="mode-switch">Mode Switch&nbsp;<a href="#mode-switch" class="anchor"></a> </h2>
-
-<p>裝置底下，暗藏了一個微動開關來切換這兩個Mode<br />
-<img src="https://i.imgur.com/PRtj7QW.jpg" alt="Imgur" /></p>
-
-<p>經過測試，微動開關用來控制低電位是否流通會比較穩定<br />
-狀態如下：<br />
-(裝置靜置在桌上)微動開關壓下，高電位流通 Switch=1 &ndash;&gt; Connecting Mode<br />
+<p>裝置底下，暗藏了一個微動開關來切換這兩個Mode <br>
+<img src="https://i.imgur.com/PRtj7QW.jpg" alt="Imgur"></p>
+<p>經過測試，微動開關用來控制低電位是否流通會比較穩定<br>
+狀態如下：<br>
+(裝置靜置在桌上)微動開關壓下，高電位流通 Switch=1 &ndash;&gt; Connecting Mode<br>
 (裝置被拿起來)微動開關鬆開，低電位流通 Switch=0 &ndash;&gt; Connected Mode</p>
-
 <h3 id="truth-table-2">Truth Table&nbsp;<a href="#truth-table-2" class="anchor"></a> </h3>
-
-<p><img src="https://i.imgur.com/LaPXZWg.png" alt="Imgur" /></p>
-
+<p><img src="https://i.imgur.com/LaPXZWg.png" alt="Imgur"></p>
 <h3 id="karnaugh-map-2">Karnaugh Map&nbsp;<a href="#karnaugh-map-2" class="anchor"></a> </h3>
-
-<p><img src="https://i.imgur.com/7IbSWP2.png" alt="Imgur" />
+<p><img src="https://i.imgur.com/7IbSWP2.png" alt="Imgur">
 $$LED=A1(Switch)+A2 \overline{(Switch)}$$
 其餘，LED B, C, D 皆以此類推&hellip;</p>
-
 <h3 id="logic-circuit-2">Logic Circuit&nbsp;<a href="#logic-circuit-2" class="anchor"></a> </h3>
-
-<p><img src="https://i.imgur.com/TjtK4Ki.png" alt="Imgur" /></p>
-
+<p><img src="https://i.imgur.com/TjtK4Ki.png" alt="Imgur"></p>
 <h1 id="完成品">完成品&nbsp;<a href="#完成品" class="anchor"></a> </h1>
-
-<p>當初複雜的實驗電路＠＠<br />
-<img src="https://i.imgur.com/wLQ2J81.jpg" alt="Imgur" /></p>
-
-<p>把電路收整齊、藏好<br />
-<img src="https://i.imgur.com/JdI0JqL.jpg" alt="Imgur" /></p>
-
-<p>完美<br />
-<img src="https://i.imgur.com/kDbsJkm.jpg" alt="Imgur" /></p>
-
-<p>影片<br />
+<p>當初複雜的實驗電路＠＠<br>
+<img src="https://i.imgur.com/wLQ2J81.jpg" alt="Imgur"></p>
+<p>把電路收整齊、藏好<br>
+<img src="https://i.imgur.com/JdI0JqL.jpg" alt="Imgur"></p>
+<p>完美<br>
+<img src="https://i.imgur.com/kDbsJkm.jpg" alt="Imgur"></p>
+<p>影片<br>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/8dXP_VyY54M" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/8dXP_VyY54M" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 </p>
                 </section>

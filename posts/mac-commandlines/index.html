@@ -36,26 +36,32 @@
         <div class="post-toc" id="post-toc">
             <h2 class="post-toc-title">Contents</h2>
             <nav id="TableOfContents">
-<ul>
-<li><a href="#command-line-basics-一些基本ㄉ操作">Command Line Basics 一些基本ㄉ操作</a>
-<ul>
-<li><a href="#建立加密的-zip-壓縮檔">建立加密的 Zip 壓縮檔</a></li>
-</ul></li>
-<li><a href="#for特殊用途">For特殊用途</a>
-<ul>
-<li><a href="#seirra叫出-所有來源">Seirra叫出<strong>所有來源</strong></a></li>
-<li><a href="#製作重灌隨身碟">製作重灌隨身碟</a>
-<ul>
-<li><a href="#el-capitan">El Capitan</a></li>
-<li><a href="#mojave">Mojave</a></li>
-</ul></li>
-<li><a href="#finder顯示隱藏檔">Finder顯示隱藏檔</a></li>
-</ul></li>
-<li><a href="#隱藏彩蛋">隱藏彩蛋</a>
-<ul>
-<li><a href="#terminal-star-wars-從終端機看星際大戰">Terminal Star Wars 從終端機看星際大戰</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#建立加密的-zip-壓縮檔">建立加密的 Zip 壓縮檔</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#el-capitan">El Capitan</a></li>
+    <li><a href="#mojave">Mojave</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#關於-smc">關於 SMC</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#seirra叫出所有來源">Seirra叫出<strong>所有來源</strong></a></li>
+    <li><a href="#finder顯示隱藏檔">Finder顯示隱藏檔</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#terminal-star-wars-從終端機看星際大戰">Terminal Star Wars 從終端機看星際大戰</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#apple-檔案系統apfs">Apple 檔案系統（APFS）</a></li>
+    <li><a href="#mac-os-擴充格式">Mac OS 擴充格式</a></li>
+  </ul>
 </nav>
         </div>
        <div class="paperbg">
@@ -74,86 +80,89 @@
 
                 <section class="post-content">
                 <p>一些常用到的指令筆記</p>
-
 <h1 id="command-line-basics-一些基本ㄉ操作">Command Line Basics 一些基本ㄉ操作&nbsp;<a href="#command-line-basics-一些基本ㄉ操作" class="anchor"></a> </h1>
-
 <p><code>~</code> –&gt;最上層根目錄，通常是/Users/username</p>
-
 <p><code>ls</code> -&gt; 可看所有的內容</p>
-
 <p><code>cd空格 資料夾名稱</code> –&gt;進入某資料夾</p>
-
 <p><code>cd空格 ..</code> –&gt;直接回到最上層根目錄</p>
-
 <p><code>mkdir空格 資料夾</code> –&gt;新增資料夾</p>
-
 <p><code>touch空格 filename.txt</code> –&gt;新增一個filename.txt檔案</p>
-
-<p><code>rm空格 filename.txt</code> –&gt;刪除檔案</p>
-
+<p><code>rm空格 filename.txt </code> –&gt;刪除檔案</p>
 <p><code>rm空格 -r空格 dirname/</code> –&gt;刪除一整個資料夾</p>
-
 <p><code>command+上方向鍵</code> –&gt;切換最近輸入的指令</p>
-
 <p><code>mv空格 fileone.txt filetwo.jpg dirname/</code> –&gt; 移動fileone.txt及filetwo.jpg 到dirname資料夾</p>
-
 <p><code>mv空格 yo.html hey.html</code> –&gt;重新命名yo.html成hey.html</p>
-
 <p><code>cp空格 hello.html test/</code> –&gt; 複製hello.html到test資料夾</p>
-
 <h2 id="建立加密的-zip-壓縮檔">建立加密的 Zip 壓縮檔&nbsp;<a href="#建立加密的-zip-壓縮檔" class="anchor"></a> </h2>
-
 <p>讓機密資料加上密碼保護!</p>
-
 <pre><code>zip -e archivename.zip filetoprotect.txt
-</code></pre>
-
-<p>壓縮資料夾</p>
-
+</code></pre><p>壓縮資料夾</p>
 <pre><code>zip -er ~/Desktop/encrypted.zip ~/Documents/Confidential/
-</code></pre>
-
-<h1 id="for特殊用途">For特殊用途&nbsp;<a href="#for特殊用途" class="anchor"></a> </h1>
-
-<h2 id="seirra叫出-所有來源">Seirra叫出<strong>所有來源</strong>&nbsp;<a href="#seirra叫出-所有來源" class="anchor"></a> </h2>
-
-<pre><code>sudo spctl --master-disable  
-</code></pre>
-
-<h2 id="製作重灌隨身碟">製作重灌隨身碟&nbsp;<a href="#製作重灌隨身碟" class="anchor"></a> </h2>
-
-<h3 id="el-capitan">El Capitan&nbsp;<a href="#el-capitan" class="anchor"></a> </h3>
-
+</code></pre><h1 id="製作重灌隨身碟">製作重灌隨身碟&nbsp;<a href="#製作重灌隨身碟" class="anchor"></a> </h1>
+<h2 id="el-capitan">El Capitan&nbsp;<a href="#el-capitan" class="anchor"></a> </h2>
 <pre><code>sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/目標磁碟名稱 --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app --nointeraction
-</code></pre>
-
-<h3 id="mojave">Mojave&nbsp;<a href="#mojave" class="anchor"></a> </h3>
-
-<pre><code>sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/16g --applicationpath /Applications/Install\ macOS\ Mojave.app –nointeraction
-</code></pre>
-
-<h2 id="finder顯示隱藏檔">Finder顯示隱藏檔&nbsp;<a href="#finder顯示隱藏檔" class="anchor"></a> </h2>
-
+</code></pre><h2 id="mojave">Mojave&nbsp;<a href="#mojave" class="anchor"></a> </h2>
+<pre><code>sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /目標磁碟名稱 --applicationpath /Applications/Install\ macOS\ Mojave.app –nointeraction
+</code></pre><h1 id="在-mac-上重置-nvram-或-pram">在 Mac 上重置 NVRAM 或 PRAM&nbsp;<a href="#在-mac-上重置-nvram-或-pram" class="anchor"></a> </h1>
+<ol>
+<li>
+<p>在 Mac 上，選擇「蘋果」選單  &gt;「關機⋯」。</p>
+</li>
+<li>
+<p>在鍵盤上找到下列按鍵：Option、Command、P 和 R。您需要在步驟 4 中同時按住這些按鍵。</p>
+</li>
+<li>
+<p>將 Mac 開機。</p>
+</li>
+<li>
+<p>在帶有蘋果標誌的黑色螢幕出現前，立即按住 Option + Command + P + R 鍵。</p>
+</li>
+<li>
+<p>繼續按著按鍵，大約 15 秒，直到 Mac 重新開機。</p>
+</li>
+<li>
+<p>放開按鍵。</p>
+</li>
+</ol>
+<h1 id="重置-mac-的-smc">重置 Mac 的 SMC&nbsp;<a href="#重置-mac-的-smc" class="anchor"></a> </h1>
+<p>重置系統管理控制器（SMC）可解決某些與電源、電池、風扇和其他功能相關的問題</p>
+<ol>
+<li>在關機狀態，按住下列所有按鍵：
+位於鍵盤左側的 Shift<br>
+位於鍵盤左側的 Control<br>
+位於鍵盤左側的 Option（Alt）</li>
+<li>同時按住這四個按鈕不放 10 秒。</li>
+<li>放開所有按鍵，然後按住電源按鈕來啟動 Mac。</li>
+</ol>
+<p><img src="https://i.imgur.com/LnvOOEE.png" alt="Imgur"></p>
+<h2 id="關於-smc">關於 SMC&nbsp;<a href="#關於-smc" class="anchor"></a> </h2>
+<p>「系統管理控制器」負責管理與下列功能相關的行為：</p>
+<p>電源，包括電源按鈕與 USB 連接埠供電
+電池與充電
+風扇與其他散熱管理功能
+指示器或感應器，如狀態指示燈（睡眠狀態、電池充電狀態等）、瞬間防震感測裝置、環境光度感測器，以及鍵盤背光
+筆記型電腦上蓋開啟與關閉時的行為
+重置 SMC 不會影響 NVRAM 或 PRAM 的內容。</p>
+<h1 id="for特殊用途">For特殊用途&nbsp;<a href="#for特殊用途" class="anchor"></a> </h1>
+<h2 id="seirra叫出所有來源">Seirra叫出<strong>所有來源</strong>&nbsp;<a href="#seirra叫出所有來源" class="anchor"></a> </h2>
+<pre><code>sudo spctl --master-disable  
+</code></pre><h2 id="finder顯示隱藏檔">Finder顯示隱藏檔&nbsp;<a href="#finder顯示隱藏檔" class="anchor"></a> </h2>
 <ol>
 <li>在Finder按cmd+shift+&lt;</li>
-
-<li><p>終端機輸入</p>
-
+<li>終端機輸入
 <pre><code>defaults write com.apple.finder AppleShowAllFiles -bool true
-</code></pre>
-
-<p>重啟Finder</p>
-
-<pre><code>killall Finder
-</code></pre>
-
-<h1 id="隱藏彩蛋">隱藏彩蛋&nbsp;<a href="#隱藏彩蛋" class="anchor"></a> </h1>
-
-<h2 id="terminal-star-wars-從終端機看星際大戰">Terminal Star Wars 從終端機看星際大戰&nbsp;<a href="#terminal-star-wars-從終端機看星際大戰" class="anchor"></a> </h2>
-
-<pre><code>telnet towel.blinkenlights.nl
 </code></pre></li>
 </ol>
+<p>重啟Finder</p>
+<pre><code>killall Finder
+</code></pre><h1 id="隱藏彩蛋">隱藏彩蛋&nbsp;<a href="#隱藏彩蛋" class="anchor"></a> </h1>
+<h2 id="terminal-star-wars-從終端機看星際大戰">Terminal Star Wars 從終端機看星際大戰&nbsp;<a href="#terminal-star-wars-從終端機看星際大戰" class="anchor"></a> </h2>
+<pre><code>telnet towel.blinkenlights.nl
+</code></pre><h1 id="mac-上磁碟工具程式中可用的檔案系統格式">Mac 上「磁碟工具程式」中可用的檔案系統格式&nbsp;<a href="#mac-上磁碟工具程式中可用的檔案系統格式" class="anchor"></a> </h1>
+<h2 id="apple-檔案系統apfs">Apple 檔案系統（APFS）&nbsp;<a href="#apple-檔案系統apfs" class="anchor"></a> </h2>
+<p>「Apple 檔案系統」（APFS）是針對安裝 macOS 10.13 或以上版本的 Mac 預設檔案系統</p>
+<h2 id="mac-os-擴充格式">Mac OS 擴充格式&nbsp;<a href="#mac-os-擴充格式" class="anchor"></a> </h2>
+<p>為安裝 macOS 10.12 或較早版本的 Mac 電腦選擇以下其中一種「Mac OS 擴充格式」檔案系統格式以符合相容性</p>
                 </section>
         
             </div>

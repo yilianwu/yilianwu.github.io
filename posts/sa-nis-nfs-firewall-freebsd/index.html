@@ -36,31 +36,28 @@
         <div class="post-toc" id="post-toc">
             <h2 class="post-toc-title">Contents</h2>
             <nav id="TableOfContents">
-<ul>
-<li><a href="#nis-client">NIS Client</a>
-<ul>
-<li><a href="#configurations-in-rc-conf">Configurations in <code>rc.conf</code></a></li>
-<li><a href="#maps-between-ip-and-hostname">Maps between IP and hostname</a></li>
-<li><a href="#nis-users">NIS Users</a></li>
-<li><a href="#accounts-and-groups">Accounts and Groups</a></li>
-<li><a href="#restart-ypbind-daemon">Restart ypbind  daemon</a></li>
-</ul></li>
-<li><a href="#nfs-client">NFS Client</a>
-<ul>
-<li><a href="#server-configurations-in-etc-rc-conf">Server configurations in <code>/etc/rc.conf</code></a></li>
-<li><a href="#client-configurations-in-etc-rc-conf">Client configurations in <code>/etc/rc.conf</code></a></li>
-<li><a href="#mount">Mount</a>
-<ul>
-<li><a href="#auto-mount-autofs">Auto Mount (autofs)</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#nfs-server">NFS Server</a></li>
-<li><a href="#firewall">Firewall</a>
-<ul>
-<li><a href="#packet-filter-pf">Packet Filter (PF)</a></li>
-<li><a href="#blacklistd">Blacklistd</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#configurations-in-rcconf">Configurations in <code>rc.conf</code></a></li>
+    <li><a href="#maps-between-ip-and-hostname">Maps between IP and hostname</a></li>
+    <li><a href="#nis-users">NIS Users</a></li>
+    <li><a href="#accounts-and-groups">Accounts and Groups</a></li>
+    <li><a href="#restart-ypbind--daemon">Restart ypbind  daemon</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#server-configurations-in-etcrcconf">Server configurations in <code>/etc/rc.conf</code></a></li>
+    <li><a href="#client-configurations-in-etcrcconf">Client configurations in <code>/etc/rc.conf</code></a></li>
+    <li><a href="#mount">Mount</a>
+      <ul>
+        <li><a href="#auto-mount-autofs">Auto Mount (autofs)</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#packet-filter-pf">Packet Filter (PF)</a></li>
+    <li><a href="#blacklistd">Blacklistd</a></li>
+  </ul>
 </nav>
         </div>
        <div class="paperbg">
@@ -82,97 +79,65 @@
 
 
                 <section class="post-content">
-                
-
-<h1 id="nis-client">NIS Client&nbsp;<a href="#nis-client" class="anchor"></a> </h1>
-
-<h2 id="configurations-in-rc-conf">Configurations in <code>rc.conf</code>&nbsp;<a href="#configurations-in-rc-conf" class="anchor"></a> </h2>
-
+                <h1 id="nis-client">NIS Client&nbsp;<a href="#nis-client" class="anchor"></a> </h1>
+<h2 id="configurations-in-rcconf">Configurations in <code>rc.conf</code>&nbsp;<a href="#configurations-in-rcconf" class="anchor"></a> </h2>
 <pre><code>nisdomainname=&quot;savpn.nctu.me&quot;
 # NIS domain name ≠ DNS domain name
 
 nis_client_enable=&quot;YES&quot;
 nis_client_flags=&quot;-s -m -S savpn.nctu.me,nis server&quot;
-</code></pre>
-
-<h2 id="maps-between-ip-and-hostname">Maps between IP and hostname&nbsp;<a href="#maps-between-ip-and-hostname" class="anchor"></a> </h2>
-
+</code></pre><h2 id="maps-between-ip-and-hostname">Maps between IP and hostname&nbsp;<a href="#maps-between-ip-and-hostname" class="anchor"></a> </h2>
 <p>Configure in <code>/etc/hosts</code></p>
-
 <pre><code># 140.113.17.155 nisserver
 10.113.0.254 nisserver
 # 連wg vpn
-</code></pre>
-
-<h2 id="nis-users">NIS Users&nbsp;<a href="#nis-users" class="anchor"></a> </h2>
-
-<p>在NIS Server(savpn.nctu.me)中有三個users<br />
-- nisuser1<br />
-- nisuser2<br />
-- nisuser3</p>
-
-<p>要注意的地方：<br />
-- passwd同username<br />
-- home directory要在<code>/net/home/&lt;username&gt;</code>
-- share: hosts, passwd, group, netgroup, ypservers</p>
-
+</code></pre><h2 id="nis-users">NIS Users&nbsp;<a href="#nis-users" class="anchor"></a> </h2>
+<p>在NIS Server(savpn.nctu.me)中有三個users</p>
+<ul>
+<li>nisuser1</li>
+<li>nisuser2</li>
+<li>nisuser3</li>
+</ul>
+<p>要注意的地方：</p>
+<ul>
+<li>passwd同username</li>
+<li>home directory要在<code>/net/home/&lt;username&gt;</code></li>
+<li>share: hosts, passwd, group, netgroup, ypservers</li>
+</ul>
 <h2 id="accounts-and-groups">Accounts and Groups&nbsp;<a href="#accounts-and-groups" class="anchor"></a> </h2>
-
-<p>NIS user can login to your server<br />
-1. User account information</p>
-
-<pre><code>```
-vipw
-```
-
-到`/etc/master.passwd`  
-加在最後一行
-```
-+::::::::::
-```
-</code></pre>
-
+<p>NIS user can login to your server</p>
 <ol>
-<li><p>UNIX group definitions</p>
-
-<pre><code>vigr
-</code></pre>
-
-<p>到<code>/etc/group</code><br />
+<li>
+<p>User account information</p>
+<pre><code>vipw
+</code></pre><p>到<code>/etc/master.passwd</code><br>
 加在最後一行</p>
-
+<pre><code>+::::::::::
+</code></pre></li>
+<li>
+<p>UNIX group definitions</p>
+<pre><code>vigr
+</code></pre><p>到<code>/etc/group</code><br>
+加在最後一行</p>
 <pre><code>+:*::
 </code></pre></li>
-
-<li><p>排優先順序
-When an user with an identical name in both NIS and local, then query NIS first.<br />
+<li>
+<p>排優先順序
+When an user with an identical name in both NIS and local, then query NIS first.<br>
 <code>/etc/nsswitch.conf</code></p>
-
 <pre><code>group: nis files
 net group: nis files
 passwd: nis files
 </code></pre></li>
 </ol>
-
-<h2 id="restart-ypbind-daemon">Restart ypbind  daemon&nbsp;<a href="#restart-ypbind-daemon" class="anchor"></a> </h2>
-
+<h2 id="restart-ypbind--daemon">Restart ypbind  daemon&nbsp;<a href="#restart-ypbind--daemon" class="anchor"></a> </h2>
 <pre><code>sudo service ypbind restart
-</code></pre>
-
-<p>檢查：</p>
-
+</code></pre><p>檢查：</p>
 <pre><code>ypcat passwd
-</code></pre>
-
-<pre><code>sudo ypcat master.passwd
-</code></pre>
-
-<h1 id="nfs-client">NFS Client&nbsp;<a href="#nfs-client" class="anchor"></a> </h1>
-
+</code></pre><pre><code>sudo ypcat master.passwd
+</code></pre><h1 id="nfs-client">NFS Client&nbsp;<a href="#nfs-client" class="anchor"></a> </h1>
 <p>要當NFS Client之前，自己要先是NFS Server</p>
-
-<h2 id="server-configurations-in-etc-rc-conf">Server configurations in <code>/etc/rc.conf</code>&nbsp;<a href="#server-configurations-in-etc-rc-conf" class="anchor"></a> </h2>
-
+<h2 id="server-configurations-in-etcrcconf">Server configurations in <code>/etc/rc.conf</code>&nbsp;<a href="#server-configurations-in-etcrcconf" class="anchor"></a> </h2>
 <pre><code># enable
 nfs_server_enable=&quot;YES&quot;
 nfs_server_flags=&quot;-u -t -n 10&quot;
@@ -195,125 +160,80 @@ mountd_flags=&quot;-r&quot;
 # 為了增增系統的安全
 # 讓 nfsd 執行時只使用 reserved port(小於 1024 的 ports)
 nfs_reserved_port_only=&quot;YES&quot;
-</code></pre>
-
-<h2 id="client-configurations-in-etc-rc-conf">Client configurations in <code>/etc/rc.conf</code>&nbsp;<a href="#client-configurations-in-etc-rc-conf" class="anchor"></a> </h2>
-
+</code></pre><h2 id="client-configurations-in-etcrcconf">Client configurations in <code>/etc/rc.conf</code>&nbsp;<a href="#client-configurations-in-etcrcconf" class="anchor"></a> </h2>
 <pre><code># enable
 nfs_client_enable=&quot;YES&quot;
-</code></pre>
-
-<h2 id="mount">Mount&nbsp;<a href="#mount" class="anchor"></a> </h2>
-
+</code></pre><h2 id="mount">Mount&nbsp;<a href="#mount" class="anchor"></a> </h2>
 <p>Mount file from savpn.nctu.me</p>
-
 <p>Create dirs</p>
-
 <pre><code>mkdir /net/home /net/data
-</code></pre>
-
-<p>Start nfsclient</p>
-
+</code></pre><p>Start nfsclient</p>
 <pre><code>sudo service nfsclient start
-</code></pre>
-
-<p>mount dirs</p>
-
+</code></pre><p>mount dirs</p>
 <pre><code>mount 10.113.0.254:/net/data /net/data
 mount 10.113.0.254:/net/home /net/home
-</code></pre>
-
-<p>Do NOT allow setuid or setgid bits to take effect</p>
-
+</code></pre><p>Do NOT allow setuid or setgid bits to take effect</p>
 <h3 id="auto-mount-autofs">Auto Mount (autofs)&nbsp;<a href="#auto-mount-autofs" class="anchor"></a> </h3>
-
-<p>Will be mounted automatically when needed<br />
-開機的時候不掛載他，而是直到我存取他(cd)的瞬間<br />
+<p>Will be mounted automatically when needed<br>
+開機的時候不掛載他，而是直到我存取他(cd)的瞬間<br>
 autofs才會檢查那台server有無存在？能不能掛載？</p>
-
 <p>Enable in <code>rc.conf</code></p>
-
 <pre><code>autofs_enable=&quot;YES&quot;
-</code></pre>
-
-<p>Three kinds of configuration files (map)<br />
-會寫你要掛載的根目錄的位置mountpoint、要去對應哪一張map<br />
-- Direct map<br />
-    幾乎和fstab一樣<br />
-- Indirect map<br />
-    裡面所有的indirect資料夾 都會掛載在同一個目錄底下<br />
-- Master map<br />
-    List which direct and indirect maps that automount should pay attention to</p>
-
-<p>Master Map<br />
+</code></pre><p>Three kinds of configuration files (map)<br>
+會寫你要掛載的根目錄的位置mountpoint、要去對應哪一張map</p>
+<ul>
+<li>Direct map<br>
+幾乎和fstab一樣</li>
+<li>Indirect map<br>
+裡面所有的indirect資料夾 都會掛載在同一個目錄底下</li>
+<li>Master map<br>
+List which direct and indirect maps that automount should pay attention to</li>
+</ul>
+<p>Master Map<br>
 <code>/etc/auto_master</code></p>
-
 <pre><code>mountpoint  map_name        [-option]
 /-          /etc/auto.map   -intr,nosuid,rw
 
 # auto.map是一個direct map
-</code></pre>
-
-<p>Direct Map<br />
+</code></pre><p>Direct Map<br>
 <code>/etc/auto.map</code></p>
-
 <pre><code>/net/home   -rw 10.113.0.254:/net/home
 /net/data   -ro 10.113.0.254:/net/data
-</code></pre>
-
-<h1 id="nfs-server">NFS Server&nbsp;<a href="#nfs-server" class="anchor"></a> </h1>
-
-<p>Exports
-- /net/alpha (access as their own UID GID)<br />
-- /net/share (UID=user, GID=users)<br />
-- /net/admin (read-only)</p>
-
-<p>Create directories<br />
+</code></pre><h1 id="nfs-server">NFS Server&nbsp;<a href="#nfs-server" class="anchor"></a> </h1>
+<p>Exports</p>
+<ul>
+<li>/net/alpha (access as their own UID GID)</li>
+<li>/net/share (UID=user, GID=users)</li>
+<li>/net/admin (read-only)</li>
+</ul>
+<p>Create directories<br>
 要出口的地方</p>
-
 <pre><code>mkdir /exports/admin /exports/alpha /exports/share
-</code></pre>
-
-<p>Create user</p>
-
+</code></pre><p>Create user</p>
 <pre><code>sudo pw groupadd users
 sudo add user
-</code></pre>
-
-<p><code>/etc/fstab</code></p>
-
+</code></pre><p><code>/etc/fstab</code></p>
 <pre><code># Device        Mountpoint  FStype  Option
 /exports/admin  /net/admin  nullfs  rw
 /exports/alpha  /net/alpha  nullfs  rw
 /exports/share  /net/share  nullfs  rw
-</code></pre>
-
-<p>NFSv4 with <strong>nfsuserd</strong> for mapping UID and username<br />
+</code></pre><p>NFSv4 with <strong>nfsuserd</strong> for mapping UID and username<br>
 <code>/etc/exports</code></p>
-
 <pre><code>V4: /
 /net/admin  -ro -maproot=nobody
 /net/share  -maproot=nobody -mapall=user
 /net/alpha  -maproot=nobody
-</code></pre>
-
-<h1 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor"></a> </h1>
-
+</code></pre><h1 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor"></a> </h1>
 <h2 id="packet-filter-pf">Packet Filter (PF)&nbsp;<a href="#packet-filter-pf" class="anchor"></a> </h2>
-
-<p>啟用<br />
+<p>啟用<br>
 <code>/etc/rc.conf</code></p>
-
 <pre><code>pf_enable=&quot;YES&quot;
 pflog_enable=&quot;YES&quot;
 pfsync_enable=&quot;YES&quot;
-</code></pre>
-
-<p>PF rules防火牆設置<br />
-The <strong>last matching</strong> rule decides what action is taken<br />
-If no rule matches the packet, the <strong>default</strong> action is to <strong>pass</strong><br />
+</code></pre><p>PF rules防火牆設置<br>
+The <strong>last matching</strong> rule decides what action is taken<br>
+If no rule matches the packet, the <strong>default</strong> action is to <strong>pass</strong><br>
 <code>/etc/pf.conf</code></p>
-
 <pre><code>#macro definitions
 extdev=&quot;em0&quot;
 intdev=&quot;em1&quot;
@@ -351,27 +271,15 @@ block return proto { tcp,udp } from &lt;BadGuy&gt; to any
 
 #Drop packets from &lt;BadGuy&gt; to access FTP,SSH
 block drop in proto tcp from &lt;BadGuy&gt; to any port {21,22}
-</code></pre>
-
-<h2 id="blacklistd">Blacklistd&nbsp;<a href="#blacklistd" class="anchor"></a> </h2>
-
+</code></pre><h2 id="blacklistd">Blacklistd&nbsp;<a href="#blacklistd" class="anchor"></a> </h2>
 <p>To find who is the bad guy?</p>
-
 <p>enable daemon</p>
-
 <pre><code>sysrc blacklistd_enable=yes
-</code></pre>
-
-<p>start the service manually</p>
-
+</code></pre><p>start the service manually</p>
 <pre><code>service blacklistd start
-</code></pre>
-
-<p>If someone attempts to login via SSH but failed for 5 times in 1 hour,<br />
+</code></pre><p>If someone attempts to login via SSH but failed for 5 times in 1 hour,<br>
 then their IP will be banned from SSH for 1 day automatically</p>
-
 <p><code>/etc/blacklistd.conf</code></p>
-
 <pre><code># $FreeBSD: releng/12.0/usr.sbin/blacklistd/blacklistd.conf 336977 2018-07-31 16:39:38Z brd $
 #
 # Blacklist rule
@@ -390,19 +298,12 @@ ftp             stream  *       *               *       5       24h
 #129.168.0.0/16 *       *       *               =       *       *
 #6161           =       =       =               =/24    =       =
 #*              stream  tcp     *               =       =       =
-</code></pre>
-
-<p>被擋下來的log在
+</code></pre><p>被擋下來的log在
 <code>/var/log/auth.log</code></p>
-
-<p>寫一個<code>/usr/local/bin/badguy</code><br />
+<p>寫一個<code>/usr/local/bin/badguy</code><br>
 會去抓</p>
-
 <pre><code>Jan  8 20:47:16 yilianwu-sa sshd[3579]: error: PAM: Authentication error for illegal user austin from 10.113.0.64
-</code></pre>
-
-<p>的ERROR log</p>
-
+</code></pre><p>的ERROR log</p>
 <pre><code>#!/bin/sh
 
 hour=$(date '+%H')
@@ -435,36 +336,26 @@ cat /var/log/auth.log | grep -E &quot;sshd|sudo&quot; | grep &quot;$hour:$min:&q
         else \
                 printf($1 &quot; &quot; $2 &quot; &quot; $3 &quot; &quot; $13 &quot; is a bad guy, 5 attempts\n&quot;); \
         }'
-</code></pre>
-
-<p>Write a shell script ‘iamagoodguy’ to unban an IP<br />
+</code></pre><p>Write a shell script ‘iamagoodguy’ to unban an IP<br>
 <code>/home/c0846101/bin/iamagoodguy</code></p>
-
 <pre><code>#!/bin/sh
 pfctl -a blacklistd/22 -t port22 -T delete $1
-</code></pre>
-
-<p>執行指令</p>
-
+</code></pre><p>執行指令</p>
 <pre><code>sudo iamagoodguy 10.113.0.64
-</code></pre>
-
-<p><code>/etc/crontab</code><br />
-每分鐘執行一次<code>/usr/local/bin/badguy</code><br />
-<img src="https://i.imgur.com/hJbTFwG.png" alt="Imgur" /></p>
-
-<p>Log when some IP is banned/unbanned in<br />
-<code>/net/admin/ssh/badguy.log</code><br />
-<img src="https://i.imgur.com/WeAU4sN.png" alt="Imgur" /></p>
-
-<p>Use newsyslog for log rotation<br />
-- Separated by day, store 10 days.<br />
-- Compressed to ‘.xz’.</p>
-
+</code></pre><p><code>/etc/crontab</code><br>
+每分鐘執行一次<code>/usr/local/bin/badguy</code><br>
+<img src="https://i.imgur.com/hJbTFwG.png" alt="Imgur"></p>
+<p>Log when some IP is banned/unbanned in<br>
+<code>/net/admin/ssh/badguy.log</code><br>
+<img src="https://i.imgur.com/WeAU4sN.png" alt="Imgur"></p>
+<p>Use newsyslog for log rotation</p>
+<ul>
+<li>Separated by day, store 10 days.</li>
+<li>Compressed to ‘.xz’.</li>
+</ul>
 <pre><code># logfilename               [owner:group]   mode    count   size    when    flags [/pid_file] [sig_num]
 /net/admin/ssh/badguy.log                   640     10      *       @T00    X
 </code></pre>
-
                 </section>
         
             </div>

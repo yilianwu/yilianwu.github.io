@@ -35,14 +35,7 @@
 	   <div class="container">
         <div class="post-toc" id="post-toc">
             <h2 class="post-toc-title">Contents</h2>
-            <nav id="TableOfContents">
-<ul>
-<li><a href="#第一個生命">第一個生命</a></li>
-<li><a href="#培養皿的動態">培養皿的動態</a></li>
-<li><a href="#動態模擬器">動態模擬器</a></li>
-<li><a href="#紀錄">紀錄</a></li>
-</ul>
-</nav>
+            <nav id="TableOfContents"></nav>
         </div>
        <div class="paperbg">
             <div id="title">
@@ -59,123 +52,94 @@
 
 
                 <section class="post-content">
-                <p>複域共生<br />
+                <p>複域共生<br>
 是我在北藝新媒4年來，發展期最長久的一件作品</p>
-
-<p><img src="https://i.imgur.com/nPJlqVR.jpg" alt="Imgur" /></p>
-
-<p>這件作品最早要追朔到我們105級大三下學期的期末專題<br />
-當時新媒系正在籌劃一年一度的<a href="https://www.facebook.com/KDLAF/">關渡光藝術節</a>(當時預計辦在2019/11月)<br />
-<!-- 由於我大三下的期中專題被組員雷，期中評圖一結束我們就解散了   -->
-在一天晚上，我與當時算是最要好的朋友，鄭晴之<br />
-在吃完晚飯回宿舍的路上，我們倆決定要一組<br />
+<p><img src="https://i.imgur.com/nPJlqVR.jpg" alt="Imgur"></p>
+<p>這件作品最早要追朔到我們105級大三下學期的期末專題<br>
+當時新媒系正在籌劃一年一度的<a href="https://www.facebook.com/KDLAF/">關渡光藝術節</a>(當時預計辦在2019/11月)</p>
+<!-- raw HTML omitted -->
+<p>在一天晚上，我與當時算是最要好的朋友，鄭晴之<br>
+在吃完晚飯回宿舍的路上，我們倆決定要一組<br>
 做出一個我們都發自內心會喜歡的一個作品&hellip;</p>
-
-<p>一直以來，要無中生有的發想一個作品，對不才的我來說無非是一項艱鉅的挑戰<br />
-我們腦力激盪了快好幾個小時，過程中去過了哪些地點我記不得了<br />
+<p>一直以來，要無中生有的發想一個作品，對不才的我來說無非是一項艱鉅的挑戰<br>
+我們腦力激盪了快好幾個小時，過程中去過了哪些地點我記不得了<br>
 但我記得最後在我腦中蹦出這個點子的地點是在，圖書館的馬水龍教授紀念會議室</p>
-
 <h1 id="第一個生命">第一個生命&nbsp;<a href="#第一個生命" class="anchor"></a> </h1>
-
-<p>2019/05/29<br />
-簡單的用手機的光照實驗<br />
-<img src="https://i.imgur.com/0HGCdfV.jpg" alt="Imgur" /><br />
+<p>2019/05/29<br>
+簡單的用手機的光照實驗  <br>
+<img src="https://i.imgur.com/0HGCdfV.jpg" alt="Imgur"><br>
 水溶液在光的折射後會呈現像細胞的樣貌</p>
-
 <h1 id="培養皿的動態">培養皿的動態&nbsp;<a href="#培養皿的動態" class="anchor"></a> </h1>
-
-<p>理想上，我們希望這些細胞能以一種優雅緩慢的姿態自由流動<br />
+<p>理想上，我們希望這些細胞能以一種優雅緩慢的姿態自由流動<br>
 這時，就必須確保培養皿的動態是緩和、和諧的</p>
-
-<p>馬達選用MG996R舵機<br />
-<img src="https://i.imgur.com/l3EL3nA.jpg" alt="Imgur" /></p>
-
-<p>他的舵翼角度範圍是 0-180°<br />
-其中，0°是最低點 180°是最高點 兩點的差距是33mm<br />
-<img src="https://i.imgur.com/srRMkUh.jpg" alt="Imgur" /></p>
-
-<p>一組有3個MG996R 每120°設一個吊掛點<br />
-培養皿的圓直徑R1 = 500mm<br />
+<p>馬達選用MG996R舵機<br>
+<img src="https://i.imgur.com/l3EL3nA.jpg" alt="Imgur"></p>
+<p>他的舵翼角度範圍是 0-180°<br>
+其中，0°是最低點 180°是最高點 兩點的差距是33mm<br>
+<img src="https://i.imgur.com/srRMkUh.jpg" alt="Imgur"></p>
+<p>一組有3個MG996R 每120°設一個吊掛點<br>
+培養皿的圓直徑R1 = 500mm<br>
 <code>delta_m</code> = 三吊掛點最大差距 = 舵翼長度 = 33mm</p>
-
-<p><img src="https://i.imgur.com/TQz2fJW.png" alt="Imgur" />
-可求出培養皿最多可被吊高 <code>delta_p</code> = (<sup>4</sup>&frasl;<sub>3</sub>) * <code>delta_m</code> = 44mm<br />
-設此時的培養皿的傾斜角度為 θ<br />
-sin θ = 44 / 500 = 0.088<br />
+<p><img src="https://i.imgur.com/TQz2fJW.png" alt="Imgur">
+可求出培養皿最多可被吊高 <code>delta_p</code> = (4/3) * <code>delta_m</code> = 44mm<br>
+設此時的培養皿的傾斜角度為 θ<br>
+sin θ = 44 / 500 = 0.088<br>
 θ = 5.04855896° (MAX)</p>
-
-<p>傾斜的培養皿(藍圓) 向下投影出軌跡(黑圓)<br />
-<img src="https://i.imgur.com/IW2AFLl.png" alt="Imgur" />
+<p>傾斜的培養皿(藍圓) 向下投影出軌跡(黑圓)<br>
+<img src="https://i.imgur.com/IW2AFLl.png" alt="Imgur">
 設軌跡的圓直徑為R2
-則，R2 = cos θ • R1<br />
-半徑 r2 = cos θ • r1<br />
+則，R2 = cos θ • R1<br>
+半徑 r2 = cos θ • r1<br>
 兩圓交點為 P ( r2 • cos (t) , r2 • sin (t) ) ， t隨時間改變</p>
-
-<p>做L 為過點P之圓切線<br />
+<p>做L 為過點P之圓切線<br>
 L的直線方程式:
 $$(\frac{\cos(t)}{\sin(t)}){x}+y-(\frac{r2}{\sin(t)})=0$$</p>
-
-<p>$$\vec{aA}與\vec{aA&rsquo;} 同時垂直於兩圓的圓切線直線L$$<br />
-此時，兩向量的夾角 = 兩面的夾角 = θ<br />
-$$\vec{bB}與\vec{bB&rsquo;}、\vec{cC}與\vec{cC&rsquo;}同理$$</p>
-
-<p>所求(三線變化範圍)：<br />
-$$\overline{AA&rsquo;}=tanθ \cdot \overline{aA&rsquo;}$$<br />
-$$\overline{BB&rsquo;}=tanθ \cdot \overline{bB&rsquo;}$$<br />
-$$\overline{CC&rsquo;}=tanθ \cdot \overline{cC&rsquo;}$$</p>
-
-<p>$$\overline{aA&rsquo;} 、 \overline{bB&rsquo;} 、 \overline{cC&rsquo;} 為A&rsquo;、B&rsquo;、C&rsquo;三點分別至直線 L 的距離$$</p>
-
-<p>代入線外一點到直線方程式的公式 可求出三線的長度動態：<br />
-$$\overline{AA&rsquo;} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(2 \pi) + r2 \cdot sin(2 \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
-
-<p>$$\overline{BB&rsquo;} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(\frac{2}{3} \pi) + r2 \cdot sin(\frac{2}{3} \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
-
-<p>$$\overline{CC&rsquo;} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(\frac{4}{3} \pi) + r2 \cdot sin(\frac{4}{3} \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
-
+<p>$$\vec{aA}與\vec{aA'} 同時垂直於兩圓的圓切線直線L$$<br>
+此時，兩向量的夾角 = 兩面的夾角 = θ<br>
+$$\vec{bB}與\vec{bB'}、\vec{cC}與\vec{cC'}同理$$</p>
+<p>所求(三線變化範圍)：<br>
+$$\overline{AA'}=tanθ \cdot \overline{aA'}$$<br>
+$$\overline{BB'}=tanθ \cdot \overline{bB'}$$<br>
+$$\overline{CC'}=tanθ \cdot \overline{cC'}$$</p>
+<p>$$\overline{aA'} 、 \overline{bB'} 、 \overline{cC'} 為A'、B'、C&rsquo;三點分別至直線 L 的距離$$</p>
+<p>代入線外一點到直線方程式的公式 可求出三線的長度動態：<br>
+$$\overline{AA'} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(2 \pi) + r2 \cdot sin(2 \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
+<p>$$\overline{BB'} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(\frac{2}{3} \pi) + r2 \cdot sin(\frac{2}{3} \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
+<p>$$\overline{CC'} = tanθ \cdot (\frac{|(\frac{cos(t)}{sin(t)}) \cdot r2 \cdot cos(\frac{4}{3} \pi) + r2 \cdot sin(\frac{4}{3} \pi) - (\frac{r2}{\sin(t)})|}{\sqrt{(\frac{cos(t)}{sin(t)})^2 + 1}})$$</p>
 <h1 id="動態模擬器">動態模擬器&nbsp;<a href="#動態模擬器" class="anchor"></a> </h1>
-
-<p>後來用Processing寫了一個 Motion Simulator<br />
-<img src="https://i.imgur.com/dvKq2fa.png" alt="Imgur" />
+<p>後來用Processing寫了一個 Motion Simulator<br>
+<img src="https://i.imgur.com/dvKq2fa.png" alt="Imgur">
 介面有3個Slider 分別是:</p>
-
 <ul>
-<li>培養皿的半徑(adj_r1)<br /></li>
-<li>培養皿的傾斜角度(adj_m)<br /></li>
-<li>旋轉的速度(adj_spd)<br /></li>
+<li>培養皿的半徑(adj_r1)</li>
+<li>培養皿的傾斜角度(adj_m)</li>
+<li>旋轉的速度(adj_spd)</li>
 </ul>
-
 <p>先用他看過動態 再上Arduino調整參數 :D</p>
-
-<p><img src="https://media.giphy.com/media/VIDpoVpE7tYDiE0azq/giphy.gif" alt="Imgur" /><br />
+<p><img src="https://media.giphy.com/media/VIDpoVpE7tYDiE0azq/giphy.gif" alt="Imgur"><br>
 <a href="https://github.com/yilianwu/reincubate">GitHub Link</a></p>
-
 <h1 id="紀錄">紀錄&nbsp;<a href="#紀錄" class="anchor"></a> </h1>
-
-<p>第一次讓培養皿動起來的影片<br />
+<p>第一次讓培養皿動起來的影片<br>
 
 
 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/B0TVg3ylp2L/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="12" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/B0TVg3ylp2L/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;"> View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/B0TVg3ylp2L/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by \&#39;wiljən\ 吳羿璉 (@weelian)</a> on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2019-07-24T14:02:18+00:00">Jul 24, 2019 at 7:02am PDT</time></p></div></blockquote>
 <script async src="//www.instagram.com/embed.js"></script></p>
-
-<p>細胞動態的一些紀錄<br />
+<p>細胞動態的一些紀錄<br>
 
 
 <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/CBGfVqkl2tO/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="12" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/CBGfVqkl2tO/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;"> View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div></a> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/CBGfVqkl2tO/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Reincubate was created on June 6th, 2019🔬</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by <a href="https://www.instagram.com/weelian/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> \&#39;wiljən\ 吳羿璉</a> (@weelian) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2020-06-06T17:06:09+00:00">Jun 6, 2020 at 10:06am PDT</time></p></div></blockquote>
 <script async src="//www.instagram.com/embed.js"></script></p>
-
-<p><strong>2019 KDLAF 關渡光藝術節</strong><br />
-展出紀錄影片<br />
+<p><strong>2019 KDLAF 關渡光藝術節</strong><br>
+展出紀錄影片<br>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//player.vimeo.com/video/376598273" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <iframe src="https://player.vimeo.com/video/376598273" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
  </div>
 </p>
-
-<p>訪談影片<br />
+<p>訪談影片<br>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/c-A0thxyApg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/c-A0thxyApg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 </p>
                 </section>
