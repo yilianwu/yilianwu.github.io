@@ -33,31 +33,697 @@
 <main id="single">
   <div id="post" class="white">
 	   <div class="container">
-        <div class="post-toc" id="post-toc">
-            <h2 class="post-toc-title">Contents</h2>
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#aws">AWS</a>
-      <ul>
-        <li><a href="#註冊一個帳號">註冊一個帳號</a></li>
-        <li><a href="#登入console">登入Console</a></li>
-        <li><a href="#launch-instance">Launch Instance</a></li>
-      </ul>
-    </li>
-    <li><a href="#本機終端機的一些設定">本機終端機的一些設定</a></li>
-    <li><a href="#登入你的ubuntu">登入你的Ubuntu</a>
-      <ul>
-        <li><a href="#ubuntu的一些設定">Ubuntu的一些設定</a></li>
-        <li><a href="#新增客製的domain-name">新增客製的Domain Name</a></li>
-        <li><a href="#安裝mosh可以跳過此步驟">安裝Mosh(可以跳過此步驟)</a></li>
-        <li><a href="#安裝lamp-server">安裝LAMP server</a></li>
-        <li><a href="#網頁的設置">網頁的設置</a></li>
-        <li><a href="#查看網站的連線狀況">查看網站的連線狀況</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-        </div>
+       
+       
+
+
+
+
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#platform">
+                            Platform
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#aws">
+                            AWS
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e8%a8%bb%e5%86%8a%e4%b8%80%e5%80%8b%e5%b8%b3%e8%99%9f">
+                            註冊一個帳號
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e7%99%bb%e5%85%a5console">
+                            登入Console
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#launch-instance">
+                            Launch Instance
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#step-1-%e9%81%b8%e6%93%87ami">
+                            Step 1: 選擇AMI
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#step-2-choose-an-instance-type">
+                            Step 2: Choose an Instance Type
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#step-3-review-and-launch">
+                            Step 3: Review and Launch
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#step-4-launch%e5%86%8d%e7%b5%a6%e4%bb%96%e6%8c%89%e4%b8%8b%e5%8e%bb">
+                            Step 4: Launch再給他按下去
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#step-5-%e5%89%b5%e5%bb%bakey-pair">
+                            Step 5: 創建Key Pair
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%9c%ac%e6%a9%9f%e7%b5%82%e7%ab%af%e6%a9%9f%e7%9a%84%e4%b8%80%e4%ba%9b%e8%a8%ad%e5%ae%9a">
+                            本機終端機的一些設定
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e7%99%bb%e5%85%a5%e4%bd%a0%e7%9a%84ubuntu">
+                            登入你的Ubuntu
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#ubuntu%e7%9a%84%e4%b8%80%e4%ba%9b%e8%a8%ad%e5%ae%9a">
+                            Ubuntu的一些設定
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%96%b0%e5%a2%9e%e5%ae%a2%e8%a3%bd%e7%9a%84domain-name">
+                            新增客製的Domain Name
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%ae%89%e8%a3%9dmosh%e5%8f%af%e4%bb%a5%e8%b7%b3%e9%81%8e%e6%ad%a4%e6%ad%a5%e9%a9%9f">
+                            安裝Mosh(可以跳過此步驟)
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%ae%89%e8%a3%9dlamp-server">
+                            安裝LAMP server
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%9c%a8ubuntu%e4%b8%8b%e6%8c%87%e4%bb%a4">
+                            在Ubuntu下指令：
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%9f%a5%e7%9c%8b%e9%80%a3%e7%b7%9a%e7%8b%80%e6%b3%81">
+                            查看連線狀況
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%9b%9e%e5%88%b0aws">
+                            回到AWS
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e7%b6%b2%e9%a0%81%e7%9a%84%e8%a8%ad%e7%bd%ae">
+                            網頁的設置
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%9f%a5%e7%9c%8b%e7%9b%ae%e9%8c%84">
+                            查看目錄
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e9%96%8b%e5%95%9fsublime-text">
+                            開啟Sublime Text
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%9f%a5%e7%9c%8b%e7%b6%b2%e7%ab%99%e7%9a%84%e9%80%a3%e7%b7%9a%e7%8b%80%e6%b3%81">
+                            查看網站的連線狀況
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
        <div class="paperbg">
             <div id="title">
                 <h1>在雲端物聯網上建立微系統</h1>

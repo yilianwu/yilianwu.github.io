@@ -60,7 +60,7 @@ ul{
     text-transform: uppercase;
 }
 
-#TableOfContents{
+.toc-nav{
     position: -webkit-sticky!important;
     position: sticky!important;
     padding-top: 1.rem;
@@ -71,13 +71,13 @@ ul{
     margin-left: 10px;
 }
 
-#TableOfContents ul {
+.toc-nav ul {
     color:#2c5090;
     list-style: circle;
     margin: 0;
     padding: 0;
 }
-#TableOfContents li{
+.toc-nav li{
     margin-left:.4rem;
     padding-bottom:5px;
 }

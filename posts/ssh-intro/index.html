@@ -33,29 +33,285 @@
 <main id="single">
   <div id="post" class="white">
 	   <div class="container">
-        <div class="post-toc" id="post-toc">
-            <h2 class="post-toc-title">Contents</h2>
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#arduino">Arduino</a></li>
-  </ul>
+       
+       
 
-  <ul>
-    <li><a href="#cpld-複雜可程式邏輯裝置">CPLD 複雜可程式邏輯裝置</a>
-      <ul>
-        <li><a href="#verilog">Verilog</a></li>
-      </ul>
-    </li>
-    <li><a href="#fpga-可程式化邏輯閘陣列">FPGA 可程式化邏輯閘陣列</a></li>
-    <li><a href="#arm-cpu---fpga的分支">ARM CPU - FPGA的分支</a></li>
-    <li><a href="#作業系統-linux">作業系統 Linux</a></li>
-  </ul>
 
-  <ul>
-    <li><a href="#利用ssh連結server">利用SSH連結Server</a></li>
-  </ul>
-</nav>
-        </div>
+
+
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%85%88%e4%be%86%e8%ab%87%e8%ab%87-microcontrollers--mcu-">
+                            先來談談 Microcontrollers ( MCU )
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#arduino">
+                            Arduino
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e4%b8%80%e4%ba%9b%e6%ad%b7%e5%8f%b2%e7%9a%84%e6%bc%94%e8%ae%8a">
+                            一些歷史的演變
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#cpld-%e8%a4%87%e9%9b%9c%e5%8f%af%e7%a8%8b%e5%bc%8f%e9%82%8f%e8%bc%af%e8%a3%9d%e7%bd%ae">
+                            CPLD 複雜可程式邏輯裝置
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#verilog">
+                            Verilog
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#fpga-%e5%8f%af%e7%a8%8b%e5%bc%8f%e5%8c%96%e9%82%8f%e8%bc%af%e9%96%98%e9%99%a3%e5%88%97">
+                            FPGA 可程式化邏輯閘陣列
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#arm-cpu---fpga%e7%9a%84%e5%88%86%e6%94%af">
+                            ARM CPU - FPGA的分支
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e4%bd%9c%e6%a5%ad%e7%b3%bb%e7%b5%b1-linux">
+                            作業系統 Linux
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#ssh">
+                            SSH
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%88%a9%e7%94%a8ssh%e9%80%a3%e7%b5%90server">
+                            利用SSH連結Server
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e9%a1%8c%e5%a4%96%e8%a9%b1">
+                            題外話
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
        <div class="paperbg">
             <div id="title">
                 <h1>SSH Intro</h1>

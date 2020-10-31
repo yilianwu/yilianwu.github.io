@@ -33,33 +33,377 @@
 <main id="single">
   <div id="post" class="white">
 	   <div class="container">
-        <div class="post-toc" id="post-toc">
-            <h2 class="post-toc-title">Contents</h2>
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#開兩張網卡">開兩張網卡</a></li>
-    <li><a href="#設定內部網卡">設定內部網卡</a></li>
-  </ul>
+       
+       
 
-  <ul>
-    <li><a href="#install-wireguard-on-centos-8">Install Wireguard on CentOS 8</a></li>
-    <li><a href="#client-configurations">Client Configurations</a></li>
-    <li><a href="#啟動">啟動</a></li>
-  </ul>
 
-  <ul>
-    <li><a href="#installation">Installation</a></li>
-    <li><a href="#server-configurations">Server Configurations</a></li>
-    <li><a href="#start-service">Start Service</a></li>
-  </ul>
 
-  <ul>
-    <li><a href="#install-iptables">Install iptables</a></li>
-    <li><a href="#nat-configuration-in-iptables">NAT Configuration in iptables</a></li>
-    <li><a href="#firewall">Firewall</a></li>
-  </ul>
-</nav>
-        </div>
+
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#router-basic-settings">
+                            Router Basic Settings
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e9%96%8b%e5%85%a9%e5%bc%b5%e7%b6%b2%e5%8d%a1">
+                            開兩張網卡
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e8%a8%ad%e5%ae%9a%e5%85%a7%e9%83%a8%e7%b6%b2%e5%8d%a1">
+                            設定內部網卡
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#wireguard">
+                            Wireguard
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#install-wireguard-on-centos-8">
+                            Install Wireguard on CentOS 8
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#client-configurations">
+                            Client Configurations
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%95%9f%e5%8b%95">
+                            啟動
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#dhcp-server">
+                            DHCP Server
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#installation">
+                            Installation
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#server-configurations">
+                            Server Configurations
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#start-service">
+                            Start Service
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#routing---nat--iptables">
+                            Routing - NAT &amp; iptables
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#install-iptables">
+                            Install iptables
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nat-configuration-in-iptables">
+                            NAT Configuration in iptables
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#firewall">
+                            Firewall
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
        <div class="paperbg">
             <div id="title">
                 <h1>Make a CentOS 8 Router</h1>

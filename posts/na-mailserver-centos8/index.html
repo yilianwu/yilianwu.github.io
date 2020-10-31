@@ -33,52 +33,737 @@
 <main id="single">
   <div id="post" class="white">
 	   <div class="container">
-        <div class="post-toc" id="post-toc">
-            <h2 class="post-toc-title">Contents</h2>
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#install-dovecot">Install Dovecot</a></li>
-  </ul>
+       
+       
 
-  <ul>
-    <li><a href="#spf">SPF</a></li>
-    <li><a href="#dkim">DKIM</a>
-      <ul>
-        <li><a href="#install-opendkim">Install OpenDKIM</a></li>
-        <li><a href="#generate-keys">Generate Keys</a></li>
-        <li><a href="#nsec3">NSEC3</a></li>
-        <li><a href="#在postfix設定">在Postfix設定</a></li>
-      </ul>
-    </li>
-    <li><a href="#dmarc">DMARC</a></li>
-  </ul>
 
-  <ul>
-    <li><a href="#virtual-alias">Virtual Alias</a></li>
-    <li><a href="#rewrite-sender">Rewrite Sender</a></li>
-    <li><a href="#user-authentication-on-imapsmtp">User Authentication on IMAP/SMTP</a></li>
-  </ul>
 
-  <ul>
-    <li><a href="#install-rspamd">Install Rspamd</a></li>
-    <li><a href="#啟動rspamd設定精靈">啟動rspamd設定精靈</a>
-      <ul>
-        <li><a href="#redis">redis</a></li>
-      </ul>
-    </li>
-    <li><a href="#greylist">Greylist</a></li>
-    <li><a href="#clamav">Clamav</a></li>
-    <li><a href="#rspamd-integrates-with-postfix">Rspamd integrates with Postfix</a></li>
-    <li><a href="#rspamd-milter-support">Rspamd Milter support</a></li>
-  </ul>
 
-  <ul>
-    <li><a href="#greylist沒反應">greylist沒反應</a></li>
-    <li><a href="#filter-virus-failed">Filter: Virus FAILED</a></li>
-    <li><a href="#dmarc-1">DMARC</a></li>
-  </ul>
-</nav>
-        </div>
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#install-postfix">
+                            Install Postfix
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#sasl">
+                            SASL
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#install-dovecot">
+                            Install Dovecot
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#dns-record">
+                            DNS Record
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#spf">
+                            SPF
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#dkim">
+                            DKIM
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#install-opendkim">
+                            Install OpenDKIM
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#generate-keys">
+                            Generate Keys
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nsec3">
+                            NSEC3
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%9c%a8postfix%e8%a8%ad%e5%ae%9a">
+                            在Postfix設定
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#dmarc">
+                            DMARC
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#create-users">
+                            Create Users
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#virtual-alias">
+                            Virtual Alias
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#rewrite-sender">
+                            Rewrite Sender
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#user-authentication-on-imapsmtp">
+                            User Authentication on IMAP/SMTP
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#firewall">
+                            Firewall
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#rspamd">
+                            Rspamd
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#install-rspamd">
+                            Install Rspamd
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%95%9f%e5%8b%95rspamd%e8%a8%ad%e5%ae%9a%e7%b2%be%e9%9d%88">
+                            啟動rspamd設定精靈
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#redis">
+                            redis
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#greylist">
+                            Greylist
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#clamav">
+                            Clamav
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#rspamd-integrates-with-postfix">
+                            Rspamd integrates with Postfix
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#rspamd-milter-support">
+                            Rspamd Milter support
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#spf-1">
+                            SPF
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#null-user-check">
+                            Null User check
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#debug">
+                            Debug
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#greylist%e6%b2%92%e5%8f%8d%e6%87%89">
+                            greylist沒反應
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#filter-virus-failed">
+                            Filter: Virus FAILED
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#dmarc-1">
+                            DMARC
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
        <div class="paperbg">
             <div id="title">
                 <h1>Mail Server on CentOS 8</h1>

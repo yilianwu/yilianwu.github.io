@@ -33,33 +33,381 @@
 <main id="single">
   <div id="post" class="white">
 	   <div class="container">
-        <div class="post-toc" id="post-toc">
-            <h2 class="post-toc-title">Contents</h2>
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#configurations-in-rcconf">Configurations in <code>rc.conf</code></a></li>
-    <li><a href="#maps-between-ip-and-hostname">Maps between IP and hostname</a></li>
-    <li><a href="#nis-users">NIS Users</a></li>
-    <li><a href="#accounts-and-groups">Accounts and Groups</a></li>
-    <li><a href="#restart-ypbind--daemon">Restart ypbind  daemon</a></li>
-  </ul>
+       
+       
 
-  <ul>
-    <li><a href="#server-configurations-in-etcrcconf">Server configurations in <code>/etc/rc.conf</code></a></li>
-    <li><a href="#client-configurations-in-etcrcconf">Client configurations in <code>/etc/rc.conf</code></a></li>
-    <li><a href="#mount">Mount</a>
-      <ul>
-        <li><a href="#auto-mount-autofs">Auto Mount (autofs)</a></li>
-      </ul>
-    </li>
-  </ul>
 
-  <ul>
-    <li><a href="#packet-filter-pf">Packet Filter (PF)</a></li>
-    <li><a href="#blacklistd">Blacklistd</a></li>
-  </ul>
-</nav>
-        </div>
+
+
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nis-client">
+                            NIS Client
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#configurations-in-rcconf">
+                            Configurations in rc.conf
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#maps-between-ip-and-hostname">
+                            Maps between IP and hostname
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nis-users">
+                            NIS Users
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#accounts-and-groups">
+                            Accounts and Groups
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#restart-ypbind--daemon">
+                            Restart ypbind daemon
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nfs-client">
+                            NFS Client
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#server-configurations-in-etcrcconf">
+                            Server configurations in /etc/rc.conf
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#client-configurations-in-etcrcconf">
+                            Client configurations in /etc/rc.conf
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#mount">
+                            Mount
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#auto-mount-autofs">
+                            Auto Mount (autofs)
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nfs-server">
+                            NFS Server
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#firewall">
+                            Firewall
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#packet-filter-pf">
+                            Packet Filter (PF)
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#blacklistd">
+                            Blacklistd
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
        <div class="paperbg">
             <div id="title">
                 <h1>FreeBSD NIS &#43; NFS &#43; Firewall</h1>
