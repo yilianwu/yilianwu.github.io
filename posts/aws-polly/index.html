@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>使用 AWS 的 Amazon Polly>>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://yilianwu.github.io/css/font.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="/info">INFO</a>
+            
+            <a href="/posts">POSTS</a>
+            
+            <a href="/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="/js/menutime.js"></script>
+    </div>
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+       
+       
+
+
+
+
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#create-an-aws-account">
+                            Create an AWS account
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#create-a-user-with-access-to-polly">
+                            Create a user with access to Polly
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#add-group">
+                            Add group
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#add-user">
+                            Add user
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#configure-mac-to-access-aws">
+                            Configure Mac to access AWS
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
+       <div class="paperbg">
+            <div id="title">
+                <h1>使用 AWS 的 Amazon Polly</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2020-11-06 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="/tags/aws/"> AWS </a>
+                    <a class="tag-link" href="/tags/polly/"> Polly </a>
+                    </div>
+
+
+                <section class="post-content">
+                <p>Amazon Polly 是將文字轉換成逼真說話方式的服務，能夠讓您建立會說話的應用程式和打造全新的啟用語音產品類別</p>
+<h1 id="create-an-aws-account">Create an AWS account&nbsp;<a href="#create-an-aws-account" class="anchor"></a> </h1>
+<p>到<a href="https://aws.amazon.com/">AWS</a>
+右上角「建立AWS帳戶」</p>
+<h1 id="create-a-user-with-access-to-polly">Create a user with access to Polly&nbsp;<a href="#create-a-user-with-access-to-polly" class="anchor"></a> </h1>
+<p>AWS管理控制台 &gt; AWS服務 &gt;  <a href="https://console.aws.amazon.com/iam/home?region=ap-northeast-1">IAM</a></p>
+<h2 id="add-group">Add group&nbsp;<a href="#add-group" class="anchor"></a> </h2>
+<p>存取管理 &gt; 群組</p>
+<ol>
+<li>建立新群組</li>
+<li>連結政策 AmazonPollyFullAccess<br>
+<img src="https://i.imgur.com/HbZ85GE.png" alt="Imgur"></li>
+</ol>
+<h2 id="add-user">Add user&nbsp;<a href="#add-user" class="anchor"></a> </h2>
+<p>存取管理 &gt; 使用者</p>
+<ol>
+<li>選擇 AWS 存取類型<br>
+<img src="https://i.imgur.com/kRYSjIZ.png" alt="Imgur"></li>
+<li>Add user to group with Polly access
+<img src="https://i.imgur.com/As983Eh.png" alt="Imgur"></li>
+<li>記好access key and a secret access key
+<img src="https://i.imgur.com/FMXlKfh.png" alt="Imgur"></li>
+</ol>
+<h1 id="configure-mac-to-access-aws">Configure Mac to access AWS&nbsp;<a href="#configure-mac-to-access-aws" class="anchor"></a> </h1>
+<ol>
+<li>
+<p>官網：<a href="https://docs.aws.amazon.com/zh_tw/cli/latest/userguide/install-cliv2-mac.html">安裝、更新和卸載 AWS CLI 第 2 版 於 macOS</a></p>
+<p>下載 macOS pkg 文件，並安裝</p>
+</li>
+<li>
+<p>AWS Config</p>
+<pre><code>aws configure
+</code></pre><pre><code>AWS Access Key ID [None]: [Your_AWS Access Key ID]
+AWS Secret Access Key [None]: [Your_AWS Secret Access Key]
+Default region name [None]: ap-northeast-1
+Default output format [None]:
+</code></pre></li>
+<li>
+<p>安裝其他東西<br>
+portaudio</p>
+<pre><code>brew install portaudio
+</code></pre><p>boto3</p>
+<pre><code>python3 -m pip install boto3
+</code></pre><p>pyaudio</p>
+<pre><code>python3 -m pip install pyaudio
+</code></pre></li>
+<li>
+<p>Python library</p>
+<pre><code>vim polly.py
+</code></pre><pre><code>import boto3
+import pygame
+import os
+import time
+import io
+   
+class Polly():
+ OUTPUT_FORMAT='mp3'
+
+ def __init__(self, voiceId):
+     self.polly = boto3.client('polly') #access amazon web service
+     self.VOICE_ID = voiceId
+
+ def say(self, textToSpeech): #get polly response and play directly
+     pollyResponse = self.polly.synthesize_speech(Text=textToSpeech, OutputFormat=self.OUTPUT_FORMAT, VoiceId=self.VOICE_ID)
+        
+     pygame.mixer.init()
+     pygame.init()  # this is needed for pygame.event.* and needs to be called after mixer.init() otherwise no sound is played 
+        
+     if os.name != 'nt':
+         pygame.display.set_mode((1, 1)) #doesn't work on windows, required on linux
+            
+     with io.BytesIO() as f: # use a memory stream
+         f.write(pollyResponse['AudioStream'].read()) #read audiostream from polly
+         f.seek(0)
+         pygame.mixer.music.load(f)
+         pygame.mixer.music.set_endevent(pygame.USEREVENT)
+         pygame.event.set_allowed(pygame.USEREVENT)
+         pygame.mixer.music.play()
+         pygame.event.wait() # play() is asynchronous. This wait forces the speaking to be finished before closing
+            
+     while pygame.mixer.music.get_busy() == True:
+         pass
+
+ def saveToFile(self, textToSpeech, fileName): #get polly response and save to file
+     pollyResponse = self.polly.synthesize_speech(Text=textToSpeech, OutputFormat=self.OUTPUT_FORMAT, VoiceId=self.VOICE_ID)
+        
+     with open(fileName, 'wb') as f:
+         f.write(pollyResponse['AudioStream'].read())
+         f.close()
+</code></pre></li>
+<li>
+<p>編輯想要Polly說的話</p>
+<pre><code>vim say.py
+</code></pre><pre><code>from polly import Polly
+   
+tts = Polly('Joanna')
+tts.say('Hi there, I\'m very glad you\'re reading my article. Leave a comment if you find it useful.')
+tts.saveToFile('Hi there, save the speech for later', 'joanna.mp3')
+</code></pre></li>
+<li>
+<p>執行<code>say.py</code></p>
+<pre><code>python3 say.py
+</code></pre><p>接著會產生你要的音檔<code>joanna.mp3</code></p>
+</li>
+</ol>
+<p>src: <a href="https://catqbat.com/make-your-pi-speak-with-text-to-speech-fom-amazon-polly/">https://catqbat.com/make-your-pi-speak-with-text-to-speech-fom-amazon-polly/</a></p>
+<p><a href="https://docs.aws.amazon.com/zh_tw/polly/latest/dg/polly-dg.pdf">官方開發指南</a></p>
+<p><a href="https://docs.aws.amazon.com/polly/latest/dg/get-started-what-next.html">Python Example</a></p>
+
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	
+	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
+	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
+
+    <span style="display:block" class="footer-text">&copy 2019-2020 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$('.post-content h1').prepend("§ ");
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left"
+    });
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> 
+<link rel="stylesheet" href="https://yilianwu.github.io/css/solarized-light.css"/>
+<script src="https://yilianwu.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

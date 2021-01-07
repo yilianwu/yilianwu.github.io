@@ -6,7 +6,16 @@
     <description>Recent content in AWS on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 19 Jun 2019 11:22:31 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Nov 2020 00:29:39 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 AWS 的 Amazon Polly</title>
+      <link>https://yilianwu.github.io/posts/aws-polly/</link>
+      <pubDate>Fri, 06 Nov 2020 00:29:39 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/aws-polly/</guid>
+      <description>Amazon Polly 是將文字轉換成逼真說話方式的服務，能夠讓您建立會說話的應用程式和打造全新的啟用語音產品類別 Create an AWS</description>
+    </item>
+    
     <item>
       <title>VPN Reverse Tunnel</title>
       <link>https://yilianwu.github.io/posts/vpn-reverse-tunnel/</link>

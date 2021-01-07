@@ -6,7 +6,25 @@
     <description>Recent content in Tags on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 31 Aug 2020 14:10:14 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Nov 2020 00:29:39 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS</title>
+      <link>https://yilianwu.github.io/tags/aws/</link>
+      <pubDate>Fri, 06 Nov 2020 00:29:39 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Polly</title>
+      <link>https://yilianwu.github.io/tags/polly/</link>
+      <pubDate>Fri, 06 Nov 2020 00:29:39 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/tags/polly/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>NCTU</title>
       <link>https://yilianwu.github.io/tags/nctu/</link>
@@ -256,15 +274,6 @@
       <pubDate>Sun, 24 Nov 2019 00:44:25 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/tags/mac/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>AWS</title>
-      <link>https://yilianwu.github.io/tags/aws/</link>
-      <pubDate>Wed, 19 Jun 2019 11:22:31 +0800</pubDate>
-      
-      <guid>https://yilianwu.github.io/tags/aws/</guid>
       <description></description>
     </item>
     
