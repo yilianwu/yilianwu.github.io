@@ -13,7 +13,7 @@
       <pubDate>Sun, 19 Apr 2020 02:16:59 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/sa-web-server-freebsd/</guid>
-      <description>Web Server Network Intranet A VM with a host-only adapter connecting to the same network of the original machine 創立Host網卡 Create &amp;gt; enable DHCP server 將網卡加到VM VM Settings &amp;gt; Network Adapter 2 選Host</description>
+      <description></description>
     </item>
     
   </channel>

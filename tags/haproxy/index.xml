@@ -13,7 +13,7 @@
       <pubDate>Sun, 10 May 2020 17:17:38 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/na-haproxy-centos8/</guid>
-      <description>Topology 我把Proxy建在我的client-pc Proxy (Client-PC) Hostname : 0846101.nasa IP Address : 10.113.25.119/24 Agent Hostname : agent.0846101.nasa IP Address : 10.113.25.129/24 Goals Reverseproxy Make a reverse proxy under http://0846101.nasa/reverse/ Round-robin 10.113.ID.129:8001 10.113.ID.129:8002 Make</description>
+      <description></description>
     </item>
     
   </channel>

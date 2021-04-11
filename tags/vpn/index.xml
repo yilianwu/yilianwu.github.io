@@ -13,7 +13,7 @@
       <pubDate>Wed, 19 Jun 2019 11:22:31 +0800</pubDate>
       
       <guid>https://yilianwu.github.io/posts/vpn-reverse-tunnel/</guid>
-      <description>SSH Reverse Tunnel 俗稱的VPN翻牆原理 示意圖： 原本我的IP在台灣 現在我想把它改成我在aws的日本主機～～ https://www.ez2o.com/App/Net/IP 可以到</description>
+      <description>&lt;p&gt;利用AWS的主機，建立VPN連線&lt;/p&gt;</description>
     </item>
     
   </channel>
