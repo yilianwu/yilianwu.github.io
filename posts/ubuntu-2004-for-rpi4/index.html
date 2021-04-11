@@ -291,7 +291,7 @@
 <p>把剛剛下載好的Ubuntu image放在 <code>~/Downloads</code></p>
 <p>打開終端機</p>
 <pre><code>diskutil list
-</code></pre><p>查看microSD的位址</p>
+</code></pre><p>查看microSD的硬碟代號</p>
 <pre><code>/dev/disk0 (internal, physical):
    #:                       TYPE NAME                    SIZE       IDENTIFIER
    0:      GUID_partition_scheme                        *251.0 GB   disk0
@@ -313,9 +313,9 @@
 1:     DOS_FAT_32 NO NAME              31.9 GB          disk2s1
 </code></pre><p>所以<code>/dev/disk2</code>是我的microSD card</p>
 <p>Unmount the microSD card</p>
-<pre><code>diskutil umountDisk /dev/disk2
+<pre><code>diskutil unmountDisk /dev/disk2
 </code></pre><p>You will see</p>
-<pre><code>Umount of all volumes on /dev/disk2 was successful
+<pre><code>Unmount of all volumes on /dev/disk2 was successful
 </code></pre><p>Copy the image to the microSD card</p>
 <pre><code>sudo sh -c 'gunzip -c ~/Downloads/ubuntu-20.04-preinstalled-server-arm64+raspi.img.xz | sudo dd of=/dev/disk2 bs=32m'
 </code></pre><p>When finalised you will see</p>
