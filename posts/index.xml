@@ -6,7 +6,16 @@
     <description>Recent content in Posts on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 06 Nov 2020 00:29:39 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Jan 2021 12:27:35 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Access Raspberry Pi Without A Monitor</title>
+      <link>https://yilianwu.github.io/posts/access-rpi-without-monitor/</link>
+      <pubDate>Sat, 02 Jan 2021 12:27:35 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/access-rpi-without-monitor/</guid>
+      <description>&lt;p&gt;當想要遠端操作Raspberry Pi 但要外接螢幕、鍵盤、滑鼠又很麻煩的時候可以怎麼辦呢？&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>使用 AWS 的 Amazon Polly</title>
       <link>https://yilianwu.github.io/posts/aws-polly/</link>

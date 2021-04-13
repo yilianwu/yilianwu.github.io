@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ubuntu on [ yilianwu ]</title>
+    <title>ubuntu on [ yilianwu ]</title>
     <link>https://yilianwu.github.io/tags/ubuntu/</link>
-    <description>Recent content in Ubuntu on [ yilianwu ]</description>
+    <description>Recent content in ubuntu on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 14 Jun 2020 09:40:37 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Jan 2021 12:27:35 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Access Raspberry Pi Without A Monitor</title>
+      <link>https://yilianwu.github.io/posts/access-rpi-without-monitor/</link>
+      <pubDate>Sat, 02 Jan 2021 12:27:35 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/access-rpi-without-monitor/</guid>
+      <description>&lt;p&gt;當想要遠端操作Raspberry Pi 但要外接螢幕、鍵盤、滑鼠又很麻煩的時候可以怎麼辦呢？&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>LDAP &amp; SNMP on Ubuntu 18.04</title>
       <link>https://yilianwu.github.io/posts/na-ldap-ubuntu/</link>
