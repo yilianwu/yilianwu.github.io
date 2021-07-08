@@ -256,8 +256,8 @@
                     
                     
                         <li class="nav-item">
-                            <a class="nav-link text-left" href="#%e6%8e%a7%e5%88%b6%e7%89%88%e7%9a%84%e9%81%b8%e6%93%87">
-                            控制版的選擇
+                            <a class="nav-link text-left" href="#%e6%8e%a7%e5%88%b6%e6%9d%bf%e7%9a%84%e9%81%b8%e6%93%87">
+                            控制板的選擇
                             </a>
                         </li>
                     
@@ -379,6 +379,90 @@
                             </a>
                         </li>
                     
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e8%88%87arrow%e7%9a%84%e6%95%b4%e5%90%88">
+                            與«ARrow»的整合
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#unity-http-server">
+                            Unity (HTTP Server)
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#esp8266-http-client">
+                            ESP8266 (HTTP Client)
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
                     
                     </ul>
                     
@@ -615,32 +699,32 @@ EX: Arduino、Raspberry Pi、STM32<br>
 </thead>
 <tbody>
 <tr>
-<td>head</td>
+<td>Head</td>
 <td>1 Byte</td>
 <td>固定為0x2A</td>
 </tr>
 <tr>
-<td>length</td>
+<td>Length</td>
 <td>1 Byte</td>
 <td>&lt;sn-Acc_Z&gt;的長度</td>
 </tr>
 <tr>
-<td>sn</td>
+<td>SN</td>
 <td>1 Byte</td>
 <td>序號</td>
 </tr>
 <tr>
-<td>address</td>
+<td>Address</td>
 <td>2 Byte</td>
 <td>Tag Address</td>
 </tr>
 <tr>
-<td>angual</td>
+<td>Angual</td>
 <td>4 Byte</td>
 <td>角度(degree)</td>
 </tr>
 <tr>
-<td>distance</td>
+<td>Distance</td>
 <td>4 Byte</td>
 <td>距離(cm)</td>
 </tr>
@@ -681,14 +765,17 @@ EX: Arduino、Raspberry Pi、STM32<br>
 </tr>
 </tbody>
 </table>
-<p><img src="https://i.imgur.com/0VWnJY7.png" alt="Imgur"></p>
+<p><img src="https://i.imgur.com/0VWnJY7.png" alt="Imgur">
+這是Serial.println 抓到的數據，可以看到他們的規律<br>
+再利用抓到的角度、距離等數據來控制步進馬達該行走的步數</p>
 <h2 id="避障系統">避障系統&nbsp;<a href="#避障系統" class="anchor"></a> </h2>
 <h3 id="tof10120-雷射測距感測器">TOF10120 雷射測距感測器&nbsp;<a href="#tof10120-雷射測距感測器" class="anchor"></a> </h3>
 <p>為了讓測距的結果更精確，使用了 ToF (Time of Flight) 飛時測距技術的感測器，降低了感測器受目標物體的反射率干擾<br>
 <img src="https://i.imgur.com/rHq5MkX.jpg" alt="Imgur">
-<img src="https://i.imgur.com/NCxmPXF.jpg" alt="Imgur">
-利用發光二極體（LED：Light Emitting Diode）或雷射二極體（LD：Laser Diode）發射出紅外光，照射到物體表面反射回來<br>
-由於光速（v）已知，可以利用一個紅外光影像感測器量測物體不同深度的位置反射回來的時間（t）<br>
+<img src="https://i.imgur.com/NCxmPXF.jpg" alt="Imgur"></p>
+<p>這種感測器是利用發光二極體（LED：Light Emitting Diode）或雷射二極體（LD：Laser Diode）<br>
+發射出紅外光，照射到物體表面反射回來<br>
+由於光速（v）已知，可以利用一個紅外光影像感測器，量測物體不同深度的位置反射回來的時間（t）<br>
 利用簡單的數學公式就可以計算出物體不同位置的距離（深度）<br>
 <img src="https://i.imgur.com/FYs3c3S.png" alt="Imgur">
 <img src="https://i.imgur.com/pCu6gTD.png" alt="Imgur"></p>
@@ -698,12 +785,13 @@ EX: Arduino、Raspberry Pi、STM32<br>
 <li>UART</li>
 </ul>
 <p>由於Raspberry Pi上唯一的UART介面已被UWB跟隨模組佔走了<br>
-避障模組採用I2C Bus控制</p>
+安尼的避障模組採用I2C Bus控制</p>
 <h3 id="佈置">佈置&nbsp;<a href="#佈置" class="anchor"></a> </h3>
-<p><img src="https://i.imgur.com/s5oQOiE.jpg" alt="Imgur">
-一組安尼共使用了六個TOF10120
-<img src="https://i.imgur.com/HEBnOFU.jpg" alt="Imgur">
-會依據所讀取到的距離數值來判斷避障的方向、動作<br>
+<p>一組安尼共使用了六個TOF10120<br>
+分別是R, FR, MR, ML, FL, L<br>
+<img src="https://i.imgur.com/s5oQOiE.jpg" alt="Imgur"></p>
+<p><img src="https://i.imgur.com/HEBnOFU.jpg" alt="Imgur">
+安尼會依據所讀取到的距離數值來判斷避障的方向、動作<br>
 避障的動作分為：</p>
 <ol>
 <li>左/右前轉</li>
@@ -711,73 +799,259 @@ EX: Arduino、Raspberry Pi、STM32<br>
 <li>自轉</li>
 </ol>
 <h2 id="開發過程">開發過程&nbsp;<a href="#開發過程" class="anchor"></a> </h2>
-<h3 id="控制版的選擇">控制版的選擇&nbsp;<a href="#控制版的選擇" class="anchor"></a> </h3>
+<h3 id="控制板的選擇">控制板的選擇&nbsp;<a href="#控制板的選擇" class="anchor"></a> </h3>
 <h4 id="arduino">Arduino&nbsp;<a href="#arduino" class="anchor"></a> </h4>
 <p>在測試的第一階段，我們選用Arduino作為控制板<br>
 搭配Arduino的第三方Library - <a href="https://www.airspayce.com/mikem/arduino/AccelStepper/">AccelStepper</a> 控制步進馬達</p>
 <p>實驗後發現，步進馬達的轉速很仰賴控制板的的運算速度<br>
-而Arduino的處理效能太慢了，使得步進馬達的轉速受到限制</p>
+而Arduino的處理效能無法達到我們的期望，使得步進馬達的轉速受到限制</p>
 <ul>
 <li>Arduino UNO<br>
 Clock Speed: 16MHz</li>
 <li>Arduino Due
 Clock Speed: 84MHz</li>
 </ul>
-<p>換到 Arduino Due，運算的速度是有明顯提升<br>
+<p>即使換到 Arduino Due，運算的速度是有明顯提升<br>
 但轉速還是不夠快，大約只有90RPM而已</p>
 <h4 id="raspberry-pi">Raspberry Pi&nbsp;<a href="#raspberry-pi" class="anchor"></a> </h4>
-<p>為了提高運算效率，以及未來可能的功能擴充，我們也將控制板升級為樹莓派</p>
-<p>樹莓派處理器的Clock Speed有1,500MHz(1.5GHZ)<br>
-控制程式是用Python撰寫的，也成功地將AccelStepper移植到Python運作<br>
-<a href="https://github.com/alangibson/steppyr">https://github.com/alangibson/steppyr</a></p>
-<p>然而，又遭遇到了另一個困境<br>
+<p>為了提高運算效率，以及未來可能的其他功能擴充<br>
+我們也將控制板升級為樹莓派</p>
+<p>樹莓派處理器的Clock Speed有1,500MHz(1.5GHz)<br>
+這個版本的控制程式是用Python撰寫的，我們也成功地將AccelStepper移植到Python運作<br>
+參考：https://github.com/alangibson/steppyr</p>
+<p>然而，又遭遇到了另一個困境&hellip;<br>
 CPython的執行緒(Thread)有全局解釋器鎖 Global Interpreter Lock (GIL) 的問題<br>
-無法發揮樹莓派多核心處理效能:<br>
-無法同時進行運算、執行控制兩顆步進馬達的功能</p>
+無法發揮樹莓派的多核心處理效能 <br>
+也就是，無法同時進行運算、執行控制兩顆步進馬達的功能</p>
 <p>為了解決此問題，我們將AccelStepper改使用C來撰寫<br>
-<a href="https://github.com/yilianwu/steppyr/tree/cpp">https://github.com/yilianwu/steppyr/tree/cpp</a><br>
-這是一大工程，我們也成功解決的馬達轉速受限的問題！</p>
+這是一大工程，我們也成功解決的馬達轉速受限的問題！<br>
+-&gt; <a href="https://github.com/yilianwu/steppyr/tree/cpp">https://github.com/yilianwu/steppyr/tree/cpp</a></p>
 <h3 id="訊號">訊號&nbsp;<a href="#訊號" class="anchor"></a> </h3>
 <p>有時候車子會跟隨到一半沒有反應，感覺訊號斷斷續續的
-後來發現，是因為戶外路況顛簸，車體在行走的時候會震動、搖晃，造成跟隨模組訊號線的接口接觸不良</p>
+後來發現，因為戶外路況顛簸，車體在行走的時候會震動、搖晃，造成跟隨模組訊號線的接口接觸不良</p>
 <p>我們將樹莓派的GPIO升級成這種端子台，穩定訊號<br>
 <img src="https://i.imgur.com/oq1zqvS.jpg" alt="Imgur"></p>
-<p>UWB跟隨模組的基地台(Base)也從原本的綠色裸板升級為有外殼的版本，訊號線也從杜邦線改為PH 2.0的端子接頭<br>
+<p>UWB跟隨模組的基地台(Base)也從原本的綠色裸板升級為有外殼的版本<br>
+訊號線也從杜邦線改為PH 2.0的端子接頭<br>
 <img src="https://i.imgur.com/TxuxIp2.jpg" alt="Imgur">
 <img src="https://i.imgur.com/i7Ux8Eg.jpg" alt="Imgur"></p>
 <h2 id="控制程式的模式切換">控制程式的模式切換&nbsp;<a href="#控制程式的模式切換" class="anchor"></a> </h2>
 <p>程式的架構分為4個模式：</p>
 <ul>
-<li>STANDBY : 安尼靜止不動</li>
-<li>FOLLOWING : 安尼依體驗者鏟子上的標籤(Tag)來判斷跟隨的方向、速度</li>
-<li>SPINNING : 若體驗者短時間內大幅度變換方向，安尼會自轉來保持正面朝向體驗者<br>
+<li><strong>STANDBY</strong> : 安尼靜止不動</li>
+<li><strong>FOLLOWING</strong> : 安尼依體驗者鏟子上的標籤(Tag)來判斷跟隨的方向、速度</li>
+<li><strong>SPINNING</strong> : 若體驗者短時間內大幅度變換方向，安尼會自轉來保持正面朝向體驗者<br>
 (由於基地台的天線只有單一方向性，若背對安尼，會造成數據的錯誤判斷)</li>
-<li>AVOID : 避障感測器若偵測到有障礙物，會執行避障動作</li>
+<li><strong>AVOID</strong> : 避障感測器若偵測到有障礙物，會執行避障動作</li>
 </ul>
-<p><img src="https://i.imgur.com/SbIeQoA.jpg" alt="Imgur"></p>
+<p>關係圖如下所示：<br>
+<img src="https://i.imgur.com/SbIeQoA.jpg" alt="Imgur"></p>
+<h3 id="與arrow的整合">與«ARrow»的整合&nbsp;<a href="#與arrow的整合" class="anchor"></a> </h3>
+<p><a href="https://apps.apple.com/tw/app/arrow-artsushi/id1557105991">ARrow</a>是我們畢展另一個組別的作品 - 一款可以讓你自由創作的 AR APP<br>
+安尼的iPad安裝了ARrow的特製版本，一旦鏟子被體驗者往地面輕壓<br>
+就會立即在ARrow的AR世界中隨機產出一棟建築物<br>
+這是我們的建築集：<br>
+<img src="https://i.imgur.com/QdXSMjn.png" alt="Imgur"></p>
+<p><a href="https://apps.apple.com/tw/app/arrow-artsushi/id1557105991">ARrow</a>是用Unity開發的應用程式<br>
+我們在鏟子裡放置一塊 NodeMCU，讓ESP8266 (HTTP Client)能在鏟子被按壓時<br>
+透過 HTTP Requests 與 Unity (HTTP Server)溝通<br>
+<img src="https://i.imgur.com/aq2WwCq.jpg" alt="Imgur"></p>
+<h3 id="unity-http-server">Unity (HTTP Server)&nbsp;<a href="#unity-http-server" class="anchor"></a> </h3>
+<p>在Unity新增一個HttpListener<br>
+Port是5555<br>
+如果接收到Client的路徑為<code>/build</code><br>
+就產生建築物，並且回傳202</p>
+<pre><code>using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Networking;
+using System;
+using System.IO;
+using System.Net;
+using System.Threading;
+
+public class httpServer : MonoBehaviour
+{
+    private HttpListener listener;
+	private Thread listenerThread;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        listener = new HttpListener ();
+		listener.Prefixes.Add (&quot;http://*:5555/&quot;);
+		// listener.Prefixes.Add (&quot;http://127.0.0.1:5555/&quot;);
+		listener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
+		listener.Start ();
+
+		listenerThread = new Thread (startListener);
+		listenerThread.Start ();
+		Debug.Log (&quot;Server Started&quot;);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void startListener ()
+	{
+		while (true) {               
+			var result = listener.BeginGetContext (ListenerCallback, listener); //看看是否有人傳request?
+			result.AsyncWaitHandle.WaitOne ();
+		}
+	}
+
+	private void ListenerCallback (IAsyncResult result)
+	{				
+		var context = listener.EndGetContext (result);		
+
+		Debug.Log (&quot;Method: &quot; + context.Request.HttpMethod);
+		Debug.Log (&quot;LocalUrl: &quot; + context.Request.Url.LocalPath);
+
+		if (context.Request.Url.LocalPath == &quot;/build&quot;) { 
+			// &amp;&amp; 確認上一個蓋房子動作完成了
+				//building show 出現建築
+			context.Response.StatusCode = 202;
+		}
+
+		else
+		{
+			context.Response.StatusCode = 404;
+		}
+
+		if (context.Request.QueryString.AllKeys.Length &gt; 0)
+			foreach (var key in context.Request.QueryString.AllKeys) {
+				Debug.Log (&quot;Key: &quot; + key + &quot;, Value: &quot; + context.Request.QueryString.GetValues (key) [0]);
+			}
+
+		if (context.Request.HttpMethod == &quot;POST&quot;) {	
+			Thread.Sleep (1000);
+			var data_text = new StreamReader (context.Request.InputStream, 
+				                context.Request.ContentEncoding).ReadToEnd ();
+			Debug.Log (data_text);
+		}
+
+		context.Response.Close ();
+	}
+}
+</code></pre><h3 id="esp8266-http-client">ESP8266 (HTTP Client)&nbsp;<a href="#esp8266-http-client" class="anchor"></a> </h3>
+<p>NodeMCU會讀取霍爾感測器的數值<br>
+在Button Down的時候會傳送<code>http://192.168.0.3:5555/build</code>給Server<br>
+並且<code>GET</code> Server的狀態碼 (HTTP StatusCode)</p>
+<pre><code>#include &lt;Arduino.h&gt;
+#include &lt;ESP8266WiFi.h&gt;
+#include &lt;ESP8266WiFiMulti.h&gt;
+#include &lt;ESP8266HTTPClient.h&gt;
+#include &lt;WiFiClient.h&gt;
+
+ESP8266WiFiMulti WiFiMulti;
+const int btnPin=16; 
+int btnState=1;
+int oldState=1;
+
+void setup() {
+  pinMode(btnPin,INPUT);
+  
+  Serial.begin(115200);
+
+  for (uint8_t t = 4; t &gt; 0; t--) {
+    Serial.printf(&quot;[SETUP] WAIT %d...\n&quot;, t);
+    Serial.flush();
+    delay(1000);
+  }
+
+  WiFi.mode(WIFI_STA);
+  WiFiMulti.addAP(&quot;YOUR_WIFI_SSID&quot;, &quot;YOUR_WIFI_PASSWD&quot;);
+  while (WiFiMulti.run() != WL_CONNECTED) {
+    delay(100);
+    Serial.print(&quot;.&quot;);
+  }
+  // Print local IP address and start web server
+  Serial.println(&quot;&quot;);
+  Serial.println(&quot;WiFi connected.&quot;);
+  Serial.print(&quot;SSID: &quot;);
+  Serial.println(WiFi.SSID());
+  Serial.print(&quot;IP address: &quot;);
+  Serial.println(WiFi.localIP());
+
+}
+
+void loop() {
+  btnState=digitalRead(btnPin);
+  // wait for WiFi connection
+  if ((WiFiMulti.run() == WL_CONNECTED)) {
+
+    WiFiClient client;
+    HTTPClient http;
+
+    if (btnState==0 &amp;&amp; oldState==1){
+      
+      Serial.println(&quot;Button Down&quot;);
+      //iPad IP address
+      if (http.begin(client, &quot;http://192.168.0.3:5555/build&quot;)) {  // HTTP
+  
+  
+        Serial.print(&quot;[HTTP] GET...\n&quot;);
+        // start connection and send HTTP header
+        int httpCode = http.GET();
+  
+        // httpCode will be negative on error
+        if (httpCode &gt; 0) {
+          // HTTP header has been send and Server response header has been handled
+          Serial.printf(&quot;[HTTP] GET... code: %d\n&quot;, httpCode);
+  
+          // file found at server
+          if (httpCode == HTTP_CODE_OK || httpCode == HTTP_CODE_MOVED_PERMANENTLY) {
+            String payload = http.getString();
+            Serial.println(payload);
+          }
+        } else {
+          Serial.printf(&quot;[HTTP] GET... failed, error: %s\n&quot;, http.errorToString(httpCode).c_str());
+        }
+  
+        http.end();
+      } else {
+        Serial.printf(&quot;[HTTP} Unable to connect\n&quot;);
+      }
+      
+    }
+    oldState=btnState;
+  }
+}
+</code></pre><p><img src="https://i.imgur.com/Amkn5jw.png" alt="Imgur"></p>
 <h2 id="電系構成">電系構成&nbsp;<a href="#電系構成" class="anchor"></a> </h2>
-<p><img src="https://i.imgur.com/iQmHY9k.jpg" alt="Imgur">
-主要的電力來源是24V 16800mAh的鋰電池<br>
+<p>安尼主要的電力來源是24V 16800mAh的鋰電池<br>
 兩顆步進馬達、LED燈可直接接上電池使用</p>
 <p>Raspberry Pi、避障模組、跟隨模組、NodeMCU、繼電器<br>
 則須在接上24V - 5V的降壓模組才能使用</p>
+<p>這是安尼艙門內的線路：<br>
+<img src="https://i.imgur.com/iQmHY9k.jpg" alt="Imgur"></p>
 <h3 id="sos緊急斷電系統">SOS緊急斷電系統&nbsp;<a href="#sos緊急斷電系統" class="anchor"></a> </h3>
 <p>我們在展期臨時新增了一塊NodeMCU板<br>
 寫了一個可以遠端控制馬達電源的開關<br>
 這樣在展覽遇到突發狀況需要緊急斷電時，只要拿出手機就能直接操控<br>
 <img src="https://i.imgur.com/Jwd9DaO.jpg" alt="Imgur"></p>
 <h2 id="網路">網路&nbsp;<a href="#網路" class="anchor"></a> </h2>
+<p>所有的控制元件都必須連上網路才能互相溝通</p>
 <h3 id="需求">需求&nbsp;<a href="#需求" class="anchor"></a> </h3>
-<p>安尼維爾總共有4種裝置需在同一個網域下運行：Raspberry Pi、NodeMCU、iPad、筆電<br>
-而且這些裝置的活動範圍涵蓋了整個場域<br>
-顧及預算的限制，我們決定使用4G SIM卡的網路分享器</p>
+<p>«安尼維爾»總共有4種裝置需在同一個網域下運行：</p>
+<ul>
+<li>Raspberry Pi</li>
+<li>NodeMCU</li>
+<li>iPad</li>
+<li>筆電</li>
+</ul>
+<p>而且這些裝置的活動範圍涵蓋了整個場域(安尼可以跑遍整個四四南村)<br>
+顧及<strong>預算</strong>的限制，我們決定使用4G SIM卡的網路分享器</p>
 <p>無線網路分享器通常有兩種頻率波段可以選擇：2.4GHz、5GHz<br>
 由於我們展覽的場地在高樓大廈林立(辦公室)的都會市中心，選用5GHz的網路會比較不容易受到干擾<br>
 其中NodeMCU板只能使用2.4GHz的網路<br>
-所以我們需要可以同時發送兩種頻率波段的網路分享器<br>
+所以我們需要可以同時發送兩種頻率波段的網路分享器!<br>
 <img src="https://i.imgur.com/pxfD8w9.jpg" alt="Imgur"></p>
 <h3 id="選擇">選擇&nbsp;<a href="#選擇" class="anchor"></a> </h3>
-<p>比對了兩家網路分享器租借公司<br>
+<p>粗略的比較兩家網路分享器租借公司<br>
 <img src="https://i.imgur.com/BgyqyZ7.png" alt="Imgur"></p>
 <table>
 <thead>
@@ -816,10 +1090,11 @@ CPython的執行緒(Thread)有全局解釋器鎖 Global Interpreter Lock (GIL) �
 </tbody>
 </table>
 <p>最後選擇了D-Link DWR-933<br>
-他還有管理介面可以設定，還不錯用</p>
+他還有管理介面可以設定<code>SSID</code>、<code>passwd</code>之類的東西，還不錯用</p>
 <pre><code>username:admin
 passwd:預設空白
-</code></pre><p><img src="https://i.imgur.com/QMyaRse.png" alt="Imgur"></p>
+</code></pre><p><img src="https://i.imgur.com/QMyaRse.png" alt="Imgur">
+記得歸還的時候再幫設備Reset，才不會讓櫃姐驚慌失措XD</p>
                 </section>
         
             </div>
