@@ -6,7 +6,17 @@
     <description>Recent content in raspberry-pi on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 02 Jan 2021 12:27:35 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Jul 2021 15:54:02 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UWB 自動跟隨機器人</title>
+      <link>https://yilianwu.github.io/posts/uwb-follow-ctrl/</link>
+      <pubDate>Mon, 05 Jul 2021 15:54:02 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/uwb-follow-ctrl/</guid>
+      <description>&lt;p&gt;：我們要做一個讓觀眾可以動起來的作品&lt;br&gt;
+於是經過了半年的努力，安尼就這樣誕生了&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Access Raspberry Pi Without A Monitor</title>
       <link>https://yilianwu.github.io/posts/access-rpi-without-monitor/</link>
