@@ -714,7 +714,6 @@ EX: Arduino、Raspberry Pi、STM32<br>
 <h3 id="控制版的選擇">控制版的選擇&nbsp;<a href="#控制版的選擇" class="anchor"></a> </h3>
 <h4 id="arduino">Arduino&nbsp;<a href="#arduino" class="anchor"></a> </h4>
 <p>在測試的第一階段，我們選用Arduino作為控制板<br>
-<img src="https://i.imgur.com/254cyYI.png" alt="Imgur">
 搭配Arduino的第三方Library - <a href="https://www.airspayce.com/mikem/arduino/AccelStepper/">AccelStepper</a> 控制步進馬達</p>
 <p>實驗後發現，步進馬達的轉速很仰賴控制板的的運算速度<br>
 而Arduino的處理效能太慢了，使得步進馬達的轉速受到限制</p>
@@ -727,9 +726,8 @@ Clock Speed: 84MHz</li>
 <p>換到 Arduino Due，運算的速度是有明顯提升<br>
 但轉速還是不夠快，大約只有90RPM而已</p>
 <h4 id="raspberry-pi">Raspberry Pi&nbsp;<a href="#raspberry-pi" class="anchor"></a> </h4>
-<p>為了提高運算效率，以及未來可能的功能擴充，我們也將控制板升級為樹莓派<br>
-<img src="https://i.imgur.com/ktUf4Sc.png" alt="Imgur">
-樹莓派處理器的Clock Speed有1,500MHz(1.5GHZ)<br>
+<p>為了提高運算效率，以及未來可能的功能擴充，我們也將控制板升級為樹莓派</p>
+<p>樹莓派處理器的Clock Speed有1,500MHz(1.5GHZ)<br>
 控制程式是用Python撰寫的，也成功地將AccelStepper移植到Python運作<br>
 <a href="https://github.com/alangibson/steppyr">https://github.com/alangibson/steppyr</a></p>
 <p>然而，又遭遇到了另一個困境<br>
