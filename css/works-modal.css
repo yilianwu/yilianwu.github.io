@@ -10927,9 +10927,9 @@ html {
 .portfolio .portfolio-item .portfolio-item-caption:hover {
   opacity: 1;
 }
-.portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
+/* .portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
   font-size: 1.5rem;
-}
+} */
 
 .portfolio-modal .btn-close {
   color: #1abc9c;
