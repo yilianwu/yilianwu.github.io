@@ -638,7 +638,9 @@ img.aboutpic{
   }
   iframe{
       width: 100%;
-      max-width: 768px;
+      /* max-width: 768px; */
+      background: black;
+      border-radius: 0.5rem;
   }
 
   .MathJax_Display {

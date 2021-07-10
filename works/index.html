@@ -54,23 +54,16 @@
         
         <ul class="sublime4wks">
           <li class="buttons"></li>
-            <!-- <img class="lazyload" src="/img/loading.gif" data-src="img/works/reincubate.jpg" alt="thumbnail"> -->
-            <!-- <div class="overlay">
-              <div class="wks-name">
-                  <a href="/works/reincubate.html">Reincubate</a>
-              </div>
-            </div> -->
-            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-              <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                  <div class="portfolio-item-caption-content text-center text-white">
-                    <!-- <i class="fas fa-plus fa-3x"></i> -->
-                    <div class="wks-name">
-                      <a>Reincubate</a>
-                    </div>
+          <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white">
+                  <!-- <i class="fas fa-plus fa-3x"></i> -->
+                  <div class="wks-name">
+                    <a>Reincubate</a>
                   </div>
-              </div>
-              <img class="lazyload" src="/img/loading.gif" data-src="img/works/reincubate.jpg" alt="thumbnail">
-              <!-- <img class="img-fluid" src="../img/works/reincubate.jpg" alt="..." /> -->
+                </div>
+            </div>
+            <img class="lazyload" src="/img/loading.gif" data-src="img/works/reincubate.jpg" alt="thumbnail">
           </div>
         </ul>
 
@@ -150,36 +143,67 @@
     </div>
   </main>
   <!-- Portfolio Modals-->
-            <!-- Portfolio Modal 1-->
-            <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
-              <div class="modal-dialog modal-xl">
-                  <div class="modal-content">
-                      <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                      <div class="modal-body text-center pb-5">
-                          <div class="modalcontainer">
-                              <div class="row justify-content-center">
-                                  <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="img/works/reincubate.jpg" alt="..." />
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Reincubate</h2>
-                                    <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">在閒置的場域內，想像水域為有機生命體在空間中流淌。
-                                      創作者在游泳館幽暗的一隅，復育一圈又一圈，滋養生命的「域」。
-                                      溶液隨著裝置緩和律動，在光線下以交融又分離的姿態暈染開來，宛如生命的誕生。
-                                    </p>
-                                    <iframe src="https://player.vimeo.com/video/376598273" width="640" height="272" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                                    <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Back
-                                    </button>
-                                  </div>
-                              </div>
+  <!-- Portfolio Modal 1-->
+  <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+            <div class="modal-body text-center pb-5">
+                <div class="modalcontainer">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                          <!-- Portfolio Modal - Image-->
+                          <!-- <img class="img-fluid rounded mb-5" src="img/works/reincubate.jpg" alt="..." /> -->
+                          <!-- The expanding image container -->
+                          <div class="imgcontainer">
+                            <!-- Close the image -->
+                            <!-- <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> -->
+
+                            <!-- Expanded image -->
+                            <img id="expandedImg" style="width:100%">
+
+                            <!-- Image text -->
+                            <div id="imgtext"></div>
                           </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+                          <!-- The grid: four columns -->
+                          <div class="imgrow">
+                            <div class="imgcolumn">
+                              <img src="img/works/reincubate.jpg"" alt="" onclick="myFunction(this);">
+                            </div>
+                            <div class="imgcolumn">
+                              <img src="img/works/IMG_4322.jpg" alt="" onclick="myFunction(this);">
+                            </div>
+                            <div class="imgcolumn">
+                              <img src="img/works/reincubate.jpg"" alt="" onclick="myFunction(this);">
+                            </div>
+                            <div class="imgcolumn">
+                              <img src="img/works/reincubate.jpg"" alt="" onclick="myFunction(this);">
+                            </div>
+                          </div>
+
+                          
+                          <!-- Portfolio Modal - Title-->
+                          <h1 class="portfolio-modal-title text-secondary text-uppercase mb-0">| 複域共生 Reincubate |</h1>
+                          
+                          <!-- Portfolio Modal - Text-->
+                          <p class="mb-4">
+                            在閒置的場域內，想像水域為有機生命體在空間中流淌。<br>
+                            創作者在游泳館幽暗的一隅，復育一圈又一圈，滋養生命的「域」。<br>
+                            溶液隨著裝置緩和律動，在光線下以交融又分離的姿態暈染開來，宛如生命的誕生。
+                          </p>
+                          <iframe src="https://player.vimeo.com/video/376598273" width="640" height="272" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                          <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
+                            <i class="fas fa-times fa-fw"></i>
+                            Back
+                          </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
   <footer class="sand">
 
     <a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="img/fb.png" height="30" width="30"></a>
@@ -192,6 +216,7 @@
 
     <span style="display:block" class="footer-text">Copyright &copy 2019-2021 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
   </footer>
+
   <link rel="stylesheet" href="/css/solarized-light.css" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
@@ -212,6 +237,20 @@
     $(".modal").on('hidden.bs.modal', function (e) {
       $(".modal iframe").attr("src", $(".modal iframe").attr("src"));
     });
+  </script>
+  <script type="text/javascript">
+    function myFunction(imgs) {
+    // Get the expanded image
+    var expandImg = document.getElementById("expandedImg");
+    // Get the image text
+    var imgText = document.getElementById("imgtext");
+    // Use the same src in the expanded image as the image being clicked on from the grid
+    expandImg.src = imgs.src;
+    // Use the value of the alt attribute of the clickable image as text inside the expanded image
+    imgText.innerHTML = imgs.alt;
+    // Show the container element (hidden with CSS)
+    expandImg.parentElement.style.display = "block";
+}
   </script>
 </body>
 
