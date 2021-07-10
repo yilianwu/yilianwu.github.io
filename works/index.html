@@ -170,11 +170,14 @@
                                       <!-- Portfolio Modal - Image-->
                                       <img class="img-fluid rounded mb-5" src="img/works/reincubate.jpg" alt="..." />
                                       <!-- Portfolio Modal - Text-->
-                                      Hi
-                                      <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                      <p class="mb-4">在閒置的場域內，想像水域為有機生命體在空間中流淌。
+                                        創作者在游泳館幽暗的一隅，復育一圈又一圈，滋養生命的「域」。
+                                        溶液隨著裝置緩和律動，在光線下以交融又分離的姿態暈染開來，宛如生命的誕生。
+                                      </p>
+                                      <iframe src="https://player.vimeo.com/video/376598273" width="640" height="272" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
                                       <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
                                           <i class="fas fa-times fa-fw"></i>
-                                          Close Window!!!
+                                          Back
                                       </button>
                                   </div>
                               </div>
@@ -210,6 +213,11 @@
   </script>
   <script type="text/javascript">    
     $("img.lazyload").lazyload();
+  </script>
+  <script type="text/javascript">
+    $(".modal").on('hidden.bs.modal', function (e) {
+      $(".modal iframe").attr("src", $(".modal iframe").attr("src"));
+    });
   </script>
 </body>
 
