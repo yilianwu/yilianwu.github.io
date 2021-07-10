@@ -69,12 +69,17 @@
 
         <ul class="sublime4wks">
           <li class="buttons"></li>
-            <img class="lazyload" src="/img/loading.gif" data-src="img/works/nodes.jpg" alt="thumbnail">
-            <div class="overlay">
-              <div class="wks-name">
-                  <a href="/works/td-dancing-nodes.html">Dancing Nodes</a>
-              </div>
+          <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white">
+                  <!-- <i class="fas fa-plus fa-3x"></i> -->
+                  <div class="wks-name">
+                    <a>Dancing Nodes</a>
+                  </div>
+                </div>
             </div>
+            <img class="lazyload" src="/img/loading.gif" data-src="img/works/nodes.jpg" alt="thumbnail">
+          </div>
         </ul>
 
         <ul class="sublime4wks">
@@ -175,7 +180,36 @@
         </div>
     </div>
   </div>
-
+  <!-- /Portfolio Modal 1-->
+  <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+            <div class="modal-body text-center pb-5">
+                <div class="modalcontainer">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                          <!-- Portfolio Modal - Title-->
+                          <h1 class="portfolio-modal-title text-secondary text-uppercase mb-0">| Dancing Nodes |</h1>
+                          <!-- Portfolio Modal - Image-->
+                          <img class="img-fluid rounded mb-5" src="img/works/nodes.jpg" alt="..." />
+                         
+                          <!-- Portfolio Modal - Text-->
+                          <p class="mb-4">
+                            TouchDesigner Nodes Playground
+                          </p>
+                          <iframe src="https://player.vimeo.com/video/375418354" width="640" height="272" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                          <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
+                            <i class="fas fa-times fa-fw"></i>
+                            Back
+                          </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
   <footer class="sand">
 
     <a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="img/fb.png" height="30" width="30"></a>
