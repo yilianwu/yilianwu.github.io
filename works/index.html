@@ -240,9 +240,16 @@
     $("img.lazyload").lazyload();
   </script>
   <script type="text/javascript">
-    $(".modal").on('hidden.bs.modal', function (e) {
-      $(".modal iframe").attr("src", $(".modal iframe").attr("src"));
+    $("#portfolioModal1").on('hidden.bs.modal', function (e) {
+      $("#portfolioModal1 iframe").attr("src", $("#portfolioModal1 iframe").attr("src"));
     });
+    $("#portfolioModal2").on('hidden.bs.modal', function (e) {
+      $("#portfolioModal2 iframe").attr("src", $("#portfolioModal2 iframe").attr("src"));
+    });
+
+    // $('.modal').on('shown.bs.modal',function(){      //correct here use 'shown.bs.modal' event which comes in bootstrap3
+    //   $(this).find('iframe').attr('src','http://www.google.com')
+    // })
   </script>
 
 </body>
