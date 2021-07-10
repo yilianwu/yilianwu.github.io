@@ -6900,7 +6900,8 @@ textarea.form-control-lg {
 }
 
 .mb-5 {
-  margin-top: 3rem !important;
+  text-align: left;
+  color: #2c3e50 !important;
 }
 
 .mb-auto {
@@ -10940,6 +10941,7 @@ html {
 .portfolio-modal .portfolio-modal-title {
   font-size: 2.25rem;
   line-height: 2rem;
+  text-align: left;
 }
 @media (min-width: 992px) {
   .portfolio-modal .portfolio-modal-title {
