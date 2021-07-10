@@ -10743,8 +10743,8 @@ html {
   scroll-padding-top: calc(4.5rem - 1px);
 }
 
-.page-section {
-  /* padding: 6rem 0; */
+/* .page-section {
+  padding: 6rem 0;
 }
 .page-section .page-section-heading {
   font-size: 2.25rem;
@@ -10755,7 +10755,8 @@ html {
     font-size: 3rem;
     line-height: 2.5rem;
   }
-}
+} 
+*/
 
 .divider-custom {
   margin: 1.25rem 0 1.5rem;
@@ -10921,7 +10922,7 @@ html {
   left: 0;
   transition: all 0.2s ease-in-out;
   opacity: 0;
-  background-color: rgba(26, 188, 156, 0.9);
+  background-color: #0000007a;
 }
 .portfolio .portfolio-item .portfolio-item-caption:hover {
   opacity: 1;
