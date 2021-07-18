@@ -93,9 +93,9 @@ th, td {
     border-bottom:none;
 }
 
-table, th, td {
+/* table, th, td {
     border: 1px solid black;
-}
+} */
 
 code {
     /* display: inline-block; */
