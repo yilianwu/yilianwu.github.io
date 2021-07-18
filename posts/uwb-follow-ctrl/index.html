@@ -647,19 +647,21 @@
 <ol>
 <li>Raspberry Pi 樹莓派
 <ul>
-<li>跟隨控制</li>
-<li>避障動作控制</li>
+<li>負責控制安尼的跟隨方向、速度</li>
+<li>避開障礙物動作的切換</li>
 </ul>
 </li>
 <li>ESP8266(NodeMCU)
 <ul>
-<li>跟隨啟動與否</li>
-<li>告知 «ARrow» 是否要產出建築物</li>
+<li>判斷控制系統的跟隨啟動與否</li>
+<li>當觀眾按壓鏟子，會透過HTTP Requests<br>
+觸發 «ARrow» 隨機產出一棟建築物</li>
 </ul>
 </li>
 <li>«ARrow» - An iPad AR APP
 <ul>
-<li>隨機生成建築物</li>
+<li>一款AR的應用程式<br>
+在體驗過程中會隨鏟子生成建築物，也能同時瀏覽到«ARrow»畫布上的創作內容</li>
 </ul>
 </li>
 </ol>
@@ -676,8 +678,7 @@
 </li>
 <li>
 <p>基地台(Base)<br>
-透過PCB天線接收標籤(Tag)的訊號，再經由UART通訊介面傳送給控制板<br>
-EX: Arduino、Raspberry Pi、STM32<br>
+透過板子上的兩個PCB天線接收鏟子上的標籤(Tag)訊號，再經由UART通訊介面傳送給控制板進行運算，判斷裝置跟隨的方向、速度<br>
 <img src="https://i.imgur.com/yC0VlKP.jpg" alt="Imgur">
 <img src="https://i.imgur.com/RiDA2FM.jpg" alt="Imgur"></p>
 </li>
@@ -847,11 +848,13 @@ CPython的執行緒(Thread)有全局解釋器鎖 Global Interpreter Lock (GIL) �
 <p>關係圖如下所示：<br>
 <img src="https://i.imgur.com/SbIeQoA.jpg" alt="Imgur"></p>
 <h3 id="與arrow的整合">與«ARrow»的整合&nbsp;<a href="#與arrow的整合" class="anchor"></a> </h3>
-<p><a href="https://apps.apple.com/tw/app/arrow-artsushi/id1557105991">ARrow</a>是我們畢展另一個組別的作品 - 一款可以讓你自由創作的 AR APP<br>
+<p><a href="https://apps.apple.com/tw/app/arrow-artsushi/id1557105991">ARrow</a>是我們畢展另一個組別的作品 - 一款可以讓你自由創作的畫布 AR APP<br>
 安尼的iPad安裝了ARrow的特製版本，一旦鏟子被體驗者往地面輕壓<br>
-就會立即在ARrow的AR世界中隨機產出一棟建築物<br>
-這是我們的建築集：<br>
-<img src="https://i.imgur.com/QdXSMjn.png" alt="Imgur"></p>
+就會立即在ARrow的AR世界中隨機產出一棟建築物</p>
+<p><img src="https://i.imgur.com/QdXSMjn.png" alt="Imgur">
+建築造型參考臺灣的多元建案設計<br>
+建築類型包括商辦大樓、飯店、集合式住宅、博物館、宗教建築等<br>
+並賦予每一棟建築專屬名稱</p>
 <p><a href="https://apps.apple.com/tw/app/arrow-artsushi/id1557105991">ARrow</a>是用Unity開發的應用程式<br>
 我們在鏟子裡放置一塊 NodeMCU，讓ESP8266 (HTTP Client)能在鏟子被按壓時<br>
 透過 HTTP Requests 與 Unity (HTTP Server)溝通<br>
@@ -860,83 +863,10 @@ CPython的執行緒(Thread)有全局解釋器鎖 Global Interpreter Lock (GIL) �
 <p>在Unity新增一個HttpListener<br>
 Port是5555<br>
 如果接收到Client的路徑為<code>/build</code><br>
-就產生建築物，並且回傳202</p>
-<pre><code>using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
-using System;
-using System.IO;
-using System.Net;
-using System.Threading;
-
-public class httpServer : MonoBehaviour
-{
-    private HttpListener listener;
-	private Thread listenerThread;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        listener = new HttpListener ();
-		listener.Prefixes.Add (&quot;http://*:5555/&quot;);
-		// listener.Prefixes.Add (&quot;http://127.0.0.1:5555/&quot;);
-		listener.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
-		listener.Start ();
-
-		listenerThread = new Thread (startListener);
-		listenerThread.Start ();
-		Debug.Log (&quot;Server Started&quot;);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void startListener ()
-	{
-		while (true) {               
-			var result = listener.BeginGetContext (ListenerCallback, listener); //看看是否有人傳request?
-			result.AsyncWaitHandle.WaitOne ();
-		}
-	}
-
-	private void ListenerCallback (IAsyncResult result)
-	{				
-		var context = listener.EndGetContext (result);		
-
-		Debug.Log (&quot;Method: &quot; + context.Request.HttpMethod);
-		Debug.Log (&quot;LocalUrl: &quot; + context.Request.Url.LocalPath);
-
-		if (context.Request.Url.LocalPath == &quot;/build&quot;) { 
-			// &amp;&amp; 確認上一個蓋房子動作完成了
-				//building show 出現建築
-			context.Response.StatusCode = 202;
-		}
-
-		else
-		{
-			context.Response.StatusCode = 404;
-		}
-
-		if (context.Request.QueryString.AllKeys.Length &gt; 0)
-			foreach (var key in context.Request.QueryString.AllKeys) {
-				Debug.Log (&quot;Key: &quot; + key + &quot;, Value: &quot; + context.Request.QueryString.GetValues (key) [0]);
-			}
-
-		if (context.Request.HttpMethod == &quot;POST&quot;) {	
-			Thread.Sleep (1000);
-			var data_text = new StreamReader (context.Request.InputStream, 
-				                context.Request.ContentEncoding).ReadToEnd ();
-			Debug.Log (data_text);
-		}
-
-		context.Response.Close ();
-	}
-}
-</code></pre><h3 id="esp8266-http-client">ESP8266 (HTTP Client)&nbsp;<a href="#esp8266-http-client" class="anchor"></a> </h3>
+就產生建築物，並且回傳202<br>
+<script type="application/javascript" src="https://gist.github.com/yilianwu/dc78be09804afa0ca9336e9f96160ff5.js"></script>
+</p>
+<h3 id="esp8266-http-client">ESP8266 (HTTP Client)&nbsp;<a href="#esp8266-http-client" class="anchor"></a> </h3>
 <p>NodeMCU會讀取霍爾感測器的數值<br>
 在Button Down的時候會傳送<code>http://192.168.0.3:5555/build</code>給Server<br>
 並且<code>GET</code> Server的狀態碼 (HTTP StatusCode)</p>
