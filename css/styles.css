@@ -21,6 +21,11 @@ ul{
     padding-inline-start: 20px;
 }
 
+th, td {
+    border: 1px solid #f4f4f4;
+    padding: 8px 12px;
+}
+
 .post-content h1{
     margin-top: 40px;
     border-bottom: 0.1px solid #b7ccf1;
