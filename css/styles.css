@@ -93,9 +93,11 @@ th, td {
     border-bottom:none;
 }
 
-/* table, th, td {
-    border: 1px solid black;
-} */
+table, th, td {
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+    word-break:break-word
+}
 
 code {
     /* display: inline-block; */
