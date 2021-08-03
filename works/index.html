@@ -313,7 +313,7 @@
                           <h1 class="portfolio-modal-title text-secondary text-uppercase mb-0">| A - Fib 心房顫動 |</h1>
                           <p class="mb-5">
                             2019 科技與音樂跨域實驗展演：《能量轉換》<br>
-                            2020 Les Fabricants<br>
+                            2020 Festival Les Fabricants<br>
                           </p>
                           <!-- Portfolio Modal - Image-->
                           <img class="img-fluid rounded mb-5" src="img/works/afib.jpg" alt="..." />
@@ -618,6 +618,9 @@
     $("img.lazyload").lazyload();
   </script>
   <script type="text/javascript">
+    $("#portfolioModal9").on('hidden.bs.modal', function (e) {
+      $("#portfolioModal9 iframe").attr("src", $("#portfolioModal9 iframe").attr("src"));
+    });
     $("#portfolioModal8").on('hidden.bs.modal', function (e) {
       $("#portfolioModal8 iframe").attr("src", $("#portfolioModal8 iframe").attr("src"));
     });
