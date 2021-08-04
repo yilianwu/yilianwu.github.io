@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MaxMSP on [ yilianwu ]</title>
+    <link>https://yilianwu.github.io/tags/maxmsp/</link>
+    <description>Recent content in MaxMSP on [ yilianwu ]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 04 Aug 2021 21:51:46 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/maxmsp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用手機演奏自製樂器</title>
+      <link>https://yilianwu.github.io/posts/a-fib-intro/</link>
+      <pubDate>Wed, 04 Aug 2021 21:51:46 +0800</pubDate>
+      
+      <guid>https://yilianwu.github.io/posts/a-fib-intro/</guid>
+      <description>&lt;p&gt;2019春季，北藝大新媒系、音樂系與法國里昂音樂創作中心（GRAME）合開了一個工作坊&lt;br&gt;
+透過跨領域的合作，產出了屬於我們的自製樂器&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
