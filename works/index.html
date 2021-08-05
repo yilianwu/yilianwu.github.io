@@ -276,8 +276,12 @@
                           </p>
                           <iframe src="https://player.vimeo.com/video/580160620" width="640" height="272" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
                           <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                            <i class="fas fa-times fa-fw"></i>
-                            Back
+                            <i class="fas fa-angle-double-left fa-fw"></i>
+                            BACK
+                          </button>
+                          <button class="btn btn-secondary" onclick=" window.open('https://yilianwu.io/posts/uwb-follow-ctrl/','_blank')">
+                            LEARN MORE
+                            <i class="fas fa-angle-double-right fa-fw"></i>
                           </button>
                         </div>
                     </div>
@@ -902,6 +906,9 @@
     $("img.lazyload").lazyload();
   </script>
   <script type="text/javascript">
+    if(window.location.hash.substr(1) == 'portfolioModal9'){
+      $('#portfolioModal9').modal('show');
+    };
     $("#portfolioModal9").on('hidden.bs.modal', function (e) {
       $("#portfolioModal9 iframe").attr("src", $("#portfolioModal9 iframe").attr("src"));
     });
@@ -932,6 +939,7 @@
     $("#portfolioModal0").on('hidden.bs.modal', function (e) {
       $("#portfolioModal0 iframe").attr("src", $("#portfolioModal0 iframe").attr("src"));
     });
+    
   </script>
 
 </body>
