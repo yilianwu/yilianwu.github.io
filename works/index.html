@@ -904,25 +904,7 @@
   </script>
   <script type="text/javascript">    
     $("img.lazyload").lazyload();
-  </script>
-  <script type="text/javascript">
-    jQuery(document).ready(function($) {
-    var target = document.location.hash.replace("#", "");
-    if (target.length) {
-    if(target=="portfolioModal9"){
-      $('#portfolioModal9').modal('show');
-    }
-    else if(target=="portfolioModal8"){
-      $('#portfolioModal8').modal('show');
-    }
-    else if(target=="portfolioModal7"){
-      $('#portfolioModal7').modal('show');
-    }
-    }
-    else{    
-    }
-    });
-    </script>   
+  </script>  
   <script type="text/javascript">
     $("#portfolioModal9").on('hidden.bs.modal', function (e) {
       $("#portfolioModal9 iframe").attr("src", $("#portfolioModal9 iframe").attr("src"));
