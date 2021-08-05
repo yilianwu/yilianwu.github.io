@@ -648,6 +648,13 @@
     $("#portfolioModal0").on('hidden.bs.modal', function (e) {
       $("#portfolioModal0 iframe").attr("src", $("#portfolioModal0 iframe").attr("src"));
     });
+
+    $(document).ready(function() {
+
+      if(window.location.href.indexOf('#myModal') != -1) {
+        $('#myModal').modal('show');
+      }
+    });
   </script>
 
 </body>
