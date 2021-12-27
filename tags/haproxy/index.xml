@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>haproxy on [ yilianwu ]</title>
-    <link>https://yilianwu.github.io/tags/haproxy/</link>
+    <link>https://yilianwu.io/tags/haproxy/</link>
     <description>Recent content in haproxy on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 10 May 2020 17:17:38 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 May 2020 17:17:38 +0800</lastBuildDate><atom:link href="https://yilianwu.io/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HAProxy Load Balancer on CentOS 8</title>
-      <link>https://yilianwu.github.io/posts/na-haproxy-centos8/</link>
+      <link>https://yilianwu.io/posts/na-haproxy-centos8/</link>
       <pubDate>Sun, 10 May 2020 17:17:38 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/na-haproxy-centos8/</guid>
+      <guid>https://yilianwu.io/posts/na-haproxy-centos8/</guid>
       <description></description>
     </item>
     

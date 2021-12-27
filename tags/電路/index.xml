@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>電路 on [ yilianwu ]</title>
-    <link>https://yilianwu.github.io/tags/%E9%9B%BB%E8%B7%AF/</link>
+    <link>https://yilianwu.io/tags/%E9%9B%BB%E8%B7%AF/</link>
     <description>Recent content in 電路 on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 31 Aug 2020 14:10:14 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/%E9%9B%BB%E8%B7%AF/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Aug 2020 14:10:14 +0800</lastBuildDate><atom:link href="https://yilianwu.io/tags/%E9%9B%BB%E8%B7%AF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>第一次自己設計、實作電路</title>
-      <link>https://yilianwu.github.io/posts/wifi-sign-circuit/</link>
+      <link>https://yilianwu.io/posts/wifi-sign-circuit/</link>
       <pubDate>Mon, 31 Aug 2020 14:10:14 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/wifi-sign-circuit/</guid>
+      <guid>https://yilianwu.io/posts/wifi-sign-circuit/</guid>
       <description>&lt;p&gt;在交大修了一門通識課 - 跨領域應用電學 Applied Electricity&lt;br&gt;
 期末專題需要應用在這堂課所習得的知識，設計並做出自己的電路&lt;/p&gt;</description>
     </item>

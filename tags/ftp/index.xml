@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FTP on [ yilianwu ]</title>
-    <link>https://yilianwu.github.io/tags/ftp/</link>
+    <link>https://yilianwu.io/tags/ftp/</link>
     <description>Recent content in FTP on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sat, 18 Apr 2020 16:28:10 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/ftp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Apr 2020 16:28:10 +0800</lastBuildDate><atom:link href="https://yilianwu.io/tags/ftp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FreeBSD File Server</title>
-      <link>https://yilianwu.github.io/posts/sa-file-server-freebsd/</link>
+      <link>https://yilianwu.io/posts/sa-file-server-freebsd/</link>
       <pubDate>Sat, 18 Apr 2020 16:28:10 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/sa-file-server-freebsd/</guid>
+      <guid>https://yilianwu.io/posts/sa-file-server-freebsd/</guid>
       <description></description>
     </item>
     

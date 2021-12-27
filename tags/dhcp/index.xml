@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>dhcp on [ yilianwu ]</title>
-    <link>https://yilianwu.github.io/tags/dhcp/</link>
+    <link>https://yilianwu.io/tags/dhcp/</link>
     <description>Recent content in dhcp on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Fri, 08 May 2020 00:50:47 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/dhcp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 May 2020 00:50:47 +0800</lastBuildDate><atom:link href="https://yilianwu.io/tags/dhcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Make a CentOS 8 Router</title>
-      <link>https://yilianwu.github.io/posts/na-router-centos8/</link>
+      <link>https://yilianwu.io/posts/na-router-centos8/</link>
       <pubDate>Fri, 08 May 2020 00:50:47 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/na-router-centos8/</guid>
+      <guid>https://yilianwu.io/posts/na-router-centos8/</guid>
       <description></description>
     </item>
     
