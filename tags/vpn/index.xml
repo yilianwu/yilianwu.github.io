@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>VPN on [ yilianwu ]</title>
-    <link>https://yilianwu.io/tags/vpn/</link>
+    <link>https://yilianwu.github.io/tags/vpn/</link>
     <description>Recent content in VPN on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 19 Jun 2019 11:22:31 +0800</lastBuildDate><atom:link href="https://yilianwu.io/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Jun 2019 11:22:31 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VPN Reverse Tunnel</title>
-      <link>https://yilianwu.io/posts/vpn-reverse-tunnel/</link>
+      <link>https://yilianwu.github.io/posts/vpn-reverse-tunnel/</link>
       <pubDate>Wed, 19 Jun 2019 11:22:31 +0800</pubDate>
       
-      <guid>https://yilianwu.io/posts/vpn-reverse-tunnel/</guid>
+      <guid>https://yilianwu.github.io/posts/vpn-reverse-tunnel/</guid>
       <description>&lt;p&gt;利用AWS的主機，建立VPN連線&lt;/p&gt;</description>
     </item>
     

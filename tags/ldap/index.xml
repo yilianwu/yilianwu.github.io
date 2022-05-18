@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LDAP on [ yilianwu ]</title>
-    <link>https://yilianwu.io/tags/ldap/</link>
+    <link>https://yilianwu.github.io/tags/ldap/</link>
     <description>Recent content in LDAP on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 14 Jun 2020 09:40:37 +0800</lastBuildDate><atom:link href="https://yilianwu.io/tags/ldap/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Jun 2020 09:40:37 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/ldap/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LDAP &amp; SNMP on Ubuntu 18.04</title>
-      <link>https://yilianwu.io/posts/na-ldap-ubuntu/</link>
+      <link>https://yilianwu.github.io/posts/na-ldap-ubuntu/</link>
       <pubDate>Sun, 14 Jun 2020 09:40:37 +0800</pubDate>
       
-      <guid>https://yilianwu.io/posts/na-ldap-ubuntu/</guid>
+      <guid>https://yilianwu.github.io/posts/na-ldap-ubuntu/</guid>
       <description></description>
     </item>
     
