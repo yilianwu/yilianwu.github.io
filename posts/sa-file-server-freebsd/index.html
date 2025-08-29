@@ -567,27 +567,27 @@
 <h2 id="ftp-server">FTP Server&nbsp;<a href="#ftp-server" class="anchor"></a> </h2>
 <h3 id="install-pure-ftpd">Install pure-ftpd&nbsp;<a href="#install-pure-ftpd" class="anchor"></a> </h3>
 <p>Install with pkg</p>
-<pre><code>pkg install pure-ftpd
+<pre tabindex="0"><code>pkg install pure-ftpd
 </code></pre><p>Or install with port</p>
-<pre><code>port install pure-ftpd
+<pre tabindex="0"><code>port install pure-ftpd
 </code></pre><p>記得要<br>
 [x]UPLOADSCRIPT</p>
 <p>enable pure-ftpd</p>
-<pre><code>cat pureftpd_enable=&quot;YES&quot; &gt; /etc/rc.conf
+<pre tabindex="0"><code>cat pureftpd_enable=&#34;YES&#34; &gt; /etc/rc.conf
 </code></pre><h3 id="create-3-directories-under-homeftp">Create 3 directories under <code>/home/ftp</code>&nbsp;<a href="#create-3-directories-under-homeftp" class="anchor"></a> </h3>
-<pre><code>mkdir -p /home/ftp/public /home/ftp/upload /home/ftp/hidden
+<pre tabindex="0"><code>mkdir -p /home/ftp/public /home/ftp/upload /home/ftp/hidden
 </code></pre><h3 id="create-admin-user">Create admin user&nbsp;<a href="#create-admin-user" class="anchor"></a> </h3>
 <p>Create a system user “sysadm”</p>
-<pre><code>adduser
-</code></pre><pre><code>user:sysadm  
+<pre tabindex="0"><code>adduser
+</code></pre><pre tabindex="0"><code>user:sysadm  
 passwd:W081001  
 group:sysadm,wheel  
 ssh enable
 </code></pre><h3 id="pure-ftpdconf">pure-ftpd.conf&nbsp;<a href="#pure-ftpdconf" class="anchor"></a> </h3>
-<pre><code>cp /usr/local/share/doc/pure-ftpd/pure-ftpd.conf \  
+<pre tabindex="0"><code>cp /usr/local/share/doc/pure-ftpd/pure-ftpd.conf \  
 /usr/local/etc/pure-ftpd.conf
 </code></pre><p>In pure-ftpd.conf:</p>
-<pre><code>ChrootEveryone  yes
+<pre tabindex="0"><code>ChrootEveryone  yes
     
 AnonymousOnly   no  
   
@@ -611,36 +611,36 @@ TLS 1
 <ol>
 <li>
 <p>Anonymous</p>
-<pre><code>pw groupadd ftpuser
-</code></pre><pre><code>pw useradd ftp -g ftpuser -d /home/ftp
+<pre tabindex="0"><code>pw groupadd ftpuser
+</code></pre><pre tabindex="0"><code>pw useradd ftp -g ftpuser -d /home/ftp
 </code></pre></li>
 <li>
 <p>Virtual users<br>
 Create two virtual users “ftp-vip1”, “ftp-vip2”<br>
 i. Add a real account</p>
-<pre><code>pw group virtualgroup
-</code></pre><pre><code>pw useradd ftpuser1 -g virtualgroup \  
--c &quot;FTP virtual user1&quot; -d /home/ftp \  
+<pre tabindex="0"><code>pw group virtualgroup
+</code></pre><pre tabindex="0"><code>pw useradd ftpuser1 -g virtualgroup \  
+-c &#34;FTP virtual user1&#34; -d /home/ftp \  
 -S /sbin/nologin
 </code></pre><p>ii. Map a virtual account to a real account</p>
-<pre><code>pure-pw useradd ftp-vip1 -u ftpuser1 -g virtualgroup \  
+<pre tabindex="0"><code>pure-pw useradd ftp-vip1 -u ftpuser1 -g virtualgroup \  
 -d /home/ftp -m
 </code></pre></li>
 <li>
 <p>看 user info</p>
-<pre><code>pure-pw show ftp-vip1
+<pre tabindex="0"><code>pure-pw show ftp-vip1
 </code></pre></li>
 </ol>
 <h3 id="ssl簽證">ssl簽證&nbsp;<a href="#ssl簽證" class="anchor"></a> </h3>
 <p><img src="https://i.imgur.com/W6tarUL.png" alt="Imgur"></p>
 <h3 id="launch-the-server">Launch the server&hellip;&nbsp;<a href="#launch-the-server" class="anchor"></a> </h3>
 <p>For testing the server</p>
-<pre><code>/usr/local/sbin/pure-ftpd &amp;
-</code></pre><pre><code>ftp localhost
+<pre tabindex="0"><code>/usr/local/sbin/pure-ftpd &amp;
+</code></pre><pre tabindex="0"><code>ftp localhost
 </code></pre><p>Automatically run the server when the system boots<br>
 add <code>/usr/local/sbin/pure-ftpd &amp;</code> to <code>/etc/rc.d/rc.local</code> or <code>/etc/rc.d/boot.local</code><br>
 Service</p>
-<pre><code>service pure-ftpd start  
+<pre tabindex="0"><code>service pure-ftpd start  
 service pure-ftpd stop   
 service pure-ftpd restart
 </code></pre><p>Service conf location<br>
@@ -651,35 +651,35 @@ service pure-ftpd restart
 passwd：&lt; ******** &gt;<br>
 port：21</p>
 <h3 id="權限設定">權限設定&nbsp;<a href="#權限設定" class="anchor"></a> </h3>
-<pre><code>sudo chown sysadm:virtualgroup /home/ftp/upload
+<pre tabindex="0"><code>sudo chown sysadm:virtualgroup /home/ftp/upload
 sudo chmod 1777 /home/ftp/upload
-</code></pre><pre><code>sudo chown sysadm:virtualgroup /home/ftp/public
+</code></pre><pre tabindex="0"><code>sudo chown sysadm:virtualgroup /home/ftp/public
 sudo chmod 777 /home/ftp/public
-</code></pre><pre><code>sudo chmod 771 /home/ftp/hidden
+</code></pre><pre tabindex="0"><code>sudo chmod 771 /home/ftp/hidden
 sudo mkdir /home/ftp/hidden/treasure
 sudo touch /home/ftp/hidden/treasure/secret
 </code></pre><p>It would look like this</p>
-<pre><code>drwxrwx--x  2   root    wheel           hidden  
+<pre tabindex="0"><code>drwxrwx--x  2   root    wheel           hidden  
 drwxrwxrwx  2   sysadm  virtualgroup    public  
 drwxrwxrwt  2   sysadm  virtualgroup    upload  
 </code></pre><p>upload的t 表示只有owner/root 才可以刪除檔案/資料夾</p>
 <h2 id="zfs-on-homeftp">ZFS on <code>/home/ftp</code>&nbsp;<a href="#zfs-on-homeftp" class="anchor"></a> </h2>
 <h3 id="enable-zfs-service">enable ZFS service&nbsp;<a href="#enable-zfs-service" class="anchor"></a> </h3>
-<pre><code>cat zfs_enable=&quot;YES&quot; &gt; /etc/rc.conf
-</code></pre><pre><code>sudo service zfs start
+<pre tabindex="0"><code>cat zfs_enable=&#34;YES&#34; &gt; /etc/rc.conf
+</code></pre><pre tabindex="0"><code>sudo service zfs start
 </code></pre><h3 id="add-new-hard-disks">Add new hard disks&nbsp;<a href="#add-new-hard-disks" class="anchor"></a> </h3>
 <p>VM settings &gt; Storages &gt; add 2 hard disks: ada1 ada2</p>
 <h3 id="create-mypool">Create mypool&nbsp;<a href="#create-mypool" class="anchor"></a> </h3>
-<pre><code>sudo zpool create mypoool mirror /dev/ada1 /dev/ada2
+<pre tabindex="0"><code>sudo zpool create mypoool mirror /dev/ada1 /dev/ada2
 </code></pre><p>檢查</p>
-<pre><code>zpool status
+<pre tabindex="0"><code>zpool status
 </code></pre><h3 id="mount">Mount&nbsp;<a href="#mount" class="anchor"></a> </h3>
-<pre><code>zfs set mountpoint=/home/ftp mypool
-</code></pre><pre><code>zfs set compression=lz4 mypool
-</code></pre><pre><code>zfs set atime=off mypool
+<pre tabindex="0"><code>zfs set mountpoint=/home/ftp mypool
+</code></pre><pre tabindex="0"><code>zfs set compression=lz4 mypool
+</code></pre><pre tabindex="0"><code>zfs set atime=off mypool
 </code></pre><p>重複上述指令給 <code>mypool/public</code>、<code>mypool/upload</code>、<code>mypool/hidden</code><br>
 check history</p>
-<pre><code>sudo zpool history
+<pre tabindex="0"><code>sudo zpool history
 </code></pre><h3 id="automatic-snapshot-script">Automatic snapshot script&nbsp;<a href="#automatic-snapshot-script" class="anchor"></a> </h3>
 <p>Write a script: <code>zbackup</code><br>
 Usage:<br>
@@ -693,10 +693,10 @@ Usage:<br>
 <a href="https://github.com/yilianwu/NCTUSA-hw/blob/master/hw3/zbackup">zbackup</a></p>
 <h2 id="ftp-watchd">ftp-watchd&nbsp;<a href="#ftp-watchd" class="anchor"></a> </h2>
 <p>Create ftp-watchd service</p>
-<pre><code>cd /usr/local/etc/rc.d  
+<pre tabindex="0"><code>cd /usr/local/etc/rc.d  
 sudo vim ftp-watchd  
 </code></pre><p><a href="https://github.com/yilianwu/NCTUSA-hw/blob/master/hw3/rc.d/ftp-watchd">ftp-watchd</a></p>
-<pre><code>sudo vim /tmp/uploadscript.sh
+<pre tabindex="0"><code>sudo vim /tmp/uploadscript.sh
 </code></pre><p><a href="https://github.com/yilianwu/NCTUSA-hw/blob/master/hw3/tmp/uploadscript.sh">uploadscript.sh</a></p>
                 </section>
         
@@ -717,7 +717,7 @@ sudo vim ftp-watchd
 	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
 	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
 
-    <span style="display:block" class="footer-text">&copy 2019-2023 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>

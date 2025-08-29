@@ -616,8 +616,8 @@ Adapter 2 選Host-only Adapter<br>
 </li>
 <li>
 <p>FreeBSD <code>/etc/rc.conf</code>新增網卡</p>
-<pre><code>ifconfig_em1=&quot;DHCP&quot;
-</code></pre><pre><code>reboot -n //重開機
+<pre tabindex="0"><code>ifconfig_em1=&#34;DHCP&#34;
+</code></pre><pre tabindex="0"><code>reboot -n //重開機
 ifconfig  //查看網路設定
 </code></pre><p>會看到新的網卡<code>em1 192.168.56.101</code></p>
 </li>
@@ -631,11 +631,11 @@ The Wireguard VPN (10.113.0.0/16)</p>
 <h2 id="http-server">HTTP Server&nbsp;<a href="#http-server" class="anchor"></a> </h2>
 <h3 id="nginx">Nginx&nbsp;<a href="#nginx" class="anchor"></a> </h3>
 <p>Install Nginx</p>
-<pre><code>pkg install nginx
+<pre tabindex="0"><code>pkg install nginx
 </code></pre><p>Enable Nginx when reboot</p>
-<pre><code>sudo sysrc nginx_enable=yes
+<pre tabindex="0"><code>sudo sysrc nginx_enable=yes
 </code></pre><p>啟動nginx</p>
-<pre><code>service nginx start
+<pre tabindex="0"><code>service nginx start
 </code></pre><p>在本機browser輸入ip後會看到這個頁面<br>
 (如果要用外網ip 本機要記得先連上VPN)<br>
 <img src="https://i.imgur.com/mMEFdSn.png" alt="Imgur"></p>
@@ -649,7 +649,7 @@ name/IP</p>
 <img src="https://i.imgur.com/5zge2Nt.png" alt="Imgur"></li>
 <li>自簽SSL</li>
 </ol>
-<pre><code>mkdir /usr/local/etc/nginx/ssl
+<pre tabindex="0"><code>mkdir /usr/local/etc/nginx/ssl
 sudo openssl req -x509 -nodes -day 365 \  
 -newkey rsa:2048 -key out /usr/local/etc/nginx \
 /ssl/nginx.key -out /usr/local/etc/nginx/ssl/nginx.crt
@@ -658,7 +658,7 @@ sudo openssl req -x509 -nodes -day 365 \
 <p>Configuration</p>
 <p><code>/usr/local/etc/nginx/nginx.conf</code></p>
 <p>(<code>location /</code>是ip會看到的頁面)</p>
-<pre><code>http {
+<pre tabindex="0"><code>http {
     ...................................
     ...................................
     ...................................
@@ -698,7 +698,7 @@ sudo openssl req -x509 -nodes -day 365 \
     server {
         listen	443 ssl http2;
 
-        #server_name  localhost;
+ 	    #server_name  localhost;
         # Domain name as name-based virtual host
         server_name weelian.nctu.me; 
 
@@ -707,16 +707,16 @@ sudo openssl req -x509 -nodes -day 365 \
         ssl_certificate_key /usr/local/etc/nginx/ssl/nginx.key;
         #charset koi8-r;
         #access_log  logs/host.access.log  main;
-        add_header Referrer-Policy &quot;no-referrer&quot; always;
-        add_header X-Content-Type-Options &quot;nosniff&quot; always;
-        add_header X-Download-Options &quot;noopen&quot; always;
-        add_header X-Frame-Options &quot;SAMEORIGIN&quot; always;
-        add_header X-Permitted-Cross-Domain-Policies &quot;none&quot; always;
-        add_header X-Robots-Tag &quot;none&quot; always;
-        add_header X-XSS-Protection &quot;1; mode=block&quot; always;
-   
-        # Remove X-Powered-By, which is an information leak
-        fastcgi_hide_header X-Powered-By;
+        add_header Referrer-Policy &#34;no-referrer&#34; always;
+	    add_header X-Content-Type-Options &#34;nosniff&#34; always;
+	    add_header X-Download-Options &#34;noopen&#34; always;
+	    add_header X-Frame-Options &#34;SAMEORIGIN&#34; always;
+	    add_header X-Permitted-Cross-Domain-Policies &#34;none&#34; always;
+	    add_header X-Robots-Tag &#34;none&#34; always;
+	    add_header X-XSS-Protection &#34;1; mode=block&#34; always;
+
+	    # Remove X-Powered-By, which is an information leak
+	    fastcgi_hide_header X-Powered-By;
 
         index index.html index.php;
         root    /usr/local/www/nginx;
@@ -738,7 +738,7 @@ sudo openssl req -x509 -nodes -day 365 \
 <h4 id="啟用https">啟用HTTPS&nbsp;<a href="#啟用https" class="anchor"></a> </h4>
 <p>Enable HSTS(HTTP Strict Transport Security): 放在domain name server<br>
 Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
-<pre><code>http {
+<pre tabindex="0"><code>http {
     ...................................    
     ...................................
     ...................................
@@ -747,8 +747,8 @@ Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
 	    listen	443 ssl http2;
 
         # Enable HSTS  
-        add_header Strict-Transport-Security &quot;max-age=31536000;
-        includeSubDomains&quot; always;
+        add_header Strict-Transport-Security &#34;max-age=31536000;
+        includeSubDomains&#34; always;
         ...................................
         ...................................
     }        
@@ -771,21 +771,21 @@ Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
 <li>
 <p>Auth Basic<br>
 設定帳號密碼</p>
-<pre><code>sudo sh -c &quot;echo -n 'admin:' &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
-sudo sh -c &quot;openssl passwd -apr1 &gt;&gt; /usr/local/www/nginx/.htpasswd&quot;
+<pre tabindex="0"><code>sudo sh -c &#34;echo -n &#39;admin:&#39; &gt;&gt; /usr/local/www/nginx/.htpasswd&#34;
+sudo sh -c &#34;openssl passwd -apr1 &gt;&gt; /usr/local/www/nginx/.htpasswd&#34;
 </code></pre></li>
 <li>
 <p>設定<code>/usr/local/www/nginx/.htpasswd</code>權限<br>
 ！正確！</p>
-<pre><code>-rw-r-----  www www .htpasswd
+<pre tabindex="0"><code>-rw-r-----  www www .htpasswd
 </code></pre><p>如果是原本的</p>
-<pre><code>-rw-r-----  root    wheel   .htpasswd
+<pre tabindex="0"><code>-rw-r-----  root    wheel   .htpasswd
 </code></pre><p>外網 -&gt; 403 Forbidden<br>
 內網輸入帳密後 -&gt; An error occured</p>
 </li>
 <li>
 <p>nginx.conf</p>
-<pre><code>...................................
+<pre tabindex="0"><code>...................................
 ...................................
 ...................................    
 # Using domain name
@@ -802,11 +802,11 @@ server {
         allow 192.168.56.101;
 
         # deny Internet
-        deny all;
-        auth_basic &quot;Authorization Required&quot;;
-        auth_basic_user_file /usr/local/www/nginx/.htpasswd;
-        alias /usr/local/www/nginx/secret;
-        index index.html index.htm;
+    	deny all;
+    	auth_basic &#34;Authorization Required&#34;;
+    	auth_basic_user_file /usr/local/www/nginx/.htpasswd;
+    	alias /usr/local/www/nginx/secret;
+    	index index.html index.htm;
     }
     ...................................
     ...................................
@@ -818,24 +818,24 @@ server {
 <ol>
 <li>
 <p>Install php ver 7.3.0</p>
-<pre><code>pkg install php73 php73-mysqli
+<pre tabindex="0"><code>pkg install php73 php73-mysqli
 </code></pre></li>
 <li>
 <p>建立 php.ini<br>
 建立php.ini-production 的 soft-link 給 php.ini</p>
-<pre><code>cd /usr/local/etc
+<pre tabindex="0"><code>cd /usr/local/etc
 sudo cp php.ini-production php.ini
 </code></pre></li>
 <li>
 <p>Enable PHP</p>
-<pre><code>sudo sysrc php_fpm_enable=yes
+<pre tabindex="0"><code>sudo sysrc php_fpm_enable=yes
 sudo service php-fpm start
 </code></pre></li>
 <li>
 <p>Configure <code>nginx.conf</code></p>
-<pre><code>upstream php-handler {
-    server 127.0.0.1:9000;
-    #server unix:/var/run/php/php7.2-fpm.sock;
+<pre tabindex="0"><code>upstream php-handler {
+	server 127.0.0.1:9000;
+	#server unix:/var/run/php/php7.2-fpm.sock;
 }
 ...................................
 ...................................
@@ -856,19 +856,19 @@ server {
 <p>定義SCRIPT_FILENAME<br>
 預設安裝的 Nginx FastCGI 參數檔裡面沒有定義 SCRIPT_FILENAME 這個變數<br>
 因此我們要把他加進去</p>
-<pre><code>sudo vim /usr/local/etc/nginx/fastcgi_params
+<pre tabindex="0"><code>sudo vim /usr/local/etc/nginx/fastcgi_params
 </code></pre><p>找到SCRIPT_FILENAME</p>
-<pre><code>fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+<pre tabindex="0"><code>fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 </code></pre></li>
 <li>
 <p><code>info.php</code></p>
-<pre><code>&lt;?php
+<pre tabindex="0"><code>&lt;?php
     phpinfo();
 ?&gt;
 </code></pre></li>
 <li>
 <p>改檔名</p>
-<pre><code>cd /usr/local/www/nginx-dist
+<pre tabindex="0"><code>cd /usr/local/www/nginx-dist
 sudo mv info.php info-W081001.php
 </code></pre><p>這樣去 <a href="https://weelian.nctu.me/info-W081001.php">https://weelian.nctu.me/info-W081001.php</a><br>
 就會看到phpinfo()<br>
@@ -877,35 +877,35 @@ sudo mv info.php info-W081001.php
 <li>
 <p>Hide PHP version in response header<br>
 <code>/usr/local/etc/php.ini</code></p>
-<pre><code>expose.php=off
+<pre tabindex="0"><code>expose.php=off
 </code></pre></li>
 </ol>
 <h2 id="mysql">MySQL&nbsp;<a href="#mysql" class="anchor"></a> </h2>
 <p>Prepare for NextCloud</p>
 <h3 id="install-mysql">Install MySQL&nbsp;<a href="#install-mysql" class="anchor"></a> </h3>
-<pre><code>portsnap fetch update
-</code></pre><pre><code>cd /usr/ports/databases/mysql57-server
+<pre tabindex="0"><code>portsnap fetch update
+</code></pre><pre tabindex="0"><code>cd /usr/ports/databases/mysql57-server
 sudo make WITH_CHARSET=utf8 install clean
 </code></pre><h3 id="configuration">Configuration&nbsp;<a href="#configuration" class="anchor"></a> </h3>
 <p><code>/usr/local/etc/my.conf</code></p>
 <h3 id="start-mysql-daemon">Start MySQL daemon&nbsp;<a href="#start-mysql-daemon" class="anchor"></a> </h3>
-<pre><code>sudo /usr/local/etc/rc.d/mysql-server start
+<pre tabindex="0"><code>sudo /usr/local/etc/rc.d/mysql-server start
 </code></pre><h3 id="login">Login&nbsp;<a href="#login" class="anchor"></a> </h3>
 <p>login mysql as root with passwd</p>
-<pre><code>mysql -u root mysql -p
+<pre tabindex="0"><code>mysql -u root mysql -p
 </code></pre><h3 id="create-database-user">Create Database, User&nbsp;<a href="#create-database-user" class="anchor"></a> </h3>
 <p>Create a MySQL user named ‘nc’ and a database named ‘nextcloud’, which satisfies:<br>
 • The password of the user is your student ID<br>
 • This user can only login from localhost<br>
 • This user only have full privileges on database ‘nextcloud’</p>
-<pre><code>&gt; create DATABASE nextcloud;
+<pre tabindex="0"><code>&gt; create DATABASE nextcloud;
 &gt; show database;
-&gt; GRANT ALL ON nextcloud.* TO nc@localhost IDENTIFIED BY 'W081001';
+&gt; GRANT ALL ON nextcloud.* TO nc@localhost IDENTIFIED BY &#39;W081001&#39;;
 &gt; quit
 </code></pre><p>Login as nc</p>
-<pre><code>mysql -u nc nextcloud -p
+<pre tabindex="0"><code>mysql -u nc nextcloud -p
 </code></pre><p>Set the transaction isolation levels to READ-COMMITED</p>
-<pre><code>&gt; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITED;
+<pre tabindex="0"><code>&gt; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITED;
 &gt; SELECT @@TX_ISOLATION;
 </code></pre><h2 id="http-applications">HTTP Applications&nbsp;<a href="#http-applications" class="anchor"></a> </h2>
 <h3 id="basic-app-router">Basic App Router&nbsp;<a href="#basic-app-router" class="anchor"></a> </h3>
@@ -920,35 +920,35 @@ Display Hello, {string}</li>
 </ul>
 <ol>
 <li><code>app/index.php</code>
-<pre><code>&lt;?php
-    $input = $_SERVER[&quot;QUERY_STRING&quot;];
-    if(strlen($input)&gt;0){
-        $ars = explode(&quot;=&quot;,$input);
+<pre tabindex="0"><code>&lt;?php
+	$input = $_SERVER[&#34;QUERY_STRING&#34;];
+	if(strlen($input)&gt;0){
+		$ars = explode(&#34;=&#34;,$input);
 
-        if(strlen($ars[1])&gt;0){
-            echo &quot;Hello, $ars[1]&quot;;
-        }
+		if(strlen($ars[1])&gt;0){
+			echo &#34;Hello, $ars[1]&#34;;
+		}
 
-        else{
-            $arr = explode(&quot;+&quot;,$input);
-            $sum = (int)$arr[0]+(int)$arr[1];
-            echo &quot;result: $sum&quot;;
-        }
-    }
-    else{
-        echo 'route: /';
-    }
+		else{
+			$arr = explode(&#34;+&#34;,$input);
+			$sum = (int)$arr[0]+(int)$arr[1];
+			echo &#34;result: $sum&#34;;
+		}
+	}
+	else{
+		echo &#39;route: /&#39;;
+	}
 ?&gt;
 </code></pre></li>
 <li><code>nginx.conf</code>
-<pre><code>location /app {
+<pre tabindex="0"><code>location /app {
     alias /usr/local/www/nginx/app;
-    index index.php;
-    try_files $uri $uri/ @test;
+	index index.php;
+	try_files $uri $uri/ @test;
 }
 
 location @test {
-            rewrite ^/app/(.*)\+(\w+)\.?.*$ /app?$1+$2; 
+    		rewrite ^/app/(.*)\+(\w+)\.?.*$ /app?$1+$2; 
 }
 </code></pre></li>
 </ol>
@@ -965,7 +965,7 @@ location @test {
 <p>Goal: connect websocket on port 443
 <img src="https://i.imgur.com/2nkbXbD.png" alt="Imgur"></p>
 <p>In <code>nginx.conf</code></p>
-<pre><code>...................................
+<pre tabindex="0"><code>...................................
 ...................................
 ...................................  
 upstream websocket {
@@ -985,7 +985,7 @@ server {
         # WebSocket support
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection &quot;upgrade&quot;;
+        proxy_set_header Connection &#34;upgrade&#34;;
     }
 
     location /public {
@@ -997,27 +997,27 @@ server {
         # WebSocket support
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection &quot;upgrade&quot;;
+        proxy_set_header Connection &#34;upgrade&#34;;
     }
 }
 </code></pre><p>In <code>wsdemo/websockets.html</code></p>
-<pre><code>&lt;html&gt;
+<pre tabindex="0"><code>&lt;html&gt;
 &lt;body&gt;
-    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;div id=&#34;root&#34;&gt;&lt;/div&gt;
     &lt;script&gt;
-        # var host = 'ws://0.0.0.0:12345/websockets.php';
-        var host = 'wss://weelian.nctu.me/public';
+        # var host = &#39;ws://0.0.0.0:12345/websockets.php&#39;;
+        var host = &#39;wss://weelian.nctu.me/public&#39;;
         var socket = new WebSocket(host);
         socket.onmessage = function(e) {
-            document.getElementById('root').innerHTML = e.data;
+            document.getElementById(&#39;root&#39;).innerHTML = e.data;
         };
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre><p>In <code>wsdemo/websockets.php</code></p>
-<pre><code>&lt;?php
+<pre tabindex="0"><code>&lt;?php
 
-$address = '0.0.0.0';
+$address = &#39;0.0.0.0&#39;;
 $port = 12345;
 
 // Create WebSocket.
@@ -1029,29 +1029,29 @@ $client = socket_accept($server);
 
 // Send WebSocket handshake headers.
 $request = socket_read($client, 5000);
-preg_match('#Sec-WebSocket-Key: (.*)\r\n#', $request, $matches);
+preg_match(&#39;#Sec-WebSocket-Key: (.*)\r\n#&#39;, $request, $matches);
 $key = base64_encode(pack(
-    'H*',
-    sha1($matches[1] . '258EAFA5-E914-47DA-95CA-C5AB0DC85B11')
+    &#39;H*&#39;,
+    sha1($matches[1] . &#39;258EAFA5-E914-47DA-95CA-C5AB0DC85B11&#39;)
 ));
-$headers = &quot;HTTP/1.1 101 Switching Protocols\r\n&quot;;
-$headers .= &quot;Upgrade: websocket\r\n&quot;;
-$headers .= &quot;Connection: Upgrade\r\n&quot;;
-$headers .= &quot;Sec-WebSocket-Version: 13\r\n&quot;;
-$headers .= &quot;Sec-WebSocket-Accept: $key\r\n\r\n&quot;;
+$headers = &#34;HTTP/1.1 101 Switching Protocols\r\n&#34;;
+$headers .= &#34;Upgrade: websocket\r\n&#34;;
+$headers .= &#34;Connection: Upgrade\r\n&#34;;
+$headers .= &#34;Sec-WebSocket-Version: 13\r\n&#34;;
+$headers .= &#34;Sec-WebSocket-Accept: $key\r\n\r\n&#34;;
 socket_write($client, $headers, strlen($headers));
 
 // Send messages into WebSocket in a loop.
 while (true) {
     sleep(1);
-    $content = 'Now: ' . time();
+    $content = &#39;Now: &#39; . time();
     $response = chr(129) . chr(strlen($content)) . $content;
     socket_write($client, $response);
 }
 </code></pre><p>我一開始在執行socket的時候 出現Error</p>
-<pre><code>PHP Fatal Error: Uncaught Error: Call to undefined function socket_create() in....
+<pre tabindex="0"><code>PHP Fatal Error: Uncaught Error: Call to undefined function socket_create() in....
 </code></pre><p>後來發現是因為沒裝Socket Extension</p>
-<pre><code>cd /usr/ports/lang/php73-extensions
+<pre tabindex="0"><code>cd /usr/ports/lang/php73-extensions
 make config install clean
 </code></pre><p>[x]socket</p>
 <h3 id="nextcloud">Nextcloud&nbsp;<a href="#nextcloud" class="anchor"></a> </h3>
@@ -1060,12 +1060,12 @@ make config install clean
 <li>
 <p>Install<br>
 要先用pkg install 才會有完整的php-fmp</p>
-<pre><code>pkg search nextcloud
+<pre tabindex="0"><code>pkg search nextcloud
 pkg install nextcloud-php-73
 </code></pre><p>pkg裝好的nextcloud 會在<code>/usr/local/www</code><br>
 再把它刪掉 用本來的zip替換<br>
 改權限</p>
-<pre><code>sudo chown -R www:www nextcloud
+<pre tabindex="0"><code>sudo chown -R www:www nextcloud
 </code></pre></li>
 <li>
 <p>Configuration in <code>nginx.conf</code><br>
@@ -1073,10 +1073,10 @@ Google: Nextcloud in a subdir of nginx<br>
 copy &amp; paste in <code>nginx.conf</code></p>
 <p>如果開{domain}/nextcloud 出現An error occured<br>
 -&gt; 重開php-fpm</p>
-<pre><code>sudo service php-fpm restart
+<pre tabindex="0"><code>sudo service php-fpm restart
 </code></pre><p>or<br>
 -&gt; kill PID</p>
-<pre><code>ps aux | grep php
+<pre tabindex="0"><code>ps aux | grep php
 sudo kill {php pid}
 sudo service php-fpm start
 </code></pre><p><strong>在一開始 Create user時 記得要選MySQL DB</strong></p>
@@ -1087,11 +1087,11 @@ sudo service php-fpm start
 <li>Each user in Nextcloud can put static(PHP is not needed) contents(img, html, css, js, etc.) in the public_html directory under their home</li>
 <li>When accessing https://{your-domain}/sites/~{username}/ , it should show whatever {username} put in his public_html, with index index.html</li>
 </ul>
-<pre><code>location /sites {
-    try_files $uri $uri/ @ncsites;
+<pre tabindex="0"><code>location /sites {
+	try_files $uri $uri/ @ncsites;
 }
 location @ncsites {
-    rewrite ^/sites/\~(.*) /nextcloud/data/$1/files/public_html/index.html;
+	rewrite ^/sites/\~(.*) /nextcloud/data/$1/files/public_html/index.html;
 }
 </code></pre></li>
 </ol>
@@ -1114,7 +1114,7 @@ location @ncsites {
 	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
 	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
 
-    <span style="display:block" class="footer-text">&copy 2019-2023 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>

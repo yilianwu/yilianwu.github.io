@@ -393,30 +393,30 @@ repo的名稱要叫<code>&lt;username&gt;.github.io</code> //這裡的username�
 <p><img src="https://i.imgur.com/fo5aLoK.png" alt="Imgur"></p>
 <h1 id="step2打開terminal終端機">Step2:打開Terminal終端機&nbsp;<a href="#step2打開terminal終端機" class="anchor"></a> </h1>
 <h2 id="1安裝homebrew">1.安裝Homebrew&nbsp;<a href="#1安裝homebrew" class="anchor"></a> </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/bin/ruby -e <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-</code></pre></div><h2 id="2安裝hugo">2.安裝Hugo&nbsp;<a href="#2安裝hugo" class="anchor"></a> </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install hugo
-</code></pre></div><h2 id="3建立hugo網站">3.建立Hugo網站&nbsp;<a href="#3建立hugo網站" class="anchor"></a> </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#創一個資料夾 他的路徑是 ~/site-hugo</span>
-hugo new site site-hugo
-
-<span style="color:#75715e">#進到資料夾中</span>
-cd site-hugo
-</code></pre></div><p>這裡的<strong>site-hugo</strong>可以是任意名稱</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/ruby -e <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h2 id="2安裝hugo">2.安裝Hugo&nbsp;<a href="#2安裝hugo" class="anchor"></a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install hugo
+</span></span></code></pre></div><h2 id="3建立hugo網站">3.建立Hugo網站&nbsp;<a href="#3建立hugo網站" class="anchor"></a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#創一個資料夾 他的路徑是 ~/site-hugo</span>
+</span></span><span style="display:flex;"><span>hugo new site site-hugo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#進到資料夾中</span>
+</span></span><span style="display:flex;"><span>cd site-hugo
+</span></span></code></pre></div><p>這裡的<strong>site-hugo</strong>可以是任意名稱</p>
 <h2 id="4新增hugo-site-theme主題">4.新增Hugo Site Theme(主題)&nbsp;<a href="#4新增hugo-site-theme主題" class="anchor"></a> </h2>
 <p><strong><a href="https://themes.gohugo.io/">點我挑選主題</a></strong></p>
 <p>這邊以<a href="https://themes.gohugo.io/hugo-grapes/">Hugo Grapes</a>舉例</p>
 <ol>
 <li>新創一個資料夾themes</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir themes
-
-<span style="color:#75715e">#進到themes資料夾中</span>
-cd themes
-
-<span style="color:#75715e">#將github上的hugo grapes給clone下來你的themes資料夾</span>
-git clone git@github.com:shankar/hugo-grapes.git hugo-grapes
-</code></pre></div><ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir themes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#進到themes資料夾中</span>
+</span></span><span style="display:flex;"><span>cd themes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#將github上的hugo grapes給clone下來你的themes資料夾</span>
+</span></span><span style="display:flex;"><span>git clone git@github.com:shankar/hugo-grapes.git hugo-grapes
+</span></span></code></pre></div><ol>
 <li>將<code>/themes/hugo-grapes</code>中的<code>/static</code>、<code>/layouts</code>、<code>/content</code>
 與<code>config.toml</code>複製到<code>site-hugo</code>中
 原本的檔案會被覆蓋掉</li>
@@ -424,77 +424,77 @@ git clone git@github.com:shankar/hugo-grapes.git hugo-grapes
 <h2 id="5建立新文章">5.建立新文章&nbsp;<a href="#5建立新文章" class="anchor"></a> </h2>
 <p>再打開terminal
 輸入以下指令</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ..
-hugo new posts/my-first-post.md
-</code></pre></div><p>此指令會在 <code>/content/posts</code> 資料夾中建立<code>my-first-post.md</code>。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ..
+</span></span><span style="display:flex;"><span>hugo new posts/my-first-post.md
+</span></span></code></pre></div><p>此指令會在 <code>/content/posts</code> 資料夾中建立<code>my-first-post.md</code>。
 使用任意文字編輯器打開<code>my-first-post.md</code>，<strong>將 draft 的true 改成 false</strong> //將草稿的功能關掉 才發布的出去
 內容任意，以後如果要編輯文章(MarkDown文件)的話可以用<a href="https://atom.io/">Atom</a></p>
 <h2 id="6編輯configtoml檔">6.編輯<code>config.toml</code>檔&nbsp;<a href="#6編輯configtoml檔" class="anchor"></a> </h2>
 <p>用文字編輯器打開<code>config.toml</code>修改：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#&lt;username&gt;改成你的GitHub帳號名稱</span>
-URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://&lt;username&gt;.github.io&#34;</span>    
-languageCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zh-tw&#34;</span>
-<span style="color:#75715e">#自由命名</span>
-title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;No Title Needed&#34;</span>
-</code></pre></div><h2 id="7偷看一下">7.偷看一下&nbsp;<a href="#7偷看一下" class="anchor"></a> </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/site-hugo
-hugo server -D
-</code></pre></div><p><img src="https://i.imgur.com/xos5SRG.png" alt="Imgur"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#&lt;username&gt;改成你的GitHub帳號名稱</span>
+</span></span><span style="display:flex;"><span>URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://&lt;username&gt;.github.io&#34;</span>    
+</span></span><span style="display:flex;"><span>languageCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;zh-tw&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#自由命名</span>
+</span></span><span style="display:flex;"><span>title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;No Title Needed&#34;</span>
+</span></span></code></pre></div><h2 id="7偷看一下">7.偷看一下&nbsp;<a href="#7偷看一下" class="anchor"></a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~/site-hugo
+</span></span><span style="display:flex;"><span>hugo server -D
+</span></span></code></pre></div><p><img src="https://i.imgur.com/xos5SRG.png" alt="Imgur"></p>
 <p>這時候在瀏覽器輸入http://localhost:1313/
 就可以預覽網站的樣子囉
 <img src="https://i.imgur.com/4HRTYkQ.png" alt="Imgur">
 按Ctrl+C可退出預覽</p>
 <h1 id="step3將hugo部署到github">Step3:將Hugo部署到GitHub&nbsp;<a href="#step3將hugo部署到github" class="anchor"></a> </h1>
 <h2 id="1hugo連結github-page">1.hugo連結github Page&nbsp;<a href="#1hugo連結github-page" class="anchor"></a> </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~/site-hugo <span style="color:#75715e">#進到網站資料夾</span>
-hugo <span style="color:#75715e">#此指令會產生一個 /public 資料夾 就是網站發佈出去的樣子</span>
-</code></pre></div><p>接著，進到<code>/public</code> 建立git連結</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd public
-git init
-git remote add origin https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git
-</code></pre></div><p>可以到repo頁面直接獲得連結
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~/site-hugo <span style="color:#75715e">#進到網站資料夾</span>
+</span></span><span style="display:flex;"><span>hugo <span style="color:#75715e">#此指令會產生一個 /public 資料夾 就是網站發佈出去的樣子</span>
+</span></span></code></pre></div><p>接著，進到<code>/public</code> 建立git連結</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git
+</span></span></code></pre></div><p>可以到repo頁面直接獲得連結
 <img src="https://i.imgur.com/RUbHUC9.png" alt="Imgur"></p>
 <p>如果是github上已經有東西了 可以直接clone下來</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git public
-</code></pre></div><h2 id="2部署">2.部署&nbsp;<a href="#2部署" class="anchor"></a> </h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># push 上 GitHub</span>
-git add .
-git commit -m <span style="color:#e6db74">&#34;&lt;msg&gt;&#34;</span> <span style="color:#75715e">#&lt;msg&gt;可以填你要commit的東西</span>
-git push -u origin master
-</code></pre></div><p>若push失敗，可以將<code>git push -u origin master</code> 改成強制push</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git push -f origin master
-</code></pre></div><p>這時候就可以到<code>https://&lt;username&gt;.github.io</code> 查看網站</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git public
+</span></span></code></pre></div><h2 id="2部署">2.部署&nbsp;<a href="#2部署" class="anchor"></a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># push 上 GitHub</span>
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;&lt;msg&gt;&#34;</span> <span style="color:#75715e">#&lt;msg&gt;可以填你要commit的東西</span>
+</span></span><span style="display:flex;"><span>git push -u origin master
+</span></span></code></pre></div><p>若push失敗，可以將<code>git push -u origin master</code> 改成強制push</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push -f origin master
+</span></span></code></pre></div><p>這時候就可以到<code>https://&lt;username&gt;.github.io</code> 查看網站</p>
 <h2 id="3自動部署">3.自動部署&nbsp;<a href="#3自動部署" class="anchor"></a> </h2>
 <p>將上面的流程寫成一個shell script
 以後做完更改只要一鍵就可以完成部署網站！</p>
 <ol>
 <li>在<code>~/</code>本地裡面建立一個<code>deploy.sh</code></li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd ~
-touch deploy.sh
-</code></pre></div><ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ~
+</span></span><span style="display:flex;"><span>touch deploy.sh
+</span></span></code></pre></div><ol>
 <li>到切換回finder找到剛創的<code>deploy.sh</code>，並用文字編輯器打開它</li>
 </ol>
 <p>新增內容:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
-</span><span style="color:#75715e"></span>echo -e <span style="color:#e6db74">&#34;\033[0;32mDeploying updates to GitHub...\033[0m&#34;</span>
-<span style="color:#75715e">#生成靜態網頁至 public</span>
-cd site-hugo
-hugo
-<span style="color:#75715e">#部署至github</span>
-cd public
-git add .
-msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rebuilding site `date`&#34;</span>  <span style="color:#75715e">#以時間作為 commit message</span>
-git commit -m <span style="color:#e6db74">&#34;</span>$msg<span style="color:#e6db74">&#34;</span>
-git push origin master
-cd ..
-</code></pre></div><p>之後只要執行</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./deploy.sh  
-</code></pre></div><p>如果出現Error:bash Permission denied
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>echo -e <span style="color:#e6db74">&#34;\033[0;32mDeploying updates to GitHub...\033[0m&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#生成靜態網頁至 public</span>
+</span></span><span style="display:flex;"><span>cd site-hugo
+</span></span><span style="display:flex;"><span>hugo
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#部署至github</span>
+</span></span><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rebuilding site `date`&#34;</span>  <span style="color:#75715e">#以時間作為 commit message</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;</span>$msg<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin master
+</span></span><span style="display:flex;"><span>cd ..
+</span></span></code></pre></div><p>之後只要執行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./deploy.sh  
+</span></span></code></pre></div><p>如果出現Error:bash Permission denied
 到表你沒有權限執行這個檔案
 這時候可以透過，來得到權限</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">chmod u+x deploy.sh
-</code></pre></div><p><img src="https://i.imgur.com/wcSo6bM.png" alt="Imgur"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod u+x deploy.sh
+</span></span></code></pre></div><p><img src="https://i.imgur.com/wcSo6bM.png" alt="Imgur"></p>
 <p>就會直接發佈到github
 <img src="https://i.imgur.com/uNKBoxb.png" alt="Imgur"></p>
 <p><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Reference</a></p>
@@ -517,7 +517,7 @@ cd ..
 	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
 	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
 
-    <span style="display:block" class="footer-text">&copy 2019-2023 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>

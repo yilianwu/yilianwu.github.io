@@ -283,24 +283,24 @@
 <h2 id="find-your-ip-address">Find your IP address&nbsp;<a href="#find-your-ip-address" class="anchor"></a> </h2>
 <p>設定好了之後 就能透過網路線將RPi跟Mac對接</p>
 <p>先在Mac的終端打</p>
-<pre><code>ifconfig
+<pre tabindex="0"><code>ifconfig
 </code></pre><p>找到<code>bridge100</code>的欄位 就能看到網路共享的網路設定<br>
 我這邊是192.168.2.1/24<br>
 <img src="https://i.imgur.com/18KQdwa.png" alt="Imgur"></p>
 <p>再來就用nmap來搜尋此網域的連線狀況</p>
-<pre><code>sudo nmap -sP 192.168.2.1/24
+<pre tabindex="0"><code>sudo nmap -sP 192.168.2.1/24
 </code></pre><p><img src="https://i.imgur.com/FvelWDq.png" alt="Imgur">
 我的RPi拿到的iP是192.168.2.5</p>
 <h2 id="ssh-login">SSH Login&nbsp;<a href="#ssh-login" class="anchor"></a> </h2>
 <p>username@ip_address</p>
-<pre><code>ssh ubuntu@192.168.2.5
+<pre tabindex="0"><code>ssh ubuntu@192.168.2.5
 </code></pre><p>輸入密碼後即可登入</p>
 <h1 id="access-raspberry-pi-uart-console-from-macos">Access Raspberry Pi UART Console from MacOS&nbsp;<a href="#access-raspberry-pi-uart-console-from-macos" class="anchor"></a> </h1>
 <p>利用 Raspberry Pi 的 Serial interface<br>
 能在不需要螢幕和鍵盤滑鼠的情況下 透過USB to TTL線登入 Raspberry Pi (預設帳號密碼是 pi/raspberry)</p>
 <p>Raspberry Pi 預設serial port console是開著的
 如果是關著的話 需要將這個服務開起來</p>
-<pre><code>sudo systemctl start serial-getty@ttyS0.service
+<pre tabindex="0"><code>sudo systemctl start serial-getty@ttyS0.service
 </code></pre><h2 id="pl2303hx-usb轉ttl序列傳輸線">PL2303HX USB轉TTL序列傳輸線&nbsp;<a href="#pl2303hx-usb轉ttl序列傳輸線" class="anchor"></a> </h2>
 <p><strong>只要接3條線</strong><br>
 如果將 USB 轉 TTL 傳輸線的紅色線接到RPi，將會從傳輸線供電給 Pi 而讓 Pi 開機。由於我們已經有供給穩定的電源給 Pi，因此這邊我們不用將紅色線接到RPi的5V</p>
@@ -317,17 +317,17 @@
 <a href="http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=229&amp;pcid=41">for Mac</a></p>
 <h2 id="minicom">Minicom&nbsp;<a href="#minicom" class="anchor"></a> </h2>
 <p>Install minicom</p>
-<pre><code>brew install minicom
+<pre tabindex="0"><code>brew install minicom
 </code></pre><p>檢查看看有無<code>tty.usbserial</code></p>
-<pre><code>ls /dev/
+<pre tabindex="0"><code>ls /dev/
 </code></pre><p>Build a connection</p>
-<pre><code>minicom --device /dev/tty.usbserial -b 115200
+<pre tabindex="0"><code>minicom --device /dev/tty.usbserial -b 115200
 </code></pre><p><img src="https://i.imgur.com/pt1PcQW.png" alt="Imgur"></p>
 <p>在Mac可按<code>esc+z</code> 到說明頁面 設定一些東西
 <img src="https://i.imgur.com/smizxbc.png" alt="Imgur"></p>
 <hr>
 <p>或是不登入只是要純設定minicom 可直接下</p>
-<pre><code>minicom -s 
+<pre tabindex="0"><code>minicom -s 
 </code></pre>
                 </section>
         
@@ -348,7 +348,7 @@
 	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
 	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
 
-    <span style="display:block" class="footer-text">&copy 2019-2023 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>

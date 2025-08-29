@@ -1169,23 +1169,23 @@
                 <section class="post-content">
                 <h1 id="vm-host-only-adapter">VM Host-Only Adapter&nbsp;<a href="#vm-host-only-adapter" class="anchor"></a> </h1>
 <p>Ubuntu 好像要手動開interface</p>
-<pre><code>ls /etc/netplan
+<pre tabindex="0"><code>ls /etc/netplan
 </code></pre><p>file <code>50-cloud-init.yaml</code></p>
-<pre><code>sudo vim /etc/netplan/50-cloud-init.yaml
+<pre tabindex="0"><code>sudo vim /etc/netplan/50-cloud-init.yaml
 </code></pre><p>把網卡<code>enp0s8</code>加上去</p>
-<pre><code>network:
+<pre tabindex="0"><code>network:
     ethernets:
         enp0s3:
             dhcp4: true
         enp0s8:
             dhcp4: true
     version: 2
-</code></pre><pre><code>sudo netplan generate
+</code></pre><pre tabindex="0"><code>sudo netplan generate
 sudo netplan apply
 </code></pre><h1 id="nameserver-setting">NameServer Setting&nbsp;<a href="#nameserver-setting" class="anchor"></a> </h1>
-<pre><code>sudo vim /etc/netplan/50-cloud-init.yaml
+<pre tabindex="0"><code>sudo vim /etc/netplan/50-cloud-init.yaml
 </code></pre><p><code>enp0s3</code>加上nameservers</p>
-<pre><code>network:
+<pre tabindex="0"><code>network:
     ethernets:
         enp0s3:
             dhcp4: true
@@ -1194,21 +1194,21 @@ sudo netplan apply
         enp0s8:
             dhcp4: true
     version: 2
-</code></pre><pre><code>netplan try
+</code></pre><pre tabindex="0"><code>netplan try
 </code></pre><p>確認無誤按enter</p>
-<pre><code>systemd-resolve --status
-</code></pre><pre><code>DNS Domain: 0846101.nasa &lt;-- Check this value
+<pre tabindex="0"><code>systemd-resolve --status
+</code></pre><pre tabindex="0"><code>DNS Domain: 0846101.nasa &lt;-- Check this value
 </code></pre><h2 id="debug">Debug&nbsp;<a href="#debug" class="anchor"></a> </h2>
 <p><code>resolv.conf</code> 再重新開機後會一直reset成<code>127.0.0.53</code></p>
 <p>把正確 dhcp發配的nameserver link 過去</p>
-<pre><code>sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+<pre tabindex="0"><code>sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 </code></pre><p><a href="https://askubuntu.com/questions/1128536/how-to-make-persistent-changes-to-etc-resolv-conf-ubuntu-18-10">https://askubuntu.com/questions/1128536/how-to-make-persistent-changes-to-etc-resolv-conf-ubuntu-18-10</a></p>
 <h1 id="slapd">Slapd&nbsp;<a href="#slapd" class="anchor"></a> </h1>
-<pre><code>sudo apt install slapd ldap-utils
+<pre tabindex="0"><code>sudo apt install slapd ldap-utils
 </code></pre><p>LDAP使用的TCP連接埠為389，可以使用以下指令來查看slapd是否有確實安裝成功</p>
-<pre><code>sudo netstat -tulnp | grep slapd
+<pre tabindex="0"><code>sudo netstat -tulnp | grep slapd
 </code></pre><p>簡單的設定一下</p>
-<pre><code>sudo dpkg-reconfigure slapd
+<pre tabindex="0"><code>sudo dpkg-reconfigure slapd
 </code></pre><p>Omit OpenLDAP server configuration? <strong>No</strong></p>
 <p>DNS domain name? <strong>0846101.nasa</strong></p>
 <p>Organization name? <strong>0846101.nasa</strong></p>
@@ -1221,51 +1221,51 @@ sudo netplan apply
 <h2 id="install-phpldapadmin">Install phpLDAPadmin&nbsp;<a href="#install-phpldapadmin" class="anchor"></a> </h2>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-openldap-and-phpldapadmin-on-an-ubuntu-14-04-server">https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-openldap-and-phpldapadmin-on-an-ubuntu-14-04-server</a></p>
 <p><a href="https://stackoverflow.com/questions/50698477/cant-create-new-entry-phpldapadmin">https://stackoverflow.com/questions/50698477/cant-create-new-entry-phpldapadmin</a></p>
-<pre><code>sudo apt-get install phpldapadmin
-</code></pre><pre><code>sudo vim /etc/phpldapadmin/config.php
+<pre tabindex="0"><code>sudo apt-get install phpldapadmin
+</code></pre><pre tabindex="0"><code>sudo vim /etc/phpldapadmin/config.php
 </code></pre><p>line 286<br>
 identify this LDAP server</p>
-<pre><code>$servers-&gt;setValue('server','name','My LDAP Server');
+<pre tabindex="0"><code>$servers-&gt;setValue(&#39;server&#39;,&#39;name&#39;,&#39;My LDAP Server&#39;);
 </code></pre><p>line 293<br>
 決定你怎麼從browser連到phpLDAPadmin:<br>
 server domain name or IP</p>
-<pre><code>$servers-&gt;setValue('server','host','ldap1.0846101.nasa');
+<pre tabindex="0"><code>$servers-&gt;setValue(&#39;server&#39;,&#39;host&#39;,&#39;ldap1.0846101.nasa&#39;);
 </code></pre><p>line 300</p>
-<pre><code>$servers-&gt;setValue('server','base',array('dc=0846101,dc=nasa'));
+<pre tabindex="0"><code>$servers-&gt;setValue(&#39;server&#39;,&#39;base&#39;,array(&#39;dc=0846101,dc=nasa&#39;));
 </code></pre><p>line 326</p>
-<pre><code>$servers-&gt;setValue('login','bind_id','cn=admin,cn=config');
+<pre tabindex="0"><code>$servers-&gt;setValue(&#39;login&#39;,&#39;bind_id&#39;,&#39;cn=admin,cn=config&#39;);
 </code></pre><p>line 161</p>
-<pre><code>/* Hide the warnings for invalid objectClasses/attributes in templates. */
-$config-&gt;custom-&gt;appearance['hide_template_warning'] = true;
+<pre tabindex="0"><code>/* Hide the warnings for invalid objectClasses/attributes in templates. */
+$config-&gt;custom-&gt;appearance[&#39;hide_template_warning&#39;] = true;
 </code></pre><h2 id="apache">Apache&nbsp;<a href="#apache" class="anchor"></a> </h2>
 <h3 id="create-ssl-certificate">Create SSL Certificate&nbsp;<a href="#create-ssl-certificate" class="anchor"></a> </h3>
 <p>To secure the external connection to our browser when we connect<br>
 We just need to set up a self-signed SSL certificate that our server can use. This will not help us validate the identity of the server, but it will allow us to encrypt our messages</p>
 <p>Create a directory to hold our certificate and key</p>
-<pre><code>sudo mkdir /etc/apache2/ssl
+<pre tabindex="0"><code>sudo mkdir /etc/apache2/ssl
 </code></pre><p>Create the key and certificate</p>
-<pre><code>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
+<pre tabindex="0"><code>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
 </code></pre><h3 id="create-a-password-authentication-file">Create a Password Authentication File&nbsp;<a href="#create-a-password-authentication-file" class="anchor"></a> </h3>
 <p>Even though phpLDAPadmin has password authentication, we also want to password protect our phpLDAPadmin location which will provide an extra level of protection</p>
-<pre><code>sudo apt-get install apache2-utils
+<pre tabindex="0"><code>sudo apt-get install apache2-utils
 </code></pre><p>Create a password file that will contain a username that you choose and the associated hashed password.</p>
-<pre><code>sudo htpasswd -c /etc/apache2/htpasswd c0846101
+<pre tabindex="0"><code>sudo htpasswd -c /etc/apache2/htpasswd c0846101
 </code></pre><h3 id="secure-apache">Secure Apache&nbsp;<a href="#secure-apache" class="anchor"></a> </h3>
 <p>Enable the SSL module in Apache</p>
-<pre><code>sudo a2enmod ssl
+<pre tabindex="0"><code>sudo a2enmod ssl
 </code></pre><p>Currently, Apache is reading a file called <code>000-default.conf</code> for regular, unencrypted HTTP connections. We need to tell it to redirect requests for our phpLDAPadmin interface to our HTTPS interface so that the connection is encrypted.</p>
 <p>When we redirect traffic to use our SSL certificates, we’ll also implement the password file to authenticate users. While we’re modifying things, we’ll also change the location of the phpLDAPadmin interface itself to minimize targeted attacks.</p>
 <h3 id="modify-the-phpldapadmin-apache-configuration">Modify the phpLDAPadmin Apache Configuration&nbsp;<a href="#modify-the-phpldapadmin-apache-configuration" class="anchor"></a> </h3>
 <p>The default URL is ldap1.0846101.nasa/phpldapadmin (10.113.25.10/phpldapadmin)</p>
-<pre><code>sudo vim /etc/phpldapadmin/apache.conf
+<pre tabindex="0"><code>sudo vim /etc/phpldapadmin/apache.conf
 </code></pre><p><code>/phpldapadmin</code> can be replaced</p>
-<pre><code># Define /phpldapadmin alias, this is the default
+<pre tabindex="0"><code># Define /phpldapadmin alias, this is the default
 &lt;IfModule mod_alias.c&gt;
     Alias /phpldapadmin /usr/share/phpldapadmin/htdocs
 &lt;/IfModule&gt;
 </code></pre><h3 id="configure-the-http-virtual-host">Configure the HTTP Virtual Host&nbsp;<a href="#configure-the-http-virtual-host" class="anchor"></a> </h3>
-<pre><code>sudo vim /etc/apache2/sites-enabled/000-default.conf
-</code></pre><pre><code>&lt;VirtualHost *:80&gt;
+<pre tabindex="0"><code>sudo vim /etc/apache2/sites-enabled/000-default.conf
+</code></pre><pre tabindex="0"><code>&lt;VirtualHost *:80&gt;
     ServerAdmin webmaster@ldap1.0846101.nasa
     DocumentRoot /var/www/html
     ServerName ldap1.0846101.nasa
@@ -1276,11 +1276,11 @@ We just need to set up a self-signed SSL certificate that our server can use. Th
 <p>Apache includes a default SSL Virtual Host file.<br>
 However, it is not enabled by default.</p>
 <p>We can enable it by typing:</p>
-<pre><code>sudo a2ensite default-ssl.conf
+<pre tabindex="0"><code>sudo a2ensite default-ssl.conf
 </code></pre><p>This will link the file from the <code>sites-available</code> directory into the <code>sites-enabled</code> directory.<br>
 We can edit this file now by typing:</p>
-<pre><code>sudo vim /etc/apache2/sites-enabled/default-ssl.conf
-</code></pre><pre><code>ServerAdmin webmaster@ldap1.0846101.nasa
+<pre tabindex="0"><code>sudo vim /etc/apache2/sites-enabled/default-ssl.conf
+</code></pre><pre tabindex="0"><code>ServerAdmin webmaster@ldap1.0846101.nasa
 ServerName ldap1.0846101.nasa
 
 SSLCertificateFile /etc/apache2/ssl/apache.crt
@@ -1288,28 +1288,28 @@ SSLCertificateKeyFile /etc/apache2/ssl/apache.key
 </code></pre><p>The last thing we need to do is set up the location block that will implement our password protection for the entire phpLDAPadmin installation.</p>
 <p>We do this by referencing the location where we are serving the phpLDAPadmin and setting up authentication using the file we generated. We will require anyone attempting to access this content to authenticate as a valid user:<br>
 (我沒做)</p>
-<pre><code>&lt;Location /phpldapadmin&gt;
+<pre tabindex="0"><code>&lt;Location /phpldapadmin&gt;
     AuthType Basic
-    AuthName &quot;Restricted Files&quot;
+    AuthName &#34;Restricted Files&#34;
     AuthUserFile /etc/apache2/htpasswd
     Require c0846101
 &lt;/Location&gt;
 </code></pre><p>Restart Apache to implement all of the changes that we have made:</p>
-<pre><code>sudo systemctl restart apache2
+<pre tabindex="0"><code>sudo systemctl restart apache2
 </code></pre><h2 id="debug-1">Debug&nbsp;<a href="#debug-1" class="anchor"></a> </h2>
 <p>Unrecognized error number: 8192: Function create_function() is deprecated</p>
 <p>Bacup</p>
-<pre><code>sudo cp /usr/share/phpldapadmin/lib/functions.php /usr/share/phpldapadmin/lib/functions.php.backup
+<pre tabindex="0"><code>sudo cp /usr/share/phpldapadmin/lib/functions.php /usr/share/phpldapadmin/lib/functions.php.backup
 </code></pre><p>Make some changes to this file</p>
-<pre><code>sudo vim /usr/share/phpldapadmin/lib/functions.php
+<pre tabindex="0"><code>sudo vim /usr/share/phpldapadmin/lib/functions.php
 </code></pre><p>change line 54 to</p>
-<pre><code>function my_autoload($className) {
+<pre tabindex="0"><code>function my_autoload($className) {
 </code></pre><p>Add this code on line 777</p>
-<pre><code>spl_autoload_register(&quot;my_autoload&quot;);
+<pre tabindex="0"><code>spl_autoload_register(&#34;my_autoload&#34;);
 </code></pre><p>change line 1083 to</p>
-<pre><code>$CACHE[$sortby] = __create_function('$a, $b',$code);
+<pre tabindex="0"><code>$CACHE[$sortby] = __create_function(&#39;$a, $b&#39;,$code);
 </code></pre><p>add the code below on line 1091 from the</p>
-<pre><code>   function __create_function($arg, $body) {
+<pre tabindex="0"><code>   function __create_function($arg, $body) {
         static $cache = array();
         static $maxCacheSize = 64;
         static $sorter;
@@ -1324,7 +1324,7 @@ SSLCertificateKeyFile /etc/apache2/ssl/apache.key
             };
         }
 
-        $crc = crc32($arg . &quot;\\x00&quot; . $body);
+        $crc = crc32($arg . &#34;\\x00&#34; . $body);
 
         if (isset($cache[$crc])) {
             ++$cache[$crc][1];
@@ -1336,11 +1336,11 @@ SSLCertificateKeyFile /etc/apache2/ssl/apache.key
             array_pop($cache);
         }
 
-        $cache[$crc] = array($cb = eval('return 
-    function('.$arg.'){'.$body.'};'), 0);
+        $cache[$crc] = array($cb = eval(&#39;return 
+    function(&#39;.$arg.&#39;){&#39;.$body.&#39;};&#39;), 0);
         return $cb;
     }
-</code></pre><pre><code>sudo systemctl restart apache2
+</code></pre><pre tabindex="0"><code>sudo systemctl restart apache2
 </code></pre><h2 id="log-into-the-phpldapadmin-web-interface">Log into the phpLDAPadmin Web Interface&nbsp;<a href="#log-into-the-phpldapadmin-web-interface" class="anchor"></a> </h2>
 <p><img src="https://i.imgur.com/M0IzFLO.png" alt="Imgur"></p>
 <p>login with <code>cn=admin,dc=0846101,dc=nasa</code><br>
@@ -1375,8 +1375,8 @@ Additional settings are contained in separate child entries.</p>
 The DN need not refer to an entry in this database or even in the directory. The DN may refer to a SASL identity.</p>
 <p>新增olcRootDN:cn=admin,cn=config<br>
 以後登入phpLDAPadmin要用<code>cn=admin,cn=config</code>來管理</p>
-<pre><code>sudo vim add_adminconfig.ldif
-</code></pre><pre><code>dn: cn=config
+<pre tabindex="0"><code>sudo vim add_adminconfig.ldif
+</code></pre><pre tabindex="0"><code>dn: cn=config
 changetype: modify
 
 dn: olcDatabase={0}config,cn=config
@@ -1389,58 +1389,58 @@ changetype: modify
 add: olcRootPW
 olcRootPW: {SSHA}MxvXZI4FDupYfJc6LBRMuPintCuI967N
 </code></pre><p>olcRootPW要hash過</p>
-<pre><code>slappasswd -h {SSHA}
-</code></pre><pre><code>sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f /home/c0846101/add_adminconfig.ldif
+<pre tabindex="0"><code>slappasswd -h {SSHA}
+</code></pre><pre tabindex="0"><code>sudo ldapmodify -Y EXTERNAL -H ldapi:/// -f /home/c0846101/add_adminconfig.ldif
 </code></pre><p><img src="https://i.imgur.com/ciMBF7S.png" alt="Imgur"></p>
 <p>其他設定</p>
-<pre><code>sudo vim /etc/phpldapadmin/config.php
+<pre tabindex="0"><code>sudo vim /etc/phpldapadmin/config.php
 </code></pre><p>line 300</p>
-<pre><code>$servers-&gt;setValue('server','base',array('cn=config','dc=0846101,dc=nasa'));
+<pre tabindex="0"><code>$servers-&gt;setValue(&#39;server&#39;,&#39;base&#39;,array(&#39;cn=config&#39;,&#39;dc=0846101,dc=nasa&#39;));
 </code></pre><p>line 326</p>
-<pre><code>$servers-&gt;setValue('login','bind_id','cn=admin,cn=config');
+<pre tabindex="0"><code>$servers-&gt;setValue(&#39;login&#39;,&#39;bind_id&#39;,&#39;cn=admin,cn=config&#39;);
 </code></pre><h2 id="extending-schema">Extending Schema&nbsp;<a href="#extending-schema" class="anchor"></a> </h2>
 <p><a href="https://www.openldap.org/doc/admin24/schema.html">https://www.openldap.org/doc/admin24/schema.html</a></p>
 <h3 id="ludou">ludou&nbsp;<a href="#ludou" class="anchor"></a> </h3>
-<pre><code>sudo vim ludou.ldif
-</code></pre><pre><code>dn: cn=ludou,cn=schema,cn=config
+<pre tabindex="0"><code>sudo vim ludou.ldif
+</code></pre><pre tabindex="0"><code>dn: cn=ludou,cn=schema,cn=config
 objectClass: olcSchemaConfig
 cn: ludou
 olcAttributeTypes: ( 1.1.2.1.1
- NAME 'ludoucredit'
- DESC 'login credit value'
+ NAME &#39;ludoucredit&#39;
+ DESC &#39;login credit value&#39;
  EQUALITY integerMatch
  ORDERING integerOrderingMatch
  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
  SINGLE-VALUE )
 olcObjectClasses: ( 1.1.2.2.1
- NAME 'ludouCredit'
- DESC 'login credit class'
+ NAME &#39;ludouCredit&#39;
+ DESC &#39;login credit class&#39;
  SUP top
  AUXILIARY
  MUST ludoucredit )
 </code></pre><p>ldapadd &ndash;&gt; 新增olcAttribute<br>
 ldapreplace &ndash;&gt; 修改已存在的</p>
-<pre><code>sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ludou.ldif
+<pre tabindex="0"><code>sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ludou.ldif
 </code></pre><h3 id="publickey">publicKey&nbsp;<a href="#publickey" class="anchor"></a> </h3>
-<pre><code>sudo vim publickey.ldif
-</code></pre><pre><code>dn: cn=pubkey,cn=schema,cn=config
+<pre tabindex="0"><code>sudo vim publickey.ldif
+</code></pre><pre tabindex="0"><code>dn: cn=pubkey,cn=schema,cn=config
 objectClass: olcSchemaConfig
 cn: pubkey
 olcAttributeTypes: ( 1.1.2.1.2
- NAME 'sshPublicKey'
- DESC 'ssh public key'
+ NAME &#39;sshPublicKey&#39;
+ DESC &#39;ssh public key&#39;
  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
 olcObjectClasses: ( 1.1.2.2.2
- NAME 'publicKeyLogin'
- DESC 'ssh public key class'
+ NAME &#39;publicKeyLogin&#39;
+ DESC &#39;ssh public key class&#39;
  SUP top
  AUXILIARY
  MAY sshPublicKey )
-</code></pre><pre><code>sudo ldapadd -Y EXTERNAL -H ldapi:/// -f publickey.ldif
+</code></pre><pre tabindex="0"><code>sudo ldapadd -Y EXTERNAL -H ldapi:/// -f publickey.ldif
 </code></pre><h2 id="back-to-phpldapadmin">Back to phpLDAPadmin&nbsp;<a href="#back-to-phpldapadmin" class="anchor"></a> </h2>
 <p><img src="https://i.imgur.com/m2kQsay.png" alt="Imgur"></p>
 <h3 id="olcaccess">olcAccess&nbsp;<a href="#olcaccess" class="anchor"></a> </h3>
-<pre><code>{0}to attrs=userPassword by self write by dn=cn=admin,cn=config manage by anonymous auth by * none
+<pre tabindex="0"><code>{0}to attrs=userPassword by self write by dn=cn=admin,cn=config manage by anonymous auth by * none
 
 {1}to attrs=shadowLastChange by self write by dn=cn=admin,cn=config manage by * read
 
@@ -1463,18 +1463,18 @@ Add new attribute<br>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-encrypt-openldap-connections-using-starttls">https://www.digitalocean.com/community/tutorials/how-to-encrypt-openldap-connections-using-starttls</a></p>
 <h2 id="server-settings">Server Settings&nbsp;<a href="#server-settings" class="anchor"></a> </h2>
 <h3 id="install-the-ssl-components">Install the SSL Components&nbsp;<a href="#install-the-ssl-components" class="anchor"></a> </h3>
-<pre><code>sudo apt-get install gnutls-bin ssl-cert
+<pre tabindex="0"><code>sudo apt-get install gnutls-bin ssl-cert
 </code></pre><h3 id="create-the-certificate-templates">Create the Certificate Templates&nbsp;<a href="#create-the-certificate-templates" class="anchor"></a> </h3>
 <p>Make a directory to store the template files</p>
-<pre><code>sudo mkdir /etc/ssl/templates
+<pre tabindex="0"><code>sudo mkdir /etc/ssl/templates
 </code></pre><h3 id="create-the-ca-template">Create the CA Template&nbsp;<a href="#create-the-ca-template" class="anchor"></a> </h3>
-<pre><code>sudo vim /etc/ssl/templates/ca_server.conf
-</code></pre><pre><code>cn = LDAP Server CA
+<pre tabindex="0"><code>sudo vim /etc/ssl/templates/ca_server.conf
+</code></pre><pre tabindex="0"><code>cn = LDAP Server CA
 ca
 cert_signing_key
 </code></pre><h3 id="create-the-ldap-service-template">Create the LDAP Service Template&nbsp;<a href="#create-the-ldap-service-template" class="anchor"></a> </h3>
-<pre><code>sudo vim /etc/ssl/templates/ldap_server.conf
-</code></pre><pre><code>organization = &quot;0846101.nasa&quot;
+<pre tabindex="0"><code>sudo vim /etc/ssl/templates/ldap_server.conf
+</code></pre><pre tabindex="0"><code>organization = &#34;0846101.nasa&#34;
 cn = 0846101.nasa
 tls_www_server
 encryption_key
@@ -1483,33 +1483,33 @@ expiration_days = 3652
 </code></pre><p>expiration days are 10 yrs</p>
 <h3 id="create-ca-key-and-certificate">Create CA Key and Certificate&nbsp;<a href="#create-ca-key-and-certificate" class="anchor"></a> </h3>
 <p>Use the certtool utility to generate a private key</p>
-<pre><code>sudo certtool -p --outfile /etc/ssl/private/ca_server.key
+<pre tabindex="0"><code>sudo certtool -p --outfile /etc/ssl/private/ca_server.key
 </code></pre><p>Now, we can use the private key that we just generated (<code>ca_server.key</code>) and the template file we created in the last section (<code>ca_server.conf</code>) to create the certificate authority certificate (<code>ca_server.pem</code>)</p>
-<pre><code>sudo certtool -s --load-privkey /etc/ssl/private/ca_server.key --template /etc/ssl/templates/ca_server.conf --outfile /etc/ssl/certs/ca_server.pem
+<pre tabindex="0"><code>sudo certtool -s --load-privkey /etc/ssl/private/ca_server.key --template /etc/ssl/templates/ca_server.conf --outfile /etc/ssl/certs/ca_server.pem
 </code></pre><p>複製到家目錄</p>
-<pre><code>sudo cp /etc/ssl/certs/ca_server.pem /home/c0846101/ca_server
+<pre tabindex="0"><code>sudo cp /etc/ssl/certs/ca_server.pem /home/c0846101/ca_server
 </code></pre><p>在<code>/usr/local/share/ca-certificates</code>創一個資料夾</p>
-<pre><code>sudo mkdir /usr/local/share/ca-certificates/nasa
+<pre tabindex="0"><code>sudo mkdir /usr/local/share/ca-certificates/nasa
 </code></pre><p><code>ca_server.pem</code>要先轉成crt檔</p>
-<pre><code>sudo mv /etc/ssl/certs/ca_server.pem /usr/local/share/ca-certificates/nasa/0846101.nasa.crt
+<pre tabindex="0"><code>sudo mv /etc/ssl/certs/ca_server.pem /usr/local/share/ca-certificates/nasa/0846101.nasa.crt
 </code></pre><p>才能合併到<code>/etc/ssl/certs/ca-certificates.crt</code></p>
-<pre><code>sudo update-ca-certificates
+<pre tabindex="0"><code>sudo update-ca-certificates
 </code></pre><p><img src="https://i.imgur.com/TrtJXO5.png" alt="Imgur"></p>
 <p><strong>Client(ws1.0846101.nasa)也要做CA憑證</strong></p>
 <h3 id="create-ldap-service-key-and-certificate">Create LDAP Service Key and Certificate&nbsp;<a href="#create-ldap-service-key-and-certificate" class="anchor"></a> </h3>
-<pre><code>sudo certtool -p --sec-param high --outfile /etc/ssl/private/ldap_server.key
+<pre tabindex="0"><code>sudo certtool -p --sec-param high --outfile /etc/ssl/private/ldap_server.key
 </code></pre><p>generate a certificate for the server.</p>
-<pre><code>sudo certtool -c --load-privkey /etc/ssl/private/ldap_server.key --load-ca-certificate /etc/ssl/certs/ca_server.pem --load-ca-privkey /etc/ssl/private/ca_server.key --template /etc/ssl/templates/ldap_server.conf --outfile /etc/ssl/certs/ldap_server.pem
-</code></pre><pre><code>openssl x509 -in /etc/ssl/certs/ldap_server.pem -text
+<pre tabindex="0"><code>sudo certtool -c --load-privkey /etc/ssl/private/ldap_server.key --load-ca-certificate /etc/ssl/certs/ca_server.pem --load-ca-privkey /etc/ssl/private/ca_server.key --template /etc/ssl/templates/ldap_server.conf --outfile /etc/ssl/certs/ldap_server.pem
+</code></pre><pre tabindex="0"><code>openssl x509 -in /etc/ssl/certs/ldap_server.pem -text
 </code></pre><h3 id="give-openldap-access-to-the-ldap-server-key">Give OpenLDAP Access to the LDAP Server Key&nbsp;<a href="#give-openldap-access-to-the-ldap-server-key" class="anchor"></a> </h3>
 <p>A group called ssl-cert already exists as the group-owner of the /etc/ssl/private directory. We can add the user our OpenLDAP process runs under (openldap) to this group</p>
-<pre><code>sudo usermod -aG ssl-cert openldap
-</code></pre><pre><code>sudo chown :ssl-cert /etc/ssl/private/ldap_server.key
+<pre tabindex="0"><code>sudo usermod -aG ssl-cert openldap
+</code></pre><pre tabindex="0"><code>sudo chown :ssl-cert /etc/ssl/private/ldap_server.key
 </code></pre><p>give the ssl-cert group read access to the file</p>
-<pre><code>sudo chmod 640 /etc/ssl/private/ldap_server.key
+<pre tabindex="0"><code>sudo chmod 640 /etc/ssl/private/ldap_server.key
 </code></pre><h3 id="configure-openldap-to-use-the-certificate-and-keys">Configure OpenLDAP to Use the Certificate and Keys&nbsp;<a href="#configure-openldap-to-use-the-certificate-and-keys" class="anchor"></a> </h3>
-<pre><code>vim addcerts.ldif
-</code></pre><pre><code>dn: cn=config
+<pre tabindex="0"><code>vim addcerts.ldif
+</code></pre><pre tabindex="0"><code>dn: cn=config
 changetype: modify
 add: olcTLSCACertificateFile
 olcTLSCACertificateFile: /etc/ssl/certs/ca_server.pem
@@ -1519,18 +1519,18 @@ olcTLSCertificateFile: /etc/ssl/certs/ldap_server.pem
 -
 add: olcTLSCertificateKeyFile
 olcTLSCertificateKeyFile: /etc/ssl/private/ldap_server.key
-</code></pre><pre><code>sudo ldapmodify -H ldapi:// -Y EXTERNAL -f addcerts.ldif
+</code></pre><pre tabindex="0"><code>sudo ldapmodify -H ldapi:// -Y EXTERNAL -f addcerts.ldif
 </code></pre><h2 id="client-settings">Client Settings&nbsp;<a href="#client-settings" class="anchor"></a> </h2>
 <p>ws1也要有CA憑證</p>
-<pre><code>sudo mkdir /usr/local/share/ca-certificates/nasa
+<pre tabindex="0"><code>sudo mkdir /usr/local/share/ca-certificates/nasa
 </code></pre><p>在ws1利用sftp抓取ldap1的<code>ca_server.pem</code></p>
-<pre><code>sftp 10.113.25.10
-</code></pre><pre><code>get ca_server.pem
-</code></pre><pre><code>sudo mv ca_server.pem /usr/local/share/ca-certificates/nasa/0846101.nasa.crt
-</code></pre><pre><code>sudo update-ca-certificates
+<pre tabindex="0"><code>sftp 10.113.25.10
+</code></pre><pre tabindex="0"><code>get ca_server.pem
+</code></pre><pre tabindex="0"><code>sudo mv ca_server.pem /usr/local/share/ca-certificates/nasa/0846101.nasa.crt
+</code></pre><pre tabindex="0"><code>sudo update-ca-certificates
 </code></pre><p><a href="https://www.server-world.info/en/note?os=Ubuntu_18.04&amp;p=openldap&amp;f=3">https://www.server-world.info/en/note?os=Ubuntu_18.04&amp;p=openldap&amp;f=3</a>
 <a href="https://www.tecmint.com/configure-ldap-client-to-connect-external-authentication/">https://www.tecmint.com/configure-ldap-client-to-connect-external-authentication/</a></p>
-<pre><code>sudo apt install -y libnss-ldapd ldap-utils nslcd
+<pre tabindex="0"><code>sudo apt install -y libnss-ldapd ldap-utils nslcd
 </code></pre><p>Install <code>libness-ldapd</code> instead of <code>libness-ldap</code><br>
 Install <code>nslcd</code> instead of <code>nscd</code><br>
 nscd會有cache的問題</p>
@@ -1539,44 +1539,44 @@ The results of the dialog will be stored in the file <code>/etc/ldap.conf</code>
 <p>Configure the system to use LDAP for authentication by updating PAM configurations.<br>
 From the menu, choose LDAP and any other authentication mechanisms you need.<br>
 You should now be able to log in using LDAP-based credentials.</p>
-<pre><code>sudo pam-auth-update
+<pre tabindex="0"><code>sudo pam-auth-update
 </code></pre><p>In case you want the home directory of the user to be created automatically, then you need to perform one more configuration in the common-session PAM file.</p>
-<pre><code>sudo vim /etc/pam.d/common-session
+<pre tabindex="0"><code>sudo vim /etc/pam.d/common-session
 </code></pre><p>add this to the bottom</p>
-<pre><code>session required pam_mkhomedir.so skel=/etc/skel umask=077
+<pre tabindex="0"><code>session required pam_mkhomedir.so skel=/etc/skel umask=077
 </code></pre><p>Restart nslcd</p>
-<pre><code>sudo systemctl restart nslcd
+<pre tabindex="0"><code>sudo systemctl restart nslcd
 sudo systemctl enable nslcd
 </code></pre><p>Testing</p>
-<pre><code>ldapwhoami -H ldap://ldap1.0846101.nasa -x -ZZ
+<pre tabindex="0"><code>ldapwhoami -H ldap://ldap1.0846101.nasa -x -ZZ
 </code></pre><h2 id="dns-txt-record">DNS TXT Record&nbsp;<a href="#dns-txt-record" class="anchor"></a> </h2>
-<pre><code>cat ca_server.pem | base64 | sed -n 's/\(.*\)/&quot;\1&quot;/p'
-</code></pre><pre><code>cert            IN      TXT     ( &quot;LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUQ2akNDQWxLZ0F3SUJBZ0lNWHVYVHJpNjFO&quot;
-&quot;djRhWUFIc01BMEdDU3FHU0liM0RRRUJDd1VBTUJreEZ6QVYKQmdOVkJBTVREa3hFUVZBZ1UyVnlk&quot;
-&quot;bVZ5SUVOQk1CNFhEVEl3TURZeE5EQTNNemN4T0ZvWERUSXhNRFl4TkRBMwpNemN4T0Zvd0dURVhN&quot;
-&quot;QlVHQTFVRUF4TU9URVJCVUNCVFpYSjJaWElnUTBFd2dnR2lNQTBHQ1NxR1NJYjNEUUVCCkFRVUFB&quot;
-&quot;NElCandBd2dnR0tBb0lCZ1FEaUhYWmY3VzdPRFk2K1lJMFRXa0s1WWpEbWxabDRXNU9ra1VGWTRw&quot;
-&quot;WjYKNmM0SXREOExjV3EzbzgyL2Zmd0Zvb28rRGxTa3hEZHVaT0crb3BTYjhRRWZ5QjBXK2VROFh3&quot;
-&quot;OUx0dzc1Z2l4TgpmRFRGVEk1dXZMM2x4bGo1dHdac09yUHkzNzE5U3hKNjNvMC9XckhWU2xKTnQx&quot;
-&quot;dW5yYVA3elpCeU5BM0lOdDF2CnhXTXVKQVltSDlVN2JJZ0NnTFFUeWJPSi9ZVmpkYmNRYmkwcXZ1&quot;
-&quot;ckU3cThLT2Rib01UM1RFMUpUSWE5U3NOL04KU1JlbWd5djJZNkJaWS94bE8vcFpWZllFUzUxSU1N&quot;
-&quot;UmIxWlRMWUxyMXNsMGY0enBiRDdQZFJDNDhGUHBmTFhBQwpvREVlMUlsUXVjV1VlTzBJTnZaaUhh&quot;
-&quot;eTlxQmtIOGg5WDNoMzZDZWpQeTA2U0hvVDBmV3h0QUtvRER4ZktEaDYyCjFlOEFuTWhMeTZQdmEr&quot;
-&quot;dGx5YXQrenU4Mkp3czVZc2dBNmh1bGFQaE9sSS80UXcrZXorT2g0RjB6STJWa1Nta1gKT3J3NmlY&quot;
-&quot;REFEb3h6U1lOSzRqdmZ3RS9MUzFITkt6ZytXQUNRVmxocStPL2RFZnRpaWVId2lEMURabUh5SmN4&quot;
-&quot;VApYQlVaZkllMVJXeEhjdGtvZ3RCaVdQRUNBd0VBQWFNeU1EQXdEd1lEVlIwVEFRSC9CQVV3QXdF&quot;
-&quot;Qi96QWRCZ05WCkhRNEVGZ1FVN01oQXBqWXB0ZU1TYkJSc1hWaEJOL25LQitrd0RRWUpLb1pJaHZj&quot;
-&quot;TkFRRUxCUUFEZ2dHQkFMcWgKMnVyQTIrcjZOV1ZnSmZVVDVOdFhwNWJVZFlGUkFKUWhYc0dvbUx0&quot;
-&quot;U3pDMGtsYXFVUlY2aFQvbjlMWFZQNG5ncApEMVgvaDVUTlJOVkNxRzZ4NmZ2MmhKMXNnVnVtcmtM&quot;
-&quot;Q05qUnhXVVdQWm5ZNUFuc1Y4RWRRdEYwamo5cWtsT3pSCkZHRlVUcnRkSXBmaERuUzRCVVlhL050&quot;
-&quot;QjY4U0haWlhiWTNyKzdXSG0xZ2JpUG5yT1VFeGpsY3hmZGNKUWtveUsKTVM3NkFBbE9FV2NZT3dQ&quot;
-&quot;RktDcVlMekhLYWh2dXdXNEU1UDRDRmhOU004TGwxMml6Uk52UWxGbkZMMytUck42bAp3YzdWMkFB&quot;
-&quot;N2dmczE1N0s5ZVZENXUwdCt4T0djMzZGU1NkY2ZoUjZmdDJVWVNMS0U3ZUNBdEdNbzRXVC8xUHBa&quot;
-&quot;CldUNlM4T3VEaUY1a1B2dlNCcFhwVFM4YUY3SVp6ZjJ3Tk9QMEQrbnJXdXoyOHhyT2YwQmNlWHZU&quot;
-&quot;eG94b0dxV1oKVVliNVZ2U1NWUTlNdlg4QVFpSVV0SHZPSkJGYkQ5dFdWS1MvN0hyc0VXL1lpMjhP&quot;
-&quot;b0dFWEpzejNxUlFwYytqVAoxWlppajViV0tUWldoMGNKdmtGZWVFaGc1Rm9ZenJzdnpvcGRwalcw&quot;
-&quot;V25ISEdjczlLekxuNE9Pa2lEWS9Udz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K&quot; )
-</code></pre><pre><code>sudo systemctl restart named
+<pre tabindex="0"><code>cat ca_server.pem | base64 | sed -n &#39;s/\(.*\)/&#34;\1&#34;/p&#39;
+</code></pre><pre tabindex="0"><code>cert            IN      TXT     ( &#34;LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUQ2akNDQWxLZ0F3SUJBZ0lNWHVYVHJpNjFO&#34;
+&#34;djRhWUFIc01BMEdDU3FHU0liM0RRRUJDd1VBTUJreEZ6QVYKQmdOVkJBTVREa3hFUVZBZ1UyVnlk&#34;
+&#34;bVZ5SUVOQk1CNFhEVEl3TURZeE5EQTNNemN4T0ZvWERUSXhNRFl4TkRBMwpNemN4T0Zvd0dURVhN&#34;
+&#34;QlVHQTFVRUF4TU9URVJCVUNCVFpYSjJaWElnUTBFd2dnR2lNQTBHQ1NxR1NJYjNEUUVCCkFRVUFB&#34;
+&#34;NElCandBd2dnR0tBb0lCZ1FEaUhYWmY3VzdPRFk2K1lJMFRXa0s1WWpEbWxabDRXNU9ra1VGWTRw&#34;
+&#34;WjYKNmM0SXREOExjV3EzbzgyL2Zmd0Zvb28rRGxTa3hEZHVaT0crb3BTYjhRRWZ5QjBXK2VROFh3&#34;
+&#34;OUx0dzc1Z2l4TgpmRFRGVEk1dXZMM2x4bGo1dHdac09yUHkzNzE5U3hKNjNvMC9XckhWU2xKTnQx&#34;
+&#34;dW5yYVA3elpCeU5BM0lOdDF2CnhXTXVKQVltSDlVN2JJZ0NnTFFUeWJPSi9ZVmpkYmNRYmkwcXZ1&#34;
+&#34;ckU3cThLT2Rib01UM1RFMUpUSWE5U3NOL04KU1JlbWd5djJZNkJaWS94bE8vcFpWZllFUzUxSU1N&#34;
+&#34;UmIxWlRMWUxyMXNsMGY0enBiRDdQZFJDNDhGUHBmTFhBQwpvREVlMUlsUXVjV1VlTzBJTnZaaUhh&#34;
+&#34;eTlxQmtIOGg5WDNoMzZDZWpQeTA2U0hvVDBmV3h0QUtvRER4ZktEaDYyCjFlOEFuTWhMeTZQdmEr&#34;
+&#34;dGx5YXQrenU4Mkp3czVZc2dBNmh1bGFQaE9sSS80UXcrZXorT2g0RjB6STJWa1Nta1gKT3J3NmlY&#34;
+&#34;REFEb3h6U1lOSzRqdmZ3RS9MUzFITkt6ZytXQUNRVmxocStPL2RFZnRpaWVId2lEMURabUh5SmN4&#34;
+&#34;VApYQlVaZkllMVJXeEhjdGtvZ3RCaVdQRUNBd0VBQWFNeU1EQXdEd1lEVlIwVEFRSC9CQVV3QXdF&#34;
+&#34;Qi96QWRCZ05WCkhRNEVGZ1FVN01oQXBqWXB0ZU1TYkJSc1hWaEJOL25LQitrd0RRWUpLb1pJaHZj&#34;
+&#34;TkFRRUxCUUFEZ2dHQkFMcWgKMnVyQTIrcjZOV1ZnSmZVVDVOdFhwNWJVZFlGUkFKUWhYc0dvbUx0&#34;
+&#34;U3pDMGtsYXFVUlY2aFQvbjlMWFZQNG5ncApEMVgvaDVUTlJOVkNxRzZ4NmZ2MmhKMXNnVnVtcmtM&#34;
+&#34;Q05qUnhXVVdQWm5ZNUFuc1Y4RWRRdEYwamo5cWtsT3pSCkZHRlVUcnRkSXBmaERuUzRCVVlhL050&#34;
+&#34;QjY4U0haWlhiWTNyKzdXSG0xZ2JpUG5yT1VFeGpsY3hmZGNKUWtveUsKTVM3NkFBbE9FV2NZT3dQ&#34;
+&#34;RktDcVlMekhLYWh2dXdXNEU1UDRDRmhOU004TGwxMml6Uk52UWxGbkZMMytUck42bAp3YzdWMkFB&#34;
+&#34;N2dmczE1N0s5ZVZENXUwdCt4T0djMzZGU1NkY2ZoUjZmdDJVWVNMS0U3ZUNBdEdNbzRXVC8xUHBa&#34;
+&#34;CldUNlM4T3VEaUY1a1B2dlNCcFhwVFM4YUY3SVp6ZjJ3Tk9QMEQrbnJXdXoyOHhyT2YwQmNlWHZU&#34;
+&#34;eG94b0dxV1oKVVliNVZ2U1NWUTlNdlg4QVFpSVV0SHZPSkJGYkQ5dFdWS1MvN0hyc0VXL1lpMjhP&#34;
+&#34;b0dFWEpzejNxUlFwYytqVAoxWlppajViV0tUWldoMGNKdmtGZWVFaGc1Rm9ZenJzdnpvcGRwalcw&#34;
+&#34;V25ISEdjczlLekxuNE9Pa2lEWS9Udz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K&#34; )
+</code></pre><pre tabindex="0"><code>sudo systemctl restart named
 </code></pre><p>DNSSEC要記得重簽</p>
 <h1 id="specs-of-ludoucredit-about-user-account-and-ssh-login">Specs of ludouCredit about User Account and SSH Login:&nbsp;<a href="#specs-of-ludoucredit-about-user-account-and-ssh-login" class="anchor"></a> </h1>
 <ul>
@@ -1594,106 +1594,105 @@ and their account will be disappeared on the LDAP master and Workstation. (i.e. 
 </li>
 </ul>
 <p>可以<code>man ldapsearch</code>看一下</p>
-<pre><code>vim login.sh
-</code></pre><pre><code>#!/bin/bash
-ldapsearch -x -H ldap://ldap1.0846101.nasa -b &quot;ou=People,dc=0846101,dc=nasa&quot; -o ldif-wrap=no -ZZ -LLL &quot;(&amp;(uid=$1)(ludoucredit&gt;=1))&quot; sshPublicKey | sed -n &quot;s/^sshPublicKey: \(.*\)/\1/p&quot;
+<pre tabindex="0"><code>vim login.sh
+</code></pre><pre tabindex="0"><code>#!/bin/bash
+ldapsearch -x -H ldap://ldap1.0846101.nasa -b &#34;ou=People,dc=0846101,dc=nasa&#34; -o ldif-wrap=no -ZZ -LLL &#34;(&amp;(uid=$1)(ludoucredit&gt;=1))&#34; sshPublicKey | sed -n &#34;s/^sshPublicKey: \(.*\)/\1/p&#34;
 </code></pre><p>-o ldif-wrap=no &ndash;&gt; 讓sshPublicKey不換行呈現</p>
 <p>測試一下：</p>
-<pre><code>ls -l login.sh
+<pre tabindex="0"><code>ls -l login.sh
 chmod 755 login.sh
 ./login.sh TA
 ./login.sh 0846101
 ./login.sh taipeirioter
 </code></pre><p>更改<code>sshd_config</code></p>
-<pre><code>sudo vim /etc/ssh/sshd_config
-</code></pre><pre><code>AuthorizedKeysCommand /usr/local/bin/login.sh %u
+<pre tabindex="0"><code>sudo vim /etc/ssh/sshd_config
+</code></pre><pre tabindex="0"><code>AuthorizedKeysCommand /usr/local/bin/login.sh %u
 AuthorizedKeysCommandUser nobody
 </code></pre><p>%u &ndash;&gt; user</p>
-<pre><code>sudo systemctl reload sshd
+<pre tabindex="0"><code>sudo systemctl reload sshd
 </code></pre><p>使用nslcd濾掉不能登入的user的passwd</p>
-<pre><code>sudo vim /etc/nslcd.conf
-</code></pre><pre><code>filter passwd (&amp;(objectClass=posixAccount)(ludoucredit&gt;=0))
-</code></pre><pre><code>sudo systemctl restart nslcd
+<pre tabindex="0"><code>sudo vim /etc/nslcd.conf
+</code></pre><pre tabindex="0"><code>filter passwd (&amp;(objectClass=posixAccount)(ludoucredit&gt;=0))
+</code></pre><pre tabindex="0"><code>sudo systemctl restart nslcd
 </code></pre><p>若不能登入會查不到</p>
-<pre><code>getent passwd
+<pre tabindex="0"><code>getent passwd
 </code></pre><h1 id="totp">TOTP&nbsp;<a href="#totp" class="anchor"></a> </h1>
 <p><a href="https://blog.irontec.com/openldap-y-passwords-temporales-otp/">https://blog.irontec.com/openldap-y-passwords-temporales-otp/</a></p>
-<pre><code>sudo vim /etc/apt/sources.list
+<pre tabindex="0"><code>sudo vim /etc/apt/sources.list
 </code></pre><p>全部的deb-src都取消註解</p>
-<pre><code>sudo apt update
+<pre tabindex="0"><code>sudo apt update
 sudo apt build-dep slapd
 sudo apt install dpkg-dev
 sudo apt install build-essential
-</code></pre><pre><code>apt source slapd
-</code></pre><pre><code>cd openldap-2.4.45+dfsg
-</code></pre><pre><code>./configure --prefix=/usr --libexecdir='${prefix}/lib' --sysconfdir=/etc --localstatedir=/var --mandir='${prefix}/share/man' --enable-debug --enable-dynamic --enable-syslog --enable-proctitle --enable-ipv6 --enable-local --enable-slapd --enable-dynacl --enable-aci --enable-cleartext --enable-crypt --disable-lmpasswd --enable-spasswd --enable-modules --enable-rewrite --enable-rlookups --enable-slapi --disable-slp --enable-wrappers --enable-backends=mod --disable-ndb --enable-overlays=mod --with-subdir=ldap --with-cyrus-sasl --with-threads --with-tls=gnutls --with-odbc=unixodbc
-</code></pre><pre><code>make depend
-</code></pre><pre><code>vim liblber/Makefile
+</code></pre><pre tabindex="0"><code>apt source slapd
+</code></pre><pre tabindex="0"><code>cd openldap-2.4.45+dfsg
+</code></pre><pre tabindex="0"><code>./configure --prefix=/usr --libexecdir=&#39;${prefix}/lib&#39; --sysconfdir=/etc --localstatedir=/var --mandir=&#39;${prefix}/share/man&#39; --enable-debug --enable-dynamic --enable-syslog --enable-proctitle --enable-ipv6 --enable-local --enable-slapd --enable-dynacl --enable-aci --enable-cleartext --enable-crypt --disable-lmpasswd --enable-spasswd --enable-modules --enable-rewrite --enable-rlookups --enable-slapi --disable-slp --enable-wrappers --enable-backends=mod --disable-ndb --enable-overlays=mod --with-subdir=ldap --with-cyrus-sasl --with-threads --with-tls=gnutls --with-odbc=unixodbc
+</code></pre><pre tabindex="0"><code>make depend
+</code></pre><pre tabindex="0"><code>vim liblber/Makefile
 vim libldap/Makefile
 vim libldap_r/Makefile
 </code></pre><p>把<code>VERSION_OPTION = @VERSION_OPTION@</code><br>
 替代為<code>VERSION_OPTION = ./</code></p>
-<pre><code>cd libraries
+<pre tabindex="0"><code>cd libraries
 make
-</code></pre><pre><code>cd ..
+</code></pre><pre tabindex="0"><code>cd ..
 make
 </code></pre><p>debug</p>
-<pre><code>dpkg-buildpackage -b
+<pre tabindex="0"><code>dpkg-buildpackage -b
 sudo apt-get install fakeroot
 dpkg-buildpackage -b
-</code></pre><pre><code>cd 
+</code></pre><pre tabindex="0"><code>cd 
 git clone https://github.com/openldap/openldap.git openldap-git
-</code></pre><pre><code>cp -r openldap-git/contrib/slapd-modules/passwd/totp openldap-2.4.45+dfsg/contrib/slapd-modules/passwd/
-
-</code></pre><pre><code>cd openldap-2.4.45+dfsg/
+</code></pre><pre tabindex="0"><code>cp -r openldap-git/contrib/slapd-modules/passwd/totp openldap-2.4.45+dfsg/contrib/slapd-modules/passwd/
+</code></pre><pre tabindex="0"><code>cd openldap-2.4.45+dfsg/
 make
-</code></pre><pre><code>cd openldap-2.4.45+dfsg/ontrib/slapd-modules/passwd/totp
+</code></pre><pre tabindex="0"><code>cd openldap-2.4.45+dfsg/ontrib/slapd-modules/passwd/totp
 make
-</code></pre><pre><code>vim slapd-totp.c
+</code></pre><pre tabindex="0"><code>vim slapd-totp.c
 </code></pre><p>Line 961<br>
 <img src="https://i.imgur.com/mMtvyZx.png" alt="Imgur"></p>
-<pre><code>make
-</code></pre><pre><code>sudo chmod 644 /usr/lib/ldap/pw-totp.so.0.0.0
-</code></pre><pre><code>sudo cp -P pw-totp.so* /usr/lib/ldap/
+<pre tabindex="0"><code>make
+</code></pre><pre tabindex="0"><code>sudo chmod 644 /usr/lib/ldap/pw-totp.so.0.0.0
+</code></pre><pre tabindex="0"><code>sudo cp -P pw-totp.so* /usr/lib/ldap/
 </code></pre><h2 id="configure-module-totp">Configure Module TOTP&nbsp;<a href="#configure-module-totp" class="anchor"></a> </h2>
 <p>創user cn=totp,ou=People
 passwd先空白</p>
 <p>userPassword: &ldquo;{TOTP1}<code>printf ${WG_KEY} | base32</code>&rdquo;</p>
-<pre><code>echo -n 'UBZQOTHSmqy4Tn+6kuMGfKY00GwG+24MBIKiIqKzkW4=' | base32
-</code></pre><pre><code>sudo vim totppasswd.ldif
-</code></pre><pre><code>dn: cn=totp,ou=People,dc=0846101,dc=nasa
+<pre tabindex="0"><code>echo -n &#39;UBZQOTHSmqy4Tn+6kuMGfKY00GwG+24MBIKiIqKzkW4=&#39; | base32
+</code></pre><pre tabindex="0"><code>sudo vim totppasswd.ldif
+</code></pre><pre tabindex="0"><code>dn: cn=totp,ou=People,dc=0846101,dc=nasa
 changetype: modify
 add: userPassword
 userPassword: {TOTP1}KVBFUUKPKREFG3LRPE2FI3RLGZVXKTKHMZFVSMBQI53UOKZSGRGUESKLNFEXCS32NNLTIPI=
-</code></pre><pre><code>ldapmodify -D &quot;cn=admin,cn=config&quot; -W -f totppasswd.ldif
+</code></pre><pre tabindex="0"><code>ldapmodify -D &#34;cn=admin,cn=config&#34; -W -f totppasswd.ldif
 </code></pre><p><img src="https://i.imgur.com/xiIIlkh.png" alt="Imgur"></p>
 <p><img src="https://i.imgur.com/uG4u5h6.png" alt="Imgur"></p>
-<pre><code>sudo vim addmodule.ldif
-</code></pre><pre><code>dn: cn=module{0},cn=config
+<pre tabindex="0"><code>sudo vim addmodule.ldif
+</code></pre><pre tabindex="0"><code>dn: cn=module{0},cn=config
 changetype: modify
 add: olcModuleLoad
 olcModuleLoad: pw-totp
-</code></pre><pre><code>sudo ldapadd -Y EXTERNAL -H ldapi:/// -f addmodule.ldif
+</code></pre><pre tabindex="0"><code>sudo ldapadd -Y EXTERNAL -H ldapi:/// -f addmodule.ldif
 </code></pre><p><img src="https://i.imgur.com/FZLfw5g.png" alt="Imgur"></p>
 <p>測試</p>
-<pre><code>su totp
+<pre tabindex="0"><code>su totp
 </code></pre><p>secret最後的 <code>=</code> 要拔掉<br>
 <img src="https://i.imgur.com/AZ2DAt1.png" alt="Imgur"></p>
-<pre><code>otpauth://totp/ldap:totp@0846101.nasa?secret=KVBFUUKPKREFG3LRPE2FI3RLGZVXKTKHMZFVSMBQI53UOKZSGRGUESKLNFEXCS32NNLTIPI&amp;issuer=0846101&amp;period=30&amp;digits=6&amp;algorithm=SHA1
-</code></pre><pre><code>oathtool --totp -b &quot;$(echo -n &quot;UBZQOTHSmqy4Tn+6kuMGfKY00GwG+24MBIKiIqKzkW4=&quot; | base32)&quot;
+<pre tabindex="0"><code>otpauth://totp/ldap:totp@0846101.nasa?secret=KVBFUUKPKREFG3LRPE2FI3RLGZVXKTKHMZFVSMBQI53UOKZSGRGUESKLNFEXCS32NNLTIPI&amp;issuer=0846101&amp;period=30&amp;digits=6&amp;algorithm=SHA1
+</code></pre><pre tabindex="0"><code>oathtool --totp -b &#34;$(echo -n &#34;UBZQOTHSmqy4Tn+6kuMGfKY00GwG+24MBIKiIqKzkW4=&#34; | base32)&#34;
 </code></pre><h1 id="snmp">SNMP&nbsp;<a href="#snmp" class="anchor"></a> </h1>
-<pre><code>sudo apt-get install snmpd snmp snmp-mibs-downloader
+<pre tabindex="0"><code>sudo apt-get install snmpd snmp snmp-mibs-downloader
 </code></pre><p>snmpd &ndash;&gt; server<br>
 snmp &ndash;&gt; client</p>
-<pre><code>sudo vim /etc/snmp/snmpd.conf
+<pre tabindex="0"><code>sudo vim /etc/snmp/snmpd.conf
 </code></pre><p>Listen for connections on all interfaces</p>
-<pre><code>#agentAddress  udp:127.0.0.1:161
+<pre tabindex="0"><code>#agentAddress  udp:127.0.0.1:161
 agentAddress udp:161,udp6:[::1]:161
 </code></pre><p>Community &ldquo;public&rdquo;</p>
-<pre><code>rocommunity public 10.113.0.0/16
+<pre tabindex="0"><code>rocommunity public 10.113.0.0/16
 rocommunity public 127.0.0.0/8
 </code></pre><p>Community &ldquo;private&rdquo;</p>
-<pre><code>rwcommunity private 10.113.25.0/24
+<pre tabindex="0"><code>rwcommunity private 10.113.25.0/24
 rwcommunity private 127.0.0.0/8
 </code></pre><p>Write an extend named &ldquo;servicecheck&rdquo;</p>
 <ul>
@@ -1701,14 +1700,14 @@ rwcommunity private 127.0.0.0/8
 <li>If connected, nsExtendResult should be 0</li>
 <li>If not connected, nsExtendResult should not be 0</li>
 </ul>
-<pre><code>extend servicecheck /bin/nc -z 10.113.25.129 5566
-</code></pre><pre><code>sudo systemctl restart snmpd
-</code></pre><pre><code>snmpget -v2c -c public -Oqv localhost UCD-SNMP-MIB::laLoad.1
-</code></pre><pre><code>snmpget -v2c -c public -Oqv localhost SNMPv2-MIB::sysName.0
-</code></pre><pre><code>snmpget -v2c -c public -Oqv localhost 'NET-SNMP-EXTEND-MIB::nsExtendResult.&quot;servicecheck&quot;'
+<pre tabindex="0"><code>extend servicecheck /bin/nc -z 10.113.25.129 5566
+</code></pre><pre tabindex="0"><code>sudo systemctl restart snmpd
+</code></pre><pre tabindex="0"><code>snmpget -v2c -c public -Oqv localhost UCD-SNMP-MIB::laLoad.1
+</code></pre><pre tabindex="0"><code>snmpget -v2c -c public -Oqv localhost SNMPv2-MIB::sysName.0
+</code></pre><pre tabindex="0"><code>snmpget -v2c -c public -Oqv localhost &#39;NET-SNMP-EXTEND-MIB::nsExtendResult.&#34;servicecheck&#34;&#39;
 </code></pre><h1 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor"></a> </h1>
 <p>在<code>router.0846101.nasa</code></p>
-<pre><code>-A INPUT -d 10.113.25.10 -p tcp --dport 22 -j ACCEPT
+<pre tabindex="0"><code>-A INPUT -d 10.113.25.10 -p tcp --dport 22 -j ACCEPT
 -A INPUT -d 10.113.25.20 -p tcp --dport 22 -j ACCEPT
 
 -A FORWARD -d 10.113.25.10 -p tcp --dport 22 -j ACCEPT
@@ -1716,7 +1715,7 @@ rwcommunity private 127.0.0.0/8
 
 -A FORWARD -p tcp --dport 389 -j ACCEPT
 -A FORWARD -p udp --dport 161 -j ACCEPT
-</code></pre><pre><code>sudo systemctl restart iptables
+</code></pre><pre tabindex="0"><code>sudo systemctl restart iptables
 </code></pre>
                 </section>
         
@@ -1737,7 +1736,7 @@ rwcommunity private 127.0.0.0/8
 	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
 	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
 
-    <span style="display:block" class="footer-text">&copy 2019-2023 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>

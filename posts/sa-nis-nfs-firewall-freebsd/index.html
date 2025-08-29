@@ -429,14 +429,14 @@
                 <section class="post-content">
                 <h1 id="nis-client">NIS Client&nbsp;<a href="#nis-client" class="anchor"></a> </h1>
 <h2 id="configurations-in-rcconf">Configurations in <code>rc.conf</code>&nbsp;<a href="#configurations-in-rcconf" class="anchor"></a> </h2>
-<pre><code>nisdomainname=&quot;savpn.nctu.me&quot;
+<pre tabindex="0"><code>nisdomainname=&#34;savpn.nctu.me&#34;
 # NIS domain name ≠ DNS domain name
 
-nis_client_enable=&quot;YES&quot;
-nis_client_flags=&quot;-s -m -S savpn.nctu.me,nis server&quot;
+nis_client_enable=&#34;YES&#34;
+nis_client_flags=&#34;-s -m -S savpn.nctu.me,nis server&#34;
 </code></pre><h2 id="maps-between-ip-and-hostname">Maps between IP and hostname&nbsp;<a href="#maps-between-ip-and-hostname" class="anchor"></a> </h2>
 <p>Configure in <code>/etc/hosts</code></p>
-<pre><code># 140.113.17.155 nisserver
+<pre tabindex="0"><code># 140.113.17.155 nisserver
 10.113.0.254 nisserver
 # 連wg vpn
 </code></pre><h2 id="nis-users">NIS Users&nbsp;<a href="#nis-users" class="anchor"></a> </h2>
@@ -457,38 +457,38 @@ nis_client_flags=&quot;-s -m -S savpn.nctu.me,nis server&quot;
 <ol>
 <li>
 <p>User account information</p>
-<pre><code>vipw
+<pre tabindex="0"><code>vipw
 </code></pre><p>到<code>/etc/master.passwd</code><br>
 加在最後一行</p>
-<pre><code>+::::::::::
+<pre tabindex="0"><code>+::::::::::
 </code></pre></li>
 <li>
 <p>UNIX group definitions</p>
-<pre><code>vigr
+<pre tabindex="0"><code>vigr
 </code></pre><p>到<code>/etc/group</code><br>
 加在最後一行</p>
-<pre><code>+:*::
+<pre tabindex="0"><code>+:*::
 </code></pre></li>
 <li>
 <p>排優先順序
 When an user with an identical name in both NIS and local, then query NIS first.<br>
 <code>/etc/nsswitch.conf</code></p>
-<pre><code>group: nis files
+<pre tabindex="0"><code>group: nis files
 net group: nis files
 passwd: nis files
 </code></pre></li>
 </ol>
 <h2 id="restart-ypbind--daemon">Restart ypbind  daemon&nbsp;<a href="#restart-ypbind--daemon" class="anchor"></a> </h2>
-<pre><code>sudo service ypbind restart
+<pre tabindex="0"><code>sudo service ypbind restart
 </code></pre><p>檢查：</p>
-<pre><code>ypcat passwd
-</code></pre><pre><code>sudo ypcat master.passwd
+<pre tabindex="0"><code>ypcat passwd
+</code></pre><pre tabindex="0"><code>sudo ypcat master.passwd
 </code></pre><h1 id="nfs-client">NFS Client&nbsp;<a href="#nfs-client" class="anchor"></a> </h1>
 <p>要當NFS Client之前，自己要先是NFS Server</p>
 <h2 id="server-configurations-in-etcrcconf">Server configurations in <code>/etc/rc.conf</code>&nbsp;<a href="#server-configurations-in-etcrcconf" class="anchor"></a> </h2>
-<pre><code># enable
-nfs_server_enable=&quot;YES&quot;
-nfs_server_flags=&quot;-u -t -n 10&quot;
+<pre tabindex="0"><code># enable
+nfs_server_enable=&#34;YES&#34;
+nfs_server_flags=&#34;-u -t -n 10&#34;
 # -u 表示我們提供 UDP 方式連線，# -t 表示以 TCP 方式連線
 # 如果您所要使用 NFS 的 client 都是 FreeBSD
 # 可以只以 TCP 連線
@@ -496,29 +496,29 @@ nfs_server_flags=&quot;-u -t -n 10&quot;
 # -n 10 表示我們一次打開10個 nfsd 的 daemon
 
 # NFSv4 Server settings
-nfsv4_server_enable=&quot;YES&quot;
+nfsv4_server_enable=&#34;YES&#34;
 # NFSv4 Client settings
-nfscbd_enable=&quot;YES&quot;
+nfscbd_enable=&#34;YES&#34;
 
 # enable mountd
 # 若reboot會卡死 可以先註解 再手動開daemon
-mountd_enable=&quot;YES&quot;
-mountd_flags=&quot;-r&quot;
+mountd_enable=&#34;YES&#34;
+mountd_flags=&#34;-r&#34;
 
 # 為了增增系統的安全
 # 讓 nfsd 執行時只使用 reserved port(小於 1024 的 ports)
-nfs_reserved_port_only=&quot;YES&quot;
+nfs_reserved_port_only=&#34;YES&#34;
 </code></pre><h2 id="client-configurations-in-etcrcconf">Client configurations in <code>/etc/rc.conf</code>&nbsp;<a href="#client-configurations-in-etcrcconf" class="anchor"></a> </h2>
-<pre><code># enable
-nfs_client_enable=&quot;YES&quot;
+<pre tabindex="0"><code># enable
+nfs_client_enable=&#34;YES&#34;
 </code></pre><h2 id="mount">Mount&nbsp;<a href="#mount" class="anchor"></a> </h2>
 <p>Mount file from savpn.nctu.me</p>
 <p>Create dirs</p>
-<pre><code>mkdir /net/home /net/data
+<pre tabindex="0"><code>mkdir /net/home /net/data
 </code></pre><p>Start nfsclient</p>
-<pre><code>sudo service nfsclient start
+<pre tabindex="0"><code>sudo service nfsclient start
 </code></pre><p>mount dirs</p>
-<pre><code>mount 10.113.0.254:/net/data /net/data
+<pre tabindex="0"><code>mount 10.113.0.254:/net/data /net/data
 mount 10.113.0.254:/net/home /net/home
 </code></pre><p>Do NOT allow setuid or setgid bits to take effect</p>
 <h3 id="auto-mount-autofs">Auto Mount (autofs)&nbsp;<a href="#auto-mount-autofs" class="anchor"></a> </h3>
@@ -526,7 +526,7 @@ mount 10.113.0.254:/net/home /net/home
 開機的時候不掛載他，而是直到我存取他(cd)的瞬間<br>
 autofs才會檢查那台server有無存在？能不能掛載？</p>
 <p>Enable in <code>rc.conf</code></p>
-<pre><code>autofs_enable=&quot;YES&quot;
+<pre tabindex="0"><code>autofs_enable=&#34;YES&#34;
 </code></pre><p>Three kinds of configuration files (map)<br>
 會寫你要掛載的根目錄的位置mountpoint、要去對應哪一張map</p>
 <ul>
@@ -539,13 +539,13 @@ List which direct and indirect maps that automount should pay attention to</li>
 </ul>
 <p>Master Map<br>
 <code>/etc/auto_master</code></p>
-<pre><code>mountpoint  map_name        [-option]
+<pre tabindex="0"><code>mountpoint  map_name        [-option]
 /-          /etc/auto.map   -intr,nosuid,rw
 
 # auto.map是一個direct map
 </code></pre><p>Direct Map<br>
 <code>/etc/auto.map</code></p>
-<pre><code>/net/home   -rw 10.113.0.254:/net/home
+<pre tabindex="0"><code>/net/home   -rw 10.113.0.254:/net/home
 /net/data   -ro 10.113.0.254:/net/data
 </code></pre><h1 id="nfs-server">NFS Server&nbsp;<a href="#nfs-server" class="anchor"></a> </h1>
 <p>Exports</p>
@@ -556,18 +556,18 @@ List which direct and indirect maps that automount should pay attention to</li>
 </ul>
 <p>Create directories<br>
 要出口的地方</p>
-<pre><code>mkdir /exports/admin /exports/alpha /exports/share
+<pre tabindex="0"><code>mkdir /exports/admin /exports/alpha /exports/share
 </code></pre><p>Create user</p>
-<pre><code>sudo pw groupadd users
+<pre tabindex="0"><code>sudo pw groupadd users
 sudo add user
 </code></pre><p><code>/etc/fstab</code></p>
-<pre><code># Device        Mountpoint  FStype  Option
+<pre tabindex="0"><code># Device        Mountpoint  FStype  Option
 /exports/admin  /net/admin  nullfs  rw
 /exports/alpha  /net/alpha  nullfs  rw
 /exports/share  /net/share  nullfs  rw
 </code></pre><p>NFSv4 with <strong>nfsuserd</strong> for mapping UID and username<br>
 <code>/etc/exports</code></p>
-<pre><code>V4: /
+<pre tabindex="0"><code>V4: /
 /net/admin  -ro -maproot=nobody
 /net/share  -maproot=nobody -mapall=user
 /net/alpha  -maproot=nobody
@@ -575,17 +575,17 @@ sudo add user
 <h2 id="packet-filter-pf">Packet Filter (PF)&nbsp;<a href="#packet-filter-pf" class="anchor"></a> </h2>
 <p>啟用<br>
 <code>/etc/rc.conf</code></p>
-<pre><code>pf_enable=&quot;YES&quot;
-pflog_enable=&quot;YES&quot;
-pfsync_enable=&quot;YES&quot;
+<pre tabindex="0"><code>pf_enable=&#34;YES&#34;
+pflog_enable=&#34;YES&#34;
+pfsync_enable=&#34;YES&#34;
 </code></pre><p>PF rules防火牆設置<br>
 The <strong>last matching</strong> rule decides what action is taken<br>
 If no rule matches the packet, the <strong>default</strong> action is to <strong>pass</strong><br>
 <code>/etc/pf.conf</code></p>
-<pre><code>#macro definitions
-extdev=&quot;em0&quot;
-intdev=&quot;em1&quot;
-myhost=&quot;192.168.56.1&quot;
+<pre tabindex="0"><code>#macro definitions
+extdev=&#34;em0&#34;
+intdev=&#34;em1&#34;
+myhost=&#34;192.168.56.1&#34;
 
 #option
 set loginterface $extdev
@@ -593,13 +593,13 @@ set block-policy drop
 set skip on lo0
 
 #table
-table &lt;BadHost&gt; persist file &quot;/etc/badhost.list&quot;
-table &lt;BadGuy&gt; persist file &quot;/etc/badguy.list&quot;
+table &lt;BadHost&gt; persist file &#34;/etc/badhost.list&#34;
+table &lt;BadGuy&gt; persist file &#34;/etc/badguy.list&#34;
 
 #filtering rules
 
 # Blacklistd要用
-anchor &quot;blacklistd/*&quot; in
+anchor &#34;blacklistd/*&#34; in
 
 pass out all
 #antispoof for $extdev
@@ -610,7 +610,7 @@ block quick from &lt;BadHost&gt; to any
 #Accept packets from 10.113.0.0/16
 block in proto tcp from !10.113.0.0/16 to any port {80,443}
 
-#All IP can't send ICMP echo request packets to server
+#All IP can&#39;t send ICMP echo request packets to server
 block return in proto icmp from any to any
 pass proto icmp from 10.113.0.254 to any
 
@@ -622,13 +622,13 @@ block drop in proto tcp from &lt;BadGuy&gt; to any port {21,22}
 </code></pre><h2 id="blacklistd">Blacklistd&nbsp;<a href="#blacklistd" class="anchor"></a> </h2>
 <p>To find who is the bad guy?</p>
 <p>enable daemon</p>
-<pre><code>sysrc blacklistd_enable=yes
+<pre tabindex="0"><code>sysrc blacklistd_enable=yes
 </code></pre><p>start the service manually</p>
-<pre><code>service blacklistd start
+<pre tabindex="0"><code>service blacklistd start
 </code></pre><p>If someone attempts to login via SSH but failed for 5 times in 1 hour,<br>
 then their IP will be banned from SSH for 1 day automatically</p>
 <p><code>/etc/blacklistd.conf</code></p>
-<pre><code># $FreeBSD: releng/12.0/usr.sbin/blacklistd/blacklistd.conf 336977 2018-07-31 16:39:38Z brd $
+<pre tabindex="0"><code># $FreeBSD: releng/12.0/usr.sbin/blacklistd/blacklistd.conf 336977 2018-07-31 16:39:38Z brd $
 #
 # Blacklist rule
 # adr/mask:port type    proto   owner           name    nfail   disable
@@ -650,46 +650,46 @@ ftp             stream  *       *               *       5       24h
 <code>/var/log/auth.log</code></p>
 <p>寫一個<code>/usr/local/bin/badguy</code><br>
 會去抓</p>
-<pre><code>Jan  8 20:47:16 yilianwu-sa sshd[3579]: error: PAM: Authentication error for illegal user austin from 10.113.0.64
+<pre tabindex="0"><code>Jan  8 20:47:16 yilianwu-sa sshd[3579]: error: PAM: Authentication error for illegal user austin from 10.113.0.64
 </code></pre><p>的ERROR log</p>
-<pre><code>#!/bin/sh
+<pre tabindex="0"><code>#!/bin/sh
 
-hour=$(date '+%H')
-min=$(date '+%M')
-if [ $min == '00' ]
+hour=$(date &#39;+%H&#39;)
+min=$(date &#39;+%M&#39;)
+if [ $min == &#39;00&#39; ]
 then
     hour=$(($hour-1))
-    min='59'
+    min=&#39;59&#39;
 else
-    if [ $min -gt &quot;10&quot; ]
+    if [ $min -gt &#34;10&#34; ]
     then
         min=$(($min-1))
     else
-        min=&quot;0$(($min-1))&quot;
+        min=&#34;0$(($min-1))&#34;
     fi
 fi
-#echo &quot;$hour:$min&quot;
-cat /var/log/auth.log | grep -E &quot;sshd|sudo&quot; | grep &quot;$hour:$min:&quot; | grep -E &quot;PAM|iamagoodguy&quot; | grep -E &quot;Authentication|[0-9]+.[0-9]+.[0-9]+.[0-9]+&quot; | awk 'BEGIN{i=0}{ \
+#echo &#34;$hour:$min&#34;
+cat /var/log/auth.log | grep -E &#34;sshd|sudo&#34; | grep &#34;$hour:$min:&#34; | grep -E &#34;PAM|iamagoodguy&#34; | grep -E &#34;Authentication|[0-9]+.[0-9]+.[0-9]+.[0-9]+&#34; | awk &#39;BEGIN{i=0}{ \
         if($15){ \
-                while($i != &quot;COMMAND=/home/c0846101/bin/iamagoodguy&quot;){ \
+                while($i != &#34;COMMAND=/home/c0846101/bin/iamagoodguy&#34;){ \
                         i++; \
                         if(i &gt; NF) \
                                 break; \
                 } \
                 if(i &gt;= NF) \
-                        printf($1 &quot; &quot; $2 &quot; &quot; $3 &quot; &quot; $15 &quot; is a bad guy, 5 attempts\n&quot;);
+                        printf($1 &#34; &#34; $2 &#34; &#34; $3 &#34; &#34; $15 &#34; is a bad guy, 5 attempts\n&#34;);
                 else \
-                        printf($1 &quot; &quot; $2 &quot; &quot; $3 &quot; &quot; $(i+1) &quot; is pardoned by &quot; $6 &quot;\n&quot;);
+                        printf($1 &#34; &#34; $2 &#34; &#34; $3 &#34; &#34; $(i+1) &#34; is pardoned by &#34; $6 &#34;\n&#34;);
         } \
         else \
-                printf($1 &quot; &quot; $2 &quot; &quot; $3 &quot; &quot; $13 &quot; is a bad guy, 5 attempts\n&quot;); \
-        }'
+                printf($1 &#34; &#34; $2 &#34; &#34; $3 &#34; &#34; $13 &#34; is a bad guy, 5 attempts\n&#34;); \
+        }&#39;
 </code></pre><p>Write a shell script ‘iamagoodguy’ to unban an IP<br>
 <code>/home/c0846101/bin/iamagoodguy</code></p>
-<pre><code>#!/bin/sh
+<pre tabindex="0"><code>#!/bin/sh
 pfctl -a blacklistd/22 -t port22 -T delete $1
 </code></pre><p>執行指令</p>
-<pre><code>sudo iamagoodguy 10.113.0.64
+<pre tabindex="0"><code>sudo iamagoodguy 10.113.0.64
 </code></pre><p><code>/etc/crontab</code><br>
 每分鐘執行一次<code>/usr/local/bin/badguy</code><br>
 <img src="https://i.imgur.com/hJbTFwG.png" alt="Imgur"></p>
@@ -701,7 +701,7 @@ pfctl -a blacklistd/22 -t port22 -T delete $1
 <li>Separated by day, store 10 days.</li>
 <li>Compressed to ‘.xz’.</li>
 </ul>
-<pre><code># logfilename               [owner:group]   mode    count   size    when    flags [/pid_file] [sig_num]
+<pre tabindex="0"><code># logfilename               [owner:group]   mode    count   size    when    flags [/pid_file] [sig_num]
 /net/admin/ssh/badguy.log                   640     10      *       @T00    X
 </code></pre>
                 </section>
@@ -723,7 +723,7 @@ pfctl -a blacklistd/22 -t port22 -T delete $1
 	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
 	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
 
-    <span style="display:block" class="footer-text">&copy 2019-2023 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>

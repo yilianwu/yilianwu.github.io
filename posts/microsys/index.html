@@ -801,17 +801,17 @@
 <h2 id="本機終端機的一些設定">本機終端機的一些設定&nbsp;<a href="#本機終端機的一些設定" class="anchor"></a> </h2>
 <p>打開你電腦的Terminal<br>
 1.</p>
-<pre><code>cd ~/Downloads/
+<pre tabindex="0"><code>cd ~/Downloads/
 </code></pre><p>進去下載項目的資料夾，因為你剛剛把pem檔放在這<br>
 2.</p>
-<pre><code>chmod 400 檔名.pem
+<pre tabindex="0"><code>chmod 400 檔名.pem
 </code></pre><p>將pem檔的權限打開<br>
 3.</p>
-<pre><code>ls -al 檔名.pem
+<pre tabindex="0"><code>ls -al 檔名.pem
 </code></pre><p>檢查一下：<br>
 若出現<code>-r</code>就代表成功了哦
 4.</p>
-<pre><code>cat 檔名.pem
+<pre tabindex="0"><code>cat 檔名.pem
 </code></pre><p><img src="https://i.imgur.com/JCfo4Tg.png" alt="Imgur">  可以看一下你的pem裡面有什麼內容：<br>
 RSA PRIVATE KEY<br>
 就是你的Ubuntu的私鑰<br>
@@ -820,7 +820,7 @@
 <h2 id="登入你的ubuntu">登入你的Ubuntu&nbsp;<a href="#登入你的ubuntu" class="anchor"></a> </h2>
 <p>從本機的終端機登入你的AWS Ubuntu<br>
 第一次登入需執行：</p>
-<pre><code>ssh -i &quot;檔名.pem&quot; ubuntu@ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com
+<pre tabindex="0"><code>ssh -i &#34;檔名.pem&#34; ubuntu@ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com
 </code></pre><p>其中</p>
 <p>ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com<br>
 是我的Public DNS (IPv4)</p>
@@ -833,11 +833,11 @@
 <ol>
 <li>更新 apt-get 套件</li>
 </ol>
-<pre><code>sudo apt-get update
+<pre tabindex="0"><code>sudo apt-get update
 </code></pre><ol start="2">
 <li>安裝好用的vim文字編輯器</li>
 </ol>
-<pre><code>sudo apt-get install vim
+<pre tabindex="0"><code>sudo apt-get install vim
 </code></pre><ol start="3">
 <li>拷貝本機的公鑰<br>
 要把本機的公鑰加入ubuntu</li>
@@ -846,7 +846,7 @@
 <li>另開一個終端機視窗(本機) cmd+t</li>
 <li>顯示你本機的公鑰：</li>
 </ul>
-<pre><code>cat ~/.ssh/id_rsa.pub
+<pre tabindex="0"><code>cat ~/.ssh/id_rsa.pub
 </code></pre><ul>
 <li>
 <p>直接選取複製</p>
@@ -859,7 +859,7 @@ cmd+1</p>
 <p>打開<code>authorized_keys</code>這個檔編輯</p>
 </li>
 </ul>
-<pre><code>vim ~/.ssh/authorized_keys
+<pre tabindex="0"><code>vim ~/.ssh/authorized_keys
 </code></pre><ul>
 <li>
 <p>按<code>i</code>插入字串進入編輯模式
@@ -875,7 +875,7 @@ cmd+1</p>
 <ol start="4">
 <li>之後就都可以用</li>
 </ol>
-<pre><code>ssh ubuntu@你的Public IP
+<pre tabindex="0"><code>ssh ubuntu@你的Public IP
 </code></pre><p>登入Ubuntu</p>
 <h3 id="新增客製的domain-name">新增客製的Domain Name&nbsp;<a href="#新增客製的domain-name" class="anchor"></a> </h3>
 <ol>
@@ -889,7 +889,7 @@ Target就填上你的Public IP<br>
 <img src="https://i.imgur.com/SM13Ioq.png" alt="Imgur"></li>
 </ol>
 <p>之後登入也可以在終端機下指令：</p>
-<pre><code>ssh ubuntu@你的網址
+<pre tabindex="0"><code>ssh ubuntu@你的網址
 </code></pre><h3 id="安裝mosh可以跳過此步驟">安裝Mosh(可以跳過此步驟)&nbsp;<a href="#安裝mosh可以跳過此步驟" class="anchor"></a> </h3>
 <p>如果覺得ubuntu跑很慢可以安裝<br>
 Mosh
@@ -898,17 +898,17 @@ Mosh
 <h3 id="安裝lamp-server">安裝LAMP server&nbsp;<a href="#安裝lamp-server" class="anchor"></a> </h3>
 <p>網頁伺服器快速建置入門</p>
 <h4 id="在ubuntu下指令">在Ubuntu下指令：&nbsp;<a href="#在ubuntu下指令" class="anchor"></a> </h4>
-<pre><code>sudo apt-get install tasksel
-</code></pre><pre><code>sudo tasksel 
+<pre tabindex="0"><code>sudo apt-get install tasksel
+</code></pre><pre tabindex="0"><code>sudo tasksel 
 </code></pre><p>法一：<br>
 <img src="https://i.imgur.com/x333iYj.png" alt="Imgur">
 [ * ] LAMP server 用空白鍵選擇 再按Tab 選擇<!-- raw HTML omitted -->
 <img src="https://i.imgur.com/pu4GTYO.png" alt="Imgur"></p>
 <p>法二：<br>
 終端機直接輸入安裝指令</p>
-<pre><code>sudo tasksel install lamp-server
+<pre tabindex="0"><code>sudo tasksel install lamp-server
 </code></pre><h4 id="查看連線狀況">查看連線狀況&nbsp;<a href="#查看連線狀況" class="anchor"></a> </h4>
-<pre><code>netstat -tnal
+<pre tabindex="0"><code>netstat -tnal
 </code></pre><p><img src="https://i.imgur.com/jDclyKw.png" alt="Imgur"></p>
 <h4 id="回到aws">回到AWS&nbsp;<a href="#回到aws" class="anchor"></a> </h4>
 <ol>
@@ -923,10 +923,10 @@ Mosh
 </ol>
 <h3 id="網頁的設置">網頁的設置&nbsp;<a href="#網頁的設置" class="anchor"></a> </h3>
 <h4 id="查看目錄">查看目錄&nbsp;<a href="#查看目錄" class="anchor"></a> </h4>
-<pre><code>cd /var/ //再按兩下tab
+<pre tabindex="0"><code>cd /var/ //再按兩下tab
 </code></pre><p><img src="https://i.imgur.com/Jk4JHtH.png" alt="Imgur">
 <code>/var/www/html/</code> 中的 <code>index.html</code> 就是網頁的html</p>
-<pre><code>ls -al
+<pre tabindex="0"><code>ls -al
 </code></pre><ol>
 <li>查看權限
 <img src="https://i.imgur.com/mnVi3Bx.png" alt="Imgur">
@@ -934,9 +934,9 @@ Mosh
 <img src="https://i.imgur.com/XRTkxnQ.png" alt="Imgur"></li>
 <li>新增權限給<code>/html</code>資料夾</li>
 </ol>
-<pre><code>sudo chmod 777 html/
+<pre tabindex="0"><code>sudo chmod 777 html/
 </code></pre><p><img src="https://i.imgur.com/NDqKEAS.png" alt="Imgur"></p>
-<pre><code>sudo chmod -R 777 html/
+<pre tabindex="0"><code>sudo chmod -R 777 html/
 </code></pre><p><img src="https://i.imgur.com/E9ti5Ly.png" alt="Imgur"></p>
 <h4 id="開啟sublime-text">開啟Sublime Text&nbsp;<a href="#開啟sublime-text" class="anchor"></a> </h4>
 <p><img src="https://i.imgur.com/jtJXz8J.png" alt="thumbnail"></p>
@@ -952,9 +952,9 @@ Package Control: Install Package
 <img src="https://i.imgur.com/egHg2iQ.png" alt="Imgur"></li>
 <li>修改sftp訊息</li>
 </ol>
-<pre><code>&quot;host&quot;: &quot;yourwebsite.domain&quot;
-&quot;user&quot;: &quot;ubuntu&quot;
-&quot;remote_path&quot;: &quot;/var/www/html/&quot;
+<pre tabindex="0"><code>&#34;host&#34;: &#34;yourwebsite.domain&#34;
+&#34;user&#34;: &#34;ubuntu&#34;
+&#34;remote_path&#34;: &#34;/var/www/html/&#34;
 </code></pre><p><img src="https://i.imgur.com/pVUNSqR.png" alt="Imgur">
 <img src="https://i.imgur.com/x6rDKma.png" alt="Imgur">
 6. 另存新檔
@@ -969,7 +969,7 @@ Package Control: Install Package
 <img src="https://i.imgur.com/SLQg46L.png" alt="Imgur">
 <img src="https://i.imgur.com/BFhfk3z.png" alt="Imgur"></p>
 <h3 id="查看網站的連線狀況">查看網站的連線狀況&nbsp;<a href="#查看網站的連線狀況" class="anchor"></a> </h3>
-<pre><code>traceroute yilianwu.ga 
+<pre tabindex="0"><code>traceroute yilianwu.ga 
 </code></pre><p><img src="https://i.imgur.com/MqoIRWa.png" alt="Imgur"></p>
                 </section>
         
@@ -990,7 +990,7 @@ Package Control: Install Package
 	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
 	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
 
-    <span style="display:block" class="footer-text">&copy 2019-2023 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>

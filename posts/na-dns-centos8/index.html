@@ -1076,36 +1076,36 @@
 <img src="https://i.imgur.com/J4rJp6N.png" alt="Imgur"></p>
 <h1 id="scenario">Scenario&nbsp;<a href="#scenario" class="anchor"></a> </h1>
 <h2 id="router">Router&nbsp;<a href="#router" class="anchor"></a> </h2>
-<pre><code>Hostname             : router.0846101.nasa
+<pre tabindex="0"><code>Hostname             : router.0846101.nasa
 IP Address           : 10.113.25.254/24
 </code></pre><h2 id="primary-master-dns-server">Primary (Master) DNS Server&nbsp;<a href="#primary-master-dns-server" class="anchor"></a> </h2>
-<pre><code>Hostname             : ns1.0846101.nasa
+<pre tabindex="0"><code>Hostname             : ns1.0846101.nasa
 IP Address           : 10.113.25.1/24
 </code></pre><h2 id="secondary-slave-dns-server">Secondary (Slave) DNS Server&nbsp;<a href="#secondary-slave-dns-server" class="anchor"></a> </h2>
-<pre><code>Hostname             : ns2.0846101.nasa
+<pre tabindex="0"><code>Hostname             : ns2.0846101.nasa
 IP Address           : 10.113.25.2/24
 </code></pre><h2 id="agent">Agent&nbsp;<a href="#agent" class="anchor"></a> </h2>
-<pre><code>Hostname             : agent.0846101.nasa
+<pre tabindex="0"><code>Hostname             : agent.0846101.nasa
 IP Address           : 10.113.25.129/24
 </code></pre><h2 id="clientpc-proxy">ClientPC (proxy)&nbsp;<a href="#clientpc-proxy" class="anchor"></a> </h2>
-<pre><code>Hostname             : client-pc.0846101.nasa
+<pre tabindex="0"><code>Hostname             : client-pc.0846101.nasa
 IP Address           : 10.113.25.119/24
 </code></pre><h1 id="router-1">Router&nbsp;<a href="#router-1" class="anchor"></a> </h1>
 <h2 id="hostname">Hostname&nbsp;<a href="#hostname" class="anchor"></a> </h2>
 <p>跟hostname有關的兩個檔案： <code>/etc/sysconfig/network</code> and <code>/etc/hosts</code></p>
-<pre><code>vim /etc/sysconfig/network
-</code></pre><pre><code># Created by anaconda
+<pre tabindex="0"><code>vim /etc/sysconfig/network
+</code></pre><pre tabindex="0"><code># Created by anaconda
 HOSTNAME=router.0846101.nasa //localhost.localdomain
-</code></pre><pre><code>vim /etc/hosts
+</code></pre><pre tabindex="0"><code>vim /etc/hosts
 </code></pre><p>加在最後一行</p>
-<pre><code>10.113.25.254   router.0846101.nasa
+<pre tabindex="0"><code>10.113.25.254   router.0846101.nasa
 </code></pre><p>ping 看看有沒有設定成功</p>
-<pre><code>ping -c 2 router.0846101.nasa
+<pre tabindex="0"><code>ping -c 2 router.0846101.nasa
 </code></pre><p>有的話就可以reboot<br>
 重開機後若還是@localhost 可以執行</p>
-<pre><code>hostnamectl set-hostname router.0846101.nasa
+<pre tabindex="0"><code>hostnamectl set-hostname router.0846101.nasa
 </code></pre><h2 id="dhcp-server">DHCP Server&nbsp;<a href="#dhcp-server" class="anchor"></a> </h2>
-<pre><code># Add ns1 and ns2 to dns
+<pre tabindex="0"><code># Add ns1 and ns2 to dns
 option domain-name-servers 10.113.25.1, 10.113.25.2, 8.8.8.8;
 
 # Set fixed IP to ns1, ns2, and client-pc
@@ -1129,39 +1129,39 @@ host client-pc {
 <p>一般name servers會在<code>/etc/resolv.conf</code>設定<br>
 但重開機會被NetworkManager覆寫</p>
 <p>可以先到網卡設定 (Both enp0s3 and enp0s8)</p>
-<pre><code>vim /etc/sysconfig/network-scripts/ifcfg-enp0s3
+<pre tabindex="0"><code>vim /etc/sysconfig/network-scripts/ifcfg-enp0s3
 </code></pre><p>新增一行</p>
-<pre><code>PEERDNS=no
+<pre tabindex="0"><code>PEERDNS=no
 </code></pre><p>再到<code>/etc/resolv.conf</code> 編輯name servers</p>
-<pre><code>vim /etc/resolv.conf
-</code></pre><pre><code>search 0846101.nasa
+<pre tabindex="0"><code>vim /etc/resolv.conf
+</code></pre><pre tabindex="0"><code>search 0846101.nasa
 nameserver 10.113.25.1
 nameserver 10.113.25.2
 nameserver 8.8.8.8
 </code></pre><p>改<code>/etc/nsswitch.conf</code>的找尋hosts的順序<br>
 把DNS擺第一順位</p>
-<pre><code>hosts:      dns files myhostname
+<pre tabindex="0"><code>hosts:      dns files myhostname
 </code></pre><h1 id="master-dns-server">Master DNS Server&nbsp;<a href="#master-dns-server" class="anchor"></a> </h1>
 <p>Install Bind</p>
-<pre><code>dnf install bind 
+<pre tabindex="0"><code>dnf install bind 
 </code></pre><p>Install Bind-Utils (to enable cmds like dig, nslookup&hellip;)</p>
-<pre><code>dnf install bind-utils
+<pre tabindex="0"><code>dnf install bind-utils
 </code></pre><h2 id="configure-dns-server">Configure DNS Server&nbsp;<a href="#configure-dns-server" class="anchor"></a> </h2>
-<pre><code>vim /etc/named.conf
-</code></pre><pre><code># TSIG keys
-#key &quot;dotone-key&quot; {
+<pre tabindex="0"><code>vim /etc/named.conf
+</code></pre><pre tabindex="0"><code># TSIG keys
+#key &#34;dotone-key&#34; {
 #       algorithm hmac-md5;
-#       secret &quot;OvexY/E9LNONtKlDlPERlg==&quot;;
+#       secret &#34;OvexY/E9LNONtKlDlPERlg==&#34;;
 #};
 
-#key &quot;mysub-key&quot; {
+#key &#34;mysub-key&#34; {
 #       algorithm hmac-md5;
-#       secret &quot;kZC7vN85HAFzLTrjsKX4tw==&quot;;
+#       secret &#34;kZC7vN85HAFzLTrjsKX4tw==&#34;;
 #};
 
-#key &quot;others-key&quot; {
+#key &#34;others-key&#34; {
 #       algorithm hmac-md5;
-#       secret &quot;9ZA6TNRXbaJAimpTsEi2Xw==&quot;;
+#       secret &#34;9ZA6TNRXbaJAimpTsEi2Xw==&#34;;
 #};
 
 #Global settings
@@ -1177,7 +1177,7 @@ options {
     allow-transfer { localhost; 10.113.25.129; };
 
 #   Default bind version query reply
-    version &quot;&quot;;
+    version &#34;&#34;;
 
 #   Only allow recursion from Agent
     recursion yes;
@@ -1192,97 +1192,96 @@ acl dotone { 10.113.1.0/24; };
 acl mysubnet { 10.113.25.0/24; };
 acl others { any; };
 
-view &quot;view1&quot; {
+view &#34;view1&#34; {
 #       match-clients { !key mysub-key; !key others-key; key dotone-key; dotone; };
 #       allow-transfer { key dotone-key; };
 #       server 10.113.25.2 { keys dotone-key; };
         match-clients { !10.113.25.2; !10.113.25.22; 10.113.25.222; dotone; };
 
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type master;
-                file &quot;/var/named/named.0846101.nasa.one&quot;;
+                file &#34;/var/named/named.0846101.nasa.one&#34;;
                 allow-transfer { 10.113.25.129; 10.113.25.222; };
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type master;
-                file &quot;/var/named/named.10.113.25.one&quot;;
+                file &#34;/var/named/named.10.113.25.one&#34;;
                 allow-transfer { 10.113.25.129; 10.113.25.222; };
         };
 
-        zone &quot;235.113.140.in-addr.arpa&quot; IN {
+        zone &#34;235.113.140.in-addr.arpa&#34; IN {
                 type master;
-                file &quot;/var/named/named.10.113.25.viewone&quot;;
+                file &#34;/var/named/named.10.113.25.viewone&#34;;
                 allow-transfer { 10.113.25.129; 10.113.25.222; };
         };
 
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa.one&quot;;
+                file &#34;slaves/named.nasa.one&#34;;
                 masters { 10.113.0.254; };
                 allow-transfer { 10.113.25.129; 10.113.25.222; };
         };
 
 };
 
-view &quot;viewmine&quot; {
+view &#34;viewmine&#34; {
 #       match-clients { !key dotone-key; !key others-key; key mysub-key; mysubnet; };
 #       allow-transfer { key mysub-key; };
 #       server 10.113.25.2 { keys mysub-key; };
         match-clients { !10.113.25.2; !10.113.25.222; 10.113.25.22; mysubnet; };
 
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type master;
-                file &quot;/var/named/named.0846101.nasa.mysub&quot;;
+                file &#34;/var/named/named.0846101.nasa.mysub&#34;;
                 allow-transfer { 10.113.25.129; 10.113.25.22; };
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type master;
-                file &quot;/var/named/named.10.113.25.mysub&quot;;
+                file &#34;/var/named/named.10.113.25.mysub&#34;;
                 allow-transfer { 10.113.25.129; 10.113.25.22; };
         };
 
-        zone &quot;235.113.140.in-addr.arpa&quot; IN {
+        zone &#34;235.113.140.in-addr.arpa&#34; IN {
                 type master;
-                file &quot;/var/named/named.10.113.25.viewmysub&quot;;
+                file &#34;/var/named/named.10.113.25.viewmysub&#34;;
                 allow-transfer { 10.113.25.129; 10.113.25.22; };
         };
 
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa.mysub&quot;;
+                file &#34;slaves/named.nasa.mysub&#34;;
                 masters { 10.113.0.254; };
                 allow-transfer { 10.113.25.129; 10.113.25.22; };
         };
 };
 
-view &quot;viewothers&quot; {
+view &#34;viewothers&#34; {
 #       match-clients { !key dotone-key; !key mysub-key; key others-key; others; };
 #       allow-transfer { key others-key; };
 #       server 10.113.25.2 { keys others-key; };
         match-clients { !10.113.25.22; !10.113.25.222; 10.113.25.2; others; };
 
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type master;
-                file &quot;/var/named/named.0846101.nasa&quot;;
+                file &#34;/var/named/named.0846101.nasa&#34;;
                 allow-transfer { 10.113.25.129; 10.113.25.2; };
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type master;
-                file &quot;/var/named/named.10.113.25&quot;;
+                file &#34;/var/named/named.10.113.25&#34;;
                 allow-transfer { 10.113.25.129; 10.113.25.2; };
         };
 
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa&quot;;
+                file &#34;slaves/named.nasa&#34;;
                 masters { 10.113.0.254; };
                 allow-transfer { 10.113.25.129; 10.113.25.2; };
         };
 };
-
 </code></pre><h2 id="create-zone-files">Create Zone Files&nbsp;<a href="#create-zone-files" class="anchor"></a> </h2>
 <p>放在<code>/var/named</code></p>
 <table>
@@ -1317,8 +1316,8 @@ view &quot;viewothers&quot; {
 </table>
 <h3 id="create-forward-zone">Create Forward Zone&nbsp;<a href="#create-forward-zone" class="anchor"></a> </h3>
 <p>通用的正查檔</p>
-<pre><code>vim /var/named/named.0846101.nasa
-</code></pre><pre><code>$TTL            86400
+<pre tabindex="0"><code>vim /var/named/named.0846101.nasa
+</code></pre><pre tabindex="0"><code>$TTL            86400
 
 ;
 
@@ -1375,11 +1374,10 @@ view            IN      A       10.113.25.87
 web             IN      CNAME   agent.0846101.nasa.
 
 nasa            IN      CNAME   nasa.cs.nctu.edu.tw.
-
 </code></pre><h3 id="create-reverse-zone">Create Reverse Zone&nbsp;<a href="#create-reverse-zone" class="anchor"></a> </h3>
 <p>通用的反查檔</p>
-<pre><code>vim /var/named/named.10.113.25
-</code></pre><pre><code>$TTL    600
+<pre tabindex="0"><code>vim /var/named/named.10.113.25
+</code></pre><pre tabindex="0"><code>$TTL    600
 $ORIGIN 25.113.10.in-addr.arpa.
 @       IN      SOA     ns1.0846101.nasa. root.0846101.nasa. ( 2020050502 10800 1200 3600000 3600 )
 ;
@@ -1392,15 +1390,15 @@ $ORIGIN 25.113.10.in-addr.arpa.
 ; for others
 87      IN      PTR     view.0846101.nasa.
 </code></pre><p>給10.113.1.0/24的view.0846101.nasa反查</p>
-<pre><code>vim /var/named/named.10.113.25.viewone
-</code></pre><pre><code>$TTL    600
+<pre tabindex="0"><code>vim /var/named/named.10.113.25.viewone
+</code></pre><pre tabindex="0"><code>$TTL    600
 $ORIGIN 235.113.140.in-addr.arpa.
 @       IN      SOA     ns1.0846101.nasa. root.0846101.nasa. ( 2020050605 10800 1200 3600000 3600 )
 
 131     IN      PTR     view.0846101.nasa.
 </code></pre><p>給10.113.25.0/24的view.0846101.nasa反查</p>
-<pre><code>vim /var/named/named.10.113.25.viewmysub
-</code></pre><pre><code>$TTL    600
+<pre tabindex="0"><code>vim /var/named/named.10.113.25.viewmysub
+</code></pre><pre tabindex="0"><code>$TTL    600
 $ORIGIN 235.113.140.in-addr.arpa.
 @       IN      SOA     ns1.0846101.nasa. root.0846101.nasa. ( 2020050605 10800 1200 3600000 3600 )
 
@@ -1409,26 +1407,26 @@ $ORIGIN 235.113.140.in-addr.arpa.
 <p>For ns1, use “Name Server 1”.<br>
 For ns2, use “Name Server 2”.<br>
 Only allow queries from your internal network.</p>
-<pre><code>dig version.bind txt chaos @ns1.0846101.nasa
+<pre tabindex="0"><code>dig version.bind txt chaos @ns1.0846101.nasa
 </code></pre><p>在<code>/etc/named.conf</code>新增</p>
-<pre><code>view &quot;chaos&quot; CH {
-    match-clients { &quot;mysubnet&quot;; };
-    zone &quot;bind&quot; CH {
+<pre tabindex="0"><code>view &#34;chaos&#34; CH {
+    match-clients { &#34;mysubnet&#34;; };
+    zone &#34;bind&#34; CH {
         type master;
-        file &quot;ver.0846101.nasa&quot;;
+        file &#34;ver.0846101.nasa&#34;;
         allow-update { none; };
     };
 };
 
-view &quot;chaosrefuse&quot; CH {
+view &#34;chaosrefuse&#34; CH {
     match-clients { any; };
-    zone &quot;bind&quot; CH {
+    zone &#34;bind&#34; CH {
         type master;
         allow-query { none; };
     };
 };
-</code></pre><pre><code>vim /var/named/ver.0846101.nasa
-</code></pre><pre><code>$TTL    3600
+</code></pre><pre tabindex="0"><code>vim /var/named/ver.0846101.nasa
+</code></pre><pre tabindex="0"><code>$TTL    3600
 @       86400       CH   SOA     ns1.0846101.nasa. root.0846101.nasa. (
                     2020050401      ; serial
                     3600            ; refresh
@@ -1438,30 +1436,30 @@ view &quot;chaosrefuse&quot; CH {
 ;
 @                   CH  NS  ns1.0846101.nasa.
 
-version             CH  TXT &quot;Name Server 1&quot;
+version             CH  TXT &#34;Name Server 1&#34;
 </code></pre><h3 id="sshfp-record">SSHFP Record&nbsp;<a href="#sshfp-record" class="anchor"></a> </h3>
 <p>Add SSHFP record of your machines’ ssh key fingerprint.<br>
 The algorithm ECDSA and ED25519 should be implement.<br>
 The hash type SHA-256 should be implement.</p>
 <h4 id="generate-sshfp-records-remotely">Generate SSHFP Records Remotely&nbsp;<a href="#generate-sshfp-records-remotely" class="anchor"></a> </h4>
 <p>Download the script and make it executable</p>
-<pre><code>wget https://gist.githubusercontent.com/webernetz/2ca7325555ce7f28f26daf5728386d82/raw/1c18dc43a05478771ac4693401a3c78205a4e710/grabsshfp.sh
-</code></pre><pre><code>chmod u+x grabsshfp.sh
+<pre tabindex="0"><code>wget https://gist.githubusercontent.com/webernetz/2ca7325555ce7f28f26daf5728386d82/raw/1c18dc43a05478771ac4693401a3c78205a4e710/grabsshfp.sh
+</code></pre><pre tabindex="0"><code>chmod u+x grabsshfp.sh
 </code></pre><p>And call it with the DNS name or IP address of the destination:</p>
-<pre><code>./grabsshfp.sh 10.113.25.254
+<pre tabindex="0"><code>./grabsshfp.sh 10.113.25.254
 </code></pre><p>會得到</p>
-<pre><code>IN  SSHFP   [Algorithm] [Fingerprint Type]  [Fingerprint (in hex)]
+<pre tabindex="0"><code>IN  SSHFP   [Algorithm] [Fingerprint Type]  [Fingerprint (in hex)]
 </code></pre><p>Algorithm(第一個數字)</p>
-<pre><code>1   -   RSA
+<pre tabindex="0"><code>1   -   RSA
 2   -   DSA
 3   -   ECDSA
 4   -   ED25519
 </code></pre><p>Fingerprint Type(第二個數字)</p>
-<pre><code>1   -   SHA-1
+<pre tabindex="0"><code>1   -   SHA-1
 2   -   SHA-256
 </code></pre><h4 id="add-records-to-zone-files">Add records to zone files&nbsp;<a href="#add-records-to-zone-files" class="anchor"></a> </h4>
 <p>加到<code>/var/named/named.0846101.nasa*</code></p>
-<pre><code>; SSHFP
+<pre tabindex="0"><code>; SSHFP
 ns1             IN      SSHFP   3 2 3e7b3a4ddc106ac972a2719c475b496b82248abefe06acca8d2e680def01a06c
 ns1             IN      SSHFP   4 2 cb2890ea5649b06c24cf7c22e54a2892fcfb73e169ed684e05697fbcb51cf86d
 
@@ -1474,7 +1472,7 @@ router          IN      SSHFP   4 2 bdbff4baf39c4a222107697f69401126cb4ffcf52c11
 agent           IN      SSHFP   3 2 681fecc886e9433284ce3c9630970028e44e7a779f88940fdfac50999c02ad5e
 agent           IN      SSHFP   4 2 e1c0088d8ed2f4ed27c990b46a9f75dad7ad0f7fb45356316a637435d3f57c71
 </code></pre><p>Look up SSHFP records</p>
-<pre><code>dig router.0846101.nasa sshfp
+<pre tabindex="0"><code>dig router.0846101.nasa sshfp
 </code></pre><h2 id="dnssec">DNSSEC&nbsp;<a href="#dnssec" class="anchor"></a> </h2>
 <p>Domain Name System SECurity Extensions<br>
 傳統的DNS沒有安全機制，容易遭受攻擊</p>
@@ -1501,29 +1499,29 @@ agent           IN      SSHFP   4 2 e1c0088d8ed2f4ed27c990b46a9f75dad7ad0f7fb453
 <h3 id="resource-record--ds--rrsi">Resource Record : DS &amp; RRSI&nbsp;<a href="#resource-record--ds--rrsi" class="anchor"></a> </h3>
 <h3 id="generate-ksk">Generate KSK&nbsp;<a href="#generate-ksk" class="anchor"></a> </h3>
 <p>Key Signing Key</p>
-<pre><code>dnssec-keygen -a RSASHA256 -b 2048 -f KSK -n ZONE 0846101.nasa
+<pre tabindex="0"><code>dnssec-keygen -a RSASHA256 -b 2048 -f KSK -n ZONE 0846101.nasa
 </code></pre><p>產生兩個key</p>
-<pre><code>K0846101.nasa.+008+29014.key        //public key
+<pre tabindex="0"><code>K0846101.nasa.+008+29014.key        //public key
 K0846101.nasa.+008+29014.private    //private key
 </code></pre><h3 id="generate-zsk">Generate ZSK&nbsp;<a href="#generate-zsk" class="anchor"></a> </h3>
 <p>Zone Signing Key</p>
-<pre><code>dnssec-keygen -a RSASHA256 -b 2048 -n ZONE 0846101.nasa
+<pre tabindex="0"><code>dnssec-keygen -a RSASHA256 -b 2048 -n ZONE 0846101.nasa
 </code></pre><p>產生兩個key</p>
-<pre><code>K0846101.nasa.+008+00945.key        //public key
+<pre tabindex="0"><code>K0846101.nasa.+008+00945.key        //public key
 K0846101.nasa.+008+00945.private    //private key
 </code></pre><p>我把這四個key放在<code>/var/named/keys</code></p>
 <h3 id="signing-a-zone">Signing a Zone&nbsp;<a href="#signing-a-zone" class="anchor"></a> </h3>
 <p>Include keys in zone files <code>/var/named/named.0846101.nasa.one</code>, <code>/var/named/named.0846101.nasa.mysub</code> ,and <code>/var/named/named.0846101.nasa</code></p>
-<pre><code>$INCLUDE        /etc/named/keys/K0846101.nasa.+008+29014.key ;KSK
+<pre tabindex="0"><code>$INCLUDE        /etc/named/keys/K0846101.nasa.+008+29014.key ;KSK
 $INCLUDE        /etc/named/keys/K0846101.nasa.+008+00945.key ;ZSK
 </code></pre><p>NSEC</p>
-<pre><code>dnssec-signzone \
+<pre tabindex="0"><code>dnssec-signzone \
 -o 0846101.nasa \
 -t \
 -k /etc/named/keys/K0846101.nasa.+008+29014.key \
 /var/named/named.0846101.nasa \
 /etc/named/keys/K0846101.nasa.+008+00945.key
-</code></pre><pre><code>Verifying the zone using the following algorithms: RSASHA256.
+</code></pre><pre tabindex="0"><code>Verifying the zone using the following algorithms: RSASHA256.
 Zone fully signed:
 Algorithm: RSASHA256: KSKs: 1 active, 0 stand-by, 0 revoked
                       ZSKs: 1 active, 0 stand-by, 0 revoked
@@ -1537,7 +1535,7 @@ Signing time in seconds:                 0.026
 Signatures per second:                 934.928
 Runtime in seconds:                      0.041
 </code></pre><p>NSEC3</p>
-<pre><code>dnssec-signzone \
+<pre tabindex="0"><code>dnssec-signzone \
 -3 55844b7f \                                       //NSEC3使用的salt值
 -H 100 \                                            //NSEC3使用的iteration值
 -u \                                                //更新NSEC/NSEC3
@@ -1546,7 +1544,7 @@ Runtime in seconds:                      0.041
 -k /etc/named/keys/K0846101.nasa.+008+29014.key \   //KSK publickey
 /var/named/named.0846101.nasa \                     //要被簽的zone file
 /etc/named/keys/K0846101.nasa.+008+00945.key        //ZSK publickey
-</code></pre><pre><code>Verifying the zone using the following algorithms: RSASHA256.
+</code></pre><pre tabindex="0"><code>Verifying the zone using the following algorithms: RSASHA256.
 Zone fully signed:
 Algorithm: RSASHA256: KSKs: 1 active, 0 stand-by, 0 revoked
                       ZSKs: 1 active, 0 stand-by, 0 revoked
@@ -1560,7 +1558,7 @@ Signing time in seconds:                 0.030
 Signatures per second:                 891.736
 Runtime in seconds:                      0.040
 </code></pre><h3 id="create-trust-chain">Create Trust Chain&nbsp;<a href="#create-trust-chain" class="anchor"></a> </h3>
-<pre><code>dnssec-dsfromkey /etc/named/keys/K0846101.nasa.+008+29014.key   //KSK
+<pre tabindex="0"><code>dnssec-dsfromkey /etc/named/keys/K0846101.nasa.+008+29014.key   //KSK
 </code></pre><p><img src="https://i.imgur.com/XhxQY1U.png" alt="Imgur">
 Upload DS Record to <code>nasa.</code><br>
 我選擇第二個<br>
@@ -1568,8 +1566,8 @@ Upload DS Record to <code>nasa.</code><br>
 <h3 id="configuration">Configuration&nbsp;<a href="#configuration" class="anchor"></a> </h3>
 <p>只列出要新增或修改的地方<br>
 把<code>.signed</code>的zone files替換上去</p>
-<pre><code>vim /etc/named.conf
-</code></pre><pre><code>#Global settings
+<pre tabindex="0"><code>vim /etc/named.conf
+</code></pre><pre tabindex="0"><code>#Global settings
 options {
 
         dnssec-enable yes;
@@ -1578,26 +1576,26 @@ options {
 };
 
 
-view &quot;view1&quot; {
+view &#34;view1&#34; {
 
-        zone &quot;0846101.nasa&quot; IN {
-                file &quot;/var/named/named.0846101.nasa.one.signed&quot;;
+        zone &#34;0846101.nasa&#34; IN {
+                file &#34;/var/named/named.0846101.nasa.one.signed&#34;;
         };
 
 };
 
-view &quot;viewmine&quot; {
+view &#34;viewmine&#34; {
 
-        zone &quot;0846101.nasa&quot; IN {
-                file &quot;/var/named/named.0846101.nasa.mysub.signed&quot;;
+        zone &#34;0846101.nasa&#34; IN {
+                file &#34;/var/named/named.0846101.nasa.mysub.signed&#34;;
         };
 
 };
 
-view &quot;viewothers&quot; {
+view &#34;viewothers&#34; {
 
-        zone &quot;0846101.nasa&quot; IN {
-                file &quot;/var/named/named.0846101.nasa.signed&quot;;
+        zone &#34;0846101.nasa&#34; IN {
+                file &#34;/var/named/named.0846101.nasa.signed&#34;;
         };
 
 };
@@ -1619,35 +1617,35 @@ view &quot;viewothers&quot; {
 </ul>
 <h2 id="start-the-dns-service">Start the DNS service&nbsp;<a href="#start-the-dns-service" class="anchor"></a> </h2>
 <p>Enable and start DNS service:</p>
-<pre><code>systemctl enable named
+<pre tabindex="0"><code>systemctl enable named
 systemctl start named
 </code></pre><h2 id="firewall-configuration">Firewall Configuration&nbsp;<a href="#firewall-configuration" class="anchor"></a> </h2>
 <p>Firewall預設是關的<br>
 將DNS的 TCP, UDP port 53打開</p>
-<pre><code>firewall-cmd --permanent --add-port=53/tcp
+<pre tabindex="0"><code>firewall-cmd --permanent --add-port=53/tcp
 firewall-cmd --permanent --add-port=53/udp
 firewall-cmd --reload
 </code></pre><p>Router的iptables規則也要改</p>
-<pre><code>vim /etc/sysconfig/iptables
-</code></pre><pre><code>-A INPUT -p tcp --dport 53 -j ACCEPT
+<pre tabindex="0"><code>vim /etc/sysconfig/iptables
+</code></pre><pre tabindex="0"><code>-A INPUT -p tcp --dport 53 -j ACCEPT
 -A INPUT -p udp --dport 53 -j ACCEPT
-</code></pre><pre><code>-A FORWARD -p tcp --dport 53 -j ACCEPT
+</code></pre><pre tabindex="0"><code>-A FORWARD -p tcp --dport 53 -j ACCEPT
 -A FORWARD -p udp --dport 53 -j ACCEPT
 </code></pre><h2 id="test-dns">Test DNS&nbsp;<a href="#test-dns" class="anchor"></a> </h2>
 <p>Restart BIND before testing</p>
-<pre><code>systemctl restart named
+<pre tabindex="0"><code>systemctl restart named
 </code></pre><p>Forward Look up</p>
-<pre><code>dig view.0846101.nasa @10.113.25.1
+<pre tabindex="0"><code>dig view.0846101.nasa @10.113.25.1
 </code></pre><p>Reverse Look up</p>
-<pre><code>dig -x 10.113.25.254 @10.113.25.1
+<pre tabindex="0"><code>dig -x 10.113.25.254 @10.113.25.1
 </code></pre><p>AXFR</p>
-<pre><code>dig axfr 0846101.nasa @10.113.25.1
+<pre tabindex="0"><code>dig axfr 0846101.nasa @10.113.25.1
 </code></pre><p>SOA</p>
-<pre><code>dig -t soa router.0846101.nasa
+<pre tabindex="0"><code>dig -t soa router.0846101.nasa
 </code></pre><h1 id="slave-dns-server">Slave DNS Server&nbsp;<a href="#slave-dns-server" class="anchor"></a> </h1>
 <h2 id="general-configuration">General Configuration&nbsp;<a href="#general-configuration" class="anchor"></a> </h2>
 <p><code>/etc/named.conf</code></p>
-<pre><code>options {
+<pre tabindex="0"><code>options {
 
         listen-on port 53 { any; };
 
@@ -1655,7 +1653,7 @@ firewall-cmd --reload
 
         allow-transfer { localhost; 10.113.25.129; };
 
-        version &quot;&quot;;
+        version &#34;&#34;;
 
         recursion yes;
 
@@ -1697,191 +1695,191 @@ firewall-cmd --reload
 <h3 id="tsig">TSIG&nbsp;<a href="#tsig" class="anchor"></a> </h3>
 <p>Transaction Signature<br>
 Generate 3 keys in Master DNS</p>
-<pre><code>dnssec-keygen -a HMAC-MD5 -b 128 -n Host dotone-key
+<pre tabindex="0"><code>dnssec-keygen -a HMAC-MD5 -b 128 -n Host dotone-key
 dnssec-keygen -a HMAC-MD5 -b 128 -n Host mysub-key
 dnssec-keygen -a HMAC-MD5 -b 128 -n Host others-key
 </code></pre><p>會在<code>/etc/ssh</code>產生三組Keys<br>
 把<code>.key</code>的內容cat出來寫入Master、Slave的<code>/etc/named.conf</code></p>
-<pre><code>key &quot;dotone-key&quot; {
+<pre tabindex="0"><code>key &#34;dotone-key&#34; {
        algorithm hmac-md5;
-       secret &quot;OvexY/E9LNONtKlDlPERlg==&quot;;
+       secret &#34;OvexY/E9LNONtKlDlPERlg==&#34;;
 };
 
-key &quot;mysub-key&quot; {
+key &#34;mysub-key&#34; {
        algorithm hmac-md5;
-       secret &quot;kZC7vN85HAFzLTrjsKX4tw==&quot;;
+       secret &#34;kZC7vN85HAFzLTrjsKX4tw==&#34;;
 };
 
-key &quot;others-key&quot; {
+key &#34;others-key&#34; {
        algorithm hmac-md5;
-       secret &quot;9ZA6TNRXbaJAimpTsEi2Xw==&quot;;
+       secret &#34;9ZA6TNRXbaJAimpTsEi2Xw==&#34;;
 };
 </code></pre><p>ns1<code>/etc/named.conf</code></p>
-<pre><code>acl dotone { 10.113.1.0/24; };
+<pre tabindex="0"><code>acl dotone { 10.113.1.0/24; };
 acl mysubnet { 10.113.25.0/24; };
 acl others { any; };
 
-view &quot;view1&quot; {
+view &#34;view1&#34; {
         match-clients { !key mysub-key; !key others-key; key dotone-key; dotone; };
         allow-transfer { key dotone-key; 10.113.25.129; };
         server 10.113.25.2 { keys dotone-key; };
 
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type master;
-                file &quot;/var/named/named.0846101.nasa.one&quot;;
+                file &#34;/var/named/named.0846101.nasa.one&#34;;
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type master;
-                file &quot;/var/named/named.10.113.25.one&quot;;
+                file &#34;/var/named/named.10.113.25.one&#34;;
         };
 
-        zone &quot;235.113.140.in-addr.arpa&quot; IN {
+        zone &#34;235.113.140.in-addr.arpa&#34; IN {
                 type master;
-                file &quot;/var/named/named.10.113.25.viewone&quot;;
+                file &#34;/var/named/named.10.113.25.viewone&#34;;
         };
 
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa.one&quot;;
+                file &#34;slaves/named.nasa.one&#34;;
                 masters { 10.113.0.254; };
         };
 
 };
 
-view &quot;viewmine&quot; {
+view &#34;viewmine&#34; {
         match-clients { !key dotone-key; !key others-key; key mysub-key; mysubnet; };
         allow-transfer { key mysub-key; 10.113.25.129; };
         server 10.113.25.2 { keys mysub-key; };
 
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type master;
-                file &quot;/var/named/named.0846101.nasa.mysub&quot;;
+                file &#34;/var/named/named.0846101.nasa.mysub&#34;;
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type master;
-                file &quot;/var/named/named.10.113.25.mysub&quot;;
+                file &#34;/var/named/named.10.113.25.mysub&#34;;
         };
 
-        zone &quot;235.113.140.in-addr.arpa&quot; IN {
+        zone &#34;235.113.140.in-addr.arpa&#34; IN {
                 type master;
-                file &quot;/var/named/named.10.113.25.viewmysub&quot;;
+                file &#34;/var/named/named.10.113.25.viewmysub&#34;;
         };
 
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa.mysub&quot;;
+                file &#34;slaves/named.nasa.mysub&#34;;
                 masters { 10.113.0.254; };
         };
 };
 
-view &quot;viewothers&quot; {
+view &#34;viewothers&#34; {
         match-clients { !key dotone-key; !key mysub-key; key others-key; others; };
         allow-transfer { key others-key; 10.113.25.129; };
         server 10.113.25.2 { keys others-key; };
 
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type master;
-                file &quot;/var/named/named.0846101.nasa&quot;;
+                file &#34;/var/named/named.0846101.nasa&#34;;
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type master;
-                file &quot;/var/named/named.10.113.25&quot;;
+                file &#34;/var/named/named.10.113.25&#34;;
         };
 
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa&quot;;
+                file &#34;slaves/named.nasa&#34;;
                 masters { 10.113.0.254; };
         };
 };
 </code></pre><p>ns2 <code>/etc/named.conf</code></p>
-<pre><code>view &quot;view1&quot; {
+<pre tabindex="0"><code>view &#34;view1&#34; {
         match-clients { !key mysub-key; !key others-key; key dotone-key; dotone; };
         server 10.113.25.1 { keys dotone-key; };
 
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.0846101.nasa.one&quot;;
+                file &#34;slaves/named.0846101.nasa.one&#34;;
                 masters { 10.113.25.1; }; 
                 allow-transfer { 10.113.25.129; };
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type slave;
-                file &quot;slaves/named.10.113.25.one&quot;;
+                file &#34;slaves/named.10.113.25.one&#34;;
                 masters { 10.113.25.1; };
                 allow-transfer { 10.113.25.129; };
         };
 
-        zone &quot;235.113.140.in-addr.arpa&quot; IN {
+        zone &#34;235.113.140.in-addr.arpa&#34; IN {
                 type slave;
-                file &quot;slaves/named.10.113.25.viewone&quot;;
+                file &#34;slaves/named.10.113.25.viewone&#34;;
                 masters { 10.113.25.1; };
                 allow-transfer { 10.113.25.129; };
         };
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa.one&quot;;
+                file &#34;slaves/named.nasa.one&#34;;
                 masters { 10.113.0.254; };
                 allow-transfer { 10.113.25.129; };
         };
 };
 
-view &quot;viewmine&quot; {
+view &#34;viewmine&#34; {
         match-clients { !key dotone-key; !key others-key; key mysub-key; mysubnet; };
         server 10.113.25.1 { keys mysub-key; };
 
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.0846101.nasa.mysub&quot;;
+                file &#34;slaves/named.0846101.nasa.mysub&#34;;
                 masters { 10.113.25.1; };
                 allow-transfer { 10.113.25.129; };
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type slave;
-                file &quot;slaves/named.10.113.25.mysub&quot;;
+                file &#34;slaves/named.10.113.25.mysub&#34;;
                 masters { 10.113.25.1; };
                 allow-transfer { 10.113.25.129; };
         };
 
-        zone &quot;235.113.140.in-addr.arpa&quot; IN {
+        zone &#34;235.113.140.in-addr.arpa&#34; IN {
                 type slave;
-                file &quot;slaves/named.10.113.25.viewmysub&quot;;
+                file &#34;slaves/named.10.113.25.viewmysub&#34;;
                 masters { 10.113.25.1; };
                 allow-transfer { 10.113.25.129; };
         };
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa.mysub&quot;;
+                file &#34;slaves/named.nasa.mysub&#34;;
                 masters { 10.113.0.254; };
                 allow-transfer { 10.113.25.129; };
         };
 };
 
-view &quot;viewothers&quot; {
+view &#34;viewothers&#34; {
         match-clients { !key dotone-key; !key others-key; key others-key; others; };
         server 10.113.25.1 { keys others-key; };
 
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.0846101.nasa&quot;;
+                file &#34;slaves/named.0846101.nasa&#34;;
                 masters { 10.113.25.1; };
                 allow-transfer { 10.113.25.129; };
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type slave;
-                file &quot;slaves/named.10.113.25&quot;;
+                file &#34;slaves/named.10.113.25&#34;;
                 masters { 10.113.25.1; };
                 allow-transfer { 10.113.25.129; };
         };
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa&quot;;
+                file &#34;slaves/named.nasa&#34;;
                 masters { 10.113.0.254; };
                 allow-transfer { 10.113.25.129; };
         };
@@ -1905,100 +1903,100 @@ view &quot;viewothers&quot; {
 </tbody>
 </table>
 <p>設定</p>
-<pre><code>vim /etc/sysconfig/network-scripts/ifcfg-enp0s3
-</code></pre><pre><code>IPADDR1=&quot;10.113.25.22&quot;
-IPADDR2=&quot;10.113.25.222&quot;
-PREFIX1=&quot;24&quot;
-PREFIX2=&quot;24&quot;
-</code></pre><pre><code>view &quot;view1&quot; {
+<pre tabindex="0"><code>vim /etc/sysconfig/network-scripts/ifcfg-enp0s3
+</code></pre><pre tabindex="0"><code>IPADDR1=&#34;10.113.25.22&#34;
+IPADDR2=&#34;10.113.25.222&#34;
+PREFIX1=&#34;24&#34;
+PREFIX2=&#34;24&#34;
+</code></pre><pre tabindex="0"><code>view &#34;view1&#34; {
 
         match-clients { dotone; };
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.0846101.nasa.one&quot;;
+                file &#34;slaves/named.0846101.nasa.one&#34;;
                 masters { 10.113.25.1; };
                 transfer-source 10.113.25.222;
                 allow-transfer { 10.113.25.129; 10.113.25.119; 10.113.25.222; };
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type slave;
-                file &quot;slaves/named.10.113.25.one&quot;;
+                file &#34;slaves/named.10.113.25.one&#34;;
                 masters { 10.113.25.1; };
                 transfer-source 10.113.25.222;
                 allow-transfer { 10.113.25.129; 10.113.25.119; 10.113.25.222; };
         };
 
-        zone &quot;235.113.140.in-addr.arpa&quot; IN {
+        zone &#34;235.113.140.in-addr.arpa&#34; IN {
                 type slave;
-                file &quot;slaves/named.10.113.25.viewone&quot;;
+                file &#34;slaves/named.10.113.25.viewone&#34;;
                 masters { 10.113.25.1; };
                 transfer-source 10.113.25.222;
                 allow-transfer { 10.113.25.129; 10.113.25.222; };
         };
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa.one&quot;;
+                file &#34;slaves/named.nasa.one&#34;;
                 masters { 10.113.0.254; };
                 allow-transfer { 10.113.25.129; 10.113.25.222; };
         };
 
 };
 
-view &quot;viewmine&quot; {
+view &#34;viewmine&#34; {
 
         match-clients { mysubnet; };
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.0846101.nasa.mysub&quot;;
+                file &#34;slaves/named.0846101.nasa.mysub&#34;;
                 masters { 10.113.25.1; };
                 transfer-source 10.113.25.22;
                 allow-transfer { 10.113.25.129; 10.113.25.119; 10.113.25.22; };
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type slave;
-                file &quot;slaves/named.10.113.25.mysub&quot;;
+                file &#34;slaves/named.10.113.25.mysub&#34;;
                 masters { 10.113.25.1; };
                 transfer-source 10.113.25.22;
                 allow-transfer { 10.113.25.129; 10.113.25.119; 10.113.25.22; };
         };
 
-        zone &quot;235.113.140.in-addr.arpa&quot; IN {
+        zone &#34;235.113.140.in-addr.arpa&#34; IN {
                 type slave;
-                file &quot;slaves/named.10.113.25.viewmysub&quot;;
+                file &#34;slaves/named.10.113.25.viewmysub&#34;;
                 masters { 10.113.25.1; };
                 transfer-source 10.113.25.22;
                 allow-transfer { 10.113.25.129; 10.113.25.119; 10.113.25.22; };
         };
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa.mysub&quot;;
+                file &#34;slaves/named.nasa.mysub&#34;;
                 masters { 10.113.0.254; };
                 allow-transfer { 10.113.25.129; 10.113.25.119; 10.113.25.22; };
         };
 };
-view &quot;viewothers&quot; {
+view &#34;viewothers&#34; {
 
         match-clients { others; };
-        zone &quot;0846101.nasa&quot; IN {
+        zone &#34;0846101.nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.0846101.nasa&quot;;
+                file &#34;slaves/named.0846101.nasa&#34;;
                 masters { 10.113.25.1; };
                 transfer-source 10.113.25.2;
                 allow-transfer { 10.113.25.129; 10.113.25.119; 10.113.25.2; };
         };
 
-        zone &quot;25.113.10.in-addr.arpa&quot; IN {
+        zone &#34;25.113.10.in-addr.arpa&#34; IN {
                 type slave;
-                file &quot;slaves/named.10.113.25&quot;;
+                file &#34;slaves/named.10.113.25&#34;;
                 masters { 10.113.25.1; };
                 transfer-source 10.113.25.2;
                 allow-transfer { 10.113.25.129; 10.113.25.119; 10.113.25.2; };
         };
-        zone &quot;nasa&quot; IN {
+        zone &#34;nasa&#34; IN {
                 type slave;
-                file &quot;slaves/named.nasa&quot;;
+                file &#34;slaves/named.nasa&#34;;
                 masters { 10.113.0.254; };
                 allow-transfer { 10.113.25.129; 10.113.25.119; 10.113.25.2; };
         };
@@ -2006,7 +2004,7 @@ view &quot;viewothers&quot; {
 </code></pre><h2 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor"></a> </h2>
 <p>Firewall預設是關的<br>
 將DNS的 TCP, UDP port 53打開</p>
-<pre><code>firewall-cmd --permanent --add-port=53/tcp
+<pre tabindex="0"><code>firewall-cmd --permanent --add-port=53/tcp
 firewall-cmd --permanent --add-port=53/udp
 firewall-cmd --reload
 </code></pre><h2 id="同步">同步&nbsp;<a href="#同步" class="anchor"></a> </h2>
@@ -2014,7 +2012,7 @@ firewall-cmd --reload
 更新好serial 就會自動同步到Slave</p>
 <p>但也可以<br>
 手動同步Master</p>
-<pre><code>rndc retransfer 0846101.nasa IN view1
+<pre tabindex="0"><code>rndc retransfer 0846101.nasa IN view1
 rndc retransfer 0846101.nasa IN viewmine
 rndc retransfer 0846101.nasa IN viewothers
 </code></pre>
@@ -2037,7 +2035,7 @@ rndc retransfer 0846101.nasa IN viewothers
 	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
 	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
 
-    <span style="display:block" class="footer-text">&copy 2019-2023 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>

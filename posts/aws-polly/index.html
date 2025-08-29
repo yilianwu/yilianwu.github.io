@@ -234,8 +234,8 @@
 </li>
 <li>
 <p>AWS Config</p>
-<pre><code>aws configure
-</code></pre><pre><code>AWS Access Key ID [None]: [Your_AWS Access Key ID]
+<pre tabindex="0"><code>aws configure
+</code></pre><pre tabindex="0"><code>AWS Access Key ID [None]: [Your_AWS Access Key ID]
 AWS Secret Access Key [None]: [Your_AWS Secret Access Key]
 Default region name [None]: ap-northeast-1
 Default output format [None]:
@@ -243,68 +243,68 @@ Default output format [None]:
 <li>
 <p>安裝其他東西<br>
 portaudio</p>
-<pre><code>brew install portaudio
+<pre tabindex="0"><code>brew install portaudio
 </code></pre><p>boto3</p>
-<pre><code>python3 -m pip install boto3
+<pre tabindex="0"><code>python3 -m pip install boto3
 </code></pre><p>pyaudio</p>
-<pre><code>python3 -m pip install pyaudio
+<pre tabindex="0"><code>python3 -m pip install pyaudio
 </code></pre></li>
 <li>
 <p>Python library</p>
-<pre><code>vim polly.py
-</code></pre><pre><code>import boto3
+<pre tabindex="0"><code>vim polly.py
+</code></pre><pre tabindex="0"><code>import boto3
 import pygame
 import os
 import time
 import io
-   
+
 class Polly():
- OUTPUT_FORMAT='mp3'
+ OUTPUT_FORMAT=&#39;mp3&#39;
 
  def __init__(self, voiceId):
-     self.polly = boto3.client('polly') #access amazon web service
+     self.polly = boto3.client(&#39;polly&#39;) #access amazon web service
      self.VOICE_ID = voiceId
 
  def say(self, textToSpeech): #get polly response and play directly
      pollyResponse = self.polly.synthesize_speech(Text=textToSpeech, OutputFormat=self.OUTPUT_FORMAT, VoiceId=self.VOICE_ID)
-        
+
      pygame.mixer.init()
      pygame.init()  # this is needed for pygame.event.* and needs to be called after mixer.init() otherwise no sound is played 
-        
-     if os.name != 'nt':
-         pygame.display.set_mode((1, 1)) #doesn't work on windows, required on linux
-            
+
+     if os.name != &#39;nt&#39;:
+         pygame.display.set_mode((1, 1)) #doesn&#39;t work on windows, required on linux
+
      with io.BytesIO() as f: # use a memory stream
-         f.write(pollyResponse['AudioStream'].read()) #read audiostream from polly
+         f.write(pollyResponse[&#39;AudioStream&#39;].read()) #read audiostream from polly
          f.seek(0)
          pygame.mixer.music.load(f)
          pygame.mixer.music.set_endevent(pygame.USEREVENT)
          pygame.event.set_allowed(pygame.USEREVENT)
          pygame.mixer.music.play()
          pygame.event.wait() # play() is asynchronous. This wait forces the speaking to be finished before closing
-            
+
      while pygame.mixer.music.get_busy() == True:
          pass
 
  def saveToFile(self, textToSpeech, fileName): #get polly response and save to file
      pollyResponse = self.polly.synthesize_speech(Text=textToSpeech, OutputFormat=self.OUTPUT_FORMAT, VoiceId=self.VOICE_ID)
-        
-     with open(fileName, 'wb') as f:
-         f.write(pollyResponse['AudioStream'].read())
+
+     with open(fileName, &#39;wb&#39;) as f:
+         f.write(pollyResponse[&#39;AudioStream&#39;].read())
          f.close()
 </code></pre></li>
 <li>
 <p>編輯想要Polly說的話</p>
-<pre><code>vim say.py
-</code></pre><pre><code>from polly import Polly
-   
-tts = Polly('Joanna')
-tts.say('Hi there, I\'m very glad you\'re reading my article. Leave a comment if you find it useful.')
-tts.saveToFile('Hi there, save the speech for later', 'joanna.mp3')
+<pre tabindex="0"><code>vim say.py
+</code></pre><pre tabindex="0"><code>from polly import Polly
+
+tts = Polly(&#39;Joanna&#39;)
+tts.say(&#39;Hi there, I\&#39;m very glad you\&#39;re reading my article. Leave a comment if you find it useful.&#39;)
+tts.saveToFile(&#39;Hi there, save the speech for later&#39;, &#39;joanna.mp3&#39;)
 </code></pre></li>
 <li>
 <p>執行<code>say.py</code></p>
-<pre><code>python3 say.py
+<pre tabindex="0"><code>python3 say.py
 </code></pre><p>接著會產生你要的音檔<code>joanna.mp3</code></p>
 </li>
 </ol>
@@ -330,7 +330,7 @@ tts.saveToFile('Hi there, save the speech for later', 'joanna.mp3')
 	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
 	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
 
-    <span style="display:block" class="footer-text">&copy 2019-2023 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
 </footer>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
