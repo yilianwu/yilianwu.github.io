@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>raspberry-pi on [ yilianwu ]</title>
-    <link>https://yilianwu.github.io/tags/raspberry-pi/</link>
+    <link>https://www.yilianwu.io/tags/raspberry-pi/</link>
     <description>Recent content in raspberry-pi on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Mon, 05 Jul 2021 15:54:02 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Jul 2021 15:54:02 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>UWB 自動跟隨機器人</title>
-      <link>https://yilianwu.github.io/posts/uwb-follow-ctrl/</link>
+      <link>https://www.yilianwu.io/posts/uwb-follow-ctrl/</link>
       <pubDate>Mon, 05 Jul 2021 15:54:02 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/uwb-follow-ctrl/</guid>
+      <guid>https://www.yilianwu.io/posts/uwb-follow-ctrl/</guid>
       <description>&lt;p&gt;：我們要做一個讓觀眾可以動起來的作品&lt;br&gt;
 於是經過了半年的努力，安尼就這樣誕生了&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Access Raspberry Pi Without A Monitor</title>
-      <link>https://yilianwu.github.io/posts/access-rpi-without-monitor/</link>
+      <link>https://www.yilianwu.io/posts/access-rpi-without-monitor/</link>
       <pubDate>Sat, 02 Jan 2021 12:27:35 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/access-rpi-without-monitor/</guid>
+      <guid>https://www.yilianwu.io/posts/access-rpi-without-monitor/</guid>
       <description>&lt;p&gt;當想要遠端操作Raspberry Pi 但要外接螢幕、鍵盤、滑鼠又很麻煩的時候可以怎麼辦呢？&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Install Ubuntu 20.04 On Raspberry Pi 4 Full Ubuntu Desktop</title>
-      <link>https://yilianwu.github.io/posts/ubuntu-2004-for-rpi4/</link>
+      <link>https://www.yilianwu.io/posts/ubuntu-2004-for-rpi4/</link>
       <pubDate>Thu, 14 May 2020 23:00:14 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/ubuntu-2004-for-rpi4/</guid>
+      <guid>https://www.yilianwu.io/posts/ubuntu-2004-for-rpi4/</guid>
       <description>&lt;p&gt;測試在樹莓派上使用Ubuntu 20.04的桌面版&lt;/p&gt;</description>
     </item>
     

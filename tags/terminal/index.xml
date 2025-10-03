@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Terminal on [ yilianwu ]</title>
-    <link>https://yilianwu.github.io/tags/terminal/</link>
+    <link>https://www.yilianwu.io/tags/terminal/</link>
     <description>Recent content in Terminal on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 03 Mar 2019 21:59:58 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Mar 2019 21:59:58 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/terminal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>我常用的Mac指令</title>
-      <link>https://yilianwu.github.io/posts/mac-commandlines/</link>
+      <link>https://www.yilianwu.io/posts/mac-commandlines/</link>
       <pubDate>Sun, 03 Mar 2019 21:59:58 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/mac-commandlines/</guid>
+      <guid>https://www.yilianwu.io/posts/mac-commandlines/</guid>
       <description>&lt;p&gt;一些常用到的指令筆記&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>在雲端物聯網上建立微系統</title>
-      <link>https://yilianwu.github.io/posts/microsys/</link>
+      <link>https://www.yilianwu.io/posts/microsys/</link>
       <pubDate>Tue, 19 Feb 2019 15:45:54 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/microsys/</guid>
+      <guid>https://www.yilianwu.io/posts/microsys/</guid>
       <description>&lt;p&gt;初次使用AWS的一些操作筆記&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>如何用 iTerm 美化你的終端機</title>
-      <link>https://yilianwu.github.io/posts/iterm-intro/</link>
+      <link>https://www.yilianwu.io/posts/iterm-intro/</link>
       <pubDate>Tue, 05 Feb 2019 15:39:41 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/iterm-intro/</guid>
+      <guid>https://www.yilianwu.io/posts/iterm-intro/</guid>
       <description>&lt;p&gt;電腦開著終端機在打程式很帥&lt;br&gt;
 但是面對螢幕上一行行密密麻麻的程式碼，&lt;br&gt;
 你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？&lt;/p&gt;</description>
@@ -38,10 +38,10 @@
     
     <item>
       <title>用GitHub Page搭配Hugo建立靜態網站</title>
-      <link>https://yilianwu.github.io/posts/my-first-post/</link>
+      <link>https://www.yilianwu.io/posts/my-first-post/</link>
       <pubDate>Mon, 28 Jan 2019 00:40:17 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/my-first-post/</guid>
+      <guid>https://www.yilianwu.io/posts/my-first-post/</guid>
       <description>&lt;p&gt;紀錄這個site的創建過程&lt;/p&gt;</description>
     </item>
     

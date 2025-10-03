@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Markdown on [ yilianwu ]</title>
-    <link>https://yilianwu.github.io/tags/markdown/</link>
+    <link>https://www.yilianwu.io/tags/markdown/</link>
     <description>Recent content in Markdown on [ yilianwu ]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Sun, 03 Feb 2019 20:42:27 +0800</lastBuildDate><atom:link href="https://yilianwu.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Feb 2019 20:42:27 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Intro to Markdown</title>
-      <link>https://yilianwu.github.io/posts/markdown-intro/</link>
+      <link>https://www.yilianwu.io/posts/markdown-intro/</link>
       <pubDate>Sun, 03 Feb 2019 20:42:27 +0800</pubDate>
       
-      <guid>https://yilianwu.github.io/posts/markdown-intro/</guid>
+      <guid>https://www.yilianwu.io/posts/markdown-intro/</guid>
       <description>&lt;p&gt;最近發現用Markdown來做筆記超好用的！&lt;br&gt;
 如果是平常用pages、word或記事本，常會因為寫完沒好好整理導致忘了什麼東西寫在哪，又或是整理起來很花時間，到最後又懶得整理了XDD&lt;/p&gt;</description>
     </item>
