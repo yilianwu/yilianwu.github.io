@@ -1,22 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>iTerm on [ yilianwu ]</title>
-    <link>https://www.yilianwu.io/tags/iterm/</link>
-    <description>Recent content in iTerm on [ yilianwu ]</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-tw</language>
-    <lastBuildDate>Tue, 05 Feb 2019 15:39:41 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/iterm/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>如何用 iTerm 美化你的終端機</title>
-      <link>https://www.yilianwu.io/posts/iterm-intro/</link>
-      <pubDate>Tue, 05 Feb 2019 15:39:41 +0800</pubDate>
-      
-      <guid>https://www.yilianwu.io/posts/iterm-intro/</guid>
-      <description>&lt;p&gt;電腦開著終端機在打程式很帥&lt;br&gt;
-但是面對螢幕上一行行密密麻麻的程式碼，&lt;br&gt;
-你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>iTerm on [ yilianwu ]</title><link>https://www.yilianwu.io/tags/iterm/</link><description>Recent content in iTerm on [ yilianwu ]</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Tue, 05 Feb 2019 15:39:41 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/iterm/index.xml" rel="self" type="application/rss+xml"/><item><title>如何用 iTerm 美化你的終端機</title><link>https://www.yilianwu.io/posts/iterm-intro/</link><pubDate>Tue, 05 Feb 2019 15:39:41 +0800</pubDate><guid>https://www.yilianwu.io/posts/iterm-intro/</guid><description>&lt;p>電腦開著終端機在打程式很帥&lt;br>
+但是面對螢幕上一行行密密麻麻的程式碼，&lt;br>
+你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？&lt;/p></description></item></channel></rss>

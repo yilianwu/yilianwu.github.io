@@ -1,1111 +1,27 @@
-<!DOCTYPE html>
-<html lang="zh-tw"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
-    <title>Setting Up DNS Server On CentOS 8>>[ yilianwu ]</title>
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-32x32.png" sizes="32x32">
-	  <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-16x16.png" sizes="16x16">
-
-    <link rel="stylesheet" href="https://www.yilianwu.io/css/styles.css">
-    <link rel="stylesheet" href="https://www.yilianwu.io/css/font.css">
-</head>
-<body><header>
-    <nav class="breadcrumb" id="breadcrumb">
-	     <h4><a href="https://www.yilianwu.io/">[ yilianwu ]</a></h4>
-	       
-            
-            <a href="https://www.yilianwu.io/info">INFO</a>
-            
-            <a href="https://www.yilianwu.io/posts">POSTS</a>
-            
-            <a href="https://www.yilianwu.io/works">WORKS</a>
-            
-    </nav>
-    <div class="menutime">
-      <a id='cd' ></a>
-      <a id='ct' ></a>
-      <script type="text/javascript" src="https://www.yilianwu.io/js/menutime.js"></script>
-    </div>
-</header>
-
-<main id="single">
-  <div id="post" class="white">
-	   <div class="container">
-       
-       
-
-
-
-
-
-
-
-
-
-<div class="post-toc">
-
-    <div class="post-toc-title"><strong>- Contents -</strong></div>
-
-    <div id="page-scrollspy" class="toc-nav">
-
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#scenario">
-                            Scenario
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#router">
-                            Router
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#primary-master-dns-server">
-                            Primary (Master) DNS Server
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#secondary-slave-dns-server">
-                            Secondary (Slave) DNS Server
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#agent">
-                            Agent
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#clientpc-proxy">
-                            ClientPC (proxy)
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#router-1">
-                            Router
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#hostname">
-                            Hostname
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#dhcp-server">
-                            DHCP Server
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#setting-router-as-a-dns-client">
-                            Setting Router As a DNS Client
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#master-dns-server">
-                            Master DNS Server
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#configure-dns-server">
-                            Configure DNS Server
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#create-zone-files">
-                            Create Zone Files
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#create-forward-zone">
-                            Create Forward Zone
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#create-reverse-zone">
-                            Create Reverse Zone
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#confuse-your-bind-version-number">
-                            Confuse your BIND version number
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#sshfp-record">
-                            SSHFP Record
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#generate-sshfp-records-remotely">
-                            Generate SSHFP Records Remotely
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#add-records-to-zone-files">
-                            Add records to zone files
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#dnssec">
-                            DNSSEC
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#based-on">
-                            Based on
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%e4%b8%89%e5%a4%a7%e4%bf%9d%e8%ad%89">
-                            三大保證
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#resource-record--ds--rrsi">
-                            Resource Record : DS &amp; RRSI
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#generate-ksk">
-                            Generate KSK
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#generate-zsk">
-                            Generate ZSK
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#signing-a-zone">
-                            Signing a Zone
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#create-trust-chain">
-                            Create Trust Chain
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#configuration">
-                            Configuration
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%e7%b6%ad%e8%ad%b7domain">
-                            維護Domain
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#start-the-dns-service">
-                            Start the DNS service
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#firewall-configuration">
-                            Firewall Configuration
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#test-dns">
-                            Test DNS
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#slave-dns-server">
-                            Slave DNS Server
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#general-configuration">
-                            General Configuration
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%e5%a4%9a%e5%80%8b-view-%e5%90%8c%e6%ad%a5%e5%88%b0-slave">
-                            多個 View 同步到 Slave
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#tsig">
-                            TSIG
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%e7%b5%a6-slave-%e5%a4%9a%e5%80%8bip">
-                            給 Slave 多個IP
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#firewall">
-                            Firewall
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-        
-            
-                
-                
-                    
-                    <ul class="nav">
-                    
-                    <ul class="nav">
-                    
-                    
-                        <li class="nav-item">
-                            <a class="nav-link text-left" href="#%e5%90%8c%e6%ad%a5">
-                            同步
-                            </a>
-                        </li>
-                    
-                    
-                    </ul>
-                    
-                    </ul>
-                    
-                
-            
-        
-
-    </div>
-
-</div>
-
-
-
-
-       
-       <div class="paperbg">
-            <div id="title">
-                <h1>Setting Up DNS Server On CentOS 8</h1>
-                
-	          </div>
-            <div class="post-meta">
-                <span class="post-time"> 2020-05-08 </span>
-                <div class="post-tag">
-                  
-                    <a class="tag-link" href="https://www.yilianwu.io/tags/centos/"> CentOS </a>
-                    <a class="tag-link" href="https://www.yilianwu.io/tags/dns/"> DNS </a>
-                    <a class="tag-link" href="https://www.yilianwu.io/tags/nctu/"> NCTU </a>
-                    </div>
-
-
-                <section class="post-content">
-                <p>Topology<br>
-<img src="https://i.imgur.com/J4rJp6N.png" alt="Imgur"></p>
-<h1 id="scenario">Scenario&nbsp;<a href="#scenario" class="anchor"></a> </h1>
-<h2 id="router">Router&nbsp;<a href="#router" class="anchor"></a> </h2>
-<pre tabindex="0"><code>Hostname             : router.0846101.nasa
+<!doctype html><html lang=zh-tw><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=google-site-verification content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg"><title>Setting Up DNS Server On CentOS 8>>[ yilianwu ]</title><link rel="shortcut icon" href=img/favicon.ico><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-16x16.png sizes=16x16><link rel=stylesheet href=https://www.yilianwu.io/css/styles.css><link rel=stylesheet href=https://www.yilianwu.io/css/font.css></head><body><header><nav class=breadcrumb id=breadcrumb><h4><a href=https://www.yilianwu.io/>[ yilianwu ]</a></h4><a href=https://www.yilianwu.io/info>INFO</a>
+<a href=https://www.yilianwu.io/posts>POSTS</a>
+<a href=https://www.yilianwu.io/works>WORKS</a></nav><div class=menutime><a id=cd></a>
+<a id=ct></a>
+<script type=text/javascript src=https://www.yilianwu.io/js/menutime.js></script></div></header><main id=single><div id=post class=white><div class=container><div class=post-toc><div class=post-toc-title><strong>- Contents -</strong></div><div id=page-scrollspy class=toc-nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#scenario>Scenario</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#router>Router</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#primary-master-dns-server>Primary (Master) DNS Server</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#secondary-slave-dns-server>Secondary (Slave) DNS Server</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#agent>Agent</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#clientpc-proxy>ClientPC (proxy)</a></li></ul></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#router-1>Router</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#hostname>Hostname</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#dhcp-server>DHCP Server</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#setting-router-as-a-dns-client>Setting Router As a DNS Client</a></li></ul></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#master-dns-server>Master DNS Server</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#configure-dns-server>Configure DNS Server</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#create-zone-files>Create Zone Files</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#create-forward-zone>Create Forward Zone</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#create-reverse-zone>Create Reverse Zone</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#confuse-your-bind-version-number>Confuse your BIND version number</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#sshfp-record>SSHFP Record</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#generate-sshfp-records-remotely>Generate SSHFP Records Remotely</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#add-records-to-zone-files>Add records to zone files</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#dnssec>DNSSEC</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#based-on>Based on</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e4%b8%89%e5%a4%a7%e4%bf%9d%e8%ad%89>三大保證</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#resource-record--ds--rrsi>Resource Record : DS & RRSI</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#generate-ksk>Generate KSK</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#generate-zsk>Generate ZSK</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#signing-a-zone>Signing a Zone</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#create-trust-chain>Create Trust Chain</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#configuration>Configuration</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e7%b6%ad%e8%ad%b7domain>維護Domain</a></li></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#start-the-dns-service>Start the DNS service</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#firewall-configuration>Firewall Configuration</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#test-dns>Test DNS</a></li></ul></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#slave-dns-server>Slave DNS Server</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#general-configuration>General Configuration</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e5%a4%9a%e5%80%8b-view-%e5%90%8c%e6%ad%a5%e5%88%b0-slave>多個 View 同步到 Slave</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#tsig>TSIG</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e7%b5%a6-slave-%e5%a4%9a%e5%80%8bip>給 Slave 多個IP</a></li></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#firewall>Firewall</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e5%90%8c%e6%ad%a5>同步</a></li></ul></ul></div></div><div class=paperbg><div id=title><h1>Setting Up DNS Server On CentOS 8</h1></div><div class=post-meta><span class=post-time>2020-05-08</span><div class=post-tag><a class=tag-link href=https://www.yilianwu.io/tags/centos/>CentOS</a>
+<a class=tag-link href=https://www.yilianwu.io/tags/dns/>DNS</a>
+<a class=tag-link href=https://www.yilianwu.io/tags/nctu/>NCTU</a></div><section class=post-content><p>Topology<br><img src=https://i.imgur.com/J4rJp6N.png alt=Imgur></p><h1 id=scenario>Scenario&nbsp;<a href=#scenario class=anchor></a></h1><h2 id=router>Router&nbsp;<a href=#router class=anchor></a></h2><pre tabindex=0><code>Hostname             : router.0846101.nasa
 IP Address           : 10.113.25.254/24
-</code></pre><h2 id="primary-master-dns-server">Primary (Master) DNS Server&nbsp;<a href="#primary-master-dns-server" class="anchor"></a> </h2>
-<pre tabindex="0"><code>Hostname             : ns1.0846101.nasa
+</code></pre><h2 id=primary-master-dns-server>Primary (Master) DNS Server&nbsp;<a href=#primary-master-dns-server class=anchor></a></h2><pre tabindex=0><code>Hostname             : ns1.0846101.nasa
 IP Address           : 10.113.25.1/24
-</code></pre><h2 id="secondary-slave-dns-server">Secondary (Slave) DNS Server&nbsp;<a href="#secondary-slave-dns-server" class="anchor"></a> </h2>
-<pre tabindex="0"><code>Hostname             : ns2.0846101.nasa
+</code></pre><h2 id=secondary-slave-dns-server>Secondary (Slave) DNS Server&nbsp;<a href=#secondary-slave-dns-server class=anchor></a></h2><pre tabindex=0><code>Hostname             : ns2.0846101.nasa
 IP Address           : 10.113.25.2/24
-</code></pre><h2 id="agent">Agent&nbsp;<a href="#agent" class="anchor"></a> </h2>
-<pre tabindex="0"><code>Hostname             : agent.0846101.nasa
+</code></pre><h2 id=agent>Agent&nbsp;<a href=#agent class=anchor></a></h2><pre tabindex=0><code>Hostname             : agent.0846101.nasa
 IP Address           : 10.113.25.129/24
-</code></pre><h2 id="clientpc-proxy">ClientPC (proxy)&nbsp;<a href="#clientpc-proxy" class="anchor"></a> </h2>
-<pre tabindex="0"><code>Hostname             : client-pc.0846101.nasa
+</code></pre><h2 id=clientpc-proxy>ClientPC (proxy)&nbsp;<a href=#clientpc-proxy class=anchor></a></h2><pre tabindex=0><code>Hostname             : client-pc.0846101.nasa
 IP Address           : 10.113.25.119/24
-</code></pre><h1 id="router-1">Router&nbsp;<a href="#router-1" class="anchor"></a> </h1>
-<h2 id="hostname">Hostname&nbsp;<a href="#hostname" class="anchor"></a> </h2>
-<p>跟hostname有關的兩個檔案： <code>/etc/sysconfig/network</code> and <code>/etc/hosts</code></p>
-<pre tabindex="0"><code>vim /etc/sysconfig/network
-</code></pre><pre tabindex="0"><code># Created by anaconda
+</code></pre><h1 id=router-1>Router&nbsp;<a href=#router-1 class=anchor></a></h1><h2 id=hostname>Hostname&nbsp;<a href=#hostname class=anchor></a></h2><p>跟hostname有關的兩個檔案： <code>/etc/sysconfig/network</code> and <code>/etc/hosts</code></p><pre tabindex=0><code>vim /etc/sysconfig/network
+</code></pre><pre tabindex=0><code># Created by anaconda
 HOSTNAME=router.0846101.nasa //localhost.localdomain
-</code></pre><pre tabindex="0"><code>vim /etc/hosts
-</code></pre><p>加在最後一行</p>
-<pre tabindex="0"><code>10.113.25.254   router.0846101.nasa
-</code></pre><p>ping 看看有沒有設定成功</p>
-<pre tabindex="0"><code>ping -c 2 router.0846101.nasa
-</code></pre><p>有的話就可以reboot<br>
-重開機後若還是@localhost 可以執行</p>
-<pre tabindex="0"><code>hostnamectl set-hostname router.0846101.nasa
-</code></pre><h2 id="dhcp-server">DHCP Server&nbsp;<a href="#dhcp-server" class="anchor"></a> </h2>
-<pre tabindex="0"><code># Add ns1 and ns2 to dns
+</code></pre><pre tabindex=0><code>vim /etc/hosts
+</code></pre><p>加在最後一行</p><pre tabindex=0><code>10.113.25.254   router.0846101.nasa
+</code></pre><p>ping 看看有沒有設定成功</p><pre tabindex=0><code>ping -c 2 router.0846101.nasa
+</code></pre><p>有的話就可以reboot<br>重開機後若還是@localhost 可以執行</p><pre tabindex=0><code>hostnamectl set-hostname router.0846101.nasa
+</code></pre><h2 id=dhcp-server>DHCP Server&nbsp;<a href=#dhcp-server class=anchor></a></h2><pre tabindex=0><code># Add ns1 and ns2 to dns
 option domain-name-servers 10.113.25.1, 10.113.25.2, 8.8.8.8;
 
 # Set fixed IP to ns1, ns2, and client-pc
@@ -1125,30 +41,18 @@ host client-pc {
         hardware ethernet 08:00:27:8b:6c:b7;
         fixed-address 10.113.25.119;
 }
-</code></pre><h2 id="setting-router-as-a-dns-client">Setting Router As a DNS Client&nbsp;<a href="#setting-router-as-a-dns-client" class="anchor"></a> </h2>
-<p>一般name servers會在<code>/etc/resolv.conf</code>設定<br>
-但重開機會被NetworkManager覆寫</p>
-<p>可以先到網卡設定 (Both enp0s3 and enp0s8)</p>
-<pre tabindex="0"><code>vim /etc/sysconfig/network-scripts/ifcfg-enp0s3
-</code></pre><p>新增一行</p>
-<pre tabindex="0"><code>PEERDNS=no
-</code></pre><p>再到<code>/etc/resolv.conf</code> 編輯name servers</p>
-<pre tabindex="0"><code>vim /etc/resolv.conf
-</code></pre><pre tabindex="0"><code>search 0846101.nasa
+</code></pre><h2 id=setting-router-as-a-dns-client>Setting Router As a DNS Client&nbsp;<a href=#setting-router-as-a-dns-client class=anchor></a></h2><p>一般name servers會在<code>/etc/resolv.conf</code>設定<br>但重開機會被NetworkManager覆寫</p><p>可以先到網卡設定 (Both enp0s3 and enp0s8)</p><pre tabindex=0><code>vim /etc/sysconfig/network-scripts/ifcfg-enp0s3
+</code></pre><p>新增一行</p><pre tabindex=0><code>PEERDNS=no
+</code></pre><p>再到<code>/etc/resolv.conf</code> 編輯name servers</p><pre tabindex=0><code>vim /etc/resolv.conf
+</code></pre><pre tabindex=0><code>search 0846101.nasa
 nameserver 10.113.25.1
 nameserver 10.113.25.2
 nameserver 8.8.8.8
-</code></pre><p>改<code>/etc/nsswitch.conf</code>的找尋hosts的順序<br>
-把DNS擺第一順位</p>
-<pre tabindex="0"><code>hosts:      dns files myhostname
-</code></pre><h1 id="master-dns-server">Master DNS Server&nbsp;<a href="#master-dns-server" class="anchor"></a> </h1>
-<p>Install Bind</p>
-<pre tabindex="0"><code>dnf install bind 
-</code></pre><p>Install Bind-Utils (to enable cmds like dig, nslookup&hellip;)</p>
-<pre tabindex="0"><code>dnf install bind-utils
-</code></pre><h2 id="configure-dns-server">Configure DNS Server&nbsp;<a href="#configure-dns-server" class="anchor"></a> </h2>
-<pre tabindex="0"><code>vim /etc/named.conf
-</code></pre><pre tabindex="0"><code># TSIG keys
+</code></pre><p>改<code>/etc/nsswitch.conf</code>的找尋hosts的順序<br>把DNS擺第一順位</p><pre tabindex=0><code>hosts:      dns files myhostname
+</code></pre><h1 id=master-dns-server>Master DNS Server&nbsp;<a href=#master-dns-server class=anchor></a></h1><p>Install Bind</p><pre tabindex=0><code>dnf install bind 
+</code></pre><p>Install Bind-Utils (to enable cmds like dig, nslookup&mldr;)</p><pre tabindex=0><code>dnf install bind-utils
+</code></pre><h2 id=configure-dns-server>Configure DNS Server&nbsp;<a href=#configure-dns-server class=anchor></a></h2><pre tabindex=0><code>vim /etc/named.conf
+</code></pre><pre tabindex=0><code># TSIG keys
 #key &#34;dotone-key&#34; {
 #       algorithm hmac-md5;
 #       secret &#34;OvexY/E9LNONtKlDlPERlg==&#34;;
@@ -1282,42 +186,8 @@ view &#34;viewothers&#34; {
                 allow-transfer { 10.113.25.129; 10.113.25.2; };
         };
 };
-</code></pre><h2 id="create-zone-files">Create Zone Files&nbsp;<a href="#create-zone-files" class="anchor"></a> </h2>
-<p>放在<code>/var/named</code></p>
-<table>
-<thead>
-<tr>
-<th>正查檔</th>
-<th>反查檔</th>
-<th>view</th>
-<th>BIND version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>named.0846101.one</td>
-<td>named.10.113.25.one</td>
-<td>named.10.113.25.viewone</td>
-<td>ver.0846101.nasa</td>
-</tr>
-<tr>
-<td>named.0846101.mysub</td>
-<td>named.10.113.25.mysub</td>
-<td>named.10.113.25.viewmysub</td>
-<td></td>
-</tr>
-<tr>
-<td>named.0846101</td>
-<td>named.10.113.25</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="create-forward-zone">Create Forward Zone&nbsp;<a href="#create-forward-zone" class="anchor"></a> </h3>
-<p>通用的正查檔</p>
-<pre tabindex="0"><code>vim /var/named/named.0846101.nasa
-</code></pre><pre tabindex="0"><code>$TTL            86400
+</code></pre><h2 id=create-zone-files>Create Zone Files&nbsp;<a href=#create-zone-files class=anchor></a></h2><p>放在<code>/var/named</code></p><table><thead><tr><th>正查檔</th><th>反查檔</th><th>view</th><th>BIND version</th></tr></thead><tbody><tr><td>named.0846101.one</td><td>named.10.113.25.one</td><td>named.10.113.25.viewone</td><td>ver.0846101.nasa</td></tr><tr><td>named.0846101.mysub</td><td>named.10.113.25.mysub</td><td>named.10.113.25.viewmysub</td><td></td></tr><tr><td>named.0846101</td><td>named.10.113.25</td><td></td><td></td></tr></tbody></table><h3 id=create-forward-zone>Create Forward Zone&nbsp;<a href=#create-forward-zone class=anchor></a></h3><p>通用的正查檔</p><pre tabindex=0><code>vim /var/named/named.0846101.nasa
+</code></pre><pre tabindex=0><code>$TTL            86400
 
 ;
 
@@ -1374,10 +244,8 @@ view            IN      A       10.113.25.87
 web             IN      CNAME   agent.0846101.nasa.
 
 nasa            IN      CNAME   nasa.cs.nctu.edu.tw.
-</code></pre><h3 id="create-reverse-zone">Create Reverse Zone&nbsp;<a href="#create-reverse-zone" class="anchor"></a> </h3>
-<p>通用的反查檔</p>
-<pre tabindex="0"><code>vim /var/named/named.10.113.25
-</code></pre><pre tabindex="0"><code>$TTL    600
+</code></pre><h3 id=create-reverse-zone>Create Reverse Zone&nbsp;<a href=#create-reverse-zone class=anchor></a></h3><p>通用的反查檔</p><pre tabindex=0><code>vim /var/named/named.10.113.25
+</code></pre><pre tabindex=0><code>$TTL    600
 $ORIGIN 25.113.10.in-addr.arpa.
 @       IN      SOA     ns1.0846101.nasa. root.0846101.nasa. ( 2020050502 10800 1200 3600000 3600 )
 ;
@@ -1389,27 +257,20 @@ $ORIGIN 25.113.10.in-addr.arpa.
 254     IN      PTR     router.0846101.nasa.
 ; for others
 87      IN      PTR     view.0846101.nasa.
-</code></pre><p>給10.113.1.0/24的view.0846101.nasa反查</p>
-<pre tabindex="0"><code>vim /var/named/named.10.113.25.viewone
-</code></pre><pre tabindex="0"><code>$TTL    600
+</code></pre><p>給10.113.1.0/24的view.0846101.nasa反查</p><pre tabindex=0><code>vim /var/named/named.10.113.25.viewone
+</code></pre><pre tabindex=0><code>$TTL    600
 $ORIGIN 235.113.140.in-addr.arpa.
 @       IN      SOA     ns1.0846101.nasa. root.0846101.nasa. ( 2020050605 10800 1200 3600000 3600 )
 
 131     IN      PTR     view.0846101.nasa.
-</code></pre><p>給10.113.25.0/24的view.0846101.nasa反查</p>
-<pre tabindex="0"><code>vim /var/named/named.10.113.25.viewmysub
-</code></pre><pre tabindex="0"><code>$TTL    600
+</code></pre><p>給10.113.25.0/24的view.0846101.nasa反查</p><pre tabindex=0><code>vim /var/named/named.10.113.25.viewmysub
+</code></pre><pre tabindex=0><code>$TTL    600
 $ORIGIN 235.113.140.in-addr.arpa.
 @       IN      SOA     ns1.0846101.nasa. root.0846101.nasa. ( 2020050605 10800 1200 3600000 3600 )
 
 151     IN      PTR     view.0846101.nasa.
-</code></pre><h3 id="confuse-your-bind-version-number">Confuse your BIND version number&nbsp;<a href="#confuse-your-bind-version-number" class="anchor"></a> </h3>
-<p>For ns1, use “Name Server 1”.<br>
-For ns2, use “Name Server 2”.<br>
-Only allow queries from your internal network.</p>
-<pre tabindex="0"><code>dig version.bind txt chaos @ns1.0846101.nasa
-</code></pre><p>在<code>/etc/named.conf</code>新增</p>
-<pre tabindex="0"><code>view &#34;chaos&#34; CH {
+</code></pre><h3 id=confuse-your-bind-version-number>Confuse your BIND version number&nbsp;<a href=#confuse-your-bind-version-number class=anchor></a></h3><p>For ns1, use “Name Server 1”.<br>For ns2, use “Name Server 2”.<br>Only allow queries from your internal network.</p><pre tabindex=0><code>dig version.bind txt chaos @ns1.0846101.nasa
+</code></pre><p>在<code>/etc/named.conf</code>新增</p><pre tabindex=0><code>view &#34;chaos&#34; CH {
     match-clients { &#34;mysubnet&#34;; };
     zone &#34;bind&#34; CH {
         type master;
@@ -1425,8 +286,8 @@ view &#34;chaosrefuse&#34; CH {
         allow-query { none; };
     };
 };
-</code></pre><pre tabindex="0"><code>vim /var/named/ver.0846101.nasa
-</code></pre><pre tabindex="0"><code>$TTL    3600
+</code></pre><pre tabindex=0><code>vim /var/named/ver.0846101.nasa
+</code></pre><pre tabindex=0><code>$TTL    3600
 @       86400       CH   SOA     ns1.0846101.nasa. root.0846101.nasa. (
                     2020050401      ; serial
                     3600            ; refresh
@@ -1437,29 +298,17 @@ view &#34;chaosrefuse&#34; CH {
 @                   CH  NS  ns1.0846101.nasa.
 
 version             CH  TXT &#34;Name Server 1&#34;
-</code></pre><h3 id="sshfp-record">SSHFP Record&nbsp;<a href="#sshfp-record" class="anchor"></a> </h3>
-<p>Add SSHFP record of your machines’ ssh key fingerprint.<br>
-The algorithm ECDSA and ED25519 should be implement.<br>
-The hash type SHA-256 should be implement.</p>
-<h4 id="generate-sshfp-records-remotely">Generate SSHFP Records Remotely&nbsp;<a href="#generate-sshfp-records-remotely" class="anchor"></a> </h4>
-<p>Download the script and make it executable</p>
-<pre tabindex="0"><code>wget https://gist.githubusercontent.com/webernetz/2ca7325555ce7f28f26daf5728386d82/raw/1c18dc43a05478771ac4693401a3c78205a4e710/grabsshfp.sh
-</code></pre><pre tabindex="0"><code>chmod u+x grabsshfp.sh
-</code></pre><p>And call it with the DNS name or IP address of the destination:</p>
-<pre tabindex="0"><code>./grabsshfp.sh 10.113.25.254
-</code></pre><p>會得到</p>
-<pre tabindex="0"><code>IN  SSHFP   [Algorithm] [Fingerprint Type]  [Fingerprint (in hex)]
-</code></pre><p>Algorithm(第一個數字)</p>
-<pre tabindex="0"><code>1   -   RSA
+</code></pre><h3 id=sshfp-record>SSHFP Record&nbsp;<a href=#sshfp-record class=anchor></a></h3><p>Add SSHFP record of your machines’ ssh key fingerprint.<br>The algorithm ECDSA and ED25519 should be implement.<br>The hash type SHA-256 should be implement.</p><h4 id=generate-sshfp-records-remotely>Generate SSHFP Records Remotely&nbsp;<a href=#generate-sshfp-records-remotely class=anchor></a></h4><p>Download the script and make it executable</p><pre tabindex=0><code>wget https://gist.githubusercontent.com/webernetz/2ca7325555ce7f28f26daf5728386d82/raw/1c18dc43a05478771ac4693401a3c78205a4e710/grabsshfp.sh
+</code></pre><pre tabindex=0><code>chmod u+x grabsshfp.sh
+</code></pre><p>And call it with the DNS name or IP address of the destination:</p><pre tabindex=0><code>./grabsshfp.sh 10.113.25.254
+</code></pre><p>會得到</p><pre tabindex=0><code>IN  SSHFP   [Algorithm] [Fingerprint Type]  [Fingerprint (in hex)]
+</code></pre><p>Algorithm(第一個數字)</p><pre tabindex=0><code>1   -   RSA
 2   -   DSA
 3   -   ECDSA
 4   -   ED25519
-</code></pre><p>Fingerprint Type(第二個數字)</p>
-<pre tabindex="0"><code>1   -   SHA-1
+</code></pre><p>Fingerprint Type(第二個數字)</p><pre tabindex=0><code>1   -   SHA-1
 2   -   SHA-256
-</code></pre><h4 id="add-records-to-zone-files">Add records to zone files&nbsp;<a href="#add-records-to-zone-files" class="anchor"></a> </h4>
-<p>加到<code>/var/named/named.0846101.nasa*</code></p>
-<pre tabindex="0"><code>; SSHFP
+</code></pre><h4 id=add-records-to-zone-files>Add records to zone files&nbsp;<a href=#add-records-to-zone-files class=anchor></a></h4><p>加到<code>/var/named/named.0846101.nasa*</code></p><pre tabindex=0><code>; SSHFP
 ns1             IN      SSHFP   3 2 3e7b3a4ddc106ac972a2719c475b496b82248abefe06acca8d2e680def01a06c
 ns1             IN      SSHFP   4 2 cb2890ea5649b06c24cf7c22e54a2892fcfb73e169ed684e05697fbcb51cf86d
 
@@ -1471,57 +320,22 @@ router          IN      SSHFP   4 2 bdbff4baf39c4a222107697f69401126cb4ffcf52c11
 
 agent           IN      SSHFP   3 2 681fecc886e9433284ce3c9630970028e44e7a779f88940fdfac50999c02ad5e
 agent           IN      SSHFP   4 2 e1c0088d8ed2f4ed27c990b46a9f75dad7ad0f7fb45356316a637435d3f57c71
-</code></pre><p>Look up SSHFP records</p>
-<pre tabindex="0"><code>dig router.0846101.nasa sshfp
-</code></pre><h2 id="dnssec">DNSSEC&nbsp;<a href="#dnssec" class="anchor"></a> </h2>
-<p>Domain Name System SECurity Extensions<br>
-傳統的DNS沒有安全機制，容易遭受攻擊</p>
-<ul>
-<li>Spoofing</li>
-<li>Man‐in‐the‐Middle Attack</li>
-<li>Cache Poisoning Attack</li>
-</ul>
-<p>在解析網域名稱的過程中加上驗證的機制<br>
-當遇到DNS請求時，會先回上層取得DNSKEY來做認證比對<br>
-確保解析網域名稱的過程是安全的，才能進行或回應下一步驟的DNS請求</p>
-<h3 id="based-on">Based on&nbsp;<a href="#based-on" class="anchor"></a> </h3>
-<ul>
-<li>PKI (Public Key Infrastructure) Public Key / Private Key</li>
-<li>Hashing</li>
-<li>Signature (數位簽章)</li>
-</ul>
-<h3 id="三大保證">三大保證&nbsp;<a href="#三大保證" class="anchor"></a> </h3>
-<ol>
-<li>來源驗證性 (Origin Authentication)</li>
-<li>資料完整性 (Data Integrity)</li>
-<li>受驗證的不存在性 (Authenticated Denial of Existence)</li>
-</ol>
-<h3 id="resource-record--ds--rrsi">Resource Record : DS &amp; RRSI&nbsp;<a href="#resource-record--ds--rrsi" class="anchor"></a> </h3>
-<h3 id="generate-ksk">Generate KSK&nbsp;<a href="#generate-ksk" class="anchor"></a> </h3>
-<p>Key Signing Key</p>
-<pre tabindex="0"><code>dnssec-keygen -a RSASHA256 -b 2048 -f KSK -n ZONE 0846101.nasa
-</code></pre><p>產生兩個key</p>
-<pre tabindex="0"><code>K0846101.nasa.+008+29014.key        //public key
+</code></pre><p>Look up SSHFP records</p><pre tabindex=0><code>dig router.0846101.nasa sshfp
+</code></pre><h2 id=dnssec>DNSSEC&nbsp;<a href=#dnssec class=anchor></a></h2><p>Domain Name System SECurity Extensions<br>傳統的DNS沒有安全機制，容易遭受攻擊</p><ul><li>Spoofing</li><li>Man‐in‐the‐Middle Attack</li><li>Cache Poisoning Attack</li></ul><p>在解析網域名稱的過程中加上驗證的機制<br>當遇到DNS請求時，會先回上層取得DNSKEY來做認證比對<br>確保解析網域名稱的過程是安全的，才能進行或回應下一步驟的DNS請求</p><h3 id=based-on>Based on&nbsp;<a href=#based-on class=anchor></a></h3><ul><li>PKI (Public Key Infrastructure) Public Key / Private Key</li><li>Hashing</li><li>Signature (數位簽章)</li></ul><h3 id=三大保證>三大保證&nbsp;<a href=#三大保證 class=anchor></a></h3><ol><li>來源驗證性 (Origin Authentication)</li><li>資料完整性 (Data Integrity)</li><li>受驗證的不存在性 (Authenticated Denial of Existence)</li></ol><h3 id=resource-record--ds--rrsi>Resource Record : DS & RRSI&nbsp;<a href=#resource-record--ds--rrsi class=anchor></a></h3><h3 id=generate-ksk>Generate KSK&nbsp;<a href=#generate-ksk class=anchor></a></h3><p>Key Signing Key</p><pre tabindex=0><code>dnssec-keygen -a RSASHA256 -b 2048 -f KSK -n ZONE 0846101.nasa
+</code></pre><p>產生兩個key</p><pre tabindex=0><code>K0846101.nasa.+008+29014.key        //public key
 K0846101.nasa.+008+29014.private    //private key
-</code></pre><h3 id="generate-zsk">Generate ZSK&nbsp;<a href="#generate-zsk" class="anchor"></a> </h3>
-<p>Zone Signing Key</p>
-<pre tabindex="0"><code>dnssec-keygen -a RSASHA256 -b 2048 -n ZONE 0846101.nasa
-</code></pre><p>產生兩個key</p>
-<pre tabindex="0"><code>K0846101.nasa.+008+00945.key        //public key
+</code></pre><h3 id=generate-zsk>Generate ZSK&nbsp;<a href=#generate-zsk class=anchor></a></h3><p>Zone Signing Key</p><pre tabindex=0><code>dnssec-keygen -a RSASHA256 -b 2048 -n ZONE 0846101.nasa
+</code></pre><p>產生兩個key</p><pre tabindex=0><code>K0846101.nasa.+008+00945.key        //public key
 K0846101.nasa.+008+00945.private    //private key
-</code></pre><p>我把這四個key放在<code>/var/named/keys</code></p>
-<h3 id="signing-a-zone">Signing a Zone&nbsp;<a href="#signing-a-zone" class="anchor"></a> </h3>
-<p>Include keys in zone files <code>/var/named/named.0846101.nasa.one</code>, <code>/var/named/named.0846101.nasa.mysub</code> ,and <code>/var/named/named.0846101.nasa</code></p>
-<pre tabindex="0"><code>$INCLUDE        /etc/named/keys/K0846101.nasa.+008+29014.key ;KSK
+</code></pre><p>我把這四個key放在<code>/var/named/keys</code></p><h3 id=signing-a-zone>Signing a Zone&nbsp;<a href=#signing-a-zone class=anchor></a></h3><p>Include keys in zone files <code>/var/named/named.0846101.nasa.one</code>, <code>/var/named/named.0846101.nasa.mysub</code> ,and <code>/var/named/named.0846101.nasa</code></p><pre tabindex=0><code>$INCLUDE        /etc/named/keys/K0846101.nasa.+008+29014.key ;KSK
 $INCLUDE        /etc/named/keys/K0846101.nasa.+008+00945.key ;ZSK
-</code></pre><p>NSEC</p>
-<pre tabindex="0"><code>dnssec-signzone \
+</code></pre><p>NSEC</p><pre tabindex=0><code>dnssec-signzone \
 -o 0846101.nasa \
 -t \
 -k /etc/named/keys/K0846101.nasa.+008+29014.key \
 /var/named/named.0846101.nasa \
 /etc/named/keys/K0846101.nasa.+008+00945.key
-</code></pre><pre tabindex="0"><code>Verifying the zone using the following algorithms: RSASHA256.
+</code></pre><pre tabindex=0><code>Verifying the zone using the following algorithms: RSASHA256.
 Zone fully signed:
 Algorithm: RSASHA256: KSKs: 1 active, 0 stand-by, 0 revoked
                       ZSKs: 1 active, 0 stand-by, 0 revoked
@@ -1534,8 +348,7 @@ Signatures unsuccessfully verified:          0
 Signing time in seconds:                 0.026
 Signatures per second:                 934.928
 Runtime in seconds:                      0.041
-</code></pre><p>NSEC3</p>
-<pre tabindex="0"><code>dnssec-signzone \
+</code></pre><p>NSEC3</p><pre tabindex=0><code>dnssec-signzone \
 -3 55844b7f \                                       //NSEC3使用的salt值
 -H 100 \                                            //NSEC3使用的iteration值
 -u \                                                //更新NSEC/NSEC3
@@ -1544,7 +357,7 @@ Runtime in seconds:                      0.041
 -k /etc/named/keys/K0846101.nasa.+008+29014.key \   //KSK publickey
 /var/named/named.0846101.nasa \                     //要被簽的zone file
 /etc/named/keys/K0846101.nasa.+008+00945.key        //ZSK publickey
-</code></pre><pre tabindex="0"><code>Verifying the zone using the following algorithms: RSASHA256.
+</code></pre><pre tabindex=0><code>Verifying the zone using the following algorithms: RSASHA256.
 Zone fully signed:
 Algorithm: RSASHA256: KSKs: 1 active, 0 stand-by, 0 revoked
                       ZSKs: 1 active, 0 stand-by, 0 revoked
@@ -1557,17 +370,10 @@ Signatures unsuccessfully verified:          0
 Signing time in seconds:                 0.030
 Signatures per second:                 891.736
 Runtime in seconds:                      0.040
-</code></pre><h3 id="create-trust-chain">Create Trust Chain&nbsp;<a href="#create-trust-chain" class="anchor"></a> </h3>
-<pre tabindex="0"><code>dnssec-dsfromkey /etc/named/keys/K0846101.nasa.+008+29014.key   //KSK
-</code></pre><p><img src="https://i.imgur.com/XhxQY1U.png" alt="Imgur">
-Upload DS Record to <code>nasa.</code><br>
-我選擇第二個<br>
-<img src="https://i.imgur.com/yjCP8zr.png" alt="Imgur"></p>
-<h3 id="configuration">Configuration&nbsp;<a href="#configuration" class="anchor"></a> </h3>
-<p>只列出要新增或修改的地方<br>
-把<code>.signed</code>的zone files替換上去</p>
-<pre tabindex="0"><code>vim /etc/named.conf
-</code></pre><pre tabindex="0"><code>#Global settings
+</code></pre><h3 id=create-trust-chain>Create Trust Chain&nbsp;<a href=#create-trust-chain class=anchor></a></h3><pre tabindex=0><code>dnssec-dsfromkey /etc/named/keys/K0846101.nasa.+008+29014.key   //KSK
+</code></pre><p><img src=https://i.imgur.com/XhxQY1U.png alt=Imgur>
+Upload DS Record to <code>nasa.</code><br>我選擇第二個<br><img src=https://i.imgur.com/yjCP8zr.png alt=Imgur></p><h3 id=configuration>Configuration&nbsp;<a href=#configuration class=anchor></a></h3><p>只列出要新增或修改的地方<br>把<code>.signed</code>的zone files替換上去</p><pre tabindex=0><code>vim /etc/named.conf
+</code></pre><pre tabindex=0><code>#Global settings
 options {
 
         dnssec-enable yes;
@@ -1599,53 +405,22 @@ view &#34;viewothers&#34; {
         };
 
 };
-</code></pre><h3 id="維護domain">維護Domain&nbsp;<a href="#維護domain" class="anchor"></a> </h3>
-<ul>
-<li>RR修改
-<ul>
-<li>修改原始zone file (rndc freeze)</li>
-<li>凍結zone</li>
-<li>簽署zone file</li>
-<li>解凍zone使其生效 (rndc thaw)</li>
-</ul>
-</li>
-<li>退回DNS
-<ul>
-<li>要求上層拿掉DS record</li>
-</ul>
-</li>
-</ul>
-<h2 id="start-the-dns-service">Start the DNS service&nbsp;<a href="#start-the-dns-service" class="anchor"></a> </h2>
-<p>Enable and start DNS service:</p>
-<pre tabindex="0"><code>systemctl enable named
+</code></pre><h3 id=維護domain>維護Domain&nbsp;<a href=#維護domain class=anchor></a></h3><ul><li>RR修改<ul><li>修改原始zone file (rndc freeze)</li><li>凍結zone</li><li>簽署zone file</li><li>解凍zone使其生效 (rndc thaw)</li></ul></li><li>退回DNS<ul><li>要求上層拿掉DS record</li></ul></li></ul><h2 id=start-the-dns-service>Start the DNS service&nbsp;<a href=#start-the-dns-service class=anchor></a></h2><p>Enable and start DNS service:</p><pre tabindex=0><code>systemctl enable named
 systemctl start named
-</code></pre><h2 id="firewall-configuration">Firewall Configuration&nbsp;<a href="#firewall-configuration" class="anchor"></a> </h2>
-<p>Firewall預設是關的<br>
-將DNS的 TCP, UDP port 53打開</p>
-<pre tabindex="0"><code>firewall-cmd --permanent --add-port=53/tcp
+</code></pre><h2 id=firewall-configuration>Firewall Configuration&nbsp;<a href=#firewall-configuration class=anchor></a></h2><p>Firewall預設是關的<br>將DNS的 TCP, UDP port 53打開</p><pre tabindex=0><code>firewall-cmd --permanent --add-port=53/tcp
 firewall-cmd --permanent --add-port=53/udp
 firewall-cmd --reload
-</code></pre><p>Router的iptables規則也要改</p>
-<pre tabindex="0"><code>vim /etc/sysconfig/iptables
-</code></pre><pre tabindex="0"><code>-A INPUT -p tcp --dport 53 -j ACCEPT
+</code></pre><p>Router的iptables規則也要改</p><pre tabindex=0><code>vim /etc/sysconfig/iptables
+</code></pre><pre tabindex=0><code>-A INPUT -p tcp --dport 53 -j ACCEPT
 -A INPUT -p udp --dport 53 -j ACCEPT
-</code></pre><pre tabindex="0"><code>-A FORWARD -p tcp --dport 53 -j ACCEPT
+</code></pre><pre tabindex=0><code>-A FORWARD -p tcp --dport 53 -j ACCEPT
 -A FORWARD -p udp --dport 53 -j ACCEPT
-</code></pre><h2 id="test-dns">Test DNS&nbsp;<a href="#test-dns" class="anchor"></a> </h2>
-<p>Restart BIND before testing</p>
-<pre tabindex="0"><code>systemctl restart named
-</code></pre><p>Forward Look up</p>
-<pre tabindex="0"><code>dig view.0846101.nasa @10.113.25.1
-</code></pre><p>Reverse Look up</p>
-<pre tabindex="0"><code>dig -x 10.113.25.254 @10.113.25.1
-</code></pre><p>AXFR</p>
-<pre tabindex="0"><code>dig axfr 0846101.nasa @10.113.25.1
-</code></pre><p>SOA</p>
-<pre tabindex="0"><code>dig -t soa router.0846101.nasa
-</code></pre><h1 id="slave-dns-server">Slave DNS Server&nbsp;<a href="#slave-dns-server" class="anchor"></a> </h1>
-<h2 id="general-configuration">General Configuration&nbsp;<a href="#general-configuration" class="anchor"></a> </h2>
-<p><code>/etc/named.conf</code></p>
-<pre tabindex="0"><code>options {
+</code></pre><h2 id=test-dns>Test DNS&nbsp;<a href=#test-dns class=anchor></a></h2><p>Restart BIND before testing</p><pre tabindex=0><code>systemctl restart named
+</code></pre><p>Forward Look up</p><pre tabindex=0><code>dig view.0846101.nasa @10.113.25.1
+</code></pre><p>Reverse Look up</p><pre tabindex=0><code>dig -x 10.113.25.254 @10.113.25.1
+</code></pre><p>AXFR</p><pre tabindex=0><code>dig axfr 0846101.nasa @10.113.25.1
+</code></pre><p>SOA</p><pre tabindex=0><code>dig -t soa router.0846101.nasa
+</code></pre><h1 id=slave-dns-server>Slave DNS Server&nbsp;<a href=#slave-dns-server class=anchor></a></h1><h2 id=general-configuration>General Configuration&nbsp;<a href=#general-configuration class=anchor></a></h2><p><code>/etc/named.conf</code></p><pre tabindex=0><code>options {
 
         listen-on port 53 { any; };
 
@@ -1664,43 +439,10 @@ firewall-cmd --reload
         dnssec-enable yes;
         dnssec-validation yes;
 };
-</code></pre><h2 id="多個-view-同步到-slave">多個 View 同步到 Slave&nbsp;<a href="#多個-view-同步到-slave" class="anchor"></a> </h2>
-<p>VIEW</p>
-<ul>
-<li>Add A record for view.{your_domain}.
-<ul>
-<li>For queries from 10.113.1.x/25
-<ul>
-<li>Answer 140.113.235.131</li>
-</ul>
-</li>
-<li>For queries from 10.113.ID.x/24
-<ul>
-<li>Answer 140.113.235.151</li>
-</ul>
-</li>
-<li>For other queries
-<ul>
-<li>Answer 10.113.ID.87</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>兩個方法</p>
-<ol>
-<li>TSIG</li>
-<li>給 Slave 多個IP</li>
-</ol>
-<h3 id="tsig">TSIG&nbsp;<a href="#tsig" class="anchor"></a> </h3>
-<p>Transaction Signature<br>
-Generate 3 keys in Master DNS</p>
-<pre tabindex="0"><code>dnssec-keygen -a HMAC-MD5 -b 128 -n Host dotone-key
+</code></pre><h2 id=多個-view-同步到-slave>多個 View 同步到 Slave&nbsp;<a href=#多個-view-同步到-slave class=anchor></a></h2><p>VIEW</p><ul><li>Add A record for view.{your_domain}.<ul><li>For queries from 10.113.1.x/25<ul><li>Answer 140.113.235.131</li></ul></li><li>For queries from 10.113.ID.x/24<ul><li>Answer 140.113.235.151</li></ul></li><li>For other queries<ul><li>Answer 10.113.ID.87</li></ul></li></ul></li></ul><p>兩個方法</p><ol><li>TSIG</li><li>給 Slave 多個IP</li></ol><h3 id=tsig>TSIG&nbsp;<a href=#tsig class=anchor></a></h3><p>Transaction Signature<br>Generate 3 keys in Master DNS</p><pre tabindex=0><code>dnssec-keygen -a HMAC-MD5 -b 128 -n Host dotone-key
 dnssec-keygen -a HMAC-MD5 -b 128 -n Host mysub-key
 dnssec-keygen -a HMAC-MD5 -b 128 -n Host others-key
-</code></pre><p>會在<code>/etc/ssh</code>產生三組Keys<br>
-把<code>.key</code>的內容cat出來寫入Master、Slave的<code>/etc/named.conf</code></p>
-<pre tabindex="0"><code>key &#34;dotone-key&#34; {
+</code></pre><p>會在<code>/etc/ssh</code>產生三組Keys<br>把<code>.key</code>的內容cat出來寫入Master、Slave的<code>/etc/named.conf</code></p><pre tabindex=0><code>key &#34;dotone-key&#34; {
        algorithm hmac-md5;
        secret &#34;OvexY/E9LNONtKlDlPERlg==&#34;;
 };
@@ -1714,8 +456,7 @@ key &#34;others-key&#34; {
        algorithm hmac-md5;
        secret &#34;9ZA6TNRXbaJAimpTsEi2Xw==&#34;;
 };
-</code></pre><p>ns1<code>/etc/named.conf</code></p>
-<pre tabindex="0"><code>acl dotone { 10.113.1.0/24; };
+</code></pre><p>ns1<code>/etc/named.conf</code></p><pre tabindex=0><code>acl dotone { 10.113.1.0/24; };
 acl mysubnet { 10.113.25.0/24; };
 acl others { any; };
 
@@ -1795,8 +536,7 @@ view &#34;viewothers&#34; {
                 masters { 10.113.0.254; };
         };
 };
-</code></pre><p>ns2 <code>/etc/named.conf</code></p>
-<pre tabindex="0"><code>view &#34;view1&#34; {
+</code></pre><p>ns2 <code>/etc/named.conf</code></p><pre tabindex=0><code>view &#34;view1&#34; {
         match-clients { !key mysub-key; !key others-key; key dotone-key; dotone; };
         server 10.113.25.1 { keys dotone-key; };
 
@@ -1884,31 +624,12 @@ view &#34;viewothers&#34; {
                 allow-transfer { 10.113.25.129; };
         };
 };
-</code></pre><h3 id="給-slave-多個ip">給 Slave 多個IP&nbsp;<a href="#給-slave-多個ip" class="anchor"></a> </h3>
-<p>分配IP</p>
-<table>
-<thead>
-<tr>
-<th>10.113.1.0/24</th>
-<th>10.113.25.0/24</th>
-<th>others</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10.113.25.222</td>
-<td>10.113.25.22</td>
-<td>10.113.25.2</td>
-</tr>
-</tbody>
-</table>
-<p>設定</p>
-<pre tabindex="0"><code>vim /etc/sysconfig/network-scripts/ifcfg-enp0s3
-</code></pre><pre tabindex="0"><code>IPADDR1=&#34;10.113.25.22&#34;
+</code></pre><h3 id=給-slave-多個ip>給 Slave 多個IP&nbsp;<a href=#給-slave-多個ip class=anchor></a></h3><p>分配IP</p><table><thead><tr><th>10.113.1.0/24</th><th>10.113.25.0/24</th><th>others</th></tr></thead><tbody><tr><td>10.113.25.222</td><td>10.113.25.22</td><td>10.113.25.2</td></tr></tbody></table><p>設定</p><pre tabindex=0><code>vim /etc/sysconfig/network-scripts/ifcfg-enp0s3
+</code></pre><pre tabindex=0><code>IPADDR1=&#34;10.113.25.22&#34;
 IPADDR2=&#34;10.113.25.222&#34;
 PREFIX1=&#34;24&#34;
 PREFIX2=&#34;24&#34;
-</code></pre><pre tabindex="0"><code>view &#34;view1&#34; {
+</code></pre><pre tabindex=0><code>view &#34;view1&#34; {
 
         match-clients { dotone; };
         zone &#34;0846101.nasa&#34; IN {
@@ -2001,56 +722,21 @@ view &#34;viewothers&#34; {
                 allow-transfer { 10.113.25.129; 10.113.25.119; 10.113.25.2; };
         };
 };
-</code></pre><h2 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor"></a> </h2>
-<p>Firewall預設是關的<br>
-將DNS的 TCP, UDP port 53打開</p>
-<pre tabindex="0"><code>firewall-cmd --permanent --add-port=53/tcp
+</code></pre><h2 id=firewall>Firewall&nbsp;<a href=#firewall class=anchor></a></h2><p>Firewall預設是關的<br>將DNS的 TCP, UDP port 53打開</p><pre tabindex=0><code>firewall-cmd --permanent --add-port=53/tcp
 firewall-cmd --permanent --add-port=53/udp
 firewall-cmd --reload
-</code></pre><h2 id="同步">同步&nbsp;<a href="#同步" class="anchor"></a> </h2>
-<p>一般只要Master的zone files有更動<br>
-更新好serial 就會自動同步到Slave</p>
-<p>但也可以<br>
-手動同步Master</p>
-<pre tabindex="0"><code>rndc retransfer 0846101.nasa IN view1
+</code></pre><h2 id=同步>同步&nbsp;<a href=#同步 class=anchor></a></h2><p>一般只要Master的zone files有更動<br>更新好serial 就會自動同步到Slave</p><p>但也可以<br>手動同步Master</p><pre tabindex=0><code>rndc retransfer 0846101.nasa IN view1
 rndc retransfer 0846101.nasa IN viewmine
 rndc retransfer 0846101.nasa IN viewothers
-</code></pre>
-                </section>
-        
-            </div>
-	     </div>
-
-
-
-     </div>
-  </div>
-</main>
-<footer class="sand">
-
-	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
-	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
-	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
-	
-	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
-	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
-
-    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
-</footer>
-<script src="https://code.jquery.com/jquery-latest.js"></script>
-<script>
-	$('.post-content h1').prepend("§ ");
-</script>
-<script type="text/x-mathjax-config">
+</code></pre></section></div></div></div></div></main><footer class=sand><a href=https://www.facebook.com/beatboxyilianwu target=_blank><img src=https://i.imgur.com/EJhxgWk.png height=30 width=30></a>
+<a href=https://twitter.com/YiLianWu target=_blank><img src=https://i.imgur.com/KvvGcoN.png height=30 width=30></a>
+<a href=https://www.instagram.com/weelian/ target=_blank><img src=https://i.imgur.com/FVUwWv0.png height=30 width=30></a>
+<a href=https://github.com/yilianwu target=_blank><img src=https://i.imgur.com/BIgEqmF.png height=30 width=30></a>
+<a href=https://www.linkedin.com/in/yilianwu/ target=_blank><img src=https://i.imgur.com/hCGvLEq.png height=30 width=30></a>
+<span style=display:block class=footer-text>&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href=https://gohugo.io/ target=_blank>Hugo</a></span></footer><script src=https://code.jquery.com/jquery-latest.js></script>
+<script>$(".post-content h1").prepend("§ ")</script><script type=text/x-mathjax-config>
     MathJax.Hub.Config({
         displayAlign: "left"
     });
-</script>
-<script type="text/javascript"
-	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script> 
-<link rel="stylesheet" href="https://www.yilianwu.io/css/solarized-light.css"/>
-<script src="https://www.yilianwu.io/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-</body>
-</html>
+</script><script type=text/javascript src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel=stylesheet href=https://www.yilianwu.io/css/solarized-light.css><script src=https://www.yilianwu.io/js/highlight.pack.js></script>
+<script>hljs.initHighlightingOnLoad()</script></body></html>

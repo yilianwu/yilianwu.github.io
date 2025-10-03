@@ -1,21 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Google Map on [ yilianwu ]</title>
-    <link>https://www.yilianwu.io/tags/google-map/</link>
-    <description>Recent content in Google Map on [ yilianwu ]</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-tw</language>
-    <lastBuildDate>Tue, 14 Mar 2023 18:00:41 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/google-map/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>製作自己的Google街景</title>
-      <link>https://www.yilianwu.io/posts/google-street-view-diy/</link>
-      <pubDate>Tue, 14 Mar 2023 18:00:41 +0800</pubDate>
-      
-      <guid>https://www.yilianwu.io/posts/google-street-view-diy/</guid>
-      <description>&lt;p&gt;從來沒想過自己有一天居然會走上Google街景攝影師之路
-因為工作上有需要將「戶外裝置作品 零死角的 新增至 Google Map 街景圖資」的需求，所以有特別去研究一般人要怎麼製作自己街景圖資 🗺&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Google Map on [ yilianwu ]</title><link>https://www.yilianwu.io/tags/google-map/</link><description>Recent content in Google Map on [ yilianwu ]</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Tue, 14 Mar 2023 18:00:41 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/google-map/index.xml" rel="self" type="application/rss+xml"/><item><title>製作自己的Google街景</title><link>https://www.yilianwu.io/posts/google-street-view-diy/</link><pubDate>Tue, 14 Mar 2023 18:00:41 +0800</pubDate><guid>https://www.yilianwu.io/posts/google-street-view-diy/</guid><description>&lt;p>從來沒想過自己有一天居然會走上Google街景攝影師之路
+因為工作上有需要將「戶外裝置作品 零死角的 新增至 Google Map 街景圖資」的需求，所以有特別去研究一般人要怎麼製作自己街景圖資 🗺&lt;/p></description></item></channel></rss>

@@ -1,63 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Mac on [ yilianwu ]</title>
-    <link>https://www.yilianwu.io/tags/mac/</link>
-    <description>Recent content in Mac on [ yilianwu ]</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-tw</language>
-    <lastBuildDate>Fri, 22 May 2020 22:38:55 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/mac/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>自己動手升級 MacBook Pro 的SSD</title>
-      <link>https://www.yilianwu.io/posts/upgrade-macbook-ssd/</link>
-      <pubDate>Fri, 22 May 2020 22:38:55 +0800</pubDate>
-      
-      <guid>https://www.yilianwu.io/posts/upgrade-macbook-ssd/</guid>
-      <description>&lt;p&gt;使用5年的13吋 MacBook Pro 要來升級SSD囉&lt;br&gt;
-高中買的時候因為預算有限，當時買的容量大小是256GB的&lt;br&gt;
-用了這麼久，容量也都快不敷使用了 決定來DIY升級！&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>製作 macOS 開機隨身碟</title>
-      <link>https://www.yilianwu.io/posts/macos-bootable-installer/</link>
-      <pubDate>Thu, 21 May 2020 14:58:41 +0800</pubDate>
-      
-      <guid>https://www.yilianwu.io/posts/macos-bootable-installer/</guid>
-      <description>&lt;p&gt;製作系統開機隨身碟之前要先到App Store下載Mac OS X作業系統&lt;br&gt;
-但有時候舊版本的OS已經找不到了該怎麼辦？&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>如何在我的行事曆中新增 Facebook 活動？</title>
-      <link>https://www.yilianwu.io/posts/facebook-events-on-icalendar/</link>
-      <pubDate>Sun, 24 Nov 2019 00:44:25 +0800</pubDate>
-      
-      <guid>https://www.yilianwu.io/posts/facebook-events-on-icalendar/</guid>
-      <description>&lt;p&gt;現在有很多的活動都會在Facebook建立活動頁面&lt;br&gt;
-我是個懶人，很依靠Facebook會給我活動提醒&lt;br&gt;
-但自從Mac更新某個版本後，iCloud除了Mail帳號外，不能連結第三方應用程式帳號了&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>我常用的Mac指令</title>
-      <link>https://www.yilianwu.io/posts/mac-commandlines/</link>
-      <pubDate>Sun, 03 Mar 2019 21:59:58 +0800</pubDate>
-      
-      <guid>https://www.yilianwu.io/posts/mac-commandlines/</guid>
-      <description>&lt;p&gt;一些常用到的指令筆記&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>如何用 iTerm 美化你的終端機</title>
-      <link>https://www.yilianwu.io/posts/iterm-intro/</link>
-      <pubDate>Tue, 05 Feb 2019 15:39:41 +0800</pubDate>
-      
-      <guid>https://www.yilianwu.io/posts/iterm-intro/</guid>
-      <description>&lt;p&gt;電腦開著終端機在打程式很帥&lt;br&gt;
-但是面對螢幕上一行行密密麻麻的程式碼，&lt;br&gt;
-你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mac on [ yilianwu ]</title><link>https://www.yilianwu.io/tags/mac/</link><description>Recent content in Mac on [ yilianwu ]</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Fri, 22 May 2020 22:38:55 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/mac/index.xml" rel="self" type="application/rss+xml"/><item><title>自己動手升級 MacBook Pro 的SSD</title><link>https://www.yilianwu.io/posts/upgrade-macbook-ssd/</link><pubDate>Fri, 22 May 2020 22:38:55 +0800</pubDate><guid>https://www.yilianwu.io/posts/upgrade-macbook-ssd/</guid><description>&lt;p>使用5年的13吋 MacBook Pro 要來升級SSD囉&lt;br>
+高中買的時候因為預算有限，當時買的容量大小是256GB的&lt;br>
+用了這麼久，容量也都快不敷使用了 決定來DIY升級！&lt;/p></description></item><item><title>製作 macOS 開機隨身碟</title><link>https://www.yilianwu.io/posts/macos-bootable-installer/</link><pubDate>Thu, 21 May 2020 14:58:41 +0800</pubDate><guid>https://www.yilianwu.io/posts/macos-bootable-installer/</guid><description>&lt;p>製作系統開機隨身碟之前要先到App Store下載Mac OS X作業系統&lt;br>
+但有時候舊版本的OS已經找不到了該怎麼辦？&lt;/p></description></item><item><title>如何在我的行事曆中新增 Facebook 活動？</title><link>https://www.yilianwu.io/posts/facebook-events-on-icalendar/</link><pubDate>Sun, 24 Nov 2019 00:44:25 +0800</pubDate><guid>https://www.yilianwu.io/posts/facebook-events-on-icalendar/</guid><description>&lt;p>現在有很多的活動都會在Facebook建立活動頁面&lt;br>
+我是個懶人，很依靠Facebook會給我活動提醒&lt;br>
+但自從Mac更新某個版本後，iCloud除了Mail帳號外，不能連結第三方應用程式帳號了&lt;/p></description></item><item><title>我常用的Mac指令</title><link>https://www.yilianwu.io/posts/mac-commandlines/</link><pubDate>Sun, 03 Mar 2019 21:59:58 +0800</pubDate><guid>https://www.yilianwu.io/posts/mac-commandlines/</guid><description>&lt;p>一些常用到的指令筆記&lt;/p></description></item><item><title>如何用 iTerm 美化你的終端機</title><link>https://www.yilianwu.io/posts/iterm-intro/</link><pubDate>Tue, 05 Feb 2019 15:39:41 +0800</pubDate><guid>https://www.yilianwu.io/posts/iterm-intro/</guid><description>&lt;p>電腦開著終端機在打程式很帥&lt;br>
+但是面對螢幕上一行行密密麻麻的程式碼，&lt;br>
+你是否曾經覺得眼花撩亂、困擾、甚至因此影響了你的工作進度呢！？&lt;/p></description></item></channel></rss>
