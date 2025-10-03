@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>slapd on [ yilianwu ]</title><link>https://www.yilianwu.io/tags/slapd/</link><description>Recent content in slapd on [ yilianwu ]</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 14 Jun 2020 09:40:37 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/slapd/index.xml" rel="self" type="application/rss+xml"/><item><title>LDAP &amp; SNMP on Ubuntu 18.04</title><link>https://www.yilianwu.io/posts/na-ldap-ubuntu/</link><pubDate>Sun, 14 Jun 2020 09:40:37 +0800</pubDate><guid>https://www.yilianwu.io/posts/na-ldap-ubuntu/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>slapd on [ yilianwu ]</title>
+    <link>https://www.yilianwu.io/tags/slapd/</link>
+    <description>Recent content in slapd on [ yilianwu ]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 14 Jun 2020 09:40:37 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/slapd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LDAP &amp; SNMP on Ubuntu 18.04</title>
+      <link>https://www.yilianwu.io/posts/na-ldap-ubuntu/</link>
+      <pubDate>Sun, 14 Jun 2020 09:40:37 +0800</pubDate>
+      
+      <guid>https://www.yilianwu.io/posts/na-ldap-ubuntu/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

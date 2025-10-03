@@ -1,3 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Facebook on [ yilianwu ]</title><link>https://www.yilianwu.io/tags/facebook/</link><description>Recent content in Facebook on [ yilianwu ]</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 24 Nov 2019 00:44:25 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/facebook/index.xml" rel="self" type="application/rss+xml"/><item><title>如何在我的行事曆中新增 Facebook 活動？</title><link>https://www.yilianwu.io/posts/facebook-events-on-icalendar/</link><pubDate>Sun, 24 Nov 2019 00:44:25 +0800</pubDate><guid>https://www.yilianwu.io/posts/facebook-events-on-icalendar/</guid><description>&lt;p>現在有很多的活動都會在Facebook建立活動頁面&lt;br>
-我是個懶人，很依靠Facebook會給我活動提醒&lt;br>
-但自從Mac更新某個版本後，iCloud除了Mail帳號外，不能連結第三方應用程式帳號了&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Facebook on [ yilianwu ]</title>
+    <link>https://www.yilianwu.io/tags/facebook/</link>
+    <description>Recent content in Facebook on [ yilianwu ]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Sun, 24 Nov 2019 00:44:25 +0800</lastBuildDate><atom:link href="https://www.yilianwu.io/tags/facebook/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何在我的行事曆中新增 Facebook 活動？</title>
+      <link>https://www.yilianwu.io/posts/facebook-events-on-icalendar/</link>
+      <pubDate>Sun, 24 Nov 2019 00:44:25 +0800</pubDate>
+      
+      <guid>https://www.yilianwu.io/posts/facebook-events-on-icalendar/</guid>
+      <description>&lt;p&gt;現在有很多的活動都會在Facebook建立活動頁面&lt;br&gt;
+我是個懶人，很依靠Facebook會給我活動提醒&lt;br&gt;
+但自從Mac更新某個版本後，iCloud除了Mail帳號外，不能連結第三方應用程式帳號了&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

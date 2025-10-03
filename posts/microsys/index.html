@@ -1,83 +1,1011 @@
-<!doctype html><html lang=zh-tw><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=google-site-verification content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg"><title>在雲端物聯網上建立微系統>>[ yilianwu ]</title><link rel="shortcut icon" href=img/favicon.ico><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-16x16.png sizes=16x16><link rel=stylesheet href=https://www.yilianwu.io/css/styles.css><link rel=stylesheet href=https://www.yilianwu.io/css/font.css></head><body><header><nav class=breadcrumb id=breadcrumb><h4><a href=https://www.yilianwu.io/>[ yilianwu ]</a></h4><a href=https://www.yilianwu.io/info>INFO</a>
-<a href=https://www.yilianwu.io/posts>POSTS</a>
-<a href=https://www.yilianwu.io/works>WORKS</a></nav><div class=menutime><a id=cd></a>
-<a id=ct></a>
-<script type=text/javascript src=https://www.yilianwu.io/js/menutime.js></script></div></header><main id=single><div id=post class=white><div class=container><div class=post-toc><div class=post-toc-title><strong>- Contents -</strong></div><div id=page-scrollspy class=toc-nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#platform>Platform</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#aws>AWS</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e8%a8%bb%e5%86%8a%e4%b8%80%e5%80%8b%e5%b8%b3%e8%99%9f>註冊一個帳號</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e7%99%bb%e5%85%a5console>登入Console</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#launch-instance>Launch Instance</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#step-1-%e9%81%b8%e6%93%87ami>Step 1: 選擇AMI</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#step-2-choose-an-instance-type>Step 2: Choose an Instance Type</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#step-3-review-and-launch>Step 3: Review and Launch</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#step-4-launch%e5%86%8d%e7%b5%a6%e4%bb%96%e6%8c%89%e4%b8%8b%e5%8e%bb>Step 4: Launch再給他按下去</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#step-5-%e5%89%b5%e5%bb%bakey-pair>Step 5: 創建Key Pair</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e6%9c%ac%e6%a9%9f%e7%b5%82%e7%ab%af%e6%a9%9f%e7%9a%84%e4%b8%80%e4%ba%9b%e8%a8%ad%e5%ae%9a>本機終端機的一些設定</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e7%99%bb%e5%85%a5%e4%bd%a0%e7%9a%84ubuntu>登入你的Ubuntu</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#ubuntu%e7%9a%84%e4%b8%80%e4%ba%9b%e8%a8%ad%e5%ae%9a>Ubuntu的一些設定</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e6%96%b0%e5%a2%9e%e5%ae%a2%e8%a3%bd%e7%9a%84domain-name>新增客製的Domain Name</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e5%ae%89%e8%a3%9dmosh%e5%8f%af%e4%bb%a5%e8%b7%b3%e9%81%8e%e6%ad%a4%e6%ad%a5%e9%a9%9f>安裝Mosh(可以跳過此步驟)</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e5%ae%89%e8%a3%9dlamp-server>安裝LAMP server</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e5%9c%a8ubuntu%e4%b8%8b%e6%8c%87%e4%bb%a4>在Ubuntu下指令：</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e6%9f%a5%e7%9c%8b%e9%80%a3%e7%b7%9a%e7%8b%80%e6%b3%81>查看連線狀況</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e5%9b%9e%e5%88%b0aws>回到AWS</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e7%b6%b2%e9%a0%81%e7%9a%84%e8%a8%ad%e7%bd%ae>網頁的設置</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e6%9f%a5%e7%9c%8b%e7%9b%ae%e9%8c%84>查看目錄</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e9%96%8b%e5%95%9fsublime-text>開啟Sublime Text</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e6%9f%a5%e7%9c%8b%e7%b6%b2%e7%ab%99%e7%9a%84%e9%80%a3%e7%b7%9a%e7%8b%80%e6%b3%81>查看網站的連線狀況</a></li></ul></ul></ul></div></div><div class=paperbg><div id=title><h1>在雲端物聯網上建立微系統</h1></div><div class=post-meta><span class=post-time>2019-02-19</span><div class=post-tag><a class=tag-link href=https://www.yilianwu.io/tags/aws/>AWS</a>
-<a class=tag-link href=https://www.yilianwu.io/tags/terminal/>Terminal</a>
-<a class=tag-link href=https://www.yilianwu.io/tags/ubuntu/>Ubuntu</a>
-<a class=tag-link href=https://www.yilianwu.io/tags/%E5%BE%AE%E5%9E%8B%E9%9B%BB%E8%85%A6%E7%AD%86%E8%A8%98/>微型電腦筆記</a></div><section class=post-content><p>初次使用AWS的一些操作筆記</p><h1 id=platform>Platform&nbsp;<a href=#platform class=anchor></a></h1><ul><li>Raspberry Pi</li><li><a href=https://aws.amazon.com/tw/>Amazon AWS</a></li><li><a href=https://cloud.google.com/>Google Cloud</a></li><li><a href=https://azure.microsoft.com/zh-tw/>Microsoft Azure</a></li><li><a href=https://tw.alibabacloud.com/>Alibaba</a></li><li>其他<ul><li>嵌入式系統<ul><li>LG WebOS</li></ul></li><li>基地台<ul><li>三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反向三角定位</li></ul></li><li>Google Machine Learning<ul><li><a href=https://www.tensorflow.org/>TensorFlow</a></li></ul></li></ul></li></ul><h2 id=aws>AWS&nbsp;<a href=#aws class=anchor></a></h2><p><a href=https://aws.amazon.com/>https://aws.amazon.com/</a></p><h3 id=註冊一個帳號>註冊一個帳號&nbsp;<a href=#註冊一個帳號 class=anchor></a></h3><p><img src=https://i.imgur.com/ExmnQIf.png alt=Imgur></p><h3 id=登入console>登入Console&nbsp;<a href=#登入console class=anchor></a></h3><p>服務>運算>EC2
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>在雲端物聯網上建立微系統>>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/styles.css">
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/font.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="https://www.yilianwu.io/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="https://www.yilianwu.io/info">INFO</a>
+            
+            <a href="https://www.yilianwu.io/posts">POSTS</a>
+            
+            <a href="https://www.yilianwu.io/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="https://www.yilianwu.io/js/menutime.js"></script>
+    </div>
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+       
+       
+
+
+
+
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#platform">
+                            Platform
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#aws">
+                            AWS
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e8%a8%bb%e5%86%8a%e4%b8%80%e5%80%8b%e5%b8%b3%e8%99%9f">
+                            註冊一個帳號
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e7%99%bb%e5%85%a5console">
+                            登入Console
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#launch-instance">
+                            Launch Instance
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#step-1-%e9%81%b8%e6%93%87ami">
+                            Step 1: 選擇AMI
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#step-2-choose-an-instance-type">
+                            Step 2: Choose an Instance Type
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#step-3-review-and-launch">
+                            Step 3: Review and Launch
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#step-4-launch%e5%86%8d%e7%b5%a6%e4%bb%96%e6%8c%89%e4%b8%8b%e5%8e%bb">
+                            Step 4: Launch再給他按下去
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#step-5-%e5%89%b5%e5%bb%bakey-pair">
+                            Step 5: 創建Key Pair
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%9c%ac%e6%a9%9f%e7%b5%82%e7%ab%af%e6%a9%9f%e7%9a%84%e4%b8%80%e4%ba%9b%e8%a8%ad%e5%ae%9a">
+                            本機終端機的一些設定
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e7%99%bb%e5%85%a5%e4%bd%a0%e7%9a%84ubuntu">
+                            登入你的Ubuntu
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#ubuntu%e7%9a%84%e4%b8%80%e4%ba%9b%e8%a8%ad%e5%ae%9a">
+                            Ubuntu的一些設定
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%96%b0%e5%a2%9e%e5%ae%a2%e8%a3%bd%e7%9a%84domain-name">
+                            新增客製的Domain Name
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%ae%89%e8%a3%9dmosh%e5%8f%af%e4%bb%a5%e8%b7%b3%e9%81%8e%e6%ad%a4%e6%ad%a5%e9%a9%9f">
+                            安裝Mosh(可以跳過此步驟)
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%ae%89%e8%a3%9dlamp-server">
+                            安裝LAMP server
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%9c%a8ubuntu%e4%b8%8b%e6%8c%87%e4%bb%a4">
+                            在Ubuntu下指令：
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%9f%a5%e7%9c%8b%e9%80%a3%e7%b7%9a%e7%8b%80%e6%b3%81">
+                            查看連線狀況
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%9b%9e%e5%88%b0aws">
+                            回到AWS
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e7%b6%b2%e9%a0%81%e7%9a%84%e8%a8%ad%e7%bd%ae">
+                            網頁的設置
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%9f%a5%e7%9c%8b%e7%9b%ae%e9%8c%84">
+                            查看目錄
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e9%96%8b%e5%95%9fsublime-text">
+                            開啟Sublime Text
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%9f%a5%e7%9c%8b%e7%b6%b2%e7%ab%99%e7%9a%84%e9%80%a3%e7%b7%9a%e7%8b%80%e6%b3%81">
+                            查看網站的連線狀況
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
+       <div class="paperbg">
+            <div id="title">
+                <h1>在雲端物聯網上建立微系統</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2019-02-19 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/aws/"> AWS </a>
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/terminal/"> Terminal </a>
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/ubuntu/"> Ubuntu </a>
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/%E5%BE%AE%E5%9E%8B%E9%9B%BB%E8%85%A6%E7%AD%86%E8%A8%98/"> 微型電腦筆記 </a>
+                    </div>
+
+
+                <section class="post-content">
+                <p>初次使用AWS的一些操作筆記</p>
+<h1 id="platform">Platform&nbsp;<a href="#platform" class="anchor"></a> </h1>
+<ul>
+<li>Raspberry Pi</li>
+<li><a href="https://aws.amazon.com/tw/">Amazon AWS</a></li>
+<li><a href="https://cloud.google.com/">Google Cloud</a></li>
+<li><a href="https://azure.microsoft.com/zh-tw/">Microsoft Azure</a></li>
+<li><a href="https://tw.alibabacloud.com/">Alibaba</a></li>
+<li>其他
+<ul>
+<li>嵌入式系統
+<ul>
+<li>LG WebOS</li>
+</ul>
+</li>
+<li>基地台
+<ul>
+<li>三角定位 利用rssi強弱判斷距離 單位dbm能量單位 可做反向三角定位</li>
+</ul>
+</li>
+<li>Google Machine Learning
+<ul>
+<li><a href="https://www.tensorflow.org/">TensorFlow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="aws">AWS&nbsp;<a href="#aws" class="anchor"></a> </h2>
+<p><a href="https://aws.amazon.com/">https://aws.amazon.com/</a></p>
+<h3 id="註冊一個帳號">註冊一個帳號&nbsp;<a href="#註冊一個帳號" class="anchor"></a> </h3>
+<p><img src="https://i.imgur.com/ExmnQIf.png" alt="Imgur"></p>
+<h3 id="登入console">登入Console&nbsp;<a href="#登入console" class="anchor"></a> </h3>
+<p>服務&gt;運算&gt;EC2
 選擇EC2
-<img src=https://i.imgur.com/mN9FFoU.png alt=Imgur></p><h3 id=launch-instance>Launch Instance&nbsp;<a href=#launch-instance class=anchor></a></h3><p>創立一個Instance
-<img src=https://i.imgur.com/Sq4pDb9.png alt=Imgur></p><h4 id=step-1-選擇ami>Step 1: 選擇AMI&nbsp;<a href=#step-1-選擇ami class=anchor></a></h4><p>請選擇Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-07ad4b1c3af1ea214
-<img src=https://i.imgur.com/tNGFH4f.png alt=Imgur></p><h4 id=step-2-choose-an-instance-type>Step 2: Choose an Instance Type&nbsp;<a href=#step-2-choose-an-instance-type class=anchor></a></h4><p>選擇免費方案！
-<img src=https://i.imgur.com/j2QIAtX.png alt=Imgur></p><h4 id=step-3-review-and-launch>Step 3: Review and Launch&nbsp;<a href=#step-3-review-and-launch class=anchor></a></h4><p>準備發佈，不用害怕
-<img src=https://i.imgur.com/eedYvN5.png alt=Imgur></p><h4 id=step-4-launch再給他按下去>Step 4: Launch再給他按下去&nbsp;<a href=#step-4-launch再給他按下去 class=anchor></a></h4><p>檢查無誤就可以發布囉
-<img src=https://i.imgur.com/ILABWJZ.png alt=Imgur></p><h4 id=step-5-創建key-pair>Step 5: 創建Key Pair&nbsp;<a href=#step-5-創建key-pair class=anchor></a></h4><p>這個key很重要！！<br>沒有他你就沒辦法從你的電腦登入你在AWS的Ubuntu<br><img src=https://i.imgur.com/75eUM0U.png alt=Imgur>
+<img src="https://i.imgur.com/mN9FFoU.png" alt="Imgur"></p>
+<h3 id="launch-instance">Launch Instance&nbsp;<a href="#launch-instance" class="anchor"></a> </h3>
+<p>創立一個Instance
+<img src="https://i.imgur.com/Sq4pDb9.png" alt="Imgur"></p>
+<h4 id="step-1-選擇ami">Step 1: 選擇AMI&nbsp;<a href="#step-1-選擇ami" class="anchor"></a> </h4>
+<p>請選擇Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-07ad4b1c3af1ea214
+<img src="https://i.imgur.com/tNGFH4f.png" alt="Imgur"></p>
+<h4 id="step-2-choose-an-instance-type">Step 2: Choose an Instance Type&nbsp;<a href="#step-2-choose-an-instance-type" class="anchor"></a> </h4>
+<p>選擇免費方案！
+<img src="https://i.imgur.com/j2QIAtX.png" alt="Imgur"></p>
+<h4 id="step-3-review-and-launch">Step 3: Review and Launch&nbsp;<a href="#step-3-review-and-launch" class="anchor"></a> </h4>
+<p>準備發佈，不用害怕
+<img src="https://i.imgur.com/eedYvN5.png" alt="Imgur"></p>
+<h4 id="step-4-launch再給他按下去">Step 4: Launch再給他按下去&nbsp;<a href="#step-4-launch再給他按下去" class="anchor"></a> </h4>
+<p>檢查無誤就可以發布囉
+<img src="https://i.imgur.com/ILABWJZ.png" alt="Imgur"></p>
+<h4 id="step-5-創建key-pair">Step 5: 創建Key Pair&nbsp;<a href="#step-5-創建key-pair" class="anchor"></a> </h4>
+<p>這個key很重要！！<br>
+沒有他你就沒辦法從你的電腦登入你在AWS的Ubuntu<br>
+<img src="https://i.imgur.com/75eUM0U.png" alt="Imgur">
 創建好按Download
-<code>.pem</code>檔會存在你的下載資料夾 <code>~/Downloads</code></p><h2 id=本機終端機的一些設定>本機終端機的一些設定&nbsp;<a href=#本機終端機的一些設定 class=anchor></a></h2><p>打開你電腦的Terminal<br>1.</p><pre tabindex=0><code>cd ~/Downloads/
-</code></pre><p>進去下載項目的資料夾，因為你剛剛把pem檔放在這<br>2.</p><pre tabindex=0><code>chmod 400 檔名.pem
-</code></pre><p>將pem檔的權限打開<br>3.</p><pre tabindex=0><code>ls -al 檔名.pem
-</code></pre><p>檢查一下：<br>若出現<code>-r</code>就代表成功了哦
-4.</p><pre tabindex=0><code>cat 檔名.pem
-</code></pre><p><img src=https://i.imgur.com/JCfo4Tg.png alt=Imgur> 可以看一下你的pem裡面有什麼內容：<br>RSA PRIVATE KEY<br>就是你的Ubuntu的私鑰<br>要收好！不能落入壞人的手裡<br>就像你家們鑰匙不能隨便亂丟的道理一樣</p><h2 id=登入你的ubuntu>登入你的Ubuntu&nbsp;<a href=#登入你的ubuntu class=anchor></a></h2><p>從本機的終端機登入你的AWS Ubuntu<br>第一次登入需執行：</p><pre tabindex=0><code>ssh -i &#34;檔名.pem&#34; ubuntu@ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com
-</code></pre><p>其中</p><p>ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com<br>是我的Public DNS (IPv4)</p><p>可以從AWS Instance的這裡看到～
-<img src=https://i.imgur.com/0BlGwIb.png alt=Imgur>
-若出現綠色ubuntu@ip-xxx-xx-xx-xx<br>就代表成功登入ㄌ！
-<img src=https://i.imgur.com/wL5z1b7.png alt=Imgur></p><h3 id=ubuntu的一些設定>Ubuntu的一些設定&nbsp;<a href=#ubuntu的一些設定 class=anchor></a></h3><ol><li>更新 apt-get 套件</li></ol><pre tabindex=0><code>sudo apt-get update
-</code></pre><ol start=2><li>安裝好用的vim文字編輯器</li></ol><pre tabindex=0><code>sudo apt-get install vim
-</code></pre><ol start=3><li>拷貝本機的公鑰<br>要把本機的公鑰加入ubuntu</li></ol><ul><li>另開一個終端機視窗(本機) cmd+t</li><li>顯示你本機的公鑰：</li></ul><pre tabindex=0><code>cat ~/.ssh/id_rsa.pub
-</code></pre><ul><li><p>直接選取複製</p></li><li><p>再回去ubuntu的分頁<br>cmd+1</p></li><li><p>打開<code>authorized_keys</code>這個檔編輯</p></li></ul><pre tabindex=0><code>vim ~/.ssh/authorized_keys
-</code></pre><ul><li><p>按<code>i</code>插入字串進入編輯模式
-直接貼上你剛剛複製好的本機公鑰</p></li><li><p>按<code>esc</code>結束編輯模式</p></li><li><p><code>:wq</code>寫入並退出</p></li></ul><ol start=4><li>之後就都可以用</li></ol><pre tabindex=0><code>ssh ubuntu@你的Public IP
-</code></pre><p>登入Ubuntu</p><h3 id=新增客製的domain-name>新增客製的Domain Name&nbsp;<a href=#新增客製的domain-name class=anchor></a></h3><ol><li>註冊一個可以免費試用1年的Domain Name
-<a href=https://my.freenom.com/>https://my.freenom.com/</a><br><img src=https://i.imgur.com/IkaApUd.png alt=Imgur></li><li>進到管理頁面
-<img src=https://i.imgur.com/qxDAMIy.png alt=Imgur></li><li>再進到DNS管理頁面<br>Target就填上你的Public IP<br><img src=https://i.imgur.com/SM13Ioq.png alt=Imgur></li></ol><p>之後登入也可以在終端機下指令：</p><pre tabindex=0><code>ssh ubuntu@你的網址
-</code></pre><h3 id=安裝mosh可以跳過此步驟>安裝Mosh(可以跳過此步驟)&nbsp;<a href=#安裝mosh可以跳過此步驟 class=anchor></a></h3><p>如果覺得ubuntu跑很慢可以安裝<br>Mosh
-<img src=https://i.imgur.com/htAaAeh.png alt=Imgur></p><p><img src=https://i.imgur.com/BxTznvR.png alt=Imgur></p><h3 id=安裝lamp-server>安裝LAMP server&nbsp;<a href=#安裝lamp-server class=anchor></a></h3><p>網頁伺服器快速建置入門</p><h4 id=在ubuntu下指令>在Ubuntu下指令：&nbsp;<a href=#在ubuntu下指令 class=anchor></a></h4><pre tabindex=0><code>sudo apt-get install tasksel
-</code></pre><pre tabindex=0><code>sudo tasksel 
-</code></pre><p>法一：<br><img src=https://i.imgur.com/x333iYj.png alt=Imgur>
-[ * ] LAMP server 用空白鍵選擇 再按Tab 選擇
-<img src=https://i.imgur.com/pu4GTYO.png alt=Imgur></p><p>法二：<br>終端機直接輸入安裝指令</p><pre tabindex=0><code>sudo tasksel install lamp-server
-</code></pre><h4 id=查看連線狀況>查看連線狀況&nbsp;<a href=#查看連線狀況 class=anchor></a></h4><pre tabindex=0><code>netstat -tnal
-</code></pre><p><img src=https://i.imgur.com/jDclyKw.png alt=Imgur></p><h4 id=回到aws>回到AWS&nbsp;<a href=#回到aws class=anchor></a></h4><ol><li>選擇launch-wizard-4<br><img src=https://i.imgur.com/Q8ksnqO.png alt=Imgur></li><li>找到Inbound 編輯
-<img src=https://i.imgur.com/ik7xjL3.png alt=Imgur></li><li>新增HTTP、HTTPS與Custom UDP，如下：<br><img src=https://i.imgur.com/tpvrpT5.png alt=Imgur></li><li>輸入網址 搭拉！
-<img src=https://i.imgur.com/TNrAgSJ.png alt=Imgur></li></ol><h3 id=網頁的設置>網頁的設置&nbsp;<a href=#網頁的設置 class=anchor></a></h3><h4 id=查看目錄>查看目錄&nbsp;<a href=#查看目錄 class=anchor></a></h4><pre tabindex=0><code>cd /var/ //再按兩下tab
-</code></pre><p><img src=https://i.imgur.com/Jk4JHtH.png alt=Imgur>
-<code>/var/www/html/</code> 中的 <code>index.html</code> 就是網頁的html</p><pre tabindex=0><code>ls -al
-</code></pre><ol><li>查看權限
-<img src=https://i.imgur.com/mnVi3Bx.png alt=Imgur>
-<img src=https://i.imgur.com/I2f7wjW.png alt=Imgur>
-<img src=https://i.imgur.com/XRTkxnQ.png alt=Imgur></li><li>新增權限給<code>/html</code>資料夾</li></ol><pre tabindex=0><code>sudo chmod 777 html/
-</code></pre><p><img src=https://i.imgur.com/NDqKEAS.png alt=Imgur></p><pre tabindex=0><code>sudo chmod -R 777 html/
-</code></pre><p><img src=https://i.imgur.com/E9ti5Ly.png alt=Imgur></p><h4 id=開啟sublime-text>開啟Sublime Text&nbsp;<a href=#開啟sublime-text class=anchor></a></h4><p><img src=https://i.imgur.com/jtJXz8J.png alt=thumbnail></p><ol><li>cmd + shift + P 輸入install 選擇<br>Package Control: Install Package
-<img src=https://i.imgur.com/xczrWHu.png alt=Imgur></li><li>安裝sftp
-<img src=https://i.imgur.com/gcCeFxb.png alt=Imgur></li><li>Browse Server
-<img src=https://i.imgur.com/aKX2LCQ.png alt=Imgur></li><li>新增Server
-<img src=https://i.imgur.com/egHg2iQ.png alt=Imgur></li><li>修改sftp訊息</li></ol><pre tabindex=0><code>&#34;host&#34;: &#34;yourwebsite.domain&#34;
+<code>.pem</code>檔會存在你的下載資料夾 <code>~/Downloads</code></p>
+<h2 id="本機終端機的一些設定">本機終端機的一些設定&nbsp;<a href="#本機終端機的一些設定" class="anchor"></a> </h2>
+<p>打開你電腦的Terminal<br>
+1.</p>
+<pre tabindex="0"><code>cd ~/Downloads/
+</code></pre><p>進去下載項目的資料夾，因為你剛剛把pem檔放在這<br>
+2.</p>
+<pre tabindex="0"><code>chmod 400 檔名.pem
+</code></pre><p>將pem檔的權限打開<br>
+3.</p>
+<pre tabindex="0"><code>ls -al 檔名.pem
+</code></pre><p>檢查一下：<br>
+若出現<code>-r</code>就代表成功了哦
+4.</p>
+<pre tabindex="0"><code>cat 檔名.pem
+</code></pre><p><img src="https://i.imgur.com/JCfo4Tg.png" alt="Imgur">  可以看一下你的pem裡面有什麼內容：<br>
+RSA PRIVATE KEY<br>
+就是你的Ubuntu的私鑰<br>
+要收好！不能落入壞人的手裡<br>
+就像你家們鑰匙不能隨便亂丟的道理一樣</p>
+<h2 id="登入你的ubuntu">登入你的Ubuntu&nbsp;<a href="#登入你的ubuntu" class="anchor"></a> </h2>
+<p>從本機的終端機登入你的AWS Ubuntu<br>
+第一次登入需執行：</p>
+<pre tabindex="0"><code>ssh -i &#34;檔名.pem&#34; ubuntu@ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com
+</code></pre><p>其中</p>
+<p>ec2-13-114-52-101.ap-northeast-1.compute.amazonaws.com<br>
+是我的Public DNS (IPv4)</p>
+<p>可以從AWS Instance的這裡看到～
+<img src="https://i.imgur.com/0BlGwIb.png" alt="Imgur">
+若出現綠色ubuntu@ip-xxx-xx-xx-xx<br>
+就代表成功登入ㄌ！
+<img src="https://i.imgur.com/wL5z1b7.png" alt="Imgur"></p>
+<h3 id="ubuntu的一些設定">Ubuntu的一些設定&nbsp;<a href="#ubuntu的一些設定" class="anchor"></a> </h3>
+<ol>
+<li>更新 apt-get 套件</li>
+</ol>
+<pre tabindex="0"><code>sudo apt-get update
+</code></pre><ol start="2">
+<li>安裝好用的vim文字編輯器</li>
+</ol>
+<pre tabindex="0"><code>sudo apt-get install vim
+</code></pre><ol start="3">
+<li>拷貝本機的公鑰<br>
+要把本機的公鑰加入ubuntu</li>
+</ol>
+<ul>
+<li>另開一個終端機視窗(本機) cmd+t</li>
+<li>顯示你本機的公鑰：</li>
+</ul>
+<pre tabindex="0"><code>cat ~/.ssh/id_rsa.pub
+</code></pre><ul>
+<li>
+<p>直接選取複製</p>
+</li>
+<li>
+<p>再回去ubuntu的分頁<br>
+cmd+1</p>
+</li>
+<li>
+<p>打開<code>authorized_keys</code>這個檔編輯</p>
+</li>
+</ul>
+<pre tabindex="0"><code>vim ~/.ssh/authorized_keys
+</code></pre><ul>
+<li>
+<p>按<code>i</code>插入字串進入編輯模式
+直接貼上你剛剛複製好的本機公鑰</p>
+</li>
+<li>
+<p>按<code>esc</code>結束編輯模式</p>
+</li>
+<li>
+<p><code>:wq</code>寫入並退出</p>
+</li>
+</ul>
+<ol start="4">
+<li>之後就都可以用</li>
+</ol>
+<pre tabindex="0"><code>ssh ubuntu@你的Public IP
+</code></pre><p>登入Ubuntu</p>
+<h3 id="新增客製的domain-name">新增客製的Domain Name&nbsp;<a href="#新增客製的domain-name" class="anchor"></a> </h3>
+<ol>
+<li>註冊一個可以免費試用1年的Domain Name
+<a href="https://my.freenom.com/">https://my.freenom.com/</a><br>
+<img src="https://i.imgur.com/IkaApUd.png" alt="Imgur"></li>
+<li>進到管理頁面
+<img src="https://i.imgur.com/qxDAMIy.png" alt="Imgur"></li>
+<li>再進到DNS管理頁面<br>
+Target就填上你的Public IP<br>
+<img src="https://i.imgur.com/SM13Ioq.png" alt="Imgur"></li>
+</ol>
+<p>之後登入也可以在終端機下指令：</p>
+<pre tabindex="0"><code>ssh ubuntu@你的網址
+</code></pre><h3 id="安裝mosh可以跳過此步驟">安裝Mosh(可以跳過此步驟)&nbsp;<a href="#安裝mosh可以跳過此步驟" class="anchor"></a> </h3>
+<p>如果覺得ubuntu跑很慢可以安裝<br>
+Mosh
+<img src="https://i.imgur.com/htAaAeh.png" alt="Imgur"></p>
+<p><img src="https://i.imgur.com/BxTznvR.png" alt="Imgur"></p>
+<h3 id="安裝lamp-server">安裝LAMP server&nbsp;<a href="#安裝lamp-server" class="anchor"></a> </h3>
+<p>網頁伺服器快速建置入門</p>
+<h4 id="在ubuntu下指令">在Ubuntu下指令：&nbsp;<a href="#在ubuntu下指令" class="anchor"></a> </h4>
+<pre tabindex="0"><code>sudo apt-get install tasksel
+</code></pre><pre tabindex="0"><code>sudo tasksel 
+</code></pre><p>法一：<br>
+<img src="https://i.imgur.com/x333iYj.png" alt="Imgur">
+[ * ] LAMP server 用空白鍵選擇 再按Tab 選擇<!-- raw HTML omitted -->
+<img src="https://i.imgur.com/pu4GTYO.png" alt="Imgur"></p>
+<p>法二：<br>
+終端機直接輸入安裝指令</p>
+<pre tabindex="0"><code>sudo tasksel install lamp-server
+</code></pre><h4 id="查看連線狀況">查看連線狀況&nbsp;<a href="#查看連線狀況" class="anchor"></a> </h4>
+<pre tabindex="0"><code>netstat -tnal
+</code></pre><p><img src="https://i.imgur.com/jDclyKw.png" alt="Imgur"></p>
+<h4 id="回到aws">回到AWS&nbsp;<a href="#回到aws" class="anchor"></a> </h4>
+<ol>
+<li>選擇launch-wizard-4<br>
+<img src="https://i.imgur.com/Q8ksnqO.png" alt="Imgur"></li>
+<li>找到Inbound 編輯
+<img src="https://i.imgur.com/ik7xjL3.png" alt="Imgur"></li>
+<li>新增HTTP、HTTPS與Custom UDP，如下：<br>
+<img src="https://i.imgur.com/tpvrpT5.png" alt="Imgur"></li>
+<li>輸入網址 搭拉！
+<img src="https://i.imgur.com/TNrAgSJ.png" alt="Imgur"></li>
+</ol>
+<h3 id="網頁的設置">網頁的設置&nbsp;<a href="#網頁的設置" class="anchor"></a> </h3>
+<h4 id="查看目錄">查看目錄&nbsp;<a href="#查看目錄" class="anchor"></a> </h4>
+<pre tabindex="0"><code>cd /var/ //再按兩下tab
+</code></pre><p><img src="https://i.imgur.com/Jk4JHtH.png" alt="Imgur">
+<code>/var/www/html/</code> 中的 <code>index.html</code> 就是網頁的html</p>
+<pre tabindex="0"><code>ls -al
+</code></pre><ol>
+<li>查看權限
+<img src="https://i.imgur.com/mnVi3Bx.png" alt="Imgur">
+<img src="https://i.imgur.com/I2f7wjW.png" alt="Imgur">
+<img src="https://i.imgur.com/XRTkxnQ.png" alt="Imgur"></li>
+<li>新增權限給<code>/html</code>資料夾</li>
+</ol>
+<pre tabindex="0"><code>sudo chmod 777 html/
+</code></pre><p><img src="https://i.imgur.com/NDqKEAS.png" alt="Imgur"></p>
+<pre tabindex="0"><code>sudo chmod -R 777 html/
+</code></pre><p><img src="https://i.imgur.com/E9ti5Ly.png" alt="Imgur"></p>
+<h4 id="開啟sublime-text">開啟Sublime Text&nbsp;<a href="#開啟sublime-text" class="anchor"></a> </h4>
+<p><img src="https://i.imgur.com/jtJXz8J.png" alt="thumbnail"></p>
+<ol>
+<li>cmd + shift + P 輸入install 選擇<br>
+Package Control: Install Package
+<img src="https://i.imgur.com/xczrWHu.png" alt="Imgur"></li>
+<li>安裝sftp
+<img src="https://i.imgur.com/gcCeFxb.png" alt="Imgur"></li>
+<li>Browse Server
+<img src="https://i.imgur.com/aKX2LCQ.png" alt="Imgur"></li>
+<li>新增Server
+<img src="https://i.imgur.com/egHg2iQ.png" alt="Imgur"></li>
+<li>修改sftp訊息</li>
+</ol>
+<pre tabindex="0"><code>&#34;host&#34;: &#34;yourwebsite.domain&#34;
 &#34;user&#34;: &#34;ubuntu&#34;
 &#34;remote_path&#34;: &#34;/var/www/html/&#34;
-</code></pre><p><img src=https://i.imgur.com/pVUNSqR.png alt=Imgur>
-<img src=https://i.imgur.com/x6rDKma.png alt=Imgur>
+</code></pre><p><img src="https://i.imgur.com/pVUNSqR.png" alt="Imgur">
+<img src="https://i.imgur.com/x6rDKma.png" alt="Imgur">
 6. 另存新檔
-<img src=https://i.imgur.com/IAZtPy8.png alt=Imgur>
+<img src="https://i.imgur.com/IAZtPy8.png" alt="Imgur">
 7. 選擇你的sftp
-<img src=https://i.imgur.com/gXbZ9NC.png alt=Imgur>
+<img src="https://i.imgur.com/gXbZ9NC.png" alt="Imgur">
 8. 選擇index.html
-<img src=https://i.imgur.com/yKANTgd.png alt=Imgur>
+<img src="https://i.imgur.com/yKANTgd.png" alt="Imgur">
 9. 編輯
-<img src=https://i.imgur.com/6KWCYUP.png alt=Imgur>
+<img src="https://i.imgur.com/6KWCYUP.png" alt="Imgur">
 10. Save 上傳
-<img src=https://i.imgur.com/SLQg46L.png alt=Imgur>
-<img src=https://i.imgur.com/BFhfk3z.png alt=Imgur></p><h3 id=查看網站的連線狀況>查看網站的連線狀況&nbsp;<a href=#查看網站的連線狀況 class=anchor></a></h3><pre tabindex=0><code>traceroute yilianwu.ga 
-</code></pre><p><img src=https://i.imgur.com/MqoIRWa.png alt=Imgur></p></section></div></div></div></div></main><footer class=sand><a href=https://www.facebook.com/beatboxyilianwu target=_blank><img src=https://i.imgur.com/EJhxgWk.png height=30 width=30></a>
-<a href=https://twitter.com/YiLianWu target=_blank><img src=https://i.imgur.com/KvvGcoN.png height=30 width=30></a>
-<a href=https://www.instagram.com/weelian/ target=_blank><img src=https://i.imgur.com/FVUwWv0.png height=30 width=30></a>
-<a href=https://github.com/yilianwu target=_blank><img src=https://i.imgur.com/BIgEqmF.png height=30 width=30></a>
-<a href=https://www.linkedin.com/in/yilianwu/ target=_blank><img src=https://i.imgur.com/hCGvLEq.png height=30 width=30></a>
-<span style=display:block class=footer-text>&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href=https://gohugo.io/ target=_blank>Hugo</a></span></footer><script src=https://code.jquery.com/jquery-latest.js></script>
-<script>$(".post-content h1").prepend("§ ")</script><script type=text/x-mathjax-config>
+<img src="https://i.imgur.com/SLQg46L.png" alt="Imgur">
+<img src="https://i.imgur.com/BFhfk3z.png" alt="Imgur"></p>
+<h3 id="查看網站的連線狀況">查看網站的連線狀況&nbsp;<a href="#查看網站的連線狀況" class="anchor"></a> </h3>
+<pre tabindex="0"><code>traceroute yilianwu.ga 
+</code></pre><p><img src="https://i.imgur.com/MqoIRWa.png" alt="Imgur"></p>
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	
+	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
+	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
+
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$('.post-content h1').prepend("§ ");
+</script>
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left"
     });
-</script><script type=text/javascript src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel=stylesheet href=https://www.yilianwu.io/css/solarized-light.css><script src=https://www.yilianwu.io/js/highlight.pack.js></script>
-<script>hljs.initHighlightingOnLoad()</script></body></html>
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> 
+<link rel="stylesheet" href="https://www.yilianwu.io/css/solarized-light.css"/>
+<script src="https://www.yilianwu.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

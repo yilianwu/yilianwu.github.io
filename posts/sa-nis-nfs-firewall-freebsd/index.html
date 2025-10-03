@@ -1,32 +1,492 @@
-<!doctype html><html lang=zh-tw><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=google-site-verification content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg"><title>FreeBSD NIS + NFS + Firewall>>[ yilianwu ]</title><link rel="shortcut icon" href=img/favicon.ico><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-16x16.png sizes=16x16><link rel=stylesheet href=https://www.yilianwu.io/css/styles.css><link rel=stylesheet href=https://www.yilianwu.io/css/font.css></head><body><header><nav class=breadcrumb id=breadcrumb><h4><a href=https://www.yilianwu.io/>[ yilianwu ]</a></h4><a href=https://www.yilianwu.io/info>INFO</a>
-<a href=https://www.yilianwu.io/posts>POSTS</a>
-<a href=https://www.yilianwu.io/works>WORKS</a></nav><div class=menutime><a id=cd></a>
-<a id=ct></a>
-<script type=text/javascript src=https://www.yilianwu.io/js/menutime.js></script></div></header><main id=single><div id=post class=white><div class=container><div class=post-toc><div class=post-toc-title><strong>- Contents -</strong></div><div id=page-scrollspy class=toc-nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#nis-client>NIS Client</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#configurations-in-rcconf>Configurations in rc.conf</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#maps-between-ip-and-hostname>Maps between IP and hostname</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#nis-users>NIS Users</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#accounts-and-groups>Accounts and Groups</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#restart-ypbind--daemon>Restart ypbind daemon</a></li></ul></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#nfs-client>NFS Client</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#server-configurations-in-etcrcconf>Server configurations in /etc/rc.conf</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#client-configurations-in-etcrcconf>Client configurations in /etc/rc.conf</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#mount>Mount</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#auto-mount-autofs>Auto Mount (autofs)</a></li></ul></ul></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#nfs-server>NFS Server</a></li></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#firewall>Firewall</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#packet-filter-pf>Packet Filter (PF)</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#blacklistd>Blacklistd</a></li></ul></ul></div></div><div class=paperbg><div id=title><h1>FreeBSD NIS + NFS + Firewall</h1></div><div class=post-meta><span class=post-time>2020-04-20</span><div class=post-tag><a class=tag-link href=https://www.yilianwu.io/tags/freebsd/>FreeBSD</a>
-<a class=tag-link href=https://www.yilianwu.io/tags/nis/>NIS</a>
-<a class=tag-link href=https://www.yilianwu.io/tags/nfs/>NFS</a>
-<a class=tag-link href=https://www.yilianwu.io/tags/pf/>PF</a>
-<a class=tag-link href=https://www.yilianwu.io/tags/blacklistd/>Blacklistd</a>
-<a class=tag-link href=https://www.yilianwu.io/tags/nctu/>NCTU</a></div><section class=post-content><h1 id=nis-client>NIS Client&nbsp;<a href=#nis-client class=anchor></a></h1><h2 id=configurations-in-rcconf>Configurations in <code>rc.conf</code>&nbsp;<a href=#configurations-in-rcconf class=anchor></a></h2><pre tabindex=0><code>nisdomainname=&#34;savpn.nctu.me&#34;
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>FreeBSD NIS &#43; NFS &#43; Firewall>>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/styles.css">
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/font.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="https://www.yilianwu.io/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="https://www.yilianwu.io/info">INFO</a>
+            
+            <a href="https://www.yilianwu.io/posts">POSTS</a>
+            
+            <a href="https://www.yilianwu.io/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="https://www.yilianwu.io/js/menutime.js"></script>
+    </div>
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+       
+       
+
+
+
+
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nis-client">
+                            NIS Client
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#configurations-in-rcconf">
+                            Configurations in rc.conf
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#maps-between-ip-and-hostname">
+                            Maps between IP and hostname
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nis-users">
+                            NIS Users
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#accounts-and-groups">
+                            Accounts and Groups
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#restart-ypbind--daemon">
+                            Restart ypbind daemon
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nfs-client">
+                            NFS Client
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#server-configurations-in-etcrcconf">
+                            Server configurations in /etc/rc.conf
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#client-configurations-in-etcrcconf">
+                            Client configurations in /etc/rc.conf
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#mount">
+                            Mount
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#auto-mount-autofs">
+                            Auto Mount (autofs)
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nfs-server">
+                            NFS Server
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#firewall">
+                            Firewall
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#packet-filter-pf">
+                            Packet Filter (PF)
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#blacklistd">
+                            Blacklistd
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
+       <div class="paperbg">
+            <div id="title">
+                <h1>FreeBSD NIS &#43; NFS &#43; Firewall</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2020-04-20 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/freebsd/"> FreeBSD </a>
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/nis/"> NIS </a>
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/nfs/"> NFS </a>
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/pf/"> PF </a>
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/blacklistd/"> Blacklistd </a>
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/nctu/"> NCTU </a>
+                    </div>
+
+
+                <section class="post-content">
+                <h1 id="nis-client">NIS Client&nbsp;<a href="#nis-client" class="anchor"></a> </h1>
+<h2 id="configurations-in-rcconf">Configurations in <code>rc.conf</code>&nbsp;<a href="#configurations-in-rcconf" class="anchor"></a> </h2>
+<pre tabindex="0"><code>nisdomainname=&#34;savpn.nctu.me&#34;
 # NIS domain name ≠ DNS domain name
 
 nis_client_enable=&#34;YES&#34;
 nis_client_flags=&#34;-s -m -S savpn.nctu.me,nis server&#34;
-</code></pre><h2 id=maps-between-ip-and-hostname>Maps between IP and hostname&nbsp;<a href=#maps-between-ip-and-hostname class=anchor></a></h2><p>Configure in <code>/etc/hosts</code></p><pre tabindex=0><code># 140.113.17.155 nisserver
+</code></pre><h2 id="maps-between-ip-and-hostname">Maps between IP and hostname&nbsp;<a href="#maps-between-ip-and-hostname" class="anchor"></a> </h2>
+<p>Configure in <code>/etc/hosts</code></p>
+<pre tabindex="0"><code># 140.113.17.155 nisserver
 10.113.0.254 nisserver
 # 連wg vpn
-</code></pre><h2 id=nis-users>NIS Users&nbsp;<a href=#nis-users class=anchor></a></h2><p>在NIS Server(savpn.nctu.me)中有三個users</p><ul><li>nisuser1</li><li>nisuser2</li><li>nisuser3</li></ul><p>要注意的地方：</p><ul><li>passwd同username</li><li>home directory要在<code>/net/home/&lt;username></code></li><li>share: hosts, passwd, group, netgroup, ypservers</li></ul><h2 id=accounts-and-groups>Accounts and Groups&nbsp;<a href=#accounts-and-groups class=anchor></a></h2><p>NIS user can login to your server</p><ol><li><p>User account information</p><pre tabindex=0><code>vipw
-</code></pre><p>到<code>/etc/master.passwd</code><br>加在最後一行</p><pre tabindex=0><code>+::::::::::
-</code></pre></li><li><p>UNIX group definitions</p><pre tabindex=0><code>vigr
-</code></pre><p>到<code>/etc/group</code><br>加在最後一行</p><pre tabindex=0><code>+:*::
-</code></pre></li><li><p>排優先順序
-When an user with an identical name in both NIS and local, then query NIS first.<br><code>/etc/nsswitch.conf</code></p><pre tabindex=0><code>group: nis files
+</code></pre><h2 id="nis-users">NIS Users&nbsp;<a href="#nis-users" class="anchor"></a> </h2>
+<p>在NIS Server(savpn.nctu.me)中有三個users</p>
+<ul>
+<li>nisuser1</li>
+<li>nisuser2</li>
+<li>nisuser3</li>
+</ul>
+<p>要注意的地方：</p>
+<ul>
+<li>passwd同username</li>
+<li>home directory要在<code>/net/home/&lt;username&gt;</code></li>
+<li>share: hosts, passwd, group, netgroup, ypservers</li>
+</ul>
+<h2 id="accounts-and-groups">Accounts and Groups&nbsp;<a href="#accounts-and-groups" class="anchor"></a> </h2>
+<p>NIS user can login to your server</p>
+<ol>
+<li>
+<p>User account information</p>
+<pre tabindex="0"><code>vipw
+</code></pre><p>到<code>/etc/master.passwd</code><br>
+加在最後一行</p>
+<pre tabindex="0"><code>+::::::::::
+</code></pre></li>
+<li>
+<p>UNIX group definitions</p>
+<pre tabindex="0"><code>vigr
+</code></pre><p>到<code>/etc/group</code><br>
+加在最後一行</p>
+<pre tabindex="0"><code>+:*::
+</code></pre></li>
+<li>
+<p>排優先順序
+When an user with an identical name in both NIS and local, then query NIS first.<br>
+<code>/etc/nsswitch.conf</code></p>
+<pre tabindex="0"><code>group: nis files
 net group: nis files
 passwd: nis files
-</code></pre></li></ol><h2 id=restart-ypbind--daemon>Restart ypbind daemon&nbsp;<a href=#restart-ypbind--daemon class=anchor></a></h2><pre tabindex=0><code>sudo service ypbind restart
-</code></pre><p>檢查：</p><pre tabindex=0><code>ypcat passwd
-</code></pre><pre tabindex=0><code>sudo ypcat master.passwd
-</code></pre><h1 id=nfs-client>NFS Client&nbsp;<a href=#nfs-client class=anchor></a></h1><p>要當NFS Client之前，自己要先是NFS Server</p><h2 id=server-configurations-in-etcrcconf>Server configurations in <code>/etc/rc.conf</code>&nbsp;<a href=#server-configurations-in-etcrcconf class=anchor></a></h2><pre tabindex=0><code># enable
+</code></pre></li>
+</ol>
+<h2 id="restart-ypbind--daemon">Restart ypbind  daemon&nbsp;<a href="#restart-ypbind--daemon" class="anchor"></a> </h2>
+<pre tabindex="0"><code>sudo service ypbind restart
+</code></pre><p>檢查：</p>
+<pre tabindex="0"><code>ypcat passwd
+</code></pre><pre tabindex="0"><code>sudo ypcat master.passwd
+</code></pre><h1 id="nfs-client">NFS Client&nbsp;<a href="#nfs-client" class="anchor"></a> </h1>
+<p>要當NFS Client之前，自己要先是NFS Server</p>
+<h2 id="server-configurations-in-etcrcconf">Server configurations in <code>/etc/rc.conf</code>&nbsp;<a href="#server-configurations-in-etcrcconf" class="anchor"></a> </h2>
+<pre tabindex="0"><code># enable
 nfs_server_enable=&#34;YES&#34;
 nfs_server_flags=&#34;-u -t -n 10&#34;
 # -u 表示我們提供 UDP 方式連線，# -t 表示以 TCP 方式連線
@@ -48,34 +508,81 @@ mountd_flags=&#34;-r&#34;
 # 為了增增系統的安全
 # 讓 nfsd 執行時只使用 reserved port(小於 1024 的 ports)
 nfs_reserved_port_only=&#34;YES&#34;
-</code></pre><h2 id=client-configurations-in-etcrcconf>Client configurations in <code>/etc/rc.conf</code>&nbsp;<a href=#client-configurations-in-etcrcconf class=anchor></a></h2><pre tabindex=0><code># enable
+</code></pre><h2 id="client-configurations-in-etcrcconf">Client configurations in <code>/etc/rc.conf</code>&nbsp;<a href="#client-configurations-in-etcrcconf" class="anchor"></a> </h2>
+<pre tabindex="0"><code># enable
 nfs_client_enable=&#34;YES&#34;
-</code></pre><h2 id=mount>Mount&nbsp;<a href=#mount class=anchor></a></h2><p>Mount file from savpn.nctu.me</p><p>Create dirs</p><pre tabindex=0><code>mkdir /net/home /net/data
-</code></pre><p>Start nfsclient</p><pre tabindex=0><code>sudo service nfsclient start
-</code></pre><p>mount dirs</p><pre tabindex=0><code>mount 10.113.0.254:/net/data /net/data
+</code></pre><h2 id="mount">Mount&nbsp;<a href="#mount" class="anchor"></a> </h2>
+<p>Mount file from savpn.nctu.me</p>
+<p>Create dirs</p>
+<pre tabindex="0"><code>mkdir /net/home /net/data
+</code></pre><p>Start nfsclient</p>
+<pre tabindex="0"><code>sudo service nfsclient start
+</code></pre><p>mount dirs</p>
+<pre tabindex="0"><code>mount 10.113.0.254:/net/data /net/data
 mount 10.113.0.254:/net/home /net/home
-</code></pre><p>Do NOT allow setuid or setgid bits to take effect</p><h3 id=auto-mount-autofs>Auto Mount (autofs)&nbsp;<a href=#auto-mount-autofs class=anchor></a></h3><p>Will be mounted automatically when needed<br>開機的時候不掛載他，而是直到我存取他(cd)的瞬間<br>autofs才會檢查那台server有無存在？能不能掛載？</p><p>Enable in <code>rc.conf</code></p><pre tabindex=0><code>autofs_enable=&#34;YES&#34;
-</code></pre><p>Three kinds of configuration files (map)<br>會寫你要掛載的根目錄的位置mountpoint、要去對應哪一張map</p><ul><li>Direct map<br>幾乎和fstab一樣</li><li>Indirect map<br>裡面所有的indirect資料夾 都會掛載在同一個目錄底下</li><li>Master map<br>List which direct and indirect maps that automount should pay attention to</li></ul><p>Master Map<br><code>/etc/auto_master</code></p><pre tabindex=0><code>mountpoint  map_name        [-option]
+</code></pre><p>Do NOT allow setuid or setgid bits to take effect</p>
+<h3 id="auto-mount-autofs">Auto Mount (autofs)&nbsp;<a href="#auto-mount-autofs" class="anchor"></a> </h3>
+<p>Will be mounted automatically when needed<br>
+開機的時候不掛載他，而是直到我存取他(cd)的瞬間<br>
+autofs才會檢查那台server有無存在？能不能掛載？</p>
+<p>Enable in <code>rc.conf</code></p>
+<pre tabindex="0"><code>autofs_enable=&#34;YES&#34;
+</code></pre><p>Three kinds of configuration files (map)<br>
+會寫你要掛載的根目錄的位置mountpoint、要去對應哪一張map</p>
+<ul>
+<li>Direct map<br>
+幾乎和fstab一樣</li>
+<li>Indirect map<br>
+裡面所有的indirect資料夾 都會掛載在同一個目錄底下</li>
+<li>Master map<br>
+List which direct and indirect maps that automount should pay attention to</li>
+</ul>
+<p>Master Map<br>
+<code>/etc/auto_master</code></p>
+<pre tabindex="0"><code>mountpoint  map_name        [-option]
 /-          /etc/auto.map   -intr,nosuid,rw
 
 # auto.map是一個direct map
-</code></pre><p>Direct Map<br><code>/etc/auto.map</code></p><pre tabindex=0><code>/net/home   -rw 10.113.0.254:/net/home
+</code></pre><p>Direct Map<br>
+<code>/etc/auto.map</code></p>
+<pre tabindex="0"><code>/net/home   -rw 10.113.0.254:/net/home
 /net/data   -ro 10.113.0.254:/net/data
-</code></pre><h1 id=nfs-server>NFS Server&nbsp;<a href=#nfs-server class=anchor></a></h1><p>Exports</p><ul><li>/net/alpha (access as their own UID GID)</li><li>/net/share (UID=user, GID=users)</li><li>/net/admin (read-only)</li></ul><p>Create directories<br>要出口的地方</p><pre tabindex=0><code>mkdir /exports/admin /exports/alpha /exports/share
-</code></pre><p>Create user</p><pre tabindex=0><code>sudo pw groupadd users
+</code></pre><h1 id="nfs-server">NFS Server&nbsp;<a href="#nfs-server" class="anchor"></a> </h1>
+<p>Exports</p>
+<ul>
+<li>/net/alpha (access as their own UID GID)</li>
+<li>/net/share (UID=user, GID=users)</li>
+<li>/net/admin (read-only)</li>
+</ul>
+<p>Create directories<br>
+要出口的地方</p>
+<pre tabindex="0"><code>mkdir /exports/admin /exports/alpha /exports/share
+</code></pre><p>Create user</p>
+<pre tabindex="0"><code>sudo pw groupadd users
 sudo add user
-</code></pre><p><code>/etc/fstab</code></p><pre tabindex=0><code># Device        Mountpoint  FStype  Option
+</code></pre><p><code>/etc/fstab</code></p>
+<pre tabindex="0"><code># Device        Mountpoint  FStype  Option
 /exports/admin  /net/admin  nullfs  rw
 /exports/alpha  /net/alpha  nullfs  rw
 /exports/share  /net/share  nullfs  rw
-</code></pre><p>NFSv4 with <strong>nfsuserd</strong> for mapping UID and username<br><code>/etc/exports</code></p><pre tabindex=0><code>V4: /
+</code></pre><p>NFSv4 with <strong>nfsuserd</strong> for mapping UID and username<br>
+<code>/etc/exports</code></p>
+<pre tabindex="0"><code>V4: /
 /net/admin  -ro -maproot=nobody
 /net/share  -maproot=nobody -mapall=user
 /net/alpha  -maproot=nobody
-</code></pre><h1 id=firewall>Firewall&nbsp;<a href=#firewall class=anchor></a></h1><h2 id=packet-filter-pf>Packet Filter (PF)&nbsp;<a href=#packet-filter-pf class=anchor></a></h2><p>啟用<br><code>/etc/rc.conf</code></p><pre tabindex=0><code>pf_enable=&#34;YES&#34;
+</code></pre><h1 id="firewall">Firewall&nbsp;<a href="#firewall" class="anchor"></a> </h1>
+<h2 id="packet-filter-pf">Packet Filter (PF)&nbsp;<a href="#packet-filter-pf" class="anchor"></a> </h2>
+<p>啟用<br>
+<code>/etc/rc.conf</code></p>
+<pre tabindex="0"><code>pf_enable=&#34;YES&#34;
 pflog_enable=&#34;YES&#34;
 pfsync_enable=&#34;YES&#34;
-</code></pre><p>PF rules防火牆設置<br>The <strong>last matching</strong> rule decides what action is taken<br>If no rule matches the packet, the <strong>default</strong> action is to <strong>pass</strong><br><code>/etc/pf.conf</code></p><pre tabindex=0><code>#macro definitions
+</code></pre><p>PF rules防火牆設置<br>
+The <strong>last matching</strong> rule decides what action is taken<br>
+If no rule matches the packet, the <strong>default</strong> action is to <strong>pass</strong><br>
+<code>/etc/pf.conf</code></p>
+<pre tabindex="0"><code>#macro definitions
 extdev=&#34;em0&#34;
 intdev=&#34;em1&#34;
 myhost=&#34;192.168.56.1&#34;
@@ -112,9 +619,16 @@ block return proto { tcp,udp } from &lt;BadGuy&gt; to any
 
 #Drop packets from &lt;BadGuy&gt; to access FTP,SSH
 block drop in proto tcp from &lt;BadGuy&gt; to any port {21,22}
-</code></pre><h2 id=blacklistd>Blacklistd&nbsp;<a href=#blacklistd class=anchor></a></h2><p>To find who is the bad guy?</p><p>enable daemon</p><pre tabindex=0><code>sysrc blacklistd_enable=yes
-</code></pre><p>start the service manually</p><pre tabindex=0><code>service blacklistd start
-</code></pre><p>If someone attempts to login via SSH but failed for 5 times in 1 hour,<br>then their IP will be banned from SSH for 1 day automatically</p><p><code>/etc/blacklistd.conf</code></p><pre tabindex=0><code># $FreeBSD: releng/12.0/usr.sbin/blacklistd/blacklistd.conf 336977 2018-07-31 16:39:38Z brd $
+</code></pre><h2 id="blacklistd">Blacklistd&nbsp;<a href="#blacklistd" class="anchor"></a> </h2>
+<p>To find who is the bad guy?</p>
+<p>enable daemon</p>
+<pre tabindex="0"><code>sysrc blacklistd_enable=yes
+</code></pre><p>start the service manually</p>
+<pre tabindex="0"><code>service blacklistd start
+</code></pre><p>If someone attempts to login via SSH but failed for 5 times in 1 hour,<br>
+then their IP will be banned from SSH for 1 day automatically</p>
+<p><code>/etc/blacklistd.conf</code></p>
+<pre tabindex="0"><code># $FreeBSD: releng/12.0/usr.sbin/blacklistd/blacklistd.conf 336977 2018-07-31 16:39:38Z brd $
 #
 # Blacklist rule
 # adr/mask:port type    proto   owner           name    nfail   disable
@@ -133,8 +647,12 @@ ftp             stream  *       *               *       5       24h
 #6161           =       =       =               =/24    =       =
 #*              stream  tcp     *               =       =       =
 </code></pre><p>被擋下來的log在
-<code>/var/log/auth.log</code></p><p>寫一個<code>/usr/local/bin/badguy</code><br>會去抓</p><pre tabindex=0><code>Jan  8 20:47:16 yilianwu-sa sshd[3579]: error: PAM: Authentication error for illegal user austin from 10.113.0.64
-</code></pre><p>的ERROR log</p><pre tabindex=0><code>#!/bin/sh
+<code>/var/log/auth.log</code></p>
+<p>寫一個<code>/usr/local/bin/badguy</code><br>
+會去抓</p>
+<pre tabindex="0"><code>Jan  8 20:47:16 yilianwu-sa sshd[3579]: error: PAM: Authentication error for illegal user austin from 10.113.0.64
+</code></pre><p>的ERROR log</p>
+<pre tabindex="0"><code>#!/bin/sh
 
 hour=$(date &#39;+%H&#39;)
 min=$(date &#39;+%M&#39;)
@@ -166,20 +684,61 @@ cat /var/log/auth.log | grep -E &#34;sshd|sudo&#34; | grep &#34;$hour:$min:&#34;
         else \
                 printf($1 &#34; &#34; $2 &#34; &#34; $3 &#34; &#34; $13 &#34; is a bad guy, 5 attempts\n&#34;); \
         }&#39;
-</code></pre><p>Write a shell script ‘iamagoodguy’ to unban an IP<br><code>/home/c0846101/bin/iamagoodguy</code></p><pre tabindex=0><code>#!/bin/sh
+</code></pre><p>Write a shell script ‘iamagoodguy’ to unban an IP<br>
+<code>/home/c0846101/bin/iamagoodguy</code></p>
+<pre tabindex="0"><code>#!/bin/sh
 pfctl -a blacklistd/22 -t port22 -T delete $1
-</code></pre><p>執行指令</p><pre tabindex=0><code>sudo iamagoodguy 10.113.0.64
-</code></pre><p><code>/etc/crontab</code><br>每分鐘執行一次<code>/usr/local/bin/badguy</code><br><img src=https://i.imgur.com/hJbTFwG.png alt=Imgur></p><p>Log when some IP is banned/unbanned in<br><code>/net/admin/ssh/badguy.log</code><br><img src=https://i.imgur.com/WeAU4sN.png alt=Imgur></p><p>Use newsyslog for log rotation</p><ul><li>Separated by day, store 10 days.</li><li>Compressed to ‘.xz’.</li></ul><pre tabindex=0><code># logfilename               [owner:group]   mode    count   size    when    flags [/pid_file] [sig_num]
+</code></pre><p>執行指令</p>
+<pre tabindex="0"><code>sudo iamagoodguy 10.113.0.64
+</code></pre><p><code>/etc/crontab</code><br>
+每分鐘執行一次<code>/usr/local/bin/badguy</code><br>
+<img src="https://i.imgur.com/hJbTFwG.png" alt="Imgur"></p>
+<p>Log when some IP is banned/unbanned in<br>
+<code>/net/admin/ssh/badguy.log</code><br>
+<img src="https://i.imgur.com/WeAU4sN.png" alt="Imgur"></p>
+<p>Use newsyslog for log rotation</p>
+<ul>
+<li>Separated by day, store 10 days.</li>
+<li>Compressed to ‘.xz’.</li>
+</ul>
+<pre tabindex="0"><code># logfilename               [owner:group]   mode    count   size    when    flags [/pid_file] [sig_num]
 /net/admin/ssh/badguy.log                   640     10      *       @T00    X
-</code></pre></section></div></div></div></div></main><footer class=sand><a href=https://www.facebook.com/beatboxyilianwu target=_blank><img src=https://i.imgur.com/EJhxgWk.png height=30 width=30></a>
-<a href=https://twitter.com/YiLianWu target=_blank><img src=https://i.imgur.com/KvvGcoN.png height=30 width=30></a>
-<a href=https://www.instagram.com/weelian/ target=_blank><img src=https://i.imgur.com/FVUwWv0.png height=30 width=30></a>
-<a href=https://github.com/yilianwu target=_blank><img src=https://i.imgur.com/BIgEqmF.png height=30 width=30></a>
-<a href=https://www.linkedin.com/in/yilianwu/ target=_blank><img src=https://i.imgur.com/hCGvLEq.png height=30 width=30></a>
-<span style=display:block class=footer-text>&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href=https://gohugo.io/ target=_blank>Hugo</a></span></footer><script src=https://code.jquery.com/jquery-latest.js></script>
-<script>$(".post-content h1").prepend("§ ")</script><script type=text/x-mathjax-config>
+</code></pre>
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	
+	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
+	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
+
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$('.post-content h1').prepend("§ ");
+</script>
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left"
     });
-</script><script type=text/javascript src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel=stylesheet href=https://www.yilianwu.io/css/solarized-light.css><script src=https://www.yilianwu.io/js/highlight.pack.js></script>
-<script>hljs.initHighlightingOnLoad()</script></body></html>
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> 
+<link rel="stylesheet" href="https://www.yilianwu.io/css/solarized-light.css"/>
+<script src="https://www.yilianwu.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

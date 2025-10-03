@@ -1,30 +1,1015 @@
-<!doctype html><html lang=zh-tw><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=google-site-verification content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg"><title>UWB 自動跟隨機器人>>[ yilianwu ]</title><link rel="shortcut icon" href=img/favicon.ico><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-16x16.png sizes=16x16><link rel=stylesheet href=https://www.yilianwu.io/css/styles.css><link rel=stylesheet href=https://www.yilianwu.io/css/font.css></head><body><header><nav class=breadcrumb id=breadcrumb><h4><a href=https://www.yilianwu.io/>[ yilianwu ]</a></h4><a href=https://www.yilianwu.io/info>INFO</a>
-<a href=https://www.yilianwu.io/posts>POSTS</a>
-<a href=https://www.yilianwu.io/works>WORKS</a></nav><div class=menutime><a id=cd></a>
-<a id=ct></a>
-<script type=text/javascript src=https://www.yilianwu.io/js/menutime.js></script></div></header><main id=single><div id=post class=white><div class=container><div class=post-toc><div class=post-toc-title><strong>- Contents -</strong></div><div id=page-scrollspy class=toc-nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#who-is-any>Who Is Any?</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e9%ab%94%e9%a9%97%e6%b5%81%e7%a8%8b%e5%9c%96>體驗流程圖</a></li></ul></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e6%8e%a7%e5%88%b6%e7%b3%bb%e7%b5%b1>控制系統</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#uwb-%e8%b7%9f%e9%9a%a8%e6%a8%a1%e7%b5%84>UWB 跟隨模組</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e9%81%bf%e9%9a%9c%e7%b3%bb%e7%b5%b1>避障系統</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#tof10120-%e9%9b%b7%e5%b0%84%e6%b8%ac%e8%b7%9d%e6%84%9f%e6%b8%ac%e5%99%a8>TOF10120 雷射測距感測器</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e4%bd%88%e7%bd%ae>佈置</a></li></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e9%96%8b%e7%99%bc%e9%81%8e%e7%a8%8b>開發過程</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e6%8e%a7%e5%88%b6%e6%9d%bf%e7%9a%84%e9%81%b8%e6%93%87>控制板的選擇</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#arduino>Arduino</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#raspberry-pi>Raspberry Pi</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e8%a8%8a%e8%99%9f>訊號</a></li></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e6%8e%a7%e5%88%b6%e7%a8%8b%e5%bc%8f%e7%9a%84%e6%a8%a1%e5%bc%8f%e5%88%87%e6%8f%9b>控制程式的模式切換</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e8%88%87arrow%e7%9a%84%e6%95%b4%e5%90%88>與«ARrow»的整合</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#unity-http-server>Unity (HTTP Server)</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#esp8266-http-client>ESP8266 (HTTP Client)</a></li></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e9%9b%bb%e7%b3%bb%e6%a7%8b%e6%88%90>電系構成</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#sos%e7%b7%8a%e6%80%a5%e6%96%b7%e9%9b%bb%e7%b3%bb%e7%b5%b1>SOS緊急斷電系統</a></li></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e7%b6%b2%e8%b7%af>網路</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e9%9c%80%e6%b1%82>需求</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e9%81%b8%e6%93%87>選擇</a></li></ul></ul></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e7%b4%80%e9%8c%84%e5%bd%b1%e7%89%87>紀錄影片</a></li></ul></div></div><div class=paperbg><div id=title><h1>UWB 自動跟隨機器人</h1></div><div class=post-meta><span class=post-time>2021-07-05</span><div class=post-tag><a class=tag-link href=https://www.yilianwu.io/tags/raspberry-pi/>raspberry-pi</a></div><section class=post-content><p>：我們要做一個讓觀眾可以動起來的作品<br>於是經過了半年的努力，安尼就這樣誕生了</p><p>安尼維爾 團隊成員：<br><img src=https://i.imgur.com/Nu53AIk.jpg alt=Imgur>
-左起：羅大有 吳羿璉 洪羕喆 簡令謙</p><p>另外，也要特別感謝<a href=https://blog.libralight.dev/author/leo/>陳少甫</a>、<a href=https://apps.apple.com/tw/app/arrow-artsushi/id1557105991>ARrow</a>的技術支援！</p><h1 id=who-is-any>Who Is Any?&nbsp;<a href=#who-is-any class=anchor></a></h1><p>安尼(Any)是一個會自動跟隨體驗者的都市更新機器人</p><p>在與安尼配對成功後，安尼會跟隨著你到處行走<br>當你選定好一個地點，可以停下腳步將鏟子輕輕地往下壓<br>平板螢幕上的虛擬城市便會立即產生一棟隨機的建築物<br>結束體驗前，須關閉鏟子的電源放回安尼上並隨地停放安尼，以供下一位觀眾參與互動。<br><img src=https://i.imgur.com/GYLTJKY.jpg alt=Imgur></p><h2 id=體驗流程圖>體驗流程圖&nbsp;<a href=#體驗流程圖 class=anchor></a></h2><p><img src=https://i.imgur.com/6eC3FLv.png alt=Imgur>
-<img src=https://i.imgur.com/fdft5UV.png alt=Imgur></p><p>這篇文只會介紹安尼控制系統的部分</p><h1 id=控制系統>控制系統&nbsp;<a href=#控制系統 class=anchor></a></h1><p>先來一張Topology<br><img src=https://i.imgur.com/YpklZiy.jpg alt=Imgur></p><p>其實就是3個東西在運作</p><ol><li>Raspberry Pi 樹莓派<ul><li>負責控制安尼的跟隨方向、速度</li><li>避開障礙物動作的切換</li></ul></li><li>ESP8266(NodeMCU)<ul><li>判斷控制系統的跟隨啟動與否</li><li>當觀眾按壓鏟子，會透過HTTP Requests<br>觸發 «ARrow» 隨機產出一棟建築物</li></ul></li><li>«ARrow» - An iPad AR APP<ul><li>一款AR的應用程式<br>在體驗過程中會隨鏟子生成建築物，也能同時瀏覽到«ARrow»畫布上的創作內容</li></ul></li></ol><h2 id=uwb-跟隨模組>UWB 跟隨模組&nbsp;<a href=#uwb-跟隨模組 class=anchor></a></h2><p>全名 PDOA-UWB 定位系統<br>(phase-difference-of-arrival assisted ultra-wideband)<br>分為兩個元件：</p><ol><li><p>標籤(Tag)<br>被嵌在體驗者的那端<br>經配對後，會主動發送位置訊息給基地台(Base)<br><img src=https://i.imgur.com/776VfAQ.jpg alt=Imgur></p></li><li><p>基地台(Base)<br>透過板子上的兩個PCB天線接收鏟子上的標籤(Tag)訊號，再經由UART通訊介面傳送給控制板進行運算，判斷裝置跟隨的方向、速度<br><img src=https://i.imgur.com/yC0VlKP.jpg alt=Imgur>
-<img src=https://i.imgur.com/RiDA2FM.jpg alt=Imgur></p></li></ol><p>基地台(Base)接收到的數據有兩種格式：</p><ul><li>JSON</li><li>Hex</li></ul><p><strong>在本機校正跟隨模組時，一定要先調回JSON格式</strong><br>寫控制程式用的是Hex格式</p><table><thead><tr><th>位元欄</th><th>位元組數</th><th>意思(低位優先)</th></tr></thead><tbody><tr><td>Head</td><td>1 Byte</td><td>固定為0x2A</td></tr><tr><td>Length</td><td>1 Byte</td><td>&lt;sn-Acc_Z>的長度</td></tr><tr><td>SN</td><td>1 Byte</td><td>序號</td></tr><tr><td>Address</td><td>2 Byte</td><td>Tag Address</td></tr><tr><td>Angual</td><td>4 Byte</td><td>角度(degree)</td></tr><tr><td>Distance</td><td>4 Byte</td><td>距離(cm)</td></tr><tr><td>F_Path_Power_Level</td><td>4 Byte</td><td>第一條路徑訊號強度</td></tr><tr><td>RX_Level</td><td>4 Byte</td><td>訊號強度</td></tr><tr><td>Acc_X</td><td>2 Byte</td><td>Tag X軸加速度</td></tr><tr><td>Acc_Y</td><td>2 Byte</td><td>Tag Y軸加速度</td></tr><tr><td>Acc_Z</td><td>2 Byte</td><td>Tag Z軸加速度</td></tr><tr><td>Check</td><td>1 Byte</td><td>校驗位(XOR)</td></tr><tr><td>Foot</td><td>1 Byte</td><td>固定 0x23</td></tr></tbody></table><p><img src=https://i.imgur.com/0VWnJY7.png alt=Imgur>
-這是Serial.println 抓到的數據，可以看到他們的規律<br>再利用抓到的角度、距離等數據來控制步進馬達該行走的步數</p><h2 id=避障系統>避障系統&nbsp;<a href=#避障系統 class=anchor></a></h2><h3 id=tof10120-雷射測距感測器>TOF10120 雷射測距感測器&nbsp;<a href=#tof10120-雷射測距感測器 class=anchor></a></h3><p>為了讓測距的結果更精確，使用了 ToF (Time of Flight) 飛時測距技術的感測器，降低了感測器受目標物體的反射率干擾<br><img src=https://i.imgur.com/rHq5MkX.jpg alt=Imgur>
-<img src=https://i.imgur.com/NCxmPXF.jpg alt=Imgur></p><p>這種感測器是利用發光二極體（LED：Light Emitting Diode）或雷射二極體（LD：Laser Diode）<br>發射出紅外光，照射到物體表面反射回來<br>由於光速（v）已知，可以利用一個紅外光影像感測器，量測物體不同深度的位置反射回來的時間（t）<br>利用簡單的數學公式就可以計算出物體不同位置的距離（深度）<br><img src=https://i.imgur.com/FYs3c3S.png alt=Imgur>
-<img src=https://i.imgur.com/pCu6gTD.png alt=Imgur></p><p>TOF10120有兩種控制介面</p><ul><li>I2C</li><li>UART</li></ul><p>由於Raspberry Pi上唯一的UART介面已被UWB跟隨模組佔走了<br>安尼的避障模組採用I2C Bus控制</p><h3 id=佈置>佈置&nbsp;<a href=#佈置 class=anchor></a></h3><p>一組安尼共使用了六個TOF10120<br>分別是R, FR, MR, ML, FL, L<br><img src=https://i.imgur.com/s5oQOiE.jpg alt=Imgur></p><p><img src=https://i.imgur.com/HEBnOFU.jpg alt=Imgur>
-安尼會依據所讀取到的距離數值來判斷避障的方向、動作<br>避障的動作分為：</p><ol><li>左/右前轉</li><li>左/右後轉</li><li>自轉</li></ol><h2 id=開發過程>開發過程&nbsp;<a href=#開發過程 class=anchor></a></h2><h3 id=控制板的選擇>控制板的選擇&nbsp;<a href=#控制板的選擇 class=anchor></a></h3><h4 id=arduino>Arduino&nbsp;<a href=#arduino class=anchor></a></h4><p>在測試的第一階段，我們選用Arduino作為控制板<br>搭配Arduino的第三方Library - <a href=https://www.airspayce.com/mikem/arduino/AccelStepper/>AccelStepper</a> 控制步進馬達</p><p>實驗後發現，步進馬達的轉速很仰賴控制板的的運算速度<br>而Arduino的處理效能無法達到我們的期望，使得步進馬達的轉速受到限制</p><ul><li>Arduino UNO<br>Clock Speed: 16MHz</li><li>Arduino Due
-Clock Speed: 84MHz</li></ul><p>即使換到 Arduino Due，運算的速度是有明顯提升<br>但轉速還是不夠快，大約只有90RPM而已</p><h4 id=raspberry-pi>Raspberry Pi&nbsp;<a href=#raspberry-pi class=anchor></a></h4><p>為了提高運算效率，以及未來可能的其他功能擴充<br>我們也將控制板升級為樹莓派</p><p>樹莓派處理器的Clock Speed有1,500MHz(1.5GHz)<br>這個版本的控制程式是用Python撰寫的，我們也成功地將AccelStepper移植到Python運作<br>參考： <a href=https://github.com/alangibson/steppyr>https://github.com/alangibson/steppyr</a></p><p>然而，又遭遇到了另一個困境&mldr;<br>CPython的執行緒(Thread)有全局解釋器鎖 Global Interpreter Lock (GIL) 的問題<br>無法發揮樹莓派的多核心處理效能<br>也就是，無法同時進行運算、執行控制兩顆步進馬達的功能</p><p>為了解決此問題，我們將AccelStepper改使用C來撰寫<br>這是一大工程，我們也成功解決的馬達轉速受限的問題！<br>-> <a href=https://github.com/yilianwu/steppyr/tree/cpp>https://github.com/yilianwu/steppyr/tree/cpp</a></p><h3 id=訊號>訊號&nbsp;<a href=#訊號 class=anchor></a></h3><p>有時候車子會跟隨到一半沒有反應，感覺訊號斷斷續續的
-後來發現，因為戶外路況顛簸，車體在行走的時候會震動、搖晃，造成跟隨模組訊號線的接口接觸不良</p><p>我們將樹莓派的GPIO升級成這種端子台，穩定訊號<br><img src=https://i.imgur.com/oq1zqvS.jpg alt=Imgur></p><p>UWB跟隨模組的基地台(Base)也從原本的綠色裸板升級為有外殼的版本<br>訊號線也從杜邦線改為PH 2.0的端子接頭<br><img src=https://i.imgur.com/TxuxIp2.jpg alt=Imgur>
-<img src=https://i.imgur.com/i7Ux8Eg.jpg alt=Imgur></p><h2 id=控制程式的模式切換>控制程式的模式切換&nbsp;<a href=#控制程式的模式切換 class=anchor></a></h2><p>程式的架構分為4個模式：</p><ul><li><strong>STANDBY</strong> : 安尼靜止不動</li><li><strong>FOLLOWING</strong> : 安尼依體驗者鏟子上的標籤(Tag)來判斷跟隨的方向、速度</li><li><strong>SPINNING</strong> : 若體驗者短時間內大幅度變換方向，安尼會自轉來保持正面朝向體驗者<br>(由於基地台的天線只有單一方向性，若背對安尼，會造成數據的錯誤判斷)</li><li><strong>AVOID</strong> : 避障感測器若偵測到有障礙物，會執行避障動作</li></ul><p>關係圖如下所示：<br><img src=https://i.imgur.com/SbIeQoA.jpg alt=Imgur></p><h3 id=與arrow的整合>與«ARrow»的整合&nbsp;<a href=#與arrow的整合 class=anchor></a></h3><p><a href=https://apps.apple.com/tw/app/arrow-artsushi/id1557105991>ARrow</a>是我們畢展另一個組別的作品 - 一款可以讓你自由創作的畫布 AR APP<br>安尼的iPad安裝了ARrow的特製版本，一旦鏟子被體驗者往地面輕壓<br>就會立即在ARrow的AR世界中隨機產出一棟建築物</p><p><img src=https://i.imgur.com/QdXSMjn.png alt=Imgur><br>建築造型參考臺灣的多元建案設計<br>建築類型包括商辦大樓、飯店、集合式住宅、博物館、宗教建築等<br>並賦予每一棟建築專屬名稱</p><p><a href=https://apps.apple.com/tw/app/arrow-artsushi/id1557105991>ARrow</a>是用Unity開發的應用程式<br>我們在鏟子裡放置一塊 NodeMCU，讓ESP8266 (HTTP Client)能在鏟子被按壓時<br>透過 HTTP Requests 與 Unity (HTTP Server)溝通<br><img src=https://i.imgur.com/aq2WwCq.jpg alt=Imgur></p><h3 id=unity-http-server>Unity (HTTP Server)&nbsp;<a href=#unity-http-server class=anchor></a></h3><p>在Unity新增一個HttpListener<br>Port是5555<br>如果接收到Client的路徑為<code>/build</code><br>就產生建築物，並且回傳202<br><script type=application/javascript src=https://gist.github.com/yilianwu/dc78be09804afa0ca9336e9f96160ff5.js></script></p><h3 id=esp8266-http-client>ESP8266 (HTTP Client)&nbsp;<a href=#esp8266-http-client class=anchor></a></h3><p>NodeMCU會讀取霍爾感測器的數值<br>在Button Down的時候會傳送<code>http://192.168.0.3:5555/build</code>給Server<br>並且<code>GET</code> Server的狀態碼 (HTTP StatusCode)<br><script type=application/javascript src=https://gist.github.com/yilianwu/2a8ac37a49a1fe7832cc08ca32566d32.js></script>
-<img src=https://i.imgur.com/bnLGnQt.png alt=Imgur></p><h2 id=電系構成>電系構成&nbsp;<a href=#電系構成 class=anchor></a></h2><p>安尼主要的電力來源是24V 16800mAh的鋰電池<br>兩顆步進馬達、LED燈可直接接上電池使用</p><p>Raspberry Pi、避障模組、跟隨模組、NodeMCU、繼電器<br>則須在接上24V - 5V的降壓模組才能使用</p><p>這是安尼艙門內的線路：<br><img src=https://i.imgur.com/iQmHY9k.jpg alt=Imgur></p><h3 id=sos緊急斷電系統>SOS緊急斷電系統&nbsp;<a href=#sos緊急斷電系統 class=anchor></a></h3><p>我們在展期臨時新增了一塊NodeMCU板<br>寫了一個可以遠端控制馬達電源的開關<br>這樣在展覽遇到突發狀況需要緊急斷電時，只要拿出手機就能直接操控<br><img src=https://i.imgur.com/Jwd9DaO.jpg alt=Imgur></p><h2 id=網路>網路&nbsp;<a href=#網路 class=anchor></a></h2><p>所有的控制元件都必須連上網路才能互相溝通</p><h3 id=需求>需求&nbsp;<a href=#需求 class=anchor></a></h3><p>«安尼維爾»總共有4種裝置需在同一個網域下運行：</p><ul><li>Raspberry Pi</li><li>ESP8266(NodeMCU)</li><li>iPad</li><li>筆電</li></ul><p>而且這些裝置的活動範圍涵蓋了整個場域(安尼可以跑遍整個四四南村)<br>顧及<strong>預算</strong>的限制，我們決定使用4G SIM卡的網路分享器</p><p>無線網路分享器通常有兩種頻率波段可以選擇：2.4GHz、5GHz<br>由於我們展覽的場地在高樓大廈林立(辦公室)的都會市中心，選用5GHz的網路會比較不容易受到干擾<br>其中NodeMCU板只能使用2.4GHz的網路<br>所以我們需要可以同時發送兩種頻率波段的網路分享器!<br><img src=https://i.imgur.com/pxfD8w9.jpg alt=Imgur></p><h3 id=選擇>選擇&nbsp;<a href=#選擇 class=anchor></a></h3><p>粗略的比較兩家網路分享器租借公司<br><img src=https://i.imgur.com/BgyqyZ7.png alt=Imgur></p><table><thead><tr><th style=text-align:left>租借場商</th><th>iVideo</th><th>Wi-Ho! 特樂通</th></tr></thead><tbody><tr><td style=text-align:left>廠牌</td><td>HUAWEI</td><td>D-Link</td></tr><tr><td style=text-align:left>型號</td><td>5573</td><td>DWR-933</td></tr><tr><td style=text-align:left>電信公司</td><td>中華電信</td><td>遠傳電信</td></tr><tr><td style=text-align:left>Wi-Fi 頻率波段</td><td>只能2.4GHz、5GHz 兩者二選一</td><td>可以同時發送2.4GHz、5GHz兩種頻段的網路</td></tr><tr><td style=text-align:left>月租租金</td><td>NTD$640</td><td>NTD$690</td></tr></tbody></table><p>最後選擇了D-Link DWR-933<br>他還有管理介面可以設定<code>SSID</code>、<code>passwd</code>之類的東西，還不錯用</p><pre tabindex=0><code>username:admin
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>UWB 自動跟隨機器人>>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/styles.css">
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/font.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="https://www.yilianwu.io/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="https://www.yilianwu.io/info">INFO</a>
+            
+            <a href="https://www.yilianwu.io/posts">POSTS</a>
+            
+            <a href="https://www.yilianwu.io/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="https://www.yilianwu.io/js/menutime.js"></script>
+    </div>
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+       
+       
+
+
+
+
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#who-is-any">
+                            Who Is Any?
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e9%ab%94%e9%a9%97%e6%b5%81%e7%a8%8b%e5%9c%96">
+                            體驗流程圖
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%8e%a7%e5%88%b6%e7%b3%bb%e7%b5%b1">
+                            控制系統
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#uwb-%e8%b7%9f%e9%9a%a8%e6%a8%a1%e7%b5%84">
+                            UWB 跟隨模組
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e9%81%bf%e9%9a%9c%e7%b3%bb%e7%b5%b1">
+                            避障系統
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#tof10120-%e9%9b%b7%e5%b0%84%e6%b8%ac%e8%b7%9d%e6%84%9f%e6%b8%ac%e5%99%a8">
+                            TOF10120 雷射測距感測器
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e4%bd%88%e7%bd%ae">
+                            佈置
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e9%96%8b%e7%99%bc%e9%81%8e%e7%a8%8b">
+                            開發過程
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%8e%a7%e5%88%b6%e6%9d%bf%e7%9a%84%e9%81%b8%e6%93%87">
+                            控制板的選擇
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#arduino">
+                            Arduino
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#raspberry-pi">
+                            Raspberry Pi
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e8%a8%8a%e8%99%9f">
+                            訊號
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e6%8e%a7%e5%88%b6%e7%a8%8b%e5%bc%8f%e7%9a%84%e6%a8%a1%e5%bc%8f%e5%88%87%e6%8f%9b">
+                            控制程式的模式切換
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e8%88%87arrow%e7%9a%84%e6%95%b4%e5%90%88">
+                            與«ARrow»的整合
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#unity-http-server">
+                            Unity (HTTP Server)
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#esp8266-http-client">
+                            ESP8266 (HTTP Client)
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e9%9b%bb%e7%b3%bb%e6%a7%8b%e6%88%90">
+                            電系構成
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#sos%e7%b7%8a%e6%80%a5%e6%96%b7%e9%9b%bb%e7%b3%bb%e7%b5%b1">
+                            SOS緊急斷電系統
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e7%b6%b2%e8%b7%af">
+                            網路
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e9%9c%80%e6%b1%82">
+                            需求
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e9%81%b8%e6%93%87">
+                            選擇
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e7%b4%80%e9%8c%84%e5%bd%b1%e7%89%87">
+                            紀錄影片
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
+       <div class="paperbg">
+            <div id="title">
+                <h1>UWB 自動跟隨機器人</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2021-07-05 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/raspberry-pi/"> raspberry-pi </a>
+                    </div>
+
+
+                <section class="post-content">
+                <p>：我們要做一個讓觀眾可以動起來的作品<br>
+於是經過了半年的努力，安尼就這樣誕生了</p>
+<p>安尼維爾 團隊成員：<br>
+<img src="https://i.imgur.com/Nu53AIk.jpg" alt="Imgur">
+左起：羅大有 吳羿璉 洪羕喆 簡令謙</p>
+<p>另外，也要特別感謝<a href="https://blog.libralight.dev/author/leo/">陳少甫</a>、<a href="https://apps.apple.com/tw/app/arrow-artsushi/id1557105991">ARrow</a>的技術支援！</p>
+<h1 id="who-is-any">Who Is Any?&nbsp;<a href="#who-is-any" class="anchor"></a> </h1>
+<p>安尼(Any)是一個會自動跟隨體驗者的都市更新機器人</p>
+<p>在與安尼配對成功後，安尼會跟隨著你到處行走<br>
+當你選定好一個地點，可以停下腳步將鏟子輕輕地往下壓<br>
+平板螢幕上的虛擬城市便會立即產生一棟隨機的建築物<br>
+結束體驗前，須關閉鏟子的電源放回安尼上並隨地停放安尼，以供下一位觀眾參與互動。<br>
+<img src="https://i.imgur.com/GYLTJKY.jpg" alt="Imgur"></p>
+<h2 id="體驗流程圖">體驗流程圖&nbsp;<a href="#體驗流程圖" class="anchor"></a> </h2>
+<p><img src="https://i.imgur.com/6eC3FLv.png" alt="Imgur">
+<img src="https://i.imgur.com/fdft5UV.png" alt="Imgur"></p>
+<p>這篇文只會介紹安尼控制系統的部分</p>
+<h1 id="控制系統">控制系統&nbsp;<a href="#控制系統" class="anchor"></a> </h1>
+<p>先來一張Topology<br>
+<img src="https://i.imgur.com/YpklZiy.jpg" alt="Imgur"></p>
+<p>其實就是3個東西在運作</p>
+<ol>
+<li>Raspberry Pi 樹莓派
+<ul>
+<li>負責控制安尼的跟隨方向、速度</li>
+<li>避開障礙物動作的切換</li>
+</ul>
+</li>
+<li>ESP8266(NodeMCU)
+<ul>
+<li>判斷控制系統的跟隨啟動與否</li>
+<li>當觀眾按壓鏟子，會透過HTTP Requests<br>
+觸發 «ARrow» 隨機產出一棟建築物</li>
+</ul>
+</li>
+<li>«ARrow» - An iPad AR APP
+<ul>
+<li>一款AR的應用程式<br>
+在體驗過程中會隨鏟子生成建築物，也能同時瀏覽到«ARrow»畫布上的創作內容</li>
+</ul>
+</li>
+</ol>
+<h2 id="uwb-跟隨模組">UWB 跟隨模組&nbsp;<a href="#uwb-跟隨模組" class="anchor"></a> </h2>
+<p>全名 PDOA-UWB 定位系統<br>
+(phase-difference-of-arrival assisted ultra-wideband)<br>
+分為兩個元件：</p>
+<ol>
+<li>
+<p>標籤(Tag)<br>
+被嵌在體驗者的那端<br>
+經配對後，會主動發送位置訊息給基地台(Base)<br>
+<img src="https://i.imgur.com/776VfAQ.jpg" alt="Imgur"></p>
+</li>
+<li>
+<p>基地台(Base)<br>
+透過板子上的兩個PCB天線接收鏟子上的標籤(Tag)訊號，再經由UART通訊介面傳送給控制板進行運算，判斷裝置跟隨的方向、速度<br>
+<img src="https://i.imgur.com/yC0VlKP.jpg" alt="Imgur">
+<img src="https://i.imgur.com/RiDA2FM.jpg" alt="Imgur"></p>
+</li>
+</ol>
+<p>基地台(Base)接收到的數據有兩種格式：</p>
+<ul>
+<li>JSON</li>
+<li>Hex</li>
+</ul>
+<p><strong>在本機校正跟隨模組時，一定要先調回JSON格式</strong><br>
+寫控制程式用的是Hex格式</p>
+<table>
+<thead>
+<tr>
+<th>位元欄</th>
+<th>位元組數</th>
+<th>意思(低位優先)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Head</td>
+<td>1 Byte</td>
+<td>固定為0x2A</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>1 Byte</td>
+<td>&lt;sn-Acc_Z&gt;的長度</td>
+</tr>
+<tr>
+<td>SN</td>
+<td>1 Byte</td>
+<td>序號</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>2 Byte</td>
+<td>Tag Address</td>
+</tr>
+<tr>
+<td>Angual</td>
+<td>4 Byte</td>
+<td>角度(degree)</td>
+</tr>
+<tr>
+<td>Distance</td>
+<td>4 Byte</td>
+<td>距離(cm)</td>
+</tr>
+<tr>
+<td>F_Path_Power_Level</td>
+<td>4 Byte</td>
+<td>第一條路徑訊號強度</td>
+</tr>
+<tr>
+<td>RX_Level</td>
+<td>4 Byte</td>
+<td>訊號強度</td>
+</tr>
+<tr>
+<td>Acc_X</td>
+<td>2 Byte</td>
+<td>Tag X軸加速度</td>
+</tr>
+<tr>
+<td>Acc_Y</td>
+<td>2 Byte</td>
+<td>Tag Y軸加速度</td>
+</tr>
+<tr>
+<td>Acc_Z</td>
+<td>2 Byte</td>
+<td>Tag Z軸加速度</td>
+</tr>
+<tr>
+<td>Check</td>
+<td>1 Byte</td>
+<td>校驗位(XOR)</td>
+</tr>
+<tr>
+<td>Foot</td>
+<td>1 Byte</td>
+<td>固定 0x23</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://i.imgur.com/0VWnJY7.png" alt="Imgur">
+這是Serial.println 抓到的數據，可以看到他們的規律<br>
+再利用抓到的角度、距離等數據來控制步進馬達該行走的步數</p>
+<h2 id="避障系統">避障系統&nbsp;<a href="#避障系統" class="anchor"></a> </h2>
+<h3 id="tof10120-雷射測距感測器">TOF10120 雷射測距感測器&nbsp;<a href="#tof10120-雷射測距感測器" class="anchor"></a> </h3>
+<p>為了讓測距的結果更精確，使用了 ToF (Time of Flight) 飛時測距技術的感測器，降低了感測器受目標物體的反射率干擾<br>
+<img src="https://i.imgur.com/rHq5MkX.jpg" alt="Imgur">
+<img src="https://i.imgur.com/NCxmPXF.jpg" alt="Imgur"></p>
+<p>這種感測器是利用發光二極體（LED：Light Emitting Diode）或雷射二極體（LD：Laser Diode）<br>
+發射出紅外光，照射到物體表面反射回來<br>
+由於光速（v）已知，可以利用一個紅外光影像感測器，量測物體不同深度的位置反射回來的時間（t）<br>
+利用簡單的數學公式就可以計算出物體不同位置的距離（深度）<br>
+<img src="https://i.imgur.com/FYs3c3S.png" alt="Imgur">
+<img src="https://i.imgur.com/pCu6gTD.png" alt="Imgur"></p>
+<p>TOF10120有兩種控制介面</p>
+<ul>
+<li>I2C</li>
+<li>UART</li>
+</ul>
+<p>由於Raspberry Pi上唯一的UART介面已被UWB跟隨模組佔走了<br>
+安尼的避障模組採用I2C Bus控制</p>
+<h3 id="佈置">佈置&nbsp;<a href="#佈置" class="anchor"></a> </h3>
+<p>一組安尼共使用了六個TOF10120<br>
+分別是R, FR, MR, ML, FL, L<br>
+<img src="https://i.imgur.com/s5oQOiE.jpg" alt="Imgur"></p>
+<p><img src="https://i.imgur.com/HEBnOFU.jpg" alt="Imgur">
+安尼會依據所讀取到的距離數值來判斷避障的方向、動作<br>
+避障的動作分為：</p>
+<ol>
+<li>左/右前轉</li>
+<li>左/右後轉</li>
+<li>自轉</li>
+</ol>
+<h2 id="開發過程">開發過程&nbsp;<a href="#開發過程" class="anchor"></a> </h2>
+<h3 id="控制板的選擇">控制板的選擇&nbsp;<a href="#控制板的選擇" class="anchor"></a> </h3>
+<h4 id="arduino">Arduino&nbsp;<a href="#arduino" class="anchor"></a> </h4>
+<p>在測試的第一階段，我們選用Arduino作為控制板<br>
+搭配Arduino的第三方Library - <a href="https://www.airspayce.com/mikem/arduino/AccelStepper/">AccelStepper</a> 控制步進馬達</p>
+<p>實驗後發現，步進馬達的轉速很仰賴控制板的的運算速度<br>
+而Arduino的處理效能無法達到我們的期望，使得步進馬達的轉速受到限制</p>
+<ul>
+<li>Arduino UNO<br>
+Clock Speed: 16MHz</li>
+<li>Arduino Due
+Clock Speed: 84MHz</li>
+</ul>
+<p>即使換到 Arduino Due，運算的速度是有明顯提升<br>
+但轉速還是不夠快，大約只有90RPM而已</p>
+<h4 id="raspberry-pi">Raspberry Pi&nbsp;<a href="#raspberry-pi" class="anchor"></a> </h4>
+<p>為了提高運算效率，以及未來可能的其他功能擴充<br>
+我們也將控制板升級為樹莓派</p>
+<p>樹莓派處理器的Clock Speed有1,500MHz(1.5GHz)<br>
+這個版本的控制程式是用Python撰寫的，我們也成功地將AccelStepper移植到Python運作<br>
+參考： <a href="https://github.com/alangibson/steppyr">https://github.com/alangibson/steppyr</a></p>
+<p>然而，又遭遇到了另一個困境&hellip;<br>
+CPython的執行緒(Thread)有全局解釋器鎖 Global Interpreter Lock (GIL) 的問題<br>
+無法發揮樹莓派的多核心處理效能 <br>
+也就是，無法同時進行運算、執行控制兩顆步進馬達的功能</p>
+<p>為了解決此問題，我們將AccelStepper改使用C來撰寫<br>
+這是一大工程，我們也成功解決的馬達轉速受限的問題！<br>
+-&gt; <a href="https://github.com/yilianwu/steppyr/tree/cpp">https://github.com/yilianwu/steppyr/tree/cpp</a></p>
+<h3 id="訊號">訊號&nbsp;<a href="#訊號" class="anchor"></a> </h3>
+<p>有時候車子會跟隨到一半沒有反應，感覺訊號斷斷續續的
+後來發現，因為戶外路況顛簸，車體在行走的時候會震動、搖晃，造成跟隨模組訊號線的接口接觸不良</p>
+<p>我們將樹莓派的GPIO升級成這種端子台，穩定訊號<br>
+<img src="https://i.imgur.com/oq1zqvS.jpg" alt="Imgur"></p>
+<p>UWB跟隨模組的基地台(Base)也從原本的綠色裸板升級為有外殼的版本<br>
+訊號線也從杜邦線改為PH 2.0的端子接頭<br>
+<img src="https://i.imgur.com/TxuxIp2.jpg" alt="Imgur">
+<img src="https://i.imgur.com/i7Ux8Eg.jpg" alt="Imgur"></p>
+<h2 id="控制程式的模式切換">控制程式的模式切換&nbsp;<a href="#控制程式的模式切換" class="anchor"></a> </h2>
+<p>程式的架構分為4個模式：</p>
+<ul>
+<li><strong>STANDBY</strong> : 安尼靜止不動</li>
+<li><strong>FOLLOWING</strong> : 安尼依體驗者鏟子上的標籤(Tag)來判斷跟隨的方向、速度</li>
+<li><strong>SPINNING</strong> : 若體驗者短時間內大幅度變換方向，安尼會自轉來保持正面朝向體驗者<br>
+(由於基地台的天線只有單一方向性，若背對安尼，會造成數據的錯誤判斷)</li>
+<li><strong>AVOID</strong> : 避障感測器若偵測到有障礙物，會執行避障動作</li>
+</ul>
+<p>關係圖如下所示：<br>
+<img src="https://i.imgur.com/SbIeQoA.jpg" alt="Imgur"></p>
+<h3 id="與arrow的整合">與«ARrow»的整合&nbsp;<a href="#與arrow的整合" class="anchor"></a> </h3>
+<p><a href="https://apps.apple.com/tw/app/arrow-artsushi/id1557105991">ARrow</a>是我們畢展另一個組別的作品 - 一款可以讓你自由創作的畫布 AR APP<br>
+安尼的iPad安裝了ARrow的特製版本，一旦鏟子被體驗者往地面輕壓<br>
+就會立即在ARrow的AR世界中隨機產出一棟建築物</p>
+<p><img src="https://i.imgur.com/QdXSMjn.png" alt="Imgur"><br>
+建築造型參考臺灣的多元建案設計<br>
+建築類型包括商辦大樓、飯店、集合式住宅、博物館、宗教建築等<br>
+並賦予每一棟建築專屬名稱</p>
+<p><a href="https://apps.apple.com/tw/app/arrow-artsushi/id1557105991">ARrow</a>是用Unity開發的應用程式<br>
+我們在鏟子裡放置一塊 NodeMCU，讓ESP8266 (HTTP Client)能在鏟子被按壓時<br>
+透過 HTTP Requests 與 Unity (HTTP Server)溝通<br>
+<img src="https://i.imgur.com/aq2WwCq.jpg" alt="Imgur"></p>
+<h3 id="unity-http-server">Unity (HTTP Server)&nbsp;<a href="#unity-http-server" class="anchor"></a> </h3>
+<p>在Unity新增一個HttpListener<br>
+Port是5555<br>
+如果接收到Client的路徑為<code>/build</code><br>
+就產生建築物，並且回傳202<br>
+<script type="application/javascript" src="https://gist.github.com/yilianwu/dc78be09804afa0ca9336e9f96160ff5.js"></script>
+</p>
+<h3 id="esp8266-http-client">ESP8266 (HTTP Client)&nbsp;<a href="#esp8266-http-client" class="anchor"></a> </h3>
+<p>NodeMCU會讀取霍爾感測器的數值<br>
+在Button Down的時候會傳送<code>http://192.168.0.3:5555/build</code>給Server<br>
+並且<code>GET</code> Server的狀態碼 (HTTP StatusCode)<br>
+<script type="application/javascript" src="https://gist.github.com/yilianwu/2a8ac37a49a1fe7832cc08ca32566d32.js"></script>
+
+<img src="https://i.imgur.com/bnLGnQt.png" alt="Imgur"></p>
+<h2 id="電系構成">電系構成&nbsp;<a href="#電系構成" class="anchor"></a> </h2>
+<p>安尼主要的電力來源是24V 16800mAh的鋰電池<br>
+兩顆步進馬達、LED燈可直接接上電池使用</p>
+<p>Raspberry Pi、避障模組、跟隨模組、NodeMCU、繼電器<br>
+則須在接上24V - 5V的降壓模組才能使用</p>
+<p>這是安尼艙門內的線路：<br>
+<img src="https://i.imgur.com/iQmHY9k.jpg" alt="Imgur"></p>
+<h3 id="sos緊急斷電系統">SOS緊急斷電系統&nbsp;<a href="#sos緊急斷電系統" class="anchor"></a> </h3>
+<p>我們在展期臨時新增了一塊NodeMCU板<br>
+寫了一個可以遠端控制馬達電源的開關<br>
+這樣在展覽遇到突發狀況需要緊急斷電時，只要拿出手機就能直接操控<br>
+<img src="https://i.imgur.com/Jwd9DaO.jpg" alt="Imgur"></p>
+<h2 id="網路">網路&nbsp;<a href="#網路" class="anchor"></a> </h2>
+<p>所有的控制元件都必須連上網路才能互相溝通</p>
+<h3 id="需求">需求&nbsp;<a href="#需求" class="anchor"></a> </h3>
+<p>«安尼維爾»總共有4種裝置需在同一個網域下運行：</p>
+<ul>
+<li>Raspberry Pi</li>
+<li>ESP8266(NodeMCU)</li>
+<li>iPad</li>
+<li>筆電</li>
+</ul>
+<p>而且這些裝置的活動範圍涵蓋了整個場域(安尼可以跑遍整個四四南村)<br>
+顧及<strong>預算</strong>的限制，我們決定使用4G SIM卡的網路分享器</p>
+<p>無線網路分享器通常有兩種頻率波段可以選擇：2.4GHz、5GHz<br>
+由於我們展覽的場地在高樓大廈林立(辦公室)的都會市中心，選用5GHz的網路會比較不容易受到干擾<br>
+其中NodeMCU板只能使用2.4GHz的網路<br>
+所以我們需要可以同時發送兩種頻率波段的網路分享器!<br>
+<img src="https://i.imgur.com/pxfD8w9.jpg" alt="Imgur"></p>
+<h3 id="選擇">選擇&nbsp;<a href="#選擇" class="anchor"></a> </h3>
+<p>粗略的比較兩家網路分享器租借公司<br>
+<img src="https://i.imgur.com/BgyqyZ7.png" alt="Imgur"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">租借場商</th>
+<th>iVideo</th>
+<th>Wi-Ho! 特樂通</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">廠牌</td>
+<td>HUAWEI</td>
+<td>D-Link</td>
+</tr>
+<tr>
+<td style="text-align:left">型號</td>
+<td>5573</td>
+<td>DWR-933</td>
+</tr>
+<tr>
+<td style="text-align:left">電信公司</td>
+<td>中華電信</td>
+<td>遠傳電信</td>
+</tr>
+<tr>
+<td style="text-align:left">Wi-Fi 頻率波段</td>
+<td>只能2.4GHz、5GHz 兩者二選一</td>
+<td>可以同時發送2.4GHz、5GHz兩種頻段的網路</td>
+</tr>
+<tr>
+<td style="text-align:left">月租租金</td>
+<td>NTD$640</td>
+<td>NTD$690</td>
+</tr>
+</tbody>
+</table>
+<p>最後選擇了D-Link DWR-933<br>
+他還有管理介面可以設定<code>SSID</code>、<code>passwd</code>之類的東西，還不錯用</p>
+<pre tabindex="0"><code>username:admin
 passwd:預設空白
-</code></pre><p><img src=https://i.imgur.com/QMyaRse.png alt=Imgur>
-記得歸還的時候再幫設備Reset，才不會讓櫃姐驚慌失措XD</p><h1 id=紀錄影片>紀錄影片&nbsp;<a href=#紀錄影片 class=anchor></a></h1><div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden><iframe src=https://player.vimeo.com/video/580160620 style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div></section></div></div></div></div></main><footer class=sand><a href=https://www.facebook.com/beatboxyilianwu target=_blank><img src=https://i.imgur.com/EJhxgWk.png height=30 width=30></a>
-<a href=https://twitter.com/YiLianWu target=_blank><img src=https://i.imgur.com/KvvGcoN.png height=30 width=30></a>
-<a href=https://www.instagram.com/weelian/ target=_blank><img src=https://i.imgur.com/FVUwWv0.png height=30 width=30></a>
-<a href=https://github.com/yilianwu target=_blank><img src=https://i.imgur.com/BIgEqmF.png height=30 width=30></a>
-<a href=https://www.linkedin.com/in/yilianwu/ target=_blank><img src=https://i.imgur.com/hCGvLEq.png height=30 width=30></a>
-<span style=display:block class=footer-text>&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href=https://gohugo.io/ target=_blank>Hugo</a></span></footer><script src=https://code.jquery.com/jquery-latest.js></script>
-<script>$(".post-content h1").prepend("§ ")</script><script type=text/x-mathjax-config>
+</code></pre><p><img src="https://i.imgur.com/QMyaRse.png" alt="Imgur">
+記得歸還的時候再幫設備Reset，才不會讓櫃姐驚慌失措XD</p>
+<h1 id="紀錄影片">紀錄影片&nbsp;<a href="#紀錄影片" class="anchor"></a> </h1>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://player.vimeo.com/video/580160620" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	
+	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
+	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
+
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$('.post-content h1').prepend("§ ");
+</script>
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left"
     });
-</script><script type=text/javascript src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel=stylesheet href=https://www.yilianwu.io/css/solarized-light.css><script src=https://www.yilianwu.io/js/highlight.pack.js></script>
-<script>hljs.initHighlightingOnLoad()</script></body></html>
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> 
+<link rel="stylesheet" href="https://www.yilianwu.io/css/solarized-light.css"/>
+<script src="https://www.yilianwu.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

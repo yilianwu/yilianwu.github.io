@@ -1,22 +1,664 @@
-<!doctype html><html lang=zh-tw><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=google-site-verification content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg"><title>FreeBSD Web Server>>[ yilianwu ]</title><link rel="shortcut icon" href=img/favicon.ico><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-16x16.png sizes=16x16><link rel=stylesheet href=https://www.yilianwu.io/css/styles.css><link rel=stylesheet href=https://www.yilianwu.io/css/font.css></head><body><header><nav class=breadcrumb id=breadcrumb><h4><a href=https://www.yilianwu.io/>[ yilianwu ]</a></h4><a href=https://www.yilianwu.io/info>INFO</a>
-<a href=https://www.yilianwu.io/posts>POSTS</a>
-<a href=https://www.yilianwu.io/works>WORKS</a></nav><div class=menutime><a id=cd></a>
-<a id=ct></a>
-<script type=text/javascript src=https://www.yilianwu.io/js/menutime.js></script></div></header><main id=single><div id=post class=white><div class=container><div class=post-toc><div class=post-toc-title><strong>- Contents -</strong></div><div id=page-scrollspy class=toc-nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#web-server>Web Server</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#network>Network</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#http-server>HTTP Server</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#nginx>Nginx</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#configures>Configures</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#virtual-host>Virtual Host</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e5%95%9f%e7%94%a8https>啟用HTTPS</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#webpage-private>Webpage /private</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#phpphp-fpm>PHP/PHP-FPM</a></li></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#mysql>MySQL</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#install-mysql>Install MySQL</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#configuration>Configuration</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#start-mysql-daemon>Start MySQL daemon</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#login>Login</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#create-database-user>Create Database, User</a></li></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#http-applications>HTTP Applications</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#basic-app-router>Basic App Router</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#websocket>WebSocket</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#nextcloud>Nextcloud</a></li></ul></ul></ul></div></div><div class=paperbg><div id=title><h1>FreeBSD Web Server</h1></div><div class=post-meta><span class=post-time>2020-04-19</span><div class=post-tag><a class=tag-link href=https://www.yilianwu.io/tags/freebsd/>FreeBSD</a>
-<a class=tag-link href=https://www.yilianwu.io/tags/nginx/>nginx</a>
-<a class=tag-link href=https://www.yilianwu.io/tags/nctu/>NCTU</a></div><section class=post-content><h1 id=web-server>Web Server&nbsp;<a href=#web-server class=anchor></a></h1><h2 id=network>Network&nbsp;<a href=#network class=anchor></a></h2><ul><li><p>Intranet<br>A VM with a host-only adapter connecting to the same network of the original machine</p><ol><li><p>創立Host網卡<br><img src=https://i.imgur.com/ED3z5LF.png alt=Imgur>
-Create > enable DHCP server</p></li><li><p>將網卡加到VM<br>VM Settings > Network<br>Adapter 2 選Host-only Adapter<br><img src=https://i.imgur.com/D4YZNRz.png alt=Imgur></p></li><li><p>FreeBSD <code>/etc/rc.conf</code>新增網卡</p><pre tabindex=0><code>ifconfig_em1=&#34;DHCP&#34;
-</code></pre><pre tabindex=0><code>reboot -n //重開機
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>FreeBSD Web Server>>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/styles.css">
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/font.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="https://www.yilianwu.io/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="https://www.yilianwu.io/info">INFO</a>
+            
+            <a href="https://www.yilianwu.io/posts">POSTS</a>
+            
+            <a href="https://www.yilianwu.io/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="https://www.yilianwu.io/js/menutime.js"></script>
+    </div>
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+       
+       
+
+
+
+
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#web-server">
+                            Web Server
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#network">
+                            Network
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#http-server">
+                            HTTP Server
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nginx">
+                            Nginx
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#configures">
+                            Configures
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#virtual-host">
+                            Virtual Host
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%95%9f%e7%94%a8https">
+                            啟用HTTPS
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#webpage-private">
+                            Webpage /private
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#phpphp-fpm">
+                            PHP/PHP-FPM
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#mysql">
+                            MySQL
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#install-mysql">
+                            Install MySQL
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#configuration">
+                            Configuration
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#start-mysql-daemon">
+                            Start MySQL daemon
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#login">
+                            Login
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#create-database-user">
+                            Create Database, User
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#http-applications">
+                            HTTP Applications
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#basic-app-router">
+                            Basic App Router
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#websocket">
+                            WebSocket
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#nextcloud">
+                            Nextcloud
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
+       <div class="paperbg">
+            <div id="title">
+                <h1>FreeBSD Web Server</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2020-04-19 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/freebsd/"> FreeBSD </a>
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/nginx/"> nginx </a>
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/nctu/"> NCTU </a>
+                    </div>
+
+
+                <section class="post-content">
+                <h1 id="web-server">Web Server&nbsp;<a href="#web-server" class="anchor"></a> </h1>
+<h2 id="network">Network&nbsp;<a href="#network" class="anchor"></a> </h2>
+<ul>
+<li>
+<p>Intranet<br>
+A VM with a host-only adapter connecting to the same network of the original machine</p>
+<ol>
+<li>
+<p>創立Host網卡<br>
+<img src="https://i.imgur.com/ED3z5LF.png" alt="Imgur">
+Create &gt; enable DHCP server</p>
+</li>
+<li>
+<p>將網卡加到VM<br>
+VM Settings &gt; Network<br>
+Adapter 2 選Host-only Adapter<br>
+<img src="https://i.imgur.com/D4YZNRz.png" alt="Imgur"></p>
+</li>
+<li>
+<p>FreeBSD <code>/etc/rc.conf</code>新增網卡</p>
+<pre tabindex="0"><code>ifconfig_em1=&#34;DHCP&#34;
+</code></pre><pre tabindex="0"><code>reboot -n //重開機
 ifconfig  //查看網路設定
-</code></pre><p>會看到新的網卡<code>em1 192.168.56.101</code></p></li></ol></li><li><p>Public<br>The Wireguard VPN (10.113.0.0/16)</p></li></ul><h2 id=http-server>HTTP Server&nbsp;<a href=#http-server class=anchor></a></h2><h3 id=nginx>Nginx&nbsp;<a href=#nginx class=anchor></a></h3><p>Install Nginx</p><pre tabindex=0><code>pkg install nginx
-</code></pre><p>Enable Nginx when reboot</p><pre tabindex=0><code>sudo sysrc nginx_enable=yes
-</code></pre><p>啟動nginx</p><pre tabindex=0><code>service nginx start
-</code></pre><p>在本機browser輸入ip後會看到這個頁面<br>(如果要用外網ip 本機要記得先連上VPN)<br><img src=https://i.imgur.com/mMEFdSn.png alt=Imgur></p><h3 id=configures>Configures&nbsp;<a href=#configures class=anchor></a></h3><h4 id=virtual-host>Virtual Host&nbsp;<a href=#virtual-host class=anchor></a></h4><p>❑ Setup a name-based virtual host<br>❑ Show different content when connecting using domain
-name/IP</p><ol><li>Get a domain name<br><img src=https://i.imgur.com/5zge2Nt.png alt=Imgur></li><li>自簽SSL</li></ol><pre tabindex=0><code>mkdir /usr/local/etc/nginx/ssl
+</code></pre><p>會看到新的網卡<code>em1 192.168.56.101</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>Public<br>
+The Wireguard VPN (10.113.0.0/16)</p>
+</li>
+</ul>
+<h2 id="http-server">HTTP Server&nbsp;<a href="#http-server" class="anchor"></a> </h2>
+<h3 id="nginx">Nginx&nbsp;<a href="#nginx" class="anchor"></a> </h3>
+<p>Install Nginx</p>
+<pre tabindex="0"><code>pkg install nginx
+</code></pre><p>Enable Nginx when reboot</p>
+<pre tabindex="0"><code>sudo sysrc nginx_enable=yes
+</code></pre><p>啟動nginx</p>
+<pre tabindex="0"><code>service nginx start
+</code></pre><p>在本機browser輸入ip後會看到這個頁面<br>
+(如果要用外網ip 本機要記得先連上VPN)<br>
+<img src="https://i.imgur.com/mMEFdSn.png" alt="Imgur"></p>
+<h3 id="configures">Configures&nbsp;<a href="#configures" class="anchor"></a> </h3>
+<h4 id="virtual-host">Virtual Host&nbsp;<a href="#virtual-host" class="anchor"></a> </h4>
+<p>❑ Setup a name-based virtual host<br>
+❑ Show different content when connecting using domain
+name/IP</p>
+<ol>
+<li>Get a domain name<br>
+<img src="https://i.imgur.com/5zge2Nt.png" alt="Imgur"></li>
+<li>自簽SSL</li>
+</ol>
+<pre tabindex="0"><code>mkdir /usr/local/etc/nginx/ssl
 sudo openssl req -x509 -nodes -day 365 \  
 -newkey rsa:2048 -key out /usr/local/etc/nginx \
 /ssl/nginx.key -out /usr/local/etc/nginx/ssl/nginx.crt
-</code></pre><ol start=3><li><p>Configuration</p><p><code>/usr/local/etc/nginx/nginx.conf</code></p><p>(<code>location /</code>是ip會看到的頁面)</p><pre tabindex=0><code>http {
+</code></pre><ol start="3">
+<li>
+<p>Configuration</p>
+<p><code>/usr/local/etc/nginx/nginx.conf</code></p>
+<p>(<code>location /</code>是ip會看到的頁面)</p>
+<pre tabindex="0"><code>http {
     ...................................
     ...................................
     ...................................
@@ -91,7 +733,12 @@ sudo openssl req -x509 -nodes -day 365 \
     ...................................
     ...................................
 }
-</code></pre></li></ol><h4 id=啟用https>啟用HTTPS&nbsp;<a href=#啟用https class=anchor></a></h4><p>Enable HSTS(HTTP Strict Transport Security): 放在domain name server<br>Redirect HTTP to HTTPS: 加在http{}裡的最後面</p><pre tabindex=0><code>http {
+</code></pre></li>
+</ol>
+<h4 id="啟用https">啟用HTTPS&nbsp;<a href="#啟用https" class="anchor"></a> </h4>
+<p>Enable HSTS(HTTP Strict Transport Security): 放在domain name server<br>
+Redirect HTTP to HTTPS: 加在http{}裡的最後面</p>
+<pre tabindex="0"><code>http {
     ...................................    
     ...................................
     ...................................
@@ -114,11 +761,31 @@ sudo openssl req -x509 -nodes -day 365 \
 	    return 301 https://weelian.nctu.me$request_uri;
     }
 }
-</code></pre><h4 id=webpage-private>Webpage <code>/private</code>&nbsp;<a href=#webpage-private class=anchor></a></h4><ul><li>When accessing from intranet, it must show after passing Basic Auth authentication with username admin and password {your-student-ID}<br><img src=https://i.imgur.com/FxQ6myC.png alt=Imgur></li><li>Access from public network should be denied (return 403)</li></ul><ol><li><p>Auth Basic<br>設定帳號密碼</p><pre tabindex=0><code>sudo sh -c &#34;echo -n &#39;admin:&#39; &gt;&gt; /usr/local/www/nginx/.htpasswd&#34;
+</code></pre><h4 id="webpage-private">Webpage <code>/private</code>&nbsp;<a href="#webpage-private" class="anchor"></a> </h4>
+<ul>
+<li>When accessing from intranet, it must show after passing Basic Auth authentication with username admin and password {your-student-ID}<br>
+<img src="https://i.imgur.com/FxQ6myC.png" alt="Imgur"></li>
+<li>Access from public network should be denied (return 403)</li>
+</ul>
+<ol>
+<li>
+<p>Auth Basic<br>
+設定帳號密碼</p>
+<pre tabindex="0"><code>sudo sh -c &#34;echo -n &#39;admin:&#39; &gt;&gt; /usr/local/www/nginx/.htpasswd&#34;
 sudo sh -c &#34;openssl passwd -apr1 &gt;&gt; /usr/local/www/nginx/.htpasswd&#34;
-</code></pre></li><li><p>設定<code>/usr/local/www/nginx/.htpasswd</code>權限<br>！正確！</p><pre tabindex=0><code>-rw-r-----  www www .htpasswd
-</code></pre><p>如果是原本的</p><pre tabindex=0><code>-rw-r-----  root    wheel   .htpasswd
-</code></pre><p>外網 -> 403 Forbidden<br>內網輸入帳密後 -> An error occured</p></li><li><p>nginx.conf</p><pre tabindex=0><code>...................................
+</code></pre></li>
+<li>
+<p>設定<code>/usr/local/www/nginx/.htpasswd</code>權限<br>
+！正確！</p>
+<pre tabindex="0"><code>-rw-r-----  www www .htpasswd
+</code></pre><p>如果是原本的</p>
+<pre tabindex="0"><code>-rw-r-----  root    wheel   .htpasswd
+</code></pre><p>外網 -&gt; 403 Forbidden<br>
+內網輸入帳密後 -&gt; An error occured</p>
+</li>
+<li>
+<p>nginx.conf</p>
+<pre tabindex="0"><code>...................................
 ...................................
 ...................................    
 # Using domain name
@@ -144,12 +811,29 @@ server {
     ...................................
     ...................................
     ...................................
-</code></pre></li></ol><h3 id=phpphp-fpm>PHP/PHP-FPM&nbsp;<a href=#phpphp-fpm class=anchor></a></h3><p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()</p><ol><li><p>Install php ver 7.3.0</p><pre tabindex=0><code>pkg install php73 php73-mysqli
-</code></pre></li><li><p>建立 php.ini<br>建立php.ini-production 的 soft-link 給 php.ini</p><pre tabindex=0><code>cd /usr/local/etc
+</code></pre></li>
+</ol>
+<h3 id="phpphp-fpm">PHP/PHP-FPM&nbsp;<a href="#phpphp-fpm" class="anchor"></a> </h3>
+<p>Set up PHP such that access to https://{your- domain}/info-{your-student-ID}.php gives response of phpinfo()</p>
+<ol>
+<li>
+<p>Install php ver 7.3.0</p>
+<pre tabindex="0"><code>pkg install php73 php73-mysqli
+</code></pre></li>
+<li>
+<p>建立 php.ini<br>
+建立php.ini-production 的 soft-link 給 php.ini</p>
+<pre tabindex="0"><code>cd /usr/local/etc
 sudo cp php.ini-production php.ini
-</code></pre></li><li><p>Enable PHP</p><pre tabindex=0><code>sudo sysrc php_fpm_enable=yes
+</code></pre></li>
+<li>
+<p>Enable PHP</p>
+<pre tabindex="0"><code>sudo sysrc php_fpm_enable=yes
 sudo service php-fpm start
-</code></pre></li><li><p>Configure <code>nginx.conf</code></p><pre tabindex=0><code>upstream php-handler {
+</code></pre></li>
+<li>
+<p>Configure <code>nginx.conf</code></p>
+<pre tabindex="0"><code>upstream php-handler {
 	server 127.0.0.1:9000;
 	#server unix:/var/run/php/php7.2-fpm.sock;
 }
@@ -167,27 +851,76 @@ server {
         include        fastcgi_params;
     }
 }
-</code></pre></li><li><p>定義SCRIPT_FILENAME<br>預設安裝的 Nginx FastCGI 參數檔裡面沒有定義 SCRIPT_FILENAME 這個變數<br>因此我們要把他加進去</p><pre tabindex=0><code>sudo vim /usr/local/etc/nginx/fastcgi_params
-</code></pre><p>找到SCRIPT_FILENAME</p><pre tabindex=0><code>fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-</code></pre></li><li><p><code>info.php</code></p><pre tabindex=0><code>&lt;?php
+</code></pre></li>
+<li>
+<p>定義SCRIPT_FILENAME<br>
+預設安裝的 Nginx FastCGI 參數檔裡面沒有定義 SCRIPT_FILENAME 這個變數<br>
+因此我們要把他加進去</p>
+<pre tabindex="0"><code>sudo vim /usr/local/etc/nginx/fastcgi_params
+</code></pre><p>找到SCRIPT_FILENAME</p>
+<pre tabindex="0"><code>fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+</code></pre></li>
+<li>
+<p><code>info.php</code></p>
+<pre tabindex="0"><code>&lt;?php
     phpinfo();
 ?&gt;
-</code></pre></li><li><p>改檔名</p><pre tabindex=0><code>cd /usr/local/www/nginx-dist
+</code></pre></li>
+<li>
+<p>改檔名</p>
+<pre tabindex="0"><code>cd /usr/local/www/nginx-dist
 sudo mv info.php info-W081001.php
-</code></pre><p>這樣去 <a href=https://weelian.nctu.me/info-W081001.php>https://weelian.nctu.me/info-W081001.php</a><br>就會看到phpinfo()<br><img src=https://i.imgur.com/npxqTQR.png alt=Imgur></p></li><li><p>Hide PHP version in response header<br><code>/usr/local/etc/php.ini</code></p><pre tabindex=0><code>expose.php=off
-</code></pre></li></ol><h2 id=mysql>MySQL&nbsp;<a href=#mysql class=anchor></a></h2><p>Prepare for NextCloud</p><h3 id=install-mysql>Install MySQL&nbsp;<a href=#install-mysql class=anchor></a></h3><pre tabindex=0><code>portsnap fetch update
-</code></pre><pre tabindex=0><code>cd /usr/ports/databases/mysql57-server
+</code></pre><p>這樣去 <a href="https://weelian.nctu.me/info-W081001.php">https://weelian.nctu.me/info-W081001.php</a><br>
+就會看到phpinfo()<br>
+<img src="https://i.imgur.com/npxqTQR.png" alt="Imgur"></p>
+</li>
+<li>
+<p>Hide PHP version in response header<br>
+<code>/usr/local/etc/php.ini</code></p>
+<pre tabindex="0"><code>expose.php=off
+</code></pre></li>
+</ol>
+<h2 id="mysql">MySQL&nbsp;<a href="#mysql" class="anchor"></a> </h2>
+<p>Prepare for NextCloud</p>
+<h3 id="install-mysql">Install MySQL&nbsp;<a href="#install-mysql" class="anchor"></a> </h3>
+<pre tabindex="0"><code>portsnap fetch update
+</code></pre><pre tabindex="0"><code>cd /usr/ports/databases/mysql57-server
 sudo make WITH_CHARSET=utf8 install clean
-</code></pre><h3 id=configuration>Configuration&nbsp;<a href=#configuration class=anchor></a></h3><p><code>/usr/local/etc/my.conf</code></p><h3 id=start-mysql-daemon>Start MySQL daemon&nbsp;<a href=#start-mysql-daemon class=anchor></a></h3><pre tabindex=0><code>sudo /usr/local/etc/rc.d/mysql-server start
-</code></pre><h3 id=login>Login&nbsp;<a href=#login class=anchor></a></h3><p>login mysql as root with passwd</p><pre tabindex=0><code>mysql -u root mysql -p
-</code></pre><h3 id=create-database-user>Create Database, User&nbsp;<a href=#create-database-user class=anchor></a></h3><p>Create a MySQL user named ‘nc’ and a database named ‘nextcloud’, which satisfies:<br>• The password of the user is your student ID<br>• This user can only login from localhost<br>• This user only have full privileges on database ‘nextcloud’</p><pre tabindex=0><code>&gt; create DATABASE nextcloud;
+</code></pre><h3 id="configuration">Configuration&nbsp;<a href="#configuration" class="anchor"></a> </h3>
+<p><code>/usr/local/etc/my.conf</code></p>
+<h3 id="start-mysql-daemon">Start MySQL daemon&nbsp;<a href="#start-mysql-daemon" class="anchor"></a> </h3>
+<pre tabindex="0"><code>sudo /usr/local/etc/rc.d/mysql-server start
+</code></pre><h3 id="login">Login&nbsp;<a href="#login" class="anchor"></a> </h3>
+<p>login mysql as root with passwd</p>
+<pre tabindex="0"><code>mysql -u root mysql -p
+</code></pre><h3 id="create-database-user">Create Database, User&nbsp;<a href="#create-database-user" class="anchor"></a> </h3>
+<p>Create a MySQL user named ‘nc’ and a database named ‘nextcloud’, which satisfies:<br>
+• The password of the user is your student ID<br>
+• This user can only login from localhost<br>
+• This user only have full privileges on database ‘nextcloud’</p>
+<pre tabindex="0"><code>&gt; create DATABASE nextcloud;
 &gt; show database;
 &gt; GRANT ALL ON nextcloud.* TO nc@localhost IDENTIFIED BY &#39;W081001&#39;;
 &gt; quit
-</code></pre><p>Login as nc</p><pre tabindex=0><code>mysql -u nc nextcloud -p
-</code></pre><p>Set the transaction isolation levels to READ-COMMITED</p><pre tabindex=0><code>&gt; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITED;
+</code></pre><p>Login as nc</p>
+<pre tabindex="0"><code>mysql -u nc nextcloud -p
+</code></pre><p>Set the transaction isolation levels to READ-COMMITED</p>
+<pre tabindex="0"><code>&gt; SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITED;
 &gt; SELECT @@TX_ISOLATION;
-</code></pre><h2 id=http-applications>HTTP Applications&nbsp;<a href=#http-applications class=anchor></a></h2><h3 id=basic-app-router>Basic App Router&nbsp;<a href=#basic-app-router class=anchor></a></h3><p>There are three path displaying different contents:</p><ul><li>https://{your-domain}/app<br>Display route: /</li><li>https://{your-domain}/app/{A}+{B} (A, B are integers)<br>Display result: {value of A+B}</li><li>https://{your-domain}/app?name={string}<br>Display Hello, {string}</li></ul><ol><li><code>app/index.php</code><pre tabindex=0><code>&lt;?php
+</code></pre><h2 id="http-applications">HTTP Applications&nbsp;<a href="#http-applications" class="anchor"></a> </h2>
+<h3 id="basic-app-router">Basic App Router&nbsp;<a href="#basic-app-router" class="anchor"></a> </h3>
+<p>There are three path displaying different contents:</p>
+<ul>
+<li>https://{your-domain}/app  <br>
+Display route: /</li>
+<li>https://{your-domain}/app/{A}+{B} (A, B are integers)  <br>
+Display result: {value of A+B}</li>
+<li>https://{your-domain}/app?name={string}    <br>
+Display Hello, {string}</li>
+</ul>
+<ol>
+<li><code>app/index.php</code>
+<pre tabindex="0"><code>&lt;?php
 	$input = $_SERVER[&#34;QUERY_STRING&#34;];
 	if(strlen($input)&gt;0){
 		$ars = explode(&#34;=&#34;,$input);
@@ -206,7 +939,9 @@ sudo make WITH_CHARSET=utf8 install clean
 		echo &#39;route: /&#39;;
 	}
 ?&gt;
-</code></pre></li><li><code>nginx.conf</code><pre tabindex=0><code>location /app {
+</code></pre></li>
+<li><code>nginx.conf</code>
+<pre tabindex="0"><code>location /app {
     alias /usr/local/www/nginx/app;
 	index index.php;
 	try_files $uri $uri/ @test;
@@ -215,9 +950,22 @@ sudo make WITH_CHARSET=utf8 install clean
 location @test {
     		rewrite ^/app/(.*)\+(\w+)\.?.*$ /app?$1+$2; 
 }
-</code></pre></li></ol><h3 id=websocket>WebSocket&nbsp;<a href=#websocket class=anchor></a></h3><p><a href=https://medium.com/@cn007b/super-simple-php-websocket-example-ea2cd5893575>A sample program</a></p><ul><li>This program crashes at client refresh, so just use it for test or demo</li><li>You don’t need to support HTTP2 for WebSocket connection</li><li>Configure your HTTP server such the program run appropriately that when accessing http(s)://{your- domain}/wsdemo</li><li>Let it be connected on port 443(wss://)</li></ul><p>Original: WebSocket is on port 12345
-<img src=https://i.imgur.com/une8KL3.png alt=Imgur></p><p>Goal: connect websocket on port 443
-<img src=https://i.imgur.com/2nkbXbD.png alt=Imgur></p><p>In <code>nginx.conf</code></p><pre tabindex=0><code>...................................
+</code></pre></li>
+</ol>
+<h3 id="websocket">WebSocket&nbsp;<a href="#websocket" class="anchor"></a> </h3>
+<p><a href="https://medium.com/@cn007b/super-simple-php-websocket-example-ea2cd5893575">A sample program</a></p>
+<ul>
+<li>This program crashes at client refresh, so just use it for test or demo</li>
+<li>You don’t need to support HTTP2 for WebSocket connection</li>
+<li>Configure your HTTP server such the program run appropriately that when accessing http(s)://{your- domain}/wsdemo</li>
+<li>Let it be connected on port 443(wss://)</li>
+</ul>
+<p>Original: WebSocket is on port 12345
+<img src="https://i.imgur.com/une8KL3.png" alt="Imgur"></p>
+<p>Goal: connect websocket on port 443
+<img src="https://i.imgur.com/2nkbXbD.png" alt="Imgur"></p>
+<p>In <code>nginx.conf</code></p>
+<pre tabindex="0"><code>...................................
 ...................................
 ...................................  
 upstream websocket {
@@ -252,7 +1000,8 @@ server {
         proxy_set_header Connection &#34;upgrade&#34;;
     }
 }
-</code></pre><p>In <code>wsdemo/websockets.html</code></p><pre tabindex=0><code>&lt;html&gt;
+</code></pre><p>In <code>wsdemo/websockets.html</code></p>
+<pre tabindex="0"><code>&lt;html&gt;
 &lt;body&gt;
     &lt;div id=&#34;root&#34;&gt;&lt;/div&gt;
     &lt;script&gt;
@@ -265,7 +1014,8 @@ server {
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>In <code>wsdemo/websockets.php</code></p><pre tabindex=0><code>&lt;?php
+</code></pre><p>In <code>wsdemo/websockets.php</code></p>
+<pre tabindex="0"><code>&lt;?php
 
 $address = &#39;0.0.0.0&#39;;
 $port = 12345;
@@ -298,31 +1048,88 @@ while (true) {
     $response = chr(129) . chr(strlen($content)) . $content;
     socket_write($client, $response);
 }
-</code></pre><p>我一開始在執行socket的時候 出現Error</p><pre tabindex=0><code>PHP Fatal Error: Uncaught Error: Call to undefined function socket_create() in....
-</code></pre><p>後來發現是因為沒裝Socket Extension</p><pre tabindex=0><code>cd /usr/ports/lang/php73-extensions
+</code></pre><p>我一開始在執行socket的時候 出現Error</p>
+<pre tabindex="0"><code>PHP Fatal Error: Uncaught Error: Call to undefined function socket_create() in....
+</code></pre><p>後來發現是因為沒裝Socket Extension</p>
+<pre tabindex="0"><code>cd /usr/ports/lang/php73-extensions
 make config install clean
-</code></pre><p>[x]socket</p><h3 id=nextcloud>Nextcloud&nbsp;<a href=#nextcloud class=anchor></a></h3><p>要在{domain}/nextcloud</p><ol><li><p>Install<br>要先用pkg install 才會有完整的php-fmp</p><pre tabindex=0><code>pkg search nextcloud
+</code></pre><p>[x]socket</p>
+<h3 id="nextcloud">Nextcloud&nbsp;<a href="#nextcloud" class="anchor"></a> </h3>
+<p>要在{domain}/nextcloud</p>
+<ol>
+<li>
+<p>Install<br>
+要先用pkg install 才會有完整的php-fmp</p>
+<pre tabindex="0"><code>pkg search nextcloud
 pkg install nextcloud-php-73
-</code></pre><p>pkg裝好的nextcloud 會在<code>/usr/local/www</code><br>再把它刪掉 用本來的zip替換<br>改權限</p><pre tabindex=0><code>sudo chown -R www:www nextcloud
-</code></pre></li><li><p>Configuration in <code>nginx.conf</code><br>Google: Nextcloud in a subdir of nginx<br>copy & paste in <code>nginx.conf</code></p><p>如果開{domain}/nextcloud 出現An error occured<br>-> 重開php-fpm</p><pre tabindex=0><code>sudo service php-fpm restart
-</code></pre><p>or<br>-> kill PID</p><pre tabindex=0><code>ps aux | grep php
+</code></pre><p>pkg裝好的nextcloud 會在<code>/usr/local/www</code><br>
+再把它刪掉 用本來的zip替換<br>
+改權限</p>
+<pre tabindex="0"><code>sudo chown -R www:www nextcloud
+</code></pre></li>
+<li>
+<p>Configuration in <code>nginx.conf</code><br>
+Google: Nextcloud in a subdir of nginx<br>
+copy &amp; paste in <code>nginx.conf</code></p>
+<p>如果開{domain}/nextcloud 出現An error occured<br>
+-&gt; 重開php-fpm</p>
+<pre tabindex="0"><code>sudo service php-fpm restart
+</code></pre><p>or<br>
+-&gt; kill PID</p>
+<pre tabindex="0"><code>ps aux | grep php
 sudo kill {php pid}
 sudo service php-fpm start
-</code></pre><p><strong>在一開始 Create user時 記得要選MySQL DB</strong></p></li><li><p>Personal Webpage</p><ul><li>Each user in Nextcloud can put static(PHP is not needed) contents(img, html, css, js, etc.) in the public_html directory under their home</li><li>When accessing https://{your-domain}/sites/~{username}/ , it should show whatever {username} put in his public_html, with index index.html</li></ul><pre tabindex=0><code>location /sites {
+</code></pre><p><strong>在一開始 Create user時 記得要選MySQL DB</strong></p>
+</li>
+<li>
+<p>Personal Webpage</p>
+<ul>
+<li>Each user in Nextcloud can put static(PHP is not needed) contents(img, html, css, js, etc.) in the public_html directory under their home</li>
+<li>When accessing https://{your-domain}/sites/~{username}/ , it should show whatever {username} put in his public_html, with index index.html</li>
+</ul>
+<pre tabindex="0"><code>location /sites {
 	try_files $uri $uri/ @ncsites;
 }
 location @ncsites {
 	rewrite ^/sites/\~(.*) /nextcloud/data/$1/files/public_html/index.html;
 }
-</code></pre></li></ol></section></div></div></div></div></main><footer class=sand><a href=https://www.facebook.com/beatboxyilianwu target=_blank><img src=https://i.imgur.com/EJhxgWk.png height=30 width=30></a>
-<a href=https://twitter.com/YiLianWu target=_blank><img src=https://i.imgur.com/KvvGcoN.png height=30 width=30></a>
-<a href=https://www.instagram.com/weelian/ target=_blank><img src=https://i.imgur.com/FVUwWv0.png height=30 width=30></a>
-<a href=https://github.com/yilianwu target=_blank><img src=https://i.imgur.com/BIgEqmF.png height=30 width=30></a>
-<a href=https://www.linkedin.com/in/yilianwu/ target=_blank><img src=https://i.imgur.com/hCGvLEq.png height=30 width=30></a>
-<span style=display:block class=footer-text>&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href=https://gohugo.io/ target=_blank>Hugo</a></span></footer><script src=https://code.jquery.com/jquery-latest.js></script>
-<script>$(".post-content h1").prepend("§ ")</script><script type=text/x-mathjax-config>
+</code></pre></li>
+</ol>
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	
+	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
+	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
+
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$('.post-content h1').prepend("§ ");
+</script>
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left"
     });
-</script><script type=text/javascript src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel=stylesheet href=https://www.yilianwu.io/css/solarized-light.css><script src=https://www.yilianwu.io/js/highlight.pack.js></script>
-<script>hljs.initHighlightingOnLoad()</script></body></html>
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> 
+<link rel="stylesheet" href="https://www.yilianwu.io/css/solarized-light.css"/>
+<script src="https://www.yilianwu.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

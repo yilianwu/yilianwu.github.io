@@ -1,34 +1,595 @@
-<!doctype html><html lang=zh-tw><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=google-site-verification content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg"><title>第一次自己設計、實作電路>>[ yilianwu ]</title><link rel="shortcut icon" href=img/favicon.ico><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-16x16.png sizes=16x16><link rel=stylesheet href=https://www.yilianwu.io/css/styles.css><link rel=stylesheet href=https://www.yilianwu.io/css/font.css></head><body><header><nav class=breadcrumb id=breadcrumb><h4><a href=https://www.yilianwu.io/>[ yilianwu ]</a></h4><a href=https://www.yilianwu.io/info>INFO</a>
-<a href=https://www.yilianwu.io/posts>POSTS</a>
-<a href=https://www.yilianwu.io/works>WORKS</a></nav><div class=menutime><a id=cd></a>
-<a id=ct></a>
-<script type=text/javascript src=https://www.yilianwu.io/js/menutime.js></script></div></header><main id=single><div id=post class=white><div class=container><div class=post-toc><div class=post-toc-title><strong>- Contents -</strong></div><div id=page-scrollspy class=toc-nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e9%a0%90%e6%9c%9f%e7%9a%84%e6%95%88%e6%9e%9c>預期的效果</a></li></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e8%a8%ad%e8%a8%88%e7%b5%84%e5%90%88%e9%9b%bb%e8%b7%af>設計組合電路</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#loading-mode>Loading Mode</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#truth-table>Truth Table</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#karnaugh-map>Karnaugh Map</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#logic-circuit>Logic Circuit</a></li></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#connected-mode>Connected Mode</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#truth-table-1>Truth Table</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#karnaugh-map-1>Karnaugh Map</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#logic-circuit-1>Logic Circuit</a></li></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#mode-switch>Mode Switch</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#truth-table-2>Truth Table</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#karnaugh-map-2>Karnaugh Map</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#logic-circuit-2>Logic Circuit</a></li></ul></ul></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e5%ae%8c%e6%88%90%e5%93%81>完成品</a></li></ul></div></div><div class=paperbg><div id=title><h1>第一次自己設計、實作電路</h1></div><div class=post-meta><span class=post-time>2020-08-31</span><div class=post-tag><a class=tag-link href=https://www.yilianwu.io/tags/%E9%9B%BB%E8%B7%AF/>電路</a>
-<a class=tag-link href=https://www.yilianwu.io/tags/nctu/>NCTU</a></div><section class=post-content><p>在交大修了一門通識課 - 跨領域應用電學 Applied Electricity<br>期末專題需要應用在這堂課所習得的知識，設計並做出自己的電路</p><p>這學期的主題是「悶」&mldr;<br>在與組員發想要做什麼的時候，剛好我電腦的Wi-Fi要連不連的一直跳掉<br>就讓我有了想法💡</p><blockquote><p>當人在等待一件事情完成的過程中，那種明已知道最後會發生什麼結果，<br>卻被迫等待、觀看漫長的經過，又無法行使任何作為來加速，會讓人有種鬱悶的「悶」感。</p></blockquote><p>所以我們決定做一個Wi-Fi符號！</p><h1 id=預期的效果>預期的效果&nbsp;<a href=#預期的效果 class=anchor></a></h1><p>製作一個模擬Wi-Fi連線時的動態的燈箱<br>當手指點按開關後，會觸發LED燈模擬Wi-Fi正在連線中的閃爍動態<br>利用漫長的等待氛圍，來製造「悶」的感覺</p><p>LED燈的動態有兩種模式，如下圖所示：
-<img src=https://i.imgur.com/LKl9CDo.png alt=Imgur></p><h1 id=設計組合電路>設計組合電路&nbsp;<a href=#設計組合電路 class=anchor></a></h1><p>列出需求→繪真值表→寫出布林代數式→繪出電路圖</p><p>Wi-Fi符號的LED總共分成四個部分：<br><img src=https://i.imgur.com/NU8rnMp.png alt=Imgur></p><p>準備：<br>NE555 振盪器<br>74LS90N 計數器<br><img src=https://i.imgur.com/427DNy6.png alt=Imgur></p><h2 id=loading-mode>Loading Mode&nbsp;<a href=#loading-mode class=anchor></a></h2><h3 id=truth-table>Truth Table&nbsp;<a href=#truth-table class=anchor></a></h3><p><img src=https://i.imgur.com/BFGiOW6.png alt=Imgur>
-註：QD=1時，循環Reset<br>74LS90N (QD) - (R0/2)</p><h3 id=karnaugh-map>Karnaugh Map&nbsp;<a href=#karnaugh-map class=anchor></a></h3><p><strong>LED D</strong><br><img src=https://i.imgur.com/aOfxrD7.png alt=Imgur>
-$$D=QC \cdot \overline{QB} \cdot \overline{QA}$$</p><p><strong>LED C</strong><br><img src=https://i.imgur.com/9JKDanj.png alt=Imgur>
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>第一次自己設計、實作電路>>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/styles.css">
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/font.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="https://www.yilianwu.io/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="https://www.yilianwu.io/info">INFO</a>
+            
+            <a href="https://www.yilianwu.io/posts">POSTS</a>
+            
+            <a href="https://www.yilianwu.io/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="https://www.yilianwu.io/js/menutime.js"></script>
+    </div>
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+       
+       
+
+
+
+
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e9%a0%90%e6%9c%9f%e7%9a%84%e6%95%88%e6%9e%9c">
+                            預期的效果
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e8%a8%ad%e8%a8%88%e7%b5%84%e5%90%88%e9%9b%bb%e8%b7%af">
+                            設計組合電路
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#loading-mode">
+                            Loading Mode
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#truth-table">
+                            Truth Table
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#karnaugh-map">
+                            Karnaugh Map
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#logic-circuit">
+                            Logic Circuit
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#connected-mode">
+                            Connected Mode
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#truth-table-1">
+                            Truth Table
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#karnaugh-map-1">
+                            Karnaugh Map
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#logic-circuit-1">
+                            Logic Circuit
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#mode-switch">
+                            Mode Switch
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#truth-table-2">
+                            Truth Table
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#karnaugh-map-2">
+                            Karnaugh Map
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#logic-circuit-2">
+                            Logic Circuit
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%ae%8c%e6%88%90%e5%93%81">
+                            完成品
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
+       <div class="paperbg">
+            <div id="title">
+                <h1>第一次自己設計、實作電路</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2020-08-31 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/%E9%9B%BB%E8%B7%AF/"> 電路 </a>
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/nctu/"> NCTU </a>
+                    </div>
+
+
+                <section class="post-content">
+                <p>在交大修了一門通識課 - 跨領域應用電學 Applied Electricity<br>
+期末專題需要應用在這堂課所習得的知識，設計並做出自己的電路</p>
+<p>這學期的主題是「悶」&hellip;<br>
+在與組員發想要做什麼的時候，剛好我電腦的Wi-Fi要連不連的一直跳掉<br>
+就讓我有了想法💡</p>
+<blockquote>
+<p>當人在等待一件事情完成的過程中，那種明已知道最後會發生什麼結果，<br>
+卻被迫等待、觀看漫長的經過，又無法行使任何作為來加速，會讓人有種鬱悶的「悶」感。</p>
+</blockquote>
+<p>所以我們決定做一個Wi-Fi符號！</p>
+<h1 id="預期的效果">預期的效果&nbsp;<a href="#預期的效果" class="anchor"></a> </h1>
+<p>製作一個模擬Wi-Fi連線時的動態的燈箱<br>
+當手指點按開關後，會觸發LED燈模擬Wi-Fi正在連線中的閃爍動態<br>
+利用漫長的等待氛圍，來製造「悶」的感覺</p>
+<p>LED燈的動態有兩種模式，如下圖所示：
+<img src="https://i.imgur.com/LKl9CDo.png" alt="Imgur"></p>
+<h1 id="設計組合電路">設計組合電路&nbsp;<a href="#設計組合電路" class="anchor"></a> </h1>
+<p>列出需求→繪真值表→寫出布林代數式→繪出電路圖</p>
+<p>Wi-Fi符號的LED總共分成四個部分：<br>
+<img src="https://i.imgur.com/NU8rnMp.png" alt="Imgur"></p>
+<p>準備：<br>
+NE555   振盪器<br>
+74LS90N 計數器<br>
+<img src="https://i.imgur.com/427DNy6.png" alt="Imgur"></p>
+<h2 id="loading-mode">Loading Mode&nbsp;<a href="#loading-mode" class="anchor"></a> </h2>
+<h3 id="truth-table">Truth Table&nbsp;<a href="#truth-table" class="anchor"></a> </h3>
+<p><img src="https://i.imgur.com/BFGiOW6.png" alt="Imgur">
+註：QD=1時，循環Reset<br>
+74LS90N (QD) - (R0/2)</p>
+<h3 id="karnaugh-map">Karnaugh Map&nbsp;<a href="#karnaugh-map" class="anchor"></a> </h3>
+<p><strong>LED D</strong><br>
+<img src="https://i.imgur.com/aOfxrD7.png" alt="Imgur">
+$$D=QC \cdot \overline{QB} \cdot \overline{QA}$$</p>
+<p><strong>LED C</strong><br>
+<img src="https://i.imgur.com/9JKDanj.png" alt="Imgur">
 $$C=QC \cdot \overline{QB} \cdot QA + \overline{QC} \cdot QB \cdot QA $$
-$$ =QA \cdot (QB \oplus QC)$$<br>(XOR)</p><p><strong>LED B</strong>
-<img src=https://i.imgur.com/HDQ3M0S.png alt=Imgur>
-$$B=QB \cdot \overline{QA}$$</p><p><strong>LED A</strong><br><img src=https://i.imgur.com/k0DuUDu.png alt=Imgur>
-$$A=\overline{QC} \cdot \overline{QB} \cdot QA + QC \cdot QB \cdot QA$$<br>$$ =QA \cdot \overline{QB \oplus QC}$$
-(XNOR)</p><h3 id=logic-circuit>Logic Circuit&nbsp;<a href=#logic-circuit class=anchor></a></h3><p><img src=https://i.imgur.com/3rJ9sSG.png alt=Imgur></p><h2 id=connected-mode>Connected Mode&nbsp;<a href=#connected-mode class=anchor></a></h2><h3 id=truth-table-1>Truth Table&nbsp;<a href=#truth-table-1 class=anchor></a></h3><p><img src=https://i.imgur.com/5z87DDz.png alt=Imgur>
-當QC=1時，維持現狀不再變動(7490 Clock A stop)</p><h3 id=karnaugh-map-1>Karnaugh Map&nbsp;<a href=#karnaugh-map-1 class=anchor></a></h3><p><strong>LED D</strong><br><img src=https://i.imgur.com/mdBlzGk.png alt=Imgur>
-$$D=QC$$</p><p><strong>LED C</strong><br><img src=https://i.imgur.com/YBiKROP.png alt=Imgur>
-$$C=QA \cdot QB + QC$$</p><p><strong>LED B</strong><br><img src=https://i.imgur.com/vJZUOQX.png alt=Imgur>
-$$B=QB+QC$$</p><p><strong>LED A</strong><br><img src=https://i.imgur.com/8YaldHq.png alt=Imgur>
+$$ =QA \cdot (QB \oplus QC)$$<br>
+(XOR)</p>
+<p><strong>LED B</strong>
+<img src="https://i.imgur.com/HDQ3M0S.png" alt="Imgur">
+$$B=QB \cdot \overline{QA}$$</p>
+<p><strong>LED A</strong><br>
+<img src="https://i.imgur.com/k0DuUDu.png" alt="Imgur">
+$$A=\overline{QC} \cdot \overline{QB} \cdot QA + QC \cdot QB \cdot QA$$<br>
+$$ =QA \cdot \overline{QB \oplus QC}$$
+(XNOR)</p>
+<h3 id="logic-circuit">Logic Circuit&nbsp;<a href="#logic-circuit" class="anchor"></a> </h3>
+<p><img src="https://i.imgur.com/3rJ9sSG.png" alt="Imgur"></p>
+<h2 id="connected-mode">Connected Mode&nbsp;<a href="#connected-mode" class="anchor"></a> </h2>
+<h3 id="truth-table-1">Truth Table&nbsp;<a href="#truth-table-1" class="anchor"></a> </h3>
+<p><img src="https://i.imgur.com/5z87DDz.png" alt="Imgur">
+當QC=1時，維持現狀不再變動(7490 Clock A stop)</p>
+<h3 id="karnaugh-map-1">Karnaugh Map&nbsp;<a href="#karnaugh-map-1" class="anchor"></a> </h3>
+<p><strong>LED D</strong><br>
+<img src="https://i.imgur.com/mdBlzGk.png" alt="Imgur">
+$$D=QC$$</p>
+<p><strong>LED C</strong><br>
+<img src="https://i.imgur.com/YBiKROP.png" alt="Imgur">
+$$C=QA \cdot QB + QC$$</p>
+<p><strong>LED B</strong><br>
+<img src="https://i.imgur.com/vJZUOQX.png" alt="Imgur">
+$$B=QB+QC$$</p>
+<p><strong>LED A</strong><br>
+<img src="https://i.imgur.com/8YaldHq.png" alt="Imgur">
 $$A=\overline{\overline{QC} \cdot \overline{QB} \cdot \overline{QA}}$$
-$$=QA+QB+QC$$</p><h3 id=logic-circuit-1>Logic Circuit&nbsp;<a href=#logic-circuit-1 class=anchor></a></h3><p><img src=https://i.imgur.com/Ku2MbbU.png alt=Imgur></p><h2 id=mode-switch>Mode Switch&nbsp;<a href=#mode-switch class=anchor></a></h2><p>裝置底下，暗藏了一個微動開關來切換這兩個Mode<br><img src=https://i.imgur.com/PRtj7QW.jpg alt=Imgur></p><p>經過測試，微動開關用來控制低電位是否流通會比較穩定<br>狀態如下：<br>(裝置靜置在桌上)微動開關壓下，高電位流通 Switch=1 &ndash;> Connecting Mode<br>(裝置被拿起來)微動開關鬆開，低電位流通 Switch=0 &ndash;> Connected Mode</p><h3 id=truth-table-2>Truth Table&nbsp;<a href=#truth-table-2 class=anchor></a></h3><p><img src=https://i.imgur.com/LaPXZWg.png alt=Imgur></p><h3 id=karnaugh-map-2>Karnaugh Map&nbsp;<a href=#karnaugh-map-2 class=anchor></a></h3><p><img src=https://i.imgur.com/7IbSWP2.png alt=Imgur>
+$$=QA+QB+QC$$</p>
+<h3 id="logic-circuit-1">Logic Circuit&nbsp;<a href="#logic-circuit-1" class="anchor"></a> </h3>
+<p><img src="https://i.imgur.com/Ku2MbbU.png" alt="Imgur"></p>
+<h2 id="mode-switch">Mode Switch&nbsp;<a href="#mode-switch" class="anchor"></a> </h2>
+<p>裝置底下，暗藏了一個微動開關來切換這兩個Mode <br>
+<img src="https://i.imgur.com/PRtj7QW.jpg" alt="Imgur"></p>
+<p>經過測試，微動開關用來控制低電位是否流通會比較穩定<br>
+狀態如下：<br>
+(裝置靜置在桌上)微動開關壓下，高電位流通 Switch=1 &ndash;&gt; Connecting Mode<br>
+(裝置被拿起來)微動開關鬆開，低電位流通 Switch=0 &ndash;&gt; Connected Mode</p>
+<h3 id="truth-table-2">Truth Table&nbsp;<a href="#truth-table-2" class="anchor"></a> </h3>
+<p><img src="https://i.imgur.com/LaPXZWg.png" alt="Imgur"></p>
+<h3 id="karnaugh-map-2">Karnaugh Map&nbsp;<a href="#karnaugh-map-2" class="anchor"></a> </h3>
+<p><img src="https://i.imgur.com/7IbSWP2.png" alt="Imgur">
 $$LED=A1(Switch)+A2 \overline{(Switch)}$$
-其餘，LED B, C, D 皆以此類推&mldr;</p><h3 id=logic-circuit-2>Logic Circuit&nbsp;<a href=#logic-circuit-2 class=anchor></a></h3><p><img src=https://i.imgur.com/TjtK4Ki.png alt=Imgur></p><h1 id=完成品>完成品&nbsp;<a href=#完成品 class=anchor></a></h1><p>當初複雜的實驗電路＠＠<br><img src=https://i.imgur.com/wLQ2J81.jpg alt=Imgur></p><p>把電路收整齊、藏好<br><img src=https://i.imgur.com/JdI0JqL.jpg alt=Imgur></p><p>完美<br><img src=https://i.imgur.com/kDbsJkm.jpg alt=Imgur></p><p>影片<br><div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden><iframe src=https://www.youtube.com/embed/8dXP_VyY54M style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="YouTube Video"></iframe></div></p></section></div></div></div></div></main><footer class=sand><a href=https://www.facebook.com/beatboxyilianwu target=_blank><img src=https://i.imgur.com/EJhxgWk.png height=30 width=30></a>
-<a href=https://twitter.com/YiLianWu target=_blank><img src=https://i.imgur.com/KvvGcoN.png height=30 width=30></a>
-<a href=https://www.instagram.com/weelian/ target=_blank><img src=https://i.imgur.com/FVUwWv0.png height=30 width=30></a>
-<a href=https://github.com/yilianwu target=_blank><img src=https://i.imgur.com/BIgEqmF.png height=30 width=30></a>
-<a href=https://www.linkedin.com/in/yilianwu/ target=_blank><img src=https://i.imgur.com/hCGvLEq.png height=30 width=30></a>
-<span style=display:block class=footer-text>&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href=https://gohugo.io/ target=_blank>Hugo</a></span></footer><script src=https://code.jquery.com/jquery-latest.js></script>
-<script>$(".post-content h1").prepend("§ ")</script><script type=text/x-mathjax-config>
+其餘，LED B, C, D 皆以此類推&hellip;</p>
+<h3 id="logic-circuit-2">Logic Circuit&nbsp;<a href="#logic-circuit-2" class="anchor"></a> </h3>
+<p><img src="https://i.imgur.com/TjtK4Ki.png" alt="Imgur"></p>
+<h1 id="完成品">完成品&nbsp;<a href="#完成品" class="anchor"></a> </h1>
+<p>當初複雜的實驗電路＠＠<br>
+<img src="https://i.imgur.com/wLQ2J81.jpg" alt="Imgur"></p>
+<p>把電路收整齊、藏好<br>
+<img src="https://i.imgur.com/JdI0JqL.jpg" alt="Imgur"></p>
+<p>完美<br>
+<img src="https://i.imgur.com/kDbsJkm.jpg" alt="Imgur"></p>
+<p>影片<br>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/8dXP_VyY54M" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</p>
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	
+	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
+	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
+
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$('.post-content h1').prepend("§ ");
+</script>
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left"
     });
-</script><script type=text/javascript src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel=stylesheet href=https://www.yilianwu.io/css/solarized-light.css><script src=https://www.yilianwu.io/js/highlight.pack.js></script>
-<script>hljs.initHighlightingOnLoad()</script></body></html>
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> 
+<link rel="stylesheet" href="https://www.yilianwu.io/css/solarized-light.css"/>
+<script src="https://www.yilianwu.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

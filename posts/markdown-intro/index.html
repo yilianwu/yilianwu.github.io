@@ -1,31 +1,504 @@
-<!doctype html><html lang=zh-tw><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=google-site-verification content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg"><title>Intro to Markdown>>[ yilianwu ]</title><link rel="shortcut icon" href=img/favicon.ico><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://www.yilianwu.io/favicon-16x16.png sizes=16x16><link rel=stylesheet href=https://www.yilianwu.io/css/styles.css><link rel=stylesheet href=https://www.yilianwu.io/css/font.css></head><body><header><nav class=breadcrumb id=breadcrumb><h4><a href=https://www.yilianwu.io/>[ yilianwu ]</a></h4><a href=https://www.yilianwu.io/info>INFO</a>
-<a href=https://www.yilianwu.io/posts>POSTS</a>
-<a href=https://www.yilianwu.io/works>WORKS</a></nav><div class=menutime><a id=cd></a>
-<a id=ct></a>
-<script type=text/javascript src=https://www.yilianwu.io/js/menutime.js></script></div></header><main id=single><div id=post class=white><div class=container><div class=post-toc><div class=post-toc-title><strong>- Contents -</strong></div><div id=page-scrollspy class=toc-nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#markdown-%e5%b8%b8%e7%94%a8%e8%aa%9e%e6%b3%95>Markdown 常用語法</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#-%e6%a8%99%e9%a1%8c>• 標題</a></li></ul></ul><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e4%b8%80%e7%b4%9a%e6%a8%99%e9%a1%8c>一級標題</a></li></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e4%ba%8c%e7%b4%9a%e6%a8%99%e9%a1%8c>二級標題</a></li></ul></ul><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e4%b8%89%e7%b4%9a%e6%a8%99%e9%a1%8c>三級標題</a></li></ul></ul></ul><ul class=nav><ul class=nav><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#%e5%9b%9b%e7%b4%9a%e6%a8%99%e9%a1%8c>四級標題</a></li></ul></ul></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#-%e5%88%97%e8%a1%a8>• 列表</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#-%e5%be%85%e8%be%a6%e6%b8%85%e5%96%ae-to-do-list>• 待辦清單 To-Do-List</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#-%e5%bc%95%e7%94%a8%e6%96%87%e5%ad%97>• 引用文字</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#-hightlight-%e5%ad%97%e5%85%83>• Hightlight 字元</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#-%e6%8f%92%e5%85%a5%e5%9c%96%e7%89%87>• 插入圖片</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#-%e6%8f%92%e5%85%a5%e9%80%a3%e7%b5%90>• 插入連結</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#-%e6%8f%92%e5%85%a5%e7%a8%8b%e5%bc%8f%e7%a2%bc>• 插入程式碼</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#-%e8%a1%a8%e6%a0%bc>• 表格</a></li></ul></ul><ul class=nav><ul class=nav><li class=nav-item><a class="nav-link text-left" href=#-%e6%96%87%e5%ad%97%e6%8f%9b%e8%a1%8c>• 文字換行</a></li></ul></ul></div></div><div class=paperbg><div id=title><h1>Intro to Markdown</h1></div><div class=post-meta><span class=post-time>2019-02-03</span><div class=post-tag><a class=tag-link href=https://www.yilianwu.io/tags/markdown/>Markdown</a></div><section class=post-content><p>最近發現用Markdown來做筆記超好用的！<br>如果是平常用pages、word或記事本，常會因為寫完沒好好整理導致忘了什麼東西寫在哪，又或是整理起來很花時間，到最後又懶得整理了XDD</p><p>Markdown常見於Github的readme.md檔<br>他的語法不會像HTML那樣繁雜，相反的他可以用很簡單很簡單的語法就能表現各個樣式的文字～</p><h1 id=markdown-常用語法>Markdown 常用語法&nbsp;<a href=#markdown-常用語法 class=anchor></a></h1><h2 id=-標題><strong>• 標題</strong>&nbsp;<a href=#-標題 class=anchor></a></h2><pre tabindex=0><code># 一級標題
+<!DOCTYPE html>
+<html lang="zh-tw"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="ecnbl87JwcfWTJMChfv-5hv5Oui6nsHqvaTr0ha3Mjg" />
+    <title>Intro to Markdown>>[ yilianwu ]</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-32x32.png" sizes="32x32">
+	  <link rel="icon" type="image/png" href="https://www.yilianwu.io/favicon-16x16.png" sizes="16x16">
+
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/styles.css">
+    <link rel="stylesheet" href="https://www.yilianwu.io/css/font.css">
+</head>
+<body><header>
+    <nav class="breadcrumb" id="breadcrumb">
+	     <h4><a href="https://www.yilianwu.io/">[ yilianwu ]</a></h4>
+	       
+            
+            <a href="https://www.yilianwu.io/info">INFO</a>
+            
+            <a href="https://www.yilianwu.io/posts">POSTS</a>
+            
+            <a href="https://www.yilianwu.io/works">WORKS</a>
+            
+    </nav>
+    <div class="menutime">
+      <a id='cd' ></a>
+      <a id='ct' ></a>
+      <script type="text/javascript" src="https://www.yilianwu.io/js/menutime.js"></script>
+    </div>
+</header>
+
+<main id="single">
+  <div id="post" class="white">
+	   <div class="container">
+       
+       
+
+
+
+
+
+
+
+
+
+<div class="post-toc">
+
+    <div class="post-toc-title"><strong>- Contents -</strong></div>
+
+    <div id="page-scrollspy" class="toc-nav">
+
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#markdown-%e5%b8%b8%e7%94%a8%e8%aa%9e%e6%b3%95">
+                            Markdown 常用語法
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#-%e6%a8%99%e9%a1%8c">
+                            • 標題
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e4%b8%80%e7%b4%9a%e6%a8%99%e9%a1%8c">
+                            一級標題
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e4%ba%8c%e7%b4%9a%e6%a8%99%e9%a1%8c">
+                            二級標題
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e4%b8%89%e7%b4%9a%e6%a8%99%e9%a1%8c">
+                            三級標題
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#%e5%9b%9b%e7%b4%9a%e6%a8%99%e9%a1%8c">
+                            四級標題
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#-%e5%88%97%e8%a1%a8">
+                            • 列表
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#-%e5%be%85%e8%be%a6%e6%b8%85%e5%96%ae-to-do-list">
+                            • 待辦清單 To-Do-List
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#-%e5%bc%95%e7%94%a8%e6%96%87%e5%ad%97">
+                            • 引用文字
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#-hightlight-%e5%ad%97%e5%85%83">
+                            • Hightlight 字元
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#-%e6%8f%92%e5%85%a5%e5%9c%96%e7%89%87">
+                            • 插入圖片
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#-%e6%8f%92%e5%85%a5%e9%80%a3%e7%b5%90">
+                            • 插入連結
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#-%e6%8f%92%e5%85%a5%e7%a8%8b%e5%bc%8f%e7%a2%bc">
+                            • 插入程式碼
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#-%e8%a1%a8%e6%a0%bc">
+                            • 表格
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+        
+            
+                
+                
+                    
+                    <ul class="nav">
+                    
+                    <ul class="nav">
+                    
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-left" href="#-%e6%96%87%e5%ad%97%e6%8f%9b%e8%a1%8c">
+                            • 文字換行
+                            </a>
+                        </li>
+                    
+                    
+                    </ul>
+                    
+                    </ul>
+                    
+                
+            
+        
+
+    </div>
+
+</div>
+
+
+
+
+       
+       <div class="paperbg">
+            <div id="title">
+                <h1>Intro to Markdown</h1>
+                
+	          </div>
+            <div class="post-meta">
+                <span class="post-time"> 2019-02-03 </span>
+                <div class="post-tag">
+                  
+                    <a class="tag-link" href="https://www.yilianwu.io/tags/markdown/"> Markdown </a>
+                    </div>
+
+
+                <section class="post-content">
+                <p>最近發現用Markdown來做筆記超好用的！<br>
+如果是平常用pages、word或記事本，常會因為寫完沒好好整理導致忘了什麼東西寫在哪，又或是整理起來很花時間，到最後又懶得整理了XDD</p>
+<p>Markdown常見於Github的readme.md檔<br>
+他的語法不會像HTML那樣繁雜，相反的他可以用很簡單很簡單的語法就能表現各個樣式的文字～</p>
+<h1 id="markdown-常用語法">Markdown 常用語法&nbsp;<a href="#markdown-常用語法" class="anchor"></a> </h1>
+<h2 id="-標題"><strong>• 標題</strong>&nbsp;<a href="#-標題" class="anchor"></a> </h2>
+<pre tabindex="0"><code># 一級標題
 ## 二級標題
 ### 三級標題
 #### 四級標題
 ##### 五級標題
 ###### 六級標題
-</code></pre><h1 id=一級標題>一級標題&nbsp;<a href=#一級標題 class=anchor></a></h1><h2 id=二級標題>二級標題&nbsp;<a href=#二級標題 class=anchor></a></h2><h3 id=三級標題>三級標題&nbsp;<a href=#三級標題 class=anchor></a></h3><h4 id=四級標題>四級標題&nbsp;<a href=#四級標題 class=anchor></a></h4><h5 id=五級標題>五級標題&nbsp;<a href=#五級標題 class=anchor></a></h5><h6 id=六級標題>六級標題&nbsp;<a href=#六級標題 class=anchor></a></h6><h2 id=-列表><strong>• 列表</strong>&nbsp;<a href=#-列表 class=anchor></a></h2><pre tabindex=0><code>- 無順序列表
+</code></pre><h1 id="一級標題">一級標題&nbsp;<a href="#一級標題" class="anchor"></a> </h1>
+<h2 id="二級標題">二級標題&nbsp;<a href="#二級標題" class="anchor"></a> </h2>
+<h3 id="三級標題">三級標題&nbsp;<a href="#三級標題" class="anchor"></a> </h3>
+<h4 id="四級標題">四級標題&nbsp;<a href="#四級標題" class="anchor"></a> </h4>
+<h5 id="五級標題">五級標題&nbsp;<a href="#五級標題" class="anchor"></a> </h5>
+<h6 id="六級標題">六級標題&nbsp;<a href="#六級標題" class="anchor"></a> </h6>
+<h2 id="-列表"><strong>• 列表</strong>&nbsp;<a href="#-列表" class="anchor"></a> </h2>
+<pre tabindex="0"><code>- 無順序列表
 - 無順序列表
 - 無順序列表
-</code></pre><p>或是</p><pre tabindex=0><code>* 無順序列表
+</code></pre><p>或是</p>
+<pre tabindex="0"><code>* 無順序列表
 * 無順序列表
 * 無順序列表
-</code></pre><p>又或是</p><pre tabindex=0><code>+ 無順序列表
+</code></pre><p>又或是</p>
+<pre tabindex="0"><code>+ 無順序列表
 + 無順序列表
 + 無順序列表
-</code></pre><ul><li>無順序列表</li><li>無順序列表</li><li>無順序列表</li></ul><pre tabindex=0><code>1. 有順序列表
+</code></pre><ul>
+<li>無順序列表</li>
+<li>無順序列表</li>
+<li>無順序列表</li>
+</ul>
+<pre tabindex="0"><code>1. 有順序列表
 1. 有順序列表
 1. 有順序列表
-</code></pre><ol><li>有順序列表</li><li>有順序列表</li><li>有順序列表</li></ol><h2 id=-待辦清單-to-do-list><strong>• 待辦清單 To-Do-List</strong>&nbsp;<a href=#-待辦清單-to-do-list class=anchor></a></h2><pre tabindex=0><code>- [x] @mentions, #refs, [links](), **formatting**, and &lt;del&gt;tags&lt;/del&gt; supported
+</code></pre><ol>
+<li>有順序列表</li>
+<li>有順序列表</li>
+<li>有順序列表</li>
+</ol>
+<h2 id="-待辦清單-to-do-list"><strong>• 待辦清單 To-Do-List</strong>&nbsp;<a href="#-待辦清單-to-do-list" class="anchor"></a> </h2>
+<pre tabindex="0"><code>- [x] @mentions, #refs, [links](), **formatting**, and &lt;del&gt;tags&lt;/del&gt; supported
 - [x] list syntax required (any unordered or ordered list supported)
 - [x] this is a complete item
 - [ ] this is an incomplete item
-</code></pre><ul><li><input checked disabled type=checkbox> @mentions, #refs, <a href>links</a>, <strong>formatting</strong>, and tags supported</li><li><input checked disabled type=checkbox> list syntax required (any unordered or ordered list supported)</li><li><input checked disabled type=checkbox> this is a complete item</li><li><input disabled type=checkbox> this is an incomplete item</li></ul><h2 id=-引用文字><strong>• 引用文字</strong>&nbsp;<a href=#-引用文字 class=anchor></a></h2><pre tabindex=0><code>&gt; Four has four letters
-</code></pre><blockquote><p>Four has four letters</p></blockquote><h2 id=-hightlight-字元><strong>• Hightlight 字元</strong>&nbsp;<a href=#-hightlight-字元 class=anchor></a></h2><pre tabindex=0><code>*我是斜體*
+</code></pre><ul>
+<li><input checked="" disabled="" type="checkbox"> @mentions, #refs, <a href="">links</a>, <strong>formatting</strong>, and <!-- raw HTML omitted -->tags<!-- raw HTML omitted --> supported</li>
+<li><input checked="" disabled="" type="checkbox"> list syntax required (any unordered or ordered list supported)</li>
+<li><input checked="" disabled="" type="checkbox"> this is a complete item</li>
+<li><input disabled="" type="checkbox"> this is an incomplete item</li>
+</ul>
+<h2 id="-引用文字"><strong>• 引用文字</strong>&nbsp;<a href="#-引用文字" class="anchor"></a> </h2>
+<pre tabindex="0"><code>&gt; Four has four letters
+</code></pre><blockquote>
+<p>Four has four letters</p>
+</blockquote>
+<h2 id="-hightlight-字元"><strong>• Hightlight 字元</strong>&nbsp;<a href="#-hightlight-字元" class="anchor"></a> </h2>
+<pre tabindex="0"><code>*我是斜體*
 _我也是斜體_
 
 **我是粗體**
@@ -36,29 +509,94 @@ ___我也是斜粗體___
 
 ~~我被刪除~~
 </code></pre><p><em>我是斜體</em>
-<em>我也是斜體</em></p><p><strong>我是粗體</strong>
-<strong>我也是粗體</strong></p><p><em><strong>我是粗斜體</strong></em>
-<em><strong>我也是斜粗體</strong></em></p><p><del>我被刪除</del></p><h2 id=-插入圖片><strong>• 插入圖片</strong>&nbsp;<a href=#-插入圖片 class=anchor></a></h2><pre tabindex=0><code>![幫圖片命名](圖片的連結)
-</code></pre><p><img src=https://i.imgur.com/dfbExyl.jpg alt=Imgur></p><h2 id=-插入連結><strong>• 插入連結</strong>&nbsp;<a href=#-插入連結 class=anchor></a></h2><pre tabindex=0><code>[欲顯示的超連結文字](欲前往的連結)
+<em>我也是斜體</em></p>
+<p><strong>我是粗體</strong>
+<strong>我也是粗體</strong></p>
+<p><em><strong>我是粗斜體</strong></em>
+<em><strong>我也是斜粗體</strong></em></p>
+<p><del>我被刪除</del></p>
+<h2 id="-插入圖片"><strong>• 插入圖片</strong>&nbsp;<a href="#-插入圖片" class="anchor"></a> </h2>
+<pre tabindex="0"><code>![幫圖片命名](圖片的連結)
+</code></pre><p><img src="https://i.imgur.com/dfbExyl.jpg" alt="Imgur"></p>
+<h2 id="-插入連結"><strong>• 插入連結</strong>&nbsp;<a href="#-插入連結" class="anchor"></a> </h2>
+<pre tabindex="0"><code>[欲顯示的超連結文字](欲前往的連結)
 [我的Blog首頁](https://yilianwu.github.io)
-</code></pre><p><a href=https://yilianwu.github.io>我的Blog首頁</a></p><h2 id=-插入程式碼><strong>• 插入程式碼</strong>&nbsp;<a href=#-插入程式碼 class=anchor></a></h2><ul><li><p>單行程式碼</p><pre tabindex=0><code>` 我是單行程式碼 `
-</code></pre><p><code>我是單行程式碼</code></p></li><li><p>區塊程式碼</p><pre tabindex=0><code>` ` `
+</code></pre><p><a href="https://yilianwu.github.io">我的Blog首頁</a></p>
+<h2 id="-插入程式碼"><strong>• 插入程式碼</strong>&nbsp;<a href="#-插入程式碼" class="anchor"></a> </h2>
+<ul>
+<li>
+<p>單行程式碼</p>
+<pre tabindex="0"><code>` 我是單行程式碼 `
+</code></pre><p><code>我是單行程式碼</code></p>
+</li>
+<li>
+<p>區塊程式碼</p>
+<pre tabindex="0"><code>` ` `
 多行程式碼包在這裡面 #把` `之間的空格刪除
 ` ` `
-</code></pre><pre tabindex=0><code>多行程式碼包在這裡面
-</code></pre></li></ul><h2 id=-表格><strong>• 表格</strong>&nbsp;<a href=#-表格 class=anchor></a></h2><pre tabindex=0><code>First Header | Second Header
+</code></pre><pre tabindex="0"><code>多行程式碼包在這裡面
+</code></pre></li>
+</ul>
+<h2 id="-表格"><strong>• 表格</strong>&nbsp;<a href="#-表格" class="anchor"></a> </h2>
+<pre tabindex="0"><code>First Header | Second Header
 ------------ | -------------
 Content from cell 1 | Content from cell 2
 Content in the first column | Content in the second column
-</code></pre><table><thead><tr><th>First Header</th><th>Second Header</th></tr></thead><tbody><tr><td>Content from cell 1</td><td>Content from cell 2</td></tr><tr><td>Content in the first column</td><td>Content in the second column</td></tr></tbody></table><h2 id=-文字換行><strong>• 文字換行</strong>&nbsp;<a href=#-文字換行 class=anchor></a></h2><p>直接在要換行的句尾加兩個space 再enter即可</p></section></div></div></div></div></main><footer class=sand><a href=https://www.facebook.com/beatboxyilianwu target=_blank><img src=https://i.imgur.com/EJhxgWk.png height=30 width=30></a>
-<a href=https://twitter.com/YiLianWu target=_blank><img src=https://i.imgur.com/KvvGcoN.png height=30 width=30></a>
-<a href=https://www.instagram.com/weelian/ target=_blank><img src=https://i.imgur.com/FVUwWv0.png height=30 width=30></a>
-<a href=https://github.com/yilianwu target=_blank><img src=https://i.imgur.com/BIgEqmF.png height=30 width=30></a>
-<a href=https://www.linkedin.com/in/yilianwu/ target=_blank><img src=https://i.imgur.com/hCGvLEq.png height=30 width=30></a>
-<span style=display:block class=footer-text>&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href=https://gohugo.io/ target=_blank>Hugo</a></span></footer><script src=https://code.jquery.com/jquery-latest.js></script>
-<script>$(".post-content h1").prepend("§ ")</script><script type=text/x-mathjax-config>
+</code></pre><table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content from cell 1</td>
+<td>Content from cell 2</td>
+</tr>
+<tr>
+<td>Content in the first column</td>
+<td>Content in the second column</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-文字換行"><strong>• 文字換行</strong>&nbsp;<a href="#-文字換行" class="anchor"></a> </h2>
+<p>直接在要換行的句尾加兩個space 再enter即可</p>
+                </section>
+        
+            </div>
+	     </div>
+
+
+
+     </div>
+  </div>
+</main>
+<footer class="sand">
+
+	<a href="https://www.facebook.com/beatboxyilianwu" target="_blank"><img src="https://i.imgur.com/EJhxgWk.png" height="30" width="30"></a>
+	<a href="https://twitter.com/YiLianWu" target="_blank"><img src="https://i.imgur.com/KvvGcoN.png" height="30" width="30"></a>
+	<a href="https://www.instagram.com/weelian/" target="_blank"><img src="https://i.imgur.com/FVUwWv0.png" height="30" width="30"></a>
+	
+	<a href="https://github.com/yilianwu" target="_blank"><img src="https://i.imgur.com/BIgEqmF.png" height="30" width="30"></a>
+	<a href="https://www.linkedin.com/in/yilianwu/" target="_blank"><img src="https://i.imgur.com/hCGvLEq.png" height="30" width="30"></a>
+
+    <span style="display:block" class="footer-text">&copy 2019-2025 吳羿璉. All rights reserved. Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$('.post-content h1').prepend("§ ");
+</script>
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left"
     });
-</script><script type=text/javascript src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel=stylesheet href=https://www.yilianwu.io/css/solarized-light.css><script src=https://www.yilianwu.io/js/highlight.pack.js></script>
-<script>hljs.initHighlightingOnLoad()</script></body></html>
+</script>
+<script type="text/javascript"
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script> 
+<link rel="stylesheet" href="https://www.yilianwu.io/css/solarized-light.css"/>
+<script src="https://www.yilianwu.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
